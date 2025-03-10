@@ -4,7 +4,6 @@ import os
 import pandas as pd
 
 class CommandProcessor:
-    """Handles various utility functions."""
 
     def __init__(self):
         self.command_map = {
