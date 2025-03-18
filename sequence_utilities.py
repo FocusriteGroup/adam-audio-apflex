@@ -49,7 +49,13 @@ class CommandProcessor:
         extension = f"_{date_part[0]}_{date_part[1]}_{date_part[2]}_{time_part[0]}_{time_part[1]}_{time_part[2]}"
         return os.path.normpath(extension)
 
-    def separate_level_and_distortion(self, results_path, timestamp_extension, lnd_filename, fundamental_filename, h2_filename, h3_filename):
+    def separate_level_and_distortion(self, 
+                                      results_path, 
+                                      timestamp_extension, 
+                                      lnd_filename, 
+                                      fundamental_filename, 
+                                      h2_filename, 
+                                      h3_filename):
         """Separate level and distortion."""
         # Construct the full filename
         csv_filename = f"{lnd_filename}{timestamp_extension}.csv"
