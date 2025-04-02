@@ -4696,3 +4696,736 @@
 2025-04-02 11:24:46,747 - INFO - Received: {"action": "set_average", "averages": 3, "wait_for_response": false}
 2025-04-02 11:24:46,789 - INFO - No response sent.
 2025-04-02 11:24:46,802 - INFO - No response sent.
+2025-04-02 11:55:18,047 - INFO - Server started on 127.0.0.1:65432
+2025-04-02 11:55:18,048 - INFO - Waiting for connections...
+2025-04-02 11:55:22,527 - INFO - Connection from ('127.0.0.1', 52555)
+2025-04-02 11:55:22,698 - INFO - Connection from ('127.0.0.1', 52556)
+2025-04-02 11:55:22,698 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 11:55:22,698 - INFO - Sent response: 2025_04_02_11_55_22
+2025-04-02 11:55:22,780 - INFO - Connection from ('127.0.0.1', 52557)
+2025-04-02 11:55:22,781 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 11:55:22,781 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 11:55:22,870 - INFO - Connection from ('127.0.0.1', 52558)
+2025-04-02 11:55:22,870 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 11:55:22,870 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 11:55:22,955 - INFO - Connection from ('127.0.0.1', 52559)
+2025-04-02 11:55:22,955 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 11:55:22,955 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 11:55:23,039 - INFO - Connection from ('127.0.0.1', 52560)
+2025-04-02 11:55:23,040 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 11:55:23,040 - INFO - Sent response: 2025\04_02
+2025-04-02 11:55:23,125 - INFO - Connection from ('127.0.0.1', 52561)
+2025-04-02 11:55:23,125 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_02", "2025_04_02_11_55_22"]}
+2025-04-02 11:55:23,126 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_11_55_22
+2025-04-02 11:55:23,214 - INFO - Connection from ('127.0.0.1', 52562)
+2025-04-02 11:55:23,214 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "2025_04_02_11_55_22"]}
+2025-04-02 11:55:23,214 - INFO - Sent response: 12345XYZ_2025_04_02_11_55_22
+2025-04-02 11:55:23,391 - INFO - Connection from ('127.0.0.1', 52563)
+2025-04-02 11:55:23,392 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 11:55:23,505 - INFO - Connection from ('127.0.0.1', 52564)
+2025-04-02 11:55:23,505 - INFO - No response sent.
+2025-04-02 11:55:23,506 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 11:55:24,043 - INFO - Connection from ('127.0.0.1', 52565)
+2025-04-02 11:55:24,046 - INFO - Received: {"action": "set_average", "averages": 2, "wait_for_response": false}
+2025-04-02 11:55:26,003 - INFO - No response sent.
+2025-04-02 11:55:26,175 - INFO - No response sent.
+2025-04-02 11:55:29,324 - INFO - Connection from ('127.0.0.1', 52567)
+2025-04-02 11:55:29,555 - INFO - Connection from ('127.0.0.1', 52568)
+2025-04-02 11:55:29,555 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 11:55:29,556 - INFO - Sent response: 2025_04_02_11_55_29
+2025-04-02 11:55:29,648 - INFO - Connection from ('127.0.0.1', 52569)
+2025-04-02 11:55:29,648 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 11:55:29,649 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 11:55:29,758 - INFO - Connection from ('127.0.0.1', 52570)
+2025-04-02 11:55:29,759 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 11:55:29,760 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 11:55:29,838 - INFO - Connection from ('127.0.0.1', 52571)
+2025-04-02 11:55:29,839 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 11:55:29,839 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 11:55:29,923 - INFO - Connection from ('127.0.0.1', 52572)
+2025-04-02 11:55:29,924 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 11:55:29,924 - INFO - Sent response: 2025\04_02
+2025-04-02 11:55:30,009 - INFO - Connection from ('127.0.0.1', 52573)
+2025-04-02 11:55:30,009 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_02", "2025_04_02_11_55_29"]}
+2025-04-02 11:55:30,010 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_11_55_29
+2025-04-02 11:55:30,097 - INFO - Connection from ('127.0.0.1', 52574)
+2025-04-02 11:55:30,098 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "2025_04_02_11_55_29"]}
+2025-04-02 11:55:30,098 - INFO - Sent response: 12345XYZ_2025_04_02_11_55_29
+2025-04-02 11:55:30,297 - INFO - Connection from ('127.0.0.1', 52575)
+2025-04-02 11:55:30,299 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 11:55:30,308 - INFO - No response sent.
+2025-04-02 11:55:30,431 - INFO - Connection from ('127.0.0.1', 52576)
+2025-04-02 11:55:30,432 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 11:55:30,949 - INFO - Connection from ('127.0.0.1', 52577)
+2025-04-02 11:55:30,950 - INFO - Received: {"action": "set_average", "averages": 2, "wait_for_response": false}
+2025-04-02 11:55:30,965 - INFO - No response sent.
+2025-04-02 11:55:33,119 - INFO - No response sent.
+2025-04-02 12:28:30,592 - INFO - Connection from ('127.0.0.1', 53011)
+2025-04-02 12:28:31,196 - INFO - Connection from ('127.0.0.1', 53012)
+2025-04-02 12:28:31,198 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 12:28:31,198 - INFO - Sent response: 2025_04_02_12_28_31
+2025-04-02 12:28:31,283 - INFO - Connection from ('127.0.0.1', 53013)
+2025-04-02 12:28:31,284 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 12:28:31,284 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:28:31,363 - INFO - Connection from ('127.0.0.1', 53014)
+2025-04-02 12:28:31,363 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 12:28:31,364 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:28:31,441 - INFO - Connection from ('127.0.0.1', 53016)
+2025-04-02 12:28:31,441 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 12:28:31,441 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:28:31,528 - INFO - Connection from ('127.0.0.1', 53017)
+2025-04-02 12:28:31,531 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 12:28:31,531 - INFO - Sent response: 2025\04_02
+2025-04-02 12:28:31,615 - INFO - Connection from ('127.0.0.1', 53018)
+2025-04-02 12:28:31,615 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_02", "2025_04_02_12_28_31"]}
+2025-04-02 12:28:31,615 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_12_28_31
+2025-04-02 12:28:31,702 - INFO - Connection from ('127.0.0.1', 53019)
+2025-04-02 12:28:31,703 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "2025_04_02_12_28_31"]}
+2025-04-02 12:28:31,703 - INFO - Sent response: 12345XYZ_2025_04_02_12_28_31
+2025-04-02 12:28:31,874 - INFO - Connection from ('127.0.0.1', 53020)
+2025-04-02 12:28:31,874 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 12:28:31,887 - INFO - No response sent.
+2025-04-02 12:28:31,978 - INFO - Connection from ('127.0.0.1', 53022)
+2025-04-02 12:28:31,980 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 12:28:32,673 - INFO - Connection from ('127.0.0.1', 53024)
+2025-04-02 12:28:32,674 - INFO - Received: {"action": "set_average", "averages": 2, "wait_for_response": false}
+2025-04-02 12:28:32,712 - INFO - No response sent.
+2025-04-02 12:28:32,722 - INFO - No response sent.
+2025-04-02 12:30:15,787 - INFO - Connection from ('127.0.0.1', 53040)
+2025-04-02 12:30:15,953 - INFO - Connection from ('127.0.0.1', 53041)
+2025-04-02 12:30:15,954 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 12:30:15,955 - INFO - Sent response: 2025_04_02_12_30_15
+2025-04-02 12:30:16,056 - INFO - Connection from ('127.0.0.1', 53042)
+2025-04-02 12:30:16,057 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 12:30:16,058 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:30:16,147 - INFO - Connection from ('127.0.0.1', 53043)
+2025-04-02 12:30:16,148 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 12:30:16,149 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:30:16,234 - INFO - Connection from ('127.0.0.1', 53044)
+2025-04-02 12:30:16,235 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 12:30:16,235 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:30:16,317 - INFO - Connection from ('127.0.0.1', 53045)
+2025-04-02 12:30:16,318 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 12:30:16,319 - INFO - Sent response: 2025\04_02
+2025-04-02 12:30:16,402 - INFO - Connection from ('127.0.0.1', 53046)
+2025-04-02 12:30:16,403 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_02", "2025_04_02_12_30_15"]}
+2025-04-02 12:30:16,403 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_12_30_15
+2025-04-02 12:30:16,484 - INFO - Connection from ('127.0.0.1', 53047)
+2025-04-02 12:30:16,484 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "2025_04_02_12_30_15"]}
+2025-04-02 12:30:16,484 - INFO - Sent response: 12345XYZ_2025_04_02_12_30_15
+2025-04-02 12:30:16,650 - INFO - Connection from ('127.0.0.1', 53048)
+2025-04-02 12:30:16,651 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 12:30:16,662 - INFO - No response sent.
+2025-04-02 12:30:16,790 - INFO - Connection from ('127.0.0.1', 53050)
+2025-04-02 12:30:16,791 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 12:30:17,337 - INFO - Connection from ('127.0.0.1', 53052)
+2025-04-02 12:30:17,339 - INFO - Received: {"action": "set_average", "averages": 5, "wait_for_response": false}
+2025-04-02 12:30:17,357 - INFO - No response sent.
+2025-04-02 12:30:17,376 - INFO - No response sent.
+2025-04-02 12:50:59,686 - INFO - Server started on 127.0.0.1:65432
+2025-04-02 12:50:59,687 - INFO - Waiting for connections...
+2025-04-02 12:51:04,859 - INFO - Connection from ('127.0.0.1', 53405)
+2025-04-02 12:51:05,378 - INFO - Connection from ('127.0.0.1', 53406)
+2025-04-02 12:51:05,379 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 12:51:05,379 - ERROR - Error processing action 'generate_timestamp_extension': 'str' object is not callable
+2025-04-02 12:51:05,379 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 12:51:05,467 - INFO - Connection from ('127.0.0.1', 53407)
+2025-04-02 12:51:05,467 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 12:51:05,467 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:51:05,552 - INFO - Connection from ('127.0.0.1', 53408)
+2025-04-02 12:51:05,552 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 12:51:05,553 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:51:05,635 - INFO - Connection from ('127.0.0.1', 53409)
+2025-04-02 12:51:05,635 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 12:51:05,636 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:51:05,716 - INFO - Connection from ('127.0.0.1', 53410)
+2025-04-02 12:51:05,716 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 12:51:05,716 - ERROR - Error processing action 'get_timestamp_subpath': 'str' object is not callable
+2025-04-02 12:51:05,717 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 12:51:05,803 - INFO - Connection from ('127.0.0.1', 53411)
+2025-04-02 12:51:05,803 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "Error:", "'str'", "object", "is", "not", "callable", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 12:51:05,804 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\Error:\'str'\object\is\not\callable\Error:\'str'\object\is\not\callable
+2025-04-02 12:51:05,885 - INFO - Connection from ('127.0.0.1', 53412)
+2025-04-02 12:51:05,886 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 12:51:05,886 - INFO - Sent response: 12345XYZ_Error:_'str'_object_is_not_callable
+2025-04-02 12:51:06,076 - INFO - Connection from ('127.0.0.1', 53413)
+2025-04-02 12:51:06,077 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 12:51:06,143 - ERROR - Error processing action 'wake_up': 'str' object is not callable
+2025-04-02 12:51:06,144 - INFO - No response sent.
+2025-04-02 12:51:06,223 - INFO - Connection from ('127.0.0.1', 53414)
+2025-04-02 12:51:06,223 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 12:51:06,862 - INFO - Connection from ('127.0.0.1', 53417)
+2025-04-02 12:51:06,864 - INFO - Received: {"action": "set_average", "averages": 2, "wait_for_response": false}
+2025-04-02 12:51:09,121 - INFO - No response sent.
+2025-04-02 12:51:09,125 - INFO - No response sent.
+2025-04-02 12:51:21,758 - INFO - Connection from ('127.0.0.1', 53430)
+2025-04-02 12:51:21,955 - INFO - Connection from ('127.0.0.1', 53431)
+2025-04-02 12:51:21,956 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 12:51:21,956 - ERROR - Error processing action 'generate_timestamp_extension': 'str' object is not callable
+2025-04-02 12:51:21,957 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 12:51:22,036 - INFO - Connection from ('127.0.0.1', 53432)
+2025-04-02 12:51:22,037 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 12:51:22,038 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:51:22,123 - INFO - Connection from ('127.0.0.1', 53433)
+2025-04-02 12:51:22,124 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 12:51:22,125 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:51:22,205 - INFO - Connection from ('127.0.0.1', 53434)
+2025-04-02 12:51:22,206 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 12:51:22,207 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:51:22,290 - INFO - Connection from ('127.0.0.1', 53435)
+2025-04-02 12:51:22,291 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 12:51:22,291 - ERROR - Error processing action 'get_timestamp_subpath': 'str' object is not callable
+2025-04-02 12:51:22,291 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 12:51:22,378 - INFO - Connection from ('127.0.0.1', 53436)
+2025-04-02 12:51:22,379 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "Error:", "'str'", "object", "is", "not", "callable", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 12:51:22,380 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\Error:\'str'\object\is\not\callable\Error:\'str'\object\is\not\callable
+2025-04-02 12:51:22,458 - INFO - Connection from ('127.0.0.1', 53437)
+2025-04-02 12:51:22,459 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 12:51:22,459 - INFO - Sent response: 12345XYZ_Error:_'str'_object_is_not_callable
+2025-04-02 12:51:22,634 - INFO - Connection from ('127.0.0.1', 53438)
+2025-04-02 12:51:22,636 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 12:51:22,686 - ERROR - Error processing action 'wake_up': 'str' object is not callable
+2025-04-02 12:51:22,687 - INFO - No response sent.
+2025-04-02 12:51:22,810 - INFO - Connection from ('127.0.0.1', 53440)
+2025-04-02 12:51:22,811 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 12:51:23,335 - INFO - Connection from ('127.0.0.1', 53441)
+2025-04-02 12:51:23,338 - INFO - Received: {"action": "set_average", "averages": 2, "wait_for_response": false}
+2025-04-02 12:51:23,345 - INFO - No response sent.
+2025-04-02 12:51:25,008 - INFO - No response sent.
+2025-04-02 12:53:46,438 - INFO - Connection from ('127.0.0.1', 53489)
+2025-04-02 12:53:46,606 - INFO - Connection from ('127.0.0.1', 53490)
+2025-04-02 12:53:46,607 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 12:53:46,607 - ERROR - Error processing action 'generate_timestamp_extension': 'str' object is not callable
+2025-04-02 12:53:46,607 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 12:53:46,685 - INFO - Connection from ('127.0.0.1', 53491)
+2025-04-02 12:53:46,686 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 12:53:46,686 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:53:46,776 - INFO - Connection from ('127.0.0.1', 53492)
+2025-04-02 12:53:46,777 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 12:53:46,778 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:53:46,855 - INFO - Connection from ('127.0.0.1', 53493)
+2025-04-02 12:53:46,855 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 12:53:46,856 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:53:46,939 - INFO - Connection from ('127.0.0.1', 53494)
+2025-04-02 12:53:46,940 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 12:53:46,940 - ERROR - Error processing action 'get_timestamp_subpath': 'str' object is not callable
+2025-04-02 12:53:46,940 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 12:53:47,021 - INFO - Connection from ('127.0.0.1', 53495)
+2025-04-02 12:53:47,022 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "Error:", "'str'", "object", "is", "not", "callable", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 12:53:47,022 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\Error:\'str'\object\is\not\callable\Error:\'str'\object\is\not\callable
+2025-04-02 12:53:47,098 - INFO - Connection from ('127.0.0.1', 53496)
+2025-04-02 12:53:47,099 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 12:53:47,099 - INFO - Sent response: 12345XYZ_Error:_'str'_object_is_not_callable
+2025-04-02 12:53:47,304 - INFO - Connection from ('127.0.0.1', 53497)
+2025-04-02 12:53:47,305 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 12:53:47,320 - ERROR - Error processing action 'wake_up': 'str' object is not callable
+2025-04-02 12:53:47,321 - INFO - No response sent.
+2025-04-02 12:53:47,428 - INFO - Connection from ('127.0.0.1', 53499)
+2025-04-02 12:53:47,429 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 12:53:47,961 - INFO - Connection from ('127.0.0.1', 53501)
+2025-04-02 12:53:47,963 - INFO - Received: {"action": "set_average", "averages": 2, "wait_for_response": false}
+2025-04-02 12:53:51,125 - INFO - No response sent.
+2025-04-02 12:53:51,364 - INFO - No response sent.
+2025-04-02 12:54:55,833 - INFO - Connection from ('127.0.0.1', 53506)
+2025-04-02 12:54:56,016 - INFO - Connection from ('127.0.0.1', 53507)
+2025-04-02 12:54:56,016 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 12:54:56,016 - ERROR - Error processing action 'generate_timestamp_extension': 'str' object is not callable
+2025-04-02 12:54:56,018 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 12:54:56,095 - INFO - Connection from ('127.0.0.1', 53508)
+2025-04-02 12:54:56,096 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 12:54:56,097 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:54:56,176 - INFO - Connection from ('127.0.0.1', 53509)
+2025-04-02 12:54:56,176 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 12:54:56,177 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:54:56,269 - INFO - Connection from ('127.0.0.1', 53510)
+2025-04-02 12:54:56,270 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 12:54:56,270 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:54:56,347 - INFO - Connection from ('127.0.0.1', 53511)
+2025-04-02 12:54:56,348 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 12:54:56,348 - ERROR - Error processing action 'get_timestamp_subpath': 'str' object is not callable
+2025-04-02 12:54:56,348 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 12:54:56,431 - INFO - Connection from ('127.0.0.1', 53512)
+2025-04-02 12:54:56,431 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "Error:", "'str'", "object", "is", "not", "callable", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 12:54:56,432 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\Error:\'str'\object\is\not\callable\Error:\'str'\object\is\not\callable
+2025-04-02 12:54:56,506 - INFO - Connection from ('127.0.0.1', 53513)
+2025-04-02 12:54:56,507 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 12:54:56,507 - INFO - Sent response: 12345XYZ_Error:_'str'_object_is_not_callable
+2025-04-02 12:54:56,708 - INFO - Connection from ('127.0.0.1', 53514)
+2025-04-02 12:54:56,708 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 12:54:56,757 - ERROR - Error processing action 'wake_up': 'str' object is not callable
+2025-04-02 12:54:56,757 - INFO - No response sent.
+2025-04-02 12:54:56,835 - INFO - Connection from ('127.0.0.1', 53516)
+2025-04-02 12:54:56,836 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 12:54:57,365 - INFO - Connection from ('127.0.0.1', 53518)
+2025-04-02 12:54:57,366 - INFO - Received: {"action": "set_average", "averages": 2, "wait_for_response": false}
+2025-04-02 12:54:57,399 - INFO - No response sent.
+2025-04-02 12:54:58,457 - INFO - No response sent.
+2025-04-02 12:55:39,963 - INFO - Server started on 127.0.0.1:65432
+2025-04-02 12:55:39,964 - INFO - Waiting for connections...
+2025-04-02 12:55:46,560 - INFO - Connection from ('127.0.0.1', 53533)
+2025-04-02 12:55:46,762 - INFO - Connection from ('127.0.0.1', 53534)
+2025-04-02 12:55:46,762 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 12:55:46,762 - ERROR - Error processing action 'generate_timestamp_extension': 'str' object is not callable
+2025-04-02 12:55:46,762 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 12:55:46,842 - INFO - Connection from ('127.0.0.1', 53535)
+2025-04-02 12:55:46,842 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 12:55:46,842 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:55:46,932 - INFO - Connection from ('127.0.0.1', 53536)
+2025-04-02 12:55:46,933 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 12:55:46,933 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:55:47,016 - INFO - Connection from ('127.0.0.1', 53537)
+2025-04-02 12:55:47,016 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 12:55:47,016 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:55:47,099 - INFO - Connection from ('127.0.0.1', 53538)
+2025-04-02 12:55:47,100 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 12:55:47,100 - ERROR - Error processing action 'get_timestamp_subpath': 'str' object is not callable
+2025-04-02 12:55:47,100 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 12:55:47,186 - INFO - Connection from ('127.0.0.1', 53539)
+2025-04-02 12:55:47,187 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "Error:", "'str'", "object", "is", "not", "callable", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 12:55:47,187 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\Error:\'str'\object\is\not\callable\Error:\'str'\object\is\not\callable
+2025-04-02 12:55:47,267 - INFO - Connection from ('127.0.0.1', 53540)
+2025-04-02 12:55:47,268 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 12:55:47,268 - INFO - Sent response: 12345XYZ_Error:_'str'_object_is_not_callable
+2025-04-02 12:55:47,595 - INFO - Connection from ('127.0.0.1', 53541)
+2025-04-02 12:55:47,597 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 12:55:47,657 - ERROR - Error processing action 'wake_up': 'str' object is not callable
+2025-04-02 12:55:47,657 - INFO - No response sent.
+2025-04-02 12:55:47,741 - INFO - Connection from ('127.0.0.1', 53542)
+2025-04-02 12:55:47,742 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 12:55:48,302 - INFO - Connection from ('127.0.0.1', 53544)
+2025-04-02 12:55:48,304 - INFO - Received: {"action": "set_average", "averages": 2, "wait_for_response": false}
+2025-04-02 12:55:49,416 - INFO - No response sent.
+2025-04-02 12:55:49,423 - INFO - No response sent.
+2025-04-02 12:57:48,045 - INFO - Server started on 127.0.0.1:65432
+2025-04-02 12:57:48,045 - INFO - Waiting for connections...
+2025-04-02 12:57:55,359 - INFO - Connection from ('127.0.0.1', 53586)
+2025-04-02 12:57:55,891 - INFO - Connection from ('127.0.0.1', 53587)
+2025-04-02 12:57:55,892 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 12:57:55,893 - ERROR - Error processing action 'generate_timestamp_extension': 'str' object is not callable
+2025-04-02 12:57:55,893 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 12:57:55,975 - INFO - Connection from ('127.0.0.1', 53588)
+2025-04-02 12:57:55,976 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 12:57:55,976 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:57:56,058 - INFO - Connection from ('127.0.0.1', 53590)
+2025-04-02 12:57:56,058 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 12:57:56,059 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:57:56,146 - INFO - Connection from ('127.0.0.1', 53591)
+2025-04-02 12:57:56,146 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 12:57:56,147 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:57:56,234 - INFO - Connection from ('127.0.0.1', 53592)
+2025-04-02 12:57:56,235 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 12:57:56,235 - ERROR - Error processing action 'get_timestamp_subpath': 'str' object is not callable
+2025-04-02 12:57:56,235 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 12:57:56,325 - INFO - Connection from ('127.0.0.1', 53593)
+2025-04-02 12:57:56,326 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "Error:", "'str'", "object", "is", "not", "callable", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 12:57:56,326 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\Error:\'str'\object\is\not\callable\Error:\'str'\object\is\not\callable
+2025-04-02 12:57:56,418 - INFO - Connection from ('127.0.0.1', 53594)
+2025-04-02 12:57:56,418 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 12:57:56,418 - INFO - Sent response: 12345XYZ_Error:_'str'_object_is_not_callable
+2025-04-02 12:57:56,636 - INFO - Connection from ('127.0.0.1', 53595)
+2025-04-02 12:57:56,638 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 12:57:56,655 - ERROR - Error processing action 'wake_up': 'str' object is not callable
+2025-04-02 12:57:56,656 - INFO - No response sent.
+2025-04-02 12:57:56,833 - INFO - Connection from ('127.0.0.1', 53596)
+2025-04-02 12:57:56,834 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 12:57:57,441 - INFO - Connection from ('127.0.0.1', 53598)
+2025-04-02 12:57:57,442 - INFO - Received: {"action": "set_average", "averages": 2, "wait_for_response": false}
+2025-04-02 12:57:57,480 - INFO - No response sent.
+2025-04-02 12:57:57,487 - INFO - No response sent.
+2025-04-02 13:00:39,450 - INFO - Server started on 127.0.0.1:65432
+2025-04-02 13:00:39,451 - INFO - Waiting for connections...
+2025-04-02 13:00:48,523 - INFO - Connection from ('127.0.0.1', 53659)
+2025-04-02 13:00:48,697 - INFO - Connection from ('127.0.0.1', 53660)
+2025-04-02 13:00:48,698 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 13:00:48,698 - ERROR - Error processing action 'generate_timestamp_extension': 'str' object is not callable
+2025-04-02 13:00:48,698 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 13:00:48,788 - INFO - Connection from ('127.0.0.1', 53661)
+2025-04-02 13:00:48,789 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 13:00:48,789 - ERROR - Error processing action 'construct_path': <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:48,790 - INFO - Sent response: Error: <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:48,875 - INFO - Connection from ('127.0.0.1', 53662)
+2025-04-02 13:00:48,875 - INFO - Received: {"action": "construct_path", "paths": ["Error:", "<lambda>()", "missing", "1", "required", "positional", "argument:", "'command'", "Measurements"]}
+2025-04-02 13:00:48,875 - ERROR - Error processing action 'construct_path': <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:48,875 - INFO - Sent response: Error: <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:48,967 - INFO - Connection from ('127.0.0.1', 53663)
+2025-04-02 13:00:48,967 - INFO - Received: {"action": "construct_path", "paths": ["Error:", "<lambda>()", "missing", "1", "required", "positional", "argument:", "'command'", "GoldenSample"]}
+2025-04-02 13:00:48,968 - ERROR - Error processing action 'construct_path': <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:48,968 - INFO - Sent response: Error: <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:49,054 - INFO - Connection from ('127.0.0.1', 53664)
+2025-04-02 13:00:49,055 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 13:00:49,055 - ERROR - Error processing action 'get_timestamp_subpath': 'str' object is not callable
+2025-04-02 13:00:49,056 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 13:00:49,139 - INFO - Connection from ('127.0.0.1', 53665)
+2025-04-02 13:00:49,140 - INFO - Received: {"action": "construct_path", "paths": ["Error:", "<lambda>()", "missing", "1", "required", "positional", "argument:", "'command'", "Results", "Error:", "'str'", "object", "is", "not", "callable", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 13:00:49,141 - ERROR - Error processing action 'construct_path': <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:49,141 - INFO - Sent response: Error: <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:49,221 - INFO - Connection from ('127.0.0.1', 53666)
+2025-04-02 13:00:49,222 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 13:00:49,222 - ERROR - Error processing action 'generate_file_prefix': <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:49,223 - INFO - Sent response: Error: <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:49,444 - INFO - Connection from ('127.0.0.1', 53667)
+2025-04-02 13:00:49,445 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 13:00:49,499 - ERROR - Error processing action 'wake_up': 'str' object is not callable
+2025-04-02 13:00:49,500 - INFO - No response sent.
+2025-04-02 13:00:49,576 - INFO - Connection from ('127.0.0.1', 53668)
+2025-04-02 13:00:49,578 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 13:00:49,579 - ERROR - Error processing action 'activate_measurement': <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:49,579 - INFO - No response sent.
+2025-04-02 13:00:50,163 - INFO - Connection from ('127.0.0.1', 53669)
+2025-04-02 13:00:50,165 - INFO - Received: {"action": "set_average", "averages": 2, "wait_for_response": false}
+2025-04-02 13:00:50,165 - ERROR - Error processing action 'set_average': <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:50,165 - INFO - No response sent.
+2025-04-02 13:02:09,884 - INFO - Server started on 127.0.0.1:65432
+2025-04-02 13:02:09,885 - INFO - Waiting for connections...
+2025-04-02 13:02:13,017 - INFO - Connection from ('127.0.0.1', 53693)
+2025-04-02 13:02:13,184 - INFO - Connection from ('127.0.0.1', 53694)
+2025-04-02 13:02:13,185 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 13:02:13,185 - ERROR - Error processing action 'generate_timestamp_extension': 'str' object is not callable
+2025-04-02 13:02:13,186 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 13:02:13,279 - INFO - Connection from ('127.0.0.1', 53695)
+2025-04-02 13:02:13,280 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 13:02:13,280 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:02:13,375 - INFO - Connection from ('127.0.0.1', 53696)
+2025-04-02 13:02:13,376 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 13:02:13,376 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:02:13,472 - INFO - Connection from ('127.0.0.1', 53697)
+2025-04-02 13:02:13,473 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 13:02:13,473 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:02:13,570 - INFO - Connection from ('127.0.0.1', 53699)
+2025-04-02 13:02:13,571 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 13:02:13,571 - ERROR - Error processing action 'get_timestamp_subpath': 'str' object is not callable
+2025-04-02 13:02:13,571 - INFO - Sent response: Error: 'str' object is not callable
+2025-04-02 13:02:13,656 - INFO - Connection from ('127.0.0.1', 53700)
+2025-04-02 13:02:13,657 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "Error:", "'str'", "object", "is", "not", "callable", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 13:02:13,657 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\Error:\'str'\object\is\not\callable\Error:\'str'\object\is\not\callable
+2025-04-02 13:02:13,749 - INFO - Connection from ('127.0.0.1', 53701)
+2025-04-02 13:02:13,750 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "Error:", "'str'", "object", "is", "not", "callable"]}
+2025-04-02 13:02:13,750 - INFO - Sent response: 12345XYZ_Error:_'str'_object_is_not_callable
+2025-04-02 13:02:14,025 - INFO - Connection from ('127.0.0.1', 53702)
+2025-04-02 13:02:14,026 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 13:02:14,151 - ERROR - Error processing action 'wake_up': 'str' object is not callable
+2025-04-02 13:02:14,151 - INFO - Connection from ('127.0.0.1', 53703)
+2025-04-02 13:02:14,151 - INFO - No response sent.
+2025-04-02 13:02:14,152 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 13:02:14,681 - INFO - Connection from ('127.0.0.1', 53704)
+2025-04-02 13:02:14,697 - INFO - Received: {"action": "set_average", "averages": 2, "wait_for_response": false}
+2025-04-02 13:02:15,693 - INFO - No response sent.
+2025-04-02 13:02:15,699 - INFO - No response sent.
+2025-04-02 13:04:33,109 - INFO - Server started on 127.0.0.1:65432
+2025-04-02 13:04:33,109 - INFO - Waiting for connections...
+2025-04-02 13:04:35,982 - INFO - Connection from ('127.0.0.1', 53753)
+2025-04-02 13:04:36,174 - INFO - Connection from ('127.0.0.1', 53754)
+2025-04-02 13:04:36,176 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 13:04:36,176 - INFO - Sent response: 2025_04_02_13_04_36
+2025-04-02 13:04:36,271 - INFO - Connection from ('127.0.0.1', 53756)
+2025-04-02 13:04:36,272 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 13:04:36,272 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:04:36,373 - INFO - Connection from ('127.0.0.1', 53757)
+2025-04-02 13:04:36,374 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 13:04:36,374 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:04:36,475 - INFO - Connection from ('127.0.0.1', 53758)
+2025-04-02 13:04:36,475 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 13:04:36,475 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:04:36,570 - INFO - Connection from ('127.0.0.1', 53759)
+2025-04-02 13:04:36,571 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 13:04:36,571 - INFO - Sent response: 2025\04_02
+2025-04-02 13:04:36,666 - INFO - Connection from ('127.0.0.1', 53760)
+2025-04-02 13:04:36,666 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_02", "2025_04_02_13_04_36"]}
+2025-04-02 13:04:36,667 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_04_36
+2025-04-02 13:04:36,758 - INFO - Connection from ('127.0.0.1', 53761)
+2025-04-02 13:04:36,758 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "2025_04_02_13_04_36"]}
+2025-04-02 13:04:36,759 - INFO - Sent response: 12345XYZ_2025_04_02_13_04_36
+2025-04-02 13:04:37,050 - INFO - Connection from ('127.0.0.1', 53762)
+2025-04-02 13:04:37,051 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 13:04:37,102 - INFO - No response sent.
+2025-04-02 13:04:37,188 - INFO - Connection from ('127.0.0.1', 53763)
+2025-04-02 13:04:37,188 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 13:04:37,732 - INFO - Connection from ('127.0.0.1', 53765)
+2025-04-02 13:04:37,733 - INFO - Received: {"action": "set_average", "averages": 2, "wait_for_response": false}
+2025-04-02 13:04:38,755 - INFO - No response sent.
+2025-04-02 13:04:38,766 - INFO - No response sent.
+2025-04-02 13:04:52,455 - INFO - Connection from ('127.0.0.1', 53768)
+2025-04-02 13:04:52,669 - INFO - Connection from ('127.0.0.1', 53769)
+2025-04-02 13:04:52,671 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 13:04:52,671 - INFO - Sent response: 2025_04_02_13_04_52
+2025-04-02 13:04:52,758 - INFO - Connection from ('127.0.0.1', 53770)
+2025-04-02 13:04:52,759 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 13:04:52,759 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:04:52,849 - INFO - Connection from ('127.0.0.1', 53771)
+2025-04-02 13:04:52,850 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 13:04:52,850 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:04:52,938 - INFO - Connection from ('127.0.0.1', 53772)
+2025-04-02 13:04:52,939 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 13:04:52,940 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:04:53,021 - INFO - Connection from ('127.0.0.1', 53773)
+2025-04-02 13:04:53,022 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 13:04:53,022 - INFO - Sent response: 2025\04_02
+2025-04-02 13:04:53,108 - INFO - Connection from ('127.0.0.1', 53774)
+2025-04-02 13:04:53,110 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_02", "2025_04_02_13_04_52"]}
+2025-04-02 13:04:53,110 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_04_52
+2025-04-02 13:04:53,195 - INFO - Connection from ('127.0.0.1', 53775)
+2025-04-02 13:04:53,196 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "2025_04_02_13_04_52"]}
+2025-04-02 13:04:53,196 - INFO - Sent response: 12345XYZ_2025_04_02_13_04_52
+2025-04-02 13:04:53,390 - INFO - Connection from ('127.0.0.1', 53776)
+2025-04-02 13:04:53,391 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 13:04:53,492 - INFO - Connection from ('127.0.0.1', 53778)
+2025-04-02 13:04:54,044 - INFO - No response sent.
+2025-04-02 13:04:54,044 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 13:04:54,045 - INFO - Connection from ('127.0.0.1', 53779)
+2025-04-02 13:04:54,054 - INFO - Received: {"action": "set_average", "averages": 2, "wait_for_response": false}
+2025-04-02 13:04:54,064 - INFO - No response sent.
+2025-04-02 13:04:55,173 - INFO - No response sent.
+2025-04-02 13:05:28,957 - INFO - Connection from ('127.0.0.1', 53784)
+2025-04-02 13:05:29,142 - INFO - Connection from ('127.0.0.1', 53785)
+2025-04-02 13:05:29,143 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 13:05:29,143 - INFO - Sent response: 2025_04_02_13_05_29
+2025-04-02 13:05:29,222 - INFO - Connection from ('127.0.0.1', 53786)
+2025-04-02 13:05:29,222 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 13:05:29,223 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:05:29,309 - INFO - Connection from ('127.0.0.1', 53787)
+2025-04-02 13:05:29,310 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 13:05:29,311 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:05:29,390 - INFO - Connection from ('127.0.0.1', 53788)
+2025-04-02 13:05:29,391 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 13:05:29,391 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:05:29,480 - INFO - Connection from ('127.0.0.1', 53789)
+2025-04-02 13:05:29,481 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 13:05:29,481 - INFO - Sent response: 2025\04_02
+2025-04-02 13:05:29,564 - INFO - Connection from ('127.0.0.1', 53790)
+2025-04-02 13:05:29,567 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_02", "2025_04_02_13_05_29"]}
+2025-04-02 13:05:29,567 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_05_29
+2025-04-02 13:05:29,657 - INFO - Connection from ('127.0.0.1', 53791)
+2025-04-02 13:05:29,658 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "2025_04_02_13_05_29"]}
+2025-04-02 13:05:29,658 - INFO - Sent response: 12345XYZ_2025_04_02_13_05_29
+2025-04-02 13:05:29,849 - INFO - Connection from ('127.0.0.1', 53792)
+2025-04-02 13:05:29,850 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 13:05:29,896 - INFO - No response sent.
+2025-04-02 13:05:29,974 - INFO - Connection from ('127.0.0.1', 53794)
+2025-04-02 13:05:29,974 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 13:05:30,478 - INFO - Connection from ('127.0.0.1', 53796)
+2025-04-02 13:05:30,480 - INFO - Received: {"action": "set_average", "averages": 5, "wait_for_response": false}
+2025-04-02 13:05:30,520 - INFO - No response sent.
+2025-04-02 13:05:30,531 - INFO - No response sent.
+2025-04-02 13:06:10,061 - INFO - Connection from ('127.0.0.1', 53819)
+2025-04-02 13:06:10,286 - INFO - Connection from ('127.0.0.1', 53824)
+2025-04-02 13:06:10,287 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 13:06:10,288 - INFO - Sent response: 2025_04_02_13_06_10
+2025-04-02 13:06:10,369 - INFO - Connection from ('127.0.0.1', 53825)
+2025-04-02 13:06:10,370 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 13:06:10,370 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:06:10,453 - INFO - Connection from ('127.0.0.1', 53826)
+2025-04-02 13:06:10,454 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 13:06:10,455 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:06:10,533 - INFO - Connection from ('127.0.0.1', 53827)
+2025-04-02 13:06:10,534 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 13:06:10,534 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:06:10,613 - INFO - Connection from ('127.0.0.1', 53828)
+2025-04-02 13:06:10,614 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 13:06:10,615 - INFO - Sent response: 2025\04_02
+2025-04-02 13:06:10,697 - INFO - Connection from ('127.0.0.1', 53829)
+2025-04-02 13:06:10,697 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_02", "2025_04_02_13_06_10"]}
+2025-04-02 13:06:10,698 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_06_10
+2025-04-02 13:06:10,779 - INFO - Connection from ('127.0.0.1', 53830)
+2025-04-02 13:06:10,780 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "2025_04_02_13_06_10"]}
+2025-04-02 13:06:10,780 - INFO - Sent response: 12345XYZ_2025_04_02_13_06_10
+2025-04-02 13:06:11,068 - INFO - Connection from ('127.0.0.1', 53832)
+2025-04-02 13:06:11,068 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 13:06:11,120 - INFO - No response sent.
+2025-04-02 13:06:11,195 - INFO - Connection from ('127.0.0.1', 53834)
+2025-04-02 13:06:11,197 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 13:06:11,706 - INFO - Connection from ('127.0.0.1', 53837)
+2025-04-02 13:06:11,707 - INFO - Received: {"action": "set_average", "averages": 5, "wait_for_response": false}
+2025-04-02 13:06:13,453 - INFO - No response sent.
+2025-04-02 13:06:13,463 - INFO - No response sent.
+2025-04-02 13:06:27,125 - INFO - Connection from ('127.0.0.1', 53847)
+2025-04-02 13:06:27,289 - INFO - Connection from ('127.0.0.1', 53848)
+2025-04-02 13:06:27,290 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 13:06:27,290 - INFO - Sent response: 2025_04_02_13_06_27
+2025-04-02 13:06:27,388 - INFO - Connection from ('127.0.0.1', 53849)
+2025-04-02 13:06:27,389 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 13:06:27,389 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:06:27,472 - INFO - Connection from ('127.0.0.1', 53850)
+2025-04-02 13:06:27,473 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 13:06:27,474 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:06:27,556 - INFO - Connection from ('127.0.0.1', 53851)
+2025-04-02 13:06:27,557 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 13:06:27,557 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:06:27,638 - INFO - Connection from ('127.0.0.1', 53852)
+2025-04-02 13:06:27,639 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 13:06:27,639 - INFO - Sent response: 2025\04_02
+2025-04-02 13:06:27,723 - INFO - Connection from ('127.0.0.1', 53853)
+2025-04-02 13:06:27,724 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_02", "2025_04_02_13_06_27"]}
+2025-04-02 13:06:27,724 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_06_27
+2025-04-02 13:06:27,809 - INFO - Connection from ('127.0.0.1', 53854)
+2025-04-02 13:06:27,810 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "2025_04_02_13_06_27"]}
+2025-04-02 13:06:27,812 - INFO - Sent response: 12345XYZ_2025_04_02_13_06_27
+2025-04-02 13:06:28,002 - INFO - Connection from ('127.0.0.1', 53855)
+2025-04-02 13:06:28,003 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 13:06:28,016 - INFO - No response sent.
+2025-04-02 13:06:28,132 - INFO - Connection from ('127.0.0.1', 53856)
+2025-04-02 13:06:28,133 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 13:06:28,645 - INFO - Connection from ('127.0.0.1', 53857)
+2025-04-02 13:06:28,647 - INFO - Received: {"action": "set_average", "averages": 5, "wait_for_response": false}
+2025-04-02 13:06:28,678 - INFO - No response sent.
+2025-04-02 13:06:31,653 - INFO - No response sent.
+2025-04-02 13:08:26,773 - INFO - Server started on 127.0.0.1:65432
+2025-04-02 13:08:26,774 - INFO - Waiting for connections...
+2025-04-02 13:08:31,386 - INFO - Connection from ('127.0.0.1', 53900)
+2025-04-02 13:08:31,590 - INFO - Connection from ('127.0.0.1', 53901)
+2025-04-02 13:08:31,591 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 13:08:31,591 - INFO - Sent response: 2025_04_02_13_08_31
+2025-04-02 13:08:31,676 - INFO - Connection from ('127.0.0.1', 53902)
+2025-04-02 13:08:31,678 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 13:08:31,678 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:08:31,774 - INFO - Connection from ('127.0.0.1', 53903)
+2025-04-02 13:08:31,775 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 13:08:31,775 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:08:31,873 - INFO - Connection from ('127.0.0.1', 53904)
+2025-04-02 13:08:31,873 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 13:08:31,874 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:08:31,966 - INFO - Connection from ('127.0.0.1', 53905)
+2025-04-02 13:08:31,967 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 13:08:31,967 - INFO - Sent response: 2025\04_02
+2025-04-02 13:08:32,055 - INFO - Connection from ('127.0.0.1', 53906)
+2025-04-02 13:08:32,056 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_02", "2025_04_02_13_08_31"]}
+2025-04-02 13:08:32,056 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_08_31
+2025-04-02 13:08:32,147 - INFO - Connection from ('127.0.0.1', 53907)
+2025-04-02 13:08:32,148 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "2025_04_02_13_08_31"]}
+2025-04-02 13:08:32,148 - INFO - Sent response: 12345XYZ_2025_04_02_13_08_31
+2025-04-02 13:08:32,350 - INFO - Connection from ('127.0.0.1', 53908)
+2025-04-02 13:08:32,351 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 13:08:32,411 - INFO - No response sent.
+2025-04-02 13:08:32,491 - INFO - Connection from ('127.0.0.1', 53909)
+2025-04-02 13:08:32,492 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 13:08:33,037 - INFO - Connection from ('127.0.0.1', 53911)
+2025-04-02 13:08:33,038 - INFO - Received: {"action": "set_average", "averages": 5, "wait_for_response": false}
+2025-04-02 13:08:35,827 - INFO - No response sent.
+2025-04-02 13:08:35,834 - INFO - No response sent.
+2025-04-02 13:09:25,820 - INFO - Connection from ('127.0.0.1', 53914)
+2025-04-02 13:09:26,023 - INFO - Connection from ('127.0.0.1', 53915)
+2025-04-02 13:09:26,024 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 13:09:26,024 - INFO - Sent response: 2025_04_02_13_09_26
+2025-04-02 13:09:26,107 - INFO - Connection from ('127.0.0.1', 53916)
+2025-04-02 13:09:26,108 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 13:09:26,108 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:09:26,197 - INFO - Connection from ('127.0.0.1', 53917)
+2025-04-02 13:09:26,198 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 13:09:26,199 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:09:26,286 - INFO - Connection from ('127.0.0.1', 53918)
+2025-04-02 13:09:26,287 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 13:09:26,287 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:09:26,372 - INFO - Connection from ('127.0.0.1', 53919)
+2025-04-02 13:09:26,373 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 13:09:26,373 - INFO - Sent response: 2025\04_02
+2025-04-02 13:09:26,457 - INFO - Connection from ('127.0.0.1', 53920)
+2025-04-02 13:09:26,458 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_02", "2025_04_02_13_09_26"]}
+2025-04-02 13:09:26,458 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_09_26
+2025-04-02 13:09:26,539 - INFO - Connection from ('127.0.0.1', 53921)
+2025-04-02 13:09:26,540 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "2025_04_02_13_09_26"]}
+2025-04-02 13:09:26,540 - INFO - Sent response: 12345XYZ_2025_04_02_13_09_26
+2025-04-02 13:09:26,759 - INFO - Connection from ('127.0.0.1', 53922)
+2025-04-02 13:09:26,761 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 13:09:26,775 - INFO - No response sent.
+2025-04-02 13:09:26,854 - INFO - Connection from ('127.0.0.1', 53924)
+2025-04-02 13:09:26,856 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 13:09:27,440 - INFO - Connection from ('127.0.0.1', 53926)
+2025-04-02 13:09:27,441 - INFO - Received: {"action": "set_average", "averages": 3, "wait_for_response": false}
+2025-04-02 13:09:27,470 - INFO - No response sent.
+2025-04-02 13:09:27,475 - INFO - No response sent.
+2025-04-02 13:10:53,773 - INFO - Server started on 127.0.0.1:65432
+2025-04-02 13:10:53,773 - INFO - Waiting for connections...
+2025-04-02 13:11:38,989 - INFO - Server started on 127.0.0.1:65432
+2025-04-02 13:11:38,989 - INFO - Waiting for connections...
+2025-04-02 13:12:15,560 - INFO - Connection from ('127.0.0.1', 53975)
+2025-04-02 13:12:16,037 - INFO - Connection from ('127.0.0.1', 53976)
+2025-04-02 13:12:16,037 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 13:12:16,038 - INFO - Sent response: 2025_04_02_13_12_16
+2025-04-02 13:12:16,125 - INFO - Connection from ('127.0.0.1', 53977)
+2025-04-02 13:12:16,126 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 13:12:16,126 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:12:16,220 - INFO - Connection from ('127.0.0.1', 53978)
+2025-04-02 13:12:16,220 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 13:12:16,221 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:12:16,313 - INFO - Connection from ('127.0.0.1', 53979)
+2025-04-02 13:12:16,314 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 13:12:16,314 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:12:16,402 - INFO - Connection from ('127.0.0.1', 53980)
+2025-04-02 13:12:16,402 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 13:12:16,402 - INFO - Sent response: 2025\04_02
+2025-04-02 13:12:16,491 - INFO - Connection from ('127.0.0.1', 53981)
+2025-04-02 13:12:16,491 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_02", "2025_04_02_13_12_16"]}
+2025-04-02 13:12:16,492 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_12_16
+2025-04-02 13:12:16,577 - INFO - Connection from ('127.0.0.1', 53982)
+2025-04-02 13:12:16,578 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "2025_04_02_13_12_16"]}
+2025-04-02 13:12:16,579 - INFO - Sent response: 12345XYZ_2025_04_02_13_12_16
+2025-04-02 13:12:16,854 - INFO - Connection from ('127.0.0.1', 53983)
+2025-04-02 13:12:16,854 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 13:12:16,871 - INFO - No response sent.
+2025-04-02 13:12:16,982 - INFO - Connection from ('127.0.0.1', 53985)
+2025-04-02 13:12:16,983 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 13:12:17,631 - INFO - Connection from ('127.0.0.1', 53987)
+2025-04-02 13:12:17,632 - INFO - Received: {"action": "set_average", "averages": 4, "wait_for_response": false}
+2025-04-02 13:12:17,668 - INFO - No response sent.
+2025-04-02 13:12:17,676 - INFO - No response sent.
+2025-04-02 13:12:30,877 - INFO - Connection from ('127.0.0.1', 53989)
+2025-04-02 13:12:31,083 - INFO - Connection from ('127.0.0.1', 53990)
+2025-04-02 13:12:31,084 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 13:12:31,084 - INFO - Sent response: 2025_04_02_13_12_31
+2025-04-02 13:12:31,168 - INFO - Connection from ('127.0.0.1', 53991)
+2025-04-02 13:12:31,169 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 13:12:31,169 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:12:31,253 - INFO - Connection from ('127.0.0.1', 53992)
+2025-04-02 13:12:31,254 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 13:12:31,255 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:12:31,341 - INFO - Connection from ('127.0.0.1', 53993)
+2025-04-02 13:12:31,342 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 13:12:31,342 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:12:31,429 - INFO - Connection from ('127.0.0.1', 53994)
+2025-04-02 13:12:31,430 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 13:12:31,430 - INFO - Sent response: 2025\04_02
+2025-04-02 13:12:31,524 - INFO - Connection from ('127.0.0.1', 53995)
+2025-04-02 13:12:31,525 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_02", "2025_04_02_13_12_31"]}
+2025-04-02 13:12:31,526 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_12_31
+2025-04-02 13:12:31,629 - INFO - Connection from ('127.0.0.1', 53996)
+2025-04-02 13:12:31,630 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "2025_04_02_13_12_31"]}
+2025-04-02 13:12:31,631 - INFO - Sent response: 12345XYZ_2025_04_02_13_12_31
+2025-04-02 13:12:31,968 - INFO - Connection from ('127.0.0.1', 53997)
+2025-04-02 13:12:31,969 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 13:12:31,987 - INFO - No response sent.
+2025-04-02 13:12:32,127 - INFO - Connection from ('127.0.0.1', 53998)
+2025-04-02 13:12:32,127 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 13:12:32,641 - INFO - Connection from ('127.0.0.1', 53999)
+2025-04-02 13:12:32,643 - INFO - Received: {"action": "set_average", "averages": 4, "wait_for_response": false}
+2025-04-02 13:12:32,653 - INFO - No response sent.
+2025-04-02 13:12:35,281 - INFO - No response sent.
+2025-04-02 13:17:53,436 - INFO - Connection from ('127.0.0.1', 54089)
+2025-04-02 13:17:53,686 - INFO - Connection from ('127.0.0.1', 54090)
+2025-04-02 13:17:53,687 - INFO - Received: {"action": "generate_timestamp_extension"}
+2025-04-02 13:17:53,687 - INFO - Sent response: 2025_04_02_13_17_53
+2025-04-02 13:17:53,769 - INFO - Connection from ('127.0.0.1', 54091)
+2025-04-02 13:17:53,770 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-02 13:17:53,770 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:17:53,855 - INFO - Connection from ('127.0.0.1', 54092)
+2025-04-02 13:17:53,855 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-02 13:17:53,856 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:17:53,936 - INFO - Connection from ('127.0.0.1', 54093)
+2025-04-02 13:17:53,937 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-02 13:17:53,937 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:17:54,017 - INFO - Connection from ('127.0.0.1', 54094)
+2025-04-02 13:17:54,018 - INFO - Received: {"action": "get_timestamp_subpath"}
+2025-04-02 13:17:54,018 - INFO - Sent response: 2025\04_02
+2025-04-02 13:17:54,099 - INFO - Connection from ('127.0.0.1', 54095)
+2025-04-02 13:17:54,099 - INFO - Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_02", "2025_04_02_13_17_53"]}
+2025-04-02 13:17:54,099 - INFO - Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_17_53
+2025-04-02 13:17:54,183 - INFO - Connection from ('127.0.0.1', 54097)
+2025-04-02 13:17:54,184 - INFO - Received: {"action": "generate_file_prefix", "strings": ["12345XYZ", "2025_04_02_13_17_53"]}
+2025-04-02 13:17:54,184 - INFO - Sent response: 12345XYZ_2025_04_02_13_17_53
+2025-04-02 13:17:54,406 - INFO - Connection from ('127.0.0.1', 54098)
+2025-04-02 13:17:54,407 - INFO - Received: {"action": "wake_up", "wait_for_response": false}
+2025-04-02 13:17:54,444 - INFO - No response sent.
+2025-04-02 13:17:54,528 - INFO - Connection from ('127.0.0.1', 54100)
+2025-04-02 13:17:54,529 - INFO - Received: {"action": "activate_measurement", "measurement_name": "Acoustic Response", "wait_for_response": false}
+2025-04-02 13:17:55,060 - INFO - Connection from ('127.0.0.1', 54102)
+2025-04-02 13:17:55,061 - INFO - Received: {"action": "set_average", "averages": 4, "wait_for_response": false}
+2025-04-02 13:17:55,100 - INFO - No response sent.
+2025-04-02 13:17:55,108 - INFO - No response sent.

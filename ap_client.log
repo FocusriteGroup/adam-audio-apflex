@@ -5483,3 +5483,443 @@
 2025-04-02 11:24:46,745 - Connecting to server.
 2025-04-02 11:24:46,746 - Sent command: {'action': 'set_average', 'averages': 3, 'wait_for_response': False}
 2025-04-02 11:24:46,746 - No response expected for this command.
+2025-04-02 11:55:22,697 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 11:55:22,698 - Received response: 2025_04_02_11_55_22
+2025-04-02 11:55:22,780 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 11:55:22,781 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 11:55:22,870 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 11:55:22,870 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 11:55:22,955 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 11:55:22,955 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 11:55:23,039 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 11:55:23,040 - Received response: 2025\04_02
+2025-04-02 11:55:23,125 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_02', '2025_04_02_11_55_22']}
+2025-04-02 11:55:23,126 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_11_55_22
+2025-04-02 11:55:23,214 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', '2025_04_02_11_55_22']}
+2025-04-02 11:55:23,214 - Received response: 12345XYZ_2025_04_02_11_55_22
+2025-04-02 11:55:23,391 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 11:55:23,391 - No response expected for this command.
+2025-04-02 11:55:23,498 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 11:55:23,498 - No response expected for this command.
+2025-04-02 11:55:24,024 - Sent command: {'action': 'set_average', 'averages': 2, 'wait_for_response': False}
+2025-04-02 11:55:24,024 - No response expected for this command.
+2025-04-02 11:55:29,555 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 11:55:29,556 - Received response: 2025_04_02_11_55_29
+2025-04-02 11:55:29,648 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 11:55:29,649 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 11:55:29,758 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 11:55:29,760 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 11:55:29,838 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 11:55:29,839 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 11:55:29,923 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 11:55:29,924 - Received response: 2025\04_02
+2025-04-02 11:55:30,009 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_02', '2025_04_02_11_55_29']}
+2025-04-02 11:55:30,010 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_11_55_29
+2025-04-02 11:55:30,097 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', '2025_04_02_11_55_29']}
+2025-04-02 11:55:30,098 - Received response: 12345XYZ_2025_04_02_11_55_29
+2025-04-02 11:55:30,297 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 11:55:30,298 - No response expected for this command.
+2025-04-02 11:55:30,431 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 11:55:30,431 - No response expected for this command.
+2025-04-02 11:55:30,949 - Sent command: {'action': 'set_average', 'averages': 2, 'wait_for_response': False}
+2025-04-02 11:55:30,949 - No response expected for this command.
+2025-04-02 12:28:31,196 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 12:28:31,198 - Received response: 2025_04_02_12_28_31
+2025-04-02 12:28:31,283 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 12:28:31,284 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:28:31,363 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 12:28:31,364 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:28:31,441 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 12:28:31,441 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:28:31,528 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 12:28:31,531 - Received response: 2025\04_02
+2025-04-02 12:28:31,615 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_02', '2025_04_02_12_28_31']}
+2025-04-02 12:28:31,615 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_12_28_31
+2025-04-02 12:28:31,702 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', '2025_04_02_12_28_31']}
+2025-04-02 12:28:31,703 - Received response: 12345XYZ_2025_04_02_12_28_31
+2025-04-02 12:28:31,874 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 12:28:31,874 - No response expected for this command.
+2025-04-02 12:28:31,978 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 12:28:31,979 - No response expected for this command.
+2025-04-02 12:28:32,673 - Sent command: {'action': 'set_average', 'averages': 2, 'wait_for_response': False}
+2025-04-02 12:28:32,673 - No response expected for this command.
+2025-04-02 12:30:15,953 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 12:30:15,955 - Received response: 2025_04_02_12_30_15
+2025-04-02 12:30:16,056 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 12:30:16,058 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:30:16,147 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 12:30:16,149 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:30:16,234 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 12:30:16,235 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:30:16,317 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 12:30:16,319 - Received response: 2025\04_02
+2025-04-02 12:30:16,402 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_02', '2025_04_02_12_30_15']}
+2025-04-02 12:30:16,403 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_12_30_15
+2025-04-02 12:30:16,483 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', '2025_04_02_12_30_15']}
+2025-04-02 12:30:16,484 - Received response: 12345XYZ_2025_04_02_12_30_15
+2025-04-02 12:30:16,650 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 12:30:16,650 - No response expected for this command.
+2025-04-02 12:30:16,790 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 12:30:16,791 - No response expected for this command.
+2025-04-02 12:30:17,337 - Sent command: {'action': 'set_average', 'averages': 5, 'wait_for_response': False}
+2025-04-02 12:30:17,338 - No response expected for this command.
+2025-04-02 12:51:05,378 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 12:51:05,379 - Received response: Error: 'str' object is not callable
+2025-04-02 12:51:05,467 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 12:51:05,467 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:51:05,552 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 12:51:05,553 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:51:05,635 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 12:51:05,636 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:51:05,716 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 12:51:05,717 - Received response: Error: 'str' object is not callable
+2025-04-02 12:51:05,803 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', 'Error:', "'str'", 'object', 'is', 'not', 'callable', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 12:51:05,804 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\Error:\'str'\object\is\not\callable\Error:\'str'\object\is\not\callable
+2025-04-02 12:51:05,885 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 12:51:05,886 - Received response: 12345XYZ_Error:_'str'_object_is_not_callable
+2025-04-02 12:51:06,076 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 12:51:06,076 - No response expected for this command.
+2025-04-02 12:51:06,223 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 12:51:06,223 - No response expected for this command.
+2025-04-02 12:51:06,862 - Sent command: {'action': 'set_average', 'averages': 2, 'wait_for_response': False}
+2025-04-02 12:51:06,863 - No response expected for this command.
+2025-04-02 12:51:21,955 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 12:51:21,957 - Received response: Error: 'str' object is not callable
+2025-04-02 12:51:22,036 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 12:51:22,038 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:51:22,123 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 12:51:22,124 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:51:22,205 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 12:51:22,207 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:51:22,290 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 12:51:22,291 - Received response: Error: 'str' object is not callable
+2025-04-02 12:51:22,378 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', 'Error:', "'str'", 'object', 'is', 'not', 'callable', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 12:51:22,380 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\Error:\'str'\object\is\not\callable\Error:\'str'\object\is\not\callable
+2025-04-02 12:51:22,458 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 12:51:22,459 - Received response: 12345XYZ_Error:_'str'_object_is_not_callable
+2025-04-02 12:51:22,634 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 12:51:22,634 - No response expected for this command.
+2025-04-02 12:51:22,810 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 12:51:22,810 - No response expected for this command.
+2025-04-02 12:51:23,335 - Sent command: {'action': 'set_average', 'averages': 2, 'wait_for_response': False}
+2025-04-02 12:51:23,335 - No response expected for this command.
+2025-04-02 12:53:46,606 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 12:53:46,607 - Received response: Error: 'str' object is not callable
+2025-04-02 12:53:46,685 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 12:53:46,687 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:53:46,776 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 12:53:46,778 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:53:46,855 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 12:53:46,856 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:53:46,939 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 12:53:46,940 - Received response: Error: 'str' object is not callable
+2025-04-02 12:53:47,021 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', 'Error:', "'str'", 'object', 'is', 'not', 'callable', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 12:53:47,022 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\Error:\'str'\object\is\not\callable\Error:\'str'\object\is\not\callable
+2025-04-02 12:53:47,098 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 12:53:47,099 - Received response: 12345XYZ_Error:_'str'_object_is_not_callable
+2025-04-02 12:53:47,304 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 12:53:47,304 - No response expected for this command.
+2025-04-02 12:53:47,428 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 12:53:47,428 - No response expected for this command.
+2025-04-02 12:53:47,961 - Sent command: {'action': 'set_average', 'averages': 2, 'wait_for_response': False}
+2025-04-02 12:53:47,961 - No response expected for this command.
+2025-04-02 12:54:56,016 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 12:54:56,018 - Received response: Error: 'str' object is not callable
+2025-04-02 12:54:56,095 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 12:54:56,097 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:54:56,174 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 12:54:56,177 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:54:56,269 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 12:54:56,270 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:54:56,347 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 12:54:56,348 - Received response: Error: 'str' object is not callable
+2025-04-02 12:54:56,430 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', 'Error:', "'str'", 'object', 'is', 'not', 'callable', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 12:54:56,432 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\Error:\'str'\object\is\not\callable\Error:\'str'\object\is\not\callable
+2025-04-02 12:54:56,506 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 12:54:56,507 - Received response: 12345XYZ_Error:_'str'_object_is_not_callable
+2025-04-02 12:54:56,707 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 12:54:56,708 - No response expected for this command.
+2025-04-02 12:54:56,835 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 12:54:56,835 - No response expected for this command.
+2025-04-02 12:54:57,365 - Sent command: {'action': 'set_average', 'averages': 2, 'wait_for_response': False}
+2025-04-02 12:54:57,365 - No response expected for this command.
+2025-04-02 12:55:46,762 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 12:55:46,762 - Received response: Error: 'str' object is not callable
+2025-04-02 12:55:46,841 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 12:55:46,842 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:55:46,932 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 12:55:46,933 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:55:47,015 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 12:55:47,016 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:55:47,099 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 12:55:47,100 - Received response: Error: 'str' object is not callable
+2025-04-02 12:55:47,186 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', 'Error:', "'str'", 'object', 'is', 'not', 'callable', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 12:55:47,187 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\Error:\'str'\object\is\not\callable\Error:\'str'\object\is\not\callable
+2025-04-02 12:55:47,267 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 12:55:47,268 - Received response: 12345XYZ_Error:_'str'_object_is_not_callable
+2025-04-02 12:55:47,595 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 12:55:47,596 - No response expected for this command.
+2025-04-02 12:55:47,741 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 12:55:47,741 - No response expected for this command.
+2025-04-02 12:55:48,302 - Sent command: {'action': 'set_average', 'averages': 2, 'wait_for_response': False}
+2025-04-02 12:55:48,302 - No response expected for this command.
+2025-04-02 12:57:55,891 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 12:57:55,893 - Received response: Error: 'str' object is not callable
+2025-04-02 12:57:55,975 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 12:57:55,976 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 12:57:56,058 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 12:57:56,059 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 12:57:56,146 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 12:57:56,147 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 12:57:56,234 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 12:57:56,235 - Received response: Error: 'str' object is not callable
+2025-04-02 12:57:56,325 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', 'Error:', "'str'", 'object', 'is', 'not', 'callable', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 12:57:56,326 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\Error:\'str'\object\is\not\callable\Error:\'str'\object\is\not\callable
+2025-04-02 12:57:56,418 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 12:57:56,418 - Received response: 12345XYZ_Error:_'str'_object_is_not_callable
+2025-04-02 12:57:56,636 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 12:57:56,637 - No response expected for this command.
+2025-04-02 12:57:56,833 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 12:57:56,834 - No response expected for this command.
+2025-04-02 12:57:57,441 - Sent command: {'action': 'set_average', 'averages': 2, 'wait_for_response': False}
+2025-04-02 12:57:57,441 - No response expected for this command.
+2025-04-02 13:00:48,697 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 13:00:48,698 - Received response: Error: 'str' object is not callable
+2025-04-02 13:00:48,787 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 13:00:48,790 - Received response: Error: <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:48,875 - Sent command: {'action': 'construct_path', 'paths': ['Error:', '<lambda>()', 'missing', '1', 'required', 'positional', 'argument:', "'command'", 'Measurements']}
+2025-04-02 13:00:48,875 - Received response: Error: <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:48,966 - Sent command: {'action': 'construct_path', 'paths': ['Error:', '<lambda>()', 'missing', '1', 'required', 'positional', 'argument:', "'command'", 'GoldenSample']}
+2025-04-02 13:00:48,968 - Received response: Error: <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:49,054 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 13:00:49,056 - Received response: Error: 'str' object is not callable
+2025-04-02 13:00:49,139 - Sent command: {'action': 'construct_path', 'paths': ['Error:', '<lambda>()', 'missing', '1', 'required', 'positional', 'argument:', "'command'", 'Results', 'Error:', "'str'", 'object', 'is', 'not', 'callable', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 13:00:49,141 - Received response: Error: <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:49,221 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 13:00:49,223 - Received response: Error: <lambda>() missing 1 required positional argument: 'command'
+2025-04-02 13:00:49,444 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 13:00:49,444 - No response expected for this command.
+2025-04-02 13:00:49,576 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 13:00:49,577 - No response expected for this command.
+2025-04-02 13:00:50,163 - Sent command: {'action': 'set_average', 'averages': 2, 'wait_for_response': False}
+2025-04-02 13:00:50,163 - No response expected for this command.
+2025-04-02 13:02:13,184 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 13:02:13,186 - Received response: Error: 'str' object is not callable
+2025-04-02 13:02:13,279 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 13:02:13,280 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:02:13,375 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 13:02:13,376 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:02:13,472 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 13:02:13,473 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:02:13,570 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 13:02:13,571 - Received response: Error: 'str' object is not callable
+2025-04-02 13:02:13,656 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', 'Error:', "'str'", 'object', 'is', 'not', 'callable', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 13:02:13,657 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\Error:\'str'\object\is\not\callable\Error:\'str'\object\is\not\callable
+2025-04-02 13:02:13,749 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', 'Error:', "'str'", 'object', 'is', 'not', 'callable']}
+2025-04-02 13:02:13,750 - Received response: 12345XYZ_Error:_'str'_object_is_not_callable
+2025-04-02 13:02:14,025 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 13:02:14,025 - No response expected for this command.
+2025-04-02 13:02:14,142 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 13:02:14,143 - No response expected for this command.
+2025-04-02 13:02:14,671 - Sent command: {'action': 'set_average', 'averages': 2, 'wait_for_response': False}
+2025-04-02 13:02:14,671 - No response expected for this command.
+2025-04-02 13:04:36,174 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 13:04:36,176 - Received response: 2025_04_02_13_04_36
+2025-04-02 13:04:36,271 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 13:04:36,272 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:04:36,373 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 13:04:36,374 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:04:36,475 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 13:04:36,475 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:04:36,570 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 13:04:36,571 - Received response: 2025\04_02
+2025-04-02 13:04:36,666 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_02', '2025_04_02_13_04_36']}
+2025-04-02 13:04:36,667 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_04_36
+2025-04-02 13:04:36,758 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', '2025_04_02_13_04_36']}
+2025-04-02 13:04:36,759 - Received response: 12345XYZ_2025_04_02_13_04_36
+2025-04-02 13:04:37,050 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 13:04:37,050 - No response expected for this command.
+2025-04-02 13:04:37,187 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 13:04:37,188 - No response expected for this command.
+2025-04-02 13:04:37,732 - Sent command: {'action': 'set_average', 'averages': 2, 'wait_for_response': False}
+2025-04-02 13:04:37,732 - No response expected for this command.
+2025-04-02 13:04:52,669 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 13:04:52,672 - Received response: 2025_04_02_13_04_52
+2025-04-02 13:04:52,758 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 13:04:52,759 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:04:52,848 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 13:04:52,850 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:04:52,938 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 13:04:52,940 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:04:53,021 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 13:04:53,022 - Received response: 2025\04_02
+2025-04-02 13:04:53,108 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_02', '2025_04_02_13_04_52']}
+2025-04-02 13:04:53,110 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_04_52
+2025-04-02 13:04:53,195 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', '2025_04_02_13_04_52']}
+2025-04-02 13:04:53,196 - Received response: 12345XYZ_2025_04_02_13_04_52
+2025-04-02 13:04:53,390 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 13:04:53,390 - No response expected for this command.
+2025-04-02 13:04:53,483 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 13:04:53,484 - No response expected for this command.
+2025-04-02 13:04:54,018 - Sent command: {'action': 'set_average', 'averages': 2, 'wait_for_response': False}
+2025-04-02 13:04:54,018 - No response expected for this command.
+2025-04-02 13:05:29,141 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 13:05:29,143 - Received response: 2025_04_02_13_05_29
+2025-04-02 13:05:29,222 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 13:05:29,223 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:05:29,309 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 13:05:29,311 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:05:29,390 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 13:05:29,391 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:05:29,480 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 13:05:29,481 - Received response: 2025\04_02
+2025-04-02 13:05:29,564 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_02', '2025_04_02_13_05_29']}
+2025-04-02 13:05:29,567 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_05_29
+2025-04-02 13:05:29,656 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', '2025_04_02_13_05_29']}
+2025-04-02 13:05:29,658 - Received response: 12345XYZ_2025_04_02_13_05_29
+2025-04-02 13:05:29,849 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 13:05:29,849 - No response expected for this command.
+2025-04-02 13:05:29,974 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 13:05:29,974 - No response expected for this command.
+2025-04-02 13:05:30,478 - Sent command: {'action': 'set_average', 'averages': 5, 'wait_for_response': False}
+2025-04-02 13:05:30,478 - No response expected for this command.
+2025-04-02 13:06:10,286 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 13:06:10,288 - Received response: 2025_04_02_13_06_10
+2025-04-02 13:06:10,369 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 13:06:10,370 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:06:10,453 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 13:06:10,455 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:06:10,533 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 13:06:10,534 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:06:10,613 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 13:06:10,615 - Received response: 2025\04_02
+2025-04-02 13:06:10,697 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_02', '2025_04_02_13_06_10']}
+2025-04-02 13:06:10,698 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_06_10
+2025-04-02 13:06:10,779 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', '2025_04_02_13_06_10']}
+2025-04-02 13:06:10,780 - Received response: 12345XYZ_2025_04_02_13_06_10
+2025-04-02 13:06:11,067 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 13:06:11,068 - No response expected for this command.
+2025-04-02 13:06:11,195 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 13:06:11,195 - No response expected for this command.
+2025-04-02 13:06:11,706 - Sent command: {'action': 'set_average', 'averages': 5, 'wait_for_response': False}
+2025-04-02 13:06:11,706 - No response expected for this command.
+2025-04-02 13:06:27,289 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 13:06:27,290 - Received response: 2025_04_02_13_06_27
+2025-04-02 13:06:27,387 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 13:06:27,389 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:06:27,471 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 13:06:27,474 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:06:27,556 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 13:06:27,557 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:06:27,638 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 13:06:27,639 - Received response: 2025\04_02
+2025-04-02 13:06:27,723 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_02', '2025_04_02_13_06_27']}
+2025-04-02 13:06:27,724 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_06_27
+2025-04-02 13:06:27,809 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', '2025_04_02_13_06_27']}
+2025-04-02 13:06:27,812 - Received response: 12345XYZ_2025_04_02_13_06_27
+2025-04-02 13:06:28,002 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 13:06:28,002 - No response expected for this command.
+2025-04-02 13:06:28,132 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 13:06:28,132 - No response expected for this command.
+2025-04-02 13:06:28,645 - Sent command: {'action': 'set_average', 'averages': 5, 'wait_for_response': False}
+2025-04-02 13:06:28,646 - No response expected for this command.
+2025-04-02 13:08:31,590 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 13:08:31,591 - Received response: 2025_04_02_13_08_31
+2025-04-02 13:08:31,676 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 13:08:31,678 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:08:31,774 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 13:08:31,775 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:08:31,873 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 13:08:31,874 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:08:31,966 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 13:08:31,967 - Received response: 2025\04_02
+2025-04-02 13:08:32,055 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_02', '2025_04_02_13_08_31']}
+2025-04-02 13:08:32,056 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_08_31
+2025-04-02 13:08:32,147 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', '2025_04_02_13_08_31']}
+2025-04-02 13:08:32,148 - Received response: 12345XYZ_2025_04_02_13_08_31
+2025-04-02 13:08:32,349 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 13:08:32,350 - No response expected for this command.
+2025-04-02 13:08:32,491 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 13:08:32,492 - No response expected for this command.
+2025-04-02 13:08:33,037 - Sent command: {'action': 'set_average', 'averages': 5, 'wait_for_response': False}
+2025-04-02 13:08:33,037 - No response expected for this command.
+2025-04-02 13:09:26,023 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 13:09:26,024 - Received response: 2025_04_02_13_09_26
+2025-04-02 13:09:26,107 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 13:09:26,108 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:09:26,197 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 13:09:26,199 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:09:26,286 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 13:09:26,287 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:09:26,372 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 13:09:26,373 - Received response: 2025\04_02
+2025-04-02 13:09:26,457 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_02', '2025_04_02_13_09_26']}
+2025-04-02 13:09:26,458 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_09_26
+2025-04-02 13:09:26,539 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', '2025_04_02_13_09_26']}
+2025-04-02 13:09:26,540 - Received response: 12345XYZ_2025_04_02_13_09_26
+2025-04-02 13:09:26,759 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 13:09:26,759 - No response expected for this command.
+2025-04-02 13:09:26,854 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 13:09:26,854 - No response expected for this command.
+2025-04-02 13:09:27,440 - Sent command: {'action': 'set_average', 'averages': 3, 'wait_for_response': False}
+2025-04-02 13:09:27,440 - No response expected for this command.
+2025-04-02 13:12:16,037 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 13:12:16,038 - Received response: 2025_04_02_13_12_16
+2025-04-02 13:12:16,125 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 13:12:16,126 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:12:16,220 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 13:12:16,221 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:12:16,313 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 13:12:16,314 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:12:16,401 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 13:12:16,402 - Received response: 2025\04_02
+2025-04-02 13:12:16,491 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_02', '2025_04_02_13_12_16']}
+2025-04-02 13:12:16,492 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_12_16
+2025-04-02 13:12:16,577 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', '2025_04_02_13_12_16']}
+2025-04-02 13:12:16,579 - Received response: 12345XYZ_2025_04_02_13_12_16
+2025-04-02 13:12:16,854 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 13:12:16,854 - No response expected for this command.
+2025-04-02 13:12:16,982 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 13:12:16,982 - No response expected for this command.
+2025-04-02 13:12:17,631 - Sent command: {'action': 'set_average', 'averages': 4, 'wait_for_response': False}
+2025-04-02 13:12:17,631 - No response expected for this command.
+2025-04-02 13:12:31,082 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 13:12:31,084 - Received response: 2025_04_02_13_12_31
+2025-04-02 13:12:31,168 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 13:12:31,169 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:12:31,253 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 13:12:31,255 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:12:31,340 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 13:12:31,342 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:12:31,429 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 13:12:31,430 - Received response: 2025\04_02
+2025-04-02 13:12:31,524 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_02', '2025_04_02_13_12_31']}
+2025-04-02 13:12:31,525 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_12_31
+2025-04-02 13:12:31,628 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', '2025_04_02_13_12_31']}
+2025-04-02 13:12:31,631 - Received response: 12345XYZ_2025_04_02_13_12_31
+2025-04-02 13:12:31,968 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 13:12:31,968 - No response expected for this command.
+2025-04-02 13:12:32,127 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 13:12:32,127 - No response expected for this command.
+2025-04-02 13:12:32,641 - Sent command: {'action': 'set_average', 'averages': 4, 'wait_for_response': False}
+2025-04-02 13:12:32,641 - No response expected for this command.
+2025-04-02 13:17:53,686 - Sent command: {'action': 'generate_timestamp_extension'}
+2025-04-02 13:17:53,687 - Received response: 2025_04_02_13_17_53
+2025-04-02 13:17:53,769 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-02 13:17:53,770 - Received response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-02 13:17:53,855 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-02 13:17:53,856 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-02 13:17:53,936 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-02 13:17:53,937 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-02 13:17:54,017 - Sent command: {'action': 'get_timestamp_subpath'}
+2025-04-02 13:17:54,018 - Received response: 2025\04_02
+2025-04-02 13:17:54,098 - Sent command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_02', '2025_04_02_13_17_53']}
+2025-04-02 13:17:54,099 - Received response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_02\2025_04_02_13_17_53
+2025-04-02 13:17:54,183 - Sent command: {'action': 'generate_file_prefix', 'strings': ['12345XYZ', '2025_04_02_13_17_53']}
+2025-04-02 13:17:54,184 - Received response: 12345XYZ_2025_04_02_13_17_53
+2025-04-02 13:17:54,406 - Sent command: {'action': 'wake_up', 'wait_for_response': False}
+2025-04-02 13:17:54,406 - No response expected for this command.
+2025-04-02 13:17:54,528 - Sent command: {'action': 'activate_measurement', 'measurement_name': 'Acoustic Response', 'wait_for_response': False}
+2025-04-02 13:17:54,528 - No response expected for this command.
+2025-04-02 13:17:55,060 - Sent command: {'action': 'set_average', 'averages': 4, 'wait_for_response': False}
+2025-04-02 13:17:55,060 - No response expected for this command.
