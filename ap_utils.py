@@ -2,8 +2,6 @@ import os
 import datetime
 
 
-
-
 class Utilities:
     """Utility class for various helper functions."""
 
