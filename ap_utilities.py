@@ -74,6 +74,9 @@ class AudioPrecisionAPI:
             AudioPrecisionAPI._apx_instance = APx500_Application()
             AudioPrecisionAPI._apx_instance.Visible = True
         self.APx = AudioPrecisionAPI._apx_instance
+
+        
+        #self.set_active_measurement("AcousticResponse")
         self.measurement = self.APx.AcousticResponse
 
         self.server_host = server_host
@@ -81,6 +84,7 @@ class AudioPrecisionAPI:
 
         # Lock for thread safety
         self.lock = threading.Lock()
+
 
         # Start a keep-alive thread
         self.keep_alive_thread = threading.Thread(target=self._keep_alive, daemon=True)
@@ -115,25 +119,29 @@ class AudioPrecisionAPI:
                         print("[DEBUG] Reinitialization complete.")
                     except Exception as reinit_error:
                         print(f"[ERROR] Failed to reinitialize APx500_Application: {reinit_error}")
-            threading.Event().wait(10)  # Wait for 10 seconds before the next interaction
+            threading.Event().wait(5)  # Wait for 10 seconds before the next interaction
 
     def set_averages(self, averages):
         """Set the number of averages for the hardcoded measurement."""
+        print(f"[DEBUG] Setting averages to {averages}...")
+
         with self.lock:  # Ensure thread-safe access
+
+            self.measurement.Averages = averages
+            print(f"[INFO] Number of averages set to {averages}.")
             try:
                 # Check if the AcousticResponse measurement is valid
                 if self.measurement is None:
                     print("[ERROR] AcousticResponse measurement is not initialized.")
                     return
-
-                # Check if there is an active measurement
+                
                 if self.APx.ActiveMeasurement is None:
                     print("[ERROR] No active measurement found. The application might not be ready.")
                     return
-
+            
                 # Attempt to set the averages
                 self.measurement.Averages = averages
-                print("info", f"Number of averages for AcousticResponse set to {self.measurement.Averages}.")
+                return("Number of averages for AcousticResponse set")
             except Exception as e:
                 print("error", f"Error setting averages: {e}")
                 # Reinitialize APx500_Application if needed

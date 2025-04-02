@@ -2,6 +2,7 @@ import socket
 import json
 import sys
 import logging
+import time
 
 class CommandClient:
 
@@ -18,20 +19,24 @@ class CommandClient:
         file_handler.setFormatter(formatter)
         self.logger.addHandler(file_handler)
 
-    def send_command(self, cmd):
-        """Send a command to the server and return the response."""
+    def send_command(self, cmd, wait_for_response=True):
+        """Send a command to the server and optionally wait for a response."""
         try:
-
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
                 self.logger.info("Connecting to server at %s:%s", self.host, self.port)
                 client.connect((self.host, self.port))
                 self.logger.info("Connected to server. Sending command: %s", cmd)
 
                 client.send(json.dumps(cmd).encode("utf-8"))
+                
 
-                server_response = client.recv(1024).decode("utf-8")
-                self.logger.info("Received response: %s", server_response)
-                return server_response
+                if wait_for_response:
+                    server_response = client.recv(1024).decode("utf-8")
+                    self.logger.info("Received response: %s", server_response)
+                    return server_response
+                else:
+                    self.logger.info("Command sent. Not waiting for a response.")
+                    return None
         except (socket.error, json.JSONDecodeError) as e:
             self.logger.error("Error sending command: %s", e)
             sys.exit(1)
@@ -75,6 +80,7 @@ class CommandClient:
                 self.logger.error("Invalid parameter for 'set_averages'. Must be an integer.")
                 sys.exit(1)
             command = {"action": "set_averages", "averages": averages}
+        
         else:
             self.logger.error("Unknown command: %s", command_name)
             sys.exit(1)
@@ -83,10 +89,19 @@ class CommandClient:
         return command
 
 if __name__ == "__main__":
-
     client = CommandClient()
 
+    # Parse the command-line arguments into a command dictionary
     parsed_command = client.parse_arguments(sys.argv[1:])
 
-    response = client.send_command(parsed_command)
-    print(response)
+    # Determine if the command requires a response
+    wait_for_response = parsed_command["action"] not in ["set_averages"]
+
+    # Send the command to the server
+    response = client.send_command(parsed_command, wait_for_response=wait_for_response)
+
+    time.sleep(1)  # Optional delay to ensure the server has time to process the command
+
+    # Print the response if one is expected
+    if response is not None:
+        print(response)

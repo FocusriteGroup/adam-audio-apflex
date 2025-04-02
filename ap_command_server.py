@@ -4,6 +4,8 @@ import json
 import queue
 from ap_utilities import Utilities, AudioPrecisionAPI
 from ap_logger import Logger
+import argparse
+
 
 class CommandServer:
 
@@ -20,10 +22,9 @@ class CommandServer:
         try:
             self.server.bind((self.host, self.port))
         except OSError as e:
-            raise RuntimeError(f"Failed to bind to {self.host}:{self.port} - {e}")
+            raise RuntimeError(f"Failed to bind to {self.host}:{self.port} - {e}") from e
         self.server.listen(5)
         self.running = True
-        self.operation_status = "idle"  # Track the status of the last operation
 
     def log(self, message):
         """Add a log message to the queue."""
@@ -35,15 +36,17 @@ class CommandServer:
         try:
             while True:
                 data = client_socket.recv(1024).decode("utf-8")
+                
                 if not data:
                     break
+                self.log(f"Received data: {data}")
                 command = json.loads(data)
                 response = self.process_command(command)
-                client_socket.send(response.encode("utf-8"))
-                self.log(f"Received: {command}")
-                self.log(f"Responded: {response}")
-        except Exception as e:
-            self.log(f"Error: {e}")
+                if response:  # Only send a response if one is expected
+                    self.log(f"Sending response: {response}")  # Debugging output
+                    client_socket.send(response.encode("utf-8"))
+        except (json.JSONDecodeError, socket.error) as e:
+            self.log(f"Error in handle_client: {e}")
         finally:
             client_socket.close()
 
@@ -55,15 +58,12 @@ class CommandServer:
 
             # Handle commands from the client
             if "action" in command:
-                if command["action"] == "get_status":
-                    return self.operation_status
-                elif command["action"] == "set_averages":
+                if command["action"] == "set_averages":
                     averages = command.get("averages")
                     if averages is None:
                         return "Error: 'averages' is required."
-                    # Offload the API call to a separate thread
-                    self.handle_api_call(self.audio_precision_api.set_averages, averages)
-                    return "Setting averages in the background."
+                    threading.Thread(target=self.audio_precision_api.set_averages, args=(averages,)).start()
+                    return None
                 elif command["action"] == "get_timestamp_subpath":
                     return self.utilities.generate_timestamp_subpath()
                 elif command["action"] == "generate_timestamp_extension":
@@ -82,26 +82,15 @@ class CommandServer:
                     if not all(isinstance(s, str) for s in strings):
                         return "Error: All elements in 'strings' must be strings."
                     return self.utilities.generate_file_prefix(strings)
+                elif command["action"] == "wake_up":
+                    self.audio_precision_api.wake_up()
+                    return "API woke up successfully."
                 else:
                     return "Error: Unknown command."
             else:
                 return "Error: Command must contain an 'action'."
-        except Exception as e:
+        except (KeyError, TypeError, ValueError) as e:
             return f"Error: {e}"
-
-    def handle_api_call(self, api_function, *args):
-        """Run an API function in a separate thread."""
-        def api_thread():
-            try:
-                self.operation_status = "running"
-                result = api_function(*args)
-                self.operation_status = "complete"
-                self.log(f"API call result: {result}")
-            except Exception as e:
-                self.operation_status = "error"
-                self.log(f"Error during API call: {e}")
-
-        threading.Thread(target=api_thread, daemon=True).start()
 
     def start(self):
         """Start the server."""
@@ -132,7 +121,6 @@ class CommandServer:
     @classmethod
     def run(cls):
         """Run the server as a self-contained application."""
-        import argparse
 
         parser = argparse.ArgumentParser(description="Command Server with optional UI.")
         parser.add_argument("--use-ui", action="store_true", help="Enable the user interface.")
