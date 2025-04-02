@@ -2,7 +2,8 @@ import socket
 import threading
 import json
 import logging
-from ap_utils import Utilities, AudioPrecisionAPI  # Import the Utilities class and AudioPrecisionAPI class
+from ap_utils import Utilities
+from api_calls import AudioPrecisionAPI  # Import the Utilities class and AudioPrecisionAPI class
 
 # Configure logging
 logging.basicConfig(
@@ -58,43 +59,55 @@ class APServer:
         """Process a command and return a response."""
         if not isinstance(command, dict) or "action" not in command:
             return "Error: Invalid command format."
+
         action = command["action"]
-        if action == "wake_up":
-            self.audio_precision_api.wake_up()
-            print("API woke up successfully.")
-            return "API woke up successfully."
-        elif action == "activate_measurement":
-            measurement_name = command.get("measurement_name")
-            if not measurement_name or not isinstance(measurement_name, str):
-                return "Error: 'measurement_name' must be a non-empty string."
-            self.audio_precision_api.activate_measurement(measurement_name)
-            return "Measurement activation initiated."
-        elif action == "set_average":
-            averages = command.get("averages")
-            if not isinstance(averages, int) or averages <= 0:
-                return "Error: 'averages' must be a positive integer."
-            response = self.audio_precision_api.set_average(averages)
-            return response
-        elif action == "generate_timestamp_extension":
-            return Utilities.generate_timestamp_extension()
-        elif action == "construct_path":
-            paths = command.get("paths")
-            if not paths or not isinstance(paths, list):
-                return "Error: 'paths' must be a non-empty list of strings."
-            if not all(isinstance(p, str) for p in paths):
-                return "Error: All elements in 'paths' must be strings."
-            return Utilities.construct_path(paths)
-        elif action == "get_timestamp_subpath":
-            return Utilities.generate_timestamp_subpath()
-        elif action == "generate_file_prefix":
-            strings = command.get("strings")
-            if not strings or not isinstance(strings, list):
-                return "Error: 'strings' must be a non-empty list of strings."
-            if not all(isinstance(s, str) for s in strings):
-                return "Error: All elements in 'strings' must be strings."
-            return Utilities.generate_file_prefix(strings)
+        command_map = {
+            "wake_up": lambda: self.audio_precision_api.wake_up() or "API woke up successfully.",
+            "activate_measurement": lambda: self._activate_measurement(command),
+            "set_average": lambda: self._set_average(command),
+            "generate_timestamp_extension": Utilities.generate_timestamp_extension,
+            "construct_path": lambda: self._construct_path(command),
+            "get_timestamp_subpath": Utilities.generate_timestamp_subpath,
+            "generate_file_prefix": lambda: self._generate_file_prefix(command),
+        }
+
+        if action in command_map:
+            try:
+                return command_map[action]()
+            except Exception as e:
+                logging.error(f"Error processing action '{action}': {e}")
+                return f"Error: {e}"
         else:
             return "Error: Unknown action."
+
+    def _activate_measurement(self, command):
+        measurement_name = command.get("measurement_name")
+        if not measurement_name or not isinstance(measurement_name, str):
+            return "Error: 'measurement_name' must be a non-empty string."
+        self.audio_precision_api.activate_measurement(measurement_name)
+        return "Measurement activation initiated."
+
+    def _set_average(self, command):
+        averages = command.get("averages")
+        if not isinstance(averages, int) or averages <= 0:
+            return "Error: 'averages' must be a positive integer."
+        return self.audio_precision_api.set_average(averages)
+
+    def _construct_path(self, command):
+        paths = command.get("paths")
+        if not paths or not isinstance(paths, list):
+            return "Error: 'paths' must be a non-empty list of strings."
+        if not all(isinstance(p, str) for p in paths):
+            return "Error: All elements in 'paths' must be strings."
+        return Utilities.construct_path(paths)
+
+    def _generate_file_prefix(self, command):
+        strings = command.get("strings")
+        if not strings or not isinstance(strings, list):
+            return "Error: 'strings' must be a non-empty list of strings."
+        if not all(isinstance(s, str) for s in strings):
+            return "Error: All elements in 'strings' must be strings."
+        return Utilities.generate_file_prefix(strings)
 
     def start(self):
         """Start accepting client connections."""
