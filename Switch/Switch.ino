@@ -1,121 +1,130 @@
 /*
- * Headphone channel selector
- * By F Beu 09/02/2024
- * 
- * Connect the headphone amplifier to the input channel
- * Connect the headphones to channel 1 and 2 (both inputs to headphones)
- * 
- * Connect the USB and use a serial terminal program like putty or teraterm
+ * Headphone Channel Selector
+ * Author: Thilo Rode
+ * Date: 02/04/2025
+ * Company: ADAM Audio GmbH
+ *
+ * Description:
+ * This program controls a headphone channel selector with the following features:
+ * - Two channels (Channel 1 and Channel 2) can be selected.
+ * - The box can be opened via a command or external signal.
+ * - The current status (channel and box state) is output as a 2-bit value.
+ * - Multicore functionality is used to handle blocking tasks (e.g., opening the box) on Core 1.
+ *
+ * Features:
+ * - Serial commands to control the system:
+ *   - "SET_CHANNEL_1": Switch to Channel 1.
+ *   - "SET_CHANNEL_2": Switch to Channel 2.
+ *   - "OPEN_BOX": Open the box (handled on Core 1).
+ *   - "GET_STATUS": Output the current status as a 2-bit value.
+ * - Status output:
+ *   - Bit 0: Box state (0 = Closed, 1 = Open).
+ *   - Bit 1: Channel (0 = Channel 1, 1 = Channel 2).
+ *
+ * Hardware:
+ * - Raspberry Pi Pico with RP2040 microcontroller.
+ * - Relay connected to GP28 for channel switching.
+ * - Switch connected to GP16 to detect box state (closed/open).
+ * - Output pin GP17 to control the box opening mechanism.
  */
 
-#define CHANNEL1 0
-#define CHANNEL2 1
-#define OPEN 1
-#define CLOSE 0
+#include "pico/multicore.h" // For multicore support
 
-#define relayPin 28        // Pin (GP28) connected to Relay    Output pin
-#define BoxClosedPin 16    // Pin (GP16) connected to switch   Input pin
-#define BoxOpenPin 17      // Pin (GP17) connected to switch   Output pin
+#define relayPin 28        // Pin (GP28) connected to the relay (output pin)
+#define BoxClosedPin 16    // Pin (GP16) connected to the box state switch (input pin)
+#define BoxOpenPin 17      // Pin (GP17) connected to the box opening mechanism (output pin)
 
-String inputString = "";        // A String to hold incoming data
-bool stringComplete = false;    // Whether the string is complete
-bool currentChannel = CHANNEL1; // Current channel (default to CHANNEL1)
-bool isBoxOpen = CLOSE;         // Box state (default to CLOSED)
-bool lastBoxState = isBoxOpen;
+enum Channel { One, Two };     // Define channel states
+enum BoxStatus { Closed, Open }; // Define box states
+
+Channel channel;               // Current channel (set in setup())
+BoxStatus boxStatus;           // Current box state (set in setup())
+
+// Function executed on Core 1
+void core1Task() {
+  while (true) {
+    // Wait for a signal from Core 0
+    if (multicore_fifo_pop_blocking() == 1) {
+      openBox(); // Open the box
+    }
+  }
+}
 
 void setup() {
-  // Initialize serial communication
+  // Start the serial monitor
   Serial.begin(9600);
-  inputString.reserve(200); // Reserve memory for the input string
-  setupIO();
-  WriteIO();
-  delay(1000);
+
+  // Configure pins
+  pinMode(relayPin, OUTPUT);
+  pinMode(BoxClosedPin, INPUT_PULLUP); // Input pin with pull-up resistor
+  pinMode(BoxOpenPin, OUTPUT);
+
+  // Set initial states
+  digitalWrite(BoxOpenPin, LOW); // Set BoxOpenPin to LOW initially
+  setChannel(One);               // Set default channel to Channel 1
+
+  // Read and initialize the box state
+  boxStatus = getBoxStatus();
+  outputStatus(); // Output the initial status
+
+  // Start Core 1
+  multicore_launch_core1(core1Task);
 }
 
 void loop() {
-  SerialEvent();
-  CheckPins();
-}
+  // Check if data is available on the serial interface
+  if (Serial.available() > 0) {
+    String command = Serial.readStringUntil('\n'); // Read command until newline
+    command.trim(); // Remove whitespace and newline characters
 
-//-----------------------------------------------------------------------------
-// Check the state of the box pins
-void CheckPins() {
-  isBoxOpen = digitalRead(BoxClosedPin);
-  if (lastBoxState != isBoxOpen) {
-    Serial.println(isBoxOpen ? "Box open!" : "Box closed!");
-    lastBoxState = isBoxOpen;
+    // Process the command
+    processCommand(command);
+  }
+
+  // Monitor the box state
+  BoxStatus currentBoxStatus = getBoxStatus();
+  if (currentBoxStatus != boxStatus) {
+    boxStatus = currentBoxStatus;
+    outputStatus(); // Output status if the box state changes
   }
 }
 
-//-----------------------------------------------------------------------------
-// Open the box
+void setChannel(Channel newChannel) {
+  // Set the channel and control the relay
+  if (channel != newChannel) { // Only execute if the channel changes
+    channel = newChannel;
+    digitalWrite(relayPin, channel == One ? LOW : HIGH);
+    outputStatus(); // Output status if the channel changes
+  }
+}
+
+BoxStatus getBoxStatus() {
+  // Read the current box state (directly from BoxClosedPin)
+  return digitalRead(BoxClosedPin) == LOW ? Closed : Open;
+}
+
 void openBox() {
-  digitalWrite(BoxOpenPin, HIGH);
-  delay(2000);
-  digitalWrite(BoxOpenPin, LOW);
+  // Open the box electrically
+  digitalWrite(BoxOpenPin, HIGH); // Activate the mechanism
+  delay(2000);                    // Wait for 2 seconds
+  digitalWrite(BoxOpenPin, LOW);  // Deactivate the mechanism
 }
 
-//-----------------------------------------------------------------------------
-// Handle serial commands
-void SerialCommands() {
-  if (inputString.length() > 1) { // Ignore empty commands
-    inputString.toUpperCase();
-
-    if (inputString.startsWith("CHANNEL_1")) {
-      currentChannel = CHANNEL1;
-      Serial.println("Channel is set to channel 1");
-    } else if (inputString.startsWith("CHANNEL_2")) {
-      currentChannel = CHANNEL2;
-      Serial.println("Channel is set to channel 2");
-    } else if (inputString.startsWith("OPEN_BOX")) {
-      openBox();
-      Serial.println("Box opened!");
-    } else if (inputString.startsWith("VAL")) {
-      // Combine channel and box status into a single response
-      String response = (currentChannel == CHANNEL1 ? "Channel is set to channel 1" : "Channel is set to channel 2");
-      response += ", ";
-      response += (isBoxOpen ? "Box is open!" : "Box is closed!");
-      Serial.println(response);
-    } else {
-      Serial.println("Unknown command.");
-    }
-
-    WriteIO();
+void processCommand(String command) {
+  if (command == "SET_CHANNEL_1") {
+    setChannel(One);
+  } else if (command == "SET_CHANNEL_2") {
+    setChannel(Two);
+  } else if (command == "OPEN_BOX") {
+    // Send a signal to Core 1
+    multicore_fifo_push_blocking(1);
+  } else if (command == "GET_STATUS") {
+    outputStatus(); // Output status when requested
   }
 }
 
-//-----------------------------------------------------------------------------
-// Handle serial input
-void SerialEvent() {
-  while (Serial.available()) {
-    char inChar = (char)Serial.read();
-    inputString += inChar;
-
-    if (inChar == '\n') {
-      stringComplete = true;
-    }
-  }
-
-  if (stringComplete) {
-    stringComplete = false;
-    SerialCommands();
-    inputString = "";
-  }
-}
-
-//-----------------------------------------------------------------------------
-// Set up the I/O pins
-void setupIO() {
-  pinMode(relayPin, OUTPUT);
-  pinMode(BoxClosedPin, INPUT_PULLUP);
-  pinMode(BoxOpenPin, OUTPUT);
-
-  digitalWrite(relayPin, HIGH);
-  digitalWrite(BoxOpenPin, LOW);
-}
-
-//-----------------------------------------------------------------------------
-// Write the current channel state to the relay
-void WriteIO() {
-  digitalWrite(relayPin, currentChannel == CHANNEL1 ? LOW : HIGH);
+void outputStatus() {
+  // Encode and output the status as 2 bits
+  int status = (channel == Two ? 0b10 : 0b00) | (boxStatus == Open ? 0b01 : 0b00);
+  Serial.println(status, BIN); // Output the status as a binary number
 }

@@ -1,7 +1,8 @@
 import serial
 import serial.tools.list_ports
 import logging
-import time  # Import the time module for delays
+import threading
+import time
 
 # Configure logging to write to a file named 'sandbox.log'
 logging.basicConfig(
@@ -30,6 +31,11 @@ class SwitchBox:
         self.timeout = timeout
         self.port = None
         self.serial_connection = None
+        self.box_status = "Closed"  # Default box status
+        self.channel = "One"       # Default channel
+        self.lock = threading.Lock()  # Lock for thread-safe updates
+        self.listener_thread = None
+        self.running = False
 
         # Detect the port during initialization
         self.detect_port()
@@ -53,23 +59,29 @@ class SwitchBox:
                 baudrate=self.baudrate,
                 timeout=self.timeout
             )
+            self.running = True
+            self.start_listener()
+
+            # Send a GET_STATUS command to initialize the status
+            self.send_command("GET_STATUS")
+            time.sleep(0.1)  # Allow some time for the listener to process the response
         except serial.SerialException as e:
             raise ConnectionError(f"Failed to connect to {self.port}: {e}")
 
     def disconnect(self):
         """Disconnect from the switch box."""
+        self.running = False
+        if self.listener_thread and self.listener_thread.is_alive():
+            self.listener_thread.join()
         if self.serial_connection and self.serial_connection.is_open:
             self.serial_connection.close()
 
     def send_command(self, command):
         """
-        Send a command to the switch box and return the response.
+        Send a command to the switch box.
 
         Args:
             command (str): The command to send.
-
-        Returns:
-            str: The response from the switch box.
         """
         if not self.serial_connection or not self.serial_connection.is_open:
             raise ConnectionError("Serial connection is not open.")
@@ -77,43 +89,70 @@ class SwitchBox:
         try:
             # Send the command
             self.serial_connection.write(command.encode('utf-8') + b'\n')
-
-            # Read the response
-            response = self.serial_connection.read_until(b'\n').decode('utf-8').strip()
-            return response
         except Exception as e:
             raise RuntimeError(f"Error sending command: {e}")
 
+    def start_listener(self):
+        """Start the listener thread to process incoming messages."""
+        self.listener_thread = threading.Thread(target=self.listen_for_messages, daemon=True)
+        self.listener_thread.start()
+
+    def listen_for_messages(self):
+        """Continuously listen for incoming serial messages."""
+        while self.running:
+            try:
+                if self.serial_connection.in_waiting > 0:
+                    message = self.serial_connection.read_until(b'\n').decode('utf-8').strip()
+                    self.update_status(message)
+            except Exception as e:
+                logging.error(f"Error reading from serial: {e}")
+
+    def update_status(self, message):
+        """
+        Update the box status and channel based on the incoming message.
+
+        Args:
+            message (str): The 2-bit status message (e.g., "00", "01", "10", "11").
+        """
+        # Ensure the message is 2 bits by padding with leading zeros if necessary
+        if len(message) == 1:
+            message = message.zfill(2)  # Pad with leading zeros to make it 2 characters
+
+        if len(message) == 2 and all(bit in "01" for bit in message):
+            print(f"Received status message: {message}")
+            with self.lock:
+                # Decode the first bit (channel)
+                self.channel = "Two" if message[0] == "1" else "One"
+                # Decode the second bit (box status)
+                self.box_status = "Open" if message[1] == "1" else "Closed"
+                logging.info(f"Updated status: Channel={self.channel}, Box={self.box_status}")
+        else:
+            logging.warning(f"Invalid status message received: {message}")
+
     def switch_to_channel_1(self):
-        """Switch to channel 1."""
-        return self.send_command("channel_1")
+        """Switch to Channel 1."""
+        self.send_command("SET_CHANNEL_1")
 
     def switch_to_channel_2(self):
-        """Switch to channel 2."""
-        return self.send_command("channel_2")
+        """Switch to Channel 2."""
+        self.send_command("SET_CHANNEL_2")
 
     def open_box(self):
-        """Open the measurement box."""
-        return self.send_command("open_box")
+        """Open the box."""
+        self.send_command("OPEN_BOX")
 
-    def check_box_status(self):
+    def get_status(self):
         """
-        Check the status of the measurement box.
-
-        Returns:
-            str: The status of the box (e.g., "Channel is set to channel 1, Box is open!").
-        """
-        return self.send_command("VAL")
-
-    def print_help(self):
-        """
-        Request and print the help menu from the switch box.
+        Get the current status.
 
         Returns:
-            str: The help menu text.
+            dict: A dictionary with the current status:
+                - "channel": "One" or "Two"
+                - "box_status": "Open" or "Closed"
         """
-        logging.info("Requesting help menu...")
-        return self.send_command("?")  # Send the '?' command to retrieve the help menu
+        with self.lock:
+            return {"channel": self.channel, "box_status": self.box_status}
+
 
 def main():
     logging.info("Initializing SwitchBox...")
@@ -126,25 +165,34 @@ def main():
         switch_box.connect()
         logging.info(f"Connected to the switch box on {switch_box.port} at {switch_box.baudrate} baud.")
 
-        # Example: Switch to channel 1
-        logging.info("Switching to channel 1...")
-        response = switch_box.switch_to_channel_1()
-        logging.info(f"Response: {response}")
+        # Example: Switch to Channel 1
+        logging.info("Switching to Channel 1...")
+        switch_box.switch_to_channel_1()
 
-        # Example: Switch to channel 2
-        logging.info("Switching to channel 2...")
-        response = switch_box.switch_to_channel_2()
-        logging.info(f"Response: {response}")
+        time.sleep(1)  # Wait for a moment to allow the listener to process messages
 
-        # Example: Open the measurement box
-        logging.info("Opening the measurement box...")
-        response = switch_box.open_box()
-        logging.info(f"Response: {response}")
+        # Example: Switch to Channel 2
+        logging.info("Switching to Channel 2...")
+        switch_box.switch_to_channel_2()
 
-        # Example: Check the box status
-        logging.info("Checking box status...")
-        box_status = switch_box.check_box_status()
-        logging.info(f"Box status: {box_status}")
+        time.sleep(1)  # Wait for a moment to allow the listener to process messages
+
+        # Example: Switch to Channel 1
+        logging.info("Switching to Channel 1...")
+        switch_box.switch_to_channel_1()
+
+        time.sleep(1)  # Wait for a moment to allow the listener to process messages
+
+        # Example: Open the box
+        logging.info("Opening the box...")
+        switch_box.open_box()
+
+        # Wait for a few seconds to allow the listener to process messages
+        time.sleep(5)
+
+        # Example: Get the current status
+        status = switch_box.get_status()
+        logging.info(f"Current Status: Channel={status['channel']}, Box={status['box_status']}")
 
     except Exception as e:
         logging.error(f"An error occurred: {e}")
@@ -152,6 +200,7 @@ def main():
         # Disconnect from the switch box
         switch_box.disconnect()
         logging.info("Disconnected from the switch box.")
+
 
 if __name__ == "__main__":
     main()
