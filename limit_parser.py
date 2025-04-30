@@ -1,11 +1,22 @@
 import argparse
 import pandas as pd
 import matplotlib.pyplot as plt
+import keyboard
 
 def calculate_absolute_limits(limits_path, reference_path, upper_output_path, lower_output_path):
     # Load the limits and reference data
     limits_df = pd.read_csv(limits_path)
-    reference_df = pd.read_csv(reference_path, skiprows=4)  # Skip metadata rows
+    # print limts data
+    print(limits_df)
+    
+    reference_df = pd.read_csv(reference_path,skiprows=4)  # Skip metadata rows
+    reference_header = pd.read_csv(reference_path, nrows=3)  # Read the first 3 rows for header info
+    # Print the header of the reference file
+    print(reference_header)
+
+    print(reference_header.head(1))
+
+    print(reference_header.iloc[0, 2])
 
     # Rename columns for easier access
     limits_df.columns = ["Lower_Freq", "Upper_Freq", "Upper_Limit", "Lower_Limit"]
@@ -26,8 +37,11 @@ def calculate_absolute_limits(limits_path, reference_path, upper_output_path, lo
     lower_results = []
 
     # Iterate through each frequency in the reference data
-    for _, row in reference_df.iterrows():
+    for index, row in reference_df.iterrows():
+
         freq = row["Frequency"]
+        #print(f"Processing frequency: {freq} Hz")
+        #keyboard.wait('s')
         ch1_value = row["Ch1"]
         ch2_value = row["Ch2"] if is_two_channel else ch1_value  # Duplicate Ch1 for Ch2 if single-channel
 
@@ -48,8 +62,9 @@ def calculate_absolute_limits(limits_path, reference_path, upper_output_path, lo
             lower_results.append([freq, ch1_lower, freq, ch2_lower])
         else:
             # No matching limit range found
-            upper_results.append([freq, None, freq, None])
-            lower_results.append([freq, None, freq, None])
+            pass
+            #upper_results.append([freq, None, freq, None])
+            #lower_results.append([freq, None, freq, None])
 
     # Create DataFrames for upper and lower limits
     upper_df = pd.DataFrame(upper_results, columns=["Frequency_Ch1", "Ch1", "Frequency_Ch2", "Ch2"])

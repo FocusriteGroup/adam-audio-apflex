@@ -8045,3 +8045,269 @@
 2025-04-28 16:02:35,167 [INFO] Channel set to 2
 2025-04-28 16:02:35,168 [INFO] Sent response: Channel set to 2
 2025-04-28 16:02:35,169 [INFO] Client connection closed.
+2025-04-29 09:58:05,277 [INFO] Scanning started.
+2025-04-29 09:58:05,326 [INFO] Device connected on COM3
+2025-04-29 09:58:05,327 [INFO] SwitchBox connected.
+2025-04-29 09:58:05,392 [INFO] Scanning started.
+2025-04-29 09:58:05,394 [INFO] Server started on 127.0.0.1:65432
+2025-04-29 09:58:05,394 [INFO] Server is running...
+2025-04-29 09:58:05,395 [INFO] Waiting for connections...
+2025-04-29 09:58:05,425 [INFO] Device connected on COM4
+2025-04-29 09:58:05,427 [INFO] Scanner connected.
+2025-04-29 09:58:10,402 [INFO] Connection from ('127.0.0.1', 56999)
+2025-04-29 09:58:10,403 [INFO] Client connection closed.
+2025-04-29 09:58:10,883 [INFO] Connection from ('127.0.0.1', 57000)
+2025-04-29 09:58:10,885 [INFO] Received: {"action": "generate_timestamp_extension"}
+2025-04-29 09:58:10,887 [INFO] Generated timestamp extension: 2025_04_29_09_58_10
+2025-04-29 09:58:10,888 [INFO] Sent response: 2025_04_29_09_58_10
+2025-04-29 09:58:10,890 [INFO] Client connection closed.
+2025-04-29 09:58:10,991 [INFO] Connection from ('127.0.0.1', 57001)
+2025-04-29 09:58:10,992 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-29 09:58:10,993 [INFO] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-04-29 09:58:10,995 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-29 09:58:10,995 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-29 09:58:10,996 [INFO] Client connection closed.
+2025-04-29 09:58:11,080 [INFO] Connection from ('127.0.0.1', 57002)
+2025-04-29 09:58:11,081 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-29 09:58:11,082 [INFO] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-04-29 09:58:11,082 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-29 09:58:11,083 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-29 09:58:11,084 [INFO] Client connection closed.
+2025-04-29 09:58:11,171 [INFO] Connection from ('127.0.0.1', 57003)
+2025-04-29 09:58:11,172 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-29 09:58:11,172 [INFO] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']
+2025-04-29 09:58:11,173 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-29 09:58:11,173 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-29 09:58:11,174 [INFO] Client connection closed.
+2025-04-29 09:58:11,261 [INFO] Connection from ('127.0.0.1', 57004)
+2025-04-29 09:58:11,262 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_28", "2025_04_29_09_58_10"]}
+2025-04-29 09:58:11,263 [INFO] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_28', '2025_04_29_09_58_10']
+2025-04-29 09:58:11,263 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_28\2025_04_29_09_58_10
+2025-04-29 09:58:11,264 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_28\2025_04_29_09_58_10
+2025-04-29 09:58:11,264 [INFO] Client connection closed.
+2025-04-29 09:58:11,355 [INFO] Connection from ('127.0.0.1', 57005)
+2025-04-29 09:58:11,358 [INFO] Received: {"action": "get_timestamp_subpath"}
+2025-04-29 09:58:11,359 [INFO] Generated timestamp subpath: 2025/04_29
+2025-04-29 09:58:11,360 [INFO] Sent response: 2025\04_29
+2025-04-29 09:58:11,361 [INFO] Client connection closed.
+2025-04-29 09:58:11,453 [INFO] Connection from ('127.0.0.1', 57006)
+2025-04-29 09:58:11,454 [INFO] Received: {"action": "generate_file_prefix", "strings": ["GA4700120", "2025_04_29_09_58_10"]}
+2025-04-29 09:58:11,454 [INFO] Generating file prefix from: ['GA4700120', '2025_04_29_09_58_10']
+2025-04-29 09:58:11,455 [INFO] Generated file prefix: GA4700120_2025_04_29_09_58_10
+2025-04-29 09:58:11,455 [INFO] Sent response: GA4700120_2025_04_29_09_58_10
+2025-04-29 09:58:11,456 [INFO] Client connection closed.
+2025-04-29 09:58:12,734 [INFO] Connection from ('127.0.0.1', 57007)
+2025-04-29 09:58:12,734 [INFO] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-04-29 09:58:12,735 [INFO] Already on Channel 1.
+2025-04-29 09:58:12,735 [INFO] Channel set to 1
+2025-04-29 09:58:12,736 [INFO] Sent response: Channel set to 1
+2025-04-29 09:58:12,736 [INFO] Client connection closed.
+2025-04-29 09:58:12,887 [INFO] Connection from ('127.0.0.1', 57008)
+2025-04-29 09:58:12,889 [INFO] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-04-29 09:58:12,890 [INFO] Scan triggered. Waiting for data...
+2025-04-29 09:58:13,726 [INFO] Scanned serial number: GA4700120
+2025-04-29 09:58:13,727 [INFO] Serial number scanned: GA4700120
+2025-04-29 09:58:13,728 [INFO] Sent response: GA4700120
+2025-04-29 09:58:13,728 [INFO] Client connection closed.
+2025-04-29 09:58:15,848 [INFO] Connection from ('127.0.0.1', 57009)
+2025-04-29 09:58:15,849 [INFO] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-04-29 09:58:15,964 [INFO] Channel set to 2
+2025-04-29 09:58:15,964 [INFO] Sent response: Channel set to 2
+2025-04-29 09:58:15,965 [INFO] Client connection closed.
+2025-04-29 10:18:37,379 [ERROR] Error in listener: ClearCommError failed (PermissionError(13, 'The device does not recognize the command.', None, 22))
+2025-04-29 14:07:12,962 [INFO] Scanning started.
+2025-04-29 14:07:12,984 [INFO] Device connected on COM3
+2025-04-29 14:07:12,984 [INFO] SwitchBox connected.
+2025-04-29 14:07:13,078 [INFO] Scanning started.
+2025-04-29 14:07:13,078 [INFO] Server started on 127.0.0.1:65432
+2025-04-29 14:07:13,079 [INFO] Server is running...
+2025-04-29 14:07:13,079 [INFO] Waiting for connections...
+2025-04-29 14:07:13,094 [INFO] Device connected on COM4
+2025-04-29 14:07:13,094 [INFO] Scanner connected.
+2025-04-29 14:07:16,854 [INFO] Connection from ('127.0.0.1', 59022)
+2025-04-29 14:07:16,855 [INFO] Client connection closed.
+2025-04-29 14:07:17,356 [INFO] Connection from ('127.0.0.1', 59023)
+2025-04-29 14:07:17,357 [INFO] Received: {"action": "generate_timestamp_extension"}
+2025-04-29 14:07:17,357 [INFO] Generated timestamp extension: 2025_04_29_14_07_17
+2025-04-29 14:07:17,358 [INFO] Sent response: 2025_04_29_14_07_17
+2025-04-29 14:07:17,358 [INFO] Client connection closed.
+2025-04-29 14:07:17,464 [INFO] Connection from ('127.0.0.1', 59024)
+2025-04-29 14:07:17,464 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-29 14:07:17,465 [INFO] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-04-29 14:07:17,465 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-29 14:07:17,465 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-29 14:07:17,465 [INFO] Client connection closed.
+2025-04-29 14:07:17,556 [INFO] Connection from ('127.0.0.1', 59025)
+2025-04-29 14:07:17,557 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-29 14:07:17,558 [INFO] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-04-29 14:07:17,558 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-29 14:07:17,558 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-29 14:07:17,559 [INFO] Client connection closed.
+2025-04-29 14:07:17,651 [INFO] Connection from ('127.0.0.1', 59026)
+2025-04-29 14:07:17,651 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-29 14:07:17,652 [INFO] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']
+2025-04-29 14:07:17,652 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-29 14:07:17,652 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-29 14:07:17,654 [INFO] Client connection closed.
+2025-04-29 14:07:17,748 [INFO] Connection from ('127.0.0.1', 59027)
+2025-04-29 14:07:17,749 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_29", "2025_04_29_14_07_17"]}
+2025-04-29 14:07:17,749 [INFO] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_29', '2025_04_29_14_07_17']
+2025-04-29 14:07:17,749 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_29\2025_04_29_14_07_17
+2025-04-29 14:07:17,750 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_29\2025_04_29_14_07_17
+2025-04-29 14:07:17,750 [INFO] Client connection closed.
+2025-04-29 14:07:17,843 [INFO] Connection from ('127.0.0.1', 59028)
+2025-04-29 14:07:17,843 [INFO] Received: {"action": "get_timestamp_subpath"}
+2025-04-29 14:07:17,844 [INFO] Generated timestamp subpath: 2025/04_29
+2025-04-29 14:07:17,844 [INFO] Sent response: 2025\04_29
+2025-04-29 14:07:17,844 [INFO] Client connection closed.
+2025-04-29 14:07:17,940 [INFO] Connection from ('127.0.0.1', 59029)
+2025-04-29 14:07:17,941 [INFO] Received: {"action": "generate_file_prefix", "strings": ["GA4700120", "2025_04_29_14_07_17"]}
+2025-04-29 14:07:17,941 [INFO] Generating file prefix from: ['GA4700120', '2025_04_29_14_07_17']
+2025-04-29 14:07:17,941 [INFO] Generated file prefix: GA4700120_2025_04_29_14_07_17
+2025-04-29 14:07:17,941 [INFO] Sent response: GA4700120_2025_04_29_14_07_17
+2025-04-29 14:07:17,941 [INFO] Client connection closed.
+2025-04-29 14:07:19,136 [INFO] Connection from ('127.0.0.1', 59030)
+2025-04-29 14:07:19,136 [INFO] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-04-29 14:07:19,136 [INFO] Already on Channel 1.
+2025-04-29 14:07:19,136 [INFO] Channel set to 1
+2025-04-29 14:07:19,137 [INFO] Sent response: Channel set to 1
+2025-04-29 14:07:19,137 [INFO] Client connection closed.
+2025-04-29 14:07:19,290 [INFO] Connection from ('127.0.0.1', 59031)
+2025-04-29 14:07:19,291 [INFO] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-04-29 14:07:19,291 [INFO] Scan triggered. Waiting for data...
+2025-04-29 14:07:20,066 [INFO] Scanned serial number: GA4700120
+2025-04-29 14:07:20,066 [INFO] Serial number scanned: GA4700120
+2025-04-29 14:07:20,066 [INFO] Sent response: GA4700120
+2025-04-29 14:07:20,067 [INFO] Client connection closed.
+2025-04-29 14:07:22,191 [INFO] Connection from ('127.0.0.1', 59032)
+2025-04-29 14:07:22,192 [INFO] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-04-29 14:07:22,297 [INFO] Channel set to 2
+2025-04-29 14:07:22,297 [INFO] Sent response: Channel set to 2
+2025-04-29 14:07:22,297 [INFO] Client connection closed.
+2025-04-29 14:12:04,038 [INFO] Connection from ('127.0.0.1', 59084)
+2025-04-29 14:12:04,039 [INFO] Client connection closed.
+2025-04-29 14:12:04,209 [INFO] Connection from ('127.0.0.1', 59085)
+2025-04-29 14:12:04,210 [INFO] Received: {"action": "generate_timestamp_extension"}
+2025-04-29 14:12:04,210 [INFO] Generated timestamp extension: 2025_04_29_14_12_04
+2025-04-29 14:12:04,211 [INFO] Sent response: 2025_04_29_14_12_04
+2025-04-29 14:12:04,211 [INFO] Client connection closed.
+2025-04-29 14:12:04,319 [INFO] Connection from ('127.0.0.1', 59086)
+2025-04-29 14:12:04,320 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-29 14:12:04,320 [INFO] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-04-29 14:12:04,320 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-29 14:12:04,321 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-29 14:12:04,321 [INFO] Client connection closed.
+2025-04-29 14:12:04,420 [INFO] Connection from ('127.0.0.1', 59087)
+2025-04-29 14:12:04,421 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-29 14:12:04,421 [INFO] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-04-29 14:12:04,421 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-29 14:12:04,422 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-29 14:12:04,423 [INFO] Client connection closed.
+2025-04-29 14:12:04,521 [INFO] Connection from ('127.0.0.1', 59088)
+2025-04-29 14:12:04,523 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-29 14:12:04,523 [INFO] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']
+2025-04-29 14:12:04,523 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-29 14:12:04,523 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-29 14:12:04,523 [INFO] Client connection closed.
+2025-04-29 14:12:04,622 [INFO] Connection from ('127.0.0.1', 59089)
+2025-04-29 14:12:04,622 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_29", "2025_04_29_14_12_04"]}
+2025-04-29 14:12:04,623 [INFO] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_29', '2025_04_29_14_12_04']
+2025-04-29 14:12:04,623 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_29\2025_04_29_14_12_04
+2025-04-29 14:12:04,623 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_29\2025_04_29_14_12_04
+2025-04-29 14:12:04,623 [INFO] Client connection closed.
+2025-04-29 14:12:04,719 [INFO] Connection from ('127.0.0.1', 59090)
+2025-04-29 14:12:04,719 [INFO] Received: {"action": "get_timestamp_subpath"}
+2025-04-29 14:12:04,720 [INFO] Generated timestamp subpath: 2025/04_29
+2025-04-29 14:12:04,720 [INFO] Sent response: 2025\04_29
+2025-04-29 14:12:04,720 [INFO] Client connection closed.
+2025-04-29 14:12:04,821 [INFO] Connection from ('127.0.0.1', 59091)
+2025-04-29 14:12:04,821 [INFO] Received: {"action": "generate_file_prefix", "strings": ["GA4700120", "2025_04_29_14_12_04"]}
+2025-04-29 14:12:04,821 [INFO] Generating file prefix from: ['GA4700120', '2025_04_29_14_12_04']
+2025-04-29 14:12:04,822 [INFO] Generated file prefix: GA4700120_2025_04_29_14_12_04
+2025-04-29 14:12:04,822 [INFO] Sent response: GA4700120_2025_04_29_14_12_04
+2025-04-29 14:12:04,822 [INFO] Client connection closed.
+2025-04-29 14:12:05,875 [INFO] Connection from ('127.0.0.1', 59093)
+2025-04-29 14:12:05,875 [INFO] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-04-29 14:12:05,988 [INFO] Channel set to 1
+2025-04-29 14:12:05,988 [INFO] Sent response: Channel set to 1
+2025-04-29 14:12:05,989 [INFO] Client connection closed.
+2025-04-29 14:12:06,106 [INFO] Connection from ('127.0.0.1', 59094)
+2025-04-29 14:12:06,106 [INFO] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-04-29 14:12:06,106 [INFO] Scan triggered. Waiting for data...
+2025-04-29 14:12:06,619 [INFO] Scanned serial number: GA4700120
+2025-04-29 14:12:06,619 [INFO] Serial number scanned: GA4700120
+2025-04-29 14:12:06,619 [INFO] Sent response: GA4700120
+2025-04-29 14:12:06,620 [INFO] Client connection closed.
+2025-04-29 14:12:08,285 [INFO] Connection from ('127.0.0.1', 59096)
+2025-04-29 14:12:08,285 [INFO] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-04-29 14:12:08,398 [INFO] Channel set to 2
+2025-04-29 14:12:08,398 [INFO] Sent response: Channel set to 2
+2025-04-29 14:12:08,399 [INFO] Client connection closed.
+2025-04-29 16:34:24,826 [INFO] Scanning started.
+2025-04-29 16:34:24,851 [INFO] Device connected on COM3
+2025-04-29 16:34:24,851 [INFO] SwitchBox connected.
+2025-04-29 16:34:24,934 [INFO] Scanning started.
+2025-04-29 16:34:24,934 [INFO] Server started on 127.0.0.1:65432
+2025-04-29 16:34:24,934 [INFO] Server is running...
+2025-04-29 16:34:24,935 [INFO] Waiting for connections...
+2025-04-29 16:34:24,951 [INFO] Device connected on COM4
+2025-04-29 16:34:24,951 [INFO] Scanner connected.
+2025-04-29 16:34:27,553 [INFO] Connection from ('127.0.0.1', 60538)
+2025-04-29 16:34:27,565 [INFO] Client connection closed.
+2025-04-29 16:34:28,217 [INFO] Connection from ('127.0.0.1', 60540)
+2025-04-29 16:34:28,218 [INFO] Received: {"action": "generate_timestamp_extension"}
+2025-04-29 16:34:28,218 [INFO] Generated timestamp extension: 2025_04_29_16_34_28
+2025-04-29 16:34:28,219 [INFO] Sent response: 2025_04_29_16_34_28
+2025-04-29 16:34:28,219 [INFO] Client connection closed.
+2025-04-29 16:34:28,315 [INFO] Connection from ('127.0.0.1', 60541)
+2025-04-29 16:34:28,316 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-04-29 16:34:28,316 [INFO] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-04-29 16:34:28,317 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-29 16:34:28,317 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-29 16:34:28,317 [INFO] Client connection closed.
+2025-04-29 16:34:28,410 [INFO] Connection from ('127.0.0.1', 60542)
+2025-04-29 16:34:28,411 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-04-29 16:34:28,411 [INFO] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-04-29 16:34:28,411 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-29 16:34:28,411 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-29 16:34:28,411 [INFO] Client connection closed.
+2025-04-29 16:34:28,503 [INFO] Connection from ('127.0.0.1', 60543)
+2025-04-29 16:34:28,504 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSample"]}
+2025-04-29 16:34:28,504 [INFO] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']
+2025-04-29 16:34:28,504 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-29 16:34:28,504 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-29 16:34:28,505 [INFO] Client connection closed.
+2025-04-29 16:34:28,596 [INFO] Connection from ('127.0.0.1', 60544)
+2025-04-29 16:34:28,597 [INFO] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Results", "2025\\04_29", "2025_04_29_16_34_28"]}
+2025-04-29 16:34:28,597 [INFO] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_29', '2025_04_29_16_34_28']
+2025-04-29 16:34:28,597 [INFO] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_29\2025_04_29_16_34_28
+2025-04-29 16:34:28,598 [INFO] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_29\2025_04_29_16_34_28
+2025-04-29 16:34:28,598 [INFO] Client connection closed.
+2025-04-29 16:34:28,694 [INFO] Connection from ('127.0.0.1', 60545)
+2025-04-29 16:34:28,695 [INFO] Received: {"action": "get_timestamp_subpath"}
+2025-04-29 16:34:28,696 [INFO] Generated timestamp subpath: 2025/04_29
+2025-04-29 16:34:28,696 [INFO] Sent response: 2025\04_29
+2025-04-29 16:34:28,696 [INFO] Client connection closed.
+2025-04-29 16:34:28,790 [INFO] Connection from ('127.0.0.1', 60546)
+2025-04-29 16:34:28,791 [INFO] Received: {"action": "generate_file_prefix", "strings": ["GA4700120", "2025_04_29_16_34_28"]}
+2025-04-29 16:34:28,791 [INFO] Generating file prefix from: ['GA4700120', '2025_04_29_16_34_28']
+2025-04-29 16:34:28,791 [INFO] Generated file prefix: GA4700120_2025_04_29_16_34_28
+2025-04-29 16:34:28,791 [INFO] Sent response: GA4700120_2025_04_29_16_34_28
+2025-04-29 16:34:28,792 [INFO] Client connection closed.
+2025-04-29 16:34:29,834 [INFO] Connection from ('127.0.0.1', 60547)
+2025-04-29 16:34:29,835 [INFO] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-04-29 16:34:29,949 [INFO] Channel set to 1
+2025-04-29 16:34:29,949 [INFO] Sent response: Channel set to 1
+2025-04-29 16:34:29,950 [INFO] Client connection closed.
+2025-04-29 16:34:30,071 [INFO] Connection from ('127.0.0.1', 60548)
+2025-04-29 16:34:30,071 [INFO] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-04-29 16:34:30,071 [INFO] Scan triggered. Waiting for data...
+2025-04-29 16:34:30,698 [INFO] Scanned serial number: GA4700120
+2025-04-29 16:34:30,698 [INFO] Serial number scanned: GA4700120
+2025-04-29 16:34:30,698 [INFO] Sent response: GA4700120
+2025-04-29 16:34:30,698 [INFO] Client connection closed.
+2025-04-29 16:34:32,383 [INFO] Connection from ('127.0.0.1', 60549)
+2025-04-29 16:34:32,384 [INFO] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-04-29 16:34:32,495 [INFO] Channel set to 2
+2025-04-29 16:34:32,495 [INFO] Sent response: Channel set to 2
+2025-04-29 16:34:32,495 [INFO] Client connection closed.

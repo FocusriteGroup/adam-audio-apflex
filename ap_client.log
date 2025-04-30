@@ -6571,3 +6571,203 @@
 2025-04-28 16:02:35,048 - INFO - Connecting to server at 127.0.0.1:65432...
 2025-04-28 16:02:35,050 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
 2025-04-28 16:02:35,168 - INFO - Received response from server: Channel set to 2
+2025-04-29 09:58:10,880 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-04-29 09:58:10,881 - INFO - Executing 'generate_timestamp_extension' command.
+2025-04-29 09:58:10,881 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 09:58:10,882 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-04-29 09:58:10,888 - INFO - Received response from server: 2025_04_29_09_58_10
+2025-04-29 09:58:10,989 - INFO - Parsing and executing command: construct_path
+2025-04-29 09:58:10,990 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-04-29 09:58:10,990 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 09:58:10,991 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-29 09:58:10,995 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-29 09:58:11,079 - INFO - Parsing and executing command: construct_path
+2025-04-29 09:58:11,079 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-04-29 09:58:11,079 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 09:58:11,080 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-29 09:58:11,083 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-29 09:58:11,169 - INFO - Parsing and executing command: construct_path
+2025-04-29 09:58:11,169 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']
+2025-04-29 09:58:11,169 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 09:58:11,171 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-29 09:58:11,173 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-29 09:58:11,260 - INFO - Parsing and executing command: construct_path
+2025-04-29 09:58:11,260 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_28', '2025_04_29_09_58_10']
+2025-04-29 09:58:11,260 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 09:58:11,261 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_28', '2025_04_29_09_58_10']}
+2025-04-29 09:58:11,263 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_28\2025_04_29_09_58_10
+2025-04-29 09:58:11,353 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-04-29 09:58:11,353 - INFO - Executing 'get_timestamp_subpath' command.
+2025-04-29 09:58:11,353 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 09:58:11,355 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-04-29 09:58:11,360 - INFO - Received response from server: 2025\04_29
+2025-04-29 09:58:11,451 - INFO - Parsing and executing command: generate_file_prefix
+2025-04-29 09:58:11,452 - INFO - Executing 'generate_file_prefix' command with strings: ['GA4700120', '2025_04_29_09_58_10']
+2025-04-29 09:58:11,452 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 09:58:11,453 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['GA4700120', '2025_04_29_09_58_10']}
+2025-04-29 09:58:11,455 - INFO - Received response from server: GA4700120_2025_04_29_09_58_10
+2025-04-29 09:58:12,732 - INFO - Parsing and executing command: set_channel
+2025-04-29 09:58:12,732 - INFO - Executing 'set_channel' command with channel: 1
+2025-04-29 09:58:12,732 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 09:58:12,734 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-04-29 09:58:12,736 - INFO - Received response from server: Channel set to 1
+2025-04-29 09:58:12,885 - INFO - Parsing and executing command: scan_serial
+2025-04-29 09:58:12,886 - INFO - Executing 'scan_serial' command.
+2025-04-29 09:58:12,886 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 09:58:12,887 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-04-29 09:58:13,728 - INFO - Received response from server: GA4700120
+2025-04-29 09:58:15,847 - INFO - Parsing and executing command: set_channel
+2025-04-29 09:58:15,847 - INFO - Executing 'set_channel' command with channel: 2
+2025-04-29 09:58:15,847 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 09:58:15,848 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-04-29 09:58:15,964 - INFO - Received response from server: Channel set to 2
+2025-04-29 14:07:17,354 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-04-29 14:07:17,354 - INFO - Executing 'generate_timestamp_extension' command.
+2025-04-29 14:07:17,354 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:07:17,356 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-04-29 14:07:17,358 - INFO - Received response from server: 2025_04_29_14_07_17
+2025-04-29 14:07:17,462 - INFO - Parsing and executing command: construct_path
+2025-04-29 14:07:17,462 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-04-29 14:07:17,462 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:07:17,464 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-29 14:07:17,465 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-29 14:07:17,554 - INFO - Parsing and executing command: construct_path
+2025-04-29 14:07:17,555 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-04-29 14:07:17,555 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:07:17,556 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-29 14:07:17,558 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-29 14:07:17,649 - INFO - Parsing and executing command: construct_path
+2025-04-29 14:07:17,649 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']
+2025-04-29 14:07:17,649 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:07:17,651 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-29 14:07:17,652 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-29 14:07:17,746 - INFO - Parsing and executing command: construct_path
+2025-04-29 14:07:17,746 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_29', '2025_04_29_14_07_17']
+2025-04-29 14:07:17,747 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:07:17,748 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_29', '2025_04_29_14_07_17']}
+2025-04-29 14:07:17,750 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_29\2025_04_29_14_07_17
+2025-04-29 14:07:17,841 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-04-29 14:07:17,841 - INFO - Executing 'get_timestamp_subpath' command.
+2025-04-29 14:07:17,841 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:07:17,842 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-04-29 14:07:17,844 - INFO - Received response from server: 2025\04_29
+2025-04-29 14:07:17,938 - INFO - Parsing and executing command: generate_file_prefix
+2025-04-29 14:07:17,939 - INFO - Executing 'generate_file_prefix' command with strings: ['GA4700120', '2025_04_29_14_07_17']
+2025-04-29 14:07:17,939 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:07:17,940 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['GA4700120', '2025_04_29_14_07_17']}
+2025-04-29 14:07:17,941 - INFO - Received response from server: GA4700120_2025_04_29_14_07_17
+2025-04-29 14:07:19,134 - INFO - Parsing and executing command: set_channel
+2025-04-29 14:07:19,134 - INFO - Executing 'set_channel' command with channel: 1
+2025-04-29 14:07:19,134 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:07:19,135 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-04-29 14:07:19,137 - INFO - Received response from server: Channel set to 1
+2025-04-29 14:07:19,289 - INFO - Parsing and executing command: scan_serial
+2025-04-29 14:07:19,289 - INFO - Executing 'scan_serial' command.
+2025-04-29 14:07:19,289 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:07:19,290 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-04-29 14:07:20,066 - INFO - Received response from server: GA4700120
+2025-04-29 14:07:22,190 - INFO - Parsing and executing command: set_channel
+2025-04-29 14:07:22,190 - INFO - Executing 'set_channel' command with channel: 2
+2025-04-29 14:07:22,190 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:07:22,191 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-04-29 14:07:22,297 - INFO - Received response from server: Channel set to 2
+2025-04-29 14:12:04,207 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-04-29 14:12:04,208 - INFO - Executing 'generate_timestamp_extension' command.
+2025-04-29 14:12:04,208 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:12:04,209 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-04-29 14:12:04,211 - INFO - Received response from server: 2025_04_29_14_12_04
+2025-04-29 14:12:04,316 - INFO - Parsing and executing command: construct_path
+2025-04-29 14:12:04,317 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-04-29 14:12:04,317 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:12:04,319 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-29 14:12:04,321 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-29 14:12:04,418 - INFO - Parsing and executing command: construct_path
+2025-04-29 14:12:04,419 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-04-29 14:12:04,419 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:12:04,420 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-29 14:12:04,422 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-29 14:12:04,520 - INFO - Parsing and executing command: construct_path
+2025-04-29 14:12:04,520 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']
+2025-04-29 14:12:04,520 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:12:04,521 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-29 14:12:04,523 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-29 14:12:04,620 - INFO - Parsing and executing command: construct_path
+2025-04-29 14:12:04,621 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_29', '2025_04_29_14_12_04']
+2025-04-29 14:12:04,621 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:12:04,622 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_29', '2025_04_29_14_12_04']}
+2025-04-29 14:12:04,623 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_29\2025_04_29_14_12_04
+2025-04-29 14:12:04,717 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-04-29 14:12:04,718 - INFO - Executing 'get_timestamp_subpath' command.
+2025-04-29 14:12:04,718 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:12:04,719 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-04-29 14:12:04,720 - INFO - Received response from server: 2025\04_29
+2025-04-29 14:12:04,819 - INFO - Parsing and executing command: generate_file_prefix
+2025-04-29 14:12:04,819 - INFO - Executing 'generate_file_prefix' command with strings: ['GA4700120', '2025_04_29_14_12_04']
+2025-04-29 14:12:04,819 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:12:04,820 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['GA4700120', '2025_04_29_14_12_04']}
+2025-04-29 14:12:04,822 - INFO - Received response from server: GA4700120_2025_04_29_14_12_04
+2025-04-29 14:12:05,873 - INFO - Parsing and executing command: set_channel
+2025-04-29 14:12:05,874 - INFO - Executing 'set_channel' command with channel: 1
+2025-04-29 14:12:05,874 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:12:05,875 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-04-29 14:12:05,988 - INFO - Received response from server: Channel set to 1
+2025-04-29 14:12:06,103 - INFO - Parsing and executing command: scan_serial
+2025-04-29 14:12:06,103 - INFO - Executing 'scan_serial' command.
+2025-04-29 14:12:06,103 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:12:06,105 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-04-29 14:12:06,619 - INFO - Received response from server: GA4700120
+2025-04-29 14:12:08,283 - INFO - Parsing and executing command: set_channel
+2025-04-29 14:12:08,283 - INFO - Executing 'set_channel' command with channel: 2
+2025-04-29 14:12:08,283 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 14:12:08,284 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-04-29 14:12:08,398 - INFO - Received response from server: Channel set to 2
+2025-04-29 16:34:28,215 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-04-29 16:34:28,216 - INFO - Executing 'generate_timestamp_extension' command.
+2025-04-29 16:34:28,216 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 16:34:28,217 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-04-29 16:34:28,219 - INFO - Received response from server: 2025_04_29_16_34_28
+2025-04-29 16:34:28,314 - INFO - Parsing and executing command: construct_path
+2025-04-29 16:34:28,314 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-04-29 16:34:28,314 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 16:34:28,315 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-04-29 16:34:28,317 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-04-29 16:34:28,409 - INFO - Parsing and executing command: construct_path
+2025-04-29 16:34:28,409 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-04-29 16:34:28,409 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 16:34:28,410 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-04-29 16:34:28,411 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-04-29 16:34:28,502 - INFO - Parsing and executing command: construct_path
+2025-04-29 16:34:28,502 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']
+2025-04-29 16:34:28,502 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 16:34:28,503 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSample']}
+2025-04-29 16:34:28,504 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSample
+2025-04-29 16:34:28,595 - INFO - Parsing and executing command: construct_path
+2025-04-29 16:34:28,595 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_29', '2025_04_29_16_34_28']
+2025-04-29 16:34:28,595 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 16:34:28,596 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Results', '2025\\04_29', '2025_04_29_16_34_28']}
+2025-04-29 16:34:28,598 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Results\2025\04_29\2025_04_29_16_34_28
+2025-04-29 16:34:28,693 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-04-29 16:34:28,693 - INFO - Executing 'get_timestamp_subpath' command.
+2025-04-29 16:34:28,693 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 16:34:28,694 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-04-29 16:34:28,696 - INFO - Received response from server: 2025\04_29
+2025-04-29 16:34:28,789 - INFO - Parsing and executing command: generate_file_prefix
+2025-04-29 16:34:28,789 - INFO - Executing 'generate_file_prefix' command with strings: ['GA4700120', '2025_04_29_16_34_28']
+2025-04-29 16:34:28,789 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 16:34:28,790 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['GA4700120', '2025_04_29_16_34_28']}
+2025-04-29 16:34:28,791 - INFO - Received response from server: GA4700120_2025_04_29_16_34_28
+2025-04-29 16:34:29,832 - INFO - Parsing and executing command: set_channel
+2025-04-29 16:34:29,832 - INFO - Executing 'set_channel' command with channel: 1
+2025-04-29 16:34:29,832 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 16:34:29,834 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-04-29 16:34:29,949 - INFO - Received response from server: Channel set to 1
+2025-04-29 16:34:30,069 - INFO - Parsing and executing command: scan_serial
+2025-04-29 16:34:30,069 - INFO - Executing 'scan_serial' command.
+2025-04-29 16:34:30,069 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 16:34:30,070 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-04-29 16:34:30,698 - INFO - Received response from server: GA4700120
+2025-04-29 16:34:32,382 - INFO - Parsing and executing command: set_channel
+2025-04-29 16:34:32,382 - INFO - Executing 'set_channel' command with channel: 2
+2025-04-29 16:34:32,382 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-04-29 16:34:32,383 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-04-29 16:34:32,495 - INFO - Received response from server: Channel set to 2
