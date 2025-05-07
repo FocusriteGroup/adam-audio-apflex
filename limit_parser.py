@@ -14,9 +14,9 @@ def calculate_absolute_limits(limits_path, reference_path, upper_output_path, lo
     # Print the header of the reference file
     print(reference_header)
 
-    print(reference_header.head(1))
+    #print(reference_header.head(1))
 
-    print(reference_header.iloc[0, 2])
+    #print(reference_header.iloc[0, 2])
 
     # Rename columns for easier access
     limits_df.columns = ["Lower_Freq", "Upper_Freq", "Upper_Limit", "Lower_Limit"]

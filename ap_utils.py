@@ -249,13 +249,14 @@ class SwitchBox(SerialDevice):
         def wrapped_on_connect():
             if on_connect:
                 on_connect()
-            self.start_listener()
+            #.start_listener()
 
         super().__init__(baudrate, product_id=pid, vendor_id=vid, timeout=timeout, retry_interval=retry_interval, on_connect=wrapped_on_connect, on_disconnect=on_disconnect)
         self.box_status = "Closed"
         self.channel = 1
         self.listener_thread = None
         self.status_updated_event = threading.Event()
+        self._stop_listener = False  # Separate flag for stopping the listener
 
         while not self.connected:
             time.sleep(0.1)
@@ -265,12 +266,13 @@ class SwitchBox(SerialDevice):
     def start_listener(self):
         """Start a listener thread to monitor incoming messages."""
         if not self.listener_thread or not self.listener_thread.is_alive():
+            self._stop_listener = False  # Reset the listener stop flag
             self.listener_thread = threading.Thread(target=self.listen_for_messages, daemon=True)
             self.listener_thread.start()
 
     def listen_for_messages(self):
         """Listen for messages from the SwitchBox and update its status."""
-        while not self._stop:
+        while not self._stop_listener:  # Use the separate flag for stopping the listener
             try:
                 if self.serial_connection and self.serial_connection.is_open:
                     if self.serial_connection.in_waiting > 0:
@@ -282,6 +284,13 @@ class SwitchBox(SerialDevice):
             except Exception as e:
                 logging.error(f"Error in listener: {e}")
                 break
+
+    def stop_listener(self):
+        """Stop the listener thread."""
+        self._stop_listener = True  # Set the listener stop flag to True
+        if self.listener_thread and self.listener_thread.is_alive():
+            self.listener_thread.join()  # Wait for the thread to finish
+        logging.info("Listener thread stopped.")
 
     def update_status(self, message):
         """Update the status of the SwitchBox based on a received message."""

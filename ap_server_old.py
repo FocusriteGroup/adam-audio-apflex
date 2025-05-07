@@ -3,6 +3,7 @@ import threading
 import json
 import logging
 from ap_utils import Utilities, SwitchBox, HoneywellScanner  # Import utility and device classes
+from api_calls import AudioPrecisionAPI  # Import the AudioPrecisionAPI class
 import time
 
 logging.basicConfig(
@@ -36,6 +37,9 @@ class APServer:
         self.server.bind((self.host, self.port))
         self.server.listen(5)  # Allow up to 5 simultaneous connections
         self.running = True
+
+        # Initialize the Audio Precision API
+        self.audio_precision_api = AudioPrecisionAPI()
 
         # Device connection states
         self.switchbox_connected = False
@@ -143,6 +147,9 @@ class APServer:
 
         action = command["action"]
         command_map = {
+            #"wake_up": lambda: self.audio_precision_api.wake_up() or "API woke up successfully.",
+            #"activate_measurement": lambda: self._activate_measurement(command),
+            #"set_average": lambda: self._set_average(command),
             "generate_timestamp_extension": Utilities.generate_timestamp_extension,
             "construct_path": lambda: self._construct_path(command),
             "get_timestamp_subpath": Utilities.generate_timestamp_subpath,
@@ -164,13 +171,28 @@ class APServer:
 
     # Methods for Commands ---
 
+    def _activate_measurement(self, command):
+        measurement_name = command.get("measurement_name")
+        if not measurement_name or not isinstance(measurement_name, str):
+            return "Error: 'measurement_name' must be a non-empty string."
+        self.audio_precision_api.activate_measurement(measurement_name)
+        logging.info(f"Activated measurement: {measurement_name}")
+        return "Measurement activation initiated."
+
+    def _set_average(self, command):
+        averages = command.get("averages")
+        if not isinstance(averages, int) or averages <= 0:
+            return "Error: 'averages' must be a positive integer."
+        logging.info(f"Setting averages to: {averages}")
+        return self.audio_precision_api.set_average(averages)
+
     def _construct_path(self, command):
         paths = command.get("paths")
         if not paths or not isinstance(paths, list):
             return "Error: 'paths' must be a non-empty list of strings."
         if not all(isinstance(p, str) for p in paths):
             return "Error: All elements in 'paths' must be strings."
-        logging.info("Constructing path from: %s", paths)
+        logging.info(f"Constructing path from: {paths}")
         return Utilities.construct_path(paths)
 
     def _generate_file_prefix(self, command):
