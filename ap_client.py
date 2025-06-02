@@ -3,13 +3,26 @@ import json
 import sys
 import logging
 import argparse
+import os
+from datetime import datetime
+
+# Unterverzeichnis "logs" erstellen, falls es noch nicht existiert
+log_dir = "logs"
+os.makedirs(log_dir, exist_ok=True)
+
+# Heutiges Datum im Format JJJJ-MM-TT
+today = datetime.now().strftime("%Y-%m-%d")
+log_filename = f"{log_dir}/ap_client_log_{today}.log"
+
 
 # Configure logging for the client
 logging.basicConfig(
-    filename="ap_client.log",  # Log file to store client logs
+    filename=log_filename,  # Log file to store client logs
     level=logging.INFO,  # Log level set to INFO
     format="%(asctime)s - %(levelname)s - %(message)s"  # Log format with timestamp
 )
+
+logging.info("----------------------------------------------------------------- APClient started")
 
 class APClient:
     """

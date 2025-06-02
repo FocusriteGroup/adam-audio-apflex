@@ -1,26 +1,45 @@
 import socket
 import sys
+import subprocess
+import time
 
-def check_server(host="127.0.0.1", port=65432):
-    """Check if the server is open and accepting connections."""
+def is_server_running(host="127.0.0.1", port=65432, timeout=2):
     try:
+        with socket.create_connection((host, port), timeout=timeout):
+            return True
+    except Exception:
+        return False
 
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
-            client.settimeout(5)  # Set a timeout for the connection attempt
-            client.connect((host, port))
-            print(f"Server is open and accepting connections.")
-    except socket.timeout:
-        print(f"Connection to {host}:{port} timed out. The server might be down.")
-    except ConnectionRefusedError:
-        print(f"Connection to {host}:{port} was refused. The server might not be running.")
-    except Exception as e:
-        print(f"An error occurred while checking the server: {e}")
-        sys.exit(1)  
+def start_server():
+    # Startet den Server ap_server.py unabhängig vom Terminal und unterdrückt die Ausgaben
+    subprocess.Popen(
+        ["nohup", "python3", "ap_server.py"],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        preexec_fn=None  # Wichtig: Kein Terminal-Signal weitergeben
+    )
+    time.sleep(1)  # Kurzes Warten, damit der Server starten kann
+
+def wait_for_server(host, port, timeout=10):
+    start_time = time.time()
+    while time.time() - start_time < timeout:
+        if is_server_running(host, port):
+            return True
+        time.sleep(0.5)
+    return False
 
 if __name__ == "__main__":
-
     host = sys.argv[1] if len(sys.argv) > 1 else "127.0.0.1"
     port = int(sys.argv[2]) if len(sys.argv) > 2 else 65432
 
-    check_server(host, port)
-    
+    if is_server_running(host, port):
+        print(f"Server is open and accepting connections.")
+        sys.exit(0)
+
+    start_server()
+    if wait_for_server(host, port, timeout=10):
+        print(f"Server is open and accepting connections.")
+        sys.exit(0)
+    else:
+        print(f"Connection to {host}:{port} was refused. The server might not be running.")
+        sys.exit(1)

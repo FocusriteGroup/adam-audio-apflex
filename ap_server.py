@@ -1,18 +1,31 @@
+import logging
+import os
+from datetime import datetime
+
+# Unterverzeichnis "logs" erstellen, falls es noch nicht existiert
+log_dir = "logs"
+os.makedirs(log_dir, exist_ok=True)
+
+# Heutiges Datum im Format JJJJ-MM-TT
+today = datetime.now().strftime("%Y-%m-%d")
+log_filename = f"{log_dir}/ap_server_log_{today}.log"
+
+# Logging konfigurieren
+logging.basicConfig(
+    filename=log_filename,
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s"
+)
+
 import socket
 import threading
 import json
-import logging
-from ap_utils import Utilities, SwitchBox, HoneywellScanner  # Import utility and device classes
 import time
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler("ap_server.log"),  # Log to a file
-        logging.StreamHandler()  # Log to the console
-    ]
-)
+from ap_utils import Utilities, SwitchBox, HoneywellScanner  # Import utility and device classes
+
+
+logging.info("----------------------------------------------------------------- APServer started")
 
 class APServer:
     """

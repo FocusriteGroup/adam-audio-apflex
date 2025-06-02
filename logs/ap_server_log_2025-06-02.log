@@ -1,0 +1,11 @@
+2025-06-02 15:57:10,947 INFO ----------------------------------------------------------------- APServer started
+2025-06-02 15:57:10,948 INFO Server started on 127.0.0.1:65432
+2025-06-02 15:57:10,948 INFO Server is running...
+2025-06-02 15:57:10,948 INFO Waiting for connections...
+2025-06-02 15:57:11,710 INFO Connection from ('127.0.0.1', 54690)
+2025-06-02 15:57:11,710 INFO Client connection closed.
+2025-06-02 15:57:36,016 INFO Connection from ('127.0.0.1', 54701)
+2025-06-02 15:57:36,016 INFO Received: {"action": "generate_timestamp_extension"}
+2025-06-02 15:57:36,016 INFO Generated timestamp extension: 2025_06_02_15_57_36
+2025-06-02 15:57:36,016 INFO Sent response: 2025_06_02_15_57_36
+2025-06-02 15:57:36,016 INFO Client connection closed.
