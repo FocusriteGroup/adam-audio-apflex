@@ -6,3 +6,4 @@ sandbox.log
 __pycache__/ap_utils.cpython-39.pyc
 logs/ap_client_log_2025-06-02.log
 logs/ap_server_log_2025-06-02.log
+logs/ap_client_log_2025-06-02.log
