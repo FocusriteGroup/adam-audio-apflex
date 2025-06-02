@@ -196,6 +196,9 @@ class APServer:
         return Utilities.generate_file_prefix(strings)
 
     def _set_channel(self, command):
+        if not self.switchbox_connected:
+            logging.error("SwitchBox not connected.")
+            return "Error: SwitchBox not connected."
         channel = command.get("channel")
         if channel in [1, 2]:
             with self.switchbox_lock:
@@ -209,18 +212,18 @@ class APServer:
                     logging.info(f"Channel set to {channel}")
                     self.switch_box.stop_listener()
                     return f"Channel set to {channel}"
-                    
                 except Exception as e:
                     logging.error(f"Failed to set channel: {e}")
                     self.switch_box.stop_listener()
                     return f"Error: Failed to set channel ({e})"
-                
-                
         else:
             logging.error(f"Invalid channel: {channel}")
             return "Error: Invalid channel"
 
     def _open_box(self):
+        if not self.switchbox_connected:
+            logging.error("SwitchBox not connected.")
+            return "Error: SwitchBox not connected."
         self.switch_box.serial_connection.reset_input_buffer()
         self.switch_box.serial_connection.reset_output_buffer()
         self.switch_box.start_listener()
