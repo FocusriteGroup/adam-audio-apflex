@@ -236,7 +236,8 @@ class SwitchBox(SerialDevice):
         def wrapped_on_connect():
             if on_connect:
                 on_connect()
-            #.start_listener()
+            self.get_status()
+            
 
         super().__init__(baudrate, product_id=pid, vendor_id=vid, timeout=timeout, retry_interval=retry_interval, on_connect=wrapped_on_connect, on_disconnect=on_disconnect)
         self.box_status = "Closed"
@@ -245,10 +246,7 @@ class SwitchBox(SerialDevice):
         self.status_updated_event = threading.Event()
         self._stop_listener = False  # Separate flag for stopping the listener
 
-        while not self.connected:
-            time.sleep(0.1)
-
-        self.get_status()
+       
 
     def start_listener(self):
         """Start a listener thread to monitor incoming messages."""
