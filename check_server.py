@@ -13,10 +13,10 @@ def is_server_running(host="127.0.0.1", port=65432, timeout=2):
 def start_server():
     # Startet den Server ap_server.py unabhängig vom Terminal und unterdrückt die Ausgaben
     subprocess.Popen(
-        ["nohup", "python3", "ap_server.py"],
+        [sys.executable, "ap_server.py"],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
-        preexec_fn=None  # Wichtig: Kein Terminal-Signal weitergeben
+        creationflags=subprocess.CREATE_NEW_PROCESS_GROUP  # Windows equivalent to start_new_session
     )
     time.sleep(1)  # Kurzes Warten, damit der Server starten kann
 
