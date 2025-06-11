@@ -24,6 +24,7 @@ import socket
 import threading
 import json
 import time
+from biquad_tools.biquad_designer import Biquad_Filter  # <-- Add this import
 
 from ap_utils import Utilities, SwitchBox, HoneywellScanner  # Import utility and device classes
 
@@ -167,6 +168,7 @@ class APServer:
             "set_channel": lambda: self._set_channel(command),
             "open_box": self._open_box,
             "scan_serial": self._scan_serial,
+            "get_biquad_coefficients": lambda: self._get_biquad_coefficients(command),  # <-- Add this line
         }
 
         if action in command_map:
@@ -250,6 +252,38 @@ class APServer:
             else:
                 self.logger.error("Failed to scan serial number.")
                 return "Error: Failed to scan serial number."
+
+    def _get_biquad_coefficients(self, command):
+        """
+        Create a Biquad_Filter instance and return coefficients as a list.
+        """
+        try:
+            filter_type = command.get("filter_type")
+            gain = float(command.get("gain", 0.0))
+            peak_freq = float(command.get("peak_freq", 1000.0))
+            Q = float(command.get("Q", 1.0))
+            sample_rate = int(command.get("sample_rate", 48000))
+
+            biquad = Biquad_Filter(
+                filter_type=filter_type,
+                gain=gain,
+                peak_freq=peak_freq,
+                Q=Q,
+                sample_rate=sample_rate
+            )
+            coeffs_dict = biquad.coefficients
+            coeffs = [
+                coeffs_dict["a1"],
+                coeffs_dict["a2"],
+                coeffs_dict["b0"],
+                coeffs_dict["b1"],
+                coeffs_dict["b2"]
+            ]
+            self.logger.info(f"Biquad coefficients generated: {coeffs}")
+            return json.dumps(coeffs)
+        except Exception as e:
+            self.logger.error(f"Failed to generate biquad coefficients: {e}")
+            return f"Error: Failed to generate biquad coefficients ({e})"
 
     # --- Server Management ---
 

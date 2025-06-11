@@ -55,6 +55,7 @@ class APClient:
             "set_channel": self.set_channel,
             "open_box": self.open_box,
             "scan_serial": self.scan_serial,
+            "get_biquad_coefficients": self.get_biquad_coefficients,
         }
 
         # Argument parser for command-line arguments
@@ -64,28 +65,55 @@ class APClient:
         # Define subparsers for each command
         subparsers.add_parser("wake_up", help="Wake up the server.")
 
-        subparsers.add_parser("generate_timestamp_extension", help="Generate a timestamp extension.")
+        subparsers.add_parser("generate_timestamp_extension", 
+                              help="Generate a timestamp extension.")
 
-        parser_construct_path = subparsers.add_parser("construct_path", help="Construct a path.")
-        parser_construct_path.add_argument("paths", type=str, nargs="+", help="List of paths to join.")
+        parser_construct_path = subparsers.add_parser("construct_path", 
+                                                      help="Construct a path.")
+        parser_construct_path.add_argument("paths", type=str, nargs="+", 
+                                           help="List of paths to join.")
 
-        subparsers.add_parser("get_timestamp_subpath", help="Get a timestamp subpath.")
+        subparsers.add_parser("get_timestamp_subpath", 
+                              help="Get a timestamp subpath.")
 
-        parser_generate_file_prefix = subparsers.add_parser("generate_file_prefix", help="Generate a file prefix.")
-        parser_generate_file_prefix.add_argument("strings", type=str, nargs="+", help="List of strings to combine.")
+        parser_generate_file_prefix = subparsers.add_parser("generate_file_prefix", 
+                                                            help="Generate a file prefix.")
+        parser_generate_file_prefix.add_argument("strings", type=str, nargs="+", 
+                                                 help="List of strings to combine.")
 
-        parser_activate_measurement = subparsers.add_parser("activate_measurement", help="Activate a measurement.")
-        parser_activate_measurement.add_argument("measurement_name", type=str, help="Name of the measurement to activate.")
+        parser_activate_measurement = subparsers.add_parser("activate_measurement", 
+                                                            help="Activate a measurement.")
+        parser_activate_measurement.add_argument("measurement_name", type=str, 
+                                                 help="Name of the measurement to activate.")
 
-        parser_set_average = subparsers.add_parser("set_average", help="Set the number of averages.")
-        parser_set_average.add_argument("averages", type=int, help="Number of averages to set.")
+        parser_set_average = subparsers.add_parser("set_average", 
+                                                   help="Set the number of averages.")
+        parser_set_average.add_argument("averages", type=int, 
+                                        help="Number of averages to set.")
 
         parser_set_channel = subparsers.add_parser("set_channel", help="Set the channel (1 or 2).")
-        parser_set_channel.add_argument("channel", type=int, choices=[1, 2], help="Channel to set (1 or 2).")
+        parser_set_channel.add_argument("channel", type=int, choices=[1, 2], 
+                                        help="Channel to set (1 or 2).")
 
-        subparsers.add_parser("open_box", help="Open the box.")
+        subparsers.add_parser("open_box", 
+                              help="Open the box.")
 
-        subparsers.add_parser("scan_serial", help="Scan the serial number.")
+        subparsers.add_parser("scan_serial", 
+                              help="Scan the serial number.")
+
+        # Add biquad coefficients command
+        biquad_parser = subparsers.add_parser("get_biquad_coefficients", 
+                                              help="Get biquad filter coefficients")
+        biquad_parser.add_argument("filter_type", choices=["bell", "high_shelf", "low_shelf"], 
+                                   help="Type of biquad filter")
+        biquad_parser.add_argument("gain", type=float, 
+                                   help="Gain in dB")
+        biquad_parser.add_argument("peak_freq", type=float, 
+                                   help="Peak frequency in Hz")
+        biquad_parser.add_argument("Q", type=float, 
+                                   help="Quality factor")
+        biquad_parser.add_argument("sample_rate", type=int, 
+                                   help="Sample rate in Hz")
 
     def send_command(self, command, wait_for_response=True):
         """
@@ -99,15 +127,15 @@ class APClient:
             str: The server's response if wait_for_response is True, otherwise None.
         """
         try:
-            logging.info(f"Connecting to server at {self.host}:{self.port}...")
+            logging.info("Connecting to server at %s:%s...", self.host, self.port)
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
                 client_socket.connect((self.host, self.port))  # Connect to the server
-                logging.info(f"Connected to server. Sending command: {command}")
+                logging.info("Connected to server. Sending command: %s", command)
                 client_socket.send(json.dumps(command).encode("utf-8"))  # Send the command as JSON
 
                 if wait_for_response:
                     response = client_socket.recv(1024).decode("utf-8")  # Receive and decode the server's response
-                    logging.info(f"Received response from server: {response}")
+                    logging.info("Received response from server: %s", response)
                     return response
                 else:
                     logging.info("No response expected for this command.")
@@ -188,6 +216,76 @@ class APClient:
         command = {"action": "scan_serial", "wait_for_response": True}
         response = self.send_command(command, wait_for_response=True)
         print(response)
+
+    def get_biquad_coefficients(self, args):
+        """
+        Request the server to calculate biquad filter coefficients.
+        """
+        logging.info(f"Executing 'get_biquad_coefficients' with: "
+                     f"type={args.filter_type}, gain={args.gain}, peak_freq={args.peak_freq}, Q={args.Q}, sample_rate={args.sample_rate}")
+        command = {
+            "action": "get_biquad_coefficients",
+            "filter_type": args.filter_type,
+            "gain": args.gain,
+            "peak_freq": args.peak_freq,
+            "Q": args.Q,
+            "sample_rate": args.sample_rate,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
+    def setup_arg_parser(self):
+        """
+        Set up the argument parser for command-line arguments.
+        """
+        parser = argparse.ArgumentParser(description="AP Client")
+        subparsers = parser.add_subparsers(dest="command", required=True)
+
+        # Subparser for "wake_up" command
+        subparsers.add_parser("wake_up", help="Wake up the server.")
+
+        # Subparser for "generate_timestamp_extension" command
+        subparsers.add_parser("generate_timestamp_extension", help="Generate a timestamp extension.")
+
+        # Subparser for "construct_path" command
+        parser_construct_path = subparsers.add_parser("construct_path", help="Construct a path.")
+        parser_construct_path.add_argument("paths", type=str, nargs="+", help="List of paths to join.")
+
+        # Subparser for "get_timestamp_subpath" command
+        subparsers.add_parser("get_timestamp_subpath", help="Get a timestamp subpath.")
+
+        # Subparser for "generate_file_prefix" command
+        parser_generate_file_prefix = subparsers.add_parser("generate_file_prefix", help="Generate a file prefix.")
+        parser_generate_file_prefix.add_argument("strings", type=str, nargs="+", help="List of strings to combine.")
+
+        # Subparser for "activate_measurement" command
+        parser_activate_measurement = subparsers.add_parser("activate_measurement", help="Activate a measurement.")
+        parser_activate_measurement.add_argument("measurement_name", type=str, help="Name of the measurement to activate.")
+
+        # Subparser for "set_average" command
+        parser_set_average = subparsers.add_parser("set_average", help="Set the number of averages.")
+        parser_set_average.add_argument("averages", type=int, help="Number of averages to set.")
+
+        # Subparser for "set_channel" command
+        parser_set_channel = subparsers.add_parser("set_channel", help="Set the channel (1 or 2).")
+        parser_set_channel.add_argument("channel", type=int, choices=[1, 2], help="Channel to set (1 or 2).")
+
+        # Subparser for "open_box" command
+        subparsers.add_parser("open_box", help="Open the box.")
+
+        # Subparser for "scan_serial" command
+        subparsers.add_parser("scan_serial", help="Scan the serial number.")
+
+        # Add biquad coefficients command
+        biquad_parser = subparsers.add_parser("get_biquad_coefficients", help="Get biquad filter coefficients")
+        biquad_parser.add_argument("filter_type", choices=["bell", "high_shelf", "low_shelf"], help="Type of biquad filter")
+        biquad_parser.add_argument("gain", type=float, help="Gain in dB")
+        biquad_parser.add_argument("peak_freq", type=float, help="Peak frequency in Hz")
+        biquad_parser.add_argument("Q", type=float, help="Quality factor")
+        biquad_parser.add_argument("sample_rate", type=int, help="Sample rate in Hz")
+
+        self.parser = parser
 
     def parse_and_execute(self):
         """

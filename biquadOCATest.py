@@ -3,10 +3,10 @@ from biquad_tools.biquad_designer import Biquad_Filter
 
 # 1. Create the biquad filter
 biquad = Biquad_Filter(
-    filter_type="bell",      # Choose: "bell", "high_shelf", "low_shelf"
+    filter_type="low_shelf",      # Choose: "bell", "high_shelf", "low_shelf"
     gain=6.0,                # Gain in dB
     peak_freq=1000.0,        # Frequency in Hz
-    Q=10.0,                   # Quality factor
+    Q=1.0,                   # Quality factor
     sample_rate=48000
 )
 
