@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 # Unterverzeichnis "logs" erstellen, falls es noch nicht existiert
-log_dir = "logs"
+log_dir = "logs/server"
 os.makedirs(log_dir, exist_ok=True)
 
 # Heutiges Datum im Format JJJJ-MM-TT
@@ -12,9 +12,12 @@ log_filename = f"{log_dir}/ap_server_log_{today}.log"
 
 # Logging konfigurieren
 logging.basicConfig(
-    filename=log_filename,
     level=logging.INFO,
-    format="%(asctime)s %(levelname)s %(message)s"
+    format="%(asctime)s %(levelname)s [%(name)s] %(message)s",
+    handlers=[
+        logging.FileHandler(log_filename, encoding="utf-8"),
+        logging.StreamHandler()  # Das ist für die Ausgabe im Terminal
+    ]
 )
 
 import socket
@@ -62,7 +65,8 @@ class APServer:
         self.switch_box = SwitchBox(on_connect=self.switchbox_on_connect, on_disconnect=self.switchbox_on_disconnect)
         self.scanner = HoneywellScanner(on_connect=self.scanner_on_connect, on_disconnect=self.scanner_on_disconnect)
 
-        logging.info(f"Server started on {self.host}:{self.port}")
+        self.logger = logging.getLogger("APServer")
+        self.logger.info("Server started")
 
     # --- Device Connection Callbacks ---
 
@@ -70,37 +74,37 @@ class APServer:
         """Callback for when the scanner connects."""
         with self.scanner_lock:
             if self.scanner_connected:
-                logging.info("Scanner already connected.")
+                self.logger.info("Scanner already connected.")
                 return
             self.scanner_connected = True
-            logging.info("Scanner connected.")
+            self.logger.info("Scanner connected.")
 
     def scanner_on_disconnect(self):
         """Callback for when the scanner disconnects."""
         with self.scanner_lock:
             if not self.scanner_connected:
-                logging.info("Scanner already disconnected.")
+                self.logger.info("Scanner already disconnected.")
                 return
             self.scanner_connected = False
-            logging.info("Scanner disconnected.")
+            self.logger.info("Scanner disconnected.")
 
     def switchbox_on_connect(self):
         """Callback for when the switchbox connects."""
         with self.switchbox_lock:
             if self.switchbox_connected:
-                logging.info("SwitchBox already connected.")
+                self.logger.info("SwitchBox already connected.")
                 return
             self.switchbox_connected = True
-            logging.info("SwitchBox connected.")
+            self.logger.info("SwitchBox connected.")
 
     def switchbox_on_disconnect(self):
         """Callback for when the switchbox disconnects."""
         with self.switchbox_lock:
             if not self.switchbox_connected:
-                logging.info("SwitchBox already disconnected.")
+                self.logger.info("SwitchBox already disconnected.")
                 return
             self.switchbox_connected = False
-            logging.info("SwitchBox disconnected.")
+            self.logger.info("SwitchBox disconnected.")
 
     # --- Client Handling ---
 
@@ -116,7 +120,7 @@ class APServer:
                 data = client_socket.recv(1024).decode("utf-8")
                 if not data:
                     break
-                logging.info(f"Received: {data}")
+                self.logger.info(f"Received: {data}")
                 try:
                     command = json.loads(data)
                     response = self.process_command(command)
@@ -124,20 +128,20 @@ class APServer:
                     # Check if the client expects a response
                     if command.get("wait_for_response", True):  # Default to True if not specified
                         client_socket.send(response.encode("utf-8"))
-                        logging.info(f"Sent response: {response}")
+                        self.logger.info(f"Sent response: {response}")
                     else:
-                        logging.info("No response sent.")
+                        self.logger.info("No response sent.")
                 except json.JSONDecodeError:
-                    logging.error("Invalid JSON received.")
+                    self.logger.error("Invalid JSON received.")
                     client_socket.send(b"Error: Invalid JSON format.")
                 except Exception as e:
-                    logging.error(f"Error processing command: {e}")
+                    self.logger.error(f"Error processing command: {e}")
                     client_socket.send(f"Error: {e}".encode("utf-8"))
         except (socket.error, Exception) as e:
-            logging.error(f"Connection error: {e}")
+            self.logger.error(f"Connection error: {e}")
         finally:
             client_socket.close()
-            logging.info("Client connection closed.")
+            self.logger.info("Client connection closed.")
 
     # --- Command Processing ---
 
@@ -169,10 +173,10 @@ class APServer:
             try:
                 return command_map[action]()
             except Exception as e:
-                logging.error(f"Error processing action '{action}': {e}")
+                self.logger.error(f"Error processing action '{action}': {e}")
                 return f"Error: {e}"
         else:
-            logging.error(f"Unknown action: {action}")
+            self.logger.error(f"Unknown action: {action}")
             return "Error: Unknown action."
 
     # Methods for Commands ---
@@ -183,7 +187,7 @@ class APServer:
             return "Error: 'paths' must be a non-empty list of strings."
         if not all(isinstance(p, str) for p in paths):
             return "Error: All elements in 'paths' must be strings."
-        logging.info("Constructing path from: %s", paths)
+        self.logger.info("Constructing path from: %s", paths)
         return Utilities.construct_path(paths)
 
     def _generate_file_prefix(self, command):
@@ -192,12 +196,12 @@ class APServer:
             return "Error: 'strings' must be a non-empty list of strings."
         if not all(isinstance(s, str) for s in strings):
             return "Error: All elements in 'strings' must be strings."
-        logging.info(f"Generating file prefix from: {strings}")
+        self.logger.info(f"Generating file prefix from: {strings}")
         return Utilities.generate_file_prefix(strings)
 
     def _set_channel(self, command):
         if not self.switchbox_connected:
-            logging.error("SwitchBox not connected.")
+            self.logger.error("SwitchBox not connected.")
             return "Error: SwitchBox not connected."
         channel = command.get("channel")
         if channel in [1, 2]:
@@ -209,20 +213,20 @@ class APServer:
                     self.switch_box.get_status()
 
                     channel = self.switch_box.switch_to_channel(channel)
-                    logging.info(f"Channel set to {channel}")
+                    self.logger.info(f"Channel set to {channel}")
                     self.switch_box.stop_listener()
                     return f"Channel set to {channel}"
                 except Exception as e:
-                    logging.error(f"Failed to set channel: {e}")
+                    self.logger.error(f"Failed to set channel: {e}")
                     self.switch_box.stop_listener()
                     return f"Error: Failed to set channel ({e})"
         else:
-            logging.error(f"Invalid channel: {channel}")
+            self.logger.error(f"Invalid channel: {channel}")
             return "Error: Invalid channel"
 
     def _open_box(self):
         if not self.switchbox_connected:
-            logging.error("SwitchBox not connected.")
+            self.logger.error("SwitchBox not connected.")
             return "Error: SwitchBox not connected."
         self.switch_box.serial_connection.reset_input_buffer()
         self.switch_box.serial_connection.reset_output_buffer()
@@ -230,32 +234,32 @@ class APServer:
         self.switch_box.get_status()
 
         self.switch_box.open_box()
-        logging.info("Box opened.")
+        self.logger.info("Box opened.")
         self.switch_box.stop_listener()
         return "Box opened."
 
     def _scan_serial(self):
         with self.scanner_lock:
             if not self.scanner_connected:
-                logging.error("Scanner not connected.")
+                self.logger.error("Scanner not connected.")
                 return "Error: Scanner not connected."
             serial_number = self.scanner.trigger_scan()
             if serial_number:
-                logging.info(f"Serial number scanned: {serial_number}")
+                self.logger.info(f"Serial number scanned: {serial_number}")
                 return serial_number
             else:
-                logging.error("Failed to scan serial number.")
+                self.logger.error("Failed to scan serial number.")
                 return "Error: Failed to scan serial number."
 
     # --- Server Management ---
 
     def start(self):
         """Start the server and manage client connections."""
-        logging.info("Server is running...")
-        logging.info("Waiting for connections...")
+        self.logger.info("Server is running...")
+        self.logger.info("Waiting for connections...")
         while self.running:
             client_socket, addr = self.server.accept()
-            logging.info(f"Connection from {addr}")
+            self.logger.info(f"Connection from {addr}")
             threading.Thread(target=self.handle_client, args=(client_socket,)).start()
 
     def stop(self):
@@ -263,7 +267,7 @@ class APServer:
         self.running = False
         self.server.close()
         self.switch_box.disconnect()
-        logging.info("Server stopped.")
+        self.logger.info("Server stopped.")
 
 if __name__ == "__main__":
     server = APServer()

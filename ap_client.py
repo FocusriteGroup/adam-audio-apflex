@@ -7,7 +7,7 @@ import os
 from datetime import datetime
 
 # Unterverzeichnis "logs" erstellen, falls es noch nicht existiert
-log_dir = "logs"
+log_dir = "logs/client"
 os.makedirs(log_dir, exist_ok=True)
 
 # Heutiges Datum im Format JJJJ-MM-TT

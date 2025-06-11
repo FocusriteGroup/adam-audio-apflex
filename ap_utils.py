@@ -6,6 +6,11 @@ import threading
 import time
 import logging
 
+UTILS_LOGGER = logging.getLogger("Utilities")
+SERIALDEVICE_LOGGER = logging.getLogger("SerialDevice")
+SCANNER_LOGGER = logging.getLogger("HoneywellScanner")
+SWITCHBOX_LOGGER = logging.getLogger("SwitchBox")
+
 class Utilities:
     """Utility class for various helper functions."""
 
@@ -14,7 +19,7 @@ class Utilities:
         """Generate a file extension using the current time in the format 'year_month_day_hour_minute_second'."""
         now = datetime.datetime.now()
         extension = now.strftime("%Y_%m_%d_%H_%M_%S")
-        logging.info(f"Generated timestamp extension: {extension}")
+        UTILS_LOGGER.info(f"Generated timestamp extension: {extension}")
         return extension
 
     @staticmethod
@@ -32,13 +37,13 @@ class Utilities:
             ValueError: If 'paths' is not a non-empty list of strings.
         """
         if not paths or not isinstance(paths, list):
-            logging.error("construct_path: 'paths' must be a non-empty list of strings.")
+            UTILS_LOGGER.error("construct_path: 'paths' must be a non-empty list of strings.")
             raise ValueError("'paths' must be a non-empty list of strings.")
         if not all(isinstance(p, str) for p in paths):
-            logging.error("construct_path: All elements in 'paths' must be strings.")
+            UTILS_LOGGER.error("construct_path: All elements in 'paths' must be strings.")
             raise ValueError("All elements in 'paths' must be strings.")
         result = os.path.normpath(os.path.join(*paths))
-        logging.info(f"Constructed path: {result}")
+        UTILS_LOGGER.info(f"Constructed path: {result}")
         return result
 
     @staticmethod
@@ -47,7 +52,7 @@ class Utilities:
         now = datetime.datetime.now()
         subpath = now.strftime("%Y/%m_%d")
         subpath_norm = os.path.normpath(subpath)
-        logging.info(f"Generated timestamp subpath: {subpath_norm}")
+        UTILS_LOGGER.info(f"Generated timestamp subpath: {subpath_norm}")
         return subpath_norm
 
     @staticmethod
@@ -65,13 +70,13 @@ class Utilities:
             ValueError: If 'strings' is not a non-empty list of strings.
         """
         if not strings or not isinstance(strings, list):
-            logging.error("generate_file_prefix: 'strings' must be a non-empty list of strings.")
+            UTILS_LOGGER.error("generate_file_prefix: 'strings' must be a non-empty list of strings.")
             raise ValueError("'strings' must be a non-empty list of strings.")
         if not all(isinstance(s, str) for s in strings):
-            logging.error("generate_file_prefix: All elements in 'strings' must be strings.")
+            UTILS_LOGGER.error("generate_file_prefix: All elements in 'strings' must be strings.")
             raise ValueError("All elements in 'strings' must be strings.")
         result = "_".join(strings)
-        logging.info(f"Generated file prefix: {result}")
+        UTILS_LOGGER.info(f"Generated file prefix: {result}")
         return result
 
 
@@ -127,11 +132,11 @@ class SerialDevice:
                         self.serial_connection = serial.Serial(found.device, self.baudrate, timeout=self.timeout)
                         self._current_port = found.device
                         self.connected = True
-                        logging.info(f"Connected to serial device on {found.device}")
+                        SERIALDEVICE_LOGGER.info(f"Connected to serial device on {found.device}")
                         if self.on_connect:
                             self.on_connect()
                     except serial.SerialException as e:
-                        logging.error(f"Serial connection failed: {e}")
+                        SERIALDEVICE_LOGGER.error(f"Serial connection failed: {e}")
                         self.serial_connection = None
                         self.connected = False
 
@@ -145,7 +150,7 @@ class SerialDevice:
                         except Exception:
                             pass
                         self.serial_connection = None
-                    logging.info("Serial device disconnected.")
+                    SERIALDEVICE_LOGGER.info("Serial device disconnected.")
                     if self.on_disconnect:
                         self.on_disconnect()
 
@@ -161,7 +166,7 @@ class SerialDevice:
                 except Exception:
                     pass
             self.connected = False
-            logging.info("Serial device connection closed.")
+            SERIALDEVICE_LOGGER.info("Serial device connection closed.")
 
     def connect(self):
         """Start or restart the connection loop."""
@@ -200,7 +205,7 @@ class HoneywellScanner(SerialDevice):
         """
         with self.lock:  # Protect shared resources
             if not self.connected or not self.serial_connection or not self.serial_connection.is_open:
-                logging.warning("trigger_scan: Scanner not connected.")
+                SCANNER_LOGGER.warning("trigger_scan: Scanner not connected.")
                 return None
             try:
                 self.serial_connection.reset_input_buffer()
@@ -209,10 +214,10 @@ class HoneywellScanner(SerialDevice):
                 response = self.serial_connection.readline()
                 if response:
                     self.serial_number = response.decode(errors='ignore').strip()
-                    logging.info(f"Scanned serial number: {self.serial_number}")
+                    SCANNER_LOGGER.info(f"Scanned serial number: {self.serial_number}")
                     return self.serial_number
             except Exception as e:
-                logging.error(f"Error during scan: {e}")
+                SCANNER_LOGGER.error(f"Error during scan: {e}")
                 self.connected = False
             return None
 
@@ -233,11 +238,10 @@ class SwitchBox(SerialDevice):
             on_connect (callable): Callback for successful connection.
             on_disconnect (callable): Callback for disconnection.
         """
+
         def wrapped_on_connect():
             if on_connect:
                 on_connect()
-            self.get_status()
-            
 
         super().__init__(baudrate, product_id=pid, vendor_id=vid, timeout=timeout, retry_interval=retry_interval, on_connect=wrapped_on_connect, on_disconnect=on_disconnect)
         self.box_status = "Closed"
@@ -246,15 +250,13 @@ class SwitchBox(SerialDevice):
         self.status_updated_event = threading.Event()
         self._stop_listener = False  # Separate flag for stopping the listener
 
-       
-
     def start_listener(self):
         """Start a listener thread to monitor incoming messages."""
         if not self.listener_thread or not self.listener_thread.is_alive():
             self._stop_listener = False  # Reset the listener stop flag
             self.listener_thread = threading.Thread(target=self.listen_for_messages, daemon=True)
             self.listener_thread.start()
-            logging.info("SwitchBox listener thread started.")
+            SWITCHBOX_LOGGER.info("SwitchBox listener thread started.")
 
     def listen_for_messages(self):
         """Listen for messages from the SwitchBox and update its status."""
@@ -267,7 +269,7 @@ class SwitchBox(SerialDevice):
                 else:
                     break
             except Exception as e:
-                logging.error(f"Error in SwitchBox listener: {e}")
+                SWITCHBOX_LOGGER.error(f"Error in SwitchBox listener: {e}")
                 break
 
     def stop_listener(self):
@@ -275,7 +277,7 @@ class SwitchBox(SerialDevice):
         self._stop_listener = True  # Set the listener stop flag to True
         if self.listener_thread and self.listener_thread.is_alive():
             self.listener_thread.join()  # Wait for the thread to finish
-            logging.info("SwitchBox listener thread stopped.")
+            SWITCHBOX_LOGGER.info("SwitchBox listener thread stopped.")
 
     def update_status(self, message):
         """Update the status of the SwitchBox based on a received message."""
@@ -287,22 +289,22 @@ class SwitchBox(SerialDevice):
                 self.channel = 2 if message[0] == "1" else 1
                 self.box_status = "Open" if message[1] == "1" else "Closed"
                 self.status_updated_event.set()
-                logging.info(f"SwitchBox status updated: channel={self.channel}, box_status={self.box_status}")
+                SWITCHBOX_LOGGER.info(f"SwitchBox status updated: channel={self.channel}, box_status={self.box_status}")
 
     def send_command(self, command):
         """Send a command to the SwitchBox."""
         with self.lock:  # Protect access to self.serial_connection
             if not self.connected:
-                logging.error("send_command: SwitchBox is not connected.")
+                SWITCHBOX_LOGGER.error("send_command: SwitchBox is not connected.")
                 raise ConnectionError("SwitchBox is not connected.")
             if not self.serial_connection or not self.serial_connection.is_open:
-                logging.error("send_command: Serial connection is not open.")
+                SWITCHBOX_LOGGER.error("send_command: Serial connection is not open.")
                 raise ConnectionError("Serial connection is not open.")
             try:
                 self.serial_connection.write(command.encode('utf-8') + b'\n')
-                logging.info(f"Sent command to SwitchBox: {command}")
+                SWITCHBOX_LOGGER.info(f"Sent command to SwitchBox: {command}")
             except serial.SerialException as e:
-                logging.error(f"Failed to send command: {e}")
+                SWITCHBOX_LOGGER.error(f"Failed to send command: {e}")
                 raise ConnectionError(f"Failed to send command: {e}")
 
     def switch_to_channel(self, target_channel):
@@ -316,12 +318,12 @@ class SwitchBox(SerialDevice):
             int: The current channel after switching.
         """
         if target_channel not in [1, 2]:
-            logging.error("switch_to_channel: Invalid channel. Only channel 1 or 2 is supported.")
+            SWITCHBOX_LOGGER.error("switch_to_channel: Invalid channel. Only channel 1 or 2 is supported.")
             raise ValueError("Invalid channel. Only channel 1 or 2 is supported.")
 
         with self.lock:  # Protect access to self.channel
             if self.channel == target_channel:
-                logging.info(f"SwitchBox already on channel {target_channel}")
+                SWITCHBOX_LOGGER.info(f"SwitchBox already on channel {target_channel}")
                 return self.channel
 
         command = "SET_CHANNEL_1" if target_channel == 1 else "SET_CHANNEL_2"
@@ -333,14 +335,14 @@ class SwitchBox(SerialDevice):
                     break
             time.sleep(0.1)
 
-        logging.info(f"SwitchBox switched to channel {target_channel}")
+        SWITCHBOX_LOGGER.info(f"SwitchBox switched to channel {target_channel}")
         return self.channel
 
     def open_box(self):
         """Open the SwitchBox."""
         with self.lock:  # Protect access to self.box_status
             if self.box_status == "Open":
-                logging.info("SwitchBox already open.")
+                SWITCHBOX_LOGGER.info("SwitchBox already open.")
                 return self.box_status
 
         self.send_command("OPEN_BOX")
@@ -349,7 +351,7 @@ class SwitchBox(SerialDevice):
                 if self.box_status == "Open":
                     break
             time.sleep(0.1)
-        logging.info("SwitchBox opened.")
+        SWITCHBOX_LOGGER.info("SwitchBox opened.")
         return self.box_status
 
     def get_status(self):
@@ -358,5 +360,5 @@ class SwitchBox(SerialDevice):
         self.send_command("GET_STATUS")
         self.status_updated_event.wait(timeout=2)  # Wait for the status to be updated
         with self.lock:
-            logging.info(f"SwitchBox status: channel={self.channel}, box_status={self.box_status}")
+            SWITCHBOX_LOGGER.info(f"SwitchBox status: channel={self.channel}, box_status={self.box_status}")
             return {"channel": self.channel, "box_status": self.box_status}
