@@ -65,54 +65,54 @@ class APClient:
         # Define subparsers for each command
         subparsers.add_parser("wake_up", help="Wake up the server.")
 
-        subparsers.add_parser("generate_timestamp_extension", 
+        subparsers.add_parser("generate_timestamp_extension",
                               help="Generate a timestamp extension.")
 
-        parser_construct_path = subparsers.add_parser("construct_path", 
+        parser_construct_path = subparsers.add_parser("construct_path",
                                                       help="Construct a path.")
-        parser_construct_path.add_argument("paths", type=str, nargs="+", 
+        parser_construct_path.add_argument("paths", type=str, nargs="+",
                                            help="List of paths to join.")
 
-        subparsers.add_parser("get_timestamp_subpath", 
+        subparsers.add_parser("get_timestamp_subpath",
                               help="Get a timestamp subpath.")
 
-        parser_generate_file_prefix = subparsers.add_parser("generate_file_prefix", 
+        parser_generate_file_prefix = subparsers.add_parser("generate_file_prefix",
                                                             help="Generate a file prefix.")
-        parser_generate_file_prefix.add_argument("strings", type=str, nargs="+", 
+        parser_generate_file_prefix.add_argument("strings", type=str, nargs="+",
                                                  help="List of strings to combine.")
 
-        parser_activate_measurement = subparsers.add_parser("activate_measurement", 
+        parser_activate_measurement = subparsers.add_parser("activate_measurement",
                                                             help="Activate a measurement.")
-        parser_activate_measurement.add_argument("measurement_name", type=str, 
+        parser_activate_measurement.add_argument("measurement_name", type=str,
                                                  help="Name of the measurement to activate.")
 
-        parser_set_average = subparsers.add_parser("set_average", 
+        parser_set_average = subparsers.add_parser("set_average",
                                                    help="Set the number of averages.")
         parser_set_average.add_argument("averages", type=int, 
                                         help="Number of averages to set.")
 
         parser_set_channel = subparsers.add_parser("set_channel", help="Set the channel (1 or 2).")
-        parser_set_channel.add_argument("channel", type=int, choices=[1, 2], 
+        parser_set_channel.add_argument("channel", type=int, choices=[1, 2],
                                         help="Channel to set (1 or 2).")
 
-        subparsers.add_parser("open_box", 
+        subparsers.add_parser("open_box",
                               help="Open the box.")
 
-        subparsers.add_parser("scan_serial", 
+        subparsers.add_parser("scan_serial",
                               help="Scan the serial number.")
 
         # Add biquad coefficients command
-        biquad_parser = subparsers.add_parser("get_biquad_coefficients", 
+        biquad_parser = subparsers.add_parser("get_biquad_coefficients",
                                               help="Get biquad filter coefficients")
-        biquad_parser.add_argument("filter_type", choices=["bell", "high_shelf", "low_shelf"], 
+        biquad_parser.add_argument("filter_type", choices=["bell", "high_shelf", "low_shelf"],
                                    help="Type of biquad filter")
-        biquad_parser.add_argument("gain", type=float, 
+        biquad_parser.add_argument("gain", type=float,
                                    help="Gain in dB")
-        biquad_parser.add_argument("peak_freq", type=float, 
+        biquad_parser.add_argument("peak_freq", type=float,
                                    help="Peak frequency in Hz")
-        biquad_parser.add_argument("Q", type=float, 
+        biquad_parser.add_argument("Q", type=float,
                                    help="Quality factor")
-        biquad_parser.add_argument("sample_rate", type=int, 
+        biquad_parser.add_argument("sample_rate", type=int,
                                    help="Sample rate in Hz")
 
     def send_command(self, command, wait_for_response=True):
