@@ -25,11 +25,12 @@ import threading
 import json
 import time
 from biquad_tools.biquad_designer import Biquad_Filter  # <-- Add this import
+from oca_tools.oca_utilities import OCP1ToolWrapper
 
 from ap_utils import Utilities, SwitchBox, HoneywellScanner  # Import utility and device classes
 
 
-logging.info("----------------------------------------------------------------- APServer started")
+logging.info("----------------------------------- APServer started")
 
 class APServer:
     """
@@ -169,6 +170,7 @@ class APServer:
             "open_box": self._open_box,
             "scan_serial": self._scan_serial,
             "get_biquad_coefficients": lambda: self._get_biquad_coefficients(command),  # <-- Add this line
+            "set_device_biquad": lambda: self._set_device_biquad(command),
         }
 
         if action in command_map:
@@ -284,6 +286,44 @@ class APServer:
         except Exception as e:
             self.logger.error(f"Failed to generate biquad coefficients: {e}")
             return f"Error: Failed to generate biquad coefficients ({e})"
+
+    def _set_device_biquad(self, command):
+        """
+        Calculate biquad coefficients and set them on the OCA device.
+        """
+        try:
+            index = int(command.get("index"))
+            filter_type = command.get("filter_type")
+            gain = float(command.get("gain", 0.0))
+            peak_freq = float(command.get("peak_freq", 1000.0))
+            Q = float(command.get("Q", 1.0))
+            sample_rate = int(command.get("sample_rate", 48000))
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+
+            biquad = Biquad_Filter(
+                filter_type=filter_type,
+                gain=gain,
+                peak_freq=peak_freq,
+                Q=Q,
+                sample_rate=sample_rate
+            )
+            coeffs_dict = biquad.coefficients
+            coeffs = [
+                coeffs_dict["a1"],
+                coeffs_dict["a2"],
+                coeffs_dict["b0"],
+                coeffs_dict["b1"],
+                coeffs_dict["b2"]
+            ]
+
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            result = wrapper.set_biquad(index=index, coefficients=coeffs)
+            self.logger.info(f"Set biquad on device: {result}")
+            return result
+        except Exception as e:
+            self.logger.error(f"Failed to set device biquad: {e}")
+            return f"Error: Failed to set device biquad ({e})"
 
     # --- Server Management ---
 

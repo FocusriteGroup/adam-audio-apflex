@@ -22,7 +22,7 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s"  # Log format with timestamp
 )
 
-logging.info("----------------------------------------------------------------- APClient started")
+logging.info("----------------------------------- APClient started")
 
 class APClient:
     """
@@ -56,6 +56,7 @@ class APClient:
             "open_box": self.open_box,
             "scan_serial": self.scan_serial,
             "get_biquad_coefficients": self.get_biquad_coefficients,
+            "set_device_biquad": self.set_device_biquad,
         }
 
         # Argument parser for command-line arguments
@@ -115,6 +116,17 @@ class APClient:
         biquad_parser.add_argument("sample_rate", type=int,
                                    help="Sample rate in Hz")
 
+        # Subparser for "set_device_biquad" command
+        set_biquad_parser = subparsers.add_parser("set_device_biquad", help="Set biquad filter on OCA device")
+        set_biquad_parser.add_argument("index", type=int, help="Biquad index")
+        set_biquad_parser.add_argument("filter_type", choices=["bell", "high_shelf", "low_shelf"], help="Type of biquad filter")
+        set_biquad_parser.add_argument("gain", type=float, help="Gain in dB")
+        set_biquad_parser.add_argument("peak_freq", type=float, help="Peak frequency in Hz")
+        set_biquad_parser.add_argument("Q", type=float, help="Quality factor")
+        set_biquad_parser.add_argument("sample_rate", type=int, help="Sample rate in Hz")
+        set_biquad_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        set_biquad_parser.add_argument("port", type=int, help="OCA device port")
+
     def send_command(self, command, wait_for_response=True):
         """
         Send a command to the server and optionally wait for a response.
@@ -148,7 +160,7 @@ class APClient:
             return f"Error: {e}"
 
     # Command methods
-    def wake_up(self, args):
+    def wake_up(self, args): # deprecated
         """Send a command to wake up the server."""
         logging.info("Executing 'wake_up' command.")
         command = {"action": "wake_up", "wait_for_response": False}
@@ -235,6 +247,29 @@ class APClient:
         response = self.send_command(command, wait_for_response=True)
         print(response)
 
+    def set_device_biquad(self, args):
+        """
+        Request the server to calculate biquad coefficients and set them on the OCA device.
+        """
+        logging.info(f"Executing 'set_device_biquad' with: "
+                     f"index={args.index}, type={args.filter_type}, gain={args.gain}, "
+                     f"peak_freq={args.peak_freq}, Q={args.Q}, sample_rate={args.sample_rate}, "
+                     f"target_ip={args.target_ip}, port={args.port}")
+        command = {
+            "action": "set_device_biquad",
+            "index": args.index,
+            "filter_type": args.filter_type,
+            "gain": args.gain,
+            "peak_freq": args.peak_freq,
+            "Q": args.Q,
+            "sample_rate": args.sample_rate,
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
     def setup_arg_parser(self):
         """
         Set up the argument parser for command-line arguments.
@@ -284,6 +319,17 @@ class APClient:
         biquad_parser.add_argument("peak_freq", type=float, help="Peak frequency in Hz")
         biquad_parser.add_argument("Q", type=float, help="Quality factor")
         biquad_parser.add_argument("sample_rate", type=int, help="Sample rate in Hz")
+
+        # Subparser for "set_device_biquad" command
+        set_biquad_parser = subparsers.add_parser("set_device_biquad", help="Set biquad filter on OCA device")
+        set_biquad_parser.add_argument("index", type=int, help="Biquad index")
+        set_biquad_parser.add_argument("filter_type", choices=["bell", "high_shelf", "low_shelf"], help="Type of biquad filter")
+        set_biquad_parser.add_argument("gain", type=float, help="Gain in dB")
+        set_biquad_parser.add_argument("peak_freq", type=float, help="Peak frequency in Hz")
+        set_biquad_parser.add_argument("Q", type=float, help="Quality factor")
+        set_biquad_parser.add_argument("sample_rate", type=int, help="Sample rate in Hz")
+        set_biquad_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        set_biquad_parser.add_argument("port", type=int, help="OCA device port")
 
         self.parser = parser
 
