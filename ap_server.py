@@ -293,32 +293,12 @@ class APServer:
         """
         try:
             index = int(command.get("index"))
-            filter_type = command.get("filter_type")
-            gain = float(command.get("gain", 0.0))
-            peak_freq = float(command.get("peak_freq", 1000.0))
-            Q = float(command.get("Q", 1.0))
-            sample_rate = int(command.get("sample_rate", 48000))
+            coefficients = command.get("coefficients")
             target_ip = command.get("target_ip")
             port = int(command.get("port"))
 
-            biquad = Biquad_Filter(
-                filter_type=filter_type,
-                gain=gain,
-                peak_freq=peak_freq,
-                Q=Q,
-                sample_rate=sample_rate
-            )
-            coeffs_dict = biquad.coefficients
-            coeffs = [
-                coeffs_dict["a1"],
-                coeffs_dict["a2"],
-                coeffs_dict["b0"],
-                coeffs_dict["b1"],
-                coeffs_dict["b2"]
-            ]
-
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            result = wrapper.set_biquad(index=index, coefficients=coeffs)
+            result = wrapper.set_biquad(index=index, coefficients=coefficients)
             self.logger.info(f"Set biquad on device: {result}")
             return result
         except Exception as e:

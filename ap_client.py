@@ -59,73 +59,7 @@ class APClient:
             "set_device_biquad": self.set_device_biquad,
         }
 
-        # Argument parser for command-line arguments
-        self.parser = argparse.ArgumentParser(description="AP Client Command Processor")
-        subparsers = self.parser.add_subparsers(dest="command", required=True)
-
-        # Define subparsers for each command
-        subparsers.add_parser("wake_up", help="Wake up the server.")
-
-        subparsers.add_parser("generate_timestamp_extension",
-                              help="Generate a timestamp extension.")
-
-        parser_construct_path = subparsers.add_parser("construct_path",
-                                                      help="Construct a path.")
-        parser_construct_path.add_argument("paths", type=str, nargs="+",
-                                           help="List of paths to join.")
-
-        subparsers.add_parser("get_timestamp_subpath",
-                              help="Get a timestamp subpath.")
-
-        parser_generate_file_prefix = subparsers.add_parser("generate_file_prefix",
-                                                            help="Generate a file prefix.")
-        parser_generate_file_prefix.add_argument("strings", type=str, nargs="+",
-                                                 help="List of strings to combine.")
-
-        parser_activate_measurement = subparsers.add_parser("activate_measurement",
-                                                            help="Activate a measurement.")
-        parser_activate_measurement.add_argument("measurement_name", type=str,
-                                                 help="Name of the measurement to activate.")
-
-        parser_set_average = subparsers.add_parser("set_average",
-                                                   help="Set the number of averages.")
-        parser_set_average.add_argument("averages", type=int, 
-                                        help="Number of averages to set.")
-
-        parser_set_channel = subparsers.add_parser("set_channel", help="Set the channel (1 or 2).")
-        parser_set_channel.add_argument("channel", type=int, choices=[1, 2],
-                                        help="Channel to set (1 or 2).")
-
-        subparsers.add_parser("open_box",
-                              help="Open the box.")
-
-        subparsers.add_parser("scan_serial",
-                              help="Scan the serial number.")
-
-        # Add biquad coefficients command
-        biquad_parser = subparsers.add_parser("get_biquad_coefficients",
-                                              help="Get biquad filter coefficients")
-        biquad_parser.add_argument("filter_type", choices=["bell", "high_shelf", "low_shelf"],
-                                   help="Type of biquad filter")
-        biquad_parser.add_argument("gain", type=float,
-                                   help="Gain in dB")
-        biquad_parser.add_argument("peak_freq", type=float,
-                                   help="Peak frequency in Hz")
-        biquad_parser.add_argument("Q", type=float,
-                                   help="Quality factor")
-        biquad_parser.add_argument("sample_rate", type=int,
-                                   help="Sample rate in Hz")
-
-        # Subparser for "set_device_biquad" command
-        set_biquad_parser = subparsers.add_parser("set_device_biquad", help="Set biquad filter on OCA device")
-        set_biquad_parser.add_argument("index", type=int, help="Biquad index")
-        set_biquad_parser.add_argument("filter_type", choices=["bell", "high_shelf", "low_shelf"], help="Type of biquad filter")
-        set_biquad_parser.add_argument("gain", type=float, help="Gain in dB")
-        set_biquad_parser.add_argument("peak_freq", type=float, help="Peak frequency in Hz")
-        set_biquad_parser.add_argument("Q", type=float, help="Quality factor")
-        set_biquad_parser.add_argument("sample_rate", type=int, help="Sample rate in Hz")
-        set_biquad_parser.add_argument("target_ip", type=str, help="OCA device IP address")
-        set_biquad_parser.add_argument("port", type=int, help="OCA device port")
+        self.setup_arg_parser()  # Nur hier aufrufen!
 
     def send_command(self, command, wait_for_response=True):
         """
@@ -249,20 +183,17 @@ class APClient:
 
     def set_device_biquad(self, args):
         """
-        Request the server to calculate biquad coefficients and set them on the OCA device.
+        Send coefficients to the server to set them on the OCA device.
         """
-        logging.info(f"Executing 'set_device_biquad' with: "
-                     f"index={args.index}, type={args.filter_type}, gain={args.gain}, "
-                     f"peak_freq={args.peak_freq}, Q={args.Q}, sample_rate={args.sample_rate}, "
-                     f"target_ip={args.target_ip}, port={args.port}")
+        try:
+            coeffs = json.loads(args.coefficients)
+        except Exception as e:
+            print("Fehler beim Parsen der Koeffizienten:", e)
+            return
         command = {
             "action": "set_device_biquad",
             "index": args.index,
-            "filter_type": args.filter_type,
-            "gain": args.gain,
-            "peak_freq": args.peak_freq,
-            "Q": args.Q,
-            "sample_rate": args.sample_rate,
+            "coefficients": coeffs,
             "target_ip": args.target_ip,
             "port": args.port,
             "wait_for_response": True
@@ -323,11 +254,7 @@ class APClient:
         # Subparser for "set_device_biquad" command
         set_biquad_parser = subparsers.add_parser("set_device_biquad", help="Set biquad filter on OCA device")
         set_biquad_parser.add_argument("index", type=int, help="Biquad index")
-        set_biquad_parser.add_argument("filter_type", choices=["bell", "high_shelf", "low_shelf"], help="Type of biquad filter")
-        set_biquad_parser.add_argument("gain", type=float, help="Gain in dB")
-        set_biquad_parser.add_argument("peak_freq", type=float, help="Peak frequency in Hz")
-        set_biquad_parser.add_argument("Q", type=float, help="Quality factor")
-        set_biquad_parser.add_argument("sample_rate", type=int, help="Sample rate in Hz")
+        set_biquad_parser.add_argument("coefficients", type=str, help="Koeffizienten-Liste als JSON-String")
         set_biquad_parser.add_argument("target_ip", type=str, help="OCA device IP address")
         set_biquad_parser.add_argument("port", type=int, help="OCA device port")
 
