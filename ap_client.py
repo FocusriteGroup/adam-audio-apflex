@@ -57,6 +57,20 @@ class APClient:
             "scan_serial": self.scan_serial,
             "get_biquad_coefficients": self.get_biquad_coefficients,
             "set_device_biquad": self.set_device_biquad,
+            "get_serial_number": self.get_serial_number,
+            "get_gain": self.get_gain,
+            "get_device_biquad": self.get_device_biquad,
+            "set_gain": self.set_gain,
+            "get_model_description": self.get_model_description,
+            "get_firmware_version": self.get_firmware_version,
+            "get_audio_input": self.get_audio_input,
+            "set_audio_input": self.set_audio_input,
+            "get_mute": self.get_mute,
+            "set_mute": self.set_mute,
+            "get_mode": self.get_mode,
+            "set_mode": self.set_mode,
+            "get_phase_delay": self.get_phase_delay,
+            "set_phase_delay": self.set_phase_delay,
         }
 
         self.setup_arg_parser()  # Nur hier aufrufen!
@@ -201,6 +215,208 @@ class APClient:
         response = self.send_command(command, wait_for_response=True)
         print(response)
 
+    def get_serial_number(self, args):
+        """
+        Request the server to get the serial number from the OCA device.
+        """
+        logging.info(f"Executing 'get_serial_number' for {args.target_ip}:{args.port}")
+        command = {
+            "action": "get_serial_number",
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
+    def get_gain(self, args):
+        """
+        Request the server to get the gain from the OCA device.
+        """
+        logging.info(f"Executing 'get_gain' for {args.target_ip}:{args.port}")
+        command = {
+            "action": "get_gain",
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
+    def get_device_biquad(self, args):
+        """
+        Request the server to get biquad coefficients from the OCA device.
+        """
+        logging.info(f"Executing 'get_device_biquad' for index={args.index} {args.target_ip}:{args.port}")
+        command = {
+            "action": "get_device_biquad",
+            "index": args.index,
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
+    def set_gain(self, args):
+        """
+        Request the server to set the gain on the OCA device.
+        """
+        logging.info(f"Executing 'set_gain' to {args.value} for {args.target_ip}:{args.port}")
+        command = {
+            "action": "set_gain",
+            "value": args.value,
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
+    def get_model_description(self, args):
+        """
+        Request the server to get the model description from the OCA device.
+        """
+        logging.info(f"Executing 'get_model_description' for {args.target_ip}:{args.port}")
+        command = {
+            "action": "get_model_description",
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
+    def get_firmware_version(self, args):
+        """
+        Request the server to get the firmware version from the OCA device.
+        """
+        logging.info(f"Executing 'get_firmware_version' for {args.target_ip}:{args.port}")
+        command = {
+            "action": "get_firmware_version",
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
+    def get_audio_input(self, args):
+        """
+        Request the server to get the audio input mode from the OCA device.
+        """
+        logging.info(f"Executing 'get_audio_input' for {args.target_ip}:{args.port}")
+        command = {
+            "action": "get_audio_input",
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
+    def set_audio_input(self, args):
+        """
+        Request the server to set the audio input mode on the OCA device.
+        """
+        logging.info(f"Executing 'set_audio_input' to {args.position} for {args.target_ip}:{args.port}")
+        command = {
+            "action": "set_audio_input",
+            "position": args.position,
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
+    def get_mute(self, args):
+        """
+        Request the server to get the mute state from the OCA device.
+        """
+        logging.info(f"Executing 'get_mute' for {args.target_ip}:{args.port}")
+        command = {
+            "action": "get_mute",
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
+    def set_mute(self, args):
+        """
+        Request the server to set the mute state on the OCA device.
+        """
+        logging.info(f"Executing 'set_mute' to {args.state} for {args.target_ip}:{args.port}")
+        command = {
+            "action": "set_mute",
+            "state": args.state,
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
+    def get_mode(self, args):
+        """
+        Request the server to get the control mode from the OCA device.
+        """
+        logging.info(f"Executing 'get_mode' for {args.target_ip}:{args.port}")
+        command = {
+            "action": "get_mode",
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
+    def set_mode(self, args):
+        """
+        Request the server to set the control mode on the OCA device.
+        """
+        logging.info(f"Executing 'set_mode' to {args.position} for {args.target_ip}:{args.port}")
+        command = {
+            "action": "set_mode",
+            "position": args.position,
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
+    def get_phase_delay(self, args):
+        """
+        Request the server to get the phase delay from the OCA device.
+        """
+        logging.info(f"Executing 'get_phase_delay' for {args.target_ip}:{args.port}")
+        command = {
+            "action": "get_phase_delay",
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
+    def set_phase_delay(self, args):
+        """
+        Request the server to set the phase delay on the OCA device.
+        """
+        logging.info(f"Executing 'set_phase_delay' to {args.position} for {args.target_ip}:{args.port}")
+        command = {
+            "action": "set_phase_delay",
+            "position": args.position,
+            "target_ip": args.target_ip,
+            "port": args.port,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
+
     def setup_arg_parser(self):
         """
         Set up the argument parser for command-line arguments.
@@ -257,6 +473,82 @@ class APClient:
         set_biquad_parser.add_argument("coefficients", type=str, help="Koeffizienten-Liste als JSON-String")
         set_biquad_parser.add_argument("target_ip", type=str, help="OCA device IP address")
         set_biquad_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser for "get_serial_number" command
+        get_serial_parser = subparsers.add_parser("get_serial_number", help="Get serial number from OCA device")
+        get_serial_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        get_serial_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser for "get_gain" command
+        get_gain_parser = subparsers.add_parser("get_gain", help="Get gain from OCA device")
+        get_gain_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        get_gain_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser for "set_gain" command
+        set_gain_parser = subparsers.add_parser("set_gain", help="Set gain on OCA device")
+        set_gain_parser.add_argument("value", type=float, help="Gain value")
+        set_gain_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        set_gain_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser for "get_device_biquad" command
+        get_device_biquad_parser = subparsers.add_parser("get_device_biquad", help="Get biquad coefficients from OCA device")
+        get_device_biquad_parser.add_argument("index", type=int, help="Biquad index")
+        get_device_biquad_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        get_device_biquad_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser for "get_model_description" command
+        get_model_parser = subparsers.add_parser("get_model_description", help="Get model description from OCA device")
+        get_model_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        get_model_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser for "get_firmware_version" command
+        get_firmware_parser = subparsers.add_parser("get_firmware_version", help="Get firmware version from OCA device")
+        get_firmware_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        get_firmware_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser for "get_audio_input" command
+        get_audio_input_parser = subparsers.add_parser("get_audio_input", help="Get audio input mode from OCA device")
+        get_audio_input_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        get_audio_input_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser for "set_audio_input" command
+        set_audio_input_parser = subparsers.add_parser("set_audio_input", help="Set audio input mode on OCA device")
+        set_audio_input_parser.add_argument("position", type=str, help="Audio input position (e.g. 'aes3', 'analogue')")
+        set_audio_input_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        set_audio_input_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser for "get_mute" command
+        get_mute_parser = subparsers.add_parser("get_mute", help="Get mute state from OCA device")
+        get_mute_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        get_mute_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser for "set_mute" command
+        set_mute_parser = subparsers.add_parser("set_mute", help="Set mute state on OCA device")
+        set_mute_parser.add_argument("state", type=str, choices=["muted", "unmuted"], help="Mute state ('muted' or 'unmuted')")
+        set_mute_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        set_mute_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser for "get_mode" command
+        get_mode_parser = subparsers.add_parser("get_mode", help="Get control mode from OCA device")
+        get_mode_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        get_mode_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser for "set_mode" command
+        set_mode_parser = subparsers.add_parser("set_mode", help="Set control mode on OCA device")
+        set_mode_parser.add_argument("position", type=str, help="Control mode to set")
+        set_mode_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        set_mode_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser für "get_phase_delay"
+        get_phase_delay_parser = subparsers.add_parser("get_phase_delay", help="Get phase delay from OCA device")
+        get_phase_delay_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        get_phase_delay_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser für "set_phase_delay"
+        set_phase_delay_parser = subparsers.add_parser("set_phase_delay", help="Set phase delay on OCA device")
+        set_phase_delay_parser.add_argument("position", type=str, help="Phase delay value (e.g. 'deg0', 'deg45', ...)")
+        set_phase_delay_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        set_phase_delay_parser.add_argument("port", type=int, help="OCA device port")
 
         self.parser = parser
 

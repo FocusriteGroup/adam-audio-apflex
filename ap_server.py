@@ -171,6 +171,20 @@ class APServer:
             "scan_serial": self._scan_serial,
             "get_biquad_coefficients": lambda: self._get_biquad_coefficients(command),  # <-- Add this line
             "set_device_biquad": lambda: self._set_device_biquad(command),
+            "get_serial_number": lambda: self._get_serial_number(command),
+            "get_gain": lambda: self._get_gain(command),
+            "get_device_biquad": lambda: self._get_device_biquad(command),
+            "set_gain": lambda: self._set_gain(command),
+            "get_model_description": lambda: self._get_model_description(command),
+            "get_firmware_version": lambda: self._get_firmware_version(command),
+            "get_audio_input": lambda: self._get_audio_input(command),
+            "set_audio_input": lambda: self._set_audio_input(command),
+            "get_mute": lambda: self._get_mute(command),  # <-- Add this line
+            "set_mute": lambda: self._set_mute(command),  # <-- Add this line
+            "get_mode": lambda: self._get_mode(command),  # <-- Add this line
+            "set_mode": lambda: self._set_mode(command),  # <-- Add this line
+            "get_phase_delay": lambda: self._get_phase_delay(command),  # <-- Add this line
+            "set_phase_delay": lambda: self._set_phase_delay(command),  # <-- Add this line
         }
 
         if action in command_map:
@@ -304,6 +318,222 @@ class APServer:
         except Exception as e:
             self.logger.error(f"Failed to set device biquad: {e}")
             return f"Error: Failed to set device biquad ({e})"
+
+    def _get_device_biquad(self, command):
+        """
+        Get the biquad coefficients from the OCA device.
+        """
+        try:
+            index = int(command.get("index"))
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            result = wrapper.get_biquad(index=index)
+            self.logger.info(f"Biquad coefficients received: {result}")
+            return result
+        except Exception as e:
+            self.logger.error(f"Failed to get device biquad: {e}")
+            return f"Error: Failed to get device biquad ({e})"
+
+    def _get_serial_number(self, command):
+        """
+        Get the serial number from the OCA device.
+        """
+        try:
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            serial = wrapper.get_serial_number()
+            self.logger.info(f"Serial number received: {serial}")
+            return serial
+        except Exception as e:
+            self.logger.error(f"Failed to get serial number: {e}")
+            return f"Error: Failed to get serial number ({e})"
+
+    def _get_gain(self, command):
+        """
+        Get the gain from the OCA device.
+        """
+        try:
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            gain = wrapper.get_gain()
+            self.logger.info(f"Gain received: {gain}")
+            return gain
+        except Exception as e:
+            self.logger.error(f"Failed to get gain: {e}")
+            return f"Error: Failed to get gain ({e})"
+
+    def _set_gain(self, command):
+        """
+        Set the gain on the OCA device.
+        """
+        try:
+            value = float(command.get("value"))
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            result = wrapper.set_gain(value)
+            self.logger.info(f"Set gain result: {result}")
+            return result
+        except Exception as e:
+            self.logger.error(f"Failed to set gain: {e}")
+            return f"Error: Failed to set gain ({e})"
+
+    def _get_model_description(self, command):
+        """
+        Get the model description from the OCA device.
+        """
+        try:
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            desc = wrapper.get_model_description()
+            self.logger.info(f"Model description received: {desc}")
+            return desc
+        except Exception as e:
+            self.logger.error(f"Failed to get model description: {e}")
+            return f"Error: Failed to get model description ({e})"
+
+    def _get_firmware_version(self, command):
+        """
+        Get the firmware version from the OCA device.
+        """
+        try:
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            version = wrapper.get_firmware_version()
+            self.logger.info(f"Firmware version received: {version}")
+            return version
+        except Exception as e:
+            self.logger.error(f"Failed to get firmware version: {e}")
+            return f"Error: Failed to get firmware version ({e})"
+
+    def _get_audio_input(self, command):
+        """
+        Get the audio input mode from the OCA device.
+        """
+        try:
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            audio_input = wrapper.get_audio_input()
+            self.logger.info(f"Audio input received: {audio_input}")
+            return audio_input
+        except Exception as e:
+            self.logger.error(f"Failed to get audio input: {e}")
+            return f"Error: Failed to get audio input ({e})"
+
+    def _set_audio_input(self, command):
+        """
+        Set the audio input mode on the OCA device.
+        """
+        try:
+            position = command.get("position")
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            result = wrapper.set_audio_input(position)
+            self.logger.info(f"Set audio input result: {result}")
+            return result
+        except Exception as e:
+            self.logger.error(f"Failed to set audio input: {e}")
+            return f"Error: Failed to set audio input ({e})"
+
+    def _get_mute(self, command):
+        """
+        Get the mute state from the OCA device.
+        """
+        try:
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            mute = wrapper.get_mute()
+            self.logger.info(f"Mute state received: {mute}")
+            return mute
+        except Exception as e:
+            self.logger.error(f"Failed to get mute state: {e}")
+            return f"Error: Failed to get mute state ({e})"
+
+    def _set_mute(self, command):
+        """
+        Set the mute state on the OCA device.
+        """
+        try:
+            state = command.get("state")
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            result = wrapper.set_mute(state)
+            self.logger.info(f"Set mute result: {result}")
+            return result
+        except Exception as e:
+            self.logger.error(f"Failed to set mute state: {e}")
+            return f"Error: Failed to set mute state ({e})"
+
+    def _get_mode(self, command):
+        """
+        Get the control mode from the OCA device.
+        """
+        try:
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            mode = wrapper.get_mode()
+            self.logger.info(f"Mode received: {mode}")
+            return mode
+        except Exception as e:
+            self.logger.error(f"Failed to get mode: {e}")
+            return f"Error: Failed to get mode ({e})"
+
+    def _set_mode(self, command):
+        """
+        Set the control mode on the OCA device.
+        """
+        try:
+            position = command.get("position")
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            result = wrapper.set_mode(position)
+            self.logger.info(f"Set mode result: {result}")
+            return result
+        except Exception as e:
+            self.logger.error(f"Failed to set mode: {e}")
+            return f"Error: Failed to set mode ({e})"
+
+    def _get_phase_delay(self, command):
+        """
+        Get the phase delay from the OCA device.
+        """
+        try:
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            delay = wrapper.get_phase_delay()
+            self.logger.info(f"Phase delay received: {delay}")
+            return delay
+        except Exception as e:
+            self.logger.error(f"Failed to get phase delay: {e}")
+            return f"Error: Failed to get phase delay ({e})"
+
+    def _set_phase_delay(self, command):
+        """
+        Set the phase delay on the OCA device.
+        """
+        try:
+            position = command.get("position")
+            target_ip = command.get("target_ip")
+            port = int(command.get("port"))
+            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
+            result = wrapper.set_phase_delay(position)
+            self.logger.info(f"Set phase delay result: {result}")
+            return result
+        except Exception as e:
+            self.logger.error(f"Failed to set phase delay: {e}")
+            return f"Error: Failed to set phase delay ({e})"
 
     # --- Server Management ---
 
