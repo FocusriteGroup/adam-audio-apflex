@@ -1,6 +1,7 @@
 import logging
 import os
 from datetime import datetime
+import csv
 
 # Unterverzeichnis "logs" erstellen, falls es noch nicht existiert
 log_dir = "logs/server"
@@ -185,6 +186,7 @@ class APServer:
             "set_mode": lambda: self._set_mode(command),  # <-- Add this line
             "get_phase_delay": lambda: self._get_phase_delay(command),  # <-- Add this line
             "set_phase_delay": lambda: self._set_phase_delay(command),  # <-- Add this line
+            "check_measurement_trials": lambda: self._check_measurement_trials(command),  # <-- Add this line
         }
 
         if action in command_map:
@@ -534,6 +536,32 @@ class APServer:
         except Exception as e:
             self.logger.error(f"Failed to set phase delay: {e}")
             return f"Error: Failed to set phase delay ({e})"
+
+    def _check_measurement_trials(self, command):
+        serial_number = command.get("serial_number")
+        csv_path = command.get("csv_path")
+        max_trials = int(command.get("max_trials"))
+        self.logger.info(f"Checking measurement trials for serial: {serial_number}, file: {csv_path}, max: {max_trials}")
+        try:
+            count = 0
+            with open(csv_path, newline='', encoding='utf-8') as csvfile:
+                reader = csv.DictReader(csvfile, delimiter=",", skipinitialspace=True)
+                for row in reader:
+                    self.logger.debug(f"CSV row: {row}")
+                    if row.get("SerialNumber") == serial_number:
+                        count += 1
+            self.logger.info(f"Serial {serial_number} found {count} times in {csv_path}")
+            if count >= max_trials:
+                msg = "Maximum number of permitted measurements reached."
+                self.logger.warning(f"{msg} (serial={serial_number}, count={count}, max={max_trials})")
+                return msg
+            else:
+                msg = "Measurement permitted."
+                self.logger.info(f"{msg} (serial={serial_number}, count={count}, max={max_trials})")
+                return msg
+        except Exception as e:
+            self.logger.error(f"Error checking measurement trials: {e}")
+            return f"Error: {e}"
 
     # --- Server Management ---
 

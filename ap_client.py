@@ -71,6 +71,7 @@ class APClient:
             "set_mode": self.set_mode,
             "get_phase_delay": self.get_phase_delay,
             "set_phase_delay": self.set_phase_delay,
+            "check_measurement_trials": self.check_measurement_trials,
         }
 
         self.setup_arg_parser()  # Nur hier aufrufen!
@@ -417,6 +418,27 @@ class APClient:
         response = self.send_command(command, wait_for_response=True)
         print(response)
 
+    def check_measurement_trials(self, args):
+        """
+        Check the allowed measurement trials for a serial number.
+
+        Args:
+            serial_number (str): The serial number to check.
+            csv_path (str): The path to the CSV file.
+            max_trials (int): The maximum allowed trials.
+        """
+        logging.info(f"Sending check_measurement_trials: serial={args.serial_number}, csv={args.csv_path}, max={args.max_trials}")
+        command = {
+            "action": "check_measurement_trials",
+            "serial_number": args.serial_number,
+            "csv_path": args.csv_path,
+            "max_trials": args.max_trials,
+            "wait_for_response": True
+        }
+        response = self.send_command(command, wait_for_response=True)
+        logging.info(f"Server response: {response}")
+        print(response)
+
     def setup_arg_parser(self):
         """
         Set up the argument parser for command-line arguments.
@@ -549,6 +571,12 @@ class APClient:
         set_phase_delay_parser.add_argument("position", type=str, help="Phase delay value (e.g. 'deg0', 'deg45', ...)")
         set_phase_delay_parser.add_argument("target_ip", type=str, help="OCA device IP address")
         set_phase_delay_parser.add_argument("port", type=int, help="OCA device port")
+
+        # Subparser für "check_measurement_trials"
+        check_trials_parser = subparsers.add_parser("check_measurement_trials", help="Check allowed measurement trials for a serial number")
+        check_trials_parser.add_argument("serial_number", type=str, help="Serial number to check")
+        check_trials_parser.add_argument("csv_path", type=str, help="Path to the CSV file")
+        check_trials_parser.add_argument("max_trials", type=int, help="Maximum allowed trials")
 
         self.parser = parser
 

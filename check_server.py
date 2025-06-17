@@ -14,9 +14,7 @@ def start_server():
     # Startet den Server ap_server.py unabhängig vom Terminal und unterdrückt die Ausgaben
     subprocess.Popen(
         [sys.executable, "ap_server.py"],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-        creationflags=subprocess.CREATE_NEW_PROCESS_GROUP  # Windows equivalent to start_new_session
+        creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
     )
     time.sleep(1)  # Kurzes Warten, damit der Server starten kann
 
