@@ -17,7 +17,7 @@ logging.basicConfig(
     format="%(asctime)s %(levelname)s [%(name)s] %(message)s",
     handlers=[
         logging.FileHandler(log_filename, encoding="utf-8"),
-        logging.StreamHandler()  # Das ist für die Ausgabe im Terminal
+        logging.StreamHandler()
     ]
 )
 
@@ -25,11 +25,10 @@ import socket
 import threading
 import json
 import time
-from biquad_tools.biquad_designer import Biquad_Filter  # <-- Add this import
+from biquad_tools.biquad_designer import Biquad_Filter
 from oca_tools.oca_utilities import OCP1ToolWrapper
 
-from ap_utils import Utilities, SwitchBox, HoneywellScanner  # Import utility and device classes
-
+from ap_utils import Utilities, SwitchBox, HoneywellScanner
 
 logging.info("----------------------------------- APServer started")
 
@@ -53,7 +52,7 @@ class APServer:
         self.port = port
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.bind((self.host, self.port))
-        self.server.listen(5)  # Allow up to 5 simultaneous connections
+        self.server.listen(5)
         self.running = True
 
         # Device connection states
@@ -74,7 +73,10 @@ class APServer:
     # --- Device Connection Callbacks ---
 
     def scanner_on_connect(self):
-        """Callback for when the scanner connects."""
+        """
+        Callback executed when the scanner is connected.
+        Sets the scanner_connected flag and logs the event.
+        """
         with self.scanner_lock:
             if self.scanner_connected:
                 self.logger.info("Scanner already connected.")
@@ -83,7 +85,10 @@ class APServer:
             self.logger.info("Scanner connected.")
 
     def scanner_on_disconnect(self):
-        """Callback for when the scanner disconnects."""
+        """
+        Callback executed when the scanner is disconnected.
+        Clears the scanner_connected flag and logs the event.
+        """
         with self.scanner_lock:
             if not self.scanner_connected:
                 self.logger.info("Scanner already disconnected.")
@@ -92,7 +97,10 @@ class APServer:
             self.logger.info("Scanner disconnected.")
 
     def switchbox_on_connect(self):
-        """Callback for when the switchbox connects."""
+        """
+        Callback executed when the SwitchBox is connected.
+        Sets the switchbox_connected flag and logs the event.
+        """
         with self.switchbox_lock:
             if self.switchbox_connected:
                 self.logger.info("SwitchBox already connected.")
@@ -101,7 +109,10 @@ class APServer:
             self.logger.info("SwitchBox connected.")
 
     def switchbox_on_disconnect(self):
-        """Callback for when the switchbox disconnects."""
+        """
+        Callback executed when the SwitchBox is disconnected.
+        Clears the switchbox_connected flag and logs the event.
+        """
         with self.switchbox_lock:
             if not self.switchbox_connected:
                 self.logger.info("SwitchBox already disconnected.")
@@ -116,32 +127,30 @@ class APServer:
         Handle communication with a connected client.
 
         Args:
-            client_socket (socket.socket): The socket object for the connected client.
+            client_socket (socket.socket): The client socket.
         """
         try:
             while True:
                 data = client_socket.recv(1024).decode("utf-8")
                 if not data:
                     break
-                self.logger.info(f"Received: {data}")
+                self.logger.info("Received: %s", data)
                 try:
                     command = json.loads(data)
                     response = self.process_command(command)
-
-                    # Check if the client expects a response
-                    if command.get("wait_for_response", True):  # Default to True if not specified
+                    if command.get("wait_for_response", True):
                         client_socket.send(response.encode("utf-8"))
-                        self.logger.info(f"Sent response: {response}")
+                        self.logger.info("Sent response: %s", response)
                     else:
                         self.logger.info("No response sent.")
                 except json.JSONDecodeError:
                     self.logger.error("Invalid JSON received.")
                     client_socket.send(b"Error: Invalid JSON format.")
-                except Exception as e:
-                    self.logger.error(f"Error processing command: {e}")
+                except (OSError, socket.error) as e:
+                    self.logger.error("Error processing command: %s", e)
                     client_socket.send(f"Error: {e}".encode("utf-8"))
-        except (socket.error, Exception) as e:
-            self.logger.error(f"Connection error: {e}")
+        except (socket.error, OSError) as e:
+            self.logger.error("Connection error: %s", e)
         finally:
             client_socket.close()
             self.logger.info("Client connection closed.")
@@ -170,7 +179,7 @@ class APServer:
             "set_channel": lambda: self._set_channel(command),
             "open_box": self._open_box,
             "scan_serial": self._scan_serial,
-            "get_biquad_coefficients": lambda: self._get_biquad_coefficients(command),  # <-- Add this line
+            "get_biquad_coefficients": lambda: self._get_biquad_coefficients(command),
             "set_device_biquad": lambda: self._set_device_biquad(command),
             "get_serial_number": lambda: self._get_serial_number(command),
             "get_gain": lambda: self._get_gain(command),
@@ -180,28 +189,31 @@ class APServer:
             "get_firmware_version": lambda: self._get_firmware_version(command),
             "get_audio_input": lambda: self._get_audio_input(command),
             "set_audio_input": lambda: self._set_audio_input(command),
-            "get_mute": lambda: self._get_mute(command),  # <-- Add this line
-            "set_mute": lambda: self._set_mute(command),  # <-- Add this line
-            "get_mode": lambda: self._get_mode(command),  # <-- Add this line
-            "set_mode": lambda: self._set_mode(command),  # <-- Add this line
-            "get_phase_delay": lambda: self._get_phase_delay(command),  # <-- Add this line
-            "set_phase_delay": lambda: self._set_phase_delay(command),  # <-- Add this line
-            "check_measurement_trials": lambda: self._check_measurement_trials(command),  # <-- Add this line
+            "get_mute": lambda: self._get_mute(command),
+            "set_mute": lambda: self._set_mute(command),
+            "get_mode": lambda: self._get_mode(command),
+            "set_mode": lambda: self._set_mode(command),
+            "get_phase_delay": lambda: self._get_phase_delay(command),
+            "set_phase_delay": lambda: self._set_phase_delay(command),
+            "check_measurement_trials": lambda: self._check_measurement_trials(command),
         }
 
         if action in command_map:
             try:
                 return command_map[action]()
             except Exception as e:
-                self.logger.error(f"Error processing action '{action}': {e}")
+                self.logger.error("Error processing action '%s': %s", action, e)
                 return f"Error: {e}"
         else:
-            self.logger.error(f"Unknown action: {action}")
+            self.logger.error("Unknown action: %s", action)
             return "Error: Unknown action."
 
-    # Methods for Commands ---
+    # --- Methods for Commands ---
 
     def _construct_path(self, command):
+        """
+        Construct a file path from a list of strings.
+        """
         paths = command.get("paths")
         if not paths or not isinstance(paths, list):
             return "Error: 'paths' must be a non-empty list of strings."
@@ -211,15 +223,21 @@ class APServer:
         return Utilities.construct_path(paths)
 
     def _generate_file_prefix(self, command):
+        """
+        Generate a file prefix from a list of strings.
+        """
         strings = command.get("strings")
         if not strings or not isinstance(strings, list):
             return "Error: 'strings' must be a non-empty list of strings."
         if not all(isinstance(s, str) for s in strings):
             return "Error: All elements in 'strings' must be strings."
-        self.logger.info(f"Generating file prefix from: {strings}")
+        self.logger.info("Generating file prefix from: %s", strings)
         return Utilities.generate_file_prefix(strings)
 
     def _set_channel(self, command):
+        """
+        Set the channel on the SwitchBox.
+        """
         if not self.switchbox_connected:
             self.logger.error("SwitchBox not connected.")
             return "Error: SwitchBox not connected."
@@ -231,20 +249,22 @@ class APServer:
                     self.switch_box.serial_connection.reset_output_buffer()
                     self.switch_box.start_listener()
                     self.switch_box.get_status()
-
                     channel = self.switch_box.switch_to_channel(channel)
-                    self.logger.info(f"Channel set to {channel}")
+                    self.logger.info("Channel set to %s", channel)
                     self.switch_box.stop_listener()
                     return f"Channel set to {channel}"
                 except Exception as e:
-                    self.logger.error(f"Failed to set channel: {e}")
+                    self.logger.error("Failed to set channel: %s", e)
                     self.switch_box.stop_listener()
                     return f"Error: Failed to set channel ({e})"
         else:
-            self.logger.error(f"Invalid channel: {channel}")
+            self.logger.error("Invalid channel: %s", channel)
             return "Error: Invalid channel"
 
     def _open_box(self):
+        """
+        Open the SwitchBox.
+        """
         if not self.switchbox_connected:
             self.logger.error("SwitchBox not connected.")
             return "Error: SwitchBox not connected."
@@ -252,20 +272,22 @@ class APServer:
         self.switch_box.serial_connection.reset_output_buffer()
         self.switch_box.start_listener()
         self.switch_box.get_status()
-
         self.switch_box.open_box()
         self.logger.info("Box opened.")
         self.switch_box.stop_listener()
         return "Box opened."
 
     def _scan_serial(self):
+        """
+        Scan a serial number using the HoneywellScanner.
+        """
         with self.scanner_lock:
             if not self.scanner_connected:
                 self.logger.error("Scanner not connected.")
                 return "Error: Scanner not connected."
             serial_number = self.scanner.trigger_scan()
             if serial_number:
-                self.logger.info(f"Serial number scanned: {serial_number}")
+                self.logger.info("Serial number scanned: %s", serial_number)
                 return serial_number
             else:
                 self.logger.error("Failed to scan serial number.")
@@ -281,7 +303,6 @@ class APServer:
             peak_freq = float(command.get("peak_freq", 1000.0))
             Q = float(command.get("Q", 1.0))
             sample_rate = int(command.get("sample_rate", 48000))
-
             biquad = Biquad_Filter(
                 filter_type=filter_type,
                 gain=gain,
@@ -297,10 +318,10 @@ class APServer:
                 coeffs_dict["b1"],
                 coeffs_dict["b2"]
             ]
-            self.logger.info(f"Biquad coefficients generated: {coeffs}")
+            self.logger.info("Biquad coefficients generated: %s", coeffs)
             return json.dumps(coeffs)
-        except Exception as e:
-            self.logger.error(f"Failed to generate biquad coefficients: {e}")
+        except (ValueError, KeyError) as e:
+            self.logger.error("Failed to generate biquad coefficients: %s", e)
             return f"Error: Failed to generate biquad coefficients ({e})"
 
     def _set_device_biquad(self, command):
@@ -312,13 +333,12 @@ class APServer:
             coefficients = command.get("coefficients")
             target_ip = command.get("target_ip")
             port = int(command.get("port"))
-
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             result = wrapper.set_biquad(index=index, coefficients=coefficients)
-            self.logger.info(f"Set biquad on device: {result}")
+            self.logger.info("Set biquad on device: %s", result)
             return result
-        except Exception as e:
-            self.logger.error(f"Failed to set device biquad: {e}")
+        except (ValueError, KeyError, TypeError) as e:
+            self.logger.error("Failed to set device biquad: %s", e)
             return f"Error: Failed to set device biquad ({e})"
 
     def _get_device_biquad(self, command):
@@ -331,10 +351,10 @@ class APServer:
             port = int(command.get("port"))
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             result = wrapper.get_biquad(index=index)
-            self.logger.info(f"Biquad coefficients received: {result}")
+            self.logger.info("Biquad coefficients received: %s", result)
             return result
         except Exception as e:
-            self.logger.error(f"Failed to get device biquad: {e}")
+            self.logger.error("Failed to get device biquad: %s", e)
             return f"Error: Failed to get device biquad ({e})"
 
     def _get_serial_number(self, command):
@@ -346,10 +366,10 @@ class APServer:
             port = int(command.get("port"))
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             serial = wrapper.get_serial_number()
-            self.logger.info(f"Serial number received: {serial}")
+            self.logger.info("Serial number received: %s", serial)
             return serial
         except Exception as e:
-            self.logger.error(f"Failed to get serial number: {e}")
+            self.logger.error("Failed to get serial number: %s", e)
             return f"Error: Failed to get serial number ({e})"
 
     def _get_gain(self, command):
@@ -361,10 +381,10 @@ class APServer:
             port = int(command.get("port"))
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             gain = wrapper.get_gain()
-            self.logger.info(f"Gain received: {gain}")
+            self.logger.info("Gain received: %s", gain)
             return gain
         except Exception as e:
-            self.logger.error(f"Failed to get gain: {e}")
+            self.logger.error("Failed to get gain: %s", e)
             return f"Error: Failed to get gain ({e})"
 
     def _set_gain(self, command):
@@ -377,10 +397,10 @@ class APServer:
             port = int(command.get("port"))
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             result = wrapper.set_gain(value)
-            self.logger.info(f"Set gain result: {result}")
+            self.logger.info("Set gain result: %s", result)
             return result
         except Exception as e:
-            self.logger.error(f"Failed to set gain: {e}")
+            self.logger.error("Failed to set gain: %s", e)
             return f"Error: Failed to set gain ({e})"
 
     def _get_model_description(self, command):
@@ -392,10 +412,10 @@ class APServer:
             port = int(command.get("port"))
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             desc = wrapper.get_model_description()
-            self.logger.info(f"Model description received: {desc}")
+            self.logger.info("Model description received: %s", desc)
             return desc
         except Exception as e:
-            self.logger.error(f"Failed to get model description: {e}")
+            self.logger.error("Failed to get model description: %s", e)
             return f"Error: Failed to get model description ({e})"
 
     def _get_firmware_version(self, command):
@@ -407,10 +427,10 @@ class APServer:
             port = int(command.get("port"))
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             version = wrapper.get_firmware_version()
-            self.logger.info(f"Firmware version received: {version}")
+            self.logger.info("Firmware version received: %s", version)
             return version
         except Exception as e:
-            self.logger.error(f"Failed to get firmware version: {e}")
+            self.logger.error("Failed to get firmware version: %s", e)
             return f"Error: Failed to get firmware version ({e})"
 
     def _get_audio_input(self, command):
@@ -422,10 +442,10 @@ class APServer:
             port = int(command.get("port"))
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             audio_input = wrapper.get_audio_input()
-            self.logger.info(f"Audio input received: {audio_input}")
+            self.logger.info("Audio input received: %s", audio_input)
             return audio_input
         except Exception as e:
-            self.logger.error(f"Failed to get audio input: {e}")
+            self.logger.error("Failed to get audio input: %s", e)
             return f"Error: Failed to get audio input ({e})"
 
     def _set_audio_input(self, command):
@@ -438,10 +458,10 @@ class APServer:
             port = int(command.get("port"))
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             result = wrapper.set_audio_input(position)
-            self.logger.info(f"Set audio input result: {result}")
+            self.logger.info("Set audio input result: %s", result)
             return result
         except Exception as e:
-            self.logger.error(f"Failed to set audio input: {e}")
+            self.logger.error("Failed to set audio input: %s", e)
             return f"Error: Failed to set audio input ({e})"
 
     def _get_mute(self, command):
@@ -453,10 +473,10 @@ class APServer:
             port = int(command.get("port"))
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             mute = wrapper.get_mute()
-            self.logger.info(f"Mute state received: {mute}")
+            self.logger.info("Mute state received: %s", mute)
             return mute
         except Exception as e:
-            self.logger.error(f"Failed to get mute state: {e}")
+            self.logger.error("Failed to get mute state: %s", e)
             return f"Error: Failed to get mute state ({e})"
 
     def _set_mute(self, command):
@@ -469,10 +489,10 @@ class APServer:
             port = int(command.get("port"))
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             result = wrapper.set_mute(state)
-            self.logger.info(f"Set mute result: {result}")
+            self.logger.info("Set mute result: %s", result)
             return result
         except Exception as e:
-            self.logger.error(f"Failed to set mute state: {e}")
+            self.logger.error("Failed to set mute state: %s", e)
             return f"Error: Failed to set mute state ({e})"
 
     def _get_mode(self, command):
@@ -484,10 +504,10 @@ class APServer:
             port = int(command.get("port"))
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             mode = wrapper.get_mode()
-            self.logger.info(f"Mode received: {mode}")
+            self.logger.info("Mode received: %s", mode)
             return mode
         except Exception as e:
-            self.logger.error(f"Failed to get mode: {e}")
+            self.logger.error("Failed to get mode: %s", e)
             return f"Error: Failed to get mode ({e})"
 
     def _set_mode(self, command):
@@ -500,10 +520,10 @@ class APServer:
             port = int(command.get("port"))
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             result = wrapper.set_mode(position)
-            self.logger.info(f"Set mode result: {result}")
+            self.logger.info("Set mode result: %s", result)
             return result
         except Exception as e:
-            self.logger.error(f"Failed to set mode: {e}")
+            self.logger.error("Failed to set mode: %s", e)
             return f"Error: Failed to set mode ({e})"
 
     def _get_phase_delay(self, command):
@@ -515,10 +535,10 @@ class APServer:
             port = int(command.get("port"))
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             delay = wrapper.get_phase_delay()
-            self.logger.info(f"Phase delay received: {delay}")
+            self.logger.info("Phase delay received: %s", delay)
             return delay
         except Exception as e:
-            self.logger.error(f"Failed to get phase delay: {e}")
+            self.logger.error("Failed to get phase delay: %s", e)
             return f"Error: Failed to get phase delay ({e})"
 
     def _set_phase_delay(self, command):
@@ -531,51 +551,59 @@ class APServer:
             port = int(command.get("port"))
             wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
             result = wrapper.set_phase_delay(position)
-            self.logger.info(f"Set phase delay result: {result}")
+            self.logger.info("Set phase delay result: %s", result)
             return result
         except Exception as e:
-            self.logger.error(f"Failed to set phase delay: {e}")
+            self.logger.error("Failed to set phase delay: %s", e)
             return f"Error: Failed to set phase delay ({e})"
 
     def _check_measurement_trials(self, command):
+        """
+        Check how many times a serial number appears in a CSV file and compare to max_trials.
+        Returns only "Measurement permitted" or "Maximum number of permitted measurements reached."
+        """
         serial_number = command.get("serial_number")
         csv_path = command.get("csv_path")
         max_trials = int(command.get("max_trials"))
-        self.logger.info(f"Checking measurement trials for serial: {serial_number}, file: {csv_path}, max: {max_trials}")
+        self.logger.info("Checking measurement trials for serial: %s, file: %s, max: %d", serial_number, csv_path, max_trials)
         try:
             count = 0
             with open(csv_path, newline='', encoding='utf-8') as csvfile:
                 reader = csv.DictReader(csvfile, delimiter=",", skipinitialspace=True)
                 for row in reader:
-                    self.logger.debug(f"CSV row: {row}")
+                    self.logger.debug("CSV row: %s", row)
                     if row.get("SerialNumber") == serial_number:
                         count += 1
-            self.logger.info(f"Serial {serial_number} found {count} times in {csv_path}")
+            self.logger.info("Serial %s found %d times in %s", serial_number, count, csv_path)
             if count >= max_trials:
                 msg = "Maximum number of permitted measurements reached."
-                self.logger.warning(f"{msg} (serial={serial_number}, count={count}, max={max_trials})")
+                self.logger.warning("%s (serial=%s, count=%d, max=%d)", msg, serial_number, count, max_trials)
                 return msg
             else:
                 msg = "Measurement permitted."
-                self.logger.info(f"{msg} (serial={serial_number}, count={count}, max={max_trials})")
+                self.logger.info("%s (serial=%s, count=%d, max=%d)", msg, serial_number, count, max_trials)
                 return msg
         except Exception as e:
-            self.logger.error(f"Error checking measurement trials: {e}")
+            self.logger.error("Error checking measurement trials: %s", e)
             return f"Error: {e}"
 
     # --- Server Management ---
 
     def start(self):
-        """Start the server and manage client connections."""
+        """
+        Start the server and manage client connections.
+        """
         self.logger.info("Server is running...")
         self.logger.info("Waiting for connections...")
         while self.running:
             client_socket, addr = self.server.accept()
-            self.logger.info(f"Connection from {addr}")
+            self.logger.info("Connection from %s", addr)
             threading.Thread(target=self.handle_client, args=(client_socket,)).start()
 
     def stop(self):
-        """Stop the server."""
+        """
+        Stop the server.
+        """
         self.running = False
         self.server.close()
         self.switch_box.disconnect()
