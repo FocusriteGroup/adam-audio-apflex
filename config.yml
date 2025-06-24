@@ -1,0 +1,7 @@
+config:
+  host: "localhost:8000"  # Mock server
+  station_id: "B6-2F-L01_T03"
+  lot_number: "110000517697"
+  dut_model_number: "80-00C982-000-R000"
+  user_id: "NV3172"
+  password: "12345"
