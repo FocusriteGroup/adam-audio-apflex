@@ -124,9 +124,11 @@ class SerialDevice:
                 pid = port.pid
                 if (self.vendor_id is None or vid == self.vendor_id) and (self.product_id is None or pid == self.product_id):
                     found = port
+                    #print(f"Found device: {port.device} (VID={vid}, PID={pid})")
                     break
 
             with self.lock:  # Protect shared resources
+                #SERIALDEVICE_LOGGER.info("Checking for device: VID=%s, PID=%s", self.vendor_id, self.product_id)
                 if found and not self.connected:
                     try:
                         self.serial_connection = serial.Serial(found.device, self.baudrate, timeout=self.timeout)
@@ -142,6 +144,7 @@ class SerialDevice:
 
                 elif not found and self.connected:
                     # Device was disconnected
+                    
                     self.connected = False
                     self._current_port = None
                     if self.serial_connection:

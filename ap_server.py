@@ -94,6 +94,7 @@ class APServer:
                 self.logger.info("Scanner already disconnected.")
                 return
             self.scanner_connected = False
+
             self.logger.info("Scanner disconnected.")
 
     def switchbox_on_connect(self):
