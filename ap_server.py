@@ -55,10 +55,6 @@ class APServer:
         self.server.listen(5)
         self.running = True
 
-        # Device connection states
-        self.switchbox_connected = False
-        self.scanner_connected = False
-
         # Locks for thread-safe access to devices
         self.scanner_lock = threading.Lock()
         self.switchbox_lock = threading.Lock()
@@ -77,28 +73,28 @@ class APServer:
         Callback executed when the scanner is connected.
         """
         with self.scanner_lock:
-            self.logger.info("Scanner connected.")
+            self.logger.info("Scanner physically connected.")
 
     def scanner_on_disconnect(self):
         """
         Callback executed when the scanner is disconnected.
         """
         with self.scanner_lock:
-            self.logger.info("Scanner disconnected.")
+            self.logger.info("Scanner physically disconnected.")
 
     def switchbox_on_connect(self):
         """
         Callback executed when the SwitchBox is connected.
         """
         with self.switchbox_lock:
-            self.logger.info("SwitchBox connected.")
+            self.logger.info("SwitchBox physically connected.")
 
     def switchbox_on_disconnect(self):
         """
         Callback executed when the SwitchBox is disconnected.
         """
-        with self.switchbox_lock: 
-            self.logger.info("SwitchBox disconnected.")
+        with self.switchbox_lock:
+            self.logger.info("SwitchBox physically disconnected.")
 
     # --- Client Handling ---
 
@@ -218,7 +214,7 @@ class APServer:
         """
         Set the channel on the SwitchBox.
         """
-        if not self.switchbox_connected:
+        if not self.switch_box.connected:
             self.logger.error("SwitchBox not connected.")
             return "Error: SwitchBox not connected."
         channel = command.get("channel")
@@ -245,7 +241,7 @@ class APServer:
         """
         Open the SwitchBox.
         """
-        if not self.switchbox_connected:
+        if not self.switch_box.connected:
             self.logger.error("SwitchBox not connected.")
             return "Error: SwitchBox not connected."
         with self.switchbox_lock:
@@ -255,7 +251,7 @@ class APServer:
                 self.switch_box.get_status()
                 self.switch_box.open_box()
                 self.logger.info("Box opened.")
-                return "Box opened."
+                return f"Box status: {self.switch_box.box_status}"
             except Exception as e:
                 self.logger.error("Failed to open box: %s", e)
                 return f"Error: Failed to open box ({e})"
@@ -267,7 +263,7 @@ class APServer:
         """
         Scan a serial number using the HoneywellScanner.
         """
-        if not self.scanner_connected:
+        if not self.scanner.connected:
             self.logger.error("Scanner not connected.")
             return "Error: Scanner not connected."
         with self.scanner_lock:

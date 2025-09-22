@@ -168,8 +168,9 @@ class APClient:
     def open_box(self, args):
         """Request the server to open the box."""
         logging.info("Executing 'open_box' command.")
-        command = {"action": "open_box", "wait_for_response": False}
-        self.send_command(command, wait_for_response=False)
+        command = {"action": "open_box", "wait_for_response": True}
+        response = self.send_command(command, wait_for_response=True)
+        print(response)
 
     def scan_serial(self, args):
         """Request the server to scan a serial number."""
