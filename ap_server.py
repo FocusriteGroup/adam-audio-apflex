@@ -75,50 +75,29 @@ class APServer:
     def scanner_on_connect(self):
         """
         Callback executed when the scanner is connected.
-        Sets the scanner_connected flag and logs the event.
         """
         with self.scanner_lock:
-            if self.scanner_connected:
-                self.logger.info("Scanner already connected.")
-                return
-            self.scanner_connected = True
             self.logger.info("Scanner connected.")
 
     def scanner_on_disconnect(self):
         """
         Callback executed when the scanner is disconnected.
-        Clears the scanner_connected flag and logs the event.
         """
         with self.scanner_lock:
-            if not self.scanner_connected:
-                self.logger.info("Scanner already disconnected.")
-                return
-            self.scanner_connected = False
-
             self.logger.info("Scanner disconnected.")
 
     def switchbox_on_connect(self):
         """
         Callback executed when the SwitchBox is connected.
-        Sets the switchbox_connected flag and logs the event.
         """
         with self.switchbox_lock:
-            if self.switchbox_connected:
-                self.logger.info("SwitchBox already connected.")
-                return
-            self.switchbox_connected = True
             self.logger.info("SwitchBox connected.")
 
     def switchbox_on_disconnect(self):
         """
         Callback executed when the SwitchBox is disconnected.
-        Clears the switchbox_connected flag and logs the event.
         """
-        with self.switchbox_lock:
-            if not self.switchbox_connected:
-                self.logger.info("SwitchBox already disconnected.")
-                return
-            self.switchbox_connected = False
+        with self.switchbox_lock: 
             self.logger.info("SwitchBox disconnected.")
 
     # --- Client Handling ---
@@ -246,18 +225,18 @@ class APServer:
         if channel in [1, 2]:
             with self.switchbox_lock:
                 try:
-                    self.switch_box.serial_connection.reset_input_buffer()
-                    self.switch_box.serial_connection.reset_output_buffer()
-                    self.switch_box.start_listener()
+                    self.switch_box.serial_connect()
+                    self.switch_box.start_listening()
                     self.switch_box.get_status()
                     channel = self.switch_box.switch_to_channel(channel)
                     self.logger.info("Channel set to %s", channel)
-                    self.switch_box.stop_listener()
                     return f"Channel set to {channel}"
                 except Exception as e:
                     self.logger.error("Failed to set channel: %s", e)
-                    self.switch_box.stop_listener()
                     return f"Error: Failed to set channel ({e})"
+                finally:
+                    self.switch_box.stop_listening()
+                    self.switch_box.serial_disconnect()
         else:
             self.logger.error("Invalid channel: %s", channel)
             return "Error: Invalid channel"
@@ -269,30 +248,43 @@ class APServer:
         if not self.switchbox_connected:
             self.logger.error("SwitchBox not connected.")
             return "Error: SwitchBox not connected."
-        self.switch_box.serial_connection.reset_input_buffer()
-        self.switch_box.serial_connection.reset_output_buffer()
-        self.switch_box.start_listener()
-        self.switch_box.get_status()
-        self.switch_box.open_box()
-        self.logger.info("Box opened.")
-        self.switch_box.stop_listener()
-        return "Box opened."
+        with self.switchbox_lock:
+            try:
+                self.switch_box.serial_connect()
+                self.switch_box.start_listening()
+                self.switch_box.get_status()
+                self.switch_box.open_box()
+                self.logger.info("Box opened.")
+                return "Box opened."
+            except Exception as e:
+                self.logger.error("Failed to open box: %s", e)
+                return f"Error: Failed to open box ({e})"
+            finally:
+                self.switch_box.stop_listening()
+                self.switch_box.serial_disconnect()
 
     def _scan_serial(self):
         """
         Scan a serial number using the HoneywellScanner.
         """
+        if not self.scanner_connected:
+            self.logger.error("Scanner not connected.")
+            return "Error: Scanner not connected."
         with self.scanner_lock:
-            if not self.scanner_connected:
-                self.logger.error("Scanner not connected.")
-                return "Error: Scanner not connected."
-            serial_number = self.scanner.trigger_scan()
-            if serial_number:
-                self.logger.info("Serial number scanned: %s", serial_number)
-                return serial_number
-            else:
-                self.logger.error("Failed to scan serial number.")
-                return "Error: Failed to scan serial number."
+            try:
+                self.scanner.serial_connect()
+                serial_number = self.scanner.trigger_scan()
+                if serial_number:
+                    self.logger.info("Serial number scanned: %s", serial_number)
+                    return serial_number
+                else:
+                    self.logger.error("Failed to scan serial number.")
+                    return "Error: Failed to scan serial number."
+            except Exception as e:
+                self.logger.error("Failed to scan serial number: %s", e)
+                return f"Error: Failed to scan serial number ({e})"
+            finally:
+                self.scanner.serial_disconnect()
 
     def _get_biquad_coefficients(self, command):
         """
