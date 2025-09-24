@@ -595,7 +595,8 @@ class APServer:
         """
         self.running = False
         self.server.close()
-        self.switch_box.disconnect()
+        self.switch_box.serial_disconnect()
+        self.scanner.serial_disconnect()
         self.logger.info("Server stopped.")
 
 if __name__ == "__main__":
