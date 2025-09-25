@@ -548,30 +548,48 @@ class APServer:
 
     def _check_measurement_trials(self, command):
         """
-        Check how many times a serial number appears in a CSV file and compare to max_trials.
+        Check how many times a serial number appears in a CSV file with Status='Failed' and compare to max_trials.
+        Creates the CSV file if it doesn't exist.
         Returns only "Measurement permitted" or "Maximum number of permitted measurements reached."
         """
         serial_number = command.get("serial_number")
         csv_path = command.get("csv_path")
         max_trials = int(command.get("max_trials"))
         self.logger.info("Checking measurement trials for serial: %s, file: %s, max: %d", serial_number, csv_path, max_trials)
+        
         try:
+            # Check if CSV file exists, create it if not
+            if not os.path.exists(csv_path):
+                self.logger.info("CSV file does not exist, creating: %s", csv_path)
+                # Create directory if it doesn't exist
+                os.makedirs(os.path.dirname(csv_path), exist_ok=True)
+                # Create CSV file with header
+                with open(csv_path, 'w', newline='', encoding='utf-8') as csvfile:
+                    writer = csv.writer(csvfile)
+                    writer.writerow(["Date", "Time", "Status", "ResultsPath", "SerialNumber", "FilePrefix"])
+                msg = "Measurement permitted."
+                self.logger.info("%s (CSV file created, serial=%s)", msg, serial_number)
+                return msg
+            
+            # File exists, count Failed entries
             count = 0
             with open(csv_path, newline='', encoding='utf-8') as csvfile:
                 reader = csv.DictReader(csvfile, delimiter=",", skipinitialspace=True)
                 for row in reader:
                     self.logger.debug("CSV row: %s", row)
-                    if row.get("SerialNumber") == serial_number:
+                    if row.get("SerialNumber") == serial_number and row.get("Status") == "Failed":
                         count += 1
-            self.logger.info("Serial %s found %d times in %s", serial_number, count, csv_path)
+            
+            self.logger.info("Serial %s found %d times with Failed status in %s", serial_number, count, csv_path)
             if count >= max_trials:
-                msg = "Maximum number of permitted measurements reached."
-                self.logger.warning("%s (serial=%s, count=%d, max=%d)", msg, serial_number, count, max_trials)
+                msg = f"Maximum number of permitted failed measurements reached for serial number {serial_number}."
+                self.logger.warning("%s (serial=%s, failed_count=%d, max=%d)", msg, serial_number, count, max_trials)
                 return msg
             else:
                 msg = "Measurement permitted."
-                self.logger.info("%s (serial=%s, count=%d, max=%d)", msg, serial_number, count, max_trials)
+                self.logger.info("%s (serial=%s, failed_count=%d, max=%d)", msg, serial_number, count, max_trials)
                 return msg
+                
         except Exception as e:
             self.logger.error("Error checking measurement trials: %s", e)
             return f"Error: {e}"
