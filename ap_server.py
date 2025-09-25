@@ -40,12 +40,12 @@ class APServer:
     and manages the SwitchBox and HoneywellScanner devices.
     """
 
-    def __init__(self, host="127.0.0.1", port=65432):
+    def __init__(self, host="0.0.0.0", port=65432):
         """
         Initialize the APServer.
 
         Args:
-            host (str): The server's hostname or IP address. Default is "127.0.0.1".
+            host (str): The server's hostname or IP address. Default is "0.0.0.0" for network access.
             port (int): The server's port number. Default is 65432.
         """
         self.host = host
@@ -54,6 +54,12 @@ class APServer:
         self.server.bind((self.host, self.port))
         self.server.listen(5)
         self.running = True
+
+        # Discovery service configuration
+        self.discovery_port = 65433
+        self.discovery_running = False
+        self.discovery_thread = None
+        self.discovery_interval = 5  # Sekunden zwischen Broadcasts
 
         # Locks for thread-safe access to devices
         self.scanner_lock = threading.Lock()
@@ -64,7 +70,176 @@ class APServer:
         self.scanner = HoneywellScanner(on_connect=self.scanner_on_connect, on_disconnect=self.scanner_on_disconnect)
 
         self.logger = logging.getLogger("APServer")
+        
+        # Display server information and start discovery
+        self._display_server_info()
+        self._start_discovery()
+        
         self.logger.info("Server started")
+
+    def _display_server_info(self):
+        """Display server connection information at startup."""
+        try:
+            hostname = socket.gethostname()
+            
+            # Ermittle die primäre IP-Adresse (die Route zum Internet verwendet)
+            with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+                s.connect(("8.8.8.8", 80))
+                primary_ip = s.getsockname()[0]
+            
+            self.logger.info("=== SERVER CONNECTION INFO ===")
+            self.logger.info("Hostname: %s", hostname)
+            self.logger.info("Server Port: %d", self.port)
+            self.logger.info("Discovery Port: %d", self.discovery_port)
+            self.logger.info("Discovery Interval: %d seconds", self.discovery_interval)
+            self.logger.info("Primary IP: %s", primary_ip)
+            self.logger.info("Host binding: %s (0.0.0.0 = all interfaces)", self.host)
+            self.logger.info("Discovery service: ENABLED")
+            self.logger.info("Client usage examples:")
+            self.logger.info("  Auto-discovery: python check_server.py --discover")
+            self.logger.info("  Manual connection: python ap_client.py get_serial_number --host %s", primary_ip)
+            self.logger.info("==============================")
+            
+        except Exception as e:
+            self.logger.error("Could not determine server connection info: %s", e)
+
+    def _start_discovery(self):
+        """Start the discovery broadcast service."""
+        self.discovery_running = True
+        self.discovery_thread = threading.Thread(target=self._discovery_broadcast_loop, daemon=True)
+        self.discovery_thread.start()
+        self.logger.info("Discovery service started on port %d (interval: %ds)", 
+                        self.discovery_port, self.discovery_interval)
+
+    def _discovery_broadcast_loop(self):
+        """
+        Main discovery broadcast loop.
+        
+        Broadcasts server information periodically using UDP broadcasts.
+        Uses adaptive intervals: fast announcements on startup, then normal intervals.
+        """
+        initial_interval = 1  # Schnelle Announcements beim Start (1 Sekunde)
+        normal_interval = self.discovery_interval  # Normal interval (5 Sekunden)
+        fast_announcements = 5  # Anzahl schneller Announcements beim Start
+        
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
+            try:
+                # Socket für Broadcast konfigurieren
+                sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+                announcement_count = 0
+                
+                self.logger.info("Starting discovery broadcast loop...")
+                
+                while self.discovery_running:
+                    try:
+                        # Server-Informationen für Broadcast sammeln
+                        broadcast_data = self._get_discovery_data()
+                        broadcast_data["sequence"] = announcement_count
+                        
+                        # JSON-Nachricht erstellen
+                        message = json.dumps(broadcast_data)
+                        
+                        # Broadcast senden
+                        sock.sendto(message.encode('utf-8'), ('<broadcast>', self.discovery_port))
+                        
+                        # Logging basierend auf Phase
+                        if announcement_count < fast_announcements:
+                            current_interval = initial_interval
+                            self.logger.debug("Fast discovery broadcast #%d sent: %s:%d", 
+                                           announcement_count + 1, broadcast_data["ip"], self.port)
+                        else:
+                            current_interval = normal_interval
+                            self.logger.debug("Discovery broadcast sent: %s:%d", 
+                                           broadcast_data["ip"], self.port)
+                        
+                        announcement_count += 1
+                        
+                        # Warten bis zum nächsten Broadcast
+                        time.sleep(current_interval)
+                        
+                    except Exception as e:
+                        if self.discovery_running:  # Nur loggen wenn Service noch aktiv sein soll
+                            self.logger.error("Discovery broadcast error: %s", e)
+                        # Kurze Pause vor Retry
+                        time.sleep(1)
+                        
+            except Exception as e:
+                self.logger.error("Failed to create discovery broadcast socket: %s", e)
+
+    def _get_discovery_data(self):
+        """
+        Collect server information for discovery broadcasts.
+        
+        Returns:
+            dict: Server information for broadcast
+        """
+        try:
+            hostname = socket.gethostname()
+            
+            # Primäre IP ermitteln (die Route zum Internet verwendet)
+            with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+                s.connect(("8.8.8.8", 80))
+                ip = s.getsockname()[0]
+            
+            return {
+                "service": "APServer",
+                "ip": ip,
+                "port": self.port,
+                "hostname": hostname,
+                "timestamp": time.time(),
+                "version": "1.0",
+                "capabilities": [
+                    "OCA", 
+                    "SwitchBox", 
+                    "Scanner", 
+                    "BiquadFilters", 
+                    "MeasurementTrials"
+                ],
+                "discovery_port": self.discovery_port,
+                "status": "running"
+            }
+            
+        except Exception as e:
+            self.logger.error("Error collecting discovery data: %s", e)
+            # Fallback-Daten wenn IP-Ermittlung fehlschlägt
+            return {
+                "service": "APServer",
+                "ip": "unknown",
+                "port": self.port,
+                "hostname": socket.gethostname(),
+                "timestamp": time.time(),
+                "version": "1.0",
+                "status": "running",
+                "error": str(e)
+            }
+
+    def _send_goodbye_broadcast(self):
+        """
+        Send goodbye message when server shuts down.
+        
+        This follows the mDNS pattern of announcing service unavailability.
+        """
+        try:
+            with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
+                sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+                
+                # Goodbye-Daten sammeln
+                goodbye_data = self._get_discovery_data()
+                goodbye_data["status"] = "goodbye"
+                goodbye_data["message"] = "Server shutting down"
+                
+                goodbye_message = json.dumps(goodbye_data)
+                
+                # Goodbye-Nachricht mehrfach senden für Zuverlässigkeit
+                for i in range(3):
+                    sock.sendto(goodbye_message.encode('utf-8'), ('<broadcast>', self.discovery_port))
+                    if i < 2:  # Nicht nach dem letzten Versuch warten
+                        time.sleep(0.1)
+                
+                self.logger.info("Goodbye discovery broadcast sent (3x)")
+                
+        except Exception as e:
+            self.logger.error("Failed to send goodbye broadcast: %s", e)
 
     # --- Device Connection Callbacks ---
 
@@ -609,13 +784,38 @@ class APServer:
 
     def stop(self):
         """
-        Stop the server.
+        Stop the server and discovery service.
         """
+        self.logger.info("Stopping APServer...")
+        
+        # Discovery Service stoppen
+        self.discovery_running = False
+        
+        # Goodbye-Broadcast senden
+        try:
+            self._send_goodbye_broadcast()
+        except Exception as e:
+            self.logger.error("Error sending goodbye broadcast: %s", e)
+        
+        # Auf Discovery-Thread warten
+        if self.discovery_thread and self.discovery_thread.is_alive():
+            self.discovery_thread.join(timeout=2)
+            if self.discovery_thread.is_alive():
+                self.logger.warning("Discovery thread did not stop within timeout")
+        
+        # Hauptserver stoppen
         self.running = False
-        self.server.close()
+        
+        # Geräte-Verbindungen schließen
+        try:
+            self.server.close()
+        except Exception as e:
+            self.logger.error("Error closing server socket: %s", e)
+            
         self.switch_box.serial_disconnect()
         self.scanner.serial_disconnect()
-        self.logger.info("Server stopped.")
+        
+        self.logger.info("APServer and discovery service stopped.")
 
 if __name__ == "__main__":
     server = APServer()
