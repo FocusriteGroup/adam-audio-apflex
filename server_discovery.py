@@ -4,9 +4,9 @@ import argparse
 import json
 import time
 
-class APServerDiscovery:
+class ServerDiscovery:
     """
-    APServer Discovery and Connection Check Tool.
+    Server Discovery and Connection Check Tool.
     
     This class provides methods to discover APServers in the network and check connections.
     Can be used programmatically or via command line.
@@ -14,7 +14,7 @@ class APServerDiscovery:
     
     def __init__(self, default_port=65432, discovery_port=65433):
         """
-        Initialize the APServerDiscovery.
+        Initialize the ServerDiscovery.
         
         Args:
             default_port (int): Default APServer port
@@ -44,26 +44,23 @@ class APServerDiscovery:
         except Exception:
             return False
 
-    def discover_servers(self, timeout=5):
+    def has_any_server(self, timeout=2):
         """
-        Discover available APServers in the network using UDP broadcasts.
+        Quick check if any server is available via discovery.
+        Optimized for speed - returns as soon as first server is found.
         
         Args:
-            timeout (int): How long to listen for broadcasts in seconds
+            timeout (int): Maximum time to wait for any server
             
         Returns:
-            list: List of discovered server information dictionaries
+            bool: True if at least one server is found
         """
-        servers = []
-        
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
                 sock.bind(('', self.discovery_port))
-                sock.settimeout(0.5)  # Kurzes Socket-Timeout für responsiveness
+                sock.settimeout(0.2)  # Sehr kurzes Socket-Timeout
                 
                 start_time = time.time()
-                seen_servers = set()
-                last_server_time = start_time
                 
                 while time.time() - start_time < timeout:
                     try:
@@ -71,48 +68,19 @@ class APServerDiscovery:
                         server_info = json.loads(data.decode('utf-8'))
                         
                         if server_info.get("service") == "APServer":
-                            server_key = (server_info.get("ip"), server_info.get("port"))
-                            if server_key not in seen_servers:
-                                servers.append(server_info)
-                                seen_servers.add(server_key)
-                                last_server_time = time.time()
-                                
-                                # Früh beenden wenn Server gefunden und kurz gewartet
-                                if len(servers) >= 1 and time.time() - last_server_time > 1:
-                                    break
+                            return True  # Sofort beenden wenn erster Server gefunden
                         
-                    except socket.timeout:
-                        # Früh beenden wenn Server gefunden und lange nichts mehr kam
-                        if servers and time.time() - last_server_time > 2:
-                            break
-                        continue
-                    except (json.JSONDecodeError, Exception):
+                    except (socket.timeout, json.JSONDecodeError, Exception):
                         continue
                         
         except Exception:
             pass
         
-        return servers
+        return False
 
-    def get_primary_server(self, timeout=5):
+    def find_server_ip(self, target_ip=None, target_port=None, discovery_timeout=5):
         """
-        Get the first/primary server found via discovery.
-        
-        Args:
-            timeout (int): Discovery timeout in seconds
-            
-        Returns:
-            tuple: (ip, port) or (None, None) if not found
-        """
-        servers = self.discover_servers(timeout)
-        if servers:
-            server = servers[0]
-            return (server['ip'], server['port'])
-        return (None, None)
-
-    def find_server(self, target_ip=None, target_port=None, discovery_timeout=5):
-        """
-        Find an APServer either by specific IP or via discovery.
+        Find an APServer and return its IP address.
         
         Args:
             target_ip (str): Specific IP to check first (optional)
@@ -120,107 +88,144 @@ class APServerDiscovery:
             discovery_timeout (int): How long to search via discovery
             
         Returns:
-            tuple: (ip, port) of found server or (None, None) if not found
+            str or None: IP address of found server or None if not found
         """
         if target_port is None:
             target_port = self.default_port
             
         # 1. Wenn spezifische IP angegeben, diese zuerst prüfen
-        if target_ip:
-            if self.check_server_connection(target_ip, target_port):
-                return (target_ip, target_port)
+        if target_ip and self.check_server_connection(target_ip, target_port):
+            return target_ip
         
-        # 2. Falls spezifische IP nicht erreichbar oder nicht angegeben: Discovery verwenden
-        discovered_ip, discovered_port = self.get_primary_server(discovery_timeout)
+        # 2. Discovery verwenden
+        try:
+            with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
+                sock.bind(('', self.discovery_port))
+                sock.settimeout(0.5)
+                
+                start_time = time.time()
+                
+                while time.time() - start_time < discovery_timeout:
+                    try:
+                        data, addr = sock.recvfrom(1024)
+                        server_info = json.loads(data.decode('utf-8'))
+                        
+                        if server_info.get("service") == "APServer":
+                            discovered_ip = server_info.get("ip")
+                            discovered_port = server_info.get("port")
+                            
+                            # Discovered server testen
+                            if discovered_ip and self.check_server_connection(discovered_ip, discovered_port):
+                                return discovered_ip
+                        
+                    except (socket.timeout, json.JSONDecodeError, Exception):
+                        continue
+                        
+        except Exception:
+            pass
         
-        if discovered_ip:
-            # Discovered server nochmal testen (Discovery garantiert keine Erreichbarkeit)
-            if self.check_server_connection(discovered_ip, discovered_port):
-                return (discovered_ip, discovered_port)
-        
-        # 3. Nichts gefunden
-        return (None, None)
-
-    def get_server_ip(self, target_ip=None, target_port=None, discovery_timeout=5):
-        """
-        Get server IP address (convenience method for scripts).
-        
-        Args:
-            target_ip (str): Specific IP to check first (optional)
-            target_port (int): Server port to use (uses default_port if None)
-            discovery_timeout (int): How long to search via discovery
-            
-        Returns:
-            str or None: Server IP address or None if not found
-        """
-        found_ip, found_port = self.find_server(target_ip, target_port, discovery_timeout)
-        return found_ip
-
-# Backward compatibility - Module-level functions
-def check_server_connection(host, port, timeout=2):
-    """Backward compatibility function."""
-    discovery = APServerDiscovery()
-    return discovery.check_server_connection(host, port, timeout)
-
-def discover_servers(timeout=5):
-    """Backward compatibility function."""
-    discovery = APServerDiscovery()
-    return discovery.discover_servers(timeout)
-
-def get_primary_server(timeout=5):
-    """Backward compatibility function."""
-    discovery = APServerDiscovery()
-    return discovery.get_primary_server(timeout)
-
-def find_server(target_ip=None, target_port=65432, discovery_timeout=5):
-    """Backward compatibility function."""
-    discovery = APServerDiscovery()
-    return discovery.find_server(target_ip, target_port, discovery_timeout)
+        return None
 
 def main():
-    parser = argparse.ArgumentParser(description="APServer Discovery and Connection Check Tool")
+    parser = argparse.ArgumentParser(
+        description="APServer Discovery and Connection Check Tool",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Check if ANY server is available
+  python server_discovery.py --check
+  
+  # Check specific server first, then discovery fallback
+  python server_discovery.py --check --ip 192.168.1.100
+  
+  # Find server and return IP address
+  python server_discovery.py --find
+  
+  # Find specific server with discovery fallback
+  python server_discovery.py --find --ip 192.168.1.100
+        """
+    )
     
+    # Mode selection (mutually exclusive)
+    mode_group = parser.add_mutually_exclusive_group(required=True)
+    mode_group.add_argument("--check", action="store_true",
+                           help="Check if server is available (Server available/No Server available)")
+    mode_group.add_argument("--find", action="store_true",
+                           help="Find server and return IP address")
+    
+    # Connection parameters
     parser.add_argument("--ip", "--host", dest="target_ip", 
-                       help="Specific server IP address to check first")
+                       help="Specific server IP address")
     parser.add_argument("--port", type=int, default=65432,
                        help="Server port (default: 65432)")
     parser.add_argument("--no-discovery", action="store_true",
                        help="Disable discovery fallback")
-    parser.add_argument("--timeout", type=int, default=5,
-                       help="Discovery timeout in seconds (default: 5)")
+    parser.add_argument("--timeout", type=int, default=2,
+                       help="Timeout in seconds (default: 2 for --check, 5 for --find)")
     
     args = parser.parse_args()
     
     # Create discovery instance
-    discovery = APServerDiscovery(default_port=args.port)
+    discovery = ServerDiscovery(default_port=args.port)
     
-    # Server-Suche-Modus
-    if args.no_discovery:
-        # Nur spezifische IP prüfen
-        if not args.target_ip:
-            print("Warning: No server found - --no-discovery requires --ip parameter", file=sys.stderr)
-            sys.exit(1)
+    # MODE 1: Check if server(s) are available
+    if args.check:
+        # Determine timeout
+        check_timeout = args.timeout if args.timeout != 2 else 2
         
-        if discovery.check_server_connection(args.target_ip, args.port):
-            print(args.target_ip)
-            sys.exit(0)
-        else:
-            print("Warning: No server found", file=sys.stderr)
+        if args.target_ip:
+            # Check specific server first
+            if discovery.check_server_connection(args.target_ip, args.port, timeout=2):
+                print("Server available")
+                sys.exit(0)
+            
+            # Discovery fallback (if not disabled)
+            if not args.no_discovery and discovery.has_any_server(timeout=check_timeout):
+                print("Server available")
+                sys.exit(0)
+            
+            print("No Server available")
             sys.exit(1)
-    else:
-        # Normale Server-Suche (IP + Discovery fallback)
-        found_ip, found_port = discovery.find_server(
-            target_ip=args.target_ip,
-            target_port=args.port,
-            discovery_timeout=args.timeout
-        )
+        else:
+            # Only discovery
+            if discovery.has_any_server(timeout=check_timeout):
+                print("Server available")
+                sys.exit(0)
+            else:
+                print("No Server available")
+                sys.exit(1)
+    
+    # MODE 2: Find server (get IP)
+    elif args.find:
+        # Determine timeout
+        find_timeout = args.timeout if args.timeout != 2 else 5
         
-        if found_ip:
-            print(found_ip)  # Nur IP-Adresse
-            sys.exit(0)
+        if args.no_discovery:
+            # Only check specific IP
+            if not args.target_ip:
+                print("Error: --no-discovery requires --ip parameter", file=sys.stderr)
+                sys.exit(1)
+            
+            if discovery.check_server_connection(args.target_ip, args.port):
+                print(args.target_ip)
+                sys.exit(0)
+            else:
+                print("Warning: No server found", file=sys.stderr)
+                sys.exit(1)
         else:
-            print("Warning: No server found", file=sys.stderr)
-            sys.exit(1)
+            # Find server with discovery
+            found_ip = discovery.find_server_ip(
+                target_ip=args.target_ip,
+                target_port=args.port,
+                discovery_timeout=find_timeout
+            )
+            
+            if found_ip:
+                print(found_ip)
+                sys.exit(0)
+            else:
+                print("Warning: No server found", file=sys.stderr)
+                sys.exit(1)
 
 if __name__ == "__main__":
     main()
