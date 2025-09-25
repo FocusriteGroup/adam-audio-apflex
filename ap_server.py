@@ -59,7 +59,7 @@ class APServer:
         self.discovery_port = 65433
         self.discovery_running = False
         self.discovery_thread = None
-        self.discovery_interval = 5  # Sekunden zwischen Broadcasts
+        self.discovery_interval = 2  # Sekunden zwischen Broadcasts
 
         # Locks for thread-safe access to devices
         self.scanner_lock = threading.Lock()
@@ -96,7 +96,7 @@ class APServer:
             self.logger.info("Host binding: %s (0.0.0.0 = all interfaces)", self.host)
             self.logger.info("Discovery service: ENABLED")
             self.logger.info("Client usage examples:")
-            self.logger.info("  Auto-discovery: python check_server.py --discover")
+            self.logger.info("  Auto-discovery: python server_discovery.py")
             self.logger.info("  Manual connection: python ap_client.py get_serial_number --host %s", primary_ip)
             self.logger.info("==============================")
             
