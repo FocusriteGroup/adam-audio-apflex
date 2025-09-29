@@ -224,13 +224,21 @@ class ServerDiscovery:
             
             self.logger.info("Starting server process: %s", server_script_path)
             
-            # Start server process
-            process = subprocess.Popen(
-                [sys.executable, server_script_path],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if os.name == 'nt' else 0
-            )
+            # Plattform-spezifische Subprocess-Konfiguration
+            if os.name == 'nt':  # Windows
+                process = subprocess.Popen(
+                    [sys.executable, server_script_path],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
+                )
+            else:  # macOS/Linux
+                process = subprocess.Popen(
+                    [sys.executable, server_script_path],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    start_new_session=True  # Unix-equivalent zu CREATE_NEW_PROCESS_GROUP
+                )
             
             # Wait for server to start up
             start_time = time.time()
@@ -251,7 +259,15 @@ class ServerDiscovery:
             # Server didn't start in time - cleanup
             self.logger.warning("Server did not start within %ds timeout", startup_timeout)
             try:
-                process.terminate()
+                if os.name == 'nt':  # Windows
+                    process.terminate()
+                else:  # macOS/Linux
+                    process.terminate()
+                    # Zusätzlicher Kill nach kurzer Zeit falls nötig
+                    try:
+                        process.wait(timeout=2)
+                    except subprocess.TimeoutExpired:
+                        process.kill()
                 self.logger.debug("Terminated server process")
             except Exception as e:
                 self.logger.error("Error terminating server process: %s", str(e))
