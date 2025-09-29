@@ -3,13 +3,13 @@ import os
 from datetime import datetime
 import csv
 
-# Unterverzeichnis "logs" erstellen, falls es noch nicht existiert
-log_dir = "logs/server"
+# Unterverzeichnis "logs" für ADAM Audio Service erstellen
+log_dir = "logs/adam_audio"
 os.makedirs(log_dir, exist_ok=True)
 
 # Heutiges Datum im Format JJJJ-MM-TT
 today = datetime.now().strftime("%Y-%m-%d")
-log_filename = f"{log_dir}/ap_server_log_{today}.log"
+log_filename = f"{log_dir}/adam_service_log_{today}.log"
 
 # Logging konfigurieren
 logging.basicConfig(
@@ -30,26 +30,29 @@ from oca_tools.oca_utilities import OCP1ToolWrapper
 
 from ap_utils import Utilities, SwitchBox, HoneywellScanner
 
-logging.info("----------------------------------- APServer started")
+logging.info("----------------------------------- ADAM Audio Service started")
 
-class APServer:
+class AdamService:
     """
-    A server class to manage communication with clients and control devices.
+    ADAM Audio Production Service.
 
-    This server handles commands from clients, interacts with the Audio Precision API,
-    and manages the SwitchBox and HoneywellScanner devices.
+    Network service for ADAM Audio speaker testing, production line control,
+    and quality assurance processes. Handles device communication, production
+    equipment control, and automated testing workflows.
     """
 
-    def __init__(self, host="0.0.0.0", port=65432):
+    def __init__(self, host="0.0.0.0", port=65432, service_name="AdamAudio"):
         """
-        Initialize the APServer.
+        Initialize the ADAM Audio Service.
 
         Args:
-            host (str): The server's hostname or IP address. Default is "0.0.0.0" for network access.
-            port (int): The server's port number. Default is 65432.
+            host (str): The service's hostname or IP address. Default is "0.0.0.0" for network access.
+            port (int): The service's port number. Default is 65432.
+            service_name (str): Name of this service instance. Default is "AdamAudio".
         """
         self.host = host
         self.port = port
+        self.service_name = service_name
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.bind((self.host, self.port))
         self.server.listen(5)
@@ -69,16 +72,16 @@ class APServer:
         self.switch_box = SwitchBox(on_connect=self.switchbox_on_connect, on_disconnect=self.switchbox_on_disconnect)
         self.scanner = HoneywellScanner(on_connect=self.scanner_on_connect, on_disconnect=self.scanner_on_disconnect)
 
-        self.logger = logging.getLogger("APServer")
+        self.logger = logging.getLogger("AdamAudio")
         
-        # Display server information and start discovery
-        self._display_server_info()
+        # Display service information and start discovery
+        self._display_service_info()
         self._start_discovery()
         
-        self.logger.info("Server started")
+        self.logger.info("ADAM Audio Service started")
 
-    def _display_server_info(self):
-        """Display server connection information at startup."""
+    def _display_service_info(self):
+        """Display ADAM Audio service connection information at startup."""
         try:
             hostname = socket.gethostname()
             
@@ -87,21 +90,25 @@ class APServer:
                 s.connect(("8.8.8.8", 80))
                 primary_ip = s.getsockname()[0]
             
-            self.logger.info("=== SERVER CONNECTION INFO ===")
+            self.logger.info("=== ADAM AUDIO SERVICE INFO ===")
+            self.logger.info("Company: ADAM Audio")
+            self.logger.info("Service: Production & Testing Service")
+            self.logger.info("Service Name: %s", self.service_name)
             self.logger.info("Hostname: %s", hostname)
-            self.logger.info("Server Port: %d", self.port)
+            self.logger.info("Service Port: %d", self.port)
             self.logger.info("Discovery Port: %d", self.discovery_port)
             self.logger.info("Discovery Interval: %d seconds", self.discovery_interval)
             self.logger.info("Primary IP: %s", primary_ip)
             self.logger.info("Host binding: %s (0.0.0.0 = all interfaces)", self.host)
             self.logger.info("Discovery service: ENABLED")
-            self.logger.info("Client usage examples:")
-            self.logger.info("  Auto-discovery: python server_discovery.py")
-            self.logger.info("  Manual connection: python ap_client.py get_serial_number --host %s", primary_ip)
-            self.logger.info("==============================")
+            self.logger.info("Workstation usage examples:")
+            self.logger.info("  Auto-discovery: python adam_connector.py --find --service-name %s", self.service_name)
+            self.logger.info("  Production workstation: python adam_workstation.py --service %s --eol-workflow --auto-discover", self.service_name)
+            self.logger.info("  Manual command: python adam_workstation.py --service %s --command get_serial_number --host %s", self.service_name, primary_ip)
+            self.logger.info("================================")
             
         except Exception as e:
-            self.logger.error("Could not determine server connection info: %s", e)
+            self.logger.error("Could not determine service connection info: %s", e)
 
     def _start_discovery(self):
         """Start the discovery broadcast service."""
@@ -115,11 +122,11 @@ class APServer:
         """
         Main discovery broadcast loop.
         
-        Broadcasts server information periodically using UDP broadcasts.
+        Broadcasts service information periodically using UDP broadcasts.
         Uses adaptive intervals: fast announcements on startup, then normal intervals.
         """
         initial_interval = 1  # Schnelle Announcements beim Start (1 Sekunde)
-        normal_interval = self.discovery_interval  # Normal interval (5 Sekunden)
+        normal_interval = self.discovery_interval  # Normal interval (2 Sekunden)
         fast_announcements = 5  # Anzahl schneller Announcements beim Start
         
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
@@ -132,7 +139,7 @@ class APServer:
                 
                 while self.discovery_running:
                     try:
-                        # Server-Informationen für Broadcast sammeln
+                        # Service-Informationen für Broadcast sammeln
                         broadcast_data = self._get_discovery_data()
                         broadcast_data["sequence"] = announcement_count
                         
@@ -168,10 +175,10 @@ class APServer:
 
     def _get_discovery_data(self):
         """
-        Collect server information for discovery broadcasts.
+        Collect service information for discovery broadcasts.
         
         Returns:
-            dict: Server information for broadcast
+            dict: Service information for broadcast
         """
         try:
             hostname = socket.gethostname()
@@ -182,7 +189,8 @@ class APServer:
                 ip = s.getsockname()[0]
             
             return {
-                "service": "APServer",
+                "service": self.service_name,  # Jetzt konfigurierbar
+                "company": "ADAM Audio",
                 "ip": ip,
                 "port": self.port,
                 "hostname": hostname,
@@ -193,7 +201,10 @@ class APServer:
                     "SwitchBox", 
                     "Scanner", 
                     "BiquadFilters", 
-                    "MeasurementTrials"
+                    "MeasurementTrials",
+                    "ProductionControl",
+                    "EOLTesting",
+                    "QualityAssurance"
                 ],
                 "discovery_port": self.discovery_port,
                 "status": "running"
@@ -203,7 +214,8 @@ class APServer:
             self.logger.error("Error collecting discovery data: %s", e)
             # Fallback-Daten wenn IP-Ermittlung fehlschlägt
             return {
-                "service": "APServer",
+                "service": self.service_name,
+                "company": "ADAM Audio",
                 "ip": "unknown",
                 "port": self.port,
                 "hostname": socket.gethostname(),
@@ -215,7 +227,7 @@ class APServer:
 
     def _send_goodbye_broadcast(self):
         """
-        Send goodbye message when server shuts down.
+        Send goodbye message when service shuts down.
         
         This follows the mDNS pattern of announcing service unavailability.
         """
@@ -226,7 +238,7 @@ class APServer:
                 # Goodbye-Daten sammeln
                 goodbye_data = self._get_discovery_data()
                 goodbye_data["status"] = "goodbye"
-                goodbye_data["message"] = "Server shutting down"
+                goodbye_data["message"] = "ADAM Audio Service shutting down"
                 
                 goodbye_message = json.dumps(goodbye_data)
                 
@@ -248,14 +260,14 @@ class APServer:
         Callback executed when the scanner is connected.
         """
         with self.scanner_lock:
-            self.logger.info("Scanner physically connected.")
+            self.logger.info("HoneywellScanner physically connected.")
 
     def scanner_on_disconnect(self):
         """
         Callback executed when the scanner is disconnected.
         """
         with self.scanner_lock:
-            self.logger.info("Scanner physically disconnected.")
+            self.logger.info("HoneywellScanner physically disconnected.")
 
     def switchbox_on_connect(self):
         """
@@ -275,7 +287,7 @@ class APServer:
 
     def handle_client(self, client_socket):
         """
-        Handle communication with a connected client.
+        Handle communication with a connected workstation/client.
 
         Args:
             client_socket (socket.socket): The client socket.
@@ -304,7 +316,7 @@ class APServer:
             self.logger.error("Connection error: %s", e)
         finally:
             client_socket.close()
-            self.logger.info("Client connection closed.")
+            self.logger.info("Workstation connection closed.")
 
     # --- Command Processing ---
 
@@ -313,7 +325,7 @@ class APServer:
         Process a command and return a response.
 
         Args:
-            command (dict): The command received from the client.
+            command (dict): The command received from the workstation.
 
         Returns:
             str: The response to the command.
@@ -769,24 +781,24 @@ class APServer:
             self.logger.error("Error checking measurement trials: %s", e)
             return f"Error: {e}"
 
-    # --- Server Management ---
+    # --- Service Management ---
 
     def start(self):
         """
-        Start the server and manage client connections.
+        Start the ADAM Audio service and manage workstation connections.
         """
-        self.logger.info("Server is running...")
-        self.logger.info("Waiting for connections...")
+        self.logger.info("ADAM Audio Service is running...")
+        self.logger.info("Waiting for workstation connections...")
         while self.running:
             client_socket, addr = self.server.accept()
-            self.logger.info("Connection from %s", addr)
+            self.logger.info("Workstation connection from %s", addr)
             threading.Thread(target=self.handle_client, args=(client_socket,)).start()
 
     def stop(self):
         """
-        Stop the server and discovery service.
+        Stop the ADAM Audio service and discovery service.
         """
-        self.logger.info("Stopping APServer...")
+        self.logger.info("Stopping ADAM Audio Service...")
         
         # Discovery Service stoppen
         self.discovery_running = False
@@ -803,23 +815,46 @@ class APServer:
             if self.discovery_thread.is_alive():
                 self.logger.warning("Discovery thread did not stop within timeout")
         
-        # Hauptserver stoppen
+        # Hauptservice stoppen
         self.running = False
         
         # Geräte-Verbindungen schließen
         try:
             self.server.close()
         except Exception as e:
-            self.logger.error("Error closing server socket: %s", e)
+            self.logger.error("Error closing service socket: %s", e)
             
         self.switch_box.serial_disconnect()
         self.scanner.serial_disconnect()
         
-        self.logger.info("APServer and discovery service stopped.")
+        self.logger.info("ADAM Audio Service and discovery service stopped.")
+
+# --- Command Line Interface ---
+
+def main():
+    """Main entry point for ADAM Audio Service."""
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="ADAM Audio Production Service")
+    parser.add_argument("--service-name", default="AdamAudio",
+                       help="Name of this service instance (default: AdamAudio)")
+    parser.add_argument("--service-port", type=int, default=65432,
+                       help="Service port (default: 65432)")
+    parser.add_argument("--host", default="0.0.0.0",
+                       help="Host binding (default: 0.0.0.0 for all interfaces)")
+    
+    args = parser.parse_args()
+    
+    service = AdamService(
+        host=args.host,
+        port=args.service_port,
+        service_name=args.service_name
+    )
+    
+    try:
+        service.start()
+    except KeyboardInterrupt:
+        service.stop()
 
 if __name__ == "__main__":
-    server = APServer()
-    try:
-        server.start()
-    except KeyboardInterrupt:
-        server.stop()
+    main()
