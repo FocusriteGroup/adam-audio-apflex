@@ -28,7 +28,7 @@ import time
 from biquad_tools.biquad_designer import Biquad_Filter
 from oca_tools.oca_utilities import OCP1ToolWrapper
 
-from ap_utils import Utilities, SwitchBox, HoneywellScanner
+from ap_utils import Utilities
 
 logging.info("----------------------------------- ADAM Audio Service started")
 
@@ -38,7 +38,7 @@ class AdamService:
 
     Network service for ADAM Audio speaker testing, production line control,
     and quality assurance processes. Handles device communication, production
-    equipment control, and automated testing workflows.
+    equipment control, and automated testing workflows for workstation clients.  # ← GEÄNDERT: workstation clients
     """
 
     def __init__(self, host="0.0.0.0", port=65432, service_name="ADAMService"):
@@ -64,13 +64,6 @@ class AdamService:
         self.discovery_thread = None
         self.discovery_interval = 2  # Sekunden zwischen Broadcasts
 
-        # Locks for thread-safe access to devices
-        self.scanner_lock = threading.Lock()
-        self.switchbox_lock = threading.Lock()
-
-        # Initialize the SwitchBox and HoneywellScanner
-        self.switch_box = SwitchBox(on_connect=self.switchbox_on_connect, on_disconnect=self.switchbox_on_disconnect)
-        self.scanner = HoneywellScanner(on_connect=self.scanner_on_connect, on_disconnect=self.scanner_on_disconnect)
 
         self.logger = logging.getLogger("ADAMService")
         
@@ -198,8 +191,6 @@ class AdamService:
                 "version": "1.0",
                 "capabilities": [
                     "OCA", 
-                    "SwitchBox", 
-                    "Scanner", 
                     "BiquadFilters", 
                     "MeasurementTrials",
                     "ProductionControl",
@@ -253,48 +244,18 @@ class AdamService:
         except Exception as e:
             self.logger.error("Failed to send goodbye broadcast: %s", e)
 
-    # --- Device Connection Callbacks ---
+    # --- Workstation Handling ---  # ← GEÄNDERT: Client -> Workstation
 
-    def scanner_on_connect(self):
+    def handle_workstation(self, workstation_socket):  # ← GEÄNDERT: handle_client -> handle_workstation
         """
-        Callback executed when the scanner is connected.
-        """
-        with self.scanner_lock:
-            self.logger.info("HoneywellScanner physically connected.")
-
-    def scanner_on_disconnect(self):
-        """
-        Callback executed when the scanner is disconnected.
-        """
-        with self.scanner_lock:
-            self.logger.info("HoneywellScanner physically disconnected.")
-
-    def switchbox_on_connect(self):
-        """
-        Callback executed when the SwitchBox is connected.
-        """
-        with self.switchbox_lock:
-            self.logger.info("SwitchBox physically connected.")
-
-    def switchbox_on_disconnect(self):
-        """
-        Callback executed when the SwitchBox is disconnected.
-        """
-        with self.switchbox_lock:
-            self.logger.info("SwitchBox physically disconnected.")
-
-    # --- Client Handling ---
-
-    def handle_client(self, client_socket):
-        """
-        Handle communication with a connected workstation/client.
+        Handle communication with a connected workstation.  # ← GEÄNDERT: client -> workstation
 
         Args:
-            client_socket (socket.socket): The client socket.
+            workstation_socket (socket.socket): The workstation socket.  # ← GEÄNDERT: client -> workstation
         """
         try:
             while True:
-                data = client_socket.recv(1024).decode("utf-8")
+                data = workstation_socket.recv(1024).decode("utf-8")  # ← GEÄNDERT: client_socket -> workstation_socket
                 if not data:
                     break
                 self.logger.info("Received: %s", data)
@@ -302,34 +263,26 @@ class AdamService:
                     command = json.loads(data)
                     response = self.process_command(command)
                     if command.get("wait_for_response", True):
-                        client_socket.send(response.encode("utf-8"))
+                        workstation_socket.send(response.encode("utf-8"))  # ← GEÄNDERT: client_socket -> workstation_socket
                         self.logger.info("Sent response: %s", response)
                     else:
                         self.logger.info("No response sent.")
                 except json.JSONDecodeError:
                     self.logger.error("Invalid JSON received.")
-                    client_socket.send(b"Error: Invalid JSON format.")
+                    workstation_socket.send(b"Error: Invalid JSON format.")  # ← GEÄNDERT: client_socket -> workstation_socket
                 except (OSError, socket.error) as e:
                     self.logger.error("Error processing command: %s", e)
-                    client_socket.send(f"Error: {e}".encode("utf-8"))
+                    workstation_socket.send(f"Error: {e}".encode("utf-8"))  # ← GEÄNDERT: client_socket -> workstation_socket
         except (socket.error, OSError) as e:
             self.logger.error("Connection error: %s", e)
         finally:
-            client_socket.close()
-            self.logger.info("Workstation connection closed.")
+            workstation_socket.close()  # ← GEÄNDERT: client_socket -> workstation_socket
+            self.logger.info("Workstation connection closed.")  # ← GEÄNDERT: Client -> Workstation
 
     # --- Command Processing ---
 
     def process_command(self, command):
-        """
-        Process a command and return a response.
-
-        Args:
-            command (dict): The command received from the workstation.
-
-        Returns:
-            str: The response to the command.
-        """
+        """Process a command and return a response."""
         if not isinstance(command, dict) or "action" not in command:
             return "Error: Invalid command format."
 
@@ -339,9 +292,11 @@ class AdamService:
             "construct_path": lambda: self._construct_path(command),
             "get_timestamp_subpath": Utilities.generate_timestamp_subpath,
             "generate_file_prefix": lambda: self._generate_file_prefix(command),
-            "set_channel": lambda: self._set_channel(command),
-            "open_box": self._open_box,
-            "scan_serial": self._scan_serial,
+            
+            # ENTFERNEN: SwitchBox Commands
+            # "set_channel": lambda: self._set_channel(command),
+            # "open_box": self._open_box,
+            
             "get_biquad_coefficients": lambda: self._get_biquad_coefficients(command),
             "set_device_biquad": lambda: self._set_device_biquad(command),
             "get_serial_number": lambda: self._get_serial_number(command),
@@ -359,6 +314,9 @@ class AdamService:
             "get_phase_delay": lambda: self._get_phase_delay(command),
             "set_phase_delay": lambda: self._set_phase_delay(command),
             "check_measurement_trials": lambda: self._check_measurement_trials(command),
+            
+            # Workstation Logging Command bleibt
+            "log_workstation_task": lambda: self._log_workstation_task(command),
         }
 
         if action in command_map:
@@ -396,78 +354,6 @@ class AdamService:
             return "Error: All elements in 'strings' must be strings."
         self.logger.info("Generating file prefix from: %s", strings)
         return Utilities.generate_file_prefix(strings)
-
-    def _set_channel(self, command):
-        """
-        Set the channel on the SwitchBox.
-        """
-        if not self.switch_box.connected:
-            self.logger.error("SwitchBox not connected.")
-            return "Error: SwitchBox not connected."
-        channel = command.get("channel")
-        if channel in [1, 2]:
-            with self.switchbox_lock:
-                try:
-                    self.switch_box.serial_connect()
-                    self.switch_box.start_listening()
-                    self.switch_box.get_status()
-                    channel = self.switch_box.switch_to_channel(channel)
-                    self.logger.info("Channel set to %s", channel)
-                    return f"Channel set to {channel}"
-                except Exception as e:
-                    self.logger.error("Failed to set channel: %s", e)
-                    return f"Error: Failed to set channel ({e})"
-                finally:
-                    self.switch_box.stop_listening()
-                    self.switch_box.serial_disconnect()
-        else:
-            self.logger.error("Invalid channel: %s", channel)
-            return "Error: Invalid channel"
-
-    def _open_box(self):
-        """
-        Open the SwitchBox.
-        """
-        if not self.switch_box.connected:
-            self.logger.error("SwitchBox not connected.")
-            return "Error: SwitchBox not connected."
-        with self.switchbox_lock:
-            try:
-                self.switch_box.serial_connect()
-                self.switch_box.start_listening()
-                self.switch_box.get_status()
-                self.switch_box.open_box()
-                self.logger.info("Box opened.")
-                return f"Box status: {self.switch_box.box_status}"
-            except Exception as e:
-                self.logger.error("Failed to open box: %s", e)
-                return f"Error: Failed to open box ({e})"
-            finally:
-                self.switch_box.stop_listening()
-                self.switch_box.serial_disconnect()
-
-    def _scan_serial(self):
-        """
-        Scan a serial number using the HoneywellScanner.
-        """
-        if not self.scanner.connected:
-            self.logger.error("Scanner not connected.")
-            return "Error: Scanner not connected."
-        with self.scanner_lock:
-            try:
-                self.scanner.serial_connect()
-                serial_number = self.scanner.trigger_scan()
-                if serial_number:
-                    self.logger.info("Serial number scanned: %s", serial_number)
-                    return serial_number
-                else:
-                    self.logger.error("Failed to scan serial number.")
-                    return "Error: Failed to scan serial number."
-            except Exception as e:
-                self.logger.error("Failed to scan serial number: %s", e)
-                return f"Error: Failed to scan serial number ({e})"
-            finally:
-                self.scanner.serial_disconnect()
 
     def _get_biquad_coefficients(self, command):
         """
@@ -781,18 +667,46 @@ class AdamService:
             self.logger.error("Error checking measurement trials: %s", e)
             return f"Error: {e}"
 
+    def _log_workstation_task(self, command):
+        """Log any workstation task - generic method."""
+        try:
+            workstation_id = command.get("workstation_id", "UNKNOWN")
+            task_type = command.get("task_type", "UNKNOWN")  # "switchbox", "scanner", etc.
+            operation = command.get("operation", "UNKNOWN")  # "set_channel", "scan_serial", etc.
+            result = command.get("result", "UNKNOWN")
+            timestamp = command.get("timestamp", datetime.now().isoformat())
+            
+            # Optional task-specific data
+            task_data = command.get("task_data", {})
+            
+            # Generic logging mit allen Details
+            self.logger.info("WORKSTATION[%s] %s.%s result=%s at %s - Data: %s", 
+                            workstation_id, task_type.upper(), operation, result, timestamp, task_data)
+            
+            return json.dumps({
+                "status": "logged", 
+                "task_type": task_type,
+                "operation": operation, 
+                "result": result
+            })
+            
+        except Exception as e:
+            error_msg = f"Error logging workstation task: {e}"
+            self.logger.error(error_msg)
+            return json.dumps({"error": error_msg})
+
     # --- Service Management ---
 
     def start(self):
         """
-        Start the ADAM Audio service and manage workstation connections.
+        Start the ADAM Audio service and manage workstation connections.  # ← GEÄNDERT: workstation connections
         """
         self.logger.info("ADAM Audio Service is running...")
-        self.logger.info("Waiting for workstation connections...")
+        self.logger.info("Waiting for workstation connections...")  # ← GEÄNDERT: workstation connections
         while self.running:
-            client_socket, addr = self.server.accept()
-            self.logger.info("Workstation connection from %s", addr)
-            threading.Thread(target=self.handle_client, args=(client_socket,)).start()
+            workstation_socket, addr = self.server.accept()  # ← GEÄNDERT: client_socket -> workstation_socket
+            self.logger.info("Workstation connection from %s", addr)  # ← GEÄNDERT: Workstation connection
+            threading.Thread(target=self.handle_workstation, args=(workstation_socket,)).start()  # ← GEÄNDERT: handle_client -> handle_workstation
 
     def stop(self):
         """
@@ -824,9 +738,6 @@ class AdamService:
         except Exception as e:
             self.logger.error("Error closing service socket: %s", e)
             
-        self.switch_box.serial_disconnect()
-        self.scanner.serial_disconnect()
-        
         self.logger.info("ADAM Audio Service and discovery service stopped.")
 
 # --- Command Line Interface ---
