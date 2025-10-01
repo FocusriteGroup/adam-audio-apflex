@@ -15,15 +15,15 @@ class AdamConnector:
     This class provides methods to discover ADAM Audio services in the network 
     and check connections. Can be used programmatically or via command line.
     """
-    
-    def __init__(self, default_port=65432, discovery_port=65433, service_name="AdamAudio", setup_logging=True, logger=None):
+
+    def __init__(self, default_port=65432, discovery_port=65433, service_name="ADAMService", setup_logging=True, logger=None):
         """
         Initialize the ADAM Audio Connector.
         
         Args:
             default_port (int): Default ADAM service port
             discovery_port (int): Discovery broadcast port
-            service_name (str): Name of service to discover (default: AdamAudio)
+            service_name (str): Name of service to discover (default: ADAMService)
             setup_logging (bool): Whether to setup logging automatically
             logger (logging.Logger): Use external logger instead of creating own
         """
@@ -314,7 +314,7 @@ Examples:
   python adam_connector.py --find --start-service
   
   # Connect to specific ADAM service type
-  python adam_connector.py --find --service-name AdamAudio
+  python adam_connector.py --find --service-name ADAMService
         """
     )
     
@@ -330,8 +330,8 @@ Examples:
                        help="Specific service IP address")
     parser.add_argument("--port", type=int, default=65432,
                        help="Service port (default: 65432)")
-    parser.add_argument("--service-name", default="AdamAudio",
-                       help="Name of ADAM service to discover (default: AdamAudio)")
+    parser.add_argument("--service-name", default="ADAMService",
+                       help="Name of ADAM service to discover (default: ADAMService)")
     parser.add_argument("--no-discovery", action="store_true",
                        help="Disable discovery fallback")
     parser.add_argument("--timeout", type=int, default=2,

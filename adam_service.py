@@ -41,14 +41,14 @@ class AdamService:
     equipment control, and automated testing workflows.
     """
 
-    def __init__(self, host="0.0.0.0", port=65432, service_name="AdamAudio"):
+    def __init__(self, host="0.0.0.0", port=65432, service_name="ADAMService"):
         """
         Initialize the ADAM Audio Service.
 
         Args:
             host (str): The service's hostname or IP address. Default is "0.0.0.0" for network access.
             port (int): The service's port number. Default is 65432.
-            service_name (str): Name of this service instance. Default is "AdamAudio".
+            service_name (str): Name of this service instance. Default is "ADAMService".
         """
         self.host = host
         self.port = port
@@ -72,7 +72,7 @@ class AdamService:
         self.switch_box = SwitchBox(on_connect=self.switchbox_on_connect, on_disconnect=self.switchbox_on_disconnect)
         self.scanner = HoneywellScanner(on_connect=self.scanner_on_connect, on_disconnect=self.scanner_on_disconnect)
 
-        self.logger = logging.getLogger("AdamAudio")
+        self.logger = logging.getLogger("ADAMService")
         
         # Display service information and start discovery
         self._display_service_info()
@@ -836,8 +836,8 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description="ADAM Audio Production Service")
-    parser.add_argument("--service-name", default="AdamAudio",
-                       help="Name of this service instance (default: AdamAudio)")
+    parser.add_argument("--service-name", default="ADAMService",
+                       help="Name of this service instance (default: ADAMService)")
     parser.add_argument("--service-port", type=int, default=65432,
                        help="Service port (default: 65432)")
     parser.add_argument("--host", default="0.0.0.0",
