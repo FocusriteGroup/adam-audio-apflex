@@ -6,9 +6,6 @@ import argparse
 import os
 from datetime import datetime
 
-# NEU: Hardware-Import
-from workstation_utils import SwitchBoxManager, ScannerManager
-
 # ADAM Audio Workstation Logging - angleichen an Utils-Struktur
 log_dir = "logs/adam_audio"
 os.makedirs(log_dir, exist_ok=True)
@@ -20,11 +17,11 @@ log_filename = f"{log_dir}/adam_workstation_log_{today}.log"
 logging.basicConfig(
     filename=log_filename,
     level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - [%(name)s] - %(message)s"  # ← NEU: %(name)s hinzugefügt
+    format="%(asctime)s - %(levelname)s - [%(name)s] - %(message)s"
 )
 
-# NEU: Nur Workstation-Logger, SwitchBox loggt selbst
-WORKSTATION_LOGGER = logging.getLogger("ADAMWorkstation")
+# Workstation-Logger
+WORKSTATION_LOGGER = logging.getLogger("AdamWorkstation")
 
 logging.info("----------------------------------- ADAM Audio Workstation started")
 
@@ -53,13 +50,13 @@ class AdamWorkstation:
         self.service_name = service_name
         self.host = host
         
-        # NEU: Workstation-ID für Logging
+        # Workstation-ID für Logging
         self.workstation_id = socket.gethostname()
         
         # NEU: Lazy Loading - Hardware-Manager werden nur bei Bedarf initialisiert
         self._switchbox_manager = None
         self._scanner_manager = None
-        self._scanner_type = scanner_type  # Scanner-Typ für später merken
+        self._scanner_type = scanner_type  # Scanner-Type für spätere Initialisierung speichern
 
         # Map of commands to their corresponding methods
         self.command_map = {
@@ -72,7 +69,7 @@ class AdamWorkstation:
             "set_average": self.set_average,
             "set_channel": self.set_channel,
             "open_box": self.open_box,
-            "scan_serial": self.scan_serial,  # ← Jetzt lokal statt Service
+            "scan_serial": self.scan_serial,
             "get_biquad_coefficients": self.get_biquad_coefficients,
             "set_device_biquad": self.set_device_biquad,
             "get_serial_number": self.get_serial_number,
@@ -94,6 +91,25 @@ class AdamWorkstation:
 
         self.setup_arg_parser()
 
+    # NEU: Properties für Lazy Loading
+    @property
+    def switchbox_manager(self):
+        """Lazy-loaded SwitchBox manager."""
+        if self._switchbox_manager is None:
+            WORKSTATION_LOGGER.info("Initializing SwitchBox hardware on first use")
+            from workstation_utils import SwitchBoxManager
+            self._switchbox_manager = SwitchBoxManager(self.workstation_id)
+        return self._switchbox_manager
+
+    @property
+    def scanner_manager(self):
+        """Lazy-loaded Scanner manager."""
+        if self._scanner_manager is None:
+            WORKSTATION_LOGGER.info("Initializing %s Scanner hardware on first use", self._scanner_type)
+            from workstation_utils import ScannerManager
+            self._scanner_manager = ScannerManager(self.workstation_id, self._scanner_type)
+        return self._scanner_manager
+
     def _discover_service(self):
         """
         Discover ADAM service using connector (lazy import).
@@ -105,7 +121,7 @@ class AdamWorkstation:
             # Lazy import to avoid import errors if connector not available
             from adam_connector import AdamConnector
             
-            WORKSTATION_LOGGER.info("Auto-discovering ADAM service...")  # ← KORREKTUR
+            WORKSTATION_LOGGER.info("Auto-discovering ADAM service...")
             connector = AdamConnector(
                 default_port=self.port,
                 service_name=self.service_name,
@@ -114,16 +130,16 @@ class AdamWorkstation:
             
             service_ip = connector.find_service_ip(discovery_timeout=3)
             if service_ip:
-                WORKSTATION_LOGGER.info("ADAM service discovered at: %s:%d", service_ip, self.port)  # ← KORREKTUR
+                WORKSTATION_LOGGER.info("ADAM service discovered at: %s:%d", service_ip, self.port)
                 return service_ip
             else:
-                WORKSTATION_LOGGER.warning("No ADAM service found via discovery")  # ← KORREKTUR
+                WORKSTATION_LOGGER.warning("No ADAM service found via discovery")
                 return None
         except ImportError:
-            WORKSTATION_LOGGER.error("adam_connector.py not found - auto-discovery disabled")  # ← KORREKTUR
+            WORKSTATION_LOGGER.error("adam_connector.py not found - auto-discovery disabled")
             return None
         except Exception as e:
-            WORKSTATION_LOGGER.error("Service discovery failed: %s", e)  # ← KORREKTUR
+            WORKSTATION_LOGGER.error("Service discovery failed: %s", e)
             return None
 
     def _ensure_host_available(self):
@@ -144,7 +160,7 @@ class AdamWorkstation:
             self.host = discovered_host
             return True
         else:
-            WORKSTATION_LOGGER.error("No ADAM service host available and discovery failed")  # ← KORREKTUR
+            WORKSTATION_LOGGER.error("No ADAM service host available and discovery failed")
             return False
 
     def send_command(self, command, wait_for_response=True):
@@ -161,100 +177,85 @@ class AdamWorkstation:
         # Ensure we have a valid host
         if not self._ensure_host_available():
             error_msg = "Error: No ADAM service available. Use --host to specify manually."
-            WORKSTATION_LOGGER.error(error_msg)  # ← KORREKTUR
+            WORKSTATION_LOGGER.error(error_msg)
             return error_msg
 
         try:
-            WORKSTATION_LOGGER.info("Connecting to ADAM service at %s:%s...", self.host, self.port)  # ← KORREKTUR
+            WORKSTATION_LOGGER.info("Connecting to ADAM service at %s:%s...", self.host, self.port)
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
                 client_socket.connect((self.host, self.port))  # Connect to the service
-                WORKSTATION_LOGGER.info("Connected to ADAM service. Sending command: %s", command)  # ← KORREKTUR
+                WORKSTATION_LOGGER.info("Connected to ADAM service. Sending command: %s", command)
                 client_socket.send(json.dumps(command).encode("utf-8"))  # Send the command as JSON
 
                 if wait_for_response:
                     response = client_socket.recv(1024).decode("utf-8")  # Receive and decode the service's response
-                    WORKSTATION_LOGGER.info("Received response from ADAM service: %s", response)  # ← KORREKTUR
+                    WORKSTATION_LOGGER.info("Received response from ADAM service: %s", response)
                     return response
                 else:
-                    WORKSTATION_LOGGER.info("No response expected for this command.")  # ← KORREKTUR
+                    WORKSTATION_LOGGER.info("No response expected for this command.")
                     return None
         except socket.error as e:
-            WORKSTATION_LOGGER.error(f"Socket error: {e}")  # ← KORREKTUR
+            WORKSTATION_LOGGER.error("Socket error: %s", e)
             return f"Error: {e}"
         except json.JSONDecodeError as e:
-            WORKSTATION_LOGGER.error(f"JSON decode error: {e}")  # ← KORREKTUR
+            WORKSTATION_LOGGER.error("JSON decode error: %s", e)
             return f"Error: {e}"
 
-    # Command methods - ALLE logging.info() zu WORKSTATION_LOGGER.info() ändern
+    # Command methods
     def wake_up(self, args):
         """Send a command to wake up the service."""
-        WORKSTATION_LOGGER.info("Executing 'wake_up' command.")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'wake_up' command.")
         command = {"action": "wake_up", "wait_for_response": False}
         self.send_command(command, wait_for_response=False)
 
     def generate_timestamp_extension(self, args):
         """Request the service to generate a timestamp extension."""
-        WORKSTATION_LOGGER.info("Executing 'generate_timestamp_extension' command.")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'generate_timestamp_extension' command.")
         command = {"action": "generate_timestamp_extension"}
         response = self.send_command(command, wait_for_response=True)
         print(response)
 
     def construct_path(self, args):
         """Request the service to construct a path from the provided components."""
-        WORKSTATION_LOGGER.info(f"Executing 'construct_path' command with paths: {args.paths}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'construct_path' command with paths: %s", args.paths)
         command = {"action": "construct_path", "paths": args.paths}
         response = self.send_command(command, wait_for_response=True)
         print(response)
 
     def get_timestamp_subpath(self, args):
         """Request the service to generate a timestamp subpath."""
-        WORKSTATION_LOGGER.info("Executing 'get_timestamp_subpath' command.")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'get_timestamp_subpath' command.")
         command = {"action": "get_timestamp_subpath"}
         response = self.send_command(command, wait_for_response=True)
         print(response)
 
     def generate_file_prefix(self, args):
         """Request the service to generate a file prefix from the provided strings."""
-        WORKSTATION_LOGGER.info(f"Executing 'generate_file_prefix' command with strings: {args.strings}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'generate_file_prefix' command with strings: %s", args.strings)
         command = {"action": "generate_file_prefix", "strings": args.strings}
         response = self.send_command(command, wait_for_response=True)
         print(response)
 
     def activate_measurement(self, args):
         """Request the service to activate a specific measurement."""
-        WORKSTATION_LOGGER.info(f"Executing 'activate_measurement' command for measurement: {args.measurement_name}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'activate_measurement' command for measurement: %s", args.measurement_name)
         command = {"action": "activate_measurement", "measurement_name": args.measurement_name, "wait_for_response": False}
         self.send_command(command, wait_for_response=False)
 
     def set_average(self, args):
         """Request the service to set the number of averages."""
         if args.averages <= 0:
-            WORKSTATION_LOGGER.error("'averages' must be a positive integer.")  # ← KORREKTUR
+            WORKSTATION_LOGGER.error("'averages' must be a positive integer.")
             sys.exit(1)
-        WORKSTATION_LOGGER.info(f"Executing 'set_average' command with averages: {args.averages}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'set_average' command with averages: %d", args.averages)
         command = {"action": "set_average", "averages": args.averages, "wait_for_response": False}
         self.send_command(command, wait_for_response=False)
 
-    @property
-    def switchbox_manager(self):
-        """Lazy-loaded SwitchBox manager."""
-        if self._switchbox_manager is None:
-            WORKSTATION_LOGGER.info("Initializing SwitchBox hardware on first use")
-            self._switchbox_manager = SwitchBoxManager(self.workstation_id)
-        return self._switchbox_manager
-
-    @property
-    def scanner_manager(self):
-        """Lazy-loaded Scanner manager."""
-        if self._scanner_manager is None:
-            WORKSTATION_LOGGER.info("Initializing Scanner hardware on first use")
-            self._scanner_manager = ScannerManager(self.workstation_id, self._scanner_type)
-        return self._scanner_manager
-
+    # NEU: Hardware-Commands verwenden Properties (Lazy Loading)
     def set_channel(self, args):
         """Set channel on local SwitchBox hardware only."""
         try:
-            result_channel = self.switchbox_manager.set_channel(  # ← Property verwendet
+            result_channel = self.switchbox_manager.set_channel(  # ← Property-Zugriff
                 channel=args.channel,
                 service_host=self.host,
                 service_port=self.port
@@ -267,7 +268,7 @@ class AdamWorkstation:
     def open_box(self, args):
         """Open box on local SwitchBox hardware only."""
         try:
-            box_status = self.switchbox_manager.open_box(  # ← Property verwendet
+            box_status = self.switchbox_manager.open_box(  # ← Property-Zugriff
                 service_host=self.host,
                 service_port=self.port
             )
@@ -279,7 +280,7 @@ class AdamWorkstation:
     def scan_serial(self, args):
         """Scan serial number using configured scanner hardware."""
         try:
-            serial_number = self.scanner_manager.scan_serial(  # ← Property verwendet
+            serial_number = self.scanner_manager.scan_serial(  # ← Property-Zugriff
                 service_host=self.host,
                 service_port=self.port
             )
@@ -290,8 +291,8 @@ class AdamWorkstation:
 
     def get_biquad_coefficients(self, args):
         """Request the service to calculate biquad filter coefficients."""
-        WORKSTATION_LOGGER.info(f"Executing 'get_biquad_coefficients' with: "  # ← KORREKTUR
-                 f"type={args.filter_type}, gain={args.gain}, peak_freq={args.peak_freq}, Q={args.Q}, sample_rate={args.sample_rate}")
+        WORKSTATION_LOGGER.info("Executing 'get_biquad_coefficients' with: type=%s, gain=%s, peak_freq=%s, Q=%s, sample_rate=%s", 
+                 args.filter_type, args.gain, args.peak_freq, args.Q, args.sample_rate)
         command = {
             "action": "get_biquad_coefficients",
             "filter_type": args.filter_type,
@@ -324,7 +325,7 @@ class AdamWorkstation:
 
     def get_serial_number(self, args):
         """Request the service to get the serial number from the OCA device."""
-        WORKSTATION_LOGGER.info(f"Executing 'get_serial_number' for {args.target_ip}:{args.port}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'get_serial_number' for %s:%d", args.target_ip, args.port)
         command = {
             "action": "get_serial_number",
             "target_ip": args.target_ip,
@@ -336,7 +337,7 @@ class AdamWorkstation:
 
     def get_gain(self, args):
         """Request the service to get the gain from the OCA device."""
-        WORKSTATION_LOGGER.info(f"Executing 'get_gain' for {args.target_ip}:{args.port}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'get_gain' for %s:%d", args.target_ip, args.port)
         command = {
             "action": "get_gain",
             "target_ip": args.target_ip,
@@ -348,7 +349,7 @@ class AdamWorkstation:
 
     def get_device_biquad(self, args):
         """Request the service to get biquad coefficients from the OCA device."""
-        WORKSTATION_LOGGER.info(f"Executing 'get_device_biquad' for index={args.index} {args.target_ip}:{args.port}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'get_device_biquad' for index=%d %s:%d", args.index, args.target_ip, args.port)
         command = {
             "action": "get_device_biquad",
             "index": args.index,
@@ -361,7 +362,7 @@ class AdamWorkstation:
 
     def set_gain(self, args):
         """Request the service to set the gain on the OCA device."""
-        WORKSTATION_LOGGER.info(f"Executing 'set_gain' to {args.value} for {args.target_ip}:{args.port}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'set_gain' to %s for %s:%d", args.value, args.target_ip, args.port)
         command = {
             "action": "set_gain",
             "value": args.value,
@@ -374,7 +375,7 @@ class AdamWorkstation:
 
     def get_model_description(self, args):
         """Request the service to get the model description from the OCA device."""
-        WORKSTATION_LOGGER.info(f"Executing 'get_model_description' for {args.target_ip}:{args.port}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'get_model_description' for %s:%d", args.target_ip, args.port)
         command = {
             "action": "get_model_description",
             "target_ip": args.target_ip,
@@ -386,7 +387,7 @@ class AdamWorkstation:
 
     def get_firmware_version(self, args):
         """Request the service to get the firmware version from the OCA device."""
-        WORKSTATION_LOGGER.info(f"Executing 'get_firmware_version' for {args.target_ip}:{args.port}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'get_firmware_version' for %s:%d", args.target_ip, args.port)
         command = {
             "action": "get_firmware_version",
             "target_ip": args.target_ip,
@@ -398,7 +399,7 @@ class AdamWorkstation:
 
     def get_audio_input(self, args):
         """Request the service to get the audio input mode from the OCA device."""
-        WORKSTATION_LOGGER.info(f"Executing 'get_audio_input' for {args.target_ip}:{args.port}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'get_audio_input' for %s:%d", args.target_ip, args.port)
         command = {
             "action": "get_audio_input",
             "target_ip": args.target_ip,
@@ -410,7 +411,7 @@ class AdamWorkstation:
 
     def set_audio_input(self, args):
         """Request the service to set the audio input mode on the OCA device."""
-        WORKSTATION_LOGGER.info(f"Executing 'set_audio_input' to {args.position} for {args.target_ip}:{args.port}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'set_audio_input' to %s for %s:%d", args.position, args.target_ip, args.port)
         command = {
             "action": "set_audio_input",
             "position": args.position,
@@ -423,7 +424,7 @@ class AdamWorkstation:
 
     def get_mute(self, args):
         """Request the service to get the mute state from the OCA device."""
-        WORKSTATION_LOGGER.info(f"Executing 'get_mute' for {args.target_ip}:{args.port}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'get_mute' for %s:%d", args.target_ip, args.port)
         command = {
             "action": "get_mute",
             "target_ip": args.target_ip,
@@ -435,7 +436,7 @@ class AdamWorkstation:
 
     def set_mute(self, args):
         """Request the service to set the mute state on the OCA device."""
-        WORKSTATION_LOGGER.info(f"Executing 'set_mute' to {args.state} for {args.target_ip}:{args.port}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'set_mute' to %s for %s:%d", args.state, args.target_ip, args.port)
         command = {
             "action": "set_mute",
             "state": args.state,
@@ -448,7 +449,7 @@ class AdamWorkstation:
 
     def get_mode(self, args):
         """Request the service to get the control mode from the OCA device."""
-        WORKSTATION_LOGGER.info(f"Executing 'get_mode' for {args.target_ip}:{args.port}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'get_mode' for %s:%d", args.target_ip, args.port)
         command = {
             "action": "get_mode",
             "target_ip": args.target_ip,
@@ -460,7 +461,7 @@ class AdamWorkstation:
 
     def set_mode(self, args):
         """Request the service to set the control mode on the OCA device."""
-        WORKSTATION_LOGGER.info(f"Executing 'set_mode' to {args.position} for {args.target_ip}:{args.port}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'set_mode' to %s for %s:%d", args.position, args.target_ip, args.port)
         command = {
             "action": "set_mode",
             "position": args.position,
@@ -473,7 +474,7 @@ class AdamWorkstation:
 
     def get_phase_delay(self, args):
         """Request the service to get the phase delay from the OCA device."""
-        WORKSTATION_LOGGER.info(f"Executing 'get_phase_delay' for {args.target_ip}:{args.port}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'get_phase_delay' for %s:%d", args.target_ip, args.port)
         command = {
             "action": "get_phase_delay",
             "target_ip": args.target_ip,
@@ -485,7 +486,7 @@ class AdamWorkstation:
 
     def set_phase_delay(self, args):
         """Request the service to set the phase delay on the OCA device."""
-        WORKSTATION_LOGGER.info(f"Executing 'set_phase_delay' to {args.position} for {args.target_ip}:{args.port}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing 'set_phase_delay' to %s for %s:%d", args.position, args.target_ip, args.port)
         command = {
             "action": "set_phase_delay",
             "position": args.position,
@@ -498,7 +499,7 @@ class AdamWorkstation:
 
     def check_measurement_trials(self, args):
         """Check the allowed measurement trials for a serial number."""
-        WORKSTATION_LOGGER.info(f"Sending check_measurement_trials: serial={args.serial_number}, csv={args.csv_path}, max={args.max_trials}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Sending check_measurement_trials: serial=%s, csv=%s, max=%d", args.serial_number, args.csv_path, args.max_trials)
         command = {
             "action": "check_measurement_trials",
             "serial_number": args.serial_number,
@@ -507,7 +508,7 @@ class AdamWorkstation:
             "wait_for_response": True
         }
         response = self.send_command(command, wait_for_response=True)
-        WORKSTATION_LOGGER.info(f"ADAM service response: {response}")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("ADAM service response: %s", response)
         print(response)
 
     def setup_arg_parser(self):
@@ -536,11 +537,11 @@ Connection Examples:
         parser.add_argument("--service-name", default="ADAMService",
                            help="Name of ADAM service to connect to (default: ADAMService)")
         
-        # NEU: Scanner configuration
+        # Scanner configuration
         parser.add_argument("--scanner-type", choices=["honeywell"], default="honeywell",
                            help="Type of scanner to use (default: honeywell)")
         
-        # Subcommands - alle bleiben unverändert
+        # Subcommands
         subparsers = parser.add_subparsers(dest="command", required=True)
 
         # Subparser for "wake_up" command
@@ -684,24 +685,24 @@ Connection Examples:
         # Handle global connection parameters
         if args.service_host:
             self.host = args.service_host
-            WORKSTATION_LOGGER.info("Using specified ADAM service host: %s", self.host)  # ← KORREKTUR
+            WORKSTATION_LOGGER.info("Using specified ADAM service host: %s", self.host)
     
         if args.service_port != 65432:
             self.port = args.service_port
-            WORKSTATION_LOGGER.info("Using specified ADAM service port: %d", self.port)  # ← KORREKTUR
+            WORKSTATION_LOGGER.info("Using specified ADAM service port: %d", self.port)
             
         if args.service_name != "ADAMService":
             self.service_name = args.service_name
-            WORKSTATION_LOGGER.info("Using specified ADAM service name: %s", self.service_name)  # ← KORREKTUR
+            WORKSTATION_LOGGER.info("Using specified ADAM service name: %s", self.service_name)
 
         # Execute command
         command = args.command
-        WORKSTATION_LOGGER.info(f"Executing command: {command} on ADAM service")  # ← KORREKTUR
+        WORKSTATION_LOGGER.info("Executing command: %s on ADAM service", command)
         
         if command in self.command_map:
             self.command_map[command](args)
         else:
-            WORKSTATION_LOGGER.error(f"Unknown command: {command}")  # ← KORREKTUR
+            WORKSTATION_LOGGER.error("Unknown command: %s", command)
             sys.exit(1)
 
 

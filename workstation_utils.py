@@ -13,9 +13,9 @@ from ap_utils import SwitchBox, HoneywellScanner
 import time
 
 # Spezifische Logger für jede Komponente
-WORKSTATION_LOGGER = logging.getLogger("ADAMLogger")
-SCANNER_LOGGER = logging.getLogger("ADAMScanner")
-SWITCHBOX_LOGGER = logging.getLogger("ADAMSwitchBox")
+WORKSTATION_LOGGER = logging.getLogger("AdamWorkstation")
+SCANNER_LOGGER = logging.getLogger("AdamScanner")
+SWITCHBOX_LOGGER = logging.getLogger("AdamSwitchBox")
 
 class WorkstationLogger:
     """Centralized logging utilities for workstation features."""
@@ -92,7 +92,7 @@ class ScannerManager:
             on_disconnect=self._on_disconnect
         )
         
-        # NEU: Warten bis Scanner bereit ist
+        # Warten bis Scanner bereit ist
         self._wait_for_scanner_ready()
         SCANNER_LOGGER.info("Local HoneywellScanner hardware initialized")
 
@@ -121,12 +121,12 @@ class ScannerManager:
     def _on_connect(self):
         """Callback executed when the Scanner is connected."""
         with self.scanner_lock:
-            SCANNER_LOGGER.info("HoneywellScanner connection event received")  # ← SCANNER_LOGGER
+            SCANNER_LOGGER.info("HoneywellScanner connection event received")
 
     def _on_disconnect(self):
         """Callback executed when the Scanner is disconnected."""
         with self.scanner_lock:
-            SCANNER_LOGGER.info("HoneywellScanner disconnection event received")  # ← SCANNER_LOGGER
+            SCANNER_LOGGER.info("HoneywellScanner disconnection event received")
 
     def scan_serial(self, service_host=None, service_port=65432):
         """Scan serial number using configured scanner hardware with retry logic."""
@@ -195,13 +195,13 @@ class ScannerManager:
             else:
                 SCANNER_LOGGER.info("Executing local HoneywellScanner scan_serial (automatic) - attempt %d", attempt + 1)
             
-            # NEU: Verbindung mit erweiterten Checks prüfen
+            # Verbindung mit erweiterten Checks prüfen
             if not self._ensure_scanner_connected():
                 raise Exception("HoneywellScanner not connected after connection checks")
             
             with self.scanner_lock:
                 try:
-                    # NEU: Kurze Pause vor serieller Verbindung
+                    # Kurze Pause vor serieller Verbindung
                     time.sleep(0.1)
                     
                     self.scanner.serial_connect()
@@ -224,7 +224,7 @@ class ScannerManager:
                             "response_time": response_time,
                             "scan_method": "automatic",
                             "local_execution": True,
-                            "attempt": attempt + 1  # ← NEU: Attempt-Info hinzufügen
+                            "attempt": attempt + 1
                         },
                         "timestamp": start_time.isoformat()
                     }
@@ -248,10 +248,10 @@ class ScannerManager:
         
         except Exception as e:
             error_msg = f"Local HoneywellScanner error: {e}"
-            SCANNER_LOGGER.debug(error_msg)  # ← Debug statt error (wird in retry-logic gehandelt)
+            SCANNER_LOGGER.debug(error_msg)  # Debug statt error (wird in retry-logic gehandelt)
             
             # Log error to service nur bei letztem Versuch (wird von caller gehandelt)
-            raise Exception(str(e))  # ← Vereinfacht für retry-logic
+            raise Exception(str(e))
 
     def _ensure_scanner_connected(self, max_checks=3, check_delay=0.1):
         """
@@ -294,33 +294,149 @@ class SwitchBoxManager:
             on_connect=self._on_connect, 
             on_disconnect=self._on_disconnect
         )
-        SWITCHBOX_LOGGER.info("Local SwitchBox hardware initialized")  # ← SWITCHBOX_LOGGER
+        
+        # NEU: Warten bis SwitchBox bereit ist
+        self._wait_for_switchbox_ready()
+        SWITCHBOX_LOGGER.info("Local SwitchBox hardware initialized")
+
+    def _wait_for_switchbox_ready(self, timeout=5.0, retry_interval=0.1):
+        """
+        Wait for switchbox to be ready with timeout.
+        
+        Args:
+            timeout (float): Maximum time to wait in seconds
+            retry_interval (float): Time between connection checks
+        """
+        start_time = time.time()
+        
+        while time.time() - start_time < timeout:
+            try:
+                if self.switch_box.connected:
+                    SWITCHBOX_LOGGER.info("SwitchBox connection confirmed after %.1f seconds", time.time() - start_time)
+                    return
+                time.sleep(retry_interval)
+            except Exception as e:
+                SWITCHBOX_LOGGER.debug("SwitchBox connection check failed: %s", e)
+                time.sleep(retry_interval)
+        
+        SWITCHBOX_LOGGER.warning("SwitchBox not ready after %.1f seconds - proceeding anyway", timeout)
 
     def _on_connect(self):
         """Callback executed when the SwitchBox is connected."""
         with self.switchbox_lock:
-            SWITCHBOX_LOGGER.info("SwitchBox connection event received")  # ← SWITCHBOX_LOGGER
+            SWITCHBOX_LOGGER.info("SwitchBox connection event received")
 
     def _on_disconnect(self):
         """Callback executed when the SwitchBox is disconnected."""
         with self.switchbox_lock:
-            SWITCHBOX_LOGGER.info("SwitchBox disconnection event received")  # ← SWITCHBOX_LOGGER
+            SWITCHBOX_LOGGER.info("SwitchBox disconnection event received")
+
+    def _ensure_switchbox_connected(self, max_checks=3, check_delay=0.1):
+        """
+        Ensure switchbox is connected with multiple checks.
+        
+        Args:
+            max_checks (int): Maximum number of connection checks
+            check_delay (float): Delay between checks in seconds
+            
+        Returns:
+            bool: True if switchbox is connected, False otherwise
+        """
+        for check in range(max_checks):
+            try:
+                if self.switch_box.connected:
+                    SWITCHBOX_LOGGER.debug("SwitchBox connection confirmed on check %d/%d", check + 1, max_checks)
+                    return True
+                
+                if check < max_checks - 1:
+                    SWITCHBOX_LOGGER.debug("SwitchBox connection check %d/%d failed, retrying...", check + 1, max_checks)
+                    time.sleep(check_delay)
+                    
+            except Exception as e:
+                SWITCHBOX_LOGGER.debug("Connection check %d/%d failed with exception: %s", check + 1, max_checks, e)
+                if check < max_checks - 1:
+                    time.sleep(check_delay)
+        
+        SWITCHBOX_LOGGER.warning("SwitchBox connection could not be confirmed after %d checks", max_checks)
+        return False
+
+    def _reset_switchbox_connection(self):
+        """Reset switchbox connection between retry attempts."""
+        try:
+            SWITCHBOX_LOGGER.debug("Attempting SwitchBox connection reset")
+            with self.switchbox_lock:
+                try:
+                    self.switch_box.serial_disconnect()
+                except Exception as disconnect_error:
+                    SWITCHBOX_LOGGER.debug("Disconnect during reset failed (expected): %s", disconnect_error)
+                
+                # Kurze Pause für Hardware-Reset
+                time.sleep(0.2)
+                
+                # SwitchBox wird automatisch reconnected durch SwitchBox-Logik
+                
+        except Exception as reset_error:
+            SWITCHBOX_LOGGER.debug("SwitchBox reset failed: %s", reset_error)
 
     def set_channel(self, channel, service_host=None, service_port=65432):
+        """Set channel on local SwitchBox hardware with retry logic."""
+        return self._set_channel_with_retry(channel, service_host, service_port)
+
+    def _set_channel_with_retry(self, channel, service_host=None, service_port=65432, max_retries=2, retry_delay=0.5):
+        """
+        Set channel using local SwitchBox hardware with retry logic.
+        
+        Args:
+            channel (int): Channel to set (1 or 2)
+            service_host (str): Service host for logging
+            service_port (int): Service port for logging
+            max_retries (int): Maximum number of retry attempts
+            retry_delay (float): Delay between retries in seconds
+        """
+        last_exception = None
+        
+        for attempt in range(max_retries + 1):
+            try:
+                if attempt > 0:
+                    SWITCHBOX_LOGGER.info("SwitchBox retry attempt %d/%d after %.1f second delay", attempt, max_retries, retry_delay)
+                    time.sleep(retry_delay)
+                
+                return self._set_channel_switchbox(channel, service_host, service_port, attempt)
+                
+            except Exception as e:
+                last_exception = e
+                if attempt < max_retries:
+                    SWITCHBOX_LOGGER.warning("SwitchBox attempt %d/%d failed: %s", attempt + 1, max_retries + 1, e)
+                    # Versuche SwitchBox-Reset zwischen Versuchen
+                    self._reset_switchbox_connection()
+                else:
+                    SWITCHBOX_LOGGER.error("All SwitchBox attempts failed. Last error: %s", e)
+        
+        # Alle Versuche fehlgeschlagen
+        raise last_exception
+
+    def _set_channel_switchbox(self, channel, service_host=None, service_port=65432, attempt=0):
         """Set channel on local SwitchBox hardware."""
         start_time = datetime.now()
         
         try:
-            SWITCHBOX_LOGGER.info("Executing local SwitchBox set_channel: %d", channel)  # ← SWITCHBOX_LOGGER
+            if attempt == 0:
+                SWITCHBOX_LOGGER.info("Executing local SwitchBox set_channel: %d", channel)
+            else:
+                SWITCHBOX_LOGGER.info("Executing local SwitchBox set_channel: %d - attempt %d", channel, attempt + 1)
             
-            if not self.switch_box.connected:
-                raise Exception("SwitchBox not connected")
+            # NEU: Verbindung mit erweiterten Checks prüfen
+            if not self._ensure_switchbox_connected():
+                raise Exception("SwitchBox not connected after connection checks")
             
             if channel not in [1, 2]:
                 raise Exception(f"Invalid channel: {channel}")
             
             with self.switchbox_lock:
                 try:
+                    # NEU: Kurze Pause vor serieller Verbindung
+                    time.sleep(0.1)
+                    
                     self.switch_box.serial_connect()
                     self.switch_box.start_listening()
                     self.switch_box.get_status()
@@ -337,7 +453,8 @@ class SwitchBoxManager:
                         "task_data": {
                             "channel": result_channel,
                             "response_time": response_time,
-                            "local_execution": True
+                            "local_execution": True,
+                            "attempt": attempt + 1  # NEU: Attempt-Info hinzufügen
                         },
                         "timestamp": start_time.isoformat()
                     }
@@ -346,47 +463,82 @@ class SwitchBoxManager:
                         self.workstation_id, log_data, service_host, service_port
                     )
                     
-                    SWITCHBOX_LOGGER.info("Local set_channel completed successfully: channel=%s, time=%.3fs", result_channel, response_time)  # ← SWITCHBOX_LOGGER
+                    if attempt == 0:
+                        SWITCHBOX_LOGGER.info("Local set_channel completed successfully: channel=%s, time=%.3fs", result_channel, response_time)
+                    else:
+                        SWITCHBOX_LOGGER.info("Local set_channel completed successfully on attempt %d: channel=%s, time=%.3fs", attempt + 1, result_channel, response_time)
+                    
                     return result_channel
                     
                 finally:
-                    self.switch_box.stop_listening()
-                    self.switch_box.serial_disconnect()
+                    try:
+                        self.switch_box.stop_listening()
+                        self.switch_box.serial_disconnect()
+                    except Exception as disconnect_error:
+                        SWITCHBOX_LOGGER.debug("Error during switchbox disconnect: %s", disconnect_error)
         
         except Exception as e:
             error_msg = f"Local SwitchBox error: {e}"
-            SWITCHBOX_LOGGER.error(error_msg)  # ← SWITCHBOX_LOGGER
+            SWITCHBOX_LOGGER.debug(error_msg)  # Debug statt error (wird in retry-logic gehandelt)
             
-            # Log error to service using centralized logger
-            log_data = {
-                "task_type": "switchbox",
-                "operation": "set_channel",
-                "result": "error",
-                "task_data": {
-                    "channel": channel,
-                    "error": str(e),
-                    "local_execution": True
-                },
-                "timestamp": start_time.isoformat()
-            }
-            
-            WorkstationLogger.send_log_to_service(
-                self.workstation_id, log_data, service_host, service_port
-            )
-            raise Exception(error_msg)
+            # Vereinfacht für retry-logic
+            raise Exception(str(e))
 
     def open_box(self, service_host=None, service_port=65432):
+        """Open box on local SwitchBox hardware with retry logic."""
+        return self._open_box_with_retry(service_host, service_port)
+
+    def _open_box_with_retry(self, service_host=None, service_port=65432, max_retries=2, retry_delay=0.5):
+        """
+        Open box using local SwitchBox hardware with retry logic.
+        
+        Args:
+            service_host (str): Service host for logging
+            service_port (int): Service port for logging
+            max_retries (int): Maximum number of retry attempts
+            retry_delay (float): Delay between retries in seconds
+        """
+        last_exception = None
+        
+        for attempt in range(max_retries + 1):
+            try:
+                if attempt > 0:
+                    SWITCHBOX_LOGGER.info("SwitchBox retry attempt %d/%d after %.1f second delay", attempt, max_retries, retry_delay)
+                    time.sleep(retry_delay)
+                
+                return self._open_box_switchbox(service_host, service_port, attempt)
+                
+            except Exception as e:
+                last_exception = e
+                if attempt < max_retries:
+                    SWITCHBOX_LOGGER.warning("SwitchBox attempt %d/%d failed: %s", attempt + 1, max_retries + 1, e)
+                    # Versuche SwitchBox-Reset zwischen Versuchen
+                    self._reset_switchbox_connection()
+                else:
+                    SWITCHBOX_LOGGER.error("All SwitchBox attempts failed. Last error: %s", e)
+        
+        # Alle Versuche fehlgeschlagen
+        raise last_exception
+
+    def _open_box_switchbox(self, service_host=None, service_port=65432, attempt=0):
         """Open box on local SwitchBox hardware."""
         start_time = datetime.now()
         
         try:
-            SWITCHBOX_LOGGER.info("Executing local SwitchBox open_box")  # ← SWITCHBOX_LOGGER
+            if attempt == 0:
+                SWITCHBOX_LOGGER.info("Executing local SwitchBox open_box")
+            else:
+                SWITCHBOX_LOGGER.info("Executing local SwitchBox open_box - attempt %d", attempt + 1)
             
-            if not self.switch_box.connected:
-                raise Exception("SwitchBox not connected")
+            # NEU: Verbindung mit erweiterten Checks prüfen
+            if not self._ensure_switchbox_connected():
+                raise Exception("SwitchBox not connected after connection checks")
             
             with self.switchbox_lock:
                 try:
+                    # NEU: Kurze Pause vor serieller Verbindung
+                    time.sleep(0.1)
+                    
                     self.switch_box.serial_connect()
                     self.switch_box.start_listening()
                     self.switch_box.get_status()
@@ -403,7 +555,8 @@ class SwitchBoxManager:
                         "task_data": {
                             "duration": duration,
                             "local_execution": True,
-                            "box_status": self.switch_box.box_status
+                            "box_status": self.switch_box.box_status,
+                            "attempt": attempt + 1  # NEU: Attempt-Info hinzufügen
                         },
                         "timestamp": start_time.isoformat()
                     }
@@ -412,30 +565,23 @@ class SwitchBoxManager:
                         self.workstation_id, log_data, service_host, service_port
                     )
                     
-                    SWITCHBOX_LOGGER.info("Local open_box completed successfully: duration=%.3fs, status=%s", duration, self.switch_box.box_status)  # ← SWITCHBOX_LOGGER
+                    if attempt == 0:
+                        SWITCHBOX_LOGGER.info("Local open_box completed successfully: duration=%.3fs, status=%s", duration, self.switch_box.box_status)
+                    else:
+                        SWITCHBOX_LOGGER.info("Local open_box completed successfully on attempt %d: duration=%.3fs, status=%s", attempt + 1, duration, self.switch_box.box_status)
+                    
                     return self.switch_box.box_status
                     
                 finally:
-                    self.switch_box.stop_listening()
-                    self.switch_box.serial_disconnect()
+                    try:
+                        self.switch_box.stop_listening()
+                        self.switch_box.serial_disconnect()
+                    except Exception as disconnect_error:
+                        SWITCHBOX_LOGGER.debug("Error during switchbox disconnect: %s", disconnect_error)
         
         except Exception as e:
             error_msg = f"Local SwitchBox error: {e}"
-            SWITCHBOX_LOGGER.error(error_msg)  # ← SWITCHBOX_LOGGER
+            SWITCHBOX_LOGGER.debug(error_msg)  # Debug statt error (wird in retry-logic gehandelt)
             
-            # Log error to service using centralized logger
-            log_data = {
-                "task_type": "switchbox",
-                "operation": "open_box",
-                "result": "error",
-                "task_data": {
-                    "error": str(e),
-                    "local_execution": True
-                },
-                "timestamp": start_time.isoformat()
-            }
-            
-            WorkstationLogger.send_log_to_service(
-                self.workstation_id, log_data, service_host, service_port
-            )
-            raise Exception(error_msg)
+            # Vereinfacht für retry-logic
+            raise Exception(str(e))
