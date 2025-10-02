@@ -5,6 +5,7 @@ import logging
 import argparse
 import os
 from datetime import datetime
+from oca.oca_manager import OCAManager
 
 # ADAM Audio Workstation Logging - angleichen an Utils-Struktur
 log_dir = "logs/adam_audio"
@@ -57,6 +58,12 @@ class AdamWorkstation:
         self._switchbox_manager = None
         self._scanner_manager = None
         self._scanner_type = scanner_type  # Scanner-Type für spätere Initialisierung speichern
+
+        # NEU: OCA Manager hinzufügen (VORSICHTIG eingefügt)
+        self.oca_manager = OCAManager(
+            workstation_id=self.workstation_id,
+            service_client=self  # Workstation fungiert als Service-Client für Logging
+        )
 
         # Map of commands to their corresponding methods - BEREINIGT
         self.command_map = {
@@ -283,197 +290,180 @@ class AdamWorkstation:
         response = self.send_command(command, wait_for_response=True)
         print(response)
 
-    def set_device_biquad(self, args):
-        """Send coefficients to the service to set them on the OCA device."""
-        try:
-            coeffs = json.loads(args.coefficients)
-        except Exception as e:
-            print("Fehler beim Parsen der Koeffizienten:", e)
-            return
-        command = {
-            "action": "set_device_biquad",
-            "index": args.index,
-            "coefficients": coeffs,
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
+
 
     def get_serial_number(self, args):
-        """Request the service to get the serial number from the OCA device."""
-        WORKSTATION_LOGGER.info("Executing 'get_serial_number' for %s:%d", args.target_ip, args.port)
-        command = {
-            "action": "get_serial_number",
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
-
-    def get_gain(self, args):
-        """Request the service to get the gain from the OCA device."""
-        WORKSTATION_LOGGER.info("Executing 'get_gain' for %s:%d", args.target_ip, args.port)
-        command = {
-            "action": "get_gain",
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
-
-    def get_device_biquad(self, args):
-        """Request the service to get biquad coefficients from the OCA device."""
-        WORKSTATION_LOGGER.info("Executing 'get_device_biquad' for index=%d %s:%d", args.index, args.target_ip, args.port)
-        command = {
-            "action": "get_device_biquad",
-            "index": args.index,
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
-
-    def set_gain(self, args):
-        """Request the service to set the gain on the OCA device."""
-        WORKSTATION_LOGGER.info("Executing 'set_gain' to %s for %s:%d", args.value, args.target_ip, args.port)
-        command = {
-            "action": "set_gain",
-            "value": args.value,
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
-
-    def get_model_description(self, args):
-        """Request the service to get the model description from the OCA device."""
-        WORKSTATION_LOGGER.info("Executing 'get_model_description' for %s:%d", args.target_ip, args.port)
-        command = {
-            "action": "get_model_description",
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
-
-    def get_firmware_version(self, args):
-        """Request the service to get the firmware version from the OCA device."""
-        WORKSTATION_LOGGER.info("Executing 'get_firmware_version' for %s:%d", args.target_ip, args.port)
-        command = {
-            "action": "get_firmware_version",
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
-
-    def get_audio_input(self, args):
-        """Request the service to get the audio input mode from the OCA device."""
-        WORKSTATION_LOGGER.info("Executing 'get_audio_input' for %s:%d", args.target_ip, args.port)
-        command = {
-            "action": "get_audio_input",
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
-
-    def set_audio_input(self, args):
-        """Request the service to set the audio input mode on the OCA device."""
-        WORKSTATION_LOGGER.info("Executing 'set_audio_input' to %s for %s:%d", args.position, args.target_ip, args.port)
-        command = {
-            "action": "set_audio_input",
-            "position": args.position,
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
-
-    def get_mute(self, args):
-        """Request the service to get the mute state from the OCA device."""
-        WORKSTATION_LOGGER.info("Executing 'get_mute' for %s:%d", args.target_ip, args.port)
-        command = {
-            "action": "get_mute",
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
+        """Get serial number from OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'get_serial_number' on OCA device %s:%d", args.target_ip, args.port)
+        try:
+            result = self.oca_manager.get_serial_number(args.target_ip, args.port)
+            print(result)
+        except Exception as e:
+            error_msg = f"Error getting serial number: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
 
     def set_mute(self, args):
-        """Request the service to set the mute state on the OCA device."""
-        WORKSTATION_LOGGER.info("Executing 'set_mute' to %s for %s:%d", args.state, args.target_ip, args.port)
-        command = {
-            "action": "set_mute",
-            "state": args.state,
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
+        """Set mute state on OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'set_mute' to %s on OCA device %s:%d", args.state, args.target_ip, args.port)
+        try:
+            result = self.oca_manager.set_mute(args.state, args.target_ip, args.port)
+            print(result)
+        except Exception as e:
+            error_msg = f"Error setting mute: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
+
+    def get_mute(self, args):
+        """Get mute state from OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'get_mute' on OCA device %s:%d", args.target_ip, args.port)
+        try:
+            result = self.oca_manager.get_mute(args.target_ip, args.port)
+            print(result)
+        except Exception as e:
+            error_msg = f"Error getting mute state: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
+
+    def set_gain(self, args):
+        """Set gain on OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'set_gain' to %s on OCA device %s:%d", args.value, args.target_ip, args.port)
+        try:
+            result = self.oca_manager.set_gain(args.value, args.target_ip, args.port)
+            print(result)
+        except Exception as e:
+            error_msg = f"Error setting gain: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
+
+    def get_gain(self, args):
+        """Get gain from OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'get_gain' on OCA device %s:%d", args.target_ip, args.port)
+        try:
+            result = self.oca_manager.get_gain(args.target_ip, args.port)
+            print(result)
+        except Exception as e:
+            error_msg = f"Error getting gain: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
+
+    def get_model_description(self, args):
+        """Get model description from OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'get_model_description' on OCA device %s:%d", args.target_ip, args.port)
+        try:
+            result = self.oca_manager.get_model_description(args.target_ip, args.port)
+            print(result)
+        except Exception as e:
+            error_msg = f"Error getting model description: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
+
+    def get_firmware_version(self, args):
+        """Get firmware version from OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'get_firmware_version' on OCA device %s:%d", args.target_ip, args.port)
+        try:
+            result = self.oca_manager.get_firmware_version(args.target_ip, args.port)
+            print(result)
+        except Exception as e:
+            error_msg = f"Error getting firmware version: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
+
+    def get_audio_input(self, args):
+        """Get audio input from OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'get_audio_input' on OCA device %s:%d", args.target_ip, args.port)
+        try:
+            result = self.oca_manager.get_audio_input(args.target_ip, args.port)
+            print(result)
+        except Exception as e:
+            error_msg = f"Error getting audio input: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
+
+    def set_audio_input(self, args):
+        """Set audio input on OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'set_audio_input' to %s on OCA device %s:%d", args.position, args.target_ip, args.port)
+        try:
+            result = self.oca_manager.set_audio_input(args.position, args.target_ip, args.port)
+            print(result)
+        except Exception as e:
+            error_msg = f"Error setting audio input: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
 
     def get_mode(self, args):
-        """Request the service to get the control mode from the OCA device."""
-        WORKSTATION_LOGGER.info("Executing 'get_mode' for %s:%d", args.target_ip, args.port)
-        command = {
-            "action": "get_mode",
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
+        """Get mode from OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'get_mode' on OCA device %s:%d", args.target_ip, args.port)
+        try:
+            result = self.oca_manager.get_mode(args.target_ip, args.port)
+            print(result)
+        except Exception as e:
+            error_msg = f"Error getting mode: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
 
     def set_mode(self, args):
-        """Request the service to set the control mode on the OCA device."""
-        WORKSTATION_LOGGER.info("Executing 'set_mode' to %s for %s:%d", args.position, args.target_ip, args.port)
-        command = {
-            "action": "set_mode",
-            "position": args.position,
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
+        """Set mode on OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'set_mode' to %s on OCA device %s:%d", args.position, args.target_ip, args.port)
+        try:
+            result = self.oca_manager.set_mode(args.position, args.target_ip, args.port)
+            print(result)
+        except Exception as e:
+            error_msg = f"Error setting mode: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
 
     def get_phase_delay(self, args):
-        """Request the service to get the phase delay from the OCA device."""
-        WORKSTATION_LOGGER.info("Executing 'get_phase_delay' for %s:%d", args.target_ip, args.port)
-        command = {
-            "action": "get_phase_delay",
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
+        """Get phase delay from OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'get_phase_delay' on OCA device %s:%d", args.target_ip, args.port)
+        try:
+            result = self.oca_manager.get_phase_delay(args.target_ip, args.port)
+            print(result)
+        except Exception as e:
+            error_msg = f"Error getting phase delay: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
 
     def set_phase_delay(self, args):
-        """Request the service to set the phase delay on the OCA device."""
-        WORKSTATION_LOGGER.info("Executing 'set_phase_delay' to %s for %s:%d", args.position, args.target_ip, args.port)
-        command = {
-            "action": "set_phase_delay",
-            "position": args.position,
-            "target_ip": args.target_ip,
-            "port": args.port,
-            "wait_for_response": True
-        }
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
+        """Set phase delay on OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'set_phase_delay' to %s on OCA device %s:%d", args.position, args.target_ip, args.port)
+        try:
+            result = self.oca_manager.set_phase_delay(args.position, args.target_ip, args.port)
+            print(result)
+        except Exception as e:
+            error_msg = f"Error setting phase delay: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
+
+    def get_device_biquad(self, args):
+        """Get device biquad from OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'get_device_biquad' index %d on OCA device %s:%d", args.index, args.target_ip, args.port)
+        try:
+            result = self.oca_manager.get_device_biquad(args.index, args.target_ip, args.port)
+            print(result)
+        except Exception as e:
+            error_msg = f"Error getting device biquad: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
+    
+
+    def set_device_biquad(self, args):
+        """Set device biquad on OCA device (LOCAL)."""
+        WORKSTATION_LOGGER.info("Executing 'set_device_biquad' index %d with coefficients %s on OCA device %s:%d", 
+                       args.index, args.coefficients, args.target_ip, args.port)
+        try:
+            coeffs = json.loads(args.coefficients)
+            result = self.oca_manager.set_device_biquad(args.index, coeffs, args.target_ip, args.port)
+            print(result)
+        except json.JSONDecodeError as e:
+            error_msg = f"Error parsing coefficients: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
+        except Exception as e:
+            error_msg = f"Error setting device biquad: {e}"
+            print(error_msg)
+            WORKSTATION_LOGGER.error(error_msg)
+
 
     def check_measurement_trials(self, args):
         """Check the allowed measurement trials for a serial number."""

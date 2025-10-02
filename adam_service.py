@@ -26,7 +26,6 @@ import threading
 import json
 import time
 from biquad_tools.biquad_designer import Biquad_Filter
-from oca_tools.oca_utilities import OCP1ToolWrapper
 
 # ÄNDERUNG 1: Import von helpers statt ap_utils
 from helpers import generate_timestamp_extension, construct_path, generate_timestamp_subpath, generate_file_prefix
@@ -78,14 +77,13 @@ class AdamService:
         try:
             hostname = socket.gethostname()
             
-            # Ermittle die primäre IP-Adresse (die Route zum Internet verwendet)
             with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
                 s.connect(("8.8.8.8", 80))
                 primary_ip = s.getsockname()[0]
             
             self.logger.info("=== ADAM AUDIO SERVICE INFO ===")
             self.logger.info("Company: ADAM Audio")
-            self.logger.info("Service: Production & Testing Service")
+            self.logger.info("Service: Production Support Service")
             self.logger.info("Service Name: %s", self.service_name)
             self.logger.info("Hostname: %s", hostname)
             self.logger.info("Service Port: %d", self.port)
@@ -94,10 +92,13 @@ class AdamService:
             self.logger.info("Primary IP: %s", primary_ip)
             self.logger.info("Host binding: %s (0.0.0.0 = all interfaces)", self.host)
             self.logger.info("Discovery service: ENABLED")
+            self.logger.info("Note: OCA device communication handled locally by workstations")
             self.logger.info("Workstation usage examples:")
+            self.logger.info("  Helper functions: python adam_workstation.py --host %s generate_timestamp_extension", primary_ip)
+            self.logger.info("  Biquad calculation: python adam_workstation.py --host %s get_biquad_coefficients bell 3.0 1000 1.4 48000", primary_ip)
+            # OCA-BEISPIELE ENTFERNT:
+            # self.logger.info("  OCA commands: python adam_workstation.py --host %s get_serial_number 192.168.10.20 50001", primary_ip)
             self.logger.info("  Auto-discovery: python adam_connector.py --find --service-name %s", self.service_name)
-            self.logger.info("  Production workstation: python adam_workstation.py --service %s --eol-workflow --auto-discover", self.service_name)
-            self.logger.info("  Manual command: python adam_workstation.py --service %s --command get_serial_number --host %s", self.service_name, primary_ip)
             self.logger.info("================================")
             
         except Exception as e:
@@ -182,7 +183,7 @@ class AdamService:
                 ip = s.getsockname()[0]
             
             return {
-                "service": self.service_name,  # Jetzt konfigurierbar
+                "service": self.service_name,
                 "company": "ADAM Audio",
                 "ip": ip,
                 "port": self.port,
@@ -190,15 +191,16 @@ class AdamService:
                 "timestamp": time.time(),
                 "version": "1.0",
                 "capabilities": [
-                    "OCA", 
                     "BiquadFilters", 
                     "MeasurementTrials",
-                    "ProductionControl",
-                    "EOLTesting",
-                    "QualityAssurance"
+                    "ProductionLogging",
+                    "HelperFunctions",
+                    "WorkstationSupport"
+                    # "OCA" ENTFERNT - wird jetzt lokal von Workstations gehandhabt
                 ],
                 "discovery_port": self.discovery_port,
-                "status": "running"
+                "status": "running",
+                "note": "OCA communication handled locally by workstations"
             }
             
         except Exception as e:
@@ -288,32 +290,37 @@ class AdamService:
 
         action = command["action"]
         command_map = {
-            # ÄNDERUNG 2: Direkte Funktionsaufrufe statt Utilities-Klasse
+            # Helper Functions
             "generate_timestamp_extension": generate_timestamp_extension,
             "construct_path": lambda: self._construct_path(command),
             "get_timestamp_subpath": generate_timestamp_subpath,
             "generate_file_prefix": lambda: self._generate_file_prefix(command),
             
+            # Biquad Calculations
             "get_biquad_coefficients": lambda: self._get_biquad_coefficients(command),
-            "set_device_biquad": lambda: self._set_device_biquad(command),
-            "get_serial_number": lambda: self._get_serial_number(command),
-            "get_gain": lambda: self._get_gain(command),
-            "get_device_biquad": lambda: self._get_device_biquad(command),
-            "set_gain": lambda: self._set_gain(command),
-            "get_model_description": lambda: self._get_model_description(command),
-            "get_firmware_version": lambda: self._get_firmware_version(command),
-            "get_audio_input": lambda: self._get_audio_input(command),
-            "set_audio_input": lambda: self._set_audio_input(command),
-            "get_mute": lambda: self._get_mute(command),
-            "set_mute": lambda: self._set_mute(command),
-            "get_mode": lambda: self._get_mode(command),
-            "set_mode": lambda: self._set_mode(command),
-            "get_phase_delay": lambda: self._get_phase_delay(command),
-            "set_phase_delay": lambda: self._set_phase_delay(command),
+            
+            # Measurement Trial Tracking
             "check_measurement_trials": lambda: self._check_measurement_trials(command),
             
-            # Workstation Logging Command bleibt
+            # Workstation Logging (covers all workstation activities including OCA)
             "log_workstation_task": lambda: self._log_workstation_task(command),
+            
+            # ALLE OCA-COMMANDS ENTFERNT:
+            # "get_serial_number": lambda: self._get_serial_number(command),
+            # "get_gain": lambda: self._get_gain(command),
+            # "set_gain": lambda: self._set_gain(command),
+            # "get_device_biquad": lambda: self._get_device_biquad(command),
+            # "set_device_biquad": lambda: self._set_device_biquad(command),
+            # "get_model_description": lambda: self._get_model_description(command),
+            # "get_firmware_version": lambda: self._get_firmware_version(command),
+            # "get_audio_input": lambda: self._get_audio_input(command),
+            # "set_audio_input": lambda: self._set_audio_input(command),
+            # "get_mute": lambda: self._get_mute(command),
+            # "set_mute": lambda: self._set_mute(command),
+            # "get_mode": lambda: self._get_mode(command),
+            # "set_mode": lambda: self._set_mode(command),
+            # "get_phase_delay": lambda: self._get_phase_delay(command),
+            # "set_phase_delay": lambda: self._set_phase_delay(command),
         }
 
         if action in command_map:
@@ -385,239 +392,6 @@ class AdamService:
             self.logger.error("Failed to generate biquad coefficients: %s", e)
             return f"Error: Failed to generate biquad coefficients ({e})"
 
-    def _set_device_biquad(self, command):
-        """
-        Calculate biquad coefficients and set them on the OCA device.
-        """
-        try:
-            index = int(command.get("index"))
-            coefficients = command.get("coefficients")
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            result = wrapper.set_biquad(index=index, coefficients=coefficients)
-            self.logger.info("Set biquad on device: %s", result)
-            return result
-        except (ValueError, KeyError, TypeError) as e:
-            self.logger.error("Failed to set device biquad: %s", e)
-            return f"Error: Failed to set device biquad ({e})"
-
-    def _get_device_biquad(self, command):
-        """
-        Get the biquad coefficients from the OCA device.
-        """
-        try:
-            index = int(command.get("index"))
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            result = wrapper.get_biquad(index=index)
-            self.logger.info("Biquad coefficients received: %s", result)
-            return result
-        except Exception as e:
-            self.logger.error("Failed to get device biquad: %s", e)
-            return f"Error: Failed to get device biquad ({e})"
-
-    def _get_serial_number(self, command):
-        """
-        Get the serial number from the OCA device.
-        """
-        try:
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            serial = wrapper.get_serial_number()
-            self.logger.info("Serial number received: %s", serial)
-            return serial
-        except Exception as e:
-            self.logger.error("Failed to get serial number: %s", e)
-            return f"Error: Failed to get serial number ({e})"
-
-    def _get_gain(self, command):
-        """
-        Get the gain from the OCA device.
-        """
-        try:
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            gain = wrapper.get_gain()
-            self.logger.info("Gain received: %s", gain)
-            return gain
-        except Exception as e:
-            self.logger.error("Failed to get gain: %s", e)
-            return f"Error: Failed to get gain ({e})"
-
-    def _set_gain(self, command):
-        """
-        Set the gain on the OCA device.
-        """
-        try:
-            value = float(command.get("value"))
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            result = wrapper.set_gain(value)
-            self.logger.info("Set gain result: %s", result)
-            return result
-        except Exception as e:
-            self.logger.error("Failed to set gain: %s", e)
-            return f"Error: Failed to set gain ({e})"
-
-    def _get_model_description(self, command):
-        """
-        Get the model description from the OCA device.
-        """
-        try:
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            desc = wrapper.get_model_description()
-            self.logger.info("Model description received: %s", desc)
-            return desc
-        except Exception as e:
-            self.logger.error("Failed to get model description: %s", e)
-            return f"Error: Failed to get model description ({e})"
-
-    def _get_firmware_version(self, command):
-        """
-        Get the firmware version from the OCA device.
-        """
-        try:
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            version = wrapper.get_firmware_version()
-            self.logger.info("Firmware version received: %s", version)
-            return version
-        except Exception as e:
-            self.logger.error("Failed to get firmware version: %s", e)
-            return f"Error: Failed to get firmware version ({e})"
-
-    def _get_audio_input(self, command):
-        """
-        Get the audio input mode from the OCA device.
-        """
-        try:
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            audio_input = wrapper.get_audio_input()
-            self.logger.info("Audio input received: %s", audio_input)
-            return audio_input
-        except Exception as e:
-            self.logger.error("Failed to get audio input: %s", e)
-            return f"Error: Failed to get audio input ({e})"
-
-    def _set_audio_input(self, command):
-        """
-        Set the audio input mode on the OCA device.
-        """
-        try:
-            position = command.get("position")
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            result = wrapper.set_audio_input(position)
-            self.logger.info("Set audio input result: %s", result)
-            return result
-        except Exception as e:
-            self.logger.error("Failed to set audio input: %s", e)
-            return f"Error: Failed to set audio input ({e})"
-
-    def _get_mute(self, command):
-        """
-        Get the mute state from the OCA device.
-        """
-        try:
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            mute = wrapper.get_mute()
-            self.logger.info("Mute state received: %s", mute)
-            return mute
-        except Exception as e:
-            self.logger.error("Failed to get mute state: %s", e)
-            return f"Error: Failed to get mute state ({e})"
-
-    def _set_mute(self, command):
-        """
-        Set the mute state on the OCA device.
-        """
-        try:
-            state = command.get("state")
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            result = wrapper.set_mute(state)
-            self.logger.info("Set mute result: %s", result)
-            return result
-        except Exception as e:
-            self.logger.error("Failed to set mute state: %s", e)
-            return f"Error: Failed to set mute state ({e})"
-
-    def _get_mode(self, command):
-        """
-        Get the control mode from the OCA device.
-        """
-        try:
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            mode = wrapper.get_mode()
-            self.logger.info("Mode received: %s", mode)
-            return mode
-        except Exception as e:
-            self.logger.error("Failed to get mode: %s", e)
-            return f"Error: Failed to get mode ({e})"
-
-    def _set_mode(self, command):
-        """
-        Set the control mode on the OCA device.
-        """
-        try:
-            position = command.get("position")
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            result = wrapper.set_mode(position)
-            self.logger.info("Set mode result: %s", result)
-            return result
-        except Exception as e:
-            self.logger.error("Failed to set mode: %s", e)
-            return f"Error: Failed to set mode ({e})"
-
-    def _get_phase_delay(self, command):
-        """
-        Get the phase delay from the OCA device.
-        """
-        try:
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            delay = wrapper.get_phase_delay()
-            self.logger.info("Phase delay received: %s", delay)
-            return delay
-        except Exception as e:
-            self.logger.error("Failed to get phase delay: %s", e)
-            return f"Error: Failed to get phase delay ({e})"
-
-    def _set_phase_delay(self, command):
-        """
-        Set the phase delay on the OCA device.
-        """
-        try:
-            position = command.get("position")
-            target_ip = command.get("target_ip")
-            port = int(command.get("port"))
-            wrapper = OCP1ToolWrapper(target_ip=target_ip, port=port)
-            result = wrapper.set_phase_delay(position)
-            self.logger.info("Set phase delay result: %s", result)
-            return result
-        except Exception as e:
-            self.logger.error("Failed to set phase delay: %s", e)
-            return f"Error: Failed to set phase delay ({e})"
-
     def _check_measurement_trials(self, command):
         """
         Check how many times a serial number appears in a CSV file with Status='Failed' and compare to max_trials.
@@ -665,6 +439,8 @@ class AdamService:
         except Exception as e:
             self.logger.error("Error checking measurement trials: %s", e)
             return f"Error: {e}"
+
+    # --- Workstation Logging ---
 
     def _log_workstation_task(self, command):
         """Log any workstation task - generic method."""
