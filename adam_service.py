@@ -28,7 +28,8 @@ import time
 from biquad_tools.biquad_designer import Biquad_Filter
 from oca_tools.oca_utilities import OCP1ToolWrapper
 
-from ap_utils import Utilities
+# ÄNDERUNG 1: Import von helpers statt ap_utils
+from helpers import generate_timestamp_extension, construct_path, generate_timestamp_subpath, generate_file_prefix
 
 logging.info("----------------------------------- ADAM Audio Service started")
 
@@ -38,7 +39,7 @@ class AdamService:
 
     Network service for ADAM Audio speaker testing, production line control,
     and quality assurance processes. Handles device communication, production
-    equipment control, and automated testing workflows for workstation clients.  # ← GEÄNDERT: workstation clients
+    equipment control, and automated testing workflows for workstation clients.
     """
 
     def __init__(self, host="0.0.0.0", port=65432, service_name="ADAMService"):
@@ -63,7 +64,6 @@ class AdamService:
         self.discovery_running = False
         self.discovery_thread = None
         self.discovery_interval = 2  # Sekunden zwischen Broadcasts
-
 
         self.logger = logging.getLogger("ADAMService")
         
@@ -244,18 +244,18 @@ class AdamService:
         except Exception as e:
             self.logger.error("Failed to send goodbye broadcast: %s", e)
 
-    # --- Workstation Handling ---  # ← GEÄNDERT: Client -> Workstation
+    # --- Workstation Handling ---
 
-    def handle_workstation(self, workstation_socket):  # ← GEÄNDERT: handle_client -> handle_workstation
+    def handle_workstation(self, workstation_socket):
         """
-        Handle communication with a connected workstation.  # ← GEÄNDERT: client -> workstation
+        Handle communication with a connected workstation.
 
         Args:
-            workstation_socket (socket.socket): The workstation socket.  # ← GEÄNDERT: client -> workstation
+            workstation_socket (socket.socket): The workstation socket.
         """
         try:
             while True:
-                data = workstation_socket.recv(1024).decode("utf-8")  # ← GEÄNDERT: client_socket -> workstation_socket
+                data = workstation_socket.recv(1024).decode("utf-8")
                 if not data:
                     break
                 self.logger.info("Received: %s", data)
@@ -263,21 +263,21 @@ class AdamService:
                     command = json.loads(data)
                     response = self.process_command(command)
                     if command.get("wait_for_response", True):
-                        workstation_socket.send(response.encode("utf-8"))  # ← GEÄNDERT: client_socket -> workstation_socket
+                        workstation_socket.send(response.encode("utf-8"))
                         self.logger.info("Sent response: %s", response)
                     else:
                         self.logger.info("No response sent.")
                 except json.JSONDecodeError:
                     self.logger.error("Invalid JSON received.")
-                    workstation_socket.send(b"Error: Invalid JSON format.")  # ← GEÄNDERT: client_socket -> workstation_socket
+                    workstation_socket.send(b"Error: Invalid JSON format.")
                 except (OSError, socket.error) as e:
                     self.logger.error("Error processing command: %s", e)
-                    workstation_socket.send(f"Error: {e}".encode("utf-8"))  # ← GEÄNDERT: client_socket -> workstation_socket
+                    workstation_socket.send(f"Error: {e}".encode("utf-8"))
         except (socket.error, OSError) as e:
             self.logger.error("Connection error: %s", e)
         finally:
-            workstation_socket.close()  # ← GEÄNDERT: client_socket -> workstation_socket
-            self.logger.info("Workstation connection closed.")  # ← GEÄNDERT: Client -> Workstation
+            workstation_socket.close()
+            self.logger.info("Workstation connection closed.")
 
     # --- Command Processing ---
 
@@ -288,14 +288,11 @@ class AdamService:
 
         action = command["action"]
         command_map = {
-            "generate_timestamp_extension": Utilities.generate_timestamp_extension,
+            # ÄNDERUNG 2: Direkte Funktionsaufrufe statt Utilities-Klasse
+            "generate_timestamp_extension": generate_timestamp_extension,
             "construct_path": lambda: self._construct_path(command),
-            "get_timestamp_subpath": Utilities.generate_timestamp_subpath,
+            "get_timestamp_subpath": generate_timestamp_subpath,
             "generate_file_prefix": lambda: self._generate_file_prefix(command),
-            
-            # ENTFERNEN: SwitchBox Commands
-            # "set_channel": lambda: self._set_channel(command),
-            # "open_box": self._open_box,
             
             "get_biquad_coefficients": lambda: self._get_biquad_coefficients(command),
             "set_device_biquad": lambda: self._set_device_biquad(command),
@@ -341,7 +338,8 @@ class AdamService:
         if not all(isinstance(p, str) for p in paths):
             return "Error: All elements in 'paths' must be strings."
         self.logger.info("Constructing path from: %s", paths)
-        return Utilities.construct_path(paths)
+        # ÄNDERUNG 3: Direkte Funktion statt Utilities-Klasse
+        return construct_path(paths)
 
     def _generate_file_prefix(self, command):
         """
@@ -353,7 +351,8 @@ class AdamService:
         if not all(isinstance(s, str) for s in strings):
             return "Error: All elements in 'strings' must be strings."
         self.logger.info("Generating file prefix from: %s", strings)
-        return Utilities.generate_file_prefix(strings)
+        # ÄNDERUNG 4: Direkte Funktion statt Utilities-Klasse
+        return generate_file_prefix(strings)
 
     def _get_biquad_coefficients(self, command):
         """
@@ -699,14 +698,14 @@ class AdamService:
 
     def start(self):
         """
-        Start the ADAM Audio service and manage workstation connections.  # ← GEÄNDERT: workstation connections
+        Start the ADAM Audio service and manage workstation connections.
         """
         self.logger.info("ADAM Audio Service is running...")
-        self.logger.info("Waiting for workstation connections...")  # ← GEÄNDERT: workstation connections
+        self.logger.info("Waiting for workstation connections...")
         while self.running:
-            workstation_socket, addr = self.server.accept()  # ← GEÄNDERT: client_socket -> workstation_socket
-            self.logger.info("Workstation connection from %s", addr)  # ← GEÄNDERT: Workstation connection
-            threading.Thread(target=self.handle_workstation, args=(workstation_socket,)).start()  # ← GEÄNDERT: handle_client -> handle_workstation
+            workstation_socket, addr = self.server.accept()
+            self.logger.info("Workstation connection from %s", addr)
+            threading.Thread(target=self.handle_workstation, args=(workstation_socket,)).start()
 
     def stop(self):
         """
