@@ -1,9 +1,0 @@
-logs/
-__pycache__/
-.DS_Store
-sandbox.log
-VTechProductionTool.approjx
-DainProductionTool.approjx
-.gitignore
-HeadphonesProductionTool.approjx
-
