@@ -4,8 +4,10 @@ import sys
 import logging
 import argparse
 import os
+import time  # NEU HINZUFÜGEN
 from datetime import datetime
 from oca.oca_manager import OCAManager
+import csv
 
 # ADAM Audio Workstation Logging - angleichen an Utils-Struktur
 log_dir = "logs/adam_audio"
@@ -91,6 +93,8 @@ class AdamWorkstation:
             "get_phase_delay": self.get_phase_delay,
             "set_phase_delay": self.set_phase_delay,
             "check_measurement_trials": self.check_measurement_trials,
+            # NEU HINZUFÜGEN:
+            "process_measurement": self.process_measurement,
         }
 
         self.setup_arg_parser()
@@ -188,12 +192,31 @@ class AdamWorkstation:
             WORKSTATION_LOGGER.info("Connecting to ADAM service at %s:%s...", self.host, self.port)
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
                 client_socket.connect((self.host, self.port))  # Connect to the service
-                WORKSTATION_LOGGER.info("Connected to ADAM service. Sending command: %s", command)
-                client_socket.send(json.dumps(command).encode("utf-8"))  # Send the command as JSON
+                WORKSTATION_LOGGER.info("Connected to ADAM service. Sending command: %s", command.get("action", "unknown"))
+                
+                # Send command as JSON
+                command_json = json.dumps(command).encode("utf-8")
+                client_socket.send(command_json)
 
                 if wait_for_response:
-                    response = client_socket.recv(1024).decode("utf-8")  # Receive and decode the service's response
-                    WORKSTATION_LOGGER.info("Received response from ADAM service: %s", response)
+                    # FIX: Größere Buffer und schrittweise Response lesen
+                    response_data = b""
+                    while True:
+                        chunk = client_socket.recv(8192)  # Größere Chunks
+                        if not chunk:
+                            break
+                        response_data += chunk
+                        
+                        # Prüfen ob komplettes JSON empfangen
+                        try:
+                            response_str = response_data.decode("utf-8")
+                            json.loads(response_str)  # Test ob valid JSON
+                            break  # Komplettes JSON empfangen
+                        except (json.JSONDecodeError, UnicodeDecodeError):
+                            continue  # Mehr Daten benötigt
+                
+                    response = response_data.decode("utf-8")
+                    WORKSTATION_LOGGER.info("Received response from ADAM service (%d bytes)", len(response))
                     return response
                 else:
                     WORKSTATION_LOGGER.info("No response expected for this command.")
@@ -479,6 +502,169 @@ class AdamWorkstation:
         WORKSTATION_LOGGER.info("ADAM service response: %s", response)
         print(response)
 
+    def _parse_measurement_csv(self, file_path: str):
+        """
+        Dynamisch: erkennt 1..n Kanäle (je Kanal: Frequenz + Pegel Spalte).
+        Erwartete Struktur:
+            Zeilen mit Titel / Kanalnamen / X,Y Zeile / Units (Hz,dBSPL,...)
+            Danach reine Zahlenzeilen.
+        Rückgabe:
+            {
+              'channels': {
+                  'Ch1': {'frequencies': [...], 'levels': [...], 'unit': 'dBSPL'},
+                  'Ch2': {...},
+                  ...
+              },
+              'data_points': N
+            }
+        """
+        with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+            lines = [l.strip() for l in f if l.strip()]
+
+        # Finde die Indexe der Zeile mit Einheiten (enthält 'Hz' und 'dB')
+        units_idx = None
+        for i, line in enumerate(lines):
+            if "Hz" in line and "dB" in line:
+                units_idx = i
+                break
+        if units_idx is None:
+            raise ValueError("Kein Einheiten-Header (Hz,dB...) gefunden")
+
+        # Die Units-Spalten extrahieren (z.B. Hz,dBSPL,Hz,dBSPL)
+        units_tokens = [t for t in lines[units_idx].split(",") if t]
+        # Daten beginnen nach dieser Zeile
+        data_lines = lines[units_idx + 1:]
+
+        # CSV parsing der Datenzeilen
+        rows = []
+        reader = csv.reader(data_lines)
+        for row in reader:
+            # Filter leere am Ende
+            row = [c.strip() for c in row if c.strip() != ""]
+            if not row:
+                continue
+            rows.append(row)
+
+        if not rows:
+            raise ValueError("Keine Datenzeilen gefunden")
+
+        # Spaltenanzahl bestimmen
+        col_count = len(rows[0])
+        if any(len(r) != col_count for r in rows):
+            # Tolerant: nur Zeilen gleicher Länge übernehmen
+            rows = [r for r in rows if len(r) == col_count]
+
+        if col_count % 2 != 0:
+            raise ValueError(f"Erwarte gerade Spaltenanzahl (Frequenz+Level pro Kanal). Gefunden: {col_count}")
+
+        channel_count = col_count // 2
+
+        # Units pro Kanal (falls weniger Tokens -> fallback)
+        # Einheit = erstes dB/ dBSPL Token je Paar (Standard dBSPL)
+        def _unit_for_pair(pair_index):
+            try:
+                # units_tokens Beispiel: ['Hz','dBSPL','Hz','dBSPL']
+                return units_tokens[pair_index * 2 + 1]
+            except:
+                return "dB"
+
+        channels = {}
+        import math
+        import numpy as np
+
+        cols_numeric = []
+        for r in rows:
+            numeric = []
+            for c in r:
+                try:
+                    numeric.append(float(c))
+                except:
+                    numeric.append(math.nan)
+            cols_numeric.append(numeric)
+
+        import numpy as np
+        arr = np.array(cols_numeric, dtype=float)  # shape (rows, cols)
+        # Zeilen mit NaN verwerfen (optional streng)
+        mask_valid = ~np.isnan(arr).any(axis=1)
+        arr = arr[mask_valid]
+
+        for ch_index in range(channel_count):
+            freq_col = arr[:, 2 * ch_index]
+            level_col = arr[:, 2 * ch_index + 1]
+            ch_name = f"Ch{ch_index + 1}"
+            channels[ch_name] = {
+                "frequencies": freq_col.tolist(),
+                "levels": level_col.tolist(),
+                "unit": _unit_for_pair(ch_index),
+                "data_points": int(len(freq_col))
+            }
+
+        return {
+            "channels": channels,
+            "data_points": int(arr.shape[0])
+        }
+
+    def process_measurement(self, args):
+        """Process local measurement file (variable channel count) and send to service."""
+        WORKSTATION_LOGGER.info("Processing measurement file: %s", args.measurement_path)
+        try:
+            if not os.path.exists(args.measurement_path):
+                msg = f"Measurement file not found: {args.measurement_path}"
+                WORKSTATION_LOGGER.error(msg)
+                print(f"ERROR {msg}")
+                return
+
+            parsed = self._parse_measurement_csv(args.measurement_path)
+            channels = parsed["channels"]
+            filename = os.path.basename(args.measurement_path)
+            serial_number = args.serial_number
+
+            WORKSTATION_LOGGER.info(
+                "Parsed measurement: serial=%s file=%s channels=%d points=%d",
+                serial_number, filename, len(channels), parsed["data_points"]
+            )
+
+            measurement_data = {
+                "device_serial": serial_number,
+                "timestamp": datetime.now().isoformat(),
+                "workstation_id": self.workstation_id,
+                "measurement_file": filename,
+                "channels": channels
+            }
+
+            command = {
+                "action": "add_measurement",
+                "json_directory": args.json_directory,
+                "measurement_data": measurement_data,
+                "wait_for_response": True
+            }
+
+            WORKSTATION_LOGGER.info("Sending measurement to service host=%s port=%s", self.host, self.port)
+            response = self.send_command(command, wait_for_response=True)
+            if not response:
+                WORKSTATION_LOGGER.error("Empty response from service")
+                print("ERROR empty response from service")
+                return
+
+            try:
+                result = json.loads(response)
+            except json.JSONDecodeError as e:
+                WORKSTATION_LOGGER.error("Invalid JSON response: %s | raw=%s", e, response[:200])
+                print("ERROR invalid service response")
+                return
+
+            if "error" in result:
+                WORKSTATION_LOGGER.error("Service reported error: %s", result["error"])
+                print(f"ERROR {result['error']}")
+            else:
+                WORKSTATION_LOGGER.info("Measurement stored: id=%s total=%s",
+                                        result.get("measurement_id"), result.get("measurement_count"))
+                # Nur noch diese Ausgabe bei Erfolg:
+                print("Data successfully transferred.")
+        except Exception as e:
+            WORKSTATION_LOGGER.exception("Unhandled exception in process_measurement")
+            print(f"ERROR {e}")
+
     def setup_arg_parser(self):
         """Set up the argument parser for command-line arguments."""
         parser = argparse.ArgumentParser(
@@ -614,6 +800,12 @@ Connection Examples:
         check_trials_parser.add_argument("serial_number", type=str, help="Serial number to check")
         check_trials_parser.add_argument("csv_path", type=str, help="Path to the CSV file")
         check_trials_parser.add_argument("max_trials", type=int, help="Maximum allowed trials")
+
+        # NEU HINZUFÜGEN:
+        process_measurement_parser = subparsers.add_parser("process_measurement", help="Process measurement data and send to service")
+        process_measurement_parser.add_argument("measurement_path", type=str, help="Path to measurement file")
+        process_measurement_parser.add_argument("--serial-number", "-s", dest="serial_number", required=True, help="Explicit device serial number")
+        process_measurement_parser.add_argument("--json-directory", type=str, default="measurements", help="JSON directory on service")
 
         self.parser = parser
 

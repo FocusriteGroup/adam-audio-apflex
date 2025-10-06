@@ -2,6 +2,7 @@ import logging
 import os
 from datetime import datetime
 import csv
+from pathlib import Path  # sicherstellen, dass vorhanden
 
 # Unterverzeichnis "logs" für ADAM Audio Service erstellen
 log_dir = "logs/adam_audio"
@@ -249,37 +250,44 @@ class AdamService:
     # --- Workstation Handling ---
 
     def handle_workstation(self, workstation_socket):
-        """
-        Handle communication with a connected workstation.
-
-        Args:
-            workstation_socket (socket.socket): The workstation socket.
-        """
+        """Handle communication with a connected workstation."""
+        client_address = workstation_socket.getpeername()
         try:
+            # FIX: Größere Buffer für große JSON-Daten
+            data_buffer = b""
             while True:
-                data = workstation_socket.recv(1024).decode("utf-8")
-                if not data:
+                chunk = workstation_socket.recv(8192)  # Größere Chunks
+                if not chunk:
                     break
-                self.logger.info("Received: %s", data)
+                data_buffer += chunk
+                
+                # Prüfen ob komplette Nachricht empfangen
                 try:
-                    command = json.loads(data)
-                    response = self.process_command(command)
-                    if command.get("wait_for_response", True):
-                        workstation_socket.send(response.encode("utf-8"))
-                        self.logger.info("Sent response: %s", response)
-                    else:
-                        self.logger.info("No response sent.")
-                except json.JSONDecodeError:
-                    self.logger.error("Invalid JSON received.")
-                    workstation_socket.send(b"Error: Invalid JSON format.")
-                except (OSError, socket.error) as e:
-                    self.logger.error("Error processing command: %s", e)
-                    workstation_socket.send(f"Error: {e}".encode("utf-8"))
-        except (socket.error, OSError) as e:
-            self.logger.error("Connection error: %s", e)
+                    command_str = data_buffer.decode("utf-8")
+                    command = json.loads(command_str)
+                    break  # Komplette Nachricht empfangen
+                except (json.JSONDecodeError, UnicodeDecodeError):
+                    continue  # Mehr Daten benötigt
+            
+            if not data_buffer:
+                return
+                
+            self.logger.info("Received command from %s: %s", client_address, command.get("action", "unknown"))
+            response = self.process_command(command)
+            
+            # Response senden
+            if response and command.get("wait_for_response", True):
+                response_bytes = response.encode("utf-8")
+                workstation_socket.send(response_bytes)
+                self.logger.info("Sent response to %s (%d bytes)", client_address, len(response_bytes))
+            else:
+                self.logger.info("No response sent to %s", client_address)
+                
+        except Exception as e:
+            self.logger.error("Error handling workstation %s: %s", client_address, e)
         finally:
             workstation_socket.close()
-            self.logger.info("Workstation connection closed.")
+            self.logger.info("Workstation connection closed: %s", client_address)
 
     # --- Command Processing ---
 
@@ -302,25 +310,11 @@ class AdamService:
             # Measurement Trial Tracking
             "check_measurement_trials": lambda: self._check_measurement_trials(command),
             
-            # Workstation Logging (covers all workstation activities including OCA)
+            # Workstation Logging
             "log_workstation_task": lambda: self._log_workstation_task(command),
             
-            # ALLE OCA-COMMANDS ENTFERNT:
-            # "get_serial_number": lambda: self._get_serial_number(command),
-            # "get_gain": lambda: self._get_gain(command),
-            # "set_gain": lambda: self._set_gain(command),
-            # "get_device_biquad": lambda: self._get_device_biquad(command),
-            # "set_device_biquad": lambda: self._set_device_biquad(command),
-            # "get_model_description": lambda: self._get_model_description(command),
-            # "get_firmware_version": lambda: self._get_firmware_version(command),
-            # "get_audio_input": lambda: self._get_audio_input(command),
-            # "set_audio_input": lambda: self._set_audio_input(command),
-            # "get_mute": lambda: self._get_mute(command),
-            # "set_mute": lambda: self._set_mute(command),
-            # "get_mode": lambda: self._get_mode(command),
-            # "set_mode": lambda: self._set_mode(command),
-            # "get_phase_delay": lambda: self._get_phase_delay(command),
-            # "set_phase_delay": lambda: self._set_phase_delay(command),
+            # NEU: Vereinfachtes Measurement Management
+            "add_measurement": lambda: self._add_measurement(command),
         }
 
         if action in command_map:
@@ -470,6 +464,104 @@ class AdamService:
             self.logger.error(error_msg)
             return json.dumps({"error": error_msg})
 
+    # NEUE Methode für das Hinzufügen von Messungen
+    def _add_measurement(self, command):
+        """Add measurement with global shared frequency vector (stored once)."""
+        try:
+            requested_dir = command.get("json_directory", "measurements")
+            measurement_data = command.get("measurement_data")
+            if not measurement_data:
+                return json.dumps({"error": "No measurement_data provided"})
+
+            target_dir = self._resolve_json_directory(requested_dir)
+            target_dir.mkdir(parents=True, exist_ok=True)
+            json_file = target_dir / "all_measurements.json"
+
+            # JSON laden oder Grundstruktur
+            if json_file.exists():
+                with json_file.open("r", encoding="utf-8") as f:
+                    json_data = json.load(f)
+            else:
+                json_data = {
+                    "metadata": {
+                        "created": datetime.now().isoformat(),
+                        "last_updated": datetime.now().isoformat(),
+                        "total_measurements": 0
+                    },
+                    "measurements": {}
+                }
+
+            # Prüfen ob globaler Frequenzvektor existiert
+            global_freq = json_data.get("frequency_vector", None)
+
+            # Frequenzvektor aus erster Messung übernehmen falls noch nicht vorhanden
+            if global_freq is None:
+                # Erste Channel mit Frequenzliste suchen
+                adopted = False
+                for ch_name, ch_data in measurement_data.get("channels", {}).items():
+                    freqs = ch_data.get("frequencies")
+                    if freqs and isinstance(freqs, list) and len(freqs) > 0:
+                        json_data["frequency_vector"] = freqs
+                        json_data["metadata"]["frequency_points"] = len(freqs)
+                        global_freq = freqs
+                        self.logger.info("Global frequency vector adopted from channel %s (%d points)", ch_name, len(freqs))
+                        adopted = True
+                        break
+                if not adopted:
+                    return json.dumps({"error": "No frequency vector found in first measurement"})
+            else:
+                # Validierung eingehender Frequenzlisten (falls gesendet)
+                for ch_name, ch_data in measurement_data.get("channels", {}).items():
+                    incoming = ch_data.get("frequencies")
+                    if incoming:
+                        if len(incoming) != len(global_freq):
+                            self.logger.warning(
+                                "Incoming frequency length mismatch (ch=%s expected=%d got=%d) -> ignoring incoming frequencies",
+                                ch_name, len(global_freq), len(incoming)
+                            )
+                        else:
+                            # Schneller Vergleich (erstes, mittleres, letztes Element)
+                            if not (incoming[0] == global_freq[0] and
+                                    incoming[len(incoming)//2] == global_freq[len(global_freq)//2] and
+                                    incoming[-1] == global_freq[-1]):
+                                self.logger.warning(
+                                    "Incoming frequency values differ (ch=%s) -> ignoring incoming frequencies",
+                                    ch_name
+                                )
+                        # Frequenzen werden in jedem Fall ignoriert (globales Modell)
+            
+            # Frequenzlisten aus den Kanal-Daten entfernen, nur Levels behalten
+            for ch_name, ch_data in measurement_data.get("channels", {}).items():
+                if "frequencies" in ch_data:
+                    del ch_data["frequencies"]
+                # data_points ggf. aktualisieren
+                if "levels" in ch_data and isinstance(ch_data["levels"], list):
+                    ch_data["data_points"] = len(ch_data["levels"])
+
+            device_serial = measurement_data.get("device_serial", "UNKNOWN")
+            measurement_id = f"{device_serial}_{int(time.time())}"
+
+            json_data["measurements"][measurement_id] = measurement_data
+            json_data["metadata"]["last_updated"] = datetime.now().isoformat()
+            json_data["metadata"]["total_measurements"] = len(json_data["measurements"])
+
+            with json_file.open("w", encoding="utf-8") as f:
+                json.dump(json_data, f, indent=2, ensure_ascii=False)
+
+            return json.dumps({
+                "status": "success",
+                "measurement_id": measurement_id,
+                "measurement_count": len(json_data["measurements"]),
+                "frequency_points": len(json_data.get("frequency_vector", [])),
+                "json_file": str(json_file),
+                "base_dir_mode": "user_home",
+                "base_dir": str(self._get_user_home())
+            })
+        except Exception as e:
+            self.logger.error("Error adding measurement: %s", e)
+            return json.dumps({"error": str(e)})
+
+
     # --- Service Management ---
 
     def start(self):
@@ -514,6 +606,40 @@ class AdamService:
             self.logger.error("Error closing service socket: %s", e)
             
         self.logger.info("ADAM Audio Service and discovery service stopped.")
+
+    def _get_user_home(self) -> Path:
+        """
+        Ermittelt das Basisverzeichnis für Speicherung.
+        Priorität:
+          1. Umgebungsvariable ADAM_SERVICE_HOME (falls gesetzt)
+          2. Path.home() (plattformunabhängig)
+        """
+        env_override = os.getenv("ADAM_SERVICE_HOME")
+        if env_override:
+            p = Path(env_override).expanduser()
+            try:
+                p.mkdir(parents=True, exist_ok=True)
+            except Exception:
+                pass
+            return p
+        return Path.home()
+
+    def _resolve_json_directory(self, requested: str) -> Path:
+        """
+        Wandelt einen von der Workstation übergebenen (relativen) Ordnernamen
+        in einen sicheren Pfad relativ zum User-Home des Service-Hosts um.
+        Entfernt absolute Wurzeln und '..'.
+        """
+        base = self._get_user_home()
+        req = requested or "measurements"
+        p = Path(req)
+        if p.is_absolute():
+            # absolute Teile abschneiden
+            p = Path(*p.parts[1:])
+        safe_parts = [part for part in p.parts if part not in ("..", ".", "")]
+        if not safe_parts:
+            safe_parts = ["measurements"]
+        return base.joinpath(*safe_parts)
 
 # --- Command Line Interface ---
 
