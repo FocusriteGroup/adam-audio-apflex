@@ -1,73 +1,111 @@
-import socket
-import json
-import sys
-import logging
-import argparse
-import os
-import time  # NEU HINZUFÜGEN
-from datetime import datetime
-from oca.oca_manager import OCAManager
-import csv
+"""
+adam_workstation.py
 
-# ADAM Audio Workstation Logging - angleichen an Utils-Struktur
+ADAM Audio Production Workstation CLI
+------------------------------------------------
+
+Author: Thilo Rode
+Company: ADAM Audio GmbH
+Version: 0.1
+Date: 2025-10-22
+
+Features:
+- Command-line interface for device control, hardware management, and measurement processing
+- Modular command dispatch for production and OCA device operations
+- Lazy hardware manager initialization for SwitchBox and scanner devices
+- Service communication via TCP/IP with auto-discovery support
+- Measurement file parsing and validation (multi-channel CSV)
+- Biquad filter coefficient calculation and device configuration
+- Serial number scanning and trial management
+- Logging to daily log files for traceability
+- Extensible CLI: add new commands easily via command_map and argparse
+
+This script provides a flexible CLI tool for ADAM Audio production workflows, hardware integration, and device configuration tasks.
+It is designed for extensibility and automation in manufacturing environments.
+"""
+
+# Standard library imports
+import socket  # For network communication
+import json    # For encoding/decoding messages
+import sys     # For system exit and argument handling
+import logging # For event and error logging
+import argparse # For command-line argument parsing
+import os      # For file and directory operations
+from datetime import datetime # For timestamps
+import csv     # For parsing measurement files
+import math
+import numpy as np
+
+# External module imports
+from oca.oca_manager import OCAManager # OCA device manager
+
+# Set up logging directory and file for workstation events
 log_dir = "logs/adam_audio"
-os.makedirs(log_dir, exist_ok=True)
+os.makedirs(log_dir, exist_ok=True)  # Ensure log directory exists
 
 today = datetime.now().strftime("%Y-%m-%d")
 log_filename = f"{log_dir}/adam_workstation_log_{today}.log"
 
-# Configure logging nur File - KEIN Console Output für Audio Precision calls
+# Configure logging to file only (no console output for Audio Precision calls)
 logging.basicConfig(
     filename=log_filename,
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - [%(name)s] - %(message)s"
 )
 
-# Workstation-Logger
+# Create a named logger for the workstation
 WORKSTATION_LOGGER = logging.getLogger("AdamWorkstation")
 
+# Log workstation startup
 logging.info("----------------------------------- ADAM Audio Workstation started")
+
 
 class AdamWorkstation:
     """
-    ADAM Audio Production Workstation.
+    Main class for ADAM Audio Production Workstation.
 
-    Complete workstation software for ADAM Audio device control,
-    production line operations, EOL testing, and quality assurance.
-    
-    Integrates with ADAM Audio services to provide a comprehensive
-    production environment for speaker manufacturing and testing.
+    Provides a modular CLI for device control, hardware management, measurement processing, and service communication.
+    Features:
+    - Lazy initialization of hardware managers (SwitchBox, Scanner)
+    - Command dispatch via command_map for extensibility
+    - Robust error handling and logging for traceability
+    - Service auto-discovery and TCP/IP communication
+    - Detailed measurement file parsing and validation
+    - OCA device configuration and querying
     """
 
     def __init__(self, host=None, port=65432, service_name="ADAMService", scanner_type="honeywell"):
         """
-        Initialize the ADAM Audio Workstation.
+        Initialize the ADAM Audio Workstation instance.
 
         Args:
-            host (str): Service IP address (auto-discovered if None)
-            port (int): Service port number. Default is 65432.
-            service_name (str): Name of ADAM service to connect to
-            scanner_type (str): Type of scanner to use. Default is "honeywell".
+            host (str, optional): Service IP address. If None, auto-discovery is used.
+            port (int, optional): Service port number. Default is 65432.
+            service_name (str, optional): Name of ADAM service to connect to.
+            scanner_type (str, optional): Type of scanner hardware. Default is "honeywell".
+
+        Sets up hardware managers, OCA manager, command dispatch map, and CLI argument parser.
         """
+        # Store connection parameters for service communication
         self.port = port
         self.service_name = service_name
         self.host = host
-        
-        # Workstation-ID für Logging
-        self.workstation_id = socket.gethostname()
-        
-        # NEU: Lazy Loading - Hardware-Manager werden nur bei Bedarf initialisiert
-        self._switchbox_manager = None
-        self._scanner_manager = None
-        self._scanner_type = scanner_type  # Scanner-Type für spätere Initialisierung speichern
 
-        # NEU: OCA Manager hinzufügen (VORSICHTIG eingefügt)
+        # Get workstation ID for logging (uses system hostname)
+        self.workstation_id = socket.gethostname()
+
+        # Initialize hardware managers as None for lazy loading
+        self._switchbox_manager = None  # Will be created when needed
+        self._scanner_manager = None    # Will be created when needed
+        self._scanner_type = scanner_type  # Store scanner type for later initialization
+
+        # Create OCA manager for device control and logging
         self.oca_manager = OCAManager(
             workstation_id=self.workstation_id,
-            service_client=self  # Workstation fungiert als Service-Client für Logging
+            service_client=self  # Workstation acts as service client for logging
         )
 
-        # Map of commands to their corresponding methods - BEREINIGT
+        # Map command names to their corresponding methods for CLI dispatch
         self.command_map = {
             "generate_timestamp_extension": self.generate_timestamp_extension,
             "construct_path": self.construct_path,
@@ -93,49 +131,67 @@ class AdamWorkstation:
             "get_phase_delay": self.get_phase_delay,
             "set_phase_delay": self.set_phase_delay,
             "check_measurement_trials": self.check_measurement_trials,
-            # NEU HINZUFÜGEN:
             "process_measurement": self.process_measurement,
         }
 
+        # Set up argument parser for CLI usage
         self.setup_arg_parser()
 
     # NEU: Properties für Lazy Loading
     @property
     def switchbox_manager(self):
-        """Lazy-loaded SwitchBox manager."""
+        """
+        Returns the SwitchBox manager instance, initializing it on first access.
+
+        Handles communication with SwitchBox hardware for channel selection and box control.
+        Uses lazy loading to avoid unnecessary hardware initialization until required.
+        Logs initialization event for traceability.
+        """
+        # Check if the manager is already initialized
         if self._switchbox_manager is None:
             WORKSTATION_LOGGER.info("Initializing SwitchBox hardware on first use")
             from serial_managers import SwitchBoxManager
+            # Create the manager instance
             self._switchbox_manager = SwitchBoxManager(self.workstation_id)
+        # Return the manager instance
         return self._switchbox_manager
 
     @property
     def scanner_manager(self):
-        """Lazy-loaded Scanner manager."""
+        """
+        Returns the Scanner manager instance, initializing it on first access.
+
+        Handles communication with scanner hardware for reading device serial numbers.
+        Uses lazy loading and logs initialization for traceability.
+        """
+        # Check if the manager is already initialized
         if self._scanner_manager is None:
             WORKSTATION_LOGGER.info("Initializing %s Scanner hardware on first use", self._scanner_type)
             from serial_managers import ScannerManager
+            # Create the manager instance
             self._scanner_manager = ScannerManager(self.workstation_id, self._scanner_type)
+        # Return the manager instance
         return self._scanner_manager
 
     def _discover_service(self):
         """
-        Discover ADAM service using connector (lazy import).
-        
+        Attempts to discover the ADAM service IP address using AdamConnector.
+        Uses lazy import to avoid dependency errors if connector is unavailable.
+
         Returns:
-            str: Service IP address or None if not found
+            str or None: Service IP address if found, else None. Logs errors and warnings.
         """
         try:
-            # Lazy import to avoid import errors if connector not available
+            # Import AdamConnector only when needed
             from adam_connector import AdamConnector
-            
             WORKSTATION_LOGGER.info("Auto-discovering ADAM service...")
+            # Create connector instance with current port and service name
             connector = AdamConnector(
                 default_port=self.port,
                 service_name=self.service_name,
                 setup_logging=False  # Use workstation logging
             )
-            
+            # Attempt to find the service IP with a timeout
             service_ip = connector.find_service_ip(discovery_timeout=3)
             if service_ip:
                 WORKSTATION_LOGGER.info("ADAM service discovered at: %s:%d", service_ip, self.port)
@@ -144,25 +200,26 @@ class AdamWorkstation:
                 WORKSTATION_LOGGER.warning("No ADAM service found via discovery")
                 return None
         except ImportError:
+            # AdamConnector not available
             WORKSTATION_LOGGER.error("adam_connector.py not found - auto-discovery disabled")
             return None
-        except Exception as e:
+        except (socket.error, json.JSONDecodeError) as e:
+            # Log any other errors during discovery
             WORKSTATION_LOGGER.error("Service discovery failed: %s", e)
             return None
 
     def _ensure_host_available(self):
         """
-        Ensure that a valid host is available.
-        Uses discovery only if no host was specified.
-        
+        Ensures a valid host IP address is available for service communication.
+        Uses auto-discovery if host was not specified during initialization.
+
         Returns:
-            bool: True if host is available, False otherwise
+            bool: True if host is available, False otherwise. Logs errors if unavailable.
         """
+        # If host is already set, use it directly
         if self.host:
-            # Host already specified - direkte Verwendung
             return True
-            
-        # Kein Host - versuche Auto-Discovery
+        # Otherwise, try to discover the host
         discovered_host = self._discover_service()
         if discovered_host:
             self.host = discovered_host
@@ -173,134 +230,229 @@ class AdamWorkstation:
 
     def send_command(self, command, wait_for_response=True):
         """
-        Send a command to the ADAM service and optionally wait for a response.
+        Sends a command to the ADAM service over TCP/IP and optionally waits for a response.
 
         Args:
-            command (dict): The command to send to the service.
-            wait_for_response (bool): Whether to wait for a response from the service.
+            command (dict): Command dictionary to send to the service.
+            wait_for_response (bool, optional): If True, waits for and returns service response.
 
         Returns:
-            str: The service's response if wait_for_response is True, otherwise None.
+            str or None: Service response if wait_for_response is True, else None.
+
+        Handles connection errors, JSON decode errors, and logs all events for traceability.
         """
-        # Ensure we have a valid host
+        # Ensure we have a valid host before sending any command
         if not self._ensure_host_available():
             error_msg = "Error: No ADAM service available. Use --host to specify manually."
             WORKSTATION_LOGGER.error(error_msg)
             return error_msg
 
         try:
+            # Log connection attempt
             WORKSTATION_LOGGER.info("Connecting to ADAM service at %s:%s...", self.host, self.port)
+            # Create a TCP socket for communication
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
-                client_socket.connect((self.host, self.port))  # Connect to the service
+                # Connect to the ADAM service
+                client_socket.connect((self.host, self.port))
                 WORKSTATION_LOGGER.info("Connected to ADAM service. Sending command: %s", command.get("action", "unknown"))
-                
-                # Send command as JSON
+
+                # Serialize the command as JSON and send it
                 command_json = json.dumps(command).encode("utf-8")
                 client_socket.send(command_json)
 
                 if wait_for_response:
-                    # FIX: Größere Buffer und schrittweise Response lesen
+                    # Read response in chunks until complete JSON is received
                     response_data = b""
                     while True:
-                        chunk = client_socket.recv(8192)  # Größere Chunks
+                        chunk = client_socket.recv(8192)  # Read up to 8KB at a time
                         if not chunk:
                             break
                         response_data += chunk
-                        
-                        # Prüfen ob komplettes JSON empfangen
+                        # Try to decode and parse JSON to check completeness
                         try:
                             response_str = response_data.decode("utf-8")
-                            json.loads(response_str)  # Test ob valid JSON
-                            break  # Komplettes JSON empfangen
+                            json.loads(response_str)
+                            break  # Complete JSON received
                         except (json.JSONDecodeError, UnicodeDecodeError):
-                            continue  # Mehr Daten benötigt
-                
+                            continue  # Need more data
+
+                    # Decode the response and log its size
                     response = response_data.decode("utf-8")
                     WORKSTATION_LOGGER.info("Received response from ADAM service (%d bytes)", len(response))
                     return response
                 else:
+                    # No response expected for this command
                     WORKSTATION_LOGGER.info("No response expected for this command.")
                     return None
         except socket.error as e:
+            # Log socket errors
             WORKSTATION_LOGGER.error("Socket error: %s", e)
             return f"Error: {e}"
         except json.JSONDecodeError as e:
+            # Log JSON decode errors
             WORKSTATION_LOGGER.error("JSON decode error: %s", e)
             return f"Error: {e}"
 
     # BEREINIGTE Command methods - Audio Precision Commands entfernt
 
     def generate_timestamp_extension(self, args):
-        """Request the service to generate a timestamp extension."""
+        """
+        Requests the service to generate a timestamp extension string.
+        Used for file naming and traceability in production workflows.
+
+        Args:
+            args: CLI arguments (not used).
+
+        Prints the service response.
+        """
+        # Log the command execution
         WORKSTATION_LOGGER.info("Executing 'generate_timestamp_extension' command.")
+        # Build the command dictionary
         command = {"action": "generate_timestamp_extension"}
+        # Send the command and print the response
         response = self.send_command(command, wait_for_response=True)
         print(response)
 
     def construct_path(self, args):
-        """Request the service to construct a path from the provided components."""
+        """
+        Requests the service to construct a filesystem path from provided components.
+        Useful for organizing measurement and log files in production.
+
+        Args:
+            args: CLI arguments containing 'paths' (list of path components).
+
+        Prints the constructed path from the service response.
+        """
+        # Log the command execution and arguments
         WORKSTATION_LOGGER.info("Executing 'construct_path' command with paths: %s", args.paths)
+        # Build the command dictionary
         command = {"action": "construct_path", "paths": args.paths}
+        # Send the command and print the response
         response = self.send_command(command, wait_for_response=True)
         print(response)
 
     def get_timestamp_subpath(self, args):
-        """Request the service to generate a timestamp subpath."""
+        """
+        Requests the service to generate a timestamp-based subpath for organizing files.
+        Useful for date/time-based file management.
+
+        Args:
+            args: CLI arguments (not used).
+
+        Prints the generated subpath from the service response.
+        """
+        # Log the command execution
         WORKSTATION_LOGGER.info("Executing 'get_timestamp_subpath' command.")
+        # Build the command dictionary
         command = {"action": "get_timestamp_subpath"}
+        # Send the command and print the response
         response = self.send_command(command, wait_for_response=True)
         print(response)
 
     def generate_file_prefix(self, args):
-        """Request the service to generate a file prefix from the provided strings."""
+        """
+        Requests the service to generate a file prefix from provided strings.
+        Used for consistent file naming conventions in production.
+
+        Args:
+            args: CLI arguments containing 'strings' (list of prefix components).
+
+        Prints the generated prefix from the service response.
+        """
+        # Log the command execution and arguments
         WORKSTATION_LOGGER.info("Executing 'generate_file_prefix' command with strings: %s", args.strings)
+        # Build the command dictionary
         command = {"action": "generate_file_prefix", "strings": args.strings}
+        # Send the command and print the response
         response = self.send_command(command, wait_for_response=True)
         print(response)
 
     # Hardware-Commands verwenden Properties (Lazy Loading)
     def set_channel(self, args):
-        """Set channel on local SwitchBox hardware only."""
+        """
+        Sets the output channel on local SwitchBox hardware.
+        Used to select the correct output channel for device testing.
+
+        Args:
+            args: CLI arguments containing 'channel' (int).
+
+        Prints the result or error and exits on failure.
+        """
         try:
+            # Call the SwitchBox manager to set the channel
             result_channel = self.switchbox_manager.set_channel(
                 channel=args.channel,
                 service_host=self.host,
                 service_port=self.port
             )
+            # Print the result to the user
             print(f"Channel set to {result_channel}")
-        except Exception as e:
+        except (ValueError, FileNotFoundError, json.JSONDecodeError) as e:
+            # Print error and exit
             print(f"Error: {e}")
             sys.exit(1)
 
     def open_box(self, args):
-        """Open box on local SwitchBox hardware only."""
+        """
+        Opens the physical test box using local SwitchBox hardware.
+        Used for device insertion/removal during production.
+
+        Args:
+            args: CLI arguments (not used).
+
+        Prints the box status or error and exits on failure.
+        """
         try:
+            # Call the SwitchBox manager to open the box
             box_status = self.switchbox_manager.open_box(
                 service_host=self.host,
                 service_port=self.port
             )
+            # Print the box status
             print(f"Box status: {box_status}")
-        except Exception as e:
+        except (ValueError, FileNotFoundError, json.JSONDecodeError, socket.error) as e:
+            # Print error and exit
             print(f"Error: {e}")
             sys.exit(1)
 
     def scan_serial(self, args):
-        """Scan serial number using configured scanner hardware."""
+        """
+        Scans a device serial number using configured scanner hardware.
+        Used to read serial numbers during production.
+
+        Args:
+            args: CLI arguments (not used).
+
+        Prints the scanned serial number or error and exits on failure.
+        """
         try:
+            # Call the scanner manager to scan the serial number
             serial_number = self.scanner_manager.scan_serial(
                 service_host=self.host,
                 service_port=self.port
             )
+            # Print the scanned serial number
             print(serial_number)
-        except Exception as e:
+        except (ValueError, FileNotFoundError, json.JSONDecodeError, socket.error) as e:
+            # Print error and exit
             print(f"Error: {e}")
             sys.exit(1)
 
     # OCA Device Commands
     def get_biquad_coefficients(self, args):
-        """Request the service to calculate biquad filter coefficients."""
-        WORKSTATION_LOGGER.info("Executing 'get_biquad_coefficients' with: type=%s, gain=%s, peak_freq=%s, Q=%s, sample_rate=%s", 
+        """
+        Requests the service to calculate biquad filter coefficients for DSP configuration.
+        Used for configuring device DSP filters in OCA devices.
+
+        Args:
+            args: CLI arguments with filter parameters (type, gain, freq, Q, sample_rate).
+
+        Prints the calculated coefficients from the service response.
+        """
+        # Log the command execution and arguments
+        WORKSTATION_LOGGER.info("Executing 'get_biquad_coefficients' with: type=%s, gain=%s, peak_freq=%s, Q=%s, sample_rate=%s",
                  args.filter_type, args.gain, args.peak_freq, args.Q, args.sample_rate)
+        # Build the command dictionary
         command = {
             "action": "get_biquad_coefficients",
             "filter_type": args.filter_type,
@@ -310,169 +462,274 @@ class AdamWorkstation:
             "sample_rate": args.sample_rate,
             "wait_for_response": True
         }
+        # Send the command and print the response
         response = self.send_command(command, wait_for_response=True)
         print(response)
 
 
 
     def get_serial_number(self, args):
-        """Get serial number from OCA device (LOCAL)."""
+        """
+        Gets the serial number from a target OCA device over the network.
+
+        Args:
+            args: CLI arguments with 'target_ip' and 'port'.
+
+        Prints the serial number or logs error.
+        """
         WORKSTATION_LOGGER.info("Executing 'get_serial_number' on OCA device %s:%d", args.target_ip, args.port)
         try:
             result = self.oca_manager.get_serial_number(args.target_ip, args.port)
             print(result)
-        except Exception as e:
+        except (socket.error, json.JSONDecodeError, ValueError) as e:
             error_msg = f"Error getting serial number: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
 
     def set_mute(self, args):
-        """Set mute state on OCA device (LOCAL)."""
+        """
+        Sets the mute state on a target OCA device.
+
+        Args:
+            args: CLI arguments with 'state', 'target_ip', and 'port'.
+
+        Prints the result or logs error.
+        """
         WORKSTATION_LOGGER.info("Executing 'set_mute' to %s on OCA device %s:%d", args.state, args.target_ip, args.port)
         try:
             result = self.oca_manager.set_mute(args.state, args.target_ip, args.port)
             print(result)
-        except Exception as e:
+        except (ValueError, socket.error, json.JSONDecodeError) as e:
             error_msg = f"Error setting mute: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
 
     def get_mute(self, args):
-        """Get mute state from OCA device (LOCAL)."""
+        """
+        Gets the mute state from a target OCA device.
+
+        Args:
+            args: CLI arguments with 'target_ip' and 'port'.
+
+        Prints the mute state or logs error.
+        """
         WORKSTATION_LOGGER.info("Executing 'get_mute' on OCA device %s:%d", args.target_ip, args.port)
         try:
             result = self.oca_manager.get_mute(args.target_ip, args.port)
             print(result)
-        except Exception as e:
+        except (ValueError, socket.error, json.JSONDecodeError) as e:
             error_msg = f"Error getting mute state: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
 
     def set_gain(self, args):
-        """Set gain on OCA device (LOCAL)."""
+        """
+        Sets the gain value on a target OCA device.
+
+        Args:
+            args: CLI arguments with 'value', 'target_ip', and 'port'.
+
+        Prints the result or logs error.
+        """
         WORKSTATION_LOGGER.info("Executing 'set_gain' to %s on OCA device %s:%d", args.value, args.target_ip, args.port)
         try:
             result = self.oca_manager.set_gain(args.value, args.target_ip, args.port)
             print(result)
-        except Exception as e:
+        except (ValueError, socket.error, json.JSONDecodeError) as e:
             error_msg = f"Error setting gain: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
 
     def get_gain(self, args):
-        """Get gain from OCA device (LOCAL)."""
+        """
+        Gets the gain value from a target OCA device.
+
+        Args:
+            args: CLI arguments with 'target_ip' and 'port'.
+
+        Prints the gain value or logs error.
+        """
         WORKSTATION_LOGGER.info("Executing 'get_gain' on OCA device %s:%d", args.target_ip, args.port)
         try:
             result = self.oca_manager.get_gain(args.target_ip, args.port)
             print(result)
-        except Exception as e:
+        except (ValueError, socket.error, json.JSONDecodeError) as e:
             error_msg = f"Error getting gain: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
 
     def get_model_description(self, args):
-        """Get model description from OCA device (LOCAL)."""
+        """
+        Gets the model description from a target OCA device.
+
+        Args:
+            args: CLI arguments with 'target_ip' and 'port'.
+
+        Prints the model description or logs error.
+        """
         WORKSTATION_LOGGER.info("Executing 'get_model_description' on OCA device %s:%d", args.target_ip, args.port)
         try:
             result = self.oca_manager.get_model_description(args.target_ip, args.port)
             print(result)
-        except Exception as e:
+        except (socket.error, json.JSONDecodeError, ValueError) as e:
             error_msg = f"Error getting model description: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
 
     def get_firmware_version(self, args):
-        """Get firmware version from OCA device (LOCAL)."""
+        """
+        Gets the firmware version from a target OCA device.
+
+        Args:
+            args: CLI arguments with 'target_ip' and 'port'.
+
+        Prints the firmware version or logs error.
+        """
         WORKSTATION_LOGGER.info("Executing 'get_firmware_version' on OCA device %s:%d", args.target_ip, args.port)
         try:
             result = self.oca_manager.get_firmware_version(args.target_ip, args.port)
             print(result)
-        except Exception as e:
+        except (socket.error, json.JSONDecodeError, ValueError) as e:
             error_msg = f"Error getting firmware version: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
 
     def get_audio_input(self, args):
-        """Get audio input from OCA device (LOCAL)."""
+        """
+        Gets the audio input mode from a target OCA device.
+
+        Args:
+            args: CLI arguments with 'target_ip' and 'port'.
+
+        Prints the audio input mode or logs error.
+        """
         WORKSTATION_LOGGER.info("Executing 'get_audio_input' on OCA device %s:%d", args.target_ip, args.port)
         try:
             result = self.oca_manager.get_audio_input(args.target_ip, args.port)
             print(result)
-        except Exception as e:
+        except (ValueError, socket.error, json.JSONDecodeError) as e:
             error_msg = f"Error getting audio input: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
 
     def set_audio_input(self, args):
-        """Set audio input on OCA device (LOCAL)."""
+        """
+        Sets the audio input mode on a target OCA device.
+
+        Args:
+            args: CLI arguments with 'position', 'target_ip', and 'port'.
+
+        Prints the result or logs error.
+        """
         WORKSTATION_LOGGER.info("Executing 'set_audio_input' to %s on OCA device %s:%d", args.position, args.target_ip, args.port)
         try:
             result = self.oca_manager.set_audio_input(args.position, args.target_ip, args.port)
             print(result)
-        except Exception as e:
+        except (ValueError, socket.error, json.JSONDecodeError) as e:
             error_msg = f"Error setting audio input: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
 
     def get_mode(self, args):
-        """Get mode from OCA device (LOCAL)."""
+        """
+        Gets the control mode from a target OCA device.
+
+        Args:
+            args: CLI arguments with 'target_ip' and 'port'.
+
+        Prints the control mode or logs error.
+        """
         WORKSTATION_LOGGER.info("Executing 'get_mode' on OCA device %s:%d", args.target_ip, args.port)
         try:
             result = self.oca_manager.get_mode(args.target_ip, args.port)
             print(result)
-        except Exception as e:
+        except (ValueError, socket.error, json.JSONDecodeError) as e:
             error_msg = f"Error getting mode: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
 
     def set_mode(self, args):
-        """Set mode on OCA device (LOCAL)."""
+        """
+        Sets the control mode on a target OCA device.
+
+        Args:
+            args: CLI arguments with 'position', 'target_ip', and 'port'.
+
+        Prints the result or logs error.
+        """
         WORKSTATION_LOGGER.info("Executing 'set_mode' to %s on OCA device %s:%d", args.position, args.target_ip, args.port)
         try:
             result = self.oca_manager.set_mode(args.position, args.target_ip, args.port)
             print(result)
-        except Exception as e:
+        except (ValueError, socket.error, json.JSONDecodeError) as e:
             error_msg = f"Error setting mode: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
 
     def get_phase_delay(self, args):
-        """Get phase delay from OCA device (LOCAL)."""
+        """
+        Gets the phase delay value from a target OCA device.
+
+        Args:
+            args: CLI arguments with 'target_ip' and 'port'.
+
+        Prints the phase delay or logs error.
+        """
         WORKSTATION_LOGGER.info("Executing 'get_phase_delay' on OCA device %s:%d", args.target_ip, args.port)
         try:
             result = self.oca_manager.get_phase_delay(args.target_ip, args.port)
             print(result)
-        except Exception as e:
+        except (ValueError, socket.error, json.JSONDecodeError) as e:
             error_msg = f"Error getting phase delay: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
 
     def set_phase_delay(self, args):
-        """Set phase delay on OCA device (LOCAL)."""
+        """
+        Sets the phase delay value on a target OCA device.
+
+        Args:
+            args: CLI arguments with 'position', 'target_ip', and 'port'.
+
+        Prints the result or logs error.
+        """
         WORKSTATION_LOGGER.info("Executing 'set_phase_delay' to %s on OCA device %s:%d", args.position, args.target_ip, args.port)
         try:
             result = self.oca_manager.set_phase_delay(args.position, args.target_ip, args.port)
             print(result)
-        except Exception as e:
+        except (ValueError, socket.error, json.JSONDecodeError) as e:
             error_msg = f"Error setting phase delay: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
 
     def get_device_biquad(self, args):
-        """Get device biquad from OCA device (LOCAL)."""
+        """
+        Gets the biquad filter coefficients from a target OCA device.
+
+        Args:
+            args: CLI arguments with 'index', 'target_ip', and 'port'.
+
+        Prints the coefficients or logs error.
+        """
         WORKSTATION_LOGGER.info("Executing 'get_device_biquad' index %d on OCA device %s:%d", args.index, args.target_ip, args.port)
         try:
             result = self.oca_manager.get_device_biquad(args.index, args.target_ip, args.port)
             print(result)
-        except Exception as e:
+        except (ValueError, socket.error, json.JSONDecodeError) as e:
             error_msg = f"Error getting device biquad: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
-    
 
     def set_device_biquad(self, args):
-        """Set device biquad on OCA device (LOCAL)."""
-        WORKSTATION_LOGGER.info("Executing 'set_device_biquad' index %d with coefficients %s on OCA device %s:%d", 
+        """
+        Sets the biquad filter coefficients on a target OCA device.
+
+        Args:
+            args: CLI arguments with 'index', 'coefficients' (JSON string), 'target_ip', and 'port'.
+
+        Prints the result or logs error.
+        """
+        WORKSTATION_LOGGER.info("Executing 'set_device_biquad' index %d with coefficients %s on OCA device %s:%d",
                        args.index, args.coefficients, args.target_ip, args.port)
         try:
             coeffs = json.loads(args.coefficients)
@@ -482,14 +739,21 @@ class AdamWorkstation:
             error_msg = f"Error parsing coefficients: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
-        except Exception as e:
+        except (ValueError, socket.error) as e:
             error_msg = f"Error setting device biquad: {e}"
             print(error_msg)
             WORKSTATION_LOGGER.error(error_msg)
 
 
     def check_measurement_trials(self, args):
-        """Check the allowed measurement trials for a serial number."""
+        """
+        Checks the allowed measurement trials for a given serial number using a CSV file.
+
+        Args:
+            args: CLI arguments with 'serial_number', 'csv_path', and 'max_trials'.
+
+        Prints the service response.
+        """
         WORKSTATION_LOGGER.info("Sending check_measurement_trials: serial=%s, csv=%s, max=%d", args.serial_number, args.csv_path, args.max_trials)
         command = {
             "action": "check_measurement_trials",
@@ -504,19 +768,26 @@ class AdamWorkstation:
 
     def _parse_measurement_csv(self, file_path: str):
         """
-        Dynamisch: erkennt 1..n Kanäle (je Kanal: Frequenz + Pegel Spalte).
-        Erwartete Struktur:
-            Zeilen mit Titel / Kanalnamen / X,Y Zeile / Units (Hz,dBSPL,...)
-            Danach reine Zahlenzeilen.
-        Rückgabe:
-            {
-              'channels': {
-                  'Ch1': {'frequencies': [...], 'levels': [...], 'unit': 'dBSPL'},
-                  'Ch2': {...},
-                  ...
-              },
-              'data_points': N
+        Parses a measurement CSV file with dynamic channel count and returns structured data.
+
+        Expected CSV structure:
+            - Header lines: titles, channel names, X/Y labels, units (Hz, dBSPL, ...)
+            - Data lines: numeric values (frequency, level pairs per channel)
+
+        Args:
+            file_path (str): Path to the measurement CSV file.
+
+        Returns:
+            dict: {
+                'channels': {
+                    'Ch1': {'frequencies': [...], 'levels': [...], 'unit': 'dBSPL'},
+                    'Ch2': {...}, ...
+                },
+                'data_points': int
             }
+
+        Raises:
+            ValueError: If header or data format is invalid.
         """
         with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
             lines = [l.strip() for l in f if l.strip()]
@@ -565,12 +836,11 @@ class AdamWorkstation:
             try:
                 # units_tokens Beispiel: ['Hz','dBSPL','Hz','dBSPL']
                 return units_tokens[pair_index * 2 + 1]
-            except:
+            except IndexError:
                 return "dB"
 
         channels = {}
-        import math
-        import numpy as np
+
 
         cols_numeric = []
         for r in rows:
@@ -578,11 +848,11 @@ class AdamWorkstation:
             for c in r:
                 try:
                     numeric.append(float(c))
-                except:
+                except ValueError:
                     numeric.append(math.nan)
             cols_numeric.append(numeric)
 
-        import numpy as np
+
         arr = np.array(cols_numeric, dtype=float)  # shape (rows, cols)
         # Zeilen mit NaN verwerfen (optional streng)
         mask_valid = ~np.isnan(arr).any(axis=1)
@@ -605,7 +875,14 @@ class AdamWorkstation:
         }
 
     def process_measurement(self, args):
-        """Process local measurement file (variable channel count) and send to service."""
+        """
+        Processes a local measurement file (variable channel count) and sends parsed data to the service.
+
+        Args:
+            args: CLI arguments with 'measurement_path', 'serial_number', and 'json_directory'.
+
+        Prints transfer status or error. Logs all events for traceability.
+        """
         WORKSTATION_LOGGER.info("Processing measurement file: %s", args.measurement_path)
         try:
             if not os.path.exists(args.measurement_path):
@@ -661,12 +938,18 @@ class AdamWorkstation:
                                         result.get("measurement_id"), result.get("measurement_count"))
                 # Nur noch diese Ausgabe bei Erfolg:
                 print("Data successfully transferred.")
-        except Exception as e:
+        except (FileNotFoundError, ValueError, json.JSONDecodeError, OSError) as e:
             WORKSTATION_LOGGER.exception("Unhandled exception in process_measurement")
             print(f"ERROR {e}")
 
     def setup_arg_parser(self):
-        """Set up the argument parser for command-line arguments."""
+        """
+        Sets up the argument parser for command-line usage.
+
+        Defines all supported commands, options, and subcommands for the workstation CLI.
+        Includes global connection parameters, hardware configuration, and production commands.
+        """
+        # Create the main argument parser for the CLI
         parser = argparse.ArgumentParser(
             description="ADAM Audio Production Workstation",
             formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -682,7 +965,7 @@ Connection Examples:
   python adam_workstation.py --scanner-type manual scan_serial
             """
         )
-        
+
         # Global connection parameters
         parser.add_argument("--host", "--service-host", dest="service_host",
                            help="ADAM service IP address (auto-discovered if not specified)")
@@ -690,11 +973,11 @@ Connection Examples:
                            help="ADAM service port (default: 65432)")
         parser.add_argument("--service-name", default="ADAMService",
                            help="Name of ADAM service to connect to (default: ADAMService)")
-        
+
         # Scanner configuration
         parser.add_argument("--scanner-type", choices=["honeywell"], default="honeywell",
                            help="Type of scanner to use (default: honeywell)")
-        
+
         # Subcommands
         subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -810,18 +1093,24 @@ Connection Examples:
         self.parser = parser
 
     def parse_and_execute(self):
-        """Parse command-line arguments and execute the appropriate function."""
+        """
+        Parses command-line arguments and executes the appropriate command function.
+
+        Handles global connection parameters, updates instance state, and dispatches commands via command_map.
+        Logs all command execution events for traceability.
+        """
+        # Parse arguments from the command line
         args = self.parser.parse_args()
-        
+
         # Handle global connection parameters
         if args.service_host:
             self.host = args.service_host
             WORKSTATION_LOGGER.info("Using specified ADAM service host: %s", self.host)
-    
+
         if args.service_port != 65432:
             self.port = args.service_port
             WORKSTATION_LOGGER.info("Using specified ADAM service port: %d", self.port)
-            
+
         if args.service_name != "ADAMService":
             self.service_name = args.service_name
             WORKSTATION_LOGGER.info("Using specified ADAM service name: %s", self.service_name)
@@ -829,7 +1118,7 @@ Connection Examples:
         # Execute command
         command = args.command
         WORKSTATION_LOGGER.info("Executing command: %s on ADAM service", command)
-        
+
         if command in self.command_map:
             self.command_map[command](args)
         else:
@@ -837,12 +1126,18 @@ Connection Examples:
             sys.exit(1)
 
 
+
+# Entry point for command-line usage
 if __name__ == "__main__":
-    # Parse args first to get scanner config
+    # Main entry point for the ADAM Audio Production Workstation CLI.
+    #
+    # Parses scanner configuration from command-line arguments, initializes the workstation,
+    # and executes the requested CLI command. Ensures hardware configuration is set before full parsing.
+    # Parse scanner type from command-line arguments before full parsing
     temp_parser = argparse.ArgumentParser(add_help=False)
     temp_parser.add_argument("--scanner-type", choices=["honeywell"], default="honeywell")
     temp_args, _ = temp_parser.parse_known_args()
-    
-    # Create workstation with scanner config
+
+    # Create workstation instance with scanner config
     workstation = AdamWorkstation(scanner_type=temp_args.scanner_type)
     workstation.parse_and_execute()

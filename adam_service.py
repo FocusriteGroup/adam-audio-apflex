@@ -1,3 +1,24 @@
+"""
+adam_service.py
+
+ADAM Audio Production Service
+------------------------------------------------
+
+Author: Thilo Rode
+Company: ADAM Audio GmbH
+Version: 0.1
+Date: 2025-10-22
+
+Features:
+- Network service for ADAM Audio speaker testing, production line control, and quality assurance
+- Handles device communication, production equipment control, and automated testing workflows
+- UDP broadcast-based service discovery for workstation auto-configuration
+- Modular command processing for helper functions, biquad calculations, measurement trial tracking, and logging
+- Robust error handling and detailed logging to daily log files
+- Extensible architecture for new production features and workstation support
+
+This script provides a robust backend service for ADAM Audio production environments, enabling automated device management, measurement tracking, and workstation integration.
+"""
 import logging
 import os
 from datetime import datetime
@@ -37,19 +58,27 @@ class AdamService:
     """
     ADAM Audio Production Service.
 
-    Network service for ADAM Audio speaker testing, production line control,
-    and quality assurance processes. Handles device communication, production
-    equipment control, and automated testing workflows for workstation clients.
+    Provides a network service for ADAM Audio speaker testing, production line control,
+    and quality assurance. Handles device communication, production equipment control,
+    automated testing workflows, and workstation integration.
+
+    Features:
+    - TCP/IP server for workstation connections
+    - UDP broadcast-based service discovery
+    - Modular command processing for production, measurement, and helper functions
+    - Detailed logging and error handling
     """
 
     def __init__(self, host="0.0.0.0", port=65432, service_name="ADAMService"):
         """
-        Initialize the ADAM Audio Service.
+        Initialize the ADAM Audio Service instance.
 
         Args:
-            host (str): The service's hostname or IP address. Default is "0.0.0.0" for network access.
-            port (int): The service's port number. Default is 65432.
-            service_name (str): Name of this service instance. Default is "ADAMService".
+            host (str, optional): Hostname or IP address to bind the service. Default is "0.0.0.0" (all interfaces).
+            port (int, optional): TCP port for workstation connections. Default is 65432.
+            service_name (str, optional): Name of this service instance. Default is "ADAMService".
+
+        Sets up TCP server, UDP discovery, logging, and service metadata.
         """
         self.host = host
         self.port = port
@@ -66,15 +95,20 @@ class AdamService:
         self.discovery_interval = 2  # Sekunden zwischen Broadcasts
 
         self.logger = logging.getLogger("ADAMService")
-        
+ 
         # Display service information and start discovery
         self._display_service_info()
         self._start_discovery()
-        
+
         self.logger.info("ADAM Audio Service started")
 
     def _display_service_info(self):
-        """Display ADAM Audio service connection information at startup."""
+        """
+        Display ADAM Audio service connection information at startup.
+
+        Logs service metadata, network configuration, and usage examples for workstations.
+        Handles errors in network info retrieval gracefully.
+        """
         try:
             hostname = socket.gethostname()
             
@@ -101,12 +135,16 @@ class AdamService:
             # self.logger.info("  OCA commands: python adam_workstation.py --host %s get_serial_number 192.168.10.20 50001", primary_ip)
             self.logger.info("  Auto-discovery: python adam_connector.py --find --service-name %s", self.service_name)
             self.logger.info("================================")
-            
-        except Exception as e:
+
+        except (socket.error, OSError) as e:
             self.logger.error("Could not determine service connection info: %s", e)
 
     def _start_discovery(self):
-        """Start the discovery broadcast service."""
+        """
+        Start the UDP broadcast-based discovery service for workstation auto-configuration.
+
+        Launches a background thread for periodic service announcements.
+        """
         self.discovery_running = True
         self.discovery_thread = threading.Thread(target=self._discovery_broadcast_loop, daemon=True)
         self.discovery_thread.start()
@@ -115,35 +153,36 @@ class AdamService:
 
     def _discovery_broadcast_loop(self):
         """
-        Main discovery broadcast loop.
-        
-        Broadcasts service information periodically using UDP broadcasts.
+        Main loop for UDP service discovery broadcasts.
+
+        Periodically announces service metadata for workstation auto-discovery.
         Uses adaptive intervals: fast announcements on startup, then normal intervals.
+        Handles broadcast errors and retries gracefully.
         """
         initial_interval = 1  # Schnelle Announcements beim Start (1 Sekunde)
         normal_interval = self.discovery_interval  # Normal interval (2 Sekunden)
         fast_announcements = 5  # Anzahl schneller Announcements beim Start
-        
+
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
             try:
                 # Socket für Broadcast konfigurieren
                 sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
                 announcement_count = 0
-                
+
                 self.logger.info("Starting discovery broadcast loop...")
-                
+
                 while self.discovery_running:
                     try:
                         # Service-Informationen für Broadcast sammeln
                         broadcast_data = self._get_discovery_data()
                         broadcast_data["sequence"] = announcement_count
-                        
+
                         # JSON-Nachricht erstellen
                         message = json.dumps(broadcast_data)
-                        
+
                         # Broadcast senden
                         sock.sendto(message.encode('utf-8'), ('<broadcast>', self.discovery_port))
-                        
+
                         # Logging basierend auf Phase
                         if announcement_count < fast_announcements:
                             current_interval = initial_interval
@@ -153,36 +192,37 @@ class AdamService:
                             current_interval = normal_interval
                             self.logger.debug("Discovery broadcast sent: %s:%d", 
                                            broadcast_data["ip"], self.port)
-                        
+
                         announcement_count += 1
-                        
+
                         # Warten bis zum nächsten Broadcast
                         time.sleep(current_interval)
-                        
-                    except Exception as e:
+
+                    except (socket.error, json.JSONDecodeError) as e:
                         if self.discovery_running:  # Nur loggen wenn Service noch aktiv sein soll
                             self.logger.error("Discovery broadcast error: %s", e)
                         # Kurze Pause vor Retry
                         time.sleep(1)
-                        
-            except Exception as e:
+
+            except (socket.error, OSError) as e:
                 self.logger.error("Failed to create discovery broadcast socket: %s", e)
 
     def _get_discovery_data(self):
         """
-        Collect service information for discovery broadcasts.
-        
+        Collect service information for UDP discovery broadcasts.
+
         Returns:
-            dict: Service information for broadcast
+            dict: Service metadata for broadcast (IP, port, hostname, capabilities, status, etc.)
+        Handles errors in IP retrieval and provides fallback data.
         """
         try:
             hostname = socket.gethostname()
-            
+
             # Primäre IP ermitteln (die Route zum Internet verwendet)
             with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
                 s.connect(("8.8.8.8", 80))
                 ip = s.getsockname()[0]
-            
+
             return {
                 "service": self.service_name,
                 "company": "ADAM Audio",
@@ -203,8 +243,8 @@ class AdamService:
                 "status": "running",
                 "note": "OCA communication handled locally by workstations"
             }
-            
-        except Exception as e:
+
+        except (FileNotFoundError, PermissionError, json.JSONDecodeError, KeyError, ValueError) as e:
             self.logger.error("Error collecting discovery data: %s", e)
             # Fallback-Daten wenn IP-Ermittlung fehlschlägt
             return {
@@ -221,36 +261,43 @@ class AdamService:
 
     def _send_goodbye_broadcast(self):
         """
-        Send goodbye message when service shuts down.
-        
-        This follows the mDNS pattern of announcing service unavailability.
+        Send a goodbye UDP broadcast when the service shuts down.
+
+        Announces service unavailability for reliable workstation detection (mDNS pattern).
+        Retries broadcast for robustness.
         """
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
                 sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-                
+
                 # Goodbye-Daten sammeln
                 goodbye_data = self._get_discovery_data()
                 goodbye_data["status"] = "goodbye"
                 goodbye_data["message"] = "ADAM Audio Service shutting down"
-                
+
                 goodbye_message = json.dumps(goodbye_data)
-                
+
                 # Goodbye-Nachricht mehrfach senden für Zuverlässigkeit
                 for i in range(3):
                     sock.sendto(goodbye_message.encode('utf-8'), ('<broadcast>', self.discovery_port))
                     if i < 2:  # Nicht nach dem letzten Versuch warten
                         time.sleep(0.1)
-                
+
                 self.logger.info("Goodbye discovery broadcast sent (3x)")
-                
-        except Exception as e:
+
+        except (FileNotFoundError, PermissionError, json.JSONDecodeError, KeyError, ValueError) as e:
             self.logger.error("Failed to send goodbye broadcast: %s", e)
 
     # --- Workstation Handling ---
 
     def handle_workstation(self, workstation_socket):
-        """Handle communication with a connected workstation."""
+        """
+        Handle communication with a connected workstation client.
+
+        Receives command data, processes the command, and sends a response if requested.
+        Handles large JSON payloads, connection errors, and logs all events.
+        Closes the connection after processing.
+        """
         client_address = workstation_socket.getpeername()
         try:
             # FIX: Größere Buffer für große JSON-Daten
@@ -260,7 +307,7 @@ class AdamService:
                 if not chunk:
                     break
                 data_buffer += chunk
-                
+
                 # Prüfen ob komplette Nachricht empfangen
                 try:
                     command_str = data_buffer.decode("utf-8")
@@ -268,13 +315,13 @@ class AdamService:
                     break  # Komplette Nachricht empfangen
                 except (json.JSONDecodeError, UnicodeDecodeError):
                     continue  # Mehr Daten benötigt
-            
+
             if not data_buffer:
                 return
-                
+
             self.logger.info("Received command from %s: %s", client_address, command.get("action", "unknown"))
             response = self.process_command(command)
-            
+
             # Response senden
             if response and command.get("wait_for_response", True):
                 response_bytes = response.encode("utf-8")
@@ -282,8 +329,8 @@ class AdamService:
                 self.logger.info("Sent response to %s (%d bytes)", client_address, len(response_bytes))
             else:
                 self.logger.info("No response sent to %s", client_address)
-                
-        except Exception as e:
+
+        except (socket.error, json.JSONDecodeError, UnicodeDecodeError) as e:
             self.logger.error("Error handling workstation %s: %s", client_address, e)
         finally:
             workstation_socket.close()
@@ -292,7 +339,16 @@ class AdamService:
     # --- Command Processing ---
 
     def process_command(self, command):
-        """Process a command and return a response."""
+        """
+        Process a command received from a workstation and return a response string.
+
+        Args:
+            command (dict): Command dictionary with 'action' and parameters.
+
+        Returns:
+            str: Response string (JSON or error message).
+        Handles unknown actions and logs errors.
+        """
         if not isinstance(command, dict) or "action" not in command:
             return "Error: Invalid command format."
 
@@ -303,16 +359,16 @@ class AdamService:
             "construct_path": lambda: self._construct_path(command),
             "get_timestamp_subpath": generate_timestamp_subpath,
             "generate_file_prefix": lambda: self._generate_file_prefix(command),
-            
+
             # Biquad Calculations
             "get_biquad_coefficients": lambda: self._get_biquad_coefficients(command),
-            
+
             # Measurement Trial Tracking
             "check_measurement_trials": lambda: self._check_measurement_trials(command),
-            
+
             # Workstation Logging
             "log_workstation_task": lambda: self._log_workstation_task(command),
-            
+
             # NEU: Vereinfachtes Measurement Management
             "add_measurement": lambda: self._add_measurement(command),
         }
@@ -320,7 +376,7 @@ class AdamService:
         if action in command_map:
             try:
                 return command_map[action]()
-            except Exception as e:
+            except (FileNotFoundError, PermissionError, json.JSONDecodeError, KeyError, ValueError) as e:
                 self.logger.error("Error processing action '%s': %s", action, e)
                 return f"Error: {e}"
         else:
@@ -331,7 +387,13 @@ class AdamService:
 
     def _construct_path(self, command):
         """
-        Construct a file path from a list of strings.
+        Construct a file path from a list of strings provided in the command.
+
+        Args:
+            command (dict): Command with 'paths' (list of strings).
+
+        Returns:
+            str: Constructed path or error message.
         """
         paths = command.get("paths")
         if not paths or not isinstance(paths, list):
@@ -344,7 +406,13 @@ class AdamService:
 
     def _generate_file_prefix(self, command):
         """
-        Generate a file prefix from a list of strings.
+        Generate a file prefix from a list of strings provided in the command.
+
+        Args:
+            command (dict): Command with 'strings' (list of strings).
+
+        Returns:
+            str: Generated prefix or error message.
         """
         strings = command.get("strings")
         if not strings or not isinstance(strings, list):
@@ -357,7 +425,14 @@ class AdamService:
 
     def _get_biquad_coefficients(self, command):
         """
-        Create a Biquad_Filter instance and return coefficients as a list.
+        Calculate biquad filter coefficients using Biquad_Filter.
+
+        Args:
+            command (dict): Command with filter parameters (type, gain, freq, Q, sample_rate).
+
+        Returns:
+            str: JSON-encoded list of coefficients or error message.
+        Handles ValueError and KeyError.
         """
         try:
             filter_type = command.get("filter_type")
@@ -388,15 +463,21 @@ class AdamService:
 
     def _check_measurement_trials(self, command):
         """
-        Check how many times a serial number appears in a CSV file with Status='Failed' and compare to max_trials.
-        Creates the CSV file if it doesn't exist.
-        Returns only "Measurement permitted" or "Maximum number of permitted measurements reached."
+        Check how many times a serial number appears in a CSV file with Status='Failed'.
+        Compares to max_trials and creates the CSV file if it doesn't exist.
+
+        Args:
+            command (dict): Command with 'serial_number', 'csv_path', and 'max_trials'.
+
+        Returns:
+            str: Permission message or error message.
+        Handles file creation, CSV parsing, and logs all events.
         """
         serial_number = command.get("serial_number")
         csv_path = command.get("csv_path")
         max_trials = int(command.get("max_trials"))
         self.logger.info("Checking measurement trials for serial: %s, file: %s, max: %d", serial_number, csv_path, max_trials)
-        
+
         try:
             # Check if CSV file exists, create it if not
             if not os.path.exists(csv_path):
@@ -410,7 +491,7 @@ class AdamService:
                 msg = "Measurement permitted."
                 self.logger.info("%s (CSV file created, serial=%s)", msg, serial_number)
                 return msg
-            
+
             # File exists, count Failed entries
             count = 0
             with open(csv_path, newline='', encoding='utf-8') as csvfile:
@@ -419,7 +500,7 @@ class AdamService:
                     self.logger.debug("CSV row: %s", row)
                     if row.get("SerialNumber") == serial_number and row.get("Status") == "Failed":
                         count += 1
-            
+
             self.logger.info("Serial %s found %d times with Failed status in %s", serial_number, count, csv_path)
             if count >= max_trials:
                 msg = f"Maximum number of permitted failed measurements reached for serial number {serial_number}."
@@ -429,44 +510,62 @@ class AdamService:
                 msg = "Measurement permitted."
                 self.logger.info("%s (serial=%s, failed_count=%d, max=%d)", msg, serial_number, count, max_trials)
                 return msg
-                
-        except Exception as e:
+
+        except (FileNotFoundError, PermissionError, json.JSONDecodeError, KeyError, ValueError) as e:
             self.logger.error("Error checking measurement trials: %s", e)
             return f"Error: {e}"
 
     # --- Workstation Logging ---
 
     def _log_workstation_task(self, command):
-        """Log any workstation task - generic method."""
+        """
+        Log any workstation task (generic method for all hardware operations).
+
+        Args:
+            command (dict): Command with workstation/task metadata.
+
+        Returns:
+            str: JSON-encoded status or error message.
+        Logs all details for traceability.
+        """
         try:
             workstation_id = command.get("workstation_id", "UNKNOWN")
             task_type = command.get("task_type", "UNKNOWN")  # "switchbox", "scanner", etc.
             operation = command.get("operation", "UNKNOWN")  # "set_channel", "scan_serial", etc.
             result = command.get("result", "UNKNOWN")
             timestamp = command.get("timestamp", datetime.now().isoformat())
-            
+
             # Optional task-specific data
             task_data = command.get("task_data", {})
-            
+
             # Generic logging mit allen Details
             self.logger.info("WORKSTATION[%s] %s.%s result=%s at %s - Data: %s", 
                             workstation_id, task_type.upper(), operation, result, timestamp, task_data)
-            
+
             return json.dumps({
                 "status": "logged", 
                 "task_type": task_type,
                 "operation": operation, 
                 "result": result
             })
-            
-        except Exception as e:
+
+        except (KeyError, ValueError, TypeError) as e:
             error_msg = f"Error logging workstation task: {e}"
             self.logger.error(error_msg)
             return json.dumps({"error": error_msg})
 
     # NEUE Methode für das Hinzufügen von Messungen
     def _add_measurement(self, command):
-        """Add measurement with global shared frequency vector (stored once)."""
+        """
+        Add a measurement to the global JSON file, using a shared frequency vector.
+
+        Args:
+            command (dict): Command with 'json_directory' and 'measurement_data'.
+
+        Returns:
+            str: JSON-encoded status, measurement ID, and metadata, or error message.
+        Handles frequency vector adoption, validation, and robust file management.
+        """
         try:
             requested_dir = command.get("json_directory", "measurements")
             measurement_data = command.get("measurement_data")
@@ -529,7 +628,7 @@ class AdamService:
                                     ch_name
                                 )
                         # Frequenzen werden in jedem Fall ignoriert (globales Modell)
-            
+
             # Frequenzlisten aus den Kanal-Daten entfernen, nur Levels behalten
             for ch_name, ch_data in measurement_data.get("channels", {}).items():
                 if "frequencies" in ch_data:
@@ -557,7 +656,7 @@ class AdamService:
                 "base_dir_mode": "user_home",
                 "base_dir": str(self._get_user_home())
             })
-        except Exception as e:
+        except (FileNotFoundError, PermissionError, json.JSONDecodeError, KeyError, ValueError) as e:
             self.logger.error("Error adding measurement: %s", e)
             return json.dumps({"error": str(e)})
 
@@ -567,6 +666,9 @@ class AdamService:
     def start(self):
         """
         Start the ADAM Audio service and manage workstation connections.
+
+        Listens for incoming workstation connections and spawns handler threads.
+        Logs all connection events and errors.
         """
         self.logger.info("ADAM Audio Service is running...")
         self.logger.info("Waiting for workstation connections...")
@@ -577,58 +679,70 @@ class AdamService:
 
     def stop(self):
         """
-        Stop the ADAM Audio service and discovery service.
+        Stop the ADAM Audio service and UDP discovery service.
+
+        Sends goodbye broadcast, stops threads, closes sockets, and logs shutdown events.
         """
         self.logger.info("Stopping ADAM Audio Service...")
-        
+
         # Discovery Service stoppen
         self.discovery_running = False
-        
+
         # Goodbye-Broadcast senden
         try:
             self._send_goodbye_broadcast()
-        except Exception as e:
+        except (socket.error, OSError, json.JSONDecodeError) as e:
             self.logger.error("Error sending goodbye broadcast: %s", e)
-        
+
         # Auf Discovery-Thread warten
         if self.discovery_thread and self.discovery_thread.is_alive():
             self.discovery_thread.join(timeout=2)
             if self.discovery_thread.is_alive():
                 self.logger.warning("Discovery thread did not stop within timeout")
-        
+
         # Hauptservice stoppen
         self.running = False
-        
+
         # Geräte-Verbindungen schließen
         try:
             self.server.close()
         except Exception as e:
             self.logger.error("Error closing service socket: %s", e)
-            
+
         self.logger.info("ADAM Audio Service and discovery service stopped.")
 
     def _get_user_home(self) -> Path:
         """
-        Ermittelt das Basisverzeichnis für Speicherung.
-        Priorität:
-          1. Umgebungsvariable ADAM_SERVICE_HOME (falls gesetzt)
-          2. Path.home() (plattformunabhängig)
+        Determine the base directory for measurement storage.
+    
+        Priority:
+            1. Environment variable ADAM_SERVICE_HOME (if set)
+            2. User home directory (platform-independent)
+    
+        Returns:
+            Path: Base directory for storage.
         """
         env_override = os.getenv("ADAM_SERVICE_HOME")
         if env_override:
             p = Path(env_override).expanduser()
             try:
                 p.mkdir(parents=True, exist_ok=True)
-            except Exception:
+            except (PermissionError, FileNotFoundError, OSError):
                 pass
             return p
         return Path.home()
 
     def _resolve_json_directory(self, requested: str) -> Path:
         """
-        Wandelt einen von der Workstation übergebenen (relativen) Ordnernamen
-        in einen sicheren Pfad relativ zum User-Home des Service-Hosts um.
-        Entfernt absolute Wurzeln und '..'.
+        Resolve a workstation-provided (relative) folder name to a safe path under the service host's user home.
+
+        Removes absolute roots and '..' for security.
+
+        Args:
+            requested (str): Requested directory name.
+
+        Returns:
+            Path: Safe, resolved directory path.
         """
         base = self._get_user_home()
         req = requested or "measurements"
@@ -644,9 +758,14 @@ class AdamService:
 # --- Command Line Interface ---
 
 def main():
-    """Main entry point for ADAM Audio Service."""
+    """
+    Main entry point for ADAM Audio Service.
+
+    Parses command-line arguments, initializes the service, and starts the main loop.
+    Handles graceful shutdown on KeyboardInterrupt.
+    """
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="ADAM Audio Production Service")
     parser.add_argument("--service-name", default="ADAMService",
                        help="Name of this service instance (default: ADAMService)")
@@ -654,15 +773,15 @@ def main():
                        help="Service port (default: 65432)")
     parser.add_argument("--host", default="0.0.0.0",
                        help="Host binding (default: 0.0.0.0 for all interfaces)")
-    
+
     args = parser.parse_args()
-    
+
     service = AdamService(
         host=args.host,
         port=args.service_port,
         service_name=args.service_name
     )
-    
+
     try:
         service.start()
     except KeyboardInterrupt:

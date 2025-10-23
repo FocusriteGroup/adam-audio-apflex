@@ -1,8 +1,21 @@
 """
-ADAM Audio OCA Manager
+oca_manager.py
 
-High-level OCA device management with workstation integration.
-Provides service logging and coordination for OCA operations.
+ADAM Audio OCA Device Manager
+------------------------------------------------
+
+Author: Thilo Rode
+Company: ADAM Audio GmbH
+Version: 0.1
+Date: 2025-10-22
+
+Features:
+- High-level OCA device management with workstation integration
+- Service logging and coordination for all OCA operations
+- Modular, extensible design for production and test automation
+- Robust error handling and detailed logging for traceability
+
+This module provides the OCAManager class for managing OCA device communication, logging, and integration with ADAM Audio production workstations and services.
 """
 
 import logging
@@ -13,40 +26,66 @@ from .oca_device import OCADevice
 
 class OCAManager:
     """
-    OCA Device Manager.
-    
-    Manages OCA device communication and provides integration
-    with workstation logging and service communication.
+    OCA Device Manager for ADAM Audio production environments.
+
+    Manages OCA device communication, provides integration with workstation logging,
+    and coordinates service communication for all OCA-related operations.
+
+    Features:
+    - High-level API for OCA device control (mute, gain, mode, etc.)
+    - Automatic logging of all operations to the production service
+    - Extensible for new OCA commands and production workflows
     """
-    
     def __init__(self, workstation_id=None, service_client=None):
         """
-        Initialize OCA Manager.
-        
+        Initialize the OCA Manager instance.
+
         Args:
-            workstation_id (str): Workstation identifier for logging
-            service_client: Service client for logging (optional)
+            workstation_id (str, optional): Workstation identifier for logging. Defaults to system hostname.
+            service_client (optional): Service client for logging (must provide send_command method).
+
+        Sets up logging and stores references for all OCA operations.
         """
         self.workstation_id = workstation_id or socket.gethostname()
         self.service_client = service_client
         self.logger = logging.getLogger(f"OCAManager-{self.workstation_id}")
-        
+
     def create_device(self, target_ip, port=50001):
-        """Create OCA device instance."""
+        """
+        Create an OCADevice instance for the given target IP and port.
+
+        Args:
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            OCADevice: Instance for device communication.
+        """
         return OCADevice(target_ip=target_ip, port=port)
-    
+
     def _log_to_service(self, operation, result, target_ip, port, extra_data=None):
-        """Log OCA operation to service if service client available."""
+        """
+        Log an OCA operation to the production service if a service client is available.
+
+        Args:
+            operation (str): Name of the OCA operation performed.
+            result (str): Result or status of the operation.
+            target_ip (str): IP address of the OCA device.
+            port (int): TCP port of the OCA device.
+            extra_data (dict, optional): Additional metadata for logging.
+
+        Handles errors gracefully and logs warnings if logging fails.
+        """
         if not self.service_client:
             return
-            
+
         try:
             task_data = {
                 "target_ip": target_ip,
                 "port": port,
                 **(extra_data or {})
             }
-            
+
             command = {
                 "action": "log_workstation_task",
                 "workstation_id": self.workstation_id,
@@ -57,17 +96,28 @@ class OCAManager:
                 "timestamp": datetime.now().isoformat(),
                 "wait_for_response": False
             }
-            
+
             self.service_client.send_command(command, wait_for_response=False)
             self.logger.debug("OCA operation logged to service")
-            
-        except Exception as e:
+
+        except (socket.error, json.JSONDecodeError, AttributeError) as e:
             self.logger.warning("Failed to log OCA operation to service: %s", e)
-    
+
     # === High-level OCA operations with logging ===
-    
+
     def get_serial_number(self, target_ip, port=50001):
-        """Get serial number with service logging."""
+        """
+        Get the serial number from an OCA device, with service logging.
+
+        Args:
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Serial number from the device.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.get_serial_number()
@@ -76,9 +126,21 @@ class OCAManager:
         except Exception as e:
             self._log_to_service("get_serial_number", f"Error: {e}", target_ip, port)
             raise
-    
+
     def set_mute(self, state, target_ip, port=50001):
-        """Set mute state with service logging."""
+        """
+        Set the mute state on an OCA device, with service logging.
+
+        Args:
+            state (str): Mute state to set (e.g., 'muted', 'unmuted').
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Result of the mute operation.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.set_mute(state)
@@ -87,9 +149,20 @@ class OCAManager:
         except Exception as e:
             self._log_to_service("set_mute", f"Error: {e}", target_ip, port, {"state": state})
             raise
-    
+
     def get_mute(self, target_ip, port=50001):
-        """Get mute state with service logging."""
+        """
+        Get the mute state from an OCA device, with service logging.
+
+        Args:
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Mute state from the device.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.get_mute()
@@ -98,9 +171,21 @@ class OCAManager:
         except Exception as e:
             self._log_to_service("get_mute", f"Error: {e}", target_ip, port)
             raise
-    
+
     def set_gain(self, value, target_ip, port=50001):
-        """Set gain with service logging."""
+        """
+        Set the gain value on an OCA device, with service logging.
+
+        Args:
+            value (float): Gain value to set.
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Result of the gain operation.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.set_gain(value)
@@ -109,9 +194,20 @@ class OCAManager:
         except Exception as e:
             self._log_to_service("set_gain", f"Error: {e}", target_ip, port, {"value": value})
             raise
-    
+
     def get_gain(self, target_ip, port=50001):
-        """Get gain with service logging."""
+        """
+        Get the gain value from an OCA device, with service logging.
+
+        Args:
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Gain value from the device.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.get_gain()
@@ -120,9 +216,20 @@ class OCAManager:
         except Exception as e:
             self._log_to_service("get_gain", f"Error: {e}", target_ip, port)
             raise
-    
+
     def get_model_description(self, target_ip, port=50001):
-        """Get model description with service logging."""
+        """
+        Get the model description from an OCA device, with service logging.
+
+        Args:
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Model description from the device.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.get_model_description()
@@ -131,9 +238,20 @@ class OCAManager:
         except Exception as e:
             self._log_to_service("get_model_description", f"Error: {e}", target_ip, port)
             raise
-    
+
     def get_firmware_version(self, target_ip, port=50001):
-        """Get firmware version with service logging."""
+        """
+        Get the firmware version from an OCA device, with service logging.
+
+        Args:
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Firmware version from the device.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.get_firmware_version()
@@ -142,9 +260,20 @@ class OCAManager:
         except Exception as e:
             self._log_to_service("get_firmware_version", f"Error: {e}", target_ip, port)
             raise
-    
+
     def get_audio_input(self, target_ip, port=50001):
-        """Get audio input with service logging."""
+        """
+        Get the audio input mode from an OCA device, with service logging.
+
+        Args:
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Audio input mode from the device.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.get_audio_input()
@@ -153,9 +282,21 @@ class OCAManager:
         except Exception as e:
             self._log_to_service("get_audio_input", f"Error: {e}", target_ip, port)
             raise
-    
+
     def set_audio_input(self, position, target_ip, port=50001):
-        """Set audio input with service logging."""
+        """
+        Set the audio input mode on an OCA device, with service logging.
+
+        Args:
+            position (str): Audio input position to set (e.g., 'aes3', 'analogue').
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Result of the audio input operation.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.set_audio_input(position)
@@ -164,9 +305,20 @@ class OCAManager:
         except Exception as e:
             self._log_to_service("set_audio_input", f"Error: {e}", target_ip, port, {"position": position})
             raise
-    
+
     def get_mode(self, target_ip, port=50001):
-        """Get mode with service logging."""
+        """
+        Get the control mode from an OCA device, with service logging.
+
+        Args:
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Control mode from the device.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.get_mode()
@@ -175,9 +327,21 @@ class OCAManager:
         except Exception as e:
             self._log_to_service("get_mode", f"Error: {e}", target_ip, port)
             raise
-    
+
     def set_mode(self, position, target_ip, port=50001):
-        """Set mode with service logging."""
+        """
+        Set the control mode on an OCA device, with service logging.
+
+        Args:
+            position (str): Control mode to set.
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Result of the mode operation.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.set_mode(position)
@@ -186,9 +350,20 @@ class OCAManager:
         except Exception as e:
             self._log_to_service("set_mode", f"Error: {e}", target_ip, port, {"position": position})
             raise
-    
+
     def get_phase_delay(self, target_ip, port=50001):
-        """Get phase delay with service logging."""
+        """
+        Get the phase delay value from an OCA device, with service logging.
+
+        Args:
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Phase delay value from the device.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.get_phase_delay()
@@ -197,9 +372,21 @@ class OCAManager:
         except Exception as e:
             self._log_to_service("get_phase_delay", f"Error: {e}", target_ip, port)
             raise
-    
+
     def set_phase_delay(self, position, target_ip, port=50001):
-        """Set phase delay with service logging."""
+        """
+        Set the phase delay value on an OCA device, with service logging.
+
+        Args:
+            position (str): Phase delay value to set (e.g., 'deg0', 'deg45', ...).
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Result of the phase delay operation.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.set_phase_delay(position)
@@ -208,9 +395,21 @@ class OCAManager:
         except Exception as e:
             self._log_to_service("set_phase_delay", f"Error: {e}", target_ip, port, {"position": position})
             raise
-    
+
     def get_device_biquad(self, index, target_ip, port=50001):
-        """Get device biquad with service logging."""
+        """
+        Get the biquad filter coefficients from an OCA device, with service logging.
+
+        Args:
+            index (int): Biquad index to query.
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Biquad coefficients from the device.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.get_device_biquad(index)
@@ -219,9 +418,22 @@ class OCAManager:
         except Exception as e:
             self._log_to_service("get_device_biquad", f"Error: {e}", target_ip, port, {"index": index})
             raise
-    
+
     def set_device_biquad(self, index, coefficients, target_ip, port=50001):
-        """Set device biquad with service logging."""
+        """
+        Set the biquad filter coefficients on an OCA device, with service logging.
+
+        Args:
+            index (int): Biquad index to set.
+            coefficients (list): List of biquad coefficients to set.
+            target_ip (str): IP address of the OCA device.
+            port (int, optional): TCP port for OCA device. Default is 50001.
+
+        Returns:
+            str: Result of the set operation.
+        Raises:
+            Exception: If device communication fails.
+        """
         device = self.create_device(target_ip, port)
         try:
             result = device.set_device_biquad(index, coefficients)
