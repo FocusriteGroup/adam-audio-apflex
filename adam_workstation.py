@@ -37,7 +37,8 @@ import math
 import numpy as np
 
 # External module imports
-from oca.oca_manager import OCAManager # OCA device manager
+#from oca.oca_manager import OCAManager # OCA device manager
+from oca.oca_device import OCADevice
 
 # Set up logging directory and file for workstation events
 log_dir = "logs/adam_audio"
@@ -99,14 +100,19 @@ class AdamWorkstation:
         self._scanner_manager = None    # Will be created when needed
         self._scanner_type = scanner_type  # Store scanner type for later initialization
 
-        # Create OCA manager for device control and logging
-        self.oca_manager = OCAManager(
-            workstation_id=self.workstation_id,
-            service_client=self  # Workstation acts as service client for logging
-        )
+        
 
         # Map command names to their corresponding methods for CLI dispatch
         self.command_map = {
+            # OCA-Funktionen
+            "discover": self.discover,
+            "get_gain_calibration": self.get_gain_calibration,
+            "set_gain_calibration": self.set_gain_calibration,
+            "get_mode": self.get_mode,
+            "set_mode": self.set_mode,
+            "get_audio_input": self.get_audio_input,
+            "set_audio_input": self.set_audio_input,
+            # Produktions-/Hardware-/Service-Funktionen (NICHT entfernen!)
             "generate_timestamp_extension": self.generate_timestamp_extension,
             "construct_path": self.construct_path,
             "get_timestamp_subpath": self.get_timestamp_subpath,
@@ -115,23 +121,9 @@ class AdamWorkstation:
             "open_box": self.open_box,
             "scan_serial": self.scan_serial,
             "get_biquad_coefficients": self.get_biquad_coefficients,
-            "set_device_biquad": self.set_device_biquad,
-            "get_serial_number": self.get_serial_number,
-            "get_gain": self.get_gain,
-            "get_device_biquad": self.get_device_biquad,
-            "set_gain": self.set_gain,
-            "get_model_description": self.get_model_description,
-            "get_firmware_version": self.get_firmware_version,
-            "get_audio_input": self.get_audio_input,
-            "set_audio_input": self.set_audio_input,
-            "get_mute": self.get_mute,
-            "set_mute": self.set_mute,
-            "get_mode": self.get_mode,
-            "set_mode": self.set_mode,
-            "get_phase_delay": self.get_phase_delay,
-            "set_phase_delay": self.set_phase_delay,
             "check_measurement_trials": self.check_measurement_trials,
             "process_measurement": self.process_measurement,
+            # ...und alle weiteren, die du brauchst...
         }
 
         # Set up argument parser for CLI usage
@@ -466,283 +458,38 @@ class AdamWorkstation:
         response = self.send_command(command, wait_for_response=True)
         print(response)
 
+    def _get_oca_device(self, args):
+        return OCADevice(target_ip=args.target_ip, port=args.port)
 
+    # OCA-spezifische Methoden (nur die, die in OCADevice existieren)
+    def discover(self, args):
+        device = OCADevice(target_ip=None, port=None)
+        result = device.discover(timeout=2)
+        print(result)
 
-    def get_serial_number(self, args):
-        """
-        Gets the serial number from a target OCA device over the network.
+    def get_gain_calibration(self, args):
+        device = self._get_oca_device(args)
+        print(device.get_gain_calibration())
 
-        Args:
-            args: CLI arguments with 'target_ip' and 'port'.
-
-        Prints the serial number or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'get_serial_number' on OCA device %s:%d", args.target_ip, args.port)
-        try:
-            result = self.oca_manager.get_serial_number(args.target_ip, args.port)
-            print(result)
-        except (socket.error, json.JSONDecodeError, ValueError) as e:
-            error_msg = f"Error getting serial number: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
-
-    def set_mute(self, args):
-        """
-        Sets the mute state on a target OCA device.
-
-        Args:
-            args: CLI arguments with 'state', 'target_ip', and 'port'.
-
-        Prints the result or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'set_mute' to %s on OCA device %s:%d", args.state, args.target_ip, args.port)
-        try:
-            result = self.oca_manager.set_mute(args.state, args.target_ip, args.port)
-            print(result)
-        except (ValueError, socket.error, json.JSONDecodeError) as e:
-            error_msg = f"Error setting mute: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
-
-    def get_mute(self, args):
-        """
-        Gets the mute state from a target OCA device.
-
-        Args:
-            args: CLI arguments with 'target_ip' and 'port'.
-
-        Prints the mute state or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'get_mute' on OCA device %s:%d", args.target_ip, args.port)
-        try:
-            result = self.oca_manager.get_mute(args.target_ip, args.port)
-            print(result)
-        except (ValueError, socket.error, json.JSONDecodeError) as e:
-            error_msg = f"Error getting mute state: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
-
-    def set_gain(self, args):
-        """
-        Sets the gain value on a target OCA device.
-
-        Args:
-            args: CLI arguments with 'value', 'target_ip', and 'port'.
-
-        Prints the result or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'set_gain' to %s on OCA device %s:%d", args.value, args.target_ip, args.port)
-        try:
-            result = self.oca_manager.set_gain(args.value, args.target_ip, args.port)
-            print(result)
-        except (ValueError, socket.error, json.JSONDecodeError) as e:
-            error_msg = f"Error setting gain: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
-
-    def get_gain(self, args):
-        """
-        Gets the gain value from a target OCA device.
-
-        Args:
-            args: CLI arguments with 'target_ip' and 'port'.
-
-        Prints the gain value or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'get_gain' on OCA device %s:%d", args.target_ip, args.port)
-        try:
-            result = self.oca_manager.get_gain(args.target_ip, args.port)
-            print(result)
-        except (ValueError, socket.error, json.JSONDecodeError) as e:
-            error_msg = f"Error getting gain: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
-
-    def get_model_description(self, args):
-        """
-        Gets the model description from a target OCA device.
-
-        Args:
-            args: CLI arguments with 'target_ip' and 'port'.
-
-        Prints the model description or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'get_model_description' on OCA device %s:%d", args.target_ip, args.port)
-        try:
-            result = self.oca_manager.get_model_description(args.target_ip, args.port)
-            print(result)
-        except (socket.error, json.JSONDecodeError, ValueError) as e:
-            error_msg = f"Error getting model description: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
-
-    def get_firmware_version(self, args):
-        """
-        Gets the firmware version from a target OCA device.
-
-        Args:
-            args: CLI arguments with 'target_ip' and 'port'.
-
-        Prints the firmware version or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'get_firmware_version' on OCA device %s:%d", args.target_ip, args.port)
-        try:
-            result = self.oca_manager.get_firmware_version(args.target_ip, args.port)
-            print(result)
-        except (socket.error, json.JSONDecodeError, ValueError) as e:
-            error_msg = f"Error getting firmware version: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
-
-    def get_audio_input(self, args):
-        """
-        Gets the audio input mode from a target OCA device.
-
-        Args:
-            args: CLI arguments with 'target_ip' and 'port'.
-
-        Prints the audio input mode or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'get_audio_input' on OCA device %s:%d", args.target_ip, args.port)
-        try:
-            result = self.oca_manager.get_audio_input(args.target_ip, args.port)
-            print(result)
-        except (ValueError, socket.error, json.JSONDecodeError) as e:
-            error_msg = f"Error getting audio input: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
-
-    def set_audio_input(self, args):
-        """
-        Sets the audio input mode on a target OCA device.
-
-        Args:
-            args: CLI arguments with 'position', 'target_ip', and 'port'.
-
-        Prints the result or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'set_audio_input' to %s on OCA device %s:%d", args.position, args.target_ip, args.port)
-        try:
-            result = self.oca_manager.set_audio_input(args.position, args.target_ip, args.port)
-            print(result)
-        except (ValueError, socket.error, json.JSONDecodeError) as e:
-            error_msg = f"Error setting audio input: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
+    def set_gain_calibration(self, args):
+        device = self._get_oca_device(args)
+        print(device.set_gain_calibration(args.value))
 
     def get_mode(self, args):
-        """
-        Gets the control mode from a target OCA device.
-
-        Args:
-            args: CLI arguments with 'target_ip' and 'port'.
-
-        Prints the control mode or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'get_mode' on OCA device %s:%d", args.target_ip, args.port)
-        try:
-            result = self.oca_manager.get_mode(args.target_ip, args.port)
-            print(result)
-        except (ValueError, socket.error, json.JSONDecodeError) as e:
-            error_msg = f"Error getting mode: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
+        device = self._get_oca_device(args)
+        print(device.get_mode())
 
     def set_mode(self, args):
-        """
-        Sets the control mode on a target OCA device.
+        device = self._get_oca_device(args)
+        print(device.set_mode(args.position))
 
-        Args:
-            args: CLI arguments with 'position', 'target_ip', and 'port'.
+    def get_audio_input(self, args):
+        device = self._get_oca_device(args)
+        print(device.get_audio_input())
 
-        Prints the result or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'set_mode' to %s on OCA device %s:%d", args.position, args.target_ip, args.port)
-        try:
-            result = self.oca_manager.set_mode(args.position, args.target_ip, args.port)
-            print(result)
-        except (ValueError, socket.error, json.JSONDecodeError) as e:
-            error_msg = f"Error setting mode: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
-
-    def get_phase_delay(self, args):
-        """
-        Gets the phase delay value from a target OCA device.
-
-        Args:
-            args: CLI arguments with 'target_ip' and 'port'.
-
-        Prints the phase delay or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'get_phase_delay' on OCA device %s:%d", args.target_ip, args.port)
-        try:
-            result = self.oca_manager.get_phase_delay(args.target_ip, args.port)
-            print(result)
-        except (ValueError, socket.error, json.JSONDecodeError) as e:
-            error_msg = f"Error getting phase delay: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
-
-    def set_phase_delay(self, args):
-        """
-        Sets the phase delay value on a target OCA device.
-
-        Args:
-            args: CLI arguments with 'position', 'target_ip', and 'port'.
-
-        Prints the result or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'set_phase_delay' to %s on OCA device %s:%d", args.position, args.target_ip, args.port)
-        try:
-            result = self.oca_manager.set_phase_delay(args.position, args.target_ip, args.port)
-            print(result)
-        except (ValueError, socket.error, json.JSONDecodeError) as e:
-            error_msg = f"Error setting phase delay: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
-
-    def get_device_biquad(self, args):
-        """
-        Gets the biquad filter coefficients from a target OCA device.
-
-        Args:
-            args: CLI arguments with 'index', 'target_ip', and 'port'.
-
-        Prints the coefficients or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'get_device_biquad' index %d on OCA device %s:%d", args.index, args.target_ip, args.port)
-        try:
-            result = self.oca_manager.get_device_biquad(args.index, args.target_ip, args.port)
-            print(result)
-        except (ValueError, socket.error, json.JSONDecodeError) as e:
-            error_msg = f"Error getting device biquad: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
-
-    def set_device_biquad(self, args):
-        """
-        Sets the biquad filter coefficients on a target OCA device.
-
-        Args:
-            args: CLI arguments with 'index', 'coefficients' (JSON string), 'target_ip', and 'port'.
-
-        Prints the result or logs error.
-        """
-        WORKSTATION_LOGGER.info("Executing 'set_device_biquad' index %d with coefficients %s on OCA device %s:%d",
-                       args.index, args.coefficients, args.target_ip, args.port)
-        try:
-            coeffs = json.loads(args.coefficients)
-            result = self.oca_manager.set_device_biquad(args.index, coeffs, args.target_ip, args.port)
-            print(result)
-        except json.JSONDecodeError as e:
-            error_msg = f"Error parsing coefficients: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
-        except (ValueError, socket.error) as e:
-            error_msg = f"Error setting device biquad: {e}"
-            print(error_msg)
-            WORKSTATION_LOGGER.error(error_msg)
+    def set_audio_input(self, args):
+        device = self._get_oca_device(args)
+        print(device.set_audio_input(args.position))
 
 
     def check_measurement_trials(self, args):
@@ -943,148 +690,83 @@ class AdamWorkstation:
             print(f"ERROR {e}")
 
     def setup_arg_parser(self):
-        """
-        Sets up the argument parser for command-line usage.
-
-        Defines all supported commands, options, and subcommands for the workstation CLI.
-        Includes global connection parameters, hardware configuration, and production commands.
-        """
-        # Create the main argument parser for the CLI
         parser = argparse.ArgumentParser(
             description="ADAM Audio Production Workstation",
             formatter_class=argparse.RawDescriptionHelpFormatter,
-            epilog="""
-Connection Examples:
-  # Fast: Direct connection (für häufige Verwendung)
-  python adam_workstation.py --host 192.168.1.166 get_serial_number 192.168.1.100 7000
-  
-  # Auto-discovery (wenn Service-IP unbekannt)
-  python adam_workstation.py get_serial_number 192.168.1.100 7000
-  
-  # Different scanner type (future)
-  python adam_workstation.py --scanner-type manual scan_serial
-            """
         )
 
-        # Global connection parameters
+        # Globale Parameter
         parser.add_argument("--host", "--service-host", dest="service_host",
                            help="ADAM service IP address (auto-discovered if not specified)")
         parser.add_argument("--port", "--service-port", dest="service_port", type=int, default=65432,
                            help="ADAM service port (default: 65432)")
         parser.add_argument("--service-name", default="ADAMService",
                            help="Name of ADAM service to connect to (default: ADAMService)")
-
-        # Scanner configuration
         parser.add_argument("--scanner-type", choices=["honeywell"], default="honeywell",
                            help="Type of scanner to use (default: honeywell)")
 
-        # Subcommands
         subparsers = parser.add_subparsers(dest="command", required=True)
 
-        # BEREINIGT: Nur noch Production/OCA Commands
+        # OCA-Kommandos (nur die, die in OCADevice existieren)
+        subparsers.add_parser("discover", help="Discover OCA devices")
 
-        # Helper Commands
-        subparsers.add_parser("generate_timestamp_extension", help="Generate a timestamp extension.")
-
-        parser_construct_path = subparsers.add_parser("construct_path", help="Construct a path.")
-        parser_construct_path.add_argument("paths", type=str, nargs="+", help="List of paths to join.")
-
-        subparsers.add_parser("get_timestamp_subpath", help="Get a timestamp subpath.")
-
-        parser_generate_file_prefix = subparsers.add_parser("generate_file_prefix", help="Generate a file prefix.")
-        parser_generate_file_prefix.add_argument("strings", type=str, nargs="+", help="List of strings to combine.")
-
-        # Hardware Commands
-        parser_set_channel = subparsers.add_parser("set_channel", help="Set the channel (1 or 2).")
-        parser_set_channel.add_argument("channel", type=int, choices=[1, 2], help="Channel to set (1 or 2).")
-
-        subparsers.add_parser("open_box", help="Open the box.")
-
-        subparsers.add_parser("scan_serial", help="Scan the serial number.")
-
-        # Biquad Commands
-        biquad_parser = subparsers.add_parser("get_biquad_coefficients", help="Get biquad filter coefficients")
-        biquad_parser.add_argument("filter_type", choices=["bell", "high_shelf", "low_shelf"], help="Type of biquad filter")
-        biquad_parser.add_argument("gain", type=float, help="Gain in dB")
-        biquad_parser.add_argument("peak_freq", type=float, help="Peak frequency in Hz")
-        biquad_parser.add_argument("Q", type=float, help="Quality factor")
-        biquad_parser.add_argument("sample_rate", type=int, help="Sample rate in Hz")
-
-        set_biquad_parser = subparsers.add_parser("set_device_biquad", help="Set biquad filter on OCA device")
-        set_biquad_parser.add_argument("index", type=int, help="Biquad index")
-        set_biquad_parser.add_argument("coefficients", type=str, help="Koeffizienten-Liste als JSON-String")
-        set_biquad_parser.add_argument("target_ip", type=str, help="OCA device IP address")
-        set_biquad_parser.add_argument("port", type=int, help="OCA device port")
-
-        get_device_biquad_parser = subparsers.add_parser("get_device_biquad", help="Get biquad coefficients from OCA device")
-        get_device_biquad_parser.add_argument("index", type=int, help="Biquad index")
-        get_device_biquad_parser.add_argument("target_ip", type=str, help="OCA device IP address")
-        get_device_biquad_parser.add_argument("port", type=int, help="OCA device port")
-
-        # OCA Device Commands
-        get_serial_parser = subparsers.add_parser("get_serial_number", help="Get serial number from OCA device")
-        get_serial_parser.add_argument("target_ip", type=str, help="OCA device IP address")
-        get_serial_parser.add_argument("port", type=int, help="OCA device port")
-
-        get_gain_parser = subparsers.add_parser("get_gain", help="Get gain from OCA device")
+        get_gain_parser = subparsers.add_parser("get_gain_calibration", help="Get gain calibration from OCA device")
         get_gain_parser.add_argument("target_ip", type=str, help="OCA device IP address")
         get_gain_parser.add_argument("port", type=int, help="OCA device port")
 
-        set_gain_parser = subparsers.add_parser("set_gain", help="Set gain on OCA device")
-        set_gain_parser.add_argument("value", type=float, help="Gain value")
+        set_gain_parser = subparsers.add_parser("set_gain_calibration", help="Set gain calibration on OCA device")
+        set_gain_parser.add_argument("value", type=float, help="Gain calibration value")
         set_gain_parser.add_argument("target_ip", type=str, help="OCA device IP address")
         set_gain_parser.add_argument("port", type=int, help="OCA device port")
 
-        get_model_parser = subparsers.add_parser("get_model_description", help="Get model description from OCA device")
-        get_model_parser.add_argument("target_ip", type=str, help="OCA device IP address")
-        get_model_parser.add_argument("port", type=int, help="OCA device port")
+        get_mode_parser = subparsers.add_parser("get_mode", help="Get mode from OCA device")
+        get_mode_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        get_mode_parser.add_argument("port", type=int, help="OCA device port")
 
-        get_firmware_parser = subparsers.add_parser("get_firmware_version", help="Get firmware version from OCA device")
-        get_firmware_parser.add_argument("target_ip", type=str, help="OCA device IP address")
-        get_firmware_parser.add_argument("port", type=int, help="OCA device port")
+        set_mode_parser = subparsers.add_parser("set_mode", help="Set mode on OCA device")
+        set_mode_parser.add_argument("position", type=str, help="Mode to set (e.g. 'internal-dsp', 'backplate')")
+        set_mode_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        set_mode_parser.add_argument("port", type=int, help="OCA device port")
 
         get_audio_input_parser = subparsers.add_parser("get_audio_input", help="Get audio input mode from OCA device")
         get_audio_input_parser.add_argument("target_ip", type=str, help="OCA device IP address")
         get_audio_input_parser.add_argument("port", type=int, help="OCA device port")
 
         set_audio_input_parser = subparsers.add_parser("set_audio_input", help="Set audio input mode on OCA device")
-        set_audio_input_parser.add_argument("position", type=str, help="Audio input position (e.g. 'aes3', 'analogue')")
+        set_audio_input_parser.add_argument("position", type=str, help="Audio input position to set (e.g. 'aes3', 'analogue-xlr')")
         set_audio_input_parser.add_argument("target_ip", type=str, help="OCA device IP address")
         set_audio_input_parser.add_argument("port", type=int, help="OCA device port")
 
-        get_mute_parser = subparsers.add_parser("get_mute", help="Get mute state from OCA device")
-        get_mute_parser.add_argument("target_ip", type=str, help="OCA device IP address")
-        get_mute_parser.add_argument("port", type=int, help="OCA device port")
-
-        set_mute_parser = subparsers.add_parser("set_mute", help="Set mute state on OCA device")
-        set_mute_parser.add_argument("state", type=str, choices=["muted", "unmuted"], help="Mute state ('muted' or 'unmuted')")
-        set_mute_parser.add_argument("target_ip", type=str, help="OCA device IP address")
-        set_mute_parser.add_argument("port", type=int, help="OCA device port")
-
-        get_mode_parser = subparsers.add_parser("get_mode", help="Get control mode from OCA device")
-        get_mode_parser.add_argument("target_ip", type=str, help="OCA device IP address")
-        get_mode_parser.add_argument("port", type=int, help="OCA device port")
-
-        set_mode_parser = subparsers.add_parser("set_mode", help="Set control mode on OCA device")
-        set_mode_parser.add_argument("position", type=str, help="Control mode to set")
-        set_mode_parser.add_argument("target_ip", type=str, help="OCA device IP address")
-        set_mode_parser.add_argument("port", type=int, help="OCA device port")
-
-        get_phase_delay_parser = subparsers.add_parser("get_phase_delay", help="Get phase delay from OCA device")
-        get_phase_delay_parser.add_argument("target_ip", type=str, help="OCA device IP address")
-        get_phase_delay_parser.add_argument("port", type=int, help="OCA device port")
-
-        set_phase_delay_parser = subparsers.add_parser("set_phase_delay", help="Set phase delay on OCA device")
-        set_phase_delay_parser.add_argument("position", type=str, help="Phase delay value (e.g. 'deg0', 'deg45', ...)")
-        set_phase_delay_parser.add_argument("target_ip", type=str, help="OCA device IP address")
-        set_phase_delay_parser.add_argument("port", type=int, help="OCA device port")
-
+        # Produktions-/Hardware-/Service-Kommandos (NICHT entfernen!)
+        subparsers.add_parser("generate_timestamp_extension", help="Generate a timestamp extension.")
+        parser_construct_path = subparsers.add_parser("construct_path", help="Construct a path.")
+        parser_construct_path.add_argument("paths", type=str, nargs="+", help="List of paths to join.")
+        subparsers.add_parser("get_timestamp_subpath", help="Get a timestamp subpath.")
+        parser_generate_file_prefix = subparsers.add_parser("generate_file_prefix", help="Generate a file prefix.")
+        parser_generate_file_prefix.add_argument("strings", type=str, nargs="+", help="List of strings to combine.")
+        parser_set_channel = subparsers.add_parser("set_channel", help="Set the channel (1 or 2).")
+        parser_set_channel.add_argument("channel", type=int, choices=[1, 2], help="Channel to set (1 or 2).")
+        subparsers.add_parser("open_box", help="Open the box.")
+        subparsers.add_parser("scan_serial", help="Scan the serial number.")
+        biquad_parser = subparsers.add_parser("get_biquad_coefficients", help="Get biquad filter coefficients")
+        biquad_parser.add_argument("filter_type", choices=["bell", "high_shelf", "low_shelf"], help="Type of biquad filter")
+        biquad_parser.add_argument("gain", type=float, help="Gain in dB")
+        biquad_parser.add_argument("peak_freq", type=float, help="Peak frequency in Hz")
+        biquad_parser.add_argument("Q", type=float, help="Quality factor")
+        biquad_parser.add_argument("sample_rate", type=int, help="Sample rate in Hz")
+        set_biquad_parser = subparsers.add_parser("set_device_biquad", help="Set biquad filter on OCA device")
+        set_biquad_parser.add_argument("index", type=int, help="Biquad index")
+        set_biquad_parser.add_argument("coefficients", type=str, help="Koeffizienten-Liste als JSON-String")
+        set_biquad_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        set_biquad_parser.add_argument("port", type=int, help="OCA device port")
+        get_device_biquad_parser = subparsers.add_parser("get_device_biquad", help="Get biquad coefficients from OCA device")
+        get_device_biquad_parser.add_argument("index", type=int, help="Biquad index")
+        get_device_biquad_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        get_device_biquad_parser.add_argument("port", type=int, help="OCA device port")
         check_trials_parser = subparsers.add_parser("check_measurement_trials", help="Check allowed measurement trials for a serial number")
         check_trials_parser.add_argument("serial_number", type=str, help="Serial number to check")
         check_trials_parser.add_argument("csv_path", type=str, help="Path to the CSV file")
         check_trials_parser.add_argument("max_trials", type=int, help="Maximum allowed trials")
-
-        # NEU HINZUFÜGEN:
         process_measurement_parser = subparsers.add_parser("process_measurement", help="Process measurement data and send to service")
         process_measurement_parser.add_argument("measurement_path", type=str, help="Path to measurement file")
         process_measurement_parser.add_argument("--serial-number", "-s", dest="serial_number", required=True, help="Explicit device serial number")
