@@ -459,11 +459,11 @@ class AdamWorkstation:
         print(response)
 
     def _get_oca_device(self, args):
-        return OCADevice(target_ip=args.target_ip, port=args.port)
+        return OCADevice(target=args.target, port=args.port)
 
     # OCA-spezifische Methoden (nur die, die in OCADevice existieren)
     def discover(self, args):
-        device = OCADevice(target_ip=None, port=None)
+        device = OCADevice(target=None, port=None)
         result = device.discover(timeout=2)
         print(result)
 
@@ -711,30 +711,30 @@ class AdamWorkstation:
         subparsers.add_parser("discover", help="Discover OCA devices")
 
         get_gain_parser = subparsers.add_parser("get_gain_calibration", help="Get gain calibration from OCA device")
-        get_gain_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        get_gain_parser.add_argument("target", type=str, help="OCA device name or IP address")
         get_gain_parser.add_argument("port", type=int, help="OCA device port")
 
         set_gain_parser = subparsers.add_parser("set_gain_calibration", help="Set gain calibration on OCA device")
         set_gain_parser.add_argument("value", type=float, help="Gain calibration value")
-        set_gain_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        set_gain_parser.add_argument("target", type=str, help="OCA device name or IP address")
         set_gain_parser.add_argument("port", type=int, help="OCA device port")
 
         get_mode_parser = subparsers.add_parser("get_mode", help="Get mode from OCA device")
-        get_mode_parser.add_argument("target_ip", type=str, help="OCA device IP address")
-        get_mode_parser.add_argument("port", type=int, help="OCA device port")
+        get_mode_parser.add_argument("target", type=str, help="OCA device name or IP address")
+        get_mode_parser.add_argument("port", type=int, nargs="?", default=None, help="OCA device port (optional for device name)")
 
         set_mode_parser = subparsers.add_parser("set_mode", help="Set mode on OCA device")
         set_mode_parser.add_argument("position", type=str, help="Mode to set (e.g. 'internal-dsp', 'backplate')")
-        set_mode_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        set_mode_parser.add_argument("target", type=str, help="OCA device name or IP address")
         set_mode_parser.add_argument("port", type=int, help="OCA device port")
 
         get_audio_input_parser = subparsers.add_parser("get_audio_input", help="Get audio input mode from OCA device")
-        get_audio_input_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        get_audio_input_parser.add_argument("target", type=str, help="OCA device name or IP address")
         get_audio_input_parser.add_argument("port", type=int, help="OCA device port")
 
         set_audio_input_parser = subparsers.add_parser("set_audio_input", help="Set audio input mode on OCA device")
         set_audio_input_parser.add_argument("position", type=str, help="Audio input position to set (e.g. 'aes3', 'analogue-xlr')")
-        set_audio_input_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        set_audio_input_parser.add_argument("target", type=str, help="OCA device name or IP address")
         set_audio_input_parser.add_argument("port", type=int, help="OCA device port")
 
         # Produktions-/Hardware-/Service-Kommandos (NICHT entfernen!)
@@ -757,11 +757,11 @@ class AdamWorkstation:
         set_biquad_parser = subparsers.add_parser("set_device_biquad", help="Set biquad filter on OCA device")
         set_biquad_parser.add_argument("index", type=int, help="Biquad index")
         set_biquad_parser.add_argument("coefficients", type=str, help="Koeffizienten-Liste als JSON-String")
-        set_biquad_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        set_biquad_parser.add_argument("target", type=str, help="OCA device name or IP address")
         set_biquad_parser.add_argument("port", type=int, help="OCA device port")
         get_device_biquad_parser = subparsers.add_parser("get_device_biquad", help="Get biquad coefficients from OCA device")
         get_device_biquad_parser.add_argument("index", type=int, help="Biquad index")
-        get_device_biquad_parser.add_argument("target_ip", type=str, help="OCA device IP address")
+        get_device_biquad_parser.add_argument("target", type=str, help="OCA device name or IP address")
         get_device_biquad_parser.add_argument("port", type=int, help="OCA device port")
         check_trials_parser = subparsers.add_parser("check_measurement_trials", help="Check allowed measurement trials for a serial number")
         check_trials_parser.add_argument("serial_number", type=str, help="Serial number to check")
