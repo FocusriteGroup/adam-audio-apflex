@@ -470,10 +470,10 @@ class AdamWorkstation:
     # OCA-spezifische Methoden (nur die, die in OCADevice existieren)
     def discover(self, args):
         device = OCADevice(
-        target=args.target,
-        port=args.port,
-        workstation_id=self.workstation_id,
-        service_host=self.host
+            target=None,
+            port=None,
+            workstation_id=self.workstation_id,
+            service_host=self.host
         )
         result = device.discover(timeout=2)
         print(result)
@@ -719,7 +719,8 @@ class AdamWorkstation:
         subparsers = parser.add_subparsers(dest="command", required=True)
 
         # OCA-Kommandos (nur die, die in OCADevice existieren)
-        subparsers.add_parser("discover", help="Discover OCA devices")
+        discover_parser = subparsers.add_parser("discover", help="Discover OCA devices")
+        discover_parser.add_argument("--timeout", type=int, default=1, help="Discovery timeout in seconds")
 
         get_gain_parser = subparsers.add_parser("get_gain_calibration", help="Get gain calibration from OCA device")
         get_gain_parser.add_argument("target", type=str, help="OCA device name or IP address")
