@@ -39,6 +39,7 @@ import numpy as np
 # External module imports
 #from oca.oca_manager import OCAManager # OCA device manager
 from oca.oca_device import OCADevice
+from analysis import MeasurementParser, MeasurementUpload, GainCalibration
 
 # Set up logging directory and file for workstation events
 log_dir = "logs/adam_audio"
@@ -122,8 +123,9 @@ class AdamWorkstation:
             "scan_serial": self.scan_serial,
             "get_biquad_coefficients": self.get_biquad_coefficients,
             "check_measurement_trials": self.check_measurement_trials,
-            "process_measurement": self.process_measurement,
-            # ...und alle weiteren, die du brauchst...
+            "upload_measurement": self.upload_measurement,  # Changed from process_measurement
+            "calibrate_gain": self.calibrate_gain,  # NEU: Gain Calibration
+            
         }
 
         # Set up argument parser for CLI usage
@@ -524,181 +526,56 @@ class AdamWorkstation:
         WORKSTATION_LOGGER.info("ADAM service response: %s", response)
         print(response)
 
-    def _parse_measurement_csv(self, file_path: str):
-        """
-        Parses a measurement CSV file with dynamic channel count and returns structured data.
-
-        Expected CSV structure:
-            - Header lines: titles, channel names, X/Y labels, units (Hz, dBSPL, ...)
-            - Data lines: numeric values (frequency, level pairs per channel)
-
-        Args:
-            file_path (str): Path to the measurement CSV file.
-
-        Returns:
-            dict: {
-                'channels': {
-                    'Ch1': {'frequencies': [...], 'levels': [...], 'unit': 'dBSPL'},
-                    'Ch2': {...}, ...
-                },
-                'data_points': int
-            }
-
-        Raises:
-            ValueError: If header or data format is invalid.
-        """
-        with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
-            lines = [l.strip() for l in f if l.strip()]
-
-        # Finde die Indexe der Zeile mit Einheiten (enthält 'Hz' und 'dB')
-        units_idx = None
-        for i, line in enumerate(lines):
-            if "Hz" in line and "dB" in line:
-                units_idx = i
-                break
-        if units_idx is None:
-            raise ValueError("Kein Einheiten-Header (Hz,dB...) gefunden")
-
-        # Die Units-Spalten extrahieren (z.B. Hz,dBSPL,Hz,dBSPL)
-        units_tokens = [t for t in lines[units_idx].split(",") if t]
-        # Daten beginnen nach dieser Zeile
-        data_lines = lines[units_idx + 1:]
-
-        # CSV parsing der Datenzeilen
-        rows = []
-        reader = csv.reader(data_lines)
-        for row in reader:
-            # Filter leere am Ende
-            row = [c.strip() for c in row if c.strip() != ""]
-            if not row:
-                continue
-            rows.append(row)
-
-        if not rows:
-            raise ValueError("Keine Datenzeilen gefunden")
-
-        # Spaltenanzahl bestimmen
-        col_count = len(rows[0])
-        if any(len(r) != col_count for r in rows):
-            # Tolerant: nur Zeilen gleicher Länge übernehmen
-            rows = [r for r in rows if len(r) == col_count]
-
-        if col_count % 2 != 0:
-            raise ValueError(f"Erwarte gerade Spaltenanzahl (Frequenz+Level pro Kanal). Gefunden: {col_count}")
-
-        channel_count = col_count // 2
-
-        # Units pro Kanal (falls weniger Tokens -> fallback)
-        # Einheit = erstes dB/ dBSPL Token je Paar (Standard dBSPL)
-        def _unit_for_pair(pair_index):
-            try:
-                # units_tokens Beispiel: ['Hz','dBSPL','Hz','dBSPL']
-                return units_tokens[pair_index * 2 + 1]
-            except IndexError:
-                return "dB"
-
-        channels = {}
-
-
-        cols_numeric = []
-        for r in rows:
-            numeric = []
-            for c in r:
-                try:
-                    numeric.append(float(c))
-                except ValueError:
-                    numeric.append(math.nan)
-            cols_numeric.append(numeric)
-
-
-        arr = np.array(cols_numeric, dtype=float)  # shape (rows, cols)
-        # Zeilen mit NaN verwerfen (optional streng)
-        mask_valid = ~np.isnan(arr).any(axis=1)
-        arr = arr[mask_valid]
-
-        for ch_index in range(channel_count):
-            freq_col = arr[:, 2 * ch_index]
-            level_col = arr[:, 2 * ch_index + 1]
-            ch_name = f"Ch{ch_index + 1}"
-            channels[ch_name] = {
-                "frequencies": freq_col.tolist(),
-                "levels": level_col.tolist(),
-                "unit": _unit_for_pair(ch_index),
-                "data_points": int(len(freq_col))
-            }
-
-        return {
-            "channels": channels,
-            "data_points": int(arr.shape[0])
-        }
-
-    def process_measurement(self, args):
-        """
-        Processes a local measurement file (variable channel count) and sends parsed data to the service.
-
-        Args:
-            args: CLI arguments with 'measurement_path', 'serial_number', and 'json_directory'.
-
-        Prints transfer status or error. Logs all events for traceability.
-        """
-        WORKSTATION_LOGGER.info("Processing measurement file: %s", args.measurement_path)
+    def upload_measurement(self, args):
+        """Uploads a measurement file to the service."""
         try:
-            if not os.path.exists(args.measurement_path):
-                msg = f"Measurement file not found: {args.measurement_path}"
-                WORKSTATION_LOGGER.error(msg)
-                print(f"ERROR {msg}")
-                return
-
-            parsed = self._parse_measurement_csv(args.measurement_path)
-            channels = parsed["channels"]
-            filename = os.path.basename(args.measurement_path)
-            serial_number = args.serial_number
-
-            WORKSTATION_LOGGER.info(
-                "Parsed measurement: serial=%s file=%s channels=%d points=%d",
-                serial_number, filename, len(channels), parsed["data_points"]
+            upload_data = MeasurementUpload.prepare_upload(
+                args.measurement_path,
+                args.serial_number,
+                self.workstation_id
             )
-
-            measurement_data = {
-                "device_serial": serial_number,
-                "timestamp": datetime.now().isoformat(),
-                "workstation_id": self.workstation_id,
-                "measurement_file": filename,
-                "channels": channels
-            }
-
+            
             command = {
                 "action": "add_measurement",
+                "serial_number": args.serial_number,
                 "json_directory": args.json_directory,
-                "measurement_data": measurement_data,
-                "wait_for_response": True
+                "measurement_data": upload_data
             }
-
-            WORKSTATION_LOGGER.info("Sending measurement to service host=%s port=%s", self.host, self.port)
+            
+            WORKSTATION_LOGGER.info("Sending measurement to service host=%s port=%s", 
+                                  self.host, self.port)
             response = self.send_command(command, wait_for_response=True)
-            if not response:
-                WORKSTATION_LOGGER.error("Empty response from service")
-                print("ERROR empty response from service")
-                return
-
+            
+            # Parse response and print simple confirmation
             try:
-                result = json.loads(response)
-            except json.JSONDecodeError as e:
-                WORKSTATION_LOGGER.error("Invalid JSON response: %s | raw=%s", e, response[:200])
-                print("ERROR invalid service response")
-                return
+                response_data = json.loads(response)
+                if response_data.get("status") == "success":
+                    print("Measurement uploaded successfully.")
+                else:
+                    print(f"Upload failed: {response_data.get('error', 'Unknown error')}")
+            except json.JSONDecodeError:
+                print(f"Error: Invalid response format")
+                
+        except Exception as e:
+            WORKSTATION_LOGGER.error("Measurement upload failed: %s", str(e))
+            print(f"ERROR: {str(e)}")
 
-            if "error" in result:
-                WORKSTATION_LOGGER.error("Service reported error: %s", result["error"])
-                print(f"ERROR {result['error']}")
-            else:
-                WORKSTATION_LOGGER.info("Measurement stored: id=%s total=%s",
-                                        result.get("measurement_id"), result.get("measurement_count"))
-                # Nur noch diese Ausgabe bei Erfolg:
-                print("Data successfully transferred.")
-        except (FileNotFoundError, ValueError, json.JSONDecodeError, OSError) as e:
-            WORKSTATION_LOGGER.exception("Unhandled exception in process_measurement")
-            print(f"ERROR {e}")
+    def calibrate_gain(self, args):
+        """Calculates gain calibration between input and target measurements."""
+        try:
+            # Use GainCalibration class
+            results = GainCalibration.calculate_gain_difference(
+                args.input_file,
+                args.target_file,
+                args.frequencies
+            )
+            
+            # Only print the average gain difference
+            print(f"{results['average_gain_db']:.2f}")
+                
+        except Exception as e:
+            WORKSTATION_LOGGER.error("Gain calibration failed: %s", str(e))
+            print(f"ERROR: {str(e)}")
 
     def setup_arg_parser(self):
         parser = argparse.ArgumentParser(
@@ -709,7 +586,7 @@ class AdamWorkstation:
         # Globale Parameter
         parser.add_argument("--host", "--service-host", dest="service_host",
                            help="ADAM service IP address (auto-discovered if not specified)")
-        parser.add_argument("--port", "--service-port", dest="service_port", type=int, default=65432,
+        parser.add_argument("--service-port", dest="service_port", type=int, default=65432,
                            help="ADAM service port (default: 65432)")
         parser.add_argument("--service-name", default="ADAMService",
                            help="Name of ADAM service to connect to (default: ADAMService)")
@@ -779,10 +656,24 @@ class AdamWorkstation:
         check_trials_parser.add_argument("serial_number", type=str, help="Serial number to check")
         check_trials_parser.add_argument("csv_path", type=str, help="Path to the CSV file")
         check_trials_parser.add_argument("max_trials", type=int, help="Maximum allowed trials")
-        process_measurement_parser = subparsers.add_parser("process_measurement", help="Process measurement data and send to service")
-        process_measurement_parser.add_argument("measurement_path", type=str, help="Path to measurement file")
-        process_measurement_parser.add_argument("--serial-number", "-s", dest="serial_number", required=True, help="Explicit device serial number")
-        process_measurement_parser.add_argument("--json-directory", type=str, default="measurements", help="JSON directory on service")
+        upload_measurement_parser = subparsers.add_parser("upload_measurement", 
+            help="Upload measurement data to service")
+        upload_measurement_parser.add_argument("measurement_path", type=str, 
+            help="Path to measurement file")
+        upload_measurement_parser.add_argument("--serial-number", "-s", 
+            dest="serial_number", required=True, help="Explicit device serial number")
+        upload_measurement_parser.add_argument("--json-directory", type=str, 
+            default="measurements", help="JSON directory on service")
+
+        # NEU: Parser für Gain Calibration
+        calibrate_parser = subparsers.add_parser("calibrate_gain", 
+            help="Calculate gain difference between input and target measurements at specific frequencies")
+        calibrate_parser.add_argument("input_file", type=str, 
+            help="Path to input measurement CSV file")
+        calibrate_parser.add_argument("target_file", type=str, 
+            help="Path to target measurement CSV file")
+        calibrate_parser.add_argument("--frequencies", "-f", type=float, nargs="+", required=True,
+            help="List of frequencies (in Hz) to calculate calibration factors for")
 
         self.parser = parser
 
