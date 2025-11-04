@@ -107,3 +107,28 @@ class OCADevice:
         result = wrapper.run_cli_command(command="audio-input", subcommand="set", options=options)
         self._log_to_service("set_audio_input", result)
         return result
+
+    def get_bass_management(self):
+        """Get current bass management mode."""
+        wrapper = self._get_wrapper()
+        options = self._cli_options()
+        result = wrapper.run_cli_command(command="bass-management", subcommand="get", options=options)
+        self._log_to_service("get_bass_management", result)
+        return result
+
+    def set_bass_management(self, position):
+        """Set bass management mode.
+        
+        Args:
+            position (str): Bass management mode. One of:
+                - "stereo-bass"
+                - "stereo"
+                - "wide"
+                - "lfe"
+        """
+        wrapper = self._get_wrapper()
+        options = self._cli_options()
+        options["--position"] = position
+        result = wrapper.run_cli_command(command="bass-management", subcommand="set", options=options)
+        self._log_to_service("set_bass_management", result)
+        return result

@@ -125,6 +125,8 @@ class AdamWorkstation:
             "check_measurement_trials": self.check_measurement_trials,
             "upload_measurement": self.upload_measurement,  # Changed from process_measurement
             "calibrate_gain": self.calibrate_gain,  # NEU: Gain Calibration
+            "get_bass_management": self.get_bass_management,
+            "set_bass_management": self.set_bass_management,
             
         }
 
@@ -504,6 +506,14 @@ class AdamWorkstation:
         device = self._get_oca_device(args)
         print(device.set_audio_input(args.position))
 
+    def get_bass_management(self, args):
+        device = self._get_oca_device(args)
+        print(device.get_bass_management())
+
+    def set_bass_management(self, args):
+        device = self._get_oca_device(args)
+        print(device.set_bass_management(args.position))
+
 
     def check_measurement_trials(self, args):
         """
@@ -674,6 +684,23 @@ class AdamWorkstation:
             help="Path to target measurement CSV file")
         calibrate_parser.add_argument("--frequencies", "-f", type=float, nargs="+", required=True,
             help="List of frequencies (in Hz) to calculate calibration factors for")
+
+        # NEU: Parser für Bass Management
+        get_bass_parser = subparsers.add_parser("get_bass_management", 
+            help="Get bass management mode from OCA device")
+        get_bass_parser.add_argument("target", type=str, 
+            help="OCA device name or IP address")
+        get_bass_parser.add_argument("port", type=int, nargs="?", default=None, 
+            help="OCA device port (optional for device name)")
+
+        set_bass_parser = subparsers.add_parser("set_bass_management", 
+            help="Set bass management mode on OCA device")
+        set_bass_parser.add_argument("position", type=str, 
+            help="Bass management mode (e.g. 'stereo-bass', 'stereo', 'wide', 'lfe')")
+        set_bass_parser.add_argument("target", type=str, 
+            help="OCA device name or IP address")
+        set_bass_parser.add_argument("port", type=int, nargs="?", default=None, 
+            help="OCA device port (optional for device name)")
 
         self.parser = parser
 
