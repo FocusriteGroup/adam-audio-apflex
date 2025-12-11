@@ -67,8 +67,8 @@ class GainCalibration:
                     "actual_target_freq": float(actual_target_freq)
                 }
             
-            # Calculate average gain difference
-            average_gain = float(np.mean(gain_differences))
+            # Calculate average gain difference, limit to +/- 2.0 and round to one decimal
+            average_gain = float(np.clip(np.round(np.mean(gain_differences), 1), -2.0, 2.0))
             
             CALIBRATION_LOGGER.info("Gain calibration completed successfully")
             return {

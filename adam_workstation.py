@@ -127,7 +127,13 @@ class AdamWorkstation:
             "calibrate_gain": self.calibrate_gain,  # NEU: Gain Calibration
             "get_bass_management": self.get_bass_management,
             "set_bass_management": self.set_bass_management,
-            
+            "get_gain": self.get_gain,
+            "set_gain": self.set_gain,
+            "get_phase_delay": self.get_phase_delay,
+            "set_phase_delay": self.set_phase_delay,
+            "get_mute": self.get_mute,
+            "set_mute": self.set_mute,
+            "init_asub": self.init_asub,  # Add new command to map
         }
 
         # Set up argument parser for CLI usage
@@ -488,7 +494,7 @@ class AdamWorkstation:
 
     def set_gain_calibration(self, args):
         device = self._get_oca_device(args)
-        print(device.set_gain_calibration(args.value))
+        print(device.set_gain_calibration(args.value)["success"])
 
     def get_mode(self, args):
         device = self._get_oca_device(args)
@@ -496,15 +502,16 @@ class AdamWorkstation:
 
     def set_mode(self, args):
         device = self._get_oca_device(args)
-        print(device.set_mode(args.position))
+        print(device.set_mode(args.position)["success"])
 
     def get_audio_input(self, args):
         device = self._get_oca_device(args)
         print(device.get_audio_input())
 
     def set_audio_input(self, args):
+        """Set audio input mode."""
         device = self._get_oca_device(args)
-        print(device.set_audio_input(args.position))
+        print(device.set_audio_input(args.mode))
 
     def get_bass_management(self, args):
         device = self._get_oca_device(args)
@@ -512,8 +519,35 @@ class AdamWorkstation:
 
     def set_bass_management(self, args):
         device = self._get_oca_device(args)
-        print(device.set_bass_management(args.position))
+        print(device.set_bass_management(args.position)["success"])
 
+    def get_gain(self, args):
+        """Get subwoofer gain level."""
+        device = self._get_oca_device(args)
+        print(device.get_gain())
+
+    def set_gain(self, args):
+        """Set subwoofer gain level."""
+        device = self._get_oca_device(args)
+        print(device.set_gain(args.value)["success"])
+
+    def get_phase_delay(self, args):
+        """Get current phase delay setting."""
+        device = self._get_oca_device(args)
+        result = device.get_phase_delay()
+        print(result)  # This will print the parsed response from the wrapper
+
+    def set_phase_delay(self, args):
+        device = self._get_oca_device(args)
+        print(device.set_phase_delay(args.position)["success"])
+
+    def get_mute(self, args):
+        device = self._get_oca_device(args)
+        print(device.get_mute())
+
+    def set_mute(self, args):
+        device = self._get_oca_device(args)
+        print(device.set_mute(args.position)["success"])
 
     def check_measurement_trials(self, args):
         """
@@ -587,6 +621,43 @@ class AdamWorkstation:
             WORKSTATION_LOGGER.error("Gain calibration failed: %s", str(e))
             print(f"ERROR: {str(e)}")
 
+    def init_asub(self, args):
+        """Initialize ASubs subwoofer with default settings."""
+        try:
+            
+            device = self._get_oca_device(args)
+            WORKSTATION_LOGGER.info("Starting ASubs initialization sequence")
+            
+            # Set internal DSP mode
+            result = device.set_mode("internal-dsp")
+            WORKSTATION_LOGGER.debug("Set mode result: %s", result)
+            
+            # Set gain to 0 dB
+            result = device.set_gain(0)
+            WORKSTATION_LOGGER.debug("Set gain result: %s", result)
+            
+            # Set mute to normal (unmuted)
+            result = device.set_mute("normal")
+            WORKSTATION_LOGGER.debug("Set mute result: %s", result)
+            
+            # Set phase delay to 0 degrees
+            result = device.set_phase_delay("deg0")
+            WORKSTATION_LOGGER.debug("Set phase delay result: %s", result)
+            
+            # Set gain calibration to 0 dB
+            result = device.set_gain_calibration(0)
+            WORKSTATION_LOGGER.debug("Set gain calibration result: %s", result)
+            
+            WORKSTATION_LOGGER.info("ASubs initialization sequence completed successfully")
+            print("Initialization successful")
+            return True
+            
+        except Exception as e:
+            error_msg = f"ASubs initialization failed: {str(e)}"
+            WORKSTATION_LOGGER.error(error_msg)
+            print(f"Initialization failed: {str(e)}")
+            return False
+
     def setup_arg_parser(self):
         parser = argparse.ArgumentParser(
             description="ADAM Audio Production Workstation",
@@ -631,10 +702,14 @@ class AdamWorkstation:
         get_audio_input_parser.add_argument("target", type=str, help="OCA device name or IP address")
         get_audio_input_parser.add_argument("port", type=int, nargs="?", default=None, help="OCA device port (optional for device name)")
 
-        set_audio_input_parser = subparsers.add_parser("set_audio_input", help="Set audio input mode on OCA device")
-        set_audio_input_parser.add_argument("position", type=str, help="Audio input position to set (e.g. 'aes3', 'analogue-xlr')")
-        set_audio_input_parser.add_argument("target", type=str, help="OCA device name or IP address")
-        set_audio_input_parser.add_argument("port", type=int, nargs="?", default=None, help="OCA device port (optional for device name)")
+        set_audio_parser = subparsers.add_parser("set_audio_input",
+            help="Set audio input (aes3, analogue-xlr, analogue-rca)")
+        set_audio_parser.add_argument("mode", type=str,  # Changed from 'position' to 'mode'
+            help="Input mode (aes3, analogue-xlr, analogue-rca)")
+        set_audio_parser.add_argument("target", type=str,
+            help="OCA device name or IP address")
+        set_audio_parser.add_argument("port", type=int, nargs="?", default=None,
+            help="OCA device port (optional for device name)")
 
         # Produktions-/Hardware-/Service-Kommandos (NICHT entfernen!)
         subparsers.add_parser("generate_timestamp_extension", help="Generate a timestamp extension.")
@@ -700,6 +775,65 @@ class AdamWorkstation:
         set_bass_parser.add_argument("target", type=str, 
             help="OCA device name or IP address")
         set_bass_parser.add_argument("port", type=int, nargs="?", default=None, 
+            help="OCA device port (optional for device name)")
+
+        # NEU: Parser für Subwoofer Gain
+        get_gain_parser = subparsers.add_parser("get_gain", 
+            help="Get subwoofer gain level (-24 to 0 dB)")
+        get_gain_parser.add_argument("target", type=str, 
+            help="OCA device name or IP address")
+        get_gain_parser.add_argument("port", type=int, nargs="?", default=None,
+            help="OCA device port (optional for device name)")
+
+        set_gain_parser = subparsers.add_parser("set_gain",
+            help="Set subwoofer gain level (-24 to 0 dB)")
+        set_gain_parser.add_argument("value", type=float,
+            help="Gain value in dB (-24 to 0)")
+        set_gain_parser.add_argument("target", type=str,
+            help="OCA device name or IP address")
+        set_gain_parser.add_argument("port", type=int, nargs="?", default=None,
+            help="OCA device port (optional for device name)")
+
+        # Phase delay parsers
+        get_phase_parser = subparsers.add_parser("get_phase_delay",
+            help="Get phase delay setting (0-315 degrees)")
+        get_phase_parser.add_argument("target", type=str,
+            help="OCA device name or IP address")
+        get_phase_parser.add_argument("port", type=int, nargs="?", default=None,
+            help="OCA device port (optional for device name)")
+
+        set_phase_parser = subparsers.add_parser("set_phase_delay",
+            help="Set phase delay (deg0, deg45, deg90, deg135, deg180, deg225, deg270, deg315)")
+        set_phase_parser.add_argument("position", type=str,
+            help="Phase delay setting (deg0, deg45, etc.)")
+        set_phase_parser.add_argument("target", type=str,
+            help="OCA device name or IP address")
+        set_phase_parser.add_argument("port", type=int, nargs="?", default=None,
+            help="OCA device port (optional for device name)")
+
+        # Mute parsers
+        get_mute_parser = subparsers.add_parser("get_mute",
+            help="Get mute state")
+        get_mute_parser.add_argument("target", type=str,
+            help="OCA device name or IP address")
+        get_mute_parser.add_argument("port", type=int, nargs="?", default=None,
+            help="OCA device port (optional for device name)")
+
+        set_mute_parser = subparsers.add_parser("set_mute",
+            help="Set mute state (normal, mute)")
+        set_mute_parser.add_argument("position", type=str,
+            help="Mute state (normal, mute)")
+        set_mute_parser.add_argument("target", type=str,
+            help="OCA device name or IP address")
+        set_mute_parser.add_argument("port", type=int, nargs="?", default=None,
+            help="OCA device port (optional for device name)")
+
+        # Add ASubs initialization parser
+        init_parser = subparsers.add_parser("init_asub",
+            help="Initialize ASubs with default settings (internal-dsp, gain 0, unmuted, phase 0°, calibration 0)")
+        init_parser.add_argument("target", type=str,
+            help="OCA device name or IP address")
+        init_parser.add_argument("port", type=int, nargs="?", default=None,
             help="OCA device port (optional for device name)")
 
         self.parser = parser
