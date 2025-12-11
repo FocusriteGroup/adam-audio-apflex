@@ -1,0 +1,24 @@
+2025-06-12 09:17:06,531 - INFO - ----------------------------------------------------------------- APClient started
+2025-06-12 09:17:06,550 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-06-12 09:17:06,550 - INFO - Executing 'get_biquad_coefficients' with: type=low_shelf, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-12 09:17:06,550 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-12 09:17:06,551 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'low_shelf', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-06-12 09:17:06,553 - INFO - Received response from server: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-12 09:18:37,426 - INFO - ----------------------------------- APClient started
+2025-06-12 09:18:37,451 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-06-12 09:18:37,451 - INFO - Executing 'get_biquad_coefficients' with: type=low_shelf, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-12 09:18:37,451 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-12 09:18:37,452 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'low_shelf', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-06-12 09:18:37,454 - INFO - Received response from server: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-12 10:07:46,311 - INFO - ----------------------------------- APClient started
+2025-06-12 10:07:46,333 - INFO - Parsing and executing command: set_device_biquad
+2025-06-12 10:07:46,333 - INFO - Executing 'set_device_biquad' with: index=0, type=bell, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000, target_ip=192.168.10.20, port=50001
+2025-06-12 10:07:46,333 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-12 10:07:46,335 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'filter_type': 'bell', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-12 10:07:46,335 - INFO - Received response from server: Error: Failed to set device biquad (__init__() missing 1 required positional argument: 'cli_path')
+2025-06-12 10:12:10,109 - INFO - ----------------------------------- APClient started
+2025-06-12 10:12:10,125 - INFO - Parsing and executing command: set_device_biquad
+2025-06-12 10:12:10,126 - INFO - Executing 'set_device_biquad' with: index=0, type=bell, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000, target_ip=192.168.10.20, port=50001
+2025-06-12 10:12:10,126 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-12 10:12:10,127 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'filter_type': 'bell', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-12 10:12:10,128 - INFO - Received response from server: Error: Failed to set device biquad (__init__() missing 1 required positional argument: 'cli_path')

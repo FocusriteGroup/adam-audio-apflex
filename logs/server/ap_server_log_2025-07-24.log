@@ -1,0 +1,523 @@
+2025-07-24 10:13:16,070 INFO [root] ----------------------------------- APServer started
+2025-07-24 10:13:16,072 INFO [APServer] Server started
+2025-07-24 10:13:16,073 INFO [APServer] Server is running...
+2025-07-24 10:13:16,073 INFO [APServer] Waiting for connections...
+2025-07-24 10:13:16,397 INFO [APServer] Connection from ('127.0.0.1', 58661)
+2025-07-24 10:13:16,398 INFO [APServer] Client connection closed.
+2025-07-24 10:13:45,739 INFO [APServer] Connection from ('127.0.0.1', 58681)
+2025-07-24 10:13:45,740 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "low_shelf", "gain": -3.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-07-24 10:13:45,740 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=low_shelf, gain=-3.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-07-24 10:13:45,740 INFO [Biquad_Filter] Calculating coefficients for filter_type=low_shelf
+2025-07-24 10:13:45,740 INFO [Biquad_Filter] Calculating low shelf filter coefficients.
+2025-07-24 10:13:45,740 INFO [Biquad_Filter] Low shelf coefficients (unnormalized): b0=1.8241150765129122, b1=-3.33907091377796, b2=1.53918213456598, a0=1.8534688879274583, a1=-3.334073785176047, a2=1.514825451753347
+2025-07-24 10:13:45,741 INFO [Biquad_Filter] Normalizing coefficients with a0=1.8534688879274583
+2025-07-24 10:13:45,741 INFO [Biquad_Filter] Normalized coefficients: {'b0': 0.984162770896376, 'b1': -1.8015252025685178, 'b2': 0.8304332188101022, 'a1': -1.7988291073524278, 'a2': 0.8172920849225686}
+2025-07-24 10:13:45,741 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 0.984162770896376, 'b1': -1.8015252025685178, 'b2': 0.8304332188101022, 'a1': -1.7988291073524278, 'a2': 0.8172920849225686}
+2025-07-24 10:13:45,741 INFO [APServer] Biquad coefficients generated: [-1.7988291073524278, 0.8172920849225686, 0.984162770896376, -1.8015252025685178, 0.8304332188101022]
+2025-07-24 10:13:45,741 INFO [APServer] Sent response: [-1.7988291073524278, 0.8172920849225686, 0.984162770896376, -1.8015252025685178, 0.8304332188101022]
+2025-07-24 10:13:45,742 INFO [APServer] Client connection closed.
+2025-07-24 10:18:40,259 INFO [APServer] Connection from ('127.0.0.1', 59674)
+2025-07-24 10:18:40,259 INFO [APServer] Received: {"action": "get_serial_number", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 10:18:40,303 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 10:18:40,303 INFO [OCP1ToolWrapper] Requesting serial number.
+2025-07-24 10:18:40,303 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-serial-number --target-ip 192.168.10.20 --port 50001
+2025-07-24 10:18:42,625 INFO [OCP1ToolWrapper] Command output: IoError: Could not connect to 192.168.10.20:50001 No connection could be made because the target machine actively refused it. (os error 10061)
+2025-07-24 10:18:42,626 INFO [OCP1ToolWrapper] Command executed with return code: 100
+2025-07-24 10:18:42,626 ERROR [OCP1ToolWrapper] Command failed: 
+2025-07-24 10:18:42,626 ERROR [APServer] Failed to get serial number: Command failed:
+
+2025-07-24 10:18:42,626 INFO [APServer] Sent response: Error: Failed to get serial number (Command failed:
+)
+2025-07-24 10:18:42,627 INFO [APServer] Client connection closed.
+2025-07-24 10:18:48,033 INFO [APServer] Connection from ('127.0.0.1', 49302)
+2025-07-24 10:18:48,034 INFO [APServer] Received: {"action": "get_serial_number", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 10:18:48,034 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 10:18:48,034 INFO [OCP1ToolWrapper] Requesting serial number.
+2025-07-24 10:18:48,034 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-serial-number --target-ip 192.168.10.20 --port 50001
+2025-07-24 10:18:50,073 INFO [OCP1ToolWrapper] Command output: IoError: Could not connect to 192.168.10.20:50001 No connection could be made because the target machine actively refused it. (os error 10061)
+2025-07-24 10:18:50,073 INFO [OCP1ToolWrapper] Command executed with return code: 100
+2025-07-24 10:18:50,074 ERROR [OCP1ToolWrapper] Command failed: 
+2025-07-24 10:18:50,074 ERROR [APServer] Failed to get serial number: Command failed:
+
+2025-07-24 10:18:50,074 INFO [APServer] Sent response: Error: Failed to get serial number (Command failed:
+)
+2025-07-24 10:18:50,074 INFO [APServer] Client connection closed.
+2025-07-24 10:19:10,151 INFO [APServer] Connection from ('127.0.0.1', 49309)
+2025-07-24 10:19:10,152 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "low_shelf", "gain": -3.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-07-24 10:19:10,152 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=low_shelf, gain=-3.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-07-24 10:19:10,152 INFO [Biquad_Filter] Calculating coefficients for filter_type=low_shelf
+2025-07-24 10:19:10,153 INFO [Biquad_Filter] Calculating low shelf filter coefficients.
+2025-07-24 10:19:10,153 INFO [Biquad_Filter] Low shelf coefficients (unnormalized): b0=1.8241150765129122, b1=-3.33907091377796, b2=1.53918213456598, a0=1.8534688879274583, a1=-3.334073785176047, a2=1.514825451753347
+2025-07-24 10:19:10,153 INFO [Biquad_Filter] Normalizing coefficients with a0=1.8534688879274583
+2025-07-24 10:19:10,153 INFO [Biquad_Filter] Normalized coefficients: {'b0': 0.984162770896376, 'b1': -1.8015252025685178, 'b2': 0.8304332188101022, 'a1': -1.7988291073524278, 'a2': 0.8172920849225686}
+2025-07-24 10:19:10,153 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 0.984162770896376, 'b1': -1.8015252025685178, 'b2': 0.8304332188101022, 'a1': -1.7988291073524278, 'a2': 0.8172920849225686}
+2025-07-24 10:19:10,153 INFO [APServer] Biquad coefficients generated: [-1.7988291073524278, 0.8172920849225686, 0.984162770896376, -1.8015252025685178, 0.8304332188101022]
+2025-07-24 10:19:10,153 INFO [APServer] Sent response: [-1.7988291073524278, 0.8172920849225686, 0.984162770896376, -1.8015252025685178, 0.8304332188101022]
+2025-07-24 10:19:10,153 INFO [APServer] Client connection closed.
+2025-07-24 10:19:21,751 INFO [APServer] Connection from ('127.0.0.1', 49312)
+2025-07-24 10:19:21,751 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [0, 0, 1, 0, 0], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 10:19:21,751 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 10:19:21,751 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=0, b1=0, b2=1, a1=0, a2=0
+2025-07-24 10:19:21,751 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients 0 0 1 0 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 10:19:24,074 INFO [OCP1ToolWrapper] Command output: IoError: Could not connect to 192.168.10.20:50001 No connection could be made because the target machine actively refused it. (os error 10061)
+2025-07-24 10:19:24,074 INFO [OCP1ToolWrapper] Command executed with return code: 100
+2025-07-24 10:19:24,074 ERROR [OCP1ToolWrapper] Command failed: 
+2025-07-24 10:19:24,074 ERROR [APServer] Error processing action 'set_device_biquad': Command failed:
+
+2025-07-24 10:19:24,074 INFO [APServer] Sent response: Error: Command failed:
+
+2025-07-24 10:19:24,075 INFO [APServer] Client connection closed.
+2025-07-24 10:19:50,972 INFO [APServer] Connection from ('127.0.0.1', 49319)
+2025-07-24 10:19:50,972 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 10:19:50,972 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 10:19:50,973 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 10:19:50,973 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 10:19:53,324 INFO [OCP1ToolWrapper] Command output: IoError: Could not connect to 192.168.10.20:50001 No connection could be made because the target machine actively refused it. (os error 10061)
+2025-07-24 10:19:53,324 INFO [OCP1ToolWrapper] Command executed with return code: 100
+2025-07-24 10:19:53,324 ERROR [OCP1ToolWrapper] Command failed: 
+2025-07-24 10:19:53,325 ERROR [APServer] Failed to get device biquad: Command failed:
+
+2025-07-24 10:19:53,325 INFO [APServer] Sent response: Error: Failed to get device biquad (Command failed:
+)
+2025-07-24 10:19:53,325 INFO [APServer] Client connection closed.
+2025-07-24 10:21:26,282 INFO [APServer] Connection from ('127.0.0.1', 49340)
+2025-07-24 10:21:26,282 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 10:21:26,283 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 10:21:26,283 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 10:21:26,283 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 10:21:26,321 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 10:21:26,321 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 10:21:26,321 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 10:21:26,321 INFO [APServer] Biquad coefficients received: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 10:21:26,321 INFO [APServer] Sent response: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 10:21:26,321 INFO [APServer] Client connection closed.
+2025-07-24 10:22:29,886 INFO [APServer] Connection from ('127.0.0.1', 49357)
+2025-07-24 10:22:29,887 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [0, 0, 1, 0, 0], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 10:22:29,887 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 10:22:29,888 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=0, b1=0, b2=1, a1=0, a2=0
+2025-07-24 10:22:29,888 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients 0 0 1 0 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 10:22:29,975 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 10:22:29,975 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 10:22:29,975 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 10:22:29,975 INFO [APServer] Set biquad on device: Done
+2025-07-24 10:22:29,976 INFO [APServer] Sent response: Done
+2025-07-24 10:22:29,976 INFO [APServer] Client connection closed.
+2025-07-24 10:23:15,077 INFO [APServer] Connection from ('127.0.0.1', 59311)
+2025-07-24 10:23:15,077 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [0, 0, 0.5, 0, 0], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 10:23:15,077 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 10:23:15,077 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=0, b1=0, b2=0.5, a1=0, a2=0
+2025-07-24 10:23:15,078 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients 0 0 0.5 0 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 10:23:15,166 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 10:23:15,166 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 10:23:15,167 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 10:23:15,167 INFO [APServer] Set biquad on device: Done
+2025-07-24 10:23:15,167 INFO [APServer] Sent response: Done
+2025-07-24 10:23:15,168 INFO [APServer] Client connection closed.
+2025-07-24 10:23:26,213 INFO [APServer] Connection from ('127.0.0.1', 59315)
+2025-07-24 10:23:26,214 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [0, 0, 1, 0, 0], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 10:23:26,214 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 10:23:26,215 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=0, b1=0, b2=1, a1=0, a2=0
+2025-07-24 10:23:26,215 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients 0 0 1 0 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 10:23:26,296 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 10:23:26,296 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 10:23:26,296 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 10:23:26,296 INFO [APServer] Set biquad on device: Done
+2025-07-24 10:23:26,297 INFO [APServer] Sent response: Done
+2025-07-24 10:23:26,297 INFO [APServer] Client connection closed.
+2025-07-24 10:27:20,571 INFO [APServer] Connection from ('127.0.0.1', 64679)
+2025-07-24 10:27:20,572 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [0, 0, 1, 0, 0], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 10:27:20,574 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 10:27:20,574 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=0, b1=0, b2=1, a1=0, a2=0
+2025-07-24 10:27:20,574 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients 0 0 1 0 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 10:27:41,661 INFO [OCP1ToolWrapper] Command output: IoError: Could not connect to 192.168.10.20:50001 A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. (os error 10060)
+2025-07-24 10:27:41,661 INFO [OCP1ToolWrapper] Command executed with return code: 100
+2025-07-24 10:27:41,661 ERROR [OCP1ToolWrapper] Command failed: 
+2025-07-24 10:27:41,661 ERROR [APServer] Error processing action 'set_device_biquad': Command failed:
+
+2025-07-24 10:27:41,662 INFO [APServer] Sent response: Error: Command failed:
+
+2025-07-24 10:27:41,662 INFO [APServer] Client connection closed.
+2025-07-24 10:27:46,584 INFO [APServer] Connection from ('127.0.0.1', 64717)
+2025-07-24 10:27:46,584 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [0, 0, 1, 0, 0], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 10:27:46,584 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 10:27:46,584 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=0, b1=0, b2=1, a1=0, a2=0
+2025-07-24 10:27:46,585 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients 0 0 1 0 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 10:27:47,673 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 10:27:47,673 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 10:27:47,674 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 10:27:47,674 INFO [APServer] Set biquad on device: Done
+2025-07-24 10:27:47,674 INFO [APServer] Sent response: Done
+2025-07-24 10:27:47,675 INFO [APServer] Client connection closed.
+2025-07-24 10:27:54,976 INFO [APServer] Connection from ('127.0.0.1', 64726)
+2025-07-24 10:27:54,976 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 10:27:54,977 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 10:27:54,977 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 10:27:54,977 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 10:27:54,991 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 10:27:54,991 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 10:27:54,991 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 10:27:54,991 INFO [APServer] Biquad coefficients received: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 10:27:54,992 INFO [APServer] Sent response: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 10:27:54,992 INFO [APServer] Client connection closed.
+2025-07-24 13:29:31,837 INFO [APServer] Connection from ('127.0.0.1', 56435)
+2025-07-24 13:29:31,839 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 13:29:31,840 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 13:29:31,840 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 13:29:31,840 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 13:29:34,899 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:29:34,899 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 13:29:34,900 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:29:34,900 INFO [APServer] Biquad coefficients received: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:29:34,900 INFO [APServer] Sent response: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:29:34,901 INFO [APServer] Client connection closed.
+2025-07-24 13:29:40,978 INFO [APServer] Connection from ('127.0.0.1', 56441)
+2025-07-24 13:29:40,978 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 13:29:40,978 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 13:29:40,979 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 13:29:40,979 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 13:29:41,020 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:29:41,020 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 13:29:41,020 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:29:41,020 INFO [APServer] Biquad coefficients received: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:29:41,020 INFO [APServer] Sent response: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:29:41,021 INFO [APServer] Client connection closed.
+2025-07-24 13:38:01,767 INFO [APServer] Connection from ('127.0.0.1', 63813)
+2025-07-24 13:38:01,768 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "bell", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-07-24 13:38:01,768 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=bell, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-07-24 13:38:01,768 INFO [Biquad_Filter] Calculating coefficients for filter_type=bell
+2025-07-24 13:38:01,769 INFO [Biquad_Filter] Calculating bell filter coefficients.
+2025-07-24 13:38:01,769 INFO [Biquad_Filter] Bell coefficients (unnormalized): b0=1.0921865735337346, b1=-1.9828897227476208, b2=0.9078134264662654, a0=1.0462027337669495, a1=-1.9828897227476208, a2=0.9537972662330504
+2025-07-24 13:38:01,769 INFO [Biquad_Filter] Normalizing coefficients with a0=1.0462027337669495
+2025-07-24 13:38:01,769 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.043953086990335, 'b1': -1.8953207239365961, 'b2': 0.8677222847598566, 'a1': -1.8953207239365961, 'a2': 0.9116753717501915}
+2025-07-24 13:38:01,770 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.043953086990335, 'b1': -1.8953207239365961, 'b2': 0.8677222847598566, 'a1': -1.8953207239365961, 'a2': 0.9116753717501915}
+2025-07-24 13:38:01,770 INFO [APServer] Biquad coefficients generated: [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566]
+2025-07-24 13:38:01,770 INFO [APServer] Sent response: [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566]
+2025-07-24 13:38:01,770 INFO [APServer] Client connection closed.
+2025-07-24 13:39:05,758 INFO [APServer] Connection from ('127.0.0.1', 63827)
+2025-07-24 13:39:05,759 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 13:39:05,760 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 13:39:05,760 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=-1.8953207239365961, b1=0.9116753717501915, b2=1.043953086990335, a1=-1.8953207239365961, a2=0.8677222847598566
+2025-07-24 13:39:05,760 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.8953207239365961 0.9116753717501915 1.043953086990335 -1.8953207239365961 0.8677222847598566 --target-ip 192.168.10.20 --port 50001
+2025-07-24 13:39:05,849 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 13:39:05,849 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 13:39:05,849 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 13:39:05,849 INFO [APServer] Set biquad on device: Done
+2025-07-24 13:39:05,850 INFO [APServer] Sent response: Done
+2025-07-24 13:39:05,850 INFO [APServer] Client connection closed.
+2025-07-24 13:39:51,160 INFO [APServer] Connection from ('127.0.0.1', 63842)
+2025-07-24 13:39:51,161 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 13:39:51,161 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 13:39:51,162 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 13:39:51,162 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 13:40:12,240 INFO [OCP1ToolWrapper] Command output: IoError: Could not connect to 192.168.10.20:50001 A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. (os error 10060)
+2025-07-24 13:40:12,241 INFO [OCP1ToolWrapper] Command executed with return code: 100
+2025-07-24 13:40:12,241 ERROR [OCP1ToolWrapper] Command failed: 
+2025-07-24 13:40:12,241 ERROR [APServer] Failed to get device biquad: Command failed:
+
+2025-07-24 13:40:12,242 INFO [APServer] Sent response: Error: Failed to get device biquad (Command failed:
+)
+2025-07-24 13:40:12,243 INFO [APServer] Client connection closed.
+2025-07-24 13:40:22,560 INFO [APServer] Connection from ('127.0.0.1', 63847)
+2025-07-24 13:40:22,561 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 13:40:22,561 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 13:40:22,561 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 13:40:22,562 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 13:40:24,635 INFO [OCP1ToolWrapper] Command output: IoError: Could not connect to 192.168.10.20:50001 No connection could be made because the target machine actively refused it. (os error 10061)
+2025-07-24 13:40:24,635 INFO [OCP1ToolWrapper] Command executed with return code: 100
+2025-07-24 13:40:24,635 ERROR [OCP1ToolWrapper] Command failed: 
+2025-07-24 13:40:24,635 ERROR [APServer] Failed to get device biquad: Command failed:
+
+2025-07-24 13:40:24,635 INFO [APServer] Sent response: Error: Failed to get device biquad (Command failed:
+)
+2025-07-24 13:40:24,636 INFO [APServer] Client connection closed.
+2025-07-24 13:40:33,733 INFO [APServer] Connection from ('127.0.0.1', 63853)
+2025-07-24 13:40:33,734 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 13:40:33,734 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 13:40:33,734 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=-1.8953207239365961, b1=0.9116753717501915, b2=1.043953086990335, a1=-1.8953207239365961, a2=0.8677222847598566
+2025-07-24 13:40:33,734 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.8953207239365961 0.9116753717501915 1.043953086990335 -1.8953207239365961 0.8677222847598566 --target-ip 192.168.10.20 --port 50001
+2025-07-24 13:40:35,786 INFO [OCP1ToolWrapper] Command output: IoError: Could not connect to 192.168.10.20:50001 No connection could be made because the target machine actively refused it. (os error 10061)
+2025-07-24 13:40:35,786 INFO [OCP1ToolWrapper] Command executed with return code: 100
+2025-07-24 13:40:35,786 ERROR [OCP1ToolWrapper] Command failed: 
+2025-07-24 13:40:35,786 ERROR [APServer] Error processing action 'set_device_biquad': Command failed:
+
+2025-07-24 13:40:35,786 INFO [APServer] Sent response: Error: Command failed:
+
+2025-07-24 13:40:35,787 INFO [APServer] Client connection closed.
+2025-07-24 13:40:57,777 INFO [APServer] Connection from ('127.0.0.1', 63883)
+2025-07-24 13:40:57,778 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 13:40:57,778 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 13:40:57,778 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=-1.8953207239365961, b1=0.9116753717501915, b2=1.043953086990335, a1=-1.8953207239365961, a2=0.8677222847598566
+2025-07-24 13:40:57,778 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.8953207239365961 0.9116753717501915 1.043953086990335 -1.8953207239365961 0.8677222847598566 --target-ip 192.168.10.20 --port 50001
+2025-07-24 13:41:18,836 INFO [OCP1ToolWrapper] Command output: IoError: Could not connect to 192.168.10.20:50001 A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. (os error 10060)
+2025-07-24 13:41:18,836 INFO [OCP1ToolWrapper] Command executed with return code: 100
+2025-07-24 13:41:18,836 ERROR [OCP1ToolWrapper] Command failed: 
+2025-07-24 13:41:18,837 ERROR [APServer] Error processing action 'set_device_biquad': Command failed:
+
+2025-07-24 13:41:18,837 INFO [APServer] Sent response: Error: Command failed:
+
+2025-07-24 13:41:18,838 INFO [APServer] Client connection closed.
+2025-07-24 13:41:52,466 INFO [APServer] Connection from ('127.0.0.1', 63893)
+2025-07-24 13:41:52,466 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 13:41:52,466 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 13:41:52,467 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 13:41:52,467 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 13:41:54,528 INFO [OCP1ToolWrapper] Command output: IoError: Could not connect to 192.168.10.20:50001 No connection could be made because the target machine actively refused it. (os error 10061)
+2025-07-24 13:41:54,529 INFO [OCP1ToolWrapper] Command executed with return code: 100
+2025-07-24 13:41:54,529 ERROR [OCP1ToolWrapper] Command failed: 
+2025-07-24 13:41:54,529 ERROR [APServer] Failed to get device biquad: Command failed:
+
+2025-07-24 13:41:54,529 INFO [APServer] Sent response: Error: Failed to get device biquad (Command failed:
+)
+2025-07-24 13:41:54,530 INFO [APServer] Client connection closed.
+2025-07-24 13:42:07,488 INFO [APServer] Connection from ('127.0.0.1', 63903)
+2025-07-24 13:42:07,488 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [0, 0, 1, 0, 0], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 13:42:07,488 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 13:42:07,489 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=0, b1=0, b2=1, a1=0, a2=0
+2025-07-24 13:42:07,489 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients 0 0 1 0 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 13:42:09,556 INFO [OCP1ToolWrapper] Command output: IoError: Could not connect to 192.168.10.20:50001 No connection could be made because the target machine actively refused it. (os error 10061)
+2025-07-24 13:42:09,557 INFO [OCP1ToolWrapper] Command executed with return code: 100
+2025-07-24 13:42:09,557 ERROR [OCP1ToolWrapper] Command failed: 
+2025-07-24 13:42:09,557 ERROR [APServer] Error processing action 'set_device_biquad': Command failed:
+
+2025-07-24 13:42:09,557 INFO [APServer] Sent response: Error: Command failed:
+
+2025-07-24 13:42:09,558 INFO [APServer] Client connection closed.
+2025-07-24 13:42:21,132 INFO [APServer] Connection from ('127.0.0.1', 63911)
+2025-07-24 13:42:21,133 INFO [APServer] Received: {"action": "get_serial_number", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 13:42:21,133 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 13:42:21,133 INFO [OCP1ToolWrapper] Requesting serial number.
+2025-07-24 13:42:21,133 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-serial-number --target-ip 192.168.10.20 --port 50001
+2025-07-24 13:42:23,209 INFO [OCP1ToolWrapper] Command output: IoError: Could not connect to 192.168.10.20:50001 No connection could be made because the target machine actively refused it. (os error 10061)
+2025-07-24 13:42:23,209 INFO [OCP1ToolWrapper] Command executed with return code: 100
+2025-07-24 13:42:23,209 ERROR [OCP1ToolWrapper] Command failed: 
+2025-07-24 13:42:23,209 ERROR [APServer] Failed to get serial number: Command failed:
+
+2025-07-24 13:42:23,210 INFO [APServer] Sent response: Error: Failed to get serial number (Command failed:
+)
+2025-07-24 13:42:23,210 INFO [APServer] Client connection closed.
+2025-07-24 13:43:25,850 INFO [APServer] Connection from ('127.0.0.1', 50661)
+2025-07-24 13:43:25,850 INFO [APServer] Received: {"action": "get_serial_number", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 13:43:25,850 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 13:43:25,851 INFO [OCP1ToolWrapper] Requesting serial number.
+2025-07-24 13:43:25,851 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-serial-number --target-ip 192.168.10.20 --port 50001
+2025-07-24 13:43:25,866 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-07-24 13:43:25,867 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 13:43:25,867 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-07-24 13:43:25,867 INFO [APServer] Serial number received: 123456789
+2025-07-24 13:43:25,867 INFO [APServer] Sent response: 123456789
+2025-07-24 13:43:25,868 INFO [APServer] Client connection closed.
+2025-07-24 13:43:32,143 INFO [APServer] Connection from ('127.0.0.1', 50668)
+2025-07-24 13:43:32,143 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 13:43:32,143 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 13:43:32,143 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 13:43:32,143 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 13:43:32,159 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:43:32,160 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 13:43:32,160 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:43:32,160 INFO [APServer] Biquad coefficients received: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:43:32,160 INFO [APServer] Sent response: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:43:32,160 INFO [APServer] Client connection closed.
+2025-07-24 13:43:45,133 INFO [APServer] Connection from ('127.0.0.1', 50672)
+2025-07-24 13:43:45,133 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 13:43:45,133 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 13:43:45,134 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=-1.8953207239365961, b1=0.9116753717501915, b2=1.043953086990335, a1=-1.8953207239365961, a2=0.8677222847598566
+2025-07-24 13:43:45,134 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.8953207239365961 0.9116753717501915 1.043953086990335 -1.8953207239365961 0.8677222847598566 --target-ip 192.168.10.20 --port 50001
+2025-07-24 13:43:45,212 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 13:43:45,212 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 13:43:45,212 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 13:43:45,212 INFO [APServer] Set biquad on device: Done
+2025-07-24 13:43:45,213 INFO [APServer] Sent response: Done
+2025-07-24 13:43:45,213 INFO [APServer] Client connection closed.
+2025-07-24 13:44:05,348 INFO [APServer] Connection from ('127.0.0.1', 50679)
+2025-07-24 13:44:05,349 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 13:44:05,349 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 13:44:05,349 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 13:44:05,349 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 13:44:05,367 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (-1.90, 0.91), b = (1.04, -1.90, 0.87)]
+2025-07-24 13:44:05,367 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 13:44:05,368 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (-1.90, 0.91), b = (1.04, -1.90, 0.87)]
+2025-07-24 13:44:05,368 INFO [APServer] Biquad coefficients received: [Biquad: a = (-1.90, 0.91), b = (1.04, -1.90, 0.87)]
+2025-07-24 13:44:05,368 INFO [APServer] Sent response: [Biquad: a = (-1.90, 0.91), b = (1.04, -1.90, 0.87)]
+2025-07-24 13:44:05,368 INFO [APServer] Client connection closed.
+2025-07-24 15:38:39,469 INFO [APServer] Connection from ('127.0.0.1', 56795)
+2025-07-24 15:38:39,472 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "bell", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-07-24 15:38:39,472 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=bell, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-07-24 15:38:39,473 INFO [Biquad_Filter] Calculating coefficients for filter_type=bell
+2025-07-24 15:38:39,473 INFO [Biquad_Filter] Calculating bell filter coefficients.
+2025-07-24 15:38:39,473 INFO [Biquad_Filter] Bell coefficients (unnormalized): b0=1.0921865735337346, b1=-1.9828897227476208, b2=0.9078134264662654, a0=1.0462027337669495, a1=-1.9828897227476208, a2=0.9537972662330504
+2025-07-24 15:38:39,473 INFO [Biquad_Filter] Normalizing coefficients with a0=1.0462027337669495
+2025-07-24 15:38:39,474 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.043953086990335, 'b1': -1.8953207239365961, 'b2': 0.8677222847598566, 'a1': -1.8953207239365961, 'a2': 0.9116753717501915}
+2025-07-24 15:38:39,474 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.043953086990335, 'b1': -1.8953207239365961, 'b2': 0.8677222847598566, 'a1': -1.8953207239365961, 'a2': 0.9116753717501915}
+2025-07-24 15:38:39,474 INFO [APServer] Biquad coefficients generated: [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566]
+2025-07-24 15:38:39,474 INFO [APServer] Sent response: [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566]
+2025-07-24 15:38:39,475 INFO [APServer] Client connection closed.
+2025-07-24 15:40:45,282 INFO [APServer] Connection from ('127.0.0.1', 59808)
+2025-07-24 15:40:45,283 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "bell", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-07-24 15:40:45,283 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=bell, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-07-24 15:40:45,283 INFO [Biquad_Filter] Calculating coefficients for filter_type=bell
+2025-07-24 15:40:45,283 INFO [Biquad_Filter] Calculating bell filter coefficients.
+2025-07-24 15:40:45,283 INFO [Biquad_Filter] Bell coefficients (unnormalized): b0=1.0921865735337346, b1=-1.9828897227476208, b2=0.9078134264662654, a0=1.0462027337669495, a1=-1.9828897227476208, a2=0.9537972662330504
+2025-07-24 15:40:45,284 INFO [Biquad_Filter] Normalizing coefficients with a0=1.0462027337669495
+2025-07-24 15:40:45,284 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.043953086990335, 'b1': -1.8953207239365961, 'b2': 0.8677222847598566, 'a1': -1.8953207239365961, 'a2': 0.9116753717501915}
+2025-07-24 15:40:45,284 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.043953086990335, 'b1': -1.8953207239365961, 'b2': 0.8677222847598566, 'a1': -1.8953207239365961, 'a2': 0.9116753717501915}
+2025-07-24 15:40:45,284 INFO [APServer] Biquad coefficients generated: [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566]
+2025-07-24 15:40:45,284 INFO [APServer] Sent response: [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566]
+2025-07-24 15:40:45,285 INFO [APServer] Client connection closed.
+2025-07-24 15:41:28,076 INFO [APServer] Connection from ('127.0.0.1', 59856)
+2025-07-24 15:41:28,077 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "bell", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-07-24 15:41:28,077 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=bell, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-07-24 15:41:28,077 INFO [Biquad_Filter] Calculating coefficients for filter_type=bell
+2025-07-24 15:41:28,077 INFO [Biquad_Filter] Calculating bell filter coefficients.
+2025-07-24 15:41:28,078 INFO [Biquad_Filter] Bell coefficients (unnormalized): b0=1.0921865735337346, b1=-1.9828897227476208, b2=0.9078134264662654, a0=1.0462027337669495, a1=-1.9828897227476208, a2=0.9537972662330504
+2025-07-24 15:41:28,078 INFO [Biquad_Filter] Normalizing coefficients with a0=1.0462027337669495
+2025-07-24 15:41:28,078 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.043953086990335, 'b1': -1.8953207239365961, 'b2': 0.8677222847598566, 'a1': -1.8953207239365961, 'a2': 0.9116753717501915}
+2025-07-24 15:41:28,078 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.043953086990335, 'b1': -1.8953207239365961, 'b2': 0.8677222847598566, 'a1': -1.8953207239365961, 'a2': 0.9116753717501915}
+2025-07-24 15:41:28,078 INFO [APServer] Biquad coefficients generated: [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566]
+2025-07-24 15:41:28,078 INFO [APServer] Sent response: [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566]
+2025-07-24 15:41:28,079 INFO [APServer] Client connection closed.
+2025-07-24 15:41:48,993 INFO [APServer] Connection from ('127.0.0.1', 59861)
+2025-07-24 15:41:48,993 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "bell", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 96000, "wait_for_response": true}
+2025-07-24 15:41:48,994 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=bell, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=96000
+2025-07-24 15:41:48,994 INFO [Biquad_Filter] Calculating coefficients for filter_type=bell
+2025-07-24 15:41:48,994 INFO [Biquad_Filter] Calculating bell filter coefficients.
+2025-07-24 15:41:48,994 INFO [Biquad_Filter] Bell coefficients (unnormalized): b0=1.0461921877866955, b1=-1.995717846477207, b2=0.9538078122133045, a0=1.0231509348120054, a1=-1.995717846477207, a2=0.9768490651879946
+2025-07-24 15:41:48,994 INFO [Biquad_Filter] Normalizing coefficients with a0=1.0231509348120054
+2025-07-24 15:41:48,994 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.0225198963229445, 'b1': -1.950560546420164, 'b2': 0.9322259109195438, 'a1': -1.950560546420164, 'a2': 0.9547458072424884}
+2025-07-24 15:41:48,994 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.0225198963229445, 'b1': -1.950560546420164, 'b2': 0.9322259109195438, 'a1': -1.950560546420164, 'a2': 0.9547458072424884}
+2025-07-24 15:41:48,994 INFO [APServer] Biquad coefficients generated: [-1.950560546420164, 0.9547458072424884, 1.0225198963229445, -1.950560546420164, 0.9322259109195438]
+2025-07-24 15:41:48,995 INFO [APServer] Sent response: [-1.950560546420164, 0.9547458072424884, 1.0225198963229445, -1.950560546420164, 0.9322259109195438]
+2025-07-24 15:41:48,995 INFO [APServer] Client connection closed.
+2025-07-24 15:43:46,091 INFO [APServer] Connection from ('127.0.0.1', 56350)
+2025-07-24 15:43:46,092 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "bell", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 96000, "wait_for_response": true}
+2025-07-24 15:43:46,092 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=bell, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=96000
+2025-07-24 15:43:46,093 INFO [Biquad_Filter] Calculating coefficients for filter_type=bell
+2025-07-24 15:43:46,093 INFO [Biquad_Filter] Calculating bell filter coefficients.
+2025-07-24 15:43:46,093 INFO [Biquad_Filter] Bell coefficients (unnormalized): b0=1.0461921877866955, b1=-1.995717846477207, b2=0.9538078122133045, a0=1.0231509348120054, a1=-1.995717846477207, a2=0.9768490651879946
+2025-07-24 15:43:46,093 INFO [Biquad_Filter] Normalizing coefficients with a0=1.0231509348120054
+2025-07-24 15:43:46,093 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.0225198963229445, 'b1': -1.950560546420164, 'b2': 0.9322259109195438, 'a1': -1.950560546420164, 'a2': 0.9547458072424884}
+2025-07-24 15:43:46,093 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.0225198963229445, 'b1': -1.950560546420164, 'b2': 0.9322259109195438, 'a1': -1.950560546420164, 'a2': 0.9547458072424884}
+2025-07-24 15:43:46,093 INFO [APServer] Biquad coefficients generated: [-1.950560546420164, 0.9547458072424884, 1.0225198963229445, -1.950560546420164, 0.9322259109195438]
+2025-07-24 15:43:46,094 INFO [APServer] Sent response: [-1.950560546420164, 0.9547458072424884, 1.0225198963229445, -1.950560546420164, 0.9322259109195438]
+2025-07-24 15:43:46,094 INFO [APServer] Client connection closed.
+2025-07-24 15:45:06,273 INFO [APServer] Connection from ('127.0.0.1', 56363)
+2025-07-24 15:45:06,274 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 15:45:06,275 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 15:45:06,275 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 15:45:06,275 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 15:45:06,307 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 15:45:06,307 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 15:45:06,308 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 15:45:06,308 INFO [APServer] Biquad coefficients received: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 15:45:06,308 INFO [APServer] Sent response: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 15:45:06,309 INFO [APServer] Client connection closed.
+2025-07-24 15:46:10,226 INFO [APServer] Connection from ('127.0.0.1', 56386)
+2025-07-24 15:46:10,227 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "bell", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 96000, "wait_for_response": true}
+2025-07-24 15:46:10,227 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=bell, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=96000
+2025-07-24 15:46:10,227 INFO [Biquad_Filter] Calculating coefficients for filter_type=bell
+2025-07-24 15:46:10,227 INFO [Biquad_Filter] Calculating bell filter coefficients.
+2025-07-24 15:46:10,227 INFO [Biquad_Filter] Bell coefficients (unnormalized): b0=1.0461921877866955, b1=-1.995717846477207, b2=0.9538078122133045, a0=1.0231509348120054, a1=-1.995717846477207, a2=0.9768490651879946
+2025-07-24 15:46:10,228 INFO [Biquad_Filter] Normalizing coefficients with a0=1.0231509348120054
+2025-07-24 15:46:10,228 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.0225198963229445, 'b1': -1.950560546420164, 'b2': 0.9322259109195438, 'a1': -1.950560546420164, 'a2': 0.9547458072424884}
+2025-07-24 15:46:10,228 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.0225198963229445, 'b1': -1.950560546420164, 'b2': 0.9322259109195438, 'a1': -1.950560546420164, 'a2': 0.9547458072424884}
+2025-07-24 15:46:10,228 INFO [APServer] Biquad coefficients generated: [-1.950560546420164, 0.9547458072424884, 1.0225198963229445, -1.950560546420164, 0.9322259109195438]
+2025-07-24 15:46:10,228 INFO [APServer] Sent response: [-1.950560546420164, 0.9547458072424884, 1.0225198963229445, -1.950560546420164, 0.9322259109195438]
+2025-07-24 15:46:10,229 INFO [APServer] Client connection closed.
+2025-07-24 15:46:45,548 INFO [APServer] Connection from ('127.0.0.1', 56398)
+2025-07-24 15:46:45,549 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [-1.950560546420164, 0.9547458072424884, 1.0225198963229445, -1.950560546420164, 0.9322259109195438], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 15:46:45,549 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 15:46:45,549 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=-1.950560546420164, b1=0.9547458072424884, b2=1.0225198963229445, a1=-1.950560546420164, a2=0.9322259109195438
+2025-07-24 15:46:45,549 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.950560546420164 0.9547458072424884 1.0225198963229445 -1.950560546420164 0.9322259109195438 --target-ip 192.168.10.20 --port 50001
+2025-07-24 15:46:45,644 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 15:46:45,645 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 15:46:45,645 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 15:46:45,646 INFO [APServer] Set biquad on device: Done
+2025-07-24 15:46:45,646 INFO [APServer] Sent response: Done
+2025-07-24 15:46:45,647 INFO [APServer] Client connection closed.
+2025-07-24 15:46:52,501 INFO [APServer] Connection from ('127.0.0.1', 56402)
+2025-07-24 15:46:52,501 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 15:46:52,501 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 15:46:52,502 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 15:46:52,502 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 15:46:52,516 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (-1.95, 0.95), b = (1.02, -1.95, 0.93)]
+2025-07-24 15:46:52,516 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 15:46:52,516 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (-1.95, 0.95), b = (1.02, -1.95, 0.93)]
+2025-07-24 15:46:52,517 INFO [APServer] Biquad coefficients received: [Biquad: a = (-1.95, 0.95), b = (1.02, -1.95, 0.93)]
+2025-07-24 15:46:52,517 INFO [APServer] Sent response: [Biquad: a = (-1.95, 0.95), b = (1.02, -1.95, 0.93)]
+2025-07-24 15:46:52,517 INFO [APServer] Client connection closed.
+2025-07-24 15:47:45,052 INFO [APServer] Connection from ('127.0.0.1', 56411)
+2025-07-24 15:47:45,053 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [0, 0, 1, 0, 0], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 15:47:45,053 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 15:47:45,054 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=0, b1=0, b2=1, a1=0, a2=0
+2025-07-24 15:47:45,054 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients 0 0 1 0 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 15:47:45,134 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 15:47:45,134 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 15:47:45,134 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 15:47:45,134 INFO [APServer] Set biquad on device: Done
+2025-07-24 15:47:45,134 INFO [APServer] Sent response: Done
+2025-07-24 15:47:45,135 INFO [APServer] Client connection closed.
+2025-07-24 15:47:48,753 INFO [APServer] Connection from ('127.0.0.1', 56414)
+2025-07-24 15:47:48,754 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 15:47:48,754 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 15:47:48,754 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 15:47:48,755 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 15:47:48,769 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 15:47:48,770 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 15:47:48,770 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 15:47:48,770 INFO [APServer] Biquad coefficients received: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 15:47:48,770 INFO [APServer] Sent response: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 15:47:48,771 INFO [APServer] Client connection closed.
+2025-07-24 15:49:08,665 INFO [APServer] Connection from ('127.0.0.1', 56454)
+2025-07-24 15:49:08,666 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [0, 0, 0.5, 0, 0], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 15:49:08,666 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 15:49:08,666 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=0, b1=0, b2=0.5, a1=0, a2=0
+2025-07-24 15:49:08,666 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients 0 0 0.5 0 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 15:49:08,766 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 15:49:08,766 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 15:49:08,766 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 15:49:08,766 INFO [APServer] Set biquad on device: Done
+2025-07-24 15:49:08,768 INFO [APServer] Sent response: Done
+2025-07-24 15:49:08,768 INFO [APServer] Client connection closed.
+2025-07-24 15:49:12,439 INFO [APServer] Connection from ('127.0.0.1', 56458)
+2025-07-24 15:49:12,440 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 15:49:12,440 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 15:49:12,441 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 15:49:12,441 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 15:49:12,460 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (0.50, 0.00, 0.00)]
+2025-07-24 15:49:12,460 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 15:49:12,460 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (0.50, 0.00, 0.00)]
+2025-07-24 15:49:12,460 INFO [APServer] Biquad coefficients received: [Biquad: a = (0.00, 0.00), b = (0.50, 0.00, 0.00)]
+2025-07-24 15:49:12,460 INFO [APServer] Sent response: [Biquad: a = (0.00, 0.00), b = (0.50, 0.00, 0.00)]
+2025-07-24 15:49:12,461 INFO [APServer] Client connection closed.
+2025-07-24 15:49:31,569 INFO [APServer] Connection from ('127.0.0.1', 56467)
+2025-07-24 15:49:31,570 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [0, 0, 1, 0, 0], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 15:49:31,570 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 15:49:31,570 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=0, b1=0, b2=1, a1=0, a2=0
+2025-07-24 15:49:31,570 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients 0 0 1 0 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 15:49:31,647 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 15:49:31,647 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 15:49:31,648 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 15:49:31,648 INFO [APServer] Set biquad on device: Done
+2025-07-24 15:49:31,648 INFO [APServer] Sent response: Done
+2025-07-24 15:49:31,648 INFO [APServer] Client connection closed.
+2025-07-24 15:51:31,264 INFO [APServer] Connection from ('127.0.0.1', 56495)
+2025-07-24 15:51:31,265 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [-1.950560546420164, 0.9547458072424884, 1.0225198963229445, -1.950560546420164, 0.9322259109195438], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 15:51:31,265 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 15:51:31,265 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=-1.950560546420164, b1=0.9547458072424884, b2=1.0225198963229445, a1=-1.950560546420164, a2=0.9322259109195438
+2025-07-24 15:51:31,266 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.950560546420164 0.9547458072424884 1.0225198963229445 -1.950560546420164 0.9322259109195438 --target-ip 192.168.10.20 --port 50001
+2025-07-24 15:51:31,350 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 15:51:31,350 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 15:51:31,350 INFO [OCP1ToolWrapper] Command output: Done
+2025-07-24 15:51:31,350 INFO [APServer] Set biquad on device: Done
+2025-07-24 15:51:31,351 INFO [APServer] Sent response: Done
+2025-07-24 15:51:31,351 INFO [APServer] Client connection closed.
+2025-07-24 15:52:53,572 INFO [APServer] Connection from ('127.0.0.1', 56502)
+2025-07-24 15:52:53,572 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-24 15:52:53,573 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-24 15:52:53,573 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-07-24 15:52:53,573 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\AppData\Local\Programs\Python\Python39\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-07-24 15:52:53,588 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (-1.95, 0.95), b = (1.02, -1.95, 0.93)]
+2025-07-24 15:52:53,588 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-24 15:52:53,589 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (-1.95, 0.95), b = (1.02, -1.95, 0.93)]
+2025-07-24 15:52:53,589 INFO [APServer] Biquad coefficients received: [Biquad: a = (-1.95, 0.95), b = (1.02, -1.95, 0.93)]
+2025-07-24 15:52:53,589 INFO [APServer] Sent response: [Biquad: a = (-1.95, 0.95), b = (1.02, -1.95, 0.93)]
+2025-07-24 15:52:53,589 INFO [APServer] Client connection closed.

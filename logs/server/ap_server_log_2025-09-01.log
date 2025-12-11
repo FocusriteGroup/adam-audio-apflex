@@ -1,0 +1,173 @@
+2025-09-01 14:53:00,533 INFO [root] ----------------------------------- APServer started
+2025-09-01 14:53:00,537 INFO [APServer] Server started
+2025-09-01 14:53:00,537 INFO [APServer] Server is running...
+2025-09-01 14:53:00,538 INFO [APServer] Waiting for connections...
+2025-09-01 14:53:01,614 INFO [APServer] Connection from ('127.0.0.1', 60882)
+2025-09-01 14:53:01,616 INFO [APServer] Client connection closed.
+2025-09-01 14:53:03,223 INFO [APServer] Connection from ('127.0.0.1', 60883)
+2025-09-01 14:53:03,224 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-09-01 14:53:03,225 INFO [Utilities] Generated timestamp extension: 2025_09_01_14_53_03
+2025-09-01 14:53:03,225 INFO [APServer] Sent response: 2025_09_01_14_53_03
+2025-09-01 14:53:03,225 INFO [APServer] Client connection closed.
+2025-09-01 14:53:03,373 INFO [APServer] Connection from ('127.0.0.1', 60884)
+2025-09-01 14:53:03,374 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-09-01 14:53:03,374 INFO [Utilities] Generated timestamp subpath: 2025\09_01
+2025-09-01 14:53:03,374 INFO [APServer] Sent response: 2025\09_01
+2025-09-01 14:53:03,375 INFO [APServer] Client connection closed.
+2025-09-01 14:53:03,730 INFO [APServer] Connection from ('127.0.0.1', 60885)
+2025-09-01 14:53:03,731 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["GA4700120", "2025_09_01_14_53_03"]}
+2025-09-01 14:53:03,731 INFO [APServer] Generating file prefix from: ['GA4700120', '2025_09_01_14_53_03']
+2025-09-01 14:53:03,732 INFO [Utilities] Generated file prefix: GA4700120_2025_09_01_14_53_03
+2025-09-01 14:53:03,732 INFO [APServer] Sent response: GA4700120_2025_09_01_14_53_03
+2025-09-01 14:53:03,733 INFO [APServer] Client connection closed.
+2025-09-01 14:53:03,933 INFO [APServer] Connection from ('127.0.0.1', 60887)
+2025-09-01 14:53:03,935 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-09-01 14:53:03,935 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-09-01 14:53:03,935 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-09-01 14:53:03,935 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-09-01 14:53:03,936 INFO [APServer] Client connection closed.
+2025-09-01 14:53:04,108 INFO [APServer] Connection from ('127.0.0.1', 60888)
+2025-09-01 14:53:04,109 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-09-01 14:53:04,109 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-09-01 14:53:04,109 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-09-01 14:53:04,110 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-09-01 14:53:04,110 INFO [APServer] Client connection closed.
+2025-09-01 14:53:04,270 INFO [APServer] Connection from ('127.0.0.1', 60889)
+2025-09-01 14:53:04,273 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\09_01"]}
+2025-09-01 14:53:04,273 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\09_01']
+2025-09-01 14:53:04,273 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01
+2025-09-01 14:53:04,274 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01
+2025-09-01 14:53:04,274 INFO [APServer] Client connection closed.
+2025-09-01 14:53:04,430 INFO [APServer] Connection from ('127.0.0.1', 60891)
+2025-09-01 14:53:04,430 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\09_01", "2025_09_01_14_53_03"]}
+2025-09-01 14:53:04,431 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\09_01', '2025_09_01_14_53_03']
+2025-09-01 14:53:04,432 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\09_01\2025_09_01_14_53_03
+2025-09-01 14:53:04,432 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\09_01\2025_09_01_14_53_03
+2025-09-01 14:53:04,433 INFO [APServer] Client connection closed.
+2025-09-01 14:53:04,610 INFO [APServer] Connection from ('127.0.0.1', 60892)
+2025-09-01 14:53:04,611 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-09-01 14:53:04,612 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-09-01 14:53:04,612 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-09-01 14:53:04,612 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-09-01 14:53:04,613 INFO [APServer] Client connection closed.
+2025-09-01 14:53:04,807 INFO [APServer] Connection from ('127.0.0.1', 60893)
+2025-09-01 14:53:04,807 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "GA4700120", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\09_01\\SequenceStatistics.csv", "max_trials": 1000, "wait_for_response": true}
+2025-09-01 14:53:04,808 INFO [APServer] Checking measurement trials for serial: GA4700120, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01\SequenceStatistics.csv, max: 1000
+2025-09-01 14:53:04,809 ERROR [APServer] Error checking measurement trials: [Errno 2] No such file or directory: 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\09_01\\SequenceStatistics.csv'
+2025-09-01 14:53:04,810 INFO [APServer] Sent response: Error: [Errno 2] No such file or directory: 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\09_01\\SequenceStatistics.csv'
+2025-09-01 14:53:04,811 INFO [APServer] Client connection closed.
+2025-09-01 14:53:23,128 INFO [APServer] Connection from ('127.0.0.1', 60894)
+2025-09-01 14:53:23,129 INFO [APServer] Client connection closed.
+2025-09-01 14:53:23,406 INFO [APServer] Connection from ('127.0.0.1', 60895)
+2025-09-01 14:53:23,408 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-09-01 14:53:23,408 INFO [Utilities] Generated timestamp extension: 2025_09_01_14_53_23
+2025-09-01 14:53:23,409 INFO [APServer] Sent response: 2025_09_01_14_53_23
+2025-09-01 14:53:23,409 INFO [APServer] Client connection closed.
+2025-09-01 14:53:23,662 INFO [APServer] Connection from ('127.0.0.1', 60896)
+2025-09-01 14:53:23,665 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-09-01 14:53:23,666 INFO [Utilities] Generated timestamp subpath: 2025\09_01
+2025-09-01 14:53:23,666 INFO [APServer] Sent response: 2025\09_01
+2025-09-01 14:53:23,667 INFO [APServer] Client connection closed.
+2025-09-01 14:53:23,855 INFO [APServer] Connection from ('127.0.0.1', 60897)
+2025-09-01 14:53:23,857 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["GA4700120", "2025_09_01_14_53_23"]}
+2025-09-01 14:53:23,857 INFO [APServer] Generating file prefix from: ['GA4700120', '2025_09_01_14_53_23']
+2025-09-01 14:53:23,857 INFO [Utilities] Generated file prefix: GA4700120_2025_09_01_14_53_23
+2025-09-01 14:53:23,858 INFO [APServer] Sent response: GA4700120_2025_09_01_14_53_23
+2025-09-01 14:53:23,859 INFO [APServer] Client connection closed.
+2025-09-01 14:53:24,040 INFO [APServer] Connection from ('127.0.0.1', 60898)
+2025-09-01 14:53:24,041 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-09-01 14:53:24,041 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-09-01 14:53:24,041 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-09-01 14:53:24,042 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-09-01 14:53:24,043 INFO [APServer] Client connection closed.
+2025-09-01 14:53:24,212 INFO [APServer] Connection from ('127.0.0.1', 60899)
+2025-09-01 14:53:24,213 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-09-01 14:53:24,213 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-09-01 14:53:24,213 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-09-01 14:53:24,215 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-09-01 14:53:24,215 INFO [APServer] Client connection closed.
+2025-09-01 14:53:24,427 INFO [APServer] Connection from ('127.0.0.1', 60900)
+2025-09-01 14:53:24,428 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\09_01"]}
+2025-09-01 14:53:24,429 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\09_01']
+2025-09-01 14:53:24,430 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01
+2025-09-01 14:53:24,430 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01
+2025-09-01 14:53:24,430 INFO [APServer] Client connection closed.
+2025-09-01 14:53:24,568 INFO [APServer] Connection from ('127.0.0.1', 60901)
+2025-09-01 14:53:24,569 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\09_01", "2025_09_01_14_53_23"]}
+2025-09-01 14:53:24,569 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\09_01', '2025_09_01_14_53_23']
+2025-09-01 14:53:24,569 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\09_01\2025_09_01_14_53_23
+2025-09-01 14:53:24,570 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\09_01\2025_09_01_14_53_23
+2025-09-01 14:53:24,570 INFO [APServer] Client connection closed.
+2025-09-01 14:53:24,709 INFO [APServer] Connection from ('127.0.0.1', 60902)
+2025-09-01 14:53:24,711 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-09-01 14:53:24,711 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-09-01 14:53:24,711 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-09-01 14:53:24,711 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-09-01 14:53:24,711 INFO [APServer] Client connection closed.
+2025-09-01 14:53:24,840 INFO [APServer] Connection from ('127.0.0.1', 60903)
+2025-09-01 14:53:24,841 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "GA4700120", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\09_01\\SequenceStatistics.csv", "max_trials": 1000, "wait_for_response": true}
+2025-09-01 14:53:24,841 INFO [APServer] Checking measurement trials for serial: GA4700120, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01\SequenceStatistics.csv, max: 1000
+2025-09-01 14:53:24,842 INFO [APServer] Serial GA4700120 found 1 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01\SequenceStatistics.csv
+2025-09-01 14:53:24,842 INFO [APServer] Measurement permitted. (serial=GA4700120, count=1, max=1000)
+2025-09-01 14:53:24,842 INFO [APServer] Sent response: Measurement permitted.
+2025-09-01 14:53:24,843 INFO [APServer] Client connection closed.
+2025-09-01 14:55:21,830 INFO [APServer] Connection from ('127.0.0.1', 60996)
+2025-09-01 14:55:21,833 INFO [APServer] Client connection closed.
+2025-09-01 14:55:23,454 INFO [APServer] Connection from ('127.0.0.1', 60997)
+2025-09-01 14:55:23,455 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-09-01 14:55:23,455 INFO [Utilities] Generated timestamp extension: 2025_09_01_14_55_23
+2025-09-01 14:55:23,456 INFO [APServer] Sent response: 2025_09_01_14_55_23
+2025-09-01 14:55:23,456 INFO [APServer] Client connection closed.
+2025-09-01 14:55:23,619 INFO [APServer] Connection from ('127.0.0.1', 60998)
+2025-09-01 14:55:23,620 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-09-01 14:55:23,620 INFO [Utilities] Generated timestamp subpath: 2025\09_01
+2025-09-01 14:55:23,620 INFO [APServer] Sent response: 2025\09_01
+2025-09-01 14:55:23,621 INFO [APServer] Client connection closed.
+2025-09-01 14:55:23,762 INFO [APServer] Connection from ('127.0.0.1', 60999)
+2025-09-01 14:55:23,764 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["GA4700120", "2025_09_01_14_55_23"]}
+2025-09-01 14:55:23,764 INFO [APServer] Generating file prefix from: ['GA4700120', '2025_09_01_14_55_23']
+2025-09-01 14:55:23,764 INFO [Utilities] Generated file prefix: GA4700120_2025_09_01_14_55_23
+2025-09-01 14:55:23,765 INFO [APServer] Sent response: GA4700120_2025_09_01_14_55_23
+2025-09-01 14:55:23,765 INFO [APServer] Client connection closed.
+2025-09-01 14:55:23,897 INFO [APServer] Connection from ('127.0.0.1', 61000)
+2025-09-01 14:55:23,899 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-09-01 14:55:23,899 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-09-01 14:55:23,899 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-09-01 14:55:23,900 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-09-01 14:55:23,900 INFO [APServer] Client connection closed.
+2025-09-01 14:55:24,025 INFO [APServer] Connection from ('127.0.0.1', 61001)
+2025-09-01 14:55:24,027 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-09-01 14:55:24,027 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-09-01 14:55:24,027 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-09-01 14:55:24,028 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-09-01 14:55:24,028 INFO [APServer] Client connection closed.
+2025-09-01 14:55:24,162 INFO [APServer] Connection from ('127.0.0.1', 61002)
+2025-09-01 14:55:24,164 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\09_01"]}
+2025-09-01 14:55:24,165 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\09_01']
+2025-09-01 14:55:24,166 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01
+2025-09-01 14:55:24,166 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01
+2025-09-01 14:55:24,167 INFO [APServer] Client connection closed.
+2025-09-01 14:55:24,303 INFO [APServer] Connection from ('127.0.0.1', 61003)
+2025-09-01 14:55:24,304 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\09_01", "2025_09_01_14_55_23"]}
+2025-09-01 14:55:24,304 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\09_01', '2025_09_01_14_55_23']
+2025-09-01 14:55:24,304 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\09_01\2025_09_01_14_55_23
+2025-09-01 14:55:24,304 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\09_01\2025_09_01_14_55_23
+2025-09-01 14:55:24,305 INFO [APServer] Client connection closed.
+2025-09-01 14:55:24,445 INFO [APServer] Connection from ('127.0.0.1', 61004)
+2025-09-01 14:55:24,447 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-09-01 14:55:24,448 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-09-01 14:55:24,449 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-09-01 14:55:24,450 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-09-01 14:55:24,450 INFO [APServer] Client connection closed.
+2025-09-01 14:55:24,593 INFO [APServer] Connection from ('127.0.0.1', 61005)
+2025-09-01 14:55:24,594 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "GA4700120", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\09_01\\SequenceStatistics.csv", "max_trials": 1000, "wait_for_response": true}
+2025-09-01 14:55:24,595 INFO [APServer] Checking measurement trials for serial: GA4700120, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01\SequenceStatistics.csv, max: 1000
+2025-09-01 14:55:24,608 INFO [APServer] Serial GA4700120 found 2 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01\SequenceStatistics.csv
+2025-09-01 14:55:24,608 INFO [APServer] Measurement permitted. (serial=GA4700120, count=2, max=1000)
+2025-09-01 14:55:24,609 INFO [APServer] Sent response: Measurement permitted.
+2025-09-01 14:55:24,609 INFO [APServer] Client connection closed.
+2025-09-01 14:55:27,689 INFO [APServer] Connection from ('127.0.0.1', 61008)
+2025-09-01 14:55:27,690 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-01 14:55:27,690 ERROR [APServer] SwitchBox not connected.
+2025-09-01 14:55:27,690 INFO [APServer] Sent response: Error: SwitchBox not connected.
+2025-09-01 14:55:27,691 INFO [APServer] Client connection closed.

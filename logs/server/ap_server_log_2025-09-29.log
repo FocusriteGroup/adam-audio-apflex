@@ -1,0 +1,300 @@
+2025-09-29 08:46:46,482 INFO [root] ----------------------------------- APServer started
+2025-09-29 08:46:46,486 INFO [APServer] === SERVER CONNECTION INFO ===
+2025-09-29 08:46:46,486 INFO [APServer] Hostname: Dell-Thilo
+2025-09-29 08:46:46,486 INFO [APServer] Server Port: 65432
+2025-09-29 08:46:46,486 INFO [APServer] Discovery Port: 65433
+2025-09-29 08:46:46,486 INFO [APServer] Discovery Interval: 2 seconds
+2025-09-29 08:46:46,486 INFO [APServer] Primary IP: 192.168.1.166
+2025-09-29 08:46:46,486 INFO [APServer] Host binding: 0.0.0.0 (0.0.0.0 = all interfaces)
+2025-09-29 08:46:46,487 INFO [APServer] Discovery service: ENABLED
+2025-09-29 08:46:46,487 INFO [APServer] Client usage examples:
+2025-09-29 08:46:46,487 INFO [APServer]   Auto-discovery: python server_discovery.py
+2025-09-29 08:46:46,487 INFO [APServer]   Manual connection: python ap_client.py get_serial_number --host 192.168.1.166
+2025-09-29 08:46:46,487 INFO [APServer] ==============================
+2025-09-29 08:46:46,488 INFO [APServer] Discovery service started on port 65433 (interval: 2s)
+2025-09-29 08:46:46,489 INFO [APServer] Server started
+2025-09-29 08:46:46,489 INFO [APServer] Starting discovery broadcast loop...
+2025-09-29 08:46:46,489 INFO [APServer] Server is running...
+2025-09-29 08:46:46,490 INFO [APServer] Waiting for connections...
+2025-09-29 08:46:46,499 INFO [APServer] Connection from ('192.168.1.166', 62922)
+2025-09-29 08:46:46,522 INFO [APServer] Client connection closed.
+2025-09-29 08:47:07,773 INFO [APServer] Connection from ('192.168.1.166', 62718)
+2025-09-29 08:47:07,773 INFO [APServer] Client connection closed.
+2025-09-29 08:47:15,647 INFO [APServer] Connection from ('192.168.1.166', 62722)
+2025-09-29 08:47:15,648 INFO [APServer] Client connection closed.
+2025-09-29 08:47:59,886 INFO [APServer] Connection from ('192.168.1.166', 62726)
+2025-09-29 08:47:59,887 INFO [APServer] Client connection closed.
+2025-09-29 08:48:15,966 INFO [APServer] Connection from ('192.168.1.166', 62728)
+2025-09-29 08:48:15,967 INFO [APServer] Client connection closed.
+2025-09-29 08:48:16,461 INFO [root] ----------------------------------- APServer started
+2025-09-29 08:58:33,989 INFO [root] ----------------------------------- APServer started
+2025-09-29 08:58:33,993 INFO [APServer] === SERVER CONNECTION INFO ===
+2025-09-29 08:58:33,993 INFO [APServer] Hostname: Dell-Thilo
+2025-09-29 08:58:33,993 INFO [APServer] Server Port: 65432
+2025-09-29 08:58:33,993 INFO [APServer] Discovery Port: 65433
+2025-09-29 08:58:33,993 INFO [APServer] Discovery Interval: 2 seconds
+2025-09-29 08:58:33,993 INFO [APServer] Primary IP: 192.168.1.166
+2025-09-29 08:58:33,994 INFO [APServer] Host binding: 0.0.0.0 (0.0.0.0 = all interfaces)
+2025-09-29 08:58:33,994 INFO [APServer] Discovery service: ENABLED
+2025-09-29 08:58:33,994 INFO [APServer] Client usage examples:
+2025-09-29 08:58:33,994 INFO [APServer]   Auto-discovery: python server_discovery.py
+2025-09-29 08:58:33,994 INFO [APServer]   Manual connection: python ap_client.py get_serial_number --host 192.168.1.166
+2025-09-29 08:58:33,994 INFO [APServer] ==============================
+2025-09-29 08:58:33,995 INFO [APServer] Discovery service started on port 65433 (interval: 2s)
+2025-09-29 08:58:33,995 INFO [APServer] Starting discovery broadcast loop...
+2025-09-29 08:58:33,995 INFO [APServer] Server started
+2025-09-29 08:58:33,997 INFO [APServer] Server is running...
+2025-09-29 08:58:33,997 INFO [APServer] Waiting for connections...
+2025-09-29 08:58:34,002 INFO [APServer] Connection from ('192.168.1.166', 57619)
+2025-09-29 08:58:34,004 INFO [APServer] Client connection closed.
+2025-09-29 08:59:04,800 INFO [root] ----------------------------------- APServer started
+2025-09-29 08:59:04,806 INFO [APServer] === SERVER CONNECTION INFO ===
+2025-09-29 08:59:04,806 INFO [APServer] Hostname: Dell-Thilo
+2025-09-29 08:59:04,806 INFO [APServer] Server Port: 65432
+2025-09-29 08:59:04,806 INFO [APServer] Discovery Port: 65433
+2025-09-29 08:59:04,807 INFO [APServer] Discovery Interval: 2 seconds
+2025-09-29 08:59:04,807 INFO [APServer] Primary IP: 192.168.1.166
+2025-09-29 08:59:04,807 INFO [APServer] Host binding: 0.0.0.0 (0.0.0.0 = all interfaces)
+2025-09-29 08:59:04,807 INFO [APServer] Discovery service: ENABLED
+2025-09-29 08:59:04,807 INFO [APServer] Client usage examples:
+2025-09-29 08:59:04,807 INFO [APServer]   Auto-discovery: python server_discovery.py
+2025-09-29 08:59:04,807 INFO [APServer]   Manual connection: python ap_client.py get_serial_number --host 192.168.1.166
+2025-09-29 08:59:04,807 INFO [APServer] ==============================
+2025-09-29 08:59:04,807 INFO [APServer] Discovery service started on port 65433 (interval: 2s)
+2025-09-29 08:59:04,807 INFO [APServer] Starting discovery broadcast loop...
+2025-09-29 08:59:04,808 INFO [APServer] Server started
+2025-09-29 08:59:04,808 INFO [APServer] Server is running...
+2025-09-29 08:59:04,809 INFO [APServer] Waiting for connections...
+2025-09-29 08:59:04,815 INFO [APServer] Connection from ('192.168.1.166', 57629)
+2025-09-29 08:59:04,816 INFO [APServer] Client connection closed.
+2025-09-29 08:59:21,948 INFO [APServer] Connection from ('192.168.1.166', 57636)
+2025-09-29 08:59:21,949 INFO [APServer] Client connection closed.
+2025-09-29 08:59:22,531 INFO [root] ----------------------------------- APServer started
+2025-09-29 08:59:29,974 INFO [APServer] Connection from ('192.168.1.166', 57638)
+2025-09-29 08:59:29,998 INFO [APServer] Client connection closed.
+2025-09-29 10:08:28,891 INFO [APServer] Connection from ('192.168.1.166', 58926)
+2025-09-29 10:08:28,894 INFO [APServer] Client connection closed.
+2025-09-29 10:08:34,926 INFO [APServer] Connection from ('192.168.1.166', 58929)
+2025-09-29 10:08:34,929 INFO [APServer] Client connection closed.
+2025-09-29 10:09:11,483 INFO [root] ----------------------------------- APServer started
+2025-09-29 10:09:11,488 INFO [APServer] === SERVER CONNECTION INFO ===
+2025-09-29 10:09:11,489 INFO [APServer] Hostname: Dell-Thilo
+2025-09-29 10:09:11,489 INFO [APServer] Server Port: 65432
+2025-09-29 10:09:11,489 INFO [APServer] Discovery Port: 65433
+2025-09-29 10:09:11,489 INFO [APServer] Discovery Interval: 2 seconds
+2025-09-29 10:09:11,489 INFO [APServer] Primary IP: 192.168.1.166
+2025-09-29 10:09:11,489 INFO [APServer] Host binding: 0.0.0.0 (0.0.0.0 = all interfaces)
+2025-09-29 10:09:11,489 INFO [APServer] Discovery service: ENABLED
+2025-09-29 10:09:11,490 INFO [APServer] Client usage examples:
+2025-09-29 10:09:11,490 INFO [APServer]   Auto-discovery: python server_discovery.py
+2025-09-29 10:09:11,490 INFO [APServer]   Manual connection: python ap_client.py get_serial_number --host 192.168.1.166
+2025-09-29 10:09:11,490 INFO [APServer] ==============================
+2025-09-29 10:09:11,490 INFO [APServer] Discovery service started on port 65433 (interval: 2s)
+2025-09-29 10:09:11,490 INFO [APServer] Starting discovery broadcast loop...
+2025-09-29 10:09:11,491 INFO [APServer] Server started
+2025-09-29 10:09:11,491 INFO [APServer] Server is running...
+2025-09-29 10:09:11,492 INFO [APServer] Waiting for connections...
+2025-09-29 10:09:12,511 INFO [APServer] Connection from ('192.168.1.166', 58945)
+2025-09-29 10:09:12,535 INFO [APServer] Client connection closed.
+2025-09-29 10:09:23,709 INFO [root] ----------------------------------- APServer started
+2025-09-29 10:09:23,713 INFO [APServer] === SERVER CONNECTION INFO ===
+2025-09-29 10:09:23,713 INFO [APServer] Hostname: Dell-Thilo
+2025-09-29 10:09:23,714 INFO [APServer] Server Port: 65432
+2025-09-29 10:09:23,714 INFO [APServer] Discovery Port: 65433
+2025-09-29 10:09:23,715 INFO [APServer] Discovery Interval: 2 seconds
+2025-09-29 10:09:23,715 INFO [APServer] Primary IP: 192.168.1.166
+2025-09-29 10:09:23,715 INFO [APServer] Host binding: 0.0.0.0 (0.0.0.0 = all interfaces)
+2025-09-29 10:09:23,715 INFO [APServer] Discovery service: ENABLED
+2025-09-29 10:09:23,716 INFO [APServer] Client usage examples:
+2025-09-29 10:09:23,716 INFO [APServer]   Auto-discovery: python server_discovery.py
+2025-09-29 10:09:23,716 INFO [APServer]   Manual connection: python ap_client.py get_serial_number --host 192.168.1.166
+2025-09-29 10:09:23,716 INFO [APServer] ==============================
+2025-09-29 10:09:23,718 INFO [APServer] Discovery service started on port 65433 (interval: 2s)
+2025-09-29 10:09:23,718 INFO [APServer] Server started
+2025-09-29 10:09:23,718 INFO [APServer] Server is running...
+2025-09-29 10:09:23,718 INFO [APServer] Starting discovery broadcast loop...
+2025-09-29 10:09:23,718 INFO [APServer] Waiting for connections...
+2025-09-29 10:09:23,725 INFO [APServer] Connection from ('192.168.1.166', 58952)
+2025-09-29 10:09:23,726 INFO [APServer] Client connection closed.
+2025-09-29 10:18:52,139 INFO [root] ----------------------------------- APServer started
+2025-09-29 10:18:52,142 INFO [APServer] === SERVER CONNECTION INFO ===
+2025-09-29 10:18:52,142 INFO [APServer] Hostname: Dell-Thilo
+2025-09-29 10:18:52,143 INFO [APServer] Server Port: 65432
+2025-09-29 10:18:52,143 INFO [APServer] Discovery Port: 65433
+2025-09-29 10:18:52,143 INFO [APServer] Discovery Interval: 2 seconds
+2025-09-29 10:18:52,144 INFO [APServer] Primary IP: 192.168.1.166
+2025-09-29 10:18:52,144 INFO [APServer] Host binding: 0.0.0.0 (0.0.0.0 = all interfaces)
+2025-09-29 10:18:52,144 INFO [APServer] Discovery service: ENABLED
+2025-09-29 10:18:52,144 INFO [APServer] Client usage examples:
+2025-09-29 10:18:52,145 INFO [APServer]   Auto-discovery: python server_discovery.py
+2025-09-29 10:18:52,145 INFO [APServer]   Manual connection: python ap_client.py get_serial_number --host 192.168.1.166
+2025-09-29 10:18:52,145 INFO [APServer] ==============================
+2025-09-29 10:18:52,146 INFO [APServer] Starting discovery broadcast loop...
+2025-09-29 10:18:52,146 INFO [APServer] Discovery service started on port 65433 (interval: 2s)
+2025-09-29 10:18:52,147 INFO [APServer] Server started
+2025-09-29 10:18:52,147 INFO [APServer] Server is running...
+2025-09-29 10:18:52,147 INFO [APServer] Waiting for connections...
+2025-09-29 10:18:52,148 INFO [APServer] Connection from ('192.168.1.166', 65194)
+2025-09-29 10:18:52,149 INFO [APServer] Client connection closed.
+2025-09-29 10:18:56,390 INFO [APServer] Connection from ('192.168.1.166', 65197)
+2025-09-29 10:18:56,391 INFO [APServer] Client connection closed.
+2025-09-29 10:18:56,391 INFO [APServer] Connection from ('192.168.1.166', 65198)
+2025-09-29 10:18:56,414 INFO [APServer] Client connection closed.
+2025-09-29 10:30:33,133 INFO [APServer] Connection from ('192.168.1.166', 65348)
+2025-09-29 10:30:33,135 INFO [APServer] Connection from ('192.168.1.166', 65349)
+2025-09-29 10:30:33,135 INFO [APServer] Client connection closed.
+2025-09-29 10:30:33,136 INFO [APServer] Client connection closed.
+2025-09-29 10:33:11,517 INFO [APServer] Connection from ('192.168.1.166', 60258)
+2025-09-29 10:33:11,518 INFO [APServer] Client connection closed.
+2025-09-29 10:33:11,518 INFO [APServer] Connection from ('192.168.1.166', 60259)
+2025-09-29 10:33:11,531 INFO [APServer] Client connection closed.
+2025-09-29 10:33:43,772 INFO [root] ----------------------------------- APServer started
+2025-09-29 10:33:43,775 INFO [APServer] === SERVER CONNECTION INFO ===
+2025-09-29 10:33:43,776 INFO [APServer] Hostname: Dell-Thilo
+2025-09-29 10:33:43,776 INFO [APServer] Server Port: 65432
+2025-09-29 10:33:43,777 INFO [APServer] Discovery Port: 65433
+2025-09-29 10:33:43,777 INFO [APServer] Discovery Interval: 2 seconds
+2025-09-29 10:33:43,777 INFO [APServer] Primary IP: 192.168.1.166
+2025-09-29 10:33:43,778 INFO [APServer] Host binding: 0.0.0.0 (0.0.0.0 = all interfaces)
+2025-09-29 10:33:43,778 INFO [APServer] Discovery service: ENABLED
+2025-09-29 10:33:43,778 INFO [APServer] Client usage examples:
+2025-09-29 10:33:43,778 INFO [APServer]   Auto-discovery: python server_discovery.py
+2025-09-29 10:33:43,778 INFO [APServer]   Manual connection: python ap_client.py get_serial_number --host 192.168.1.166
+2025-09-29 10:33:43,778 INFO [APServer] ==============================
+2025-09-29 10:33:43,779 INFO [APServer] Discovery service started on port 65433 (interval: 2s)
+2025-09-29 10:33:43,779 INFO [APServer] Server started
+2025-09-29 10:33:43,779 INFO [APServer] Server is running...
+2025-09-29 10:33:43,779 INFO [APServer] Starting discovery broadcast loop...
+2025-09-29 10:33:43,779 INFO [APServer] Waiting for connections...
+2025-09-29 10:33:43,781 INFO [APServer] Connection from ('192.168.1.166', 60272)
+2025-09-29 10:33:43,800 INFO [APServer] Client connection closed.
+2025-09-29 10:40:36,837 INFO [APServer] Connection from ('192.168.1.166', 60454)
+2025-09-29 10:40:36,860 INFO [APServer] Client connection closed.
+2025-09-29 10:40:36,861 INFO [APServer] Connection from ('192.168.1.166', 60455)
+2025-09-29 10:40:36,876 INFO [APServer] Client connection closed.
+2025-09-29 10:40:39,882 INFO [APServer] Connection from ('192.168.1.166', 60459)
+2025-09-29 10:40:39,883 INFO [APServer] Connection from ('192.168.1.166', 60460)
+2025-09-29 10:40:39,883 INFO [APServer] Client connection closed.
+2025-09-29 10:40:39,894 INFO [APServer] Client connection closed.
+2025-09-29 10:41:07,508 INFO [APServer] Connection from ('192.168.1.166', 52427)
+2025-09-29 10:41:07,509 INFO [APServer] Client connection closed.
+2025-09-29 10:41:07,509 INFO [APServer] Connection from ('192.168.1.166', 52428)
+2025-09-29 10:41:07,529 INFO [APServer] Client connection closed.
+2025-09-29 10:45:10,135 INFO [root] ----------------------------------- APServer started
+2025-09-29 10:45:10,139 INFO [APServer] === SERVER CONNECTION INFO ===
+2025-09-29 10:45:10,139 INFO [APServer] Hostname: Dell-Thilo
+2025-09-29 10:45:10,139 INFO [APServer] Server Port: 65432
+2025-09-29 10:45:10,140 INFO [APServer] Discovery Port: 65433
+2025-09-29 10:45:10,140 INFO [APServer] Discovery Interval: 2 seconds
+2025-09-29 10:45:10,140 INFO [APServer] Primary IP: 192.168.1.166
+2025-09-29 10:45:10,140 INFO [APServer] Host binding: 0.0.0.0 (0.0.0.0 = all interfaces)
+2025-09-29 10:45:10,141 INFO [APServer] Discovery service: ENABLED
+2025-09-29 10:45:10,141 INFO [APServer] Client usage examples:
+2025-09-29 10:45:10,141 INFO [APServer]   Auto-discovery: python server_discovery.py
+2025-09-29 10:45:10,141 INFO [APServer]   Manual connection: python ap_client.py get_serial_number --host 192.168.1.166
+2025-09-29 10:45:10,142 INFO [APServer] ==============================
+2025-09-29 10:45:10,142 INFO [APServer] Starting discovery broadcast loop...
+2025-09-29 10:45:10,142 INFO [APServer] Discovery service started on port 65433 (interval: 2s)
+2025-09-29 10:45:10,143 INFO [APServer] Server started
+2025-09-29 10:45:10,143 INFO [APServer] Server is running...
+2025-09-29 10:45:10,143 INFO [APServer] Waiting for connections...
+2025-09-29 10:45:37,127 INFO [APServer] Connection from ('192.168.1.166', 52505)
+2025-09-29 10:45:37,128 INFO [APServer] Connection from ('192.168.1.166', 52506)
+2025-09-29 10:45:37,129 INFO [APServer] Client connection closed.
+2025-09-29 10:45:37,130 INFO [APServer] Client connection closed.
+2025-09-29 10:48:44,450 INFO [APServer] Connection from ('192.168.1.112', 61935)
+2025-09-29 10:48:44,453 INFO [APServer] Client connection closed.
+2025-09-29 10:53:20,898 INFO [root] ----------------------------------- APServer started
+2025-09-29 10:53:20,903 INFO [APServer] === SERVER CONNECTION INFO ===
+2025-09-29 10:53:20,904 INFO [APServer] Hostname: Dell-Thilo
+2025-09-29 10:53:20,904 INFO [APServer] Server Port: 65432
+2025-09-29 10:53:20,904 INFO [APServer] Discovery Port: 65433
+2025-09-29 10:53:20,904 INFO [APServer] Discovery Interval: 2 seconds
+2025-09-29 10:53:20,905 INFO [APServer] Primary IP: 192.168.1.166
+2025-09-29 10:53:20,905 INFO [APServer] Host binding: 0.0.0.0 (0.0.0.0 = all interfaces)
+2025-09-29 10:53:20,905 INFO [APServer] Discovery service: ENABLED
+2025-09-29 10:53:20,905 INFO [APServer] Client usage examples:
+2025-09-29 10:53:20,905 INFO [APServer]   Auto-discovery: python server_discovery.py
+2025-09-29 10:53:20,905 INFO [APServer]   Manual connection: python ap_client.py get_serial_number --host 192.168.1.166
+2025-09-29 10:53:20,906 INFO [APServer] ==============================
+2025-09-29 10:53:20,906 INFO [APServer] Discovery service started on port 65433 (interval: 2s)
+2025-09-29 10:53:20,906 INFO [APServer] Server started
+2025-09-29 10:53:20,906 INFO [APServer] Server is running...
+2025-09-29 10:53:20,906 INFO [APServer] Waiting for connections...
+2025-09-29 10:53:20,907 INFO [APServer] Starting discovery broadcast loop...
+2025-09-29 10:53:20,990 INFO [APServer] Connection from ('192.168.1.166', 53959)
+2025-09-29 10:53:21,006 INFO [APServer] Client connection closed.
+2025-09-29 10:53:21,007 INFO [APServer] Connection from ('192.168.1.166', 53960)
+2025-09-29 10:53:21,022 INFO [APServer] Client connection closed.
+2025-09-29 10:53:56,185 INFO [APServer] Connection from ('192.168.1.166', 53968)
+2025-09-29 10:53:56,185 INFO [APServer] Client connection closed.
+2025-09-29 10:54:14,593 INFO [root] ----------------------------------- APServer started
+2025-09-29 10:54:14,596 INFO [APServer] === SERVER CONNECTION INFO ===
+2025-09-29 10:54:14,597 INFO [APServer] Hostname: Dell-Thilo
+2025-09-29 10:54:14,597 INFO [APServer] Server Port: 65432
+2025-09-29 10:54:14,598 INFO [APServer] Discovery Port: 65433
+2025-09-29 10:54:14,598 INFO [APServer] Discovery Interval: 2 seconds
+2025-09-29 10:54:14,598 INFO [APServer] Primary IP: 192.168.1.166
+2025-09-29 10:54:14,599 INFO [APServer] Host binding: 0.0.0.0 (0.0.0.0 = all interfaces)
+2025-09-29 10:54:14,599 INFO [APServer] Discovery service: ENABLED
+2025-09-29 10:54:14,599 INFO [APServer] Client usage examples:
+2025-09-29 10:54:14,599 INFO [APServer]   Auto-discovery: python server_discovery.py
+2025-09-29 10:54:14,600 INFO [APServer]   Manual connection: python ap_client.py get_serial_number --host 192.168.1.166
+2025-09-29 10:54:14,600 INFO [APServer] ==============================
+2025-09-29 10:54:14,601 INFO [APServer] Starting discovery broadcast loop...
+2025-09-29 10:54:14,601 INFO [APServer] Discovery service started on port 65433 (interval: 2s)
+2025-09-29 10:54:14,601 INFO [APServer] Server started
+2025-09-29 10:54:14,602 INFO [APServer] Server is running...
+2025-09-29 10:54:14,602 INFO [APServer] Waiting for connections...
+2025-09-29 10:54:15,605 INFO [APServer] Connection from ('192.168.1.166', 53989)
+2025-09-29 10:54:15,609 INFO [APServer] Client connection closed.
+2025-09-29 10:55:36,103 INFO [APServer] Connection from ('192.168.1.112', 62066)
+2025-09-29 10:55:36,104 INFO [APServer] Client connection closed.
+2025-09-29 10:56:38,596 INFO [APServer] Connection from ('192.168.1.112', 62086)
+2025-09-29 10:56:38,598 INFO [APServer] Client connection closed.
+2025-09-29 11:16:06,800 INFO [root] ----------------------------------- APServer started
+2025-09-29 11:16:06,803 INFO [APServer] === SERVER CONNECTION INFO ===
+2025-09-29 11:16:06,804 INFO [APServer] Hostname: Dell-Thilo
+2025-09-29 11:16:06,804 INFO [APServer] Server Port: 65432
+2025-09-29 11:16:06,805 INFO [APServer] Discovery Port: 65433
+2025-09-29 11:16:06,805 INFO [APServer] Discovery Interval: 2 seconds
+2025-09-29 11:16:06,805 INFO [APServer] Primary IP: 192.168.1.166
+2025-09-29 11:16:06,805 INFO [APServer] Host binding: 0.0.0.0 (0.0.0.0 = all interfaces)
+2025-09-29 11:16:06,806 INFO [APServer] Discovery service: ENABLED
+2025-09-29 11:16:06,806 INFO [APServer] Client usage examples:
+2025-09-29 11:16:06,806 INFO [APServer]   Auto-discovery: python server_discovery.py
+2025-09-29 11:16:06,807 INFO [APServer]   Manual connection: python ap_client.py get_serial_number --host 192.168.1.166
+2025-09-29 11:16:06,807 INFO [APServer] ==============================
+2025-09-29 11:16:06,807 INFO [APServer] Discovery service started on port 65433 (interval: 2s)
+2025-09-29 11:16:06,807 INFO [APServer] Starting discovery broadcast loop...
+2025-09-29 11:16:06,807 INFO [APServer] Server started
+2025-09-29 11:16:06,808 INFO [APServer] Server is running...
+2025-09-29 11:16:06,809 INFO [APServer] Waiting for connections...
+2025-09-29 11:16:07,077 INFO [APServer] Connection from ('192.168.1.166', 62973)
+2025-09-29 11:16:07,078 INFO [APServer] Connection from ('192.168.1.166', 62974)
+2025-09-29 11:16:07,080 INFO [APServer] Client connection closed.
+2025-09-29 11:16:07,083 INFO [APServer] Client connection closed.
+2025-09-29 11:16:10,564 INFO [APServer] Connection from ('192.168.1.166', 62976)
+2025-09-29 11:16:10,565 INFO [APServer] Client connection closed.
+2025-09-29 11:16:10,565 INFO [APServer] Connection from ('192.168.1.166', 62977)
+2025-09-29 11:16:10,580 INFO [APServer] Client connection closed.
+2025-09-29 11:16:27,150 INFO [APServer] Connection from ('192.168.1.166', 62983)
+2025-09-29 11:16:27,151 INFO [APServer] Client connection closed.
+2025-09-29 11:16:31,261 INFO [APServer] Connection from ('192.168.1.166', 62985)
+2025-09-29 11:16:31,262 INFO [APServer] Client connection closed.
+2025-09-29 11:16:34,524 INFO [APServer] Connection from ('192.168.1.166', 62987)
+2025-09-29 11:16:34,525 INFO [APServer] Client connection closed.
+2025-09-29 11:16:42,791 INFO [APServer] Connection from ('192.168.1.166', 62387)
+2025-09-29 11:16:42,792 INFO [APServer] Client connection closed.
+2025-09-29 11:28:32,739 INFO [APServer] Connection from ('192.168.1.166', 51272)
+2025-09-29 11:28:32,757 INFO [APServer] Client connection closed.
+2025-09-29 11:28:45,446 INFO [APServer] Connection from ('192.168.1.166', 51279)
+2025-09-29 11:28:45,470 INFO [APServer] Client connection closed.
+2025-09-29 11:28:50,112 INFO [APServer] Connection from ('192.168.1.166', 51281)
+2025-09-29 11:28:50,113 INFO [APServer] Client connection closed.
+2025-09-29 11:29:02,208 INFO [APServer] Connection from ('192.168.1.166', 51288)
+2025-09-29 11:29:02,209 INFO [APServer] Client connection closed.
+2025-09-29 11:29:19,648 INFO [APServer] Connection from ('192.168.1.166', 51291)
+2025-09-29 11:29:19,650 INFO [APServer] Client connection closed.
+2025-09-29 11:32:20,627 INFO [APServer] Connection from ('192.168.1.166', 51333)
+2025-09-29 11:32:20,628 INFO [APServer] Client connection closed.

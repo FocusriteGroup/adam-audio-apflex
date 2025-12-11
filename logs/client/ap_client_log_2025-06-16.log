@@ -1,0 +1,387 @@
+2025-06-16 11:18:26,712 - INFO - ----------------------------------- APClient started
+2025-06-16 11:18:26,731 - INFO - Parsing and executing command: set_device_biquad
+2025-06-16 11:18:26,731 - INFO - Executing 'set_device_biquad' with: index=0, type=bell, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000, target_ip=192.168.10.20, port=50001
+2025-06-16 11:18:26,731 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 11:18:26,732 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'filter_type': 'bell', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 11:18:27,099 - INFO - Received response from server: Done
+2025-06-16 11:24:04,272 - INFO - ----------------------------------- APClient started
+2025-06-16 11:24:18,796 - INFO - ----------------------------------- APClient started
+2025-06-16 11:24:18,819 - INFO - Parsing and executing command: set_device_biquad
+2025-06-16 11:24:18,819 - INFO - Executing 'set_device_biquad' with: index=0, type=low_shelf, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000, target_ip=192.168.10.20, port=50001
+2025-06-16 11:24:18,819 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 11:24:18,820 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'filter_type': 'low_shelf', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 11:24:19,157 - INFO - Received response from server: Done
+2025-06-16 11:28:34,714 - INFO - ----------------------------------- APClient started
+2025-06-16 11:28:34,751 - INFO - Parsing and executing command: set_device_biquad
+2025-06-16 11:28:34,751 - INFO - Executing 'set_device_biquad' with: index=0, type=low_shelf, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000, target_ip=192.168.10.20, port=50001
+2025-06-16 11:28:34,751 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 11:28:36,797 - ERROR - Socket error: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-06-16 11:30:44,681 - INFO - ----------------------------------- APClient started
+2025-06-16 11:30:44,707 - INFO - Parsing and executing command: set_device_biquad
+2025-06-16 11:30:44,707 - INFO - Executing 'set_device_biquad' with: index=0, type=low_shelf, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000, target_ip=192.168.10.20, port=50001
+2025-06-16 11:30:44,707 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 11:30:44,708 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'filter_type': 'low_shelf', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 11:30:45,026 - INFO - Received response from server: Done
+2025-06-16 12:23:19,297 - INFO - ----------------------------------- APClient started
+2025-06-16 12:23:57,874 - INFO - ----------------------------------- APClient started
+2025-06-16 12:24:36,815 - INFO - ----------------------------------- APClient started
+2025-06-16 12:35:37,421 - INFO - ----------------------------------- APClient started
+2025-06-16 12:35:46,903 - INFO - ----------------------------------- APClient started
+2025-06-16 12:35:46,929 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-06-16 12:35:46,929 - INFO - Executing 'get_biquad_coefficients' with: type=low_shelf, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 12:35:46,929 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 12:35:46,930 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'low_shelf', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-06-16 12:35:46,934 - INFO - Received response from server: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 12:43:48,901 - INFO - ----------------------------------- APClient started
+2025-06-16 12:43:48,922 - INFO - Parsing and executing command: set_device_biquad
+2025-06-16 12:43:48,922 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 12:43:48,923 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [-1.23, 0.45, 1.0, -0.5, 0.25], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 12:43:49,273 - INFO - Received response from server: Done
+2025-06-16 12:44:45,578 - INFO - ----------------------------------- APClient started
+2025-06-16 12:44:45,602 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-06-16 12:44:45,602 - INFO - Executing 'get_biquad_coefficients' with: type=low_shelf, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 12:44:45,602 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 12:44:45,603 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'low_shelf', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-06-16 12:44:45,606 - INFO - Received response from server: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 12:48:40,943 - INFO - ----------------------------------- APClient started
+2025-06-16 12:48:40,966 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-06-16 12:48:40,967 - INFO - Executing 'get_biquad_coefficients' with: type=low_shelf, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 12:48:40,967 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 12:48:40,969 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'low_shelf', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-06-16 12:48:40,973 - INFO - Received response from server: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 12:48:49,892 - INFO - ----------------------------------- APClient started
+2025-06-16 12:50:51,585 - INFO - ----------------------------------- APClient started
+2025-06-16 12:59:13,273 - INFO - ----------------------------------- APClient started
+2025-06-16 12:59:13,302 - INFO - Parsing and executing command: set_device_biquad
+2025-06-16 12:59:13,302 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 12:59:13,304 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 12:59:13,615 - INFO - Received response from server: Done
+2025-06-16 13:02:04,941 - INFO - ----------------------------------- APClient started
+2025-06-16 13:02:04,963 - INFO - Parsing and executing command: set_device_biquad
+2025-06-16 13:02:04,963 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:02:04,964 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:02:12,110 - INFO - Received response from server: Done
+2025-06-16 13:02:23,924 - INFO - ----------------------------------- APClient started
+2025-06-16 13:02:30,926 - INFO - ----------------------------------- APClient started
+2025-06-16 13:02:30,953 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-06-16 13:02:30,954 - INFO - Executing 'get_biquad_coefficients' with: type=low_shelf, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 13:02:30,954 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:02:30,957 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'low_shelf', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-06-16 13:02:30,960 - INFO - Received response from server: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 13:02:51,215 - INFO - ----------------------------------- APClient started
+2025-06-16 13:02:51,238 - INFO - Parsing and executing command: set_channel
+2025-06-16 13:02:51,238 - INFO - Executing 'set_channel' command with channel: 1
+2025-06-16 13:02:51,238 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:02:51,239 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-06-16 13:02:51,240 - INFO - Received response from server: Error: SwitchBox not connected.
+2025-06-16 13:03:11,114 - INFO - ----------------------------------- APClient started
+2025-06-16 13:03:11,136 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-06-16 13:03:11,136 - INFO - Executing 'get_timestamp_subpath' command.
+2025-06-16 13:03:11,136 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:03:11,137 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-06-16 13:03:11,138 - INFO - Received response from server: 2025\06_16
+2025-06-16 13:03:22,488 - INFO - ----------------------------------- APClient started
+2025-06-16 13:03:22,511 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-06-16 13:03:22,511 - INFO - Executing 'get_biquad_coefficients' with: type=low_shelf, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 13:03:22,512 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:03:22,513 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'low_shelf', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-06-16 13:03:22,514 - INFO - Received response from server: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 13:03:35,395 - INFO - ----------------------------------- APClient started
+2025-06-16 13:03:35,413 - INFO - Parsing and executing command: set_device_biquad
+2025-06-16 13:03:35,414 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:03:35,416 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:03:35,741 - INFO - Received response from server: Done
+2025-06-16 13:03:49,591 - INFO - ----------------------------------- APClient started
+2025-06-16 13:03:49,609 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-06-16 13:03:49,610 - INFO - Executing 'get_biquad_coefficients' with: type=high_shelf, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 13:03:49,610 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:03:49,611 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'high_shelf', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-06-16 13:03:49,613 - INFO - Received response from server: [-1.7808674067995507, 0.8026126241831999, 1.9323405094996573, -3.5641187224398734, 1.6535234303238655]
+2025-06-16 13:04:18,897 - INFO - ----------------------------------- APClient started
+2025-06-16 13:04:18,914 - INFO - Parsing and executing command: set_device_biquad
+2025-06-16 13:04:18,914 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:04:18,915 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [-1.7808674067995507, 0.8026126241831999, 1.9323405094996573, -3.5641187224398734, 1.6535234303238655], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:04:26,072 - INFO - Received response from server: Done
+2025-06-16 13:12:13,289 - INFO - ----------------------------------- APClient started
+2025-06-16 13:12:13,308 - INFO - Parsing and executing command: get_serial_number
+2025-06-16 13:12:13,309 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-06-16 13:12:13,309 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:12:13,309 - INFO - Connected to server. Sending command: {'action': 'get_serial_number', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:12:13,311 - INFO - Received response from server: Error: Unknown action.
+2025-06-16 13:12:33,903 - INFO - ----------------------------------- APClient started
+2025-06-16 13:12:33,920 - INFO - Parsing and executing command: get_serial_number
+2025-06-16 13:12:33,921 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-06-16 13:12:33,921 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:12:33,922 - INFO - Connected to server. Sending command: {'action': 'get_serial_number', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:12:33,923 - INFO - Received response from server: Error: Unknown action.
+2025-06-16 13:13:38,315 - INFO - ----------------------------------- APClient started
+2025-06-16 13:13:38,338 - INFO - Parsing and executing command: get_serial_number
+2025-06-16 13:13:38,338 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-06-16 13:13:38,338 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:13:38,341 - INFO - Connected to server. Sending command: {'action': 'get_serial_number', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:13:38,437 - INFO - Received response from server: 123456789
+2025-06-16 13:13:52,213 - INFO - ----------------------------------- APClient started
+2025-06-16 13:13:52,233 - INFO - Parsing and executing command: set_device_biquad
+2025-06-16 13:13:52,233 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:13:52,234 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [-1.7808674067995507, 0.8026126241831999, 1.9323405094996573, -3.5641187224398734, 1.6535234303238655], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:14:07,585 - INFO - Received response from server: Done
+2025-06-16 13:16:35,438 - INFO - ----------------------------------- APClient started
+2025-06-16 13:16:35,457 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-06-16 13:16:35,458 - INFO - Executing 'get_biquad_coefficients' with: type=high_shelf, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 13:16:35,458 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:16:35,459 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'high_shelf', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-06-16 13:16:35,460 - INFO - Received response from server: [-1.7808674067995507, 0.8026126241831999, 1.9323405094996573, -3.5641187224398734, 1.6535234303238655]
+2025-06-16 13:18:50,752 - INFO - ----------------------------------- APClient started
+2025-06-16 13:18:50,784 - INFO - Parsing and executing command: get_serial_number
+2025-06-16 13:18:50,785 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-06-16 13:18:50,785 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:18:50,786 - INFO - Connected to server. Sending command: {'action': 'get_serial_number', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:18:57,898 - INFO - Received response from server: 123456789
+2025-06-16 13:21:13,128 - INFO - ----------------------------------- APClient started
+2025-06-16 13:21:13,149 - INFO - Parsing and executing command: get_serial_number
+2025-06-16 13:21:13,149 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-06-16 13:21:13,149 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:21:13,150 - INFO - Connected to server. Sending command: {'action': 'get_serial_number', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:21:13,215 - INFO - Received response from server: 123456789
+2025-06-16 13:21:21,711 - INFO - ----------------------------------- APClient started
+2025-06-16 13:21:21,731 - INFO - Parsing and executing command: get_gain
+2025-06-16 13:21:21,732 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-06-16 13:21:21,732 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:21:21,733 - INFO - Connected to server. Sending command: {'action': 'get_gain', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:21:21,734 - INFO - Received response from server: Error: Unknown action.
+2025-06-16 13:21:52,346 - INFO - ----------------------------------- APClient started
+2025-06-16 13:21:52,369 - INFO - Parsing and executing command: get_gain
+2025-06-16 13:21:52,370 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-06-16 13:21:52,370 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:21:52,372 - INFO - Connected to server. Sending command: {'action': 'get_gain', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:21:59,490 - INFO - Received response from server: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-06-16 13:29:16,375 - INFO - ----------------------------------- APClient started
+2025-06-16 13:29:16,393 - INFO - Parsing and executing command: get_device_biquad
+2025-06-16 13:29:16,394 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-06-16 13:29:16,394 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:29:16,395 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:29:16,638 - INFO - Received response from server: [Biquad: a = (-1.78, 0.80), b = (1.93, -3.56, 1.65)]
+2025-06-16 13:29:26,713 - INFO - ----------------------------------- APClient started
+2025-06-16 13:29:26,745 - INFO - Parsing and executing command: get_device_biquad
+2025-06-16 13:29:26,746 - INFO - Executing 'get_device_biquad' for index=1 192.168.10.20:50001
+2025-06-16 13:29:26,746 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:29:26,747 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 1, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:29:42,050 - INFO - Received response from server: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-06-16 13:30:01,385 - INFO - ----------------------------------- APClient started
+2025-06-16 13:30:01,411 - INFO - Parsing and executing command: set_device_biquad
+2025-06-16 13:30:01,412 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:30:01,413 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 1, 'coefficients': [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:30:16,767 - INFO - Received response from server: Done
+2025-06-16 13:30:21,083 - INFO - ----------------------------------- APClient started
+2025-06-16 13:30:21,105 - INFO - Parsing and executing command: get_device_biquad
+2025-06-16 13:30:21,105 - INFO - Executing 'get_device_biquad' for index=1 192.168.10.20:50001
+2025-06-16 13:30:21,105 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:30:21,106 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 1, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:30:21,164 - INFO - Received response from server: [Biquad: a = (-1.84, 0.86), b = (1.03, -1.84, 0.83)]
+2025-06-16 13:48:12,714 - INFO - ----------------------------------- APClient started
+2025-06-16 13:48:12,735 - INFO - Parsing and executing command: set_gain
+2025-06-16 13:48:12,735 - INFO - Executing 'set_gain' to 3.5 for 192.168.10.20:50001
+2025-06-16 13:48:12,735 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:48:12,737 - INFO - Connected to server. Sending command: {'action': 'set_gain', 'value': 3.5, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:48:12,991 - INFO - Received response from server: Error: Failed to set gain (Command failed:
+)
+2025-06-16 13:48:21,275 - INFO - ----------------------------------- APClient started
+2025-06-16 13:48:21,302 - INFO - Parsing and executing command: set_gain
+2025-06-16 13:48:21,303 - INFO - Executing 'set_gain' to 3.5 for 192.168.10.20:50001
+2025-06-16 13:48:21,303 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 13:48:21,305 - INFO - Connected to server. Sending command: {'action': 'set_gain', 'value': 3.5, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 13:48:36,590 - INFO - Received response from server: Error: Failed to set gain (Command failed:
+)
+2025-06-16 14:39:53,319 - INFO - ----------------------------------- APClient started
+2025-06-16 14:39:53,343 - INFO - Parsing and executing command: set_gain
+2025-06-16 14:39:53,343 - INFO - Executing 'set_gain' to 3.5 for 192.168.10.20:50001
+2025-06-16 14:39:53,343 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 14:39:53,344 - INFO - Connected to server. Sending command: {'action': 'set_gain', 'value': 3.5, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 14:39:53,642 - INFO - Received response from server: Error: Failed to set gain (Command failed:
+)
+2025-06-16 14:47:00,697 - INFO - ----------------------------------- APClient started
+2025-06-16 14:47:00,722 - INFO - Parsing and executing command: get_model_description
+2025-06-16 14:47:00,722 - INFO - Executing 'get_model_description' for 192.168.10.20:50001
+2025-06-16 14:47:00,722 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 14:47:00,723 - INFO - Connected to server. Sending command: {'action': 'get_model_description', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 14:47:00,996 - INFO - Received response from server: (Manufacturer: ADAM Audio, Model: A10S, Version: 0.2.0)
+2025-06-16 14:50:11,432 - INFO - ----------------------------------- APClient started
+2025-06-16 14:50:11,460 - INFO - Parsing and executing command: get_firmware_version
+2025-06-16 14:50:11,460 - INFO - Executing 'get_firmware_version' for 192.168.10.20:50001
+2025-06-16 14:50:11,461 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 14:50:11,462 - INFO - Connected to server. Sending command: {'action': 'get_firmware_version', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 14:50:11,727 - INFO - Received response from server: Error: Failed to get firmware version (Command failed:
+)
+2025-06-16 14:58:35,562 - INFO - ----------------------------------- APClient started
+2025-06-16 14:58:35,584 - INFO - Parsing and executing command: get_audio_input
+2025-06-16 14:58:35,584 - INFO - Executing 'get_audio_input' for 192.168.10.20:50001
+2025-06-16 14:58:35,584 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 14:58:35,586 - INFO - Connected to server. Sending command: {'action': 'get_audio_input', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 14:58:35,832 - INFO - Received response from server: [Input: Analogue]
+2025-06-16 14:58:44,241 - INFO - ----------------------------------- APClient started
+2025-06-16 14:58:44,273 - INFO - Parsing and executing command: get_firmware_version
+2025-06-16 14:58:44,274 - INFO - Executing 'get_firmware_version' for 192.168.10.20:50001
+2025-06-16 14:58:44,274 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 14:58:44,275 - INFO - Connected to server. Sending command: {'action': 'get_firmware_version', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 14:59:01,053 - INFO - Received response from server: Error: Failed to get firmware version (Command failed:
+)
+2025-06-16 15:01:43,270 - INFO - ----------------------------------- APClient started
+2025-06-16 15:01:43,299 - INFO - Parsing and executing command: set_audio_input
+2025-06-16 15:01:43,300 - INFO - Executing 'set_audio_input' to aes3 for 192.168.10.20:50001
+2025-06-16 15:01:43,300 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:01:43,302 - INFO - Connected to server. Sending command: {'action': 'set_audio_input', 'position': 'aes3', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:01:50,489 - INFO - Received response from server: Done
+2025-06-16 15:02:13,688 - INFO - ----------------------------------- APClient started
+2025-06-16 15:02:13,714 - INFO - Parsing and executing command: set_audio_input
+2025-06-16 15:02:13,714 - INFO - Executing 'set_audio_input' to analogue for 192.168.10.20:50001
+2025-06-16 15:02:13,714 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:02:13,715 - INFO - Connected to server. Sending command: {'action': 'set_audio_input', 'position': 'analogue', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:02:14,020 - INFO - Received response from server: Done
+2025-06-16 15:02:16,735 - INFO - ----------------------------------- APClient started
+2025-06-16 15:02:16,764 - INFO - Parsing and executing command: set_audio_input
+2025-06-16 15:02:16,764 - INFO - Executing 'set_audio_input' to aes3 for 192.168.10.20:50001
+2025-06-16 15:02:16,765 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:02:16,767 - INFO - Connected to server. Sending command: {'action': 'set_audio_input', 'position': 'aes3', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:02:16,877 - INFO - Received response from server: Done
+2025-06-16 15:02:37,271 - INFO - ----------------------------------- APClient started
+2025-06-16 15:02:37,301 - INFO - Parsing and executing command: set_audio_input
+2025-06-16 15:02:37,302 - INFO - Executing 'set_audio_input' to analogue for 192.168.10.20:50001
+2025-06-16 15:02:37,302 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:02:37,303 - INFO - Connected to server. Sending command: {'action': 'set_audio_input', 'position': 'analogue', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:02:52,659 - INFO - Received response from server: Done
+2025-06-16 15:02:57,489 - INFO - ----------------------------------- APClient started
+2025-06-16 15:02:57,513 - INFO - Parsing and executing command: set_audio_input
+2025-06-16 15:02:57,513 - INFO - Executing 'set_audio_input' to aes3 for 192.168.10.20:50001
+2025-06-16 15:02:57,513 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:02:57,515 - INFO - Connected to server. Sending command: {'action': 'set_audio_input', 'position': 'aes3', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:02:57,659 - INFO - Received response from server: Done
+2025-06-16 15:03:00,743 - INFO - ----------------------------------- APClient started
+2025-06-16 15:03:00,767 - INFO - Parsing and executing command: set_audio_input
+2025-06-16 15:03:00,767 - INFO - Executing 'set_audio_input' to analogue for 192.168.10.20:50001
+2025-06-16 15:03:00,767 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:03:00,768 - INFO - Connected to server. Sending command: {'action': 'set_audio_input', 'position': 'analogue', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:03:00,891 - INFO - Received response from server: Done
+2025-06-16 15:08:27,766 - INFO - ----------------------------------- APClient started
+2025-06-16 15:08:27,797 - INFO - Parsing and executing command: get_mute
+2025-06-16 15:08:27,797 - INFO - Executing 'get_mute' for 192.168.10.20:50001
+2025-06-16 15:08:27,797 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:08:27,798 - INFO - Connected to server. Sending command: {'action': 'get_mute', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:08:34,945 - INFO - Received response from server: Unmuted
+2025-06-16 15:08:35,134 - INFO - ----------------------------------- APClient started
+2025-06-16 15:08:35,164 - INFO - Parsing and executing command: set_mute
+2025-06-16 15:08:35,164 - INFO - Executing 'set_mute' to muted for 192.168.10.20:50001
+2025-06-16 15:08:35,164 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:08:35,165 - INFO - Connected to server. Sending command: {'action': 'set_mute', 'state': 'muted', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:08:35,243 - INFO - Received response from server: Done
+2025-06-16 15:08:49,381 - INFO - ----------------------------------- APClient started
+2025-06-16 15:08:49,404 - INFO - Parsing and executing command: get_mute
+2025-06-16 15:08:49,404 - INFO - Executing 'get_mute' for 192.168.10.20:50001
+2025-06-16 15:08:49,404 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:08:49,405 - INFO - Connected to server. Sending command: {'action': 'get_mute', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:09:04,699 - INFO - Received response from server: Muted
+2025-06-16 15:09:45,385 - INFO - ----------------------------------- APClient started
+2025-06-16 15:09:45,415 - INFO - Parsing and executing command: set_mute
+2025-06-16 15:09:45,415 - INFO - Executing 'set_mute' to muted for 192.168.10.20:50001
+2025-06-16 15:09:45,415 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:09:45,416 - INFO - Connected to server. Sending command: {'action': 'set_mute', 'state': 'muted', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:09:52,515 - INFO - Received response from server: Done
+2025-06-16 15:09:56,661 - INFO - ----------------------------------- APClient started
+2025-06-16 15:09:56,689 - INFO - Parsing and executing command: get_mute
+2025-06-16 15:09:56,689 - INFO - Executing 'get_mute' for 192.168.10.20:50001
+2025-06-16 15:09:56,689 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:09:56,690 - INFO - Connected to server. Sending command: {'action': 'get_mute', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:09:56,767 - INFO - Received response from server: Muted
+2025-06-16 15:10:19,513 - INFO - ----------------------------------- APClient started
+2025-06-16 15:10:19,544 - INFO - Parsing and executing command: set_mute
+2025-06-16 15:10:19,544 - INFO - Executing 'set_mute' to unmuted for 192.168.10.20:50001
+2025-06-16 15:10:19,544 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:10:19,547 - INFO - Connected to server. Sending command: {'action': 'set_mute', 'state': 'unmuted', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:10:34,854 - INFO - Received response from server: Done
+2025-06-16 15:10:39,060 - INFO - ----------------------------------- APClient started
+2025-06-16 15:10:39,091 - INFO - Parsing and executing command: get_mute
+2025-06-16 15:10:39,091 - INFO - Executing 'get_mute' for 192.168.10.20:50001
+2025-06-16 15:10:39,091 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:10:39,093 - INFO - Connected to server. Sending command: {'action': 'get_mute', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:10:39,170 - INFO - Received response from server: Unmuted
+2025-06-16 15:14:33,588 - INFO - ----------------------------------- APClient started
+2025-06-16 15:14:33,612 - INFO - Parsing and executing command: get_mode
+2025-06-16 15:14:33,612 - INFO - Executing 'get_mode' for 192.168.10.20:50001
+2025-06-16 15:14:33,612 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:14:33,614 - INFO - Connected to server. Sending command: {'action': 'get_mode', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:14:33,880 - INFO - Received response from server: [Mode: InternalDSP]
+2025-06-16 15:15:09,895 - INFO - ----------------------------------- APClient started
+2025-06-16 15:15:09,927 - INFO - Parsing and executing command: set_mode
+2025-06-16 15:15:09,927 - INFO - Executing 'set_mode' to remote for 192.168.10.20:50001
+2025-06-16 15:15:09,927 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:15:09,928 - INFO - Connected to server. Sending command: {'action': 'set_mode', 'position': 'remote', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:15:09,977 - INFO - Received response from server: Error: Failed to set mode (Command failed:
+error: invalid value 'remote' for '--position <POSITION>'
+  [possible values: internal-dsp, backplate]
+
+For more information, try '--help'.)
+2025-06-16 15:15:44,894 - INFO - ----------------------------------- APClient started
+2025-06-16 15:15:44,934 - INFO - Parsing and executing command: set_mode
+2025-06-16 15:15:44,934 - INFO - Executing 'set_mode' to backplate for 192.168.10.20:50001
+2025-06-16 15:15:44,934 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:15:44,935 - INFO - Connected to server. Sending command: {'action': 'set_mode', 'position': 'backplate', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:15:45,193 - INFO - Received response from server: Done
+2025-06-16 15:15:51,237 - INFO - ----------------------------------- APClient started
+2025-06-16 15:15:51,266 - INFO - Parsing and executing command: get_mode
+2025-06-16 15:15:51,267 - INFO - Executing 'get_mode' for 192.168.10.20:50001
+2025-06-16 15:15:51,267 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:15:51,268 - INFO - Connected to server. Sending command: {'action': 'get_mode', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:16:06,516 - INFO - Received response from server: [Mode: Backplate]
+2025-06-16 15:16:26,436 - INFO - ----------------------------------- APClient started
+2025-06-16 15:16:26,469 - INFO - Parsing and executing command: set_mode
+2025-06-16 15:16:26,469 - INFO - Executing 'set_mode' to internal-dsp for 192.168.10.20:50001
+2025-06-16 15:16:26,469 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:16:26,470 - INFO - Connected to server. Sending command: {'action': 'set_mode', 'position': 'internal-dsp', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:16:41,770 - INFO - Received response from server: Done
+2025-06-16 15:16:45,120 - INFO - ----------------------------------- APClient started
+2025-06-16 15:16:45,151 - INFO - Parsing and executing command: get_mode
+2025-06-16 15:16:45,151 - INFO - Executing 'get_mode' for 192.168.10.20:50001
+2025-06-16 15:16:45,151 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:16:45,152 - INFO - Connected to server. Sending command: {'action': 'get_mode', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:16:45,211 - INFO - Received response from server: [Mode: InternalDSP]
+2025-06-16 15:37:09,802 - INFO - ----------------------------------- APClient started
+2025-06-16 15:37:09,855 - INFO - Parsing and executing command: get_phase_delay
+2025-06-16 15:37:09,855 - INFO - Executing 'get_phase_delay' for 192.168.10.20:50001
+2025-06-16 15:37:09,855 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:37:09,857 - INFO - Connected to server. Sending command: {'action': 'get_phase_delay', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:37:09,860 - INFO - Received response from server: Error: Unknown action.
+2025-06-16 15:37:37,184 - INFO - ----------------------------------- APClient started
+2025-06-16 15:37:37,218 - INFO - Parsing and executing command: get_phase_delay
+2025-06-16 15:37:37,218 - INFO - Executing 'get_phase_delay' for 192.168.10.20:50001
+2025-06-16 15:37:37,218 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:37:37,219 - INFO - Connected to server. Sending command: {'action': 'get_phase_delay', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:37:37,518 - INFO - Received response from server: [Phase Delay: Deg0]
+2025-06-16 15:37:55,235 - INFO - ----------------------------------- APClient started
+2025-06-16 15:37:55,279 - INFO - Parsing and executing command: get_phase_delay
+2025-06-16 15:37:55,279 - INFO - Executing 'get_phase_delay' for 192.168.10.20:50001
+2025-06-16 15:37:55,280 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:37:55,281 - INFO - Connected to server. Sending command: {'action': 'get_phase_delay', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:38:10,565 - INFO - Received response from server: [Phase Delay: Deg0]
+2025-06-16 15:38:10,752 - INFO - ----------------------------------- APClient started
+2025-06-16 15:38:10,781 - INFO - Parsing and executing command: set_phase_delay
+2025-06-16 15:38:10,781 - INFO - Executing 'set_phase_delay' to deg45 for 192.168.10.20:50001
+2025-06-16 15:38:10,782 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:38:10,783 - INFO - Connected to server. Sending command: {'action': 'set_phase_delay', 'position': 'deg45', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:38:10,862 - INFO - Received response from server: Done
+2025-06-16 15:38:25,694 - INFO - ----------------------------------- APClient started
+2025-06-16 15:38:25,730 - INFO - Parsing and executing command: set_phase_delay
+2025-06-16 15:38:25,730 - INFO - Executing 'set_phase_delay' to deg45 for 192.168.10.20:50001
+2025-06-16 15:38:25,731 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:38:25,732 - INFO - Connected to server. Sending command: {'action': 'set_phase_delay', 'position': 'deg45', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:38:41,000 - INFO - Received response from server: Done
+2025-06-16 15:38:48,502 - INFO - ----------------------------------- APClient started
+2025-06-16 15:38:48,532 - INFO - Parsing and executing command: get_phase_delay
+2025-06-16 15:38:48,532 - INFO - Executing 'get_phase_delay' for 192.168.10.20:50001
+2025-06-16 15:38:48,532 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:38:48,533 - INFO - Connected to server. Sending command: {'action': 'get_phase_delay', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:39:03,790 - INFO - Received response from server: [Phase Delay: Deg45]
+2025-06-16 15:39:21,481 - INFO - ----------------------------------- APClient started
+2025-06-16 15:39:21,507 - INFO - Parsing and executing command: set_phase_delay
+2025-06-16 15:39:21,507 - INFO - Executing 'set_phase_delay' to deg180 for 192.168.10.20:50001
+2025-06-16 15:39:21,508 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-16 15:39:21,509 - INFO - Connected to server. Sending command: {'action': 'set_phase_delay', 'position': 'deg180', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-16 15:39:36,783 - INFO - Received response from server: Done

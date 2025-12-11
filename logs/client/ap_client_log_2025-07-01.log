@@ -1,0 +1,118 @@
+2025-07-01 14:03:41,754 - INFO - ----------------------------------- APClient started
+2025-07-01 14:04:16,373 - INFO - ----------------------------------- APClient started
+2025-07-01 14:04:16,428 - INFO - Parsing and executing command: get_serial_number
+2025-07-01 14:04:16,428 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-07-01 14:04:16,428 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 14:04:18,477 - ERROR - Socket error: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-07-01 14:04:55,220 - INFO - ----------------------------------- APClient started
+2025-07-01 14:04:55,254 - INFO - Parsing and executing command: get_serial_number
+2025-07-01 14:04:55,254 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-07-01 14:04:55,254 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 14:04:55,255 - INFO - Connected to server. Sending command: {'action': 'get_serial_number', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 14:04:55,532 - INFO - Received response from server: 123456789
+2025-07-01 14:25:29,518 - INFO - ----------------------------------- APClient started
+2025-07-01 14:25:29,550 - INFO - Parsing and executing command: get_serial_number
+2025-07-01 14:25:29,550 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-07-01 14:25:29,550 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 14:25:29,552 - INFO - Connected to server. Sending command: {'action': 'get_serial_number', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 14:25:31,108 - INFO - Received response from server: 123456789
+2025-07-01 14:25:52,192 - INFO - ----------------------------------- APClient started
+2025-07-01 14:25:52,220 - INFO - Parsing and executing command: get_serial_number
+2025-07-01 14:25:52,220 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-07-01 14:25:52,220 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 14:25:52,221 - INFO - Connected to server. Sending command: {'action': 'get_serial_number', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 14:26:07,501 - INFO - Received response from server: 123456789
+2025-07-01 14:29:40,638 - INFO - ----------------------------------- APClient started
+2025-07-01 14:29:40,666 - INFO - Parsing and executing command: get_gain
+2025-07-01 14:29:40,666 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-07-01 14:29:40,666 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 14:29:40,667 - INFO - Connected to server. Sending command: {'action': 'get_gain', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 14:29:47,740 - INFO - Received response from server: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 14:38:14,103 - INFO - ----------------------------------- APClient started
+2025-07-01 14:38:14,133 - INFO - Parsing and executing command: get_gain
+2025-07-01 14:38:14,133 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-07-01 14:38:14,133 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 14:38:14,134 - INFO - Connected to server. Sending command: {'action': 'get_gain', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 14:38:14,401 - INFO - Received response from server: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:29:25,749 - INFO - ----------------------------------- APClient started
+2025-07-01 15:29:25,782 - INFO - Parsing and executing command: get_gain
+2025-07-01 15:29:25,782 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-07-01 15:29:25,782 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 15:29:25,783 - INFO - Connected to server. Sending command: {'action': 'get_gain', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 15:29:26,042 - INFO - Received response from server: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:30:05,813 - INFO - ----------------------------------- APClient started
+2025-07-01 15:30:05,841 - INFO - Parsing and executing command: get_serial_number
+2025-07-01 15:30:05,841 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-07-01 15:30:05,841 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 15:30:05,842 - INFO - Connected to server. Sending command: {'action': 'get_serial_number', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 15:30:06,083 - INFO - Received response from server: 123456789
+2025-07-01 15:30:21,562 - INFO - ----------------------------------- APClient started
+2025-07-01 15:30:21,591 - INFO - Parsing and executing command: get_serial_number
+2025-07-01 15:30:21,591 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-07-01 15:30:21,591 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 15:30:21,592 - INFO - Connected to server. Sending command: {'action': 'get_serial_number', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 15:30:36,864 - INFO - Received response from server: 123456789
+2025-07-01 15:36:58,154 - INFO - ----------------------------------- APClient started
+2025-07-01 15:36:58,188 - INFO - Parsing and executing command: get_gain
+2025-07-01 15:36:58,189 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-07-01 15:36:58,189 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 15:36:58,190 - INFO - Connected to server. Sending command: {'action': 'get_gain', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 15:37:13,472 - INFO - Received response from server: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:40:29,949 - INFO - ----------------------------------- APClient started
+2025-07-01 15:40:29,980 - INFO - Parsing and executing command: get_gain
+2025-07-01 15:40:29,980 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-07-01 15:40:29,981 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 15:40:29,982 - INFO - Connected to server. Sending command: {'action': 'get_gain', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 15:40:45,255 - INFO - Received response from server: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:44:38,478 - INFO - ----------------------------------- APClient started
+2025-07-01 15:44:38,516 - INFO - Parsing and executing command: get_gain
+2025-07-01 15:44:38,516 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-07-01 15:44:38,516 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 15:44:40,545 - ERROR - Socket error: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-07-01 15:45:17,721 - INFO - ----------------------------------- APClient started
+2025-07-01 15:45:17,753 - INFO - Parsing and executing command: get_gain
+2025-07-01 15:45:17,753 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-07-01 15:45:17,754 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 15:45:17,755 - INFO - Connected to server. Sending command: {'action': 'get_gain', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 15:45:18,031 - INFO - Received response from server: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:47:40,035 - INFO - ----------------------------------- APClient started
+2025-07-01 15:47:40,069 - INFO - Parsing and executing command: get_gain
+2025-07-01 15:47:40,070 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-07-01 15:47:40,070 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 15:47:40,071 - INFO - Connected to server. Sending command: {'action': 'get_gain', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 15:47:40,145 - INFO - Received response from server: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:49:09,092 - INFO - ----------------------------------- APClient started
+2025-07-01 15:49:09,127 - INFO - Parsing and executing command: get_gain
+2025-07-01 15:49:09,127 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-07-01 15:49:09,127 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 15:49:09,128 - INFO - Connected to server. Sending command: {'action': 'get_gain', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 15:49:09,207 - INFO - Received response from server: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:52:03,903 - INFO - ----------------------------------- APClient started
+2025-07-01 15:52:03,937 - INFO - Parsing and executing command: get_gain
+2025-07-01 15:52:03,937 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-07-01 15:52:03,937 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 15:52:05,971 - ERROR - Socket error: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-07-01 15:53:09,512 - INFO - ----------------------------------- APClient started
+2025-07-01 15:53:09,546 - INFO - Parsing and executing command: get_gain
+2025-07-01 15:53:09,546 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-07-01 15:53:09,547 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 15:53:09,549 - INFO - Connected to server. Sending command: {'action': 'get_gain', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 15:53:09,832 - INFO - Received response from server: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:00:24,380 - INFO - ----------------------------------- APClient started
+2025-07-01 16:00:24,407 - INFO - Parsing and executing command: get_gain
+2025-07-01 16:00:24,407 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-07-01 16:00:24,407 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 16:00:24,408 - INFO - Connected to server. Sending command: {'action': 'get_gain', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 16:00:39,684 - INFO - Received response from server: [Gain: -30.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:08:36,681 - INFO - ----------------------------------- APClient started
+2025-07-01 16:08:36,714 - INFO - Parsing and executing command: get_gain
+2025-07-01 16:08:36,714 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-07-01 16:08:36,715 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 16:08:36,716 - INFO - Connected to server. Sending command: {'action': 'get_gain', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 16:08:39,801 - INFO - Received response from server: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:09:16,726 - INFO - ----------------------------------- APClient started
+2025-07-01 16:09:16,752 - INFO - Parsing and executing command: get_gain
+2025-07-01 16:09:16,752 - INFO - Executing 'get_gain' for 192.168.10.20:50001
+2025-07-01 16:09:16,752 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-01 16:09:16,753 - INFO - Connected to server. Sending command: {'action': 'get_gain', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-01 16:09:17,026 - INFO - Received response from server: [Gain: -30.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]

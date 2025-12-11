@@ -1,0 +1,747 @@
+2025-06-16 11:17:57,243 INFO [root] ----------------------------------- APServer started
+2025-06-16 11:17:57,247 INFO [APServer] Server started
+2025-06-16 11:17:57,247 INFO [APServer] Server is running...
+2025-06-16 11:17:57,247 INFO [APServer] Waiting for connections...
+2025-06-16 11:17:57,680 INFO [APServer] Connection from ('127.0.0.1', 54610)
+2025-06-16 11:17:57,695 INFO [APServer] Client connection closed.
+2025-06-16 11:18:26,732 INFO [APServer] Connection from ('127.0.0.1', 54618)
+2025-06-16 11:18:26,734 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "filter_type": "bell", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 11:18:26,734 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=bell, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 11:18:26,734 INFO [Biquad_Filter] Calculating coefficients for filter_type=bell
+2025-06-16 11:18:26,734 INFO [Biquad_Filter] Calculating bell filter coefficients.
+2025-06-16 11:18:26,734 INFO [Biquad_Filter] Bell coefficients (unnormalized): b0=1.0921865735337346, b1=-1.9828897227476208, b2=0.9078134264662654, a0=1.0462027337669495, a1=-1.9828897227476208, a2=0.9537972662330504
+2025-06-16 11:18:26,734 INFO [Biquad_Filter] Normalizing coefficients with a0=1.0462027337669495
+2025-06-16 11:18:26,734 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.043953086990335, 'b1': -1.8953207239365961, 'b2': 0.8677222847598566, 'a1': -1.8953207239365961, 'a2': 0.9116753717501915}
+2025-06-16 11:18:26,734 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.043953086990335, 'b1': -1.8953207239365961, 'b2': 0.8677222847598566, 'a1': -1.8953207239365961, 'a2': 0.9116753717501915}
+2025-06-16 11:18:26,758 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 11:18:26,759 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566].
+2025-06-16 11:18:26,759 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.8953207239365961 0.9116753717501915 1.043953086990335 -1.8953207239365961 0.8677222847598566 --target-ip 192.168.10.20 --port 50001
+2025-06-16 11:18:27,099 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 11:18:27,099 INFO [APServer] Set biquad on device: Done
+2025-06-16 11:18:27,099 INFO [APServer] Sent response: Done
+2025-06-16 11:18:27,099 INFO [APServer] Client connection closed.
+2025-06-16 11:24:18,821 INFO [APServer] Connection from ('127.0.0.1', 54709)
+2025-06-16 11:24:18,821 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "filter_type": "low_shelf", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 11:24:18,822 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=low_shelf, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 11:24:18,822 INFO [Biquad_Filter] Calculating coefficients for filter_type=low_shelf
+2025-06-16 11:24:18,822 INFO [Biquad_Filter] Calculating low shelf filter coefficients.
+2025-06-16 11:24:18,822 INFO [Biquad_Filter] Low shelf coefficients (unnormalized): b0=3.139954022810743, b1=-5.591841778072785, b2=2.5201667380627257, a0=3.0409336710888786, a1=-5.608870992220748, a2=2.602157875636628
+2025-06-16 11:24:18,822 INFO [Biquad_Filter] Normalizing coefficients with a0=3.0409336710888786
+2025-06-16 11:24:18,822 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.0325624832475901, 'b1': -1.8388568718996405, 'b2': 0.8287476843124698, 'a1': -1.8444568671609198, 'a2': 0.8557101722987808}
+2025-06-16 11:24:18,822 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.0325624832475901, 'b1': -1.8388568718996405, 'b2': 0.8287476843124698, 'a1': -1.8444568671609198, 'a2': 0.8557101722987808}
+2025-06-16 11:24:18,822 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 11:24:18,822 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698].
+2025-06-16 11:24:18,822 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.8444568671609198 0.8557101722987808 1.0325624832475901 -1.8388568718996405 0.8287476843124698 --target-ip 192.168.10.20 --port 50001
+2025-06-16 11:24:19,156 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 11:24:19,156 INFO [APServer] Set biquad on device: Done
+2025-06-16 11:24:19,156 INFO [APServer] Sent response: Done
+2025-06-16 11:24:19,157 INFO [APServer] Client connection closed.
+2025-06-16 11:30:39,696 INFO [root] ----------------------------------- APServer started
+2025-06-16 11:30:39,700 INFO [APServer] Server started
+2025-06-16 11:30:39,701 INFO [APServer] Server is running...
+2025-06-16 11:30:39,701 INFO [APServer] Waiting for connections...
+2025-06-16 11:30:39,797 INFO [APServer] Connection from ('127.0.0.1', 55123)
+2025-06-16 11:30:39,812 INFO [APServer] Client connection closed.
+2025-06-16 11:30:44,708 INFO [APServer] Connection from ('127.0.0.1', 55124)
+2025-06-16 11:30:44,709 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "filter_type": "low_shelf", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 11:30:44,710 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=low_shelf, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 11:30:44,710 INFO [Biquad_Filter] Calculating coefficients for filter_type=low_shelf
+2025-06-16 11:30:44,710 INFO [Biquad_Filter] Calculating low shelf filter coefficients.
+2025-06-16 11:30:44,710 INFO [Biquad_Filter] Low shelf coefficients (unnormalized): b0=3.139954022810743, b1=-5.591841778072785, b2=2.5201667380627257, a0=3.0409336710888786, a1=-5.608870992220748, a2=2.602157875636628
+2025-06-16 11:30:44,711 INFO [Biquad_Filter] Normalizing coefficients with a0=3.0409336710888786
+2025-06-16 11:30:44,711 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.0325624832475901, 'b1': -1.8388568718996405, 'b2': 0.8287476843124698, 'a1': -1.8444568671609198, 'a2': 0.8557101722987808}
+2025-06-16 11:30:44,711 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.0325624832475901, 'b1': -1.8388568718996405, 'b2': 0.8287476843124698, 'a1': -1.8444568671609198, 'a2': 0.8557101722987808}
+2025-06-16 11:30:44,729 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 11:30:44,729 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=-1.8444568671609198, b1=0.8557101722987808, b2=1.0325624832475901, a1=-1.8388568718996405, a2=0.8287476843124698
+2025-06-16 11:30:44,730 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.8444568671609198 0.8557101722987808 1.0325624832475901 -1.8388568718996405 0.8287476843124698 --target-ip 192.168.10.20 --port 50001
+2025-06-16 11:30:45,025 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 11:30:45,025 INFO [APServer] Set biquad on device: Done
+2025-06-16 11:30:45,026 INFO [APServer] Sent response: Done
+2025-06-16 11:30:45,026 INFO [APServer] Client connection closed.
+2025-06-16 12:35:46,930 INFO [APServer] Connection from ('127.0.0.1', 56965)
+2025-06-16 12:35:46,931 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "low_shelf", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-06-16 12:35:46,931 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=low_shelf, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 12:35:46,932 INFO [Biquad_Filter] Calculating coefficients for filter_type=low_shelf
+2025-06-16 12:35:46,932 INFO [Biquad_Filter] Calculating low shelf filter coefficients.
+2025-06-16 12:35:46,933 INFO [Biquad_Filter] Low shelf coefficients (unnormalized): b0=3.139954022810743, b1=-5.591841778072785, b2=2.5201667380627257, a0=3.0409336710888786, a1=-5.608870992220748, a2=2.602157875636628
+2025-06-16 12:35:46,933 INFO [Biquad_Filter] Normalizing coefficients with a0=3.0409336710888786
+2025-06-16 12:35:46,933 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.0325624832475901, 'b1': -1.8388568718996405, 'b2': 0.8287476843124698, 'a1': -1.8444568671609198, 'a2': 0.8557101722987808}
+2025-06-16 12:35:46,933 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.0325624832475901, 'b1': -1.8388568718996405, 'b2': 0.8287476843124698, 'a1': -1.8444568671609198, 'a2': 0.8557101722987808}
+2025-06-16 12:35:46,933 INFO [APServer] Biquad coefficients generated: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 12:35:46,934 INFO [APServer] Sent response: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 12:35:46,935 INFO [APServer] Client connection closed.
+2025-06-16 12:43:20,157 INFO [root] ----------------------------------- APServer started
+2025-06-16 12:43:20,160 INFO [APServer] Server started
+2025-06-16 12:43:20,161 INFO [APServer] Server is running...
+2025-06-16 12:43:20,161 INFO [APServer] Waiting for connections...
+2025-06-16 12:43:20,190 INFO [APServer] Connection from ('127.0.0.1', 57384)
+2025-06-16 12:43:20,206 INFO [APServer] Client connection closed.
+2025-06-16 12:43:48,923 INFO [APServer] Connection from ('127.0.0.1', 57395)
+2025-06-16 12:43:48,924 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [-1.23, 0.45, 1.0, -0.5, 0.25], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 12:43:48,971 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 12:43:48,971 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=-1.23, b1=0.45, b2=1.0, a1=-0.5, a2=0.25
+2025-06-16 12:43:48,972 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.23 0.45 1.0 -0.5 0.25 --target-ip 192.168.10.20 --port 50001
+2025-06-16 12:43:49,272 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 12:43:49,273 INFO [APServer] Set biquad on device: Done
+2025-06-16 12:43:49,273 INFO [APServer] Sent response: Done
+2025-06-16 12:43:49,274 INFO [APServer] Client connection closed.
+2025-06-16 12:44:45,604 INFO [APServer] Connection from ('127.0.0.1', 57413)
+2025-06-16 12:44:45,605 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "low_shelf", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-06-16 12:44:45,605 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=low_shelf, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 12:44:45,605 INFO [Biquad_Filter] Calculating coefficients for filter_type=low_shelf
+2025-06-16 12:44:45,605 INFO [Biquad_Filter] Calculating low shelf filter coefficients.
+2025-06-16 12:44:45,605 INFO [Biquad_Filter] Low shelf coefficients (unnormalized): b0=3.139954022810743, b1=-5.591841778072785, b2=2.5201667380627257, a0=3.0409336710888786, a1=-5.608870992220748, a2=2.602157875636628
+2025-06-16 12:44:45,605 INFO [Biquad_Filter] Normalizing coefficients with a0=3.0409336710888786
+2025-06-16 12:44:45,605 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.0325624832475901, 'b1': -1.8388568718996405, 'b2': 0.8287476843124698, 'a1': -1.8444568671609198, 'a2': 0.8557101722987808}
+2025-06-16 12:44:45,606 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.0325624832475901, 'b1': -1.8388568718996405, 'b2': 0.8287476843124698, 'a1': -1.8444568671609198, 'a2': 0.8557101722987808}
+2025-06-16 12:44:45,606 INFO [APServer] Biquad coefficients generated: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 12:44:45,606 INFO [APServer] Sent response: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 12:44:45,606 INFO [APServer] Client connection closed.
+2025-06-16 12:48:40,969 INFO [APServer] Connection from ('127.0.0.1', 57444)
+2025-06-16 12:48:40,970 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "low_shelf", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-06-16 12:48:40,971 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=low_shelf, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 12:48:40,971 INFO [Biquad_Filter] Calculating coefficients for filter_type=low_shelf
+2025-06-16 12:48:40,971 INFO [Biquad_Filter] Calculating low shelf filter coefficients.
+2025-06-16 12:48:40,972 INFO [Biquad_Filter] Low shelf coefficients (unnormalized): b0=3.139954022810743, b1=-5.591841778072785, b2=2.5201667380627257, a0=3.0409336710888786, a1=-5.608870992220748, a2=2.602157875636628
+2025-06-16 12:48:40,972 INFO [Biquad_Filter] Normalizing coefficients with a0=3.0409336710888786
+2025-06-16 12:48:40,972 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.0325624832475901, 'b1': -1.8388568718996405, 'b2': 0.8287476843124698, 'a1': -1.8444568671609198, 'a2': 0.8557101722987808}
+2025-06-16 12:48:40,972 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.0325624832475901, 'b1': -1.8388568718996405, 'b2': 0.8287476843124698, 'a1': -1.8444568671609198, 'a2': 0.8557101722987808}
+2025-06-16 12:48:40,972 INFO [APServer] Biquad coefficients generated: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 12:48:40,973 INFO [APServer] Sent response: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 12:48:40,973 INFO [APServer] Client connection closed.
+2025-06-16 12:59:13,305 INFO [APServer] Connection from ('127.0.0.1', 57901)
+2025-06-16 12:59:13,306 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 12:59:13,307 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 12:59:13,307 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=-1.8444568671609198, b1=0.8557101722987808, b2=1.0325624832475901, a1=-1.8388568718996405, a2=0.8287476843124698
+2025-06-16 12:59:13,307 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.8444568671609198 0.8557101722987808 1.0325624832475901 -1.8388568718996405 0.8287476843124698 --target-ip 192.168.10.20 --port 50001
+2025-06-16 12:59:13,614 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 12:59:13,614 INFO [APServer] Set biquad on device: Done
+2025-06-16 12:59:13,615 INFO [APServer] Sent response: Done
+2025-06-16 12:59:13,616 INFO [APServer] Client connection closed.
+2025-06-16 13:02:04,964 INFO [APServer] Connection from ('127.0.0.1', 57944)
+2025-06-16 13:02:04,966 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:02:04,966 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 13:02:04,967 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=-1.8444568671609198, b1=0.8557101722987808, b2=1.0325624832475901, a1=-1.8388568718996405, a2=0.8287476843124698
+2025-06-16 13:02:04,967 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.8444568671609198 0.8557101722987808 1.0325624832475901 -1.8388568718996405 0.8287476843124698 --target-ip 192.168.10.20 --port 50001
+2025-06-16 13:02:12,108 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 13:02:12,109 INFO [APServer] Set biquad on device: Done
+2025-06-16 13:02:12,110 INFO [APServer] Sent response: Done
+2025-06-16 13:02:12,111 INFO [APServer] Client connection closed.
+2025-06-16 13:02:30,957 INFO [APServer] Connection from ('127.0.0.1', 57951)
+2025-06-16 13:02:30,958 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "low_shelf", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-06-16 13:02:30,958 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=low_shelf, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 13:02:30,958 INFO [Biquad_Filter] Calculating coefficients for filter_type=low_shelf
+2025-06-16 13:02:30,958 INFO [Biquad_Filter] Calculating low shelf filter coefficients.
+2025-06-16 13:02:30,959 INFO [Biquad_Filter] Low shelf coefficients (unnormalized): b0=3.139954022810743, b1=-5.591841778072785, b2=2.5201667380627257, a0=3.0409336710888786, a1=-5.608870992220748, a2=2.602157875636628
+2025-06-16 13:02:30,959 INFO [Biquad_Filter] Normalizing coefficients with a0=3.0409336710888786
+2025-06-16 13:02:30,959 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.0325624832475901, 'b1': -1.8388568718996405, 'b2': 0.8287476843124698, 'a1': -1.8444568671609198, 'a2': 0.8557101722987808}
+2025-06-16 13:02:30,959 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.0325624832475901, 'b1': -1.8388568718996405, 'b2': 0.8287476843124698, 'a1': -1.8444568671609198, 'a2': 0.8557101722987808}
+2025-06-16 13:02:30,960 INFO [APServer] Biquad coefficients generated: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 13:02:30,960 INFO [APServer] Sent response: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 13:02:30,960 INFO [APServer] Client connection closed.
+2025-06-16 13:02:51,239 INFO [APServer] Connection from ('127.0.0.1', 57955)
+2025-06-16 13:02:51,240 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-06-16 13:02:51,240 ERROR [APServer] SwitchBox not connected.
+2025-06-16 13:02:51,240 INFO [APServer] Sent response: Error: SwitchBox not connected.
+2025-06-16 13:02:51,241 INFO [APServer] Client connection closed.
+2025-06-16 13:03:11,138 INFO [APServer] Connection from ('127.0.0.1', 57962)
+2025-06-16 13:03:11,138 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-16 13:03:11,138 INFO [Utilities] Generated timestamp subpath: 2025\06_16
+2025-06-16 13:03:11,138 INFO [APServer] Sent response: 2025\06_16
+2025-06-16 13:03:11,139 INFO [APServer] Client connection closed.
+2025-06-16 13:03:22,513 INFO [APServer] Connection from ('127.0.0.1', 57970)
+2025-06-16 13:03:22,514 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "low_shelf", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-06-16 13:03:22,514 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=low_shelf, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 13:03:22,514 INFO [Biquad_Filter] Calculating coefficients for filter_type=low_shelf
+2025-06-16 13:03:22,514 INFO [Biquad_Filter] Calculating low shelf filter coefficients.
+2025-06-16 13:03:22,514 INFO [Biquad_Filter] Low shelf coefficients (unnormalized): b0=3.139954022810743, b1=-5.591841778072785, b2=2.5201667380627257, a0=3.0409336710888786, a1=-5.608870992220748, a2=2.602157875636628
+2025-06-16 13:03:22,514 INFO [Biquad_Filter] Normalizing coefficients with a0=3.0409336710888786
+2025-06-16 13:03:22,514 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.0325624832475901, 'b1': -1.8388568718996405, 'b2': 0.8287476843124698, 'a1': -1.8444568671609198, 'a2': 0.8557101722987808}
+2025-06-16 13:03:22,514 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.0325624832475901, 'b1': -1.8388568718996405, 'b2': 0.8287476843124698, 'a1': -1.8444568671609198, 'a2': 0.8557101722987808}
+2025-06-16 13:03:22,514 INFO [APServer] Biquad coefficients generated: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 13:03:22,514 INFO [APServer] Sent response: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-16 13:03:22,514 INFO [APServer] Client connection closed.
+2025-06-16 13:03:35,416 INFO [APServer] Connection from ('127.0.0.1', 57972)
+2025-06-16 13:03:35,417 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:03:35,418 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 13:03:35,418 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=-1.8444568671609198, b1=0.8557101722987808, b2=1.0325624832475901, a1=-1.8388568718996405, a2=0.8287476843124698
+2025-06-16 13:03:35,418 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.8444568671609198 0.8557101722987808 1.0325624832475901 -1.8388568718996405 0.8287476843124698 --target-ip 192.168.10.20 --port 50001
+2025-06-16 13:03:35,740 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 13:03:35,741 INFO [APServer] Set biquad on device: Done
+2025-06-16 13:03:35,741 INFO [APServer] Sent response: Done
+2025-06-16 13:03:35,742 INFO [APServer] Client connection closed.
+2025-06-16 13:03:49,611 INFO [APServer] Connection from ('127.0.0.1', 57976)
+2025-06-16 13:03:49,612 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "high_shelf", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-06-16 13:03:49,612 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=high_shelf, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 13:03:49,612 INFO [Biquad_Filter] Calculating coefficients for filter_type=high_shelf
+2025-06-16 13:03:49,612 INFO [Biquad_Filter] Calculating high shelf filter coefficients.
+2025-06-16 13:03:49,612 INFO [Biquad_Filter] High shelf coefficients (unnormalized): b0=4.295432981120543, b1=-7.922740859457287, b2=3.6756456963725253, a0=2.2229172136088806, a1=-3.9587208137297303, a2=1.7841414181566304
+2025-06-16 13:03:49,613 INFO [Biquad_Filter] Normalizing coefficients with a0=2.2229172136088806
+2025-06-16 13:03:49,613 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.9323405094996573, 'b1': -3.5641187224398734, 'b2': 1.6535234303238655, 'a1': -1.7808674067995507, 'a2': 0.8026126241831999}
+2025-06-16 13:03:49,613 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.9323405094996573, 'b1': -3.5641187224398734, 'b2': 1.6535234303238655, 'a1': -1.7808674067995507, 'a2': 0.8026126241831999}
+2025-06-16 13:03:49,613 INFO [APServer] Biquad coefficients generated: [-1.7808674067995507, 0.8026126241831999, 1.9323405094996573, -3.5641187224398734, 1.6535234303238655]
+2025-06-16 13:03:49,613 INFO [APServer] Sent response: [-1.7808674067995507, 0.8026126241831999, 1.9323405094996573, -3.5641187224398734, 1.6535234303238655]
+2025-06-16 13:03:49,614 INFO [APServer] Client connection closed.
+2025-06-16 13:04:18,916 INFO [APServer] Connection from ('127.0.0.1', 57985)
+2025-06-16 13:04:18,916 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [-1.7808674067995507, 0.8026126241831999, 1.9323405094996573, -3.5641187224398734, 1.6535234303238655], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:04:18,916 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 13:04:18,916 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=-1.7808674067995507, b1=0.8026126241831999, b2=1.9323405094996573, a1=-3.5641187224398734, a2=1.6535234303238655
+2025-06-16 13:04:18,917 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.7808674067995507 0.8026126241831999 1.9323405094996573 -3.5641187224398734 1.6535234303238655 --target-ip 192.168.10.20 --port 50001
+2025-06-16 13:04:26,071 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 13:04:26,071 INFO [APServer] Set biquad on device: Done
+2025-06-16 13:04:26,071 INFO [APServer] Sent response: Done
+2025-06-16 13:04:26,072 INFO [APServer] Client connection closed.
+2025-06-16 13:12:13,310 INFO [APServer] Connection from ('127.0.0.1', 58121)
+2025-06-16 13:12:13,311 INFO [APServer] Received: {"action": "get_serial_number", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:12:13,311 ERROR [APServer] Unknown action: get_serial_number
+2025-06-16 13:12:13,311 INFO [APServer] Sent response: Error: Unknown action.
+2025-06-16 13:12:13,312 INFO [APServer] Client connection closed.
+2025-06-16 13:12:33,922 INFO [APServer] Connection from ('127.0.0.1', 58126)
+2025-06-16 13:12:33,923 INFO [APServer] Received: {"action": "get_serial_number", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:12:33,923 ERROR [APServer] Unknown action: get_serial_number
+2025-06-16 13:12:33,923 INFO [APServer] Sent response: Error: Unknown action.
+2025-06-16 13:12:33,924 INFO [APServer] Client connection closed.
+2025-06-16 13:13:34,050 INFO [root] ----------------------------------- APServer started
+2025-06-16 13:13:34,053 INFO [APServer] Server started
+2025-06-16 13:13:34,054 INFO [APServer] Server is running...
+2025-06-16 13:13:34,054 INFO [APServer] Waiting for connections...
+2025-06-16 13:13:34,529 INFO [APServer] Connection from ('127.0.0.1', 58466)
+2025-06-16 13:13:34,544 INFO [APServer] Client connection closed.
+2025-06-16 13:13:38,341 INFO [APServer] Connection from ('127.0.0.1', 58468)
+2025-06-16 13:13:38,341 INFO [APServer] Received: {"action": "get_serial_number", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:13:38,366 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 13:13:38,367 INFO [OCP1ToolWrapper] Requesting serial number.
+2025-06-16 13:13:38,367 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-serial-number --target-ip 192.168.10.20 --port 50001
+2025-06-16 13:13:38,436 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-06-16 13:13:38,437 INFO [APServer] Serial number received: 123456789
+2025-06-16 13:13:38,437 INFO [APServer] Sent response: 123456789
+2025-06-16 13:13:38,438 INFO [APServer] Client connection closed.
+2025-06-16 13:13:52,235 INFO [APServer] Connection from ('127.0.0.1', 58472)
+2025-06-16 13:13:52,235 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "coefficients": [-1.7808674067995507, 0.8026126241831999, 1.9323405094996573, -3.5641187224398734, 1.6535234303238655], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:13:52,235 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 13:13:52,236 INFO [OCP1ToolWrapper] Setting biquad at index 0 with coefficients: b0=-1.7808674067995507, b1=0.8026126241831999, b2=1.9323405094996573, a1=-3.5641187224398734, a2=1.6535234303238655
+2025-06-16 13:13:52,236 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 0 --coefficients -1.7808674067995507 0.8026126241831999 1.9323405094996573 -3.5641187224398734 1.6535234303238655 --target-ip 192.168.10.20 --port 50001
+2025-06-16 13:14:07,584 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 13:14:07,584 INFO [APServer] Set biquad on device: Done
+2025-06-16 13:14:07,585 INFO [APServer] Sent response: Done
+2025-06-16 13:14:07,586 INFO [APServer] Client connection closed.
+2025-06-16 13:16:35,459 INFO [APServer] Connection from ('127.0.0.1', 58512)
+2025-06-16 13:16:35,460 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "high_shelf", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-06-16 13:16:35,460 INFO [Biquad_Filter] Initializing Biquad_Filter: filter_type=high_shelf, gain=6.0, cutoff=1000.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-06-16 13:16:35,460 INFO [Biquad_Filter] Calculating coefficients for filter_type=high_shelf
+2025-06-16 13:16:35,460 INFO [Biquad_Filter] Calculating high shelf filter coefficients.
+2025-06-16 13:16:35,460 INFO [Biquad_Filter] High shelf coefficients (unnormalized): b0=4.295432981120543, b1=-7.922740859457287, b2=3.6756456963725253, a0=2.2229172136088806, a1=-3.9587208137297303, a2=1.7841414181566304
+2025-06-16 13:16:35,460 INFO [Biquad_Filter] Normalizing coefficients with a0=2.2229172136088806
+2025-06-16 13:16:35,460 INFO [Biquad_Filter] Normalized coefficients: {'b0': 1.9323405094996573, 'b1': -3.5641187224398734, 'b2': 1.6535234303238655, 'a1': -1.7808674067995507, 'a2': 0.8026126241831999}
+2025-06-16 13:16:35,460 INFO [Biquad_Filter] Biquad_Filter initialized with coefficients: {'b0': 1.9323405094996573, 'b1': -3.5641187224398734, 'b2': 1.6535234303238655, 'a1': -1.7808674067995507, 'a2': 0.8026126241831999}
+2025-06-16 13:16:35,460 INFO [APServer] Biquad coefficients generated: [-1.7808674067995507, 0.8026126241831999, 1.9323405094996573, -3.5641187224398734, 1.6535234303238655]
+2025-06-16 13:16:35,460 INFO [APServer] Sent response: [-1.7808674067995507, 0.8026126241831999, 1.9323405094996573, -3.5641187224398734, 1.6535234303238655]
+2025-06-16 13:16:35,461 INFO [APServer] Client connection closed.
+2025-06-16 13:18:50,786 INFO [APServer] Connection from ('127.0.0.1', 58540)
+2025-06-16 13:18:50,787 INFO [APServer] Received: {"action": "get_serial_number", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:18:50,788 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 13:18:50,788 INFO [OCP1ToolWrapper] Requesting serial number.
+2025-06-16 13:18:50,789 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-serial-number --target-ip 192.168.10.20 --port 50001
+2025-06-16 13:18:57,897 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-06-16 13:18:57,897 INFO [APServer] Serial number received: 123456789
+2025-06-16 13:18:57,898 INFO [APServer] Sent response: 123456789
+2025-06-16 13:18:57,899 INFO [APServer] Client connection closed.
+2025-06-16 13:21:13,151 INFO [APServer] Connection from ('127.0.0.1', 58588)
+2025-06-16 13:21:13,152 INFO [APServer] Received: {"action": "get_serial_number", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:21:13,152 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 13:21:13,152 INFO [OCP1ToolWrapper] Requesting serial number.
+2025-06-16 13:21:13,152 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-serial-number --target-ip 192.168.10.20 --port 50001
+2025-06-16 13:21:13,214 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-06-16 13:21:13,215 INFO [APServer] Serial number received: 123456789
+2025-06-16 13:21:13,215 INFO [APServer] Sent response: 123456789
+2025-06-16 13:21:13,216 INFO [APServer] Client connection closed.
+2025-06-16 13:21:21,733 INFO [APServer] Connection from ('127.0.0.1', 58594)
+2025-06-16 13:21:21,734 INFO [APServer] Received: {"action": "get_gain", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:21:21,734 ERROR [APServer] Unknown action: get_gain
+2025-06-16 13:21:21,734 INFO [APServer] Sent response: Error: Unknown action.
+2025-06-16 13:21:21,735 INFO [APServer] Client connection closed.
+2025-06-16 13:21:45,789 INFO [root] ----------------------------------- APServer started
+2025-06-16 13:21:45,793 INFO [APServer] Server started
+2025-06-16 13:21:45,793 INFO [APServer] Server is running...
+2025-06-16 13:21:45,793 INFO [APServer] Waiting for connections...
+2025-06-16 13:21:46,276 INFO [APServer] Connection from ('127.0.0.1', 58608)
+2025-06-16 13:21:46,277 INFO [APServer] Client connection closed.
+2025-06-16 13:21:52,372 INFO [APServer] Connection from ('127.0.0.1', 58610)
+2025-06-16 13:21:52,373 INFO [APServer] Received: {"action": "get_gain", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:21:52,397 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 13:21:52,397 INFO [OCP1ToolWrapper] Requesting gain.
+2025-06-16 13:21:52,397 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-gain --target-ip 192.168.10.20 --port 50001
+2025-06-16 13:21:59,490 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-06-16 13:21:59,490 INFO [APServer] Gain received: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-06-16 13:21:59,490 INFO [APServer] Sent response: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-06-16 13:21:59,491 INFO [APServer] Client connection closed.
+2025-06-16 13:29:09,154 INFO [root] ----------------------------------- APServer started
+2025-06-16 13:29:09,159 INFO [APServer] Server started
+2025-06-16 13:29:09,159 INFO [APServer] Server is running...
+2025-06-16 13:29:09,160 INFO [APServer] Waiting for connections...
+2025-06-16 13:29:09,626 INFO [APServer] Connection from ('127.0.0.1', 59046)
+2025-06-16 13:29:09,627 INFO [APServer] Client connection closed.
+2025-06-16 13:29:16,395 INFO [APServer] Connection from ('127.0.0.1', 59049)
+2025-06-16 13:29:16,396 INFO [APServer] Received: {"action": "get_device_biquad", "index": 0, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:29:16,417 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 13:29:16,417 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 0.
+2025-06-16 13:29:16,418 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 0 --target-ip 192.168.10.20 --port 50001
+2025-06-16 13:29:16,638 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (-1.78, 0.80), b = (1.93, -3.56, 1.65)]
+2025-06-16 13:29:16,638 INFO [APServer] Biquad coefficients received: [Biquad: a = (-1.78, 0.80), b = (1.93, -3.56, 1.65)]
+2025-06-16 13:29:16,638 INFO [APServer] Sent response: [Biquad: a = (-1.78, 0.80), b = (1.93, -3.56, 1.65)]
+2025-06-16 13:29:16,639 INFO [APServer] Client connection closed.
+2025-06-16 13:29:26,747 INFO [APServer] Connection from ('127.0.0.1', 59056)
+2025-06-16 13:29:26,747 INFO [APServer] Received: {"action": "get_device_biquad", "index": 1, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:29:26,749 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 13:29:26,750 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 1.
+2025-06-16 13:29:26,750 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 1 --target-ip 192.168.10.20 --port 50001
+2025-06-16 13:29:42,049 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-06-16 13:29:42,050 INFO [APServer] Biquad coefficients received: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-06-16 13:29:42,050 INFO [APServer] Sent response: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-06-16 13:29:42,051 INFO [APServer] Client connection closed.
+2025-06-16 13:30:01,413 INFO [APServer] Connection from ('127.0.0.1', 59065)
+2025-06-16 13:30:01,414 INFO [APServer] Received: {"action": "set_device_biquad", "index": 1, "coefficients": [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698], "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:30:01,415 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 13:30:01,416 INFO [OCP1ToolWrapper] Setting biquad at index 1 with coefficients: b0=-1.8444568671609198, b1=0.8557101722987808, b2=1.0325624832475901, a1=-1.8388568718996405, a2=0.8287476843124698
+2025-06-16 13:30:01,416 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-biquad --index 1 --coefficients -1.8444568671609198 0.8557101722987808 1.0325624832475901 -1.8388568718996405 0.8287476843124698 --target-ip 192.168.10.20 --port 50001
+2025-06-16 13:30:16,767 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 13:30:16,767 INFO [APServer] Set biquad on device: Done
+2025-06-16 13:30:16,767 INFO [APServer] Sent response: Done
+2025-06-16 13:30:16,768 INFO [APServer] Client connection closed.
+2025-06-16 13:30:21,106 INFO [APServer] Connection from ('127.0.0.1', 59072)
+2025-06-16 13:30:21,107 INFO [APServer] Received: {"action": "get_device_biquad", "index": 1, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:30:21,107 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 13:30:21,107 INFO [OCP1ToolWrapper] Requesting biquad coefficients for index 1.
+2025-06-16 13:30:21,107 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-biquad --index 1 --target-ip 192.168.10.20 --port 50001
+2025-06-16 13:30:21,163 INFO [OCP1ToolWrapper] Command output: [Biquad: a = (-1.84, 0.86), b = (1.03, -1.84, 0.83)]
+2025-06-16 13:30:21,164 INFO [APServer] Biquad coefficients received: [Biquad: a = (-1.84, 0.86), b = (1.03, -1.84, 0.83)]
+2025-06-16 13:30:21,164 INFO [APServer] Sent response: [Biquad: a = (-1.84, 0.86), b = (1.03, -1.84, 0.83)]
+2025-06-16 13:30:21,164 INFO [APServer] Client connection closed.
+2025-06-16 13:48:04,612 INFO [root] ----------------------------------- APServer started
+2025-06-16 13:48:04,614 INFO [APServer] Server started
+2025-06-16 13:48:04,614 INFO [APServer] Server is running...
+2025-06-16 13:48:04,614 INFO [APServer] Waiting for connections...
+2025-06-16 13:48:04,830 INFO [APServer] Connection from ('127.0.0.1', 60007)
+2025-06-16 13:48:04,846 INFO [APServer] Client connection closed.
+2025-06-16 13:48:12,737 INFO [APServer] Connection from ('127.0.0.1', 60010)
+2025-06-16 13:48:12,738 INFO [APServer] Received: {"action": "set_gain", "value": 3.5, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:48:12,760 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 13:48:12,760 INFO [OCP1ToolWrapper] Setting gain to 3.5.
+2025-06-16 13:48:12,760 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-gain --value 3.5 --target-ip 192.168.10.20 --port 50001
+2025-06-16 13:48:12,990 ERROR [OCP1ToolWrapper] Command failed: 
+2025-06-16 13:48:12,991 ERROR [APServer] Failed to set gain: Command failed:
+
+2025-06-16 13:48:12,991 INFO [APServer] Sent response: Error: Failed to set gain (Command failed:
+)
+2025-06-16 13:48:12,992 INFO [APServer] Client connection closed.
+2025-06-16 13:48:21,305 INFO [APServer] Connection from ('127.0.0.1', 60015)
+2025-06-16 13:48:21,306 INFO [APServer] Received: {"action": "set_gain", "value": 3.5, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 13:48:21,306 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 13:48:21,306 INFO [OCP1ToolWrapper] Setting gain to 3.5.
+2025-06-16 13:48:21,307 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-gain --value 3.5 --target-ip 192.168.10.20 --port 50001
+2025-06-16 13:48:36,590 ERROR [OCP1ToolWrapper] Command failed: 
+2025-06-16 13:48:36,590 ERROR [APServer] Failed to set gain: Command failed:
+
+2025-06-16 13:48:36,590 INFO [APServer] Sent response: Error: Failed to set gain (Command failed:
+)
+2025-06-16 13:48:36,591 INFO [APServer] Client connection closed.
+2025-06-16 14:39:47,860 INFO [root] ----------------------------------- APServer started
+2025-06-16 14:39:47,865 INFO [APServer] Server started
+2025-06-16 14:39:47,866 INFO [APServer] Server is running...
+2025-06-16 14:39:47,866 INFO [APServer] Waiting for connections...
+2025-06-16 14:39:47,892 INFO [APServer] Connection from ('127.0.0.1', 61608)
+2025-06-16 14:39:47,892 INFO [APServer] Client connection closed.
+2025-06-16 14:39:53,345 INFO [APServer] Connection from ('127.0.0.1', 61610)
+2025-06-16 14:39:53,345 INFO [APServer] Received: {"action": "set_gain", "value": 3.5, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 14:39:53,369 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 14:39:53,370 INFO [OCP1ToolWrapper] Setting gain to 3.5.
+2025-06-16 14:39:53,370 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-gain --value 3.5 --target-ip 192.168.10.20 --port 50001
+2025-06-16 14:39:53,640 INFO [OCP1ToolWrapper] Command output: DeviceError: Locked
+2025-06-16 14:39:53,641 INFO [OCP1ToolWrapper] Command executed with return code: 104
+2025-06-16 14:39:53,642 ERROR [OCP1ToolWrapper] Command failed: 
+2025-06-16 14:39:53,642 ERROR [APServer] Failed to set gain: Command failed:
+
+2025-06-16 14:39:53,642 INFO [APServer] Sent response: Error: Failed to set gain (Command failed:
+)
+2025-06-16 14:39:53,643 INFO [APServer] Client connection closed.
+2025-06-16 14:46:56,972 INFO [root] ----------------------------------- APServer started
+2025-06-16 14:46:56,976 INFO [APServer] Server started
+2025-06-16 14:46:56,977 INFO [APServer] Server is running...
+2025-06-16 14:46:56,977 INFO [APServer] Waiting for connections...
+2025-06-16 14:46:57,451 INFO [APServer] Connection from ('127.0.0.1', 62090)
+2025-06-16 14:46:57,452 INFO [APServer] Client connection closed.
+2025-06-16 14:47:00,724 INFO [APServer] Connection from ('127.0.0.1', 62093)
+2025-06-16 14:47:00,724 INFO [APServer] Received: {"action": "get_model_description", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 14:47:00,753 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 14:47:00,754 INFO [OCP1ToolWrapper] Requesting model description.
+2025-06-16 14:47:00,754 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-model-description --target-ip 192.168.10.20 --port 50001
+2025-06-16 14:47:00,995 INFO [OCP1ToolWrapper] Command output: (Manufacturer: ADAM Audio, Model: A10S, Version: 0.2.0)
+2025-06-16 14:47:00,995 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 14:47:00,996 INFO [OCP1ToolWrapper] Command output: (Manufacturer: ADAM Audio, Model: A10S, Version: 0.2.0)
+2025-06-16 14:47:00,996 INFO [APServer] Model description received: (Manufacturer: ADAM Audio, Model: A10S, Version: 0.2.0)
+2025-06-16 14:47:00,996 INFO [APServer] Sent response: (Manufacturer: ADAM Audio, Model: A10S, Version: 0.2.0)
+2025-06-16 14:47:00,997 INFO [APServer] Client connection closed.
+2025-06-16 14:49:42,670 INFO [root] ----------------------------------- APServer started
+2025-06-16 14:49:42,672 INFO [APServer] Server started
+2025-06-16 14:49:42,673 INFO [APServer] Server is running...
+2025-06-16 14:49:42,673 INFO [APServer] Waiting for connections...
+2025-06-16 14:49:42,681 INFO [APServer] Connection from ('127.0.0.1', 62159)
+2025-06-16 14:49:42,682 INFO [APServer] Client connection closed.
+2025-06-16 14:50:11,462 INFO [APServer] Connection from ('127.0.0.1', 62167)
+2025-06-16 14:50:11,462 INFO [APServer] Received: {"action": "get_firmware_version", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 14:50:11,484 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 14:50:11,484 INFO [OCP1ToolWrapper] Requesting firmware version.
+2025-06-16 14:50:11,484 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-firmware-version --target-ip 192.168.10.20 --port 50001
+2025-06-16 14:50:11,727 INFO [OCP1ToolWrapper] Command output: DeviceError: BadONo
+2025-06-16 14:50:11,727 INFO [OCP1ToolWrapper] Command executed with return code: 104
+2025-06-16 14:50:11,727 ERROR [OCP1ToolWrapper] Command failed: 
+2025-06-16 14:50:11,727 ERROR [APServer] Failed to get firmware version: Command failed:
+
+2025-06-16 14:50:11,727 INFO [APServer] Sent response: Error: Failed to get firmware version (Command failed:
+)
+2025-06-16 14:50:11,728 INFO [APServer] Client connection closed.
+2025-06-16 14:58:28,682 INFO [root] ----------------------------------- APServer started
+2025-06-16 14:58:28,686 INFO [APServer] Server started
+2025-06-16 14:58:28,686 INFO [APServer] Server is running...
+2025-06-16 14:58:28,686 INFO [APServer] Waiting for connections...
+2025-06-16 14:58:29,075 INFO [APServer] Connection from ('127.0.0.1', 62649)
+2025-06-16 14:58:29,091 INFO [APServer] Client connection closed.
+2025-06-16 14:58:35,586 INFO [APServer] Connection from ('127.0.0.1', 62650)
+2025-06-16 14:58:35,587 INFO [APServer] Received: {"action": "get_audio_input", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 14:58:35,607 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 14:58:35,608 INFO [OCP1ToolWrapper] Requesting audio input mode.
+2025-06-16 14:58:35,608 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-audio-input --target-ip 192.168.10.20 --port 50001
+2025-06-16 14:58:35,830 INFO [OCP1ToolWrapper] Command output: [Input: Analogue]
+2025-06-16 14:58:35,831 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 14:58:35,831 INFO [OCP1ToolWrapper] Command output: [Input: Analogue]
+2025-06-16 14:58:35,832 INFO [APServer] Audio input received: [Input: Analogue]
+2025-06-16 14:58:35,832 INFO [APServer] Sent response: [Input: Analogue]
+2025-06-16 14:58:35,833 INFO [APServer] Client connection closed.
+2025-06-16 14:58:44,275 INFO [APServer] Connection from ('127.0.0.1', 62656)
+2025-06-16 14:58:44,276 INFO [APServer] Received: {"action": "get_firmware_version", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 14:58:44,276 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 14:58:44,276 INFO [OCP1ToolWrapper] Requesting firmware version.
+2025-06-16 14:58:44,276 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-firmware-version --target-ip 192.168.10.20 --port 50001
+2025-06-16 14:59:01,052 INFO [OCP1ToolWrapper] Command output: DeviceError: BadONo
+2025-06-16 14:59:01,052 INFO [OCP1ToolWrapper] Command executed with return code: 104
+2025-06-16 14:59:01,052 ERROR [OCP1ToolWrapper] Command failed: 
+2025-06-16 14:59:01,053 ERROR [APServer] Failed to get firmware version: Command failed:
+
+2025-06-16 14:59:01,053 INFO [APServer] Sent response: Error: Failed to get firmware version (Command failed:
+)
+2025-06-16 14:59:01,053 INFO [APServer] Client connection closed.
+2025-06-16 15:01:38,492 INFO [root] ----------------------------------- APServer started
+2025-06-16 15:01:38,496 INFO [APServer] Server started
+2025-06-16 15:01:38,496 INFO [APServer] Server is running...
+2025-06-16 15:01:38,496 INFO [APServer] Waiting for connections...
+2025-06-16 15:01:38,536 INFO [APServer] Connection from ('127.0.0.1', 62742)
+2025-06-16 15:01:38,552 INFO [APServer] Client connection closed.
+2025-06-16 15:01:43,302 INFO [APServer] Connection from ('127.0.0.1', 62744)
+2025-06-16 15:01:43,303 INFO [APServer] Received: {"action": "set_audio_input", "position": "aes3", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:01:43,332 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:01:43,333 INFO [OCP1ToolWrapper] Setting audio input position to aes3.
+2025-06-16 15:01:43,333 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-audio-input --position aes3 --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:01:50,487 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:01:50,487 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:01:50,488 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:01:50,488 INFO [APServer] Set audio input result: Done
+2025-06-16 15:01:50,489 INFO [APServer] Sent response: Done
+2025-06-16 15:01:50,490 INFO [APServer] Client connection closed.
+2025-06-16 15:02:13,716 INFO [APServer] Connection from ('127.0.0.1', 62759)
+2025-06-16 15:02:13,716 INFO [APServer] Received: {"action": "set_audio_input", "position": "analogue", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:02:13,717 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:02:13,717 INFO [OCP1ToolWrapper] Setting audio input position to analogue.
+2025-06-16 15:02:13,717 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-audio-input --position analogue --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:02:14,018 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:02:14,018 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:02:14,019 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:02:14,019 INFO [APServer] Set audio input result: Done
+2025-06-16 15:02:14,020 INFO [APServer] Sent response: Done
+2025-06-16 15:02:14,021 INFO [APServer] Client connection closed.
+2025-06-16 15:02:16,767 INFO [APServer] Connection from ('127.0.0.1', 62762)
+2025-06-16 15:02:16,768 INFO [APServer] Received: {"action": "set_audio_input", "position": "aes3", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:02:16,768 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:02:16,769 INFO [OCP1ToolWrapper] Setting audio input position to aes3.
+2025-06-16 15:02:16,769 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-audio-input --position aes3 --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:02:16,877 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:02:16,877 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:02:16,877 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:02:16,877 INFO [APServer] Set audio input result: Done
+2025-06-16 15:02:16,877 INFO [APServer] Sent response: Done
+2025-06-16 15:02:16,879 INFO [APServer] Client connection closed.
+2025-06-16 15:02:37,303 INFO [APServer] Connection from ('127.0.0.1', 62770)
+2025-06-16 15:02:37,304 INFO [APServer] Received: {"action": "set_audio_input", "position": "analogue", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:02:37,304 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:02:37,304 INFO [OCP1ToolWrapper] Setting audio input position to analogue.
+2025-06-16 15:02:37,304 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-audio-input --position analogue --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:02:52,659 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:02:52,659 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:02:52,659 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:02:52,659 INFO [APServer] Set audio input result: Done
+2025-06-16 15:02:52,659 INFO [APServer] Sent response: Done
+2025-06-16 15:02:52,660 INFO [APServer] Client connection closed.
+2025-06-16 15:02:57,516 INFO [APServer] Connection from ('127.0.0.1', 62780)
+2025-06-16 15:02:57,516 INFO [APServer] Received: {"action": "set_audio_input", "position": "aes3", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:02:57,516 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:02:57,517 INFO [OCP1ToolWrapper] Setting audio input position to aes3.
+2025-06-16 15:02:57,517 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-audio-input --position aes3 --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:02:57,658 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:02:57,658 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:02:57,658 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:02:57,658 INFO [APServer] Set audio input result: Done
+2025-06-16 15:02:57,659 INFO [APServer] Sent response: Done
+2025-06-16 15:02:57,659 INFO [APServer] Client connection closed.
+2025-06-16 15:03:00,769 INFO [APServer] Connection from ('127.0.0.1', 62784)
+2025-06-16 15:03:00,769 INFO [APServer] Received: {"action": "set_audio_input", "position": "analogue", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:03:00,769 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:03:00,769 INFO [OCP1ToolWrapper] Setting audio input position to analogue.
+2025-06-16 15:03:00,769 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-audio-input --position analogue --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:03:00,890 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:03:00,891 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:03:00,891 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:03:00,891 INFO [APServer] Set audio input result: Done
+2025-06-16 15:03:00,891 INFO [APServer] Sent response: Done
+2025-06-16 15:03:00,892 INFO [APServer] Client connection closed.
+2025-06-16 15:08:25,065 INFO [root] ----------------------------------- APServer started
+2025-06-16 15:08:25,068 INFO [APServer] Server started
+2025-06-16 15:08:25,069 INFO [APServer] Server is running...
+2025-06-16 15:08:25,069 INFO [APServer] Waiting for connections...
+2025-06-16 15:08:25,136 INFO [APServer] Connection from ('127.0.0.1', 62879)
+2025-06-16 15:08:25,151 INFO [APServer] Client connection closed.
+2025-06-16 15:08:27,799 INFO [APServer] Connection from ('127.0.0.1', 62880)
+2025-06-16 15:08:27,800 INFO [APServer] Received: {"action": "get_mute", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:08:27,827 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:08:27,827 INFO [OCP1ToolWrapper] Requesting mute state.
+2025-06-16 15:08:27,828 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-mute --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:08:34,943 INFO [OCP1ToolWrapper] Command output: Unmuted
+2025-06-16 15:08:34,943 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:08:34,944 INFO [OCP1ToolWrapper] Command output: Unmuted
+2025-06-16 15:08:34,945 INFO [APServer] Mute state received: Unmuted
+2025-06-16 15:08:34,945 INFO [APServer] Sent response: Unmuted
+2025-06-16 15:08:34,945 INFO [APServer] Client connection closed.
+2025-06-16 15:08:35,165 INFO [APServer] Connection from ('127.0.0.1', 62886)
+2025-06-16 15:08:35,166 INFO [APServer] Received: {"action": "set_mute", "state": "muted", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:08:35,167 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:08:35,167 INFO [OCP1ToolWrapper] Setting mute state to muted.
+2025-06-16 15:08:35,167 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-mute --state muted --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:08:35,241 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:08:35,242 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:08:35,242 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:08:35,242 INFO [APServer] Set mute result: Done
+2025-06-16 15:08:35,243 INFO [APServer] Sent response: Done
+2025-06-16 15:08:35,243 INFO [APServer] Client connection closed.
+2025-06-16 15:08:49,405 INFO [APServer] Connection from ('127.0.0.1', 62894)
+2025-06-16 15:08:49,406 INFO [APServer] Received: {"action": "get_mute", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:08:49,407 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:08:49,407 INFO [OCP1ToolWrapper] Requesting mute state.
+2025-06-16 15:08:49,408 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-mute --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:09:04,697 INFO [OCP1ToolWrapper] Command output: Muted
+2025-06-16 15:09:04,698 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:09:04,698 INFO [OCP1ToolWrapper] Command output: Muted
+2025-06-16 15:09:04,698 INFO [APServer] Mute state received: Muted
+2025-06-16 15:09:04,699 INFO [APServer] Sent response: Muted
+2025-06-16 15:09:04,699 INFO [APServer] Client connection closed.
+2025-06-16 15:09:45,417 INFO [APServer] Connection from ('127.0.0.1', 62904)
+2025-06-16 15:09:45,418 INFO [APServer] Received: {"action": "set_mute", "state": "muted", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:09:45,418 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:09:45,419 INFO [OCP1ToolWrapper] Setting mute state to muted.
+2025-06-16 15:09:45,419 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-mute --state muted --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:09:52,512 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:09:52,512 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:09:52,514 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:09:52,514 INFO [APServer] Set mute result: Done
+2025-06-16 15:09:52,514 INFO [APServer] Sent response: Done
+2025-06-16 15:09:52,516 INFO [APServer] Client connection closed.
+2025-06-16 15:09:56,691 INFO [APServer] Connection from ('127.0.0.1', 62907)
+2025-06-16 15:09:56,691 INFO [APServer] Received: {"action": "get_mute", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:09:56,692 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:09:56,692 INFO [OCP1ToolWrapper] Requesting mute state.
+2025-06-16 15:09:56,693 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-mute --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:09:56,765 INFO [OCP1ToolWrapper] Command output: Muted
+2025-06-16 15:09:56,766 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:09:56,766 INFO [OCP1ToolWrapper] Command output: Muted
+2025-06-16 15:09:56,767 INFO [APServer] Mute state received: Muted
+2025-06-16 15:09:56,767 INFO [APServer] Sent response: Muted
+2025-06-16 15:09:56,768 INFO [APServer] Client connection closed.
+2025-06-16 15:10:19,547 INFO [APServer] Connection from ('127.0.0.1', 62923)
+2025-06-16 15:10:19,548 INFO [APServer] Received: {"action": "set_mute", "state": "unmuted", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:10:19,548 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:10:19,548 INFO [OCP1ToolWrapper] Setting mute state to unmuted.
+2025-06-16 15:10:19,548 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-mute --state unmuted --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:10:34,852 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:10:34,853 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:10:34,853 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:10:34,853 INFO [APServer] Set mute result: Done
+2025-06-16 15:10:34,854 INFO [APServer] Sent response: Done
+2025-06-16 15:10:34,854 INFO [APServer] Client connection closed.
+2025-06-16 15:10:39,093 INFO [APServer] Connection from ('127.0.0.1', 62929)
+2025-06-16 15:10:39,093 INFO [APServer] Received: {"action": "get_mute", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:10:39,093 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:10:39,094 INFO [OCP1ToolWrapper] Requesting mute state.
+2025-06-16 15:10:39,094 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-mute --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:10:39,170 INFO [OCP1ToolWrapper] Command output: Unmuted
+2025-06-16 15:10:39,170 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:10:39,170 INFO [OCP1ToolWrapper] Command output: Unmuted
+2025-06-16 15:10:39,170 INFO [APServer] Mute state received: Unmuted
+2025-06-16 15:10:39,170 INFO [APServer] Sent response: Unmuted
+2025-06-16 15:10:39,171 INFO [APServer] Client connection closed.
+2025-06-16 15:14:18,047 INFO [root] ----------------------------------- APServer started
+2025-06-16 15:14:18,050 INFO [APServer] Server started
+2025-06-16 15:14:18,050 INFO [APServer] Server is running...
+2025-06-16 15:14:18,050 INFO [APServer] Waiting for connections...
+2025-06-16 15:14:18,163 INFO [APServer] Connection from ('127.0.0.1', 63343)
+2025-06-16 15:14:18,164 INFO [APServer] Client connection closed.
+2025-06-16 15:14:33,614 INFO [APServer] Connection from ('127.0.0.1', 63345)
+2025-06-16 15:14:33,615 INFO [APServer] Received: {"action": "get_mode", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:14:33,640 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:14:33,641 INFO [OCP1ToolWrapper] Requesting control mode.
+2025-06-16 15:14:33,641 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-mode --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:14:33,879 INFO [OCP1ToolWrapper] Command output: [Mode: InternalDSP]
+2025-06-16 15:14:33,879 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:14:33,880 INFO [OCP1ToolWrapper] Command output: [Mode: InternalDSP]
+2025-06-16 15:14:33,880 INFO [APServer] Mode received: [Mode: InternalDSP]
+2025-06-16 15:14:33,880 INFO [APServer] Sent response: [Mode: InternalDSP]
+2025-06-16 15:14:33,881 INFO [APServer] Client connection closed.
+2025-06-16 15:15:09,928 INFO [APServer] Connection from ('127.0.0.1', 63357)
+2025-06-16 15:15:09,929 INFO [APServer] Received: {"action": "set_mode", "position": "remote", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:15:09,929 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:15:09,929 INFO [OCP1ToolWrapper] Setting control mode to remote.
+2025-06-16 15:15:09,930 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-mode --position remote --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:15:09,976 INFO [OCP1ToolWrapper] Command output: 
+2025-06-16 15:15:09,976 INFO [OCP1ToolWrapper] Command executed with return code: 2
+2025-06-16 15:15:09,976 ERROR [OCP1ToolWrapper] Command failed: error: invalid value 'remote' for '--position <POSITION>'
+  [possible values: internal-dsp, backplate]
+
+For more information, try '--help'.
+2025-06-16 15:15:09,976 ERROR [APServer] Failed to set mode: Command failed:
+error: invalid value 'remote' for '--position <POSITION>'
+  [possible values: internal-dsp, backplate]
+
+For more information, try '--help'.
+2025-06-16 15:15:09,977 INFO [APServer] Sent response: Error: Failed to set mode (Command failed:
+error: invalid value 'remote' for '--position <POSITION>'
+  [possible values: internal-dsp, backplate]
+
+For more information, try '--help'.)
+2025-06-16 15:15:09,977 INFO [APServer] Client connection closed.
+2025-06-16 15:15:44,936 INFO [APServer] Connection from ('127.0.0.1', 63372)
+2025-06-16 15:15:44,936 INFO [APServer] Received: {"action": "set_mode", "position": "backplate", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:15:44,936 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:15:44,936 INFO [OCP1ToolWrapper] Setting control mode to backplate.
+2025-06-16 15:15:44,936 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-mode --position backplate --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:15:45,192 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:15:45,192 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:15:45,192 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:15:45,192 INFO [APServer] Set mode result: Done
+2025-06-16 15:15:45,193 INFO [APServer] Sent response: Done
+2025-06-16 15:15:45,194 INFO [APServer] Client connection closed.
+2025-06-16 15:15:51,268 INFO [APServer] Connection from ('127.0.0.1', 63375)
+2025-06-16 15:15:51,268 INFO [APServer] Received: {"action": "get_mode", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:15:51,268 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:15:51,269 INFO [OCP1ToolWrapper] Requesting control mode.
+2025-06-16 15:15:51,269 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-mode --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:16:06,515 INFO [OCP1ToolWrapper] Command output: [Mode: Backplate]
+2025-06-16 15:16:06,515 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:16:06,515 INFO [OCP1ToolWrapper] Command output: [Mode: Backplate]
+2025-06-16 15:16:06,515 INFO [APServer] Mode received: [Mode: Backplate]
+2025-06-16 15:16:06,516 INFO [APServer] Sent response: [Mode: Backplate]
+2025-06-16 15:16:06,516 INFO [APServer] Client connection closed.
+2025-06-16 15:16:26,470 INFO [APServer] Connection from ('127.0.0.1', 63401)
+2025-06-16 15:16:26,471 INFO [APServer] Received: {"action": "set_mode", "position": "internal-dsp", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:16:26,471 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:16:26,471 INFO [OCP1ToolWrapper] Setting control mode to internal-dsp.
+2025-06-16 15:16:26,471 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-mode --position internal-dsp --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:16:41,770 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:16:41,770 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:16:41,770 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:16:41,770 INFO [APServer] Set mode result: Done
+2025-06-16 15:16:41,770 INFO [APServer] Sent response: Done
+2025-06-16 15:16:41,771 INFO [APServer] Client connection closed.
+2025-06-16 15:16:45,152 INFO [APServer] Connection from ('127.0.0.1', 63408)
+2025-06-16 15:16:45,153 INFO [APServer] Received: {"action": "get_mode", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:16:45,153 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:16:45,153 INFO [OCP1ToolWrapper] Requesting control mode.
+2025-06-16 15:16:45,153 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-mode --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:16:45,211 INFO [OCP1ToolWrapper] Command output: [Mode: InternalDSP]
+2025-06-16 15:16:45,211 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:16:45,211 INFO [OCP1ToolWrapper] Command output: [Mode: InternalDSP]
+2025-06-16 15:16:45,211 INFO [APServer] Mode received: [Mode: InternalDSP]
+2025-06-16 15:16:45,211 INFO [APServer] Sent response: [Mode: InternalDSP]
+2025-06-16 15:16:45,211 INFO [APServer] Client connection closed.
+2025-06-16 15:37:09,857 INFO [APServer] Connection from ('127.0.0.1', 64289)
+2025-06-16 15:37:09,859 INFO [APServer] Received: {"action": "get_phase_delay", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:37:09,859 ERROR [APServer] Unknown action: get_phase_delay
+2025-06-16 15:37:09,860 INFO [APServer] Sent response: Error: Unknown action.
+2025-06-16 15:37:09,861 INFO [APServer] Client connection closed.
+2025-06-16 15:37:29,656 INFO [root] ----------------------------------- APServer started
+2025-06-16 15:37:29,660 INFO [APServer] Server started
+2025-06-16 15:37:29,660 INFO [APServer] Server is running...
+2025-06-16 15:37:29,661 INFO [APServer] Waiting for connections...
+2025-06-16 15:37:30,136 INFO [APServer] Connection from ('127.0.0.1', 64300)
+2025-06-16 15:37:30,152 INFO [APServer] Client connection closed.
+2025-06-16 15:37:37,219 INFO [APServer] Connection from ('127.0.0.1', 64302)
+2025-06-16 15:37:37,220 INFO [APServer] Received: {"action": "get_phase_delay", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:37:37,263 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:37:37,263 INFO [OCP1ToolWrapper] Requesting phase delay.
+2025-06-16 15:37:37,264 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-phase-delay --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:37:37,517 INFO [OCP1ToolWrapper] Command output: [Phase Delay: Deg0]
+2025-06-16 15:37:37,517 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:37:37,517 INFO [OCP1ToolWrapper] Command output: [Phase Delay: Deg0]
+2025-06-16 15:37:37,518 INFO [APServer] Phase delay received: [Phase Delay: Deg0]
+2025-06-16 15:37:37,518 INFO [APServer] Sent response: [Phase Delay: Deg0]
+2025-06-16 15:37:37,518 INFO [APServer] Client connection closed.
+2025-06-16 15:37:55,281 INFO [APServer] Connection from ('127.0.0.1', 64319)
+2025-06-16 15:37:55,283 INFO [APServer] Received: {"action": "get_phase_delay", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:37:55,284 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:37:55,284 INFO [OCP1ToolWrapper] Requesting phase delay.
+2025-06-16 15:37:55,284 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-phase-delay --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:38:10,564 INFO [OCP1ToolWrapper] Command output: [Phase Delay: Deg0]
+2025-06-16 15:38:10,565 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:38:10,565 INFO [OCP1ToolWrapper] Command output: [Phase Delay: Deg0]
+2025-06-16 15:38:10,565 INFO [APServer] Phase delay received: [Phase Delay: Deg0]
+2025-06-16 15:38:10,565 INFO [APServer] Sent response: [Phase Delay: Deg0]
+2025-06-16 15:38:10,566 INFO [APServer] Client connection closed.
+2025-06-16 15:38:10,783 INFO [APServer] Connection from ('127.0.0.1', 64327)
+2025-06-16 15:38:10,783 INFO [APServer] Received: {"action": "set_phase_delay", "position": "deg45", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:38:10,784 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:38:10,784 INFO [OCP1ToolWrapper] Setting phase delay to deg45.
+2025-06-16 15:38:10,784 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-phase-delay --position deg45 --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:38:10,861 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:38:10,862 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:38:10,862 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:38:10,862 INFO [APServer] Set phase delay result: Done
+2025-06-16 15:38:10,862 INFO [APServer] Sent response: Done
+2025-06-16 15:38:10,863 INFO [APServer] Client connection closed.
+2025-06-16 15:38:25,732 INFO [APServer] Connection from ('127.0.0.1', 64336)
+2025-06-16 15:38:25,732 INFO [APServer] Received: {"action": "set_phase_delay", "position": "deg45", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:38:25,732 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:38:25,732 INFO [OCP1ToolWrapper] Setting phase delay to deg45.
+2025-06-16 15:38:25,732 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-phase-delay --position deg45 --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:38:41,000 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:38:41,000 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:38:41,000 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:38:41,000 INFO [APServer] Set phase delay result: Done
+2025-06-16 15:38:41,000 INFO [APServer] Sent response: Done
+2025-06-16 15:38:41,001 INFO [APServer] Client connection closed.
+2025-06-16 15:38:48,533 INFO [APServer] Connection from ('127.0.0.1', 64344)
+2025-06-16 15:38:48,534 INFO [APServer] Received: {"action": "get_phase_delay", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:38:48,534 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:38:48,534 INFO [OCP1ToolWrapper] Requesting phase delay.
+2025-06-16 15:38:48,534 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-phase-delay --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:39:03,790 INFO [OCP1ToolWrapper] Command output: [Phase Delay: Deg45]
+2025-06-16 15:39:03,790 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:39:03,790 INFO [OCP1ToolWrapper] Command output: [Phase Delay: Deg45]
+2025-06-16 15:39:03,790 INFO [APServer] Phase delay received: [Phase Delay: Deg45]
+2025-06-16 15:39:03,790 INFO [APServer] Sent response: [Phase Delay: Deg45]
+2025-06-16 15:39:03,791 INFO [APServer] Client connection closed.
+2025-06-16 15:39:21,509 INFO [APServer] Connection from ('127.0.0.1', 64351)
+2025-06-16 15:39:21,509 INFO [APServer] Received: {"action": "set_phase_delay", "position": "deg180", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-16 15:39:21,509 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-06-16 15:39:21,510 INFO [OCP1ToolWrapper] Setting phase delay to deg180.
+2025-06-16 15:39:21,510 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe set-phase-delay --position deg180 --target-ip 192.168.10.20 --port 50001
+2025-06-16 15:39:36,782 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:39:36,782 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-06-16 15:39:36,782 INFO [OCP1ToolWrapper] Command output: Done
+2025-06-16 15:39:36,783 INFO [APServer] Set phase delay result: Done
+2025-06-16 15:39:36,783 INFO [APServer] Sent response: Done
+2025-06-16 15:39:36,784 INFO [APServer] Client connection closed.

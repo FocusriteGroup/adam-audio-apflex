@@ -1,0 +1,1684 @@
+2025-11-07 07:48:54,418 INFO [root] ----------------------------------- ADAM Audio Service started
+2025-11-07 07:48:54,423 INFO [ADAMService] === ADAM AUDIO SERVICE INFO ===
+2025-11-07 07:48:54,423 INFO [ADAMService] Company: ADAM Audio
+2025-11-07 07:48:54,424 INFO [ADAMService] Service: Production Support Service
+2025-11-07 07:48:54,424 INFO [ADAMService] Service Name: ADAMService
+2025-11-07 07:48:54,424 INFO [ADAMService] Hostname: Dell-Thilo
+2025-11-07 07:48:54,424 INFO [ADAMService] Service Port: 65432
+2025-11-07 07:48:54,424 INFO [ADAMService] Discovery Port: 65433
+2025-11-07 07:48:54,429 INFO [ADAMService] Discovery Interval: 2 seconds
+2025-11-07 07:48:54,429 INFO [ADAMService] Primary IP: 192.168.1.165
+2025-11-07 07:48:54,429 INFO [ADAMService] Host binding: 0.0.0.0 (0.0.0.0 = all interfaces)
+2025-11-07 07:48:54,429 INFO [ADAMService] Discovery service: ENABLED
+2025-11-07 07:48:54,429 INFO [ADAMService] Note: OCA device communication handled locally by workstations
+2025-11-07 07:48:54,429 INFO [ADAMService] Workstation usage examples:
+2025-11-07 07:48:54,429 INFO [ADAMService]   Helper functions: python adam_workstation.py --host 192.168.1.165 generate_timestamp_extension
+2025-11-07 07:48:54,429 INFO [ADAMService]   Biquad calculation: python adam_workstation.py --host 192.168.1.165 get_biquad_coefficients bell 3.0 1000 1.4 48000
+2025-11-07 07:48:54,429 INFO [ADAMService]   Auto-discovery: python adam_connector.py --find --service-name ADAMService
+2025-11-07 07:48:54,429 INFO [ADAMService] ================================
+2025-11-07 07:48:54,430 INFO [ADAMService] Starting discovery broadcast loop...
+2025-11-07 07:48:54,430 INFO [ADAMService] Discovery service started on port 65433 (interval: 2s)
+2025-11-07 07:48:54,430 INFO [ADAMService] ADAM Audio Service started
+2025-11-07 07:48:54,430 INFO [ADAMService] ADAM Audio Service is running...
+2025-11-07 07:48:54,430 INFO [ADAMService] Waiting for workstation connections...
+2025-11-07 07:48:56,457 INFO [ADAMService] Workstation connection from ('192.168.1.165', 53886)
+2025-11-07 07:48:56,458 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 53886)
+2025-11-07 07:49:03,802 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59407)
+2025-11-07 07:49:03,803 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59408)
+2025-11-07 07:49:03,803 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59407)
+2025-11-07 07:49:03,824 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59408)
+2025-11-07 07:49:03,968 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59409)
+2025-11-07 07:49:03,980 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59409)
+2025-11-07 07:49:04,262 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59410)
+2025-11-07 07:49:04,262 INFO [ADAMService] Received command from ('192.168.1.165', 59410): generate_timestamp_extension
+2025-11-07 07:49:04,262 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_07_49_04
+2025-11-07 07:49:04,262 INFO [ADAMService] Sent response to ('192.168.1.165', 59410) (19 bytes)
+2025-11-07 07:49:04,263 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59410)
+2025-11-07 07:49:04,485 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59411)
+2025-11-07 07:49:04,485 INFO [ADAMService] Received command from ('192.168.1.165', 59411): get_timestamp_subpath
+2025-11-07 07:49:04,485 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 07:49:04,485 INFO [ADAMService] Sent response to ('192.168.1.165', 59411) (10 bytes)
+2025-11-07 07:49:04,485 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59411)
+2025-11-07 07:49:04,723 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59412)
+2025-11-07 07:49:04,723 INFO [ADAMService] Received command from ('192.168.1.165', 59412): construct_path
+2025-11-07 07:49:04,723 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 07:49:04,723 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 07:49:04,724 INFO [ADAMService] Sent response to ('192.168.1.165', 59412) (100 bytes)
+2025-11-07 07:49:04,724 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59412)
+2025-11-07 07:49:04,953 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59413)
+2025-11-07 07:49:04,953 INFO [ADAMService] Received command from ('192.168.1.165', 59413): check_measurement_trials
+2025-11-07 07:49:04,953 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 07:49:04,954 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 07:49:04,954 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 07:49:04,954 INFO [ADAMService] Sent response to ('192.168.1.165', 59413) (22 bytes)
+2025-11-07 07:49:04,954 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59413)
+2025-11-07 07:49:05,332 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59415)
+2025-11-07 07:49:05,332 INFO [ADAMService] Received command from ('192.168.1.165', 59415): log_workstation_task
+2025-11-07 07:49:05,333 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:49:05.333756 - Data: {}
+2025-11-07 07:49:05,333 INFO [ADAMService] Sent response to ('192.168.1.165', 59415) (112 bytes)
+2025-11-07 07:49:05,333 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59415)
+2025-11-07 07:49:05,399 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59417)
+2025-11-07 07:49:05,415 INFO [ADAMService] Received command from ('192.168.1.165', 59417): log_workstation_task
+2025-11-07 07:49:05,415 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:49:05.415527 - Data: {}
+2025-11-07 07:49:05,415 INFO [ADAMService] Sent response to ('192.168.1.165', 59417) (112 bytes)
+2025-11-07 07:49:05,415 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59417)
+2025-11-07 07:49:06,326 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59421)
+2025-11-07 07:49:06,327 INFO [ADAMService] Received command from ('192.168.1.165', 59421): log_workstation_task
+2025-11-07 07:49:06,327 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:49:06.327797 - Data: {}
+2025-11-07 07:49:06,327 INFO [ADAMService] Sent response to ('192.168.1.165', 59421) (112 bytes)
+2025-11-07 07:49:06,327 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59421)
+2025-11-07 07:49:07,955 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59428)
+2025-11-07 07:49:07,956 INFO [ADAMService] Received command from ('192.168.1.165', 59428): log_workstation_task
+2025-11-07 07:49:07,956 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T07:49:07.625547 - Data: {'channel': 1, 'response_time': 0.329281, 'local_execution': True, 'attempt': 1}
+2025-11-07 07:49:07,956 INFO [ADAMService] Sent response to ('192.168.1.165', 59428) (95 bytes)
+2025-11-07 07:49:07,956 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59428)
+2025-11-07 07:49:08,427 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59433)
+2025-11-07 07:49:08,428 INFO [ADAMService] Received command from ('192.168.1.165', 59433): log_workstation_task
+2025-11-07 07:49:08,428 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:49:08.428120 - Data: {}
+2025-11-07 07:49:08,428 INFO [ADAMService] Sent response to ('192.168.1.165', 59433) (112 bytes)
+2025-11-07 07:49:08,428 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59433)
+2025-11-07 07:49:11,132 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59435)
+2025-11-07 07:49:11,133 INFO [ADAMService] Received command from ('192.168.1.165', 59435): log_workstation_task
+2025-11-07 07:49:11,133 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:49:11.133177 - Data: {}
+2025-11-07 07:49:11,133 INFO [ADAMService] Sent response to ('192.168.1.165', 59435) (112 bytes)
+2025-11-07 07:49:11,133 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59435)
+2025-11-07 07:49:12,320 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59437)
+2025-11-07 07:49:12,338 INFO [ADAMService] Received command from ('192.168.1.165', 59437): log_workstation_task
+2025-11-07 07:49:12,338 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:49:12.338288 - Data: {}
+2025-11-07 07:49:12,338 INFO [ADAMService] Sent response to ('192.168.1.165', 59437) (112 bytes)
+2025-11-07 07:49:12,338 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59437)
+2025-11-07 07:49:19,094 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59440)
+2025-11-07 07:49:19,094 INFO [ADAMService] Received command from ('192.168.1.165', 59440): log_workstation_task
+2025-11-07 07:49:19,094 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T07:49:18.873891 - Data: {'channel': 1, 'response_time': 0.217817, 'local_execution': True, 'attempt': 1}
+2025-11-07 07:49:19,094 INFO [ADAMService] Sent response to ('192.168.1.165', 59440) (95 bytes)
+2025-11-07 07:49:19,094 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59440)
+2025-11-07 07:49:19,548 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59442)
+2025-11-07 07:49:19,549 INFO [ADAMService] Received command from ('192.168.1.165', 59442): log_workstation_task
+2025-11-07 07:49:19,549 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:49:19.549399 - Data: {}
+2025-11-07 07:49:19,550 INFO [ADAMService] Sent response to ('192.168.1.165', 59442) (112 bytes)
+2025-11-07 07:49:19,550 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59442)
+2025-11-07 07:49:23,382 INFO [ADAMService] Workstation connection from ('192.168.1.165', 59443)
+2025-11-07 07:49:23,383 INFO [ADAMService] Received command from ('192.168.1.165', 59443): log_workstation_task
+2025-11-07 07:49:23,383 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T07:49:23.053233 - Data: {'channel': 2, 'response_time': 0.328142, 'local_execution': True, 'attempt': 1}
+2025-11-07 07:49:23,383 INFO [ADAMService] Sent response to ('192.168.1.165', 59443) (95 bytes)
+2025-11-07 07:49:23,383 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 59443)
+2025-11-07 07:51:20,877 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55402)
+2025-11-07 07:51:20,877 INFO [ADAMService] Received command from ('192.168.1.165', 55402): log_workstation_task
+2025-11-07 07:51:20,877 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:51:20.877143 - Data: {}
+2025-11-07 07:51:20,878 INFO [ADAMService] Sent response to ('192.168.1.165', 55402) (112 bytes)
+2025-11-07 07:51:20,878 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55402)
+2025-11-07 07:51:20,942 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55404)
+2025-11-07 07:51:20,962 INFO [ADAMService] Received command from ('192.168.1.165', 55404): log_workstation_task
+2025-11-07 07:51:20,962 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:51:20.962451 - Data: {}
+2025-11-07 07:51:20,962 INFO [ADAMService] Sent response to ('192.168.1.165', 55404) (112 bytes)
+2025-11-07 07:51:20,962 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55404)
+2025-11-07 07:51:21,815 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55408)
+2025-11-07 07:51:21,816 INFO [ADAMService] Received command from ('192.168.1.165', 55408): log_workstation_task
+2025-11-07 07:51:21,816 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:51:21.816241 - Data: {}
+2025-11-07 07:51:21,816 INFO [ADAMService] Sent response to ('192.168.1.165', 55408) (112 bytes)
+2025-11-07 07:51:21,817 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55408)
+2025-11-07 07:51:57,388 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55421)
+2025-11-07 07:51:57,402 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55421)
+2025-11-07 07:51:57,404 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55422)
+2025-11-07 07:51:57,405 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55422)
+2025-11-07 07:51:57,669 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55423)
+2025-11-07 07:51:57,669 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55423)
+2025-11-07 07:51:57,869 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55424)
+2025-11-07 07:51:57,870 INFO [ADAMService] Received command from ('192.168.1.165', 55424): generate_timestamp_extension
+2025-11-07 07:51:57,870 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_07_51_57
+2025-11-07 07:51:57,870 INFO [ADAMService] Sent response to ('192.168.1.165', 55424) (19 bytes)
+2025-11-07 07:51:57,871 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55424)
+2025-11-07 07:51:58,093 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55425)
+2025-11-07 07:51:58,094 INFO [ADAMService] Received command from ('192.168.1.165', 55425): get_timestamp_subpath
+2025-11-07 07:51:58,094 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 07:51:58,095 INFO [ADAMService] Sent response to ('192.168.1.165', 55425) (10 bytes)
+2025-11-07 07:51:58,095 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55425)
+2025-11-07 07:51:58,323 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55426)
+2025-11-07 07:51:58,323 INFO [ADAMService] Received command from ('192.168.1.165', 55426): construct_path
+2025-11-07 07:51:58,324 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 07:51:58,324 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 07:51:58,324 INFO [ADAMService] Sent response to ('192.168.1.165', 55426) (100 bytes)
+2025-11-07 07:51:58,324 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55426)
+2025-11-07 07:51:58,567 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55427)
+2025-11-07 07:51:58,568 INFO [ADAMService] Received command from ('192.168.1.165', 55427): check_measurement_trials
+2025-11-07 07:51:58,569 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 07:51:58,571 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 07:51:58,571 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 07:51:58,571 INFO [ADAMService] Sent response to ('192.168.1.165', 55427) (22 bytes)
+2025-11-07 07:51:58,571 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55427)
+2025-11-07 07:52:01,553 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55433)
+2025-11-07 07:52:01,554 INFO [ADAMService] Received command from ('192.168.1.165', 55433): log_workstation_task
+2025-11-07 07:52:01,554 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T07:52:01.222132 - Data: {'channel': 1, 'response_time': 0.327961, 'local_execution': True, 'attempt': 1}
+2025-11-07 07:52:01,554 INFO [ADAMService] Sent response to ('192.168.1.165', 55433) (95 bytes)
+2025-11-07 07:52:01,554 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55433)
+2025-11-07 07:52:02,107 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55435)
+2025-11-07 07:52:02,126 INFO [ADAMService] Received command from ('192.168.1.165', 55435): log_workstation_task
+2025-11-07 07:52:02,126 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:52:02.126448 - Data: {}
+2025-11-07 07:52:02,126 INFO [ADAMService] Sent response to ('192.168.1.165', 55435) (112 bytes)
+2025-11-07 07:52:02,126 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55435)
+2025-11-07 07:52:04,883 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55439)
+2025-11-07 07:52:04,884 INFO [ADAMService] Received command from ('192.168.1.165', 55439): log_workstation_task
+2025-11-07 07:52:04,884 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:52:04.884300 - Data: {}
+2025-11-07 07:52:04,884 INFO [ADAMService] Sent response to ('192.168.1.165', 55439) (112 bytes)
+2025-11-07 07:52:04,885 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55439)
+2025-11-07 07:52:06,306 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55441)
+2025-11-07 07:52:06,306 INFO [ADAMService] Received command from ('192.168.1.165', 55441): log_workstation_task
+2025-11-07 07:52:06,306 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:52:06.306461 - Data: {}
+2025-11-07 07:52:06,306 INFO [ADAMService] Sent response to ('192.168.1.165', 55441) (112 bytes)
+2025-11-07 07:52:06,306 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55441)
+2025-11-07 07:52:12,493 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55442)
+2025-11-07 07:52:12,494 INFO [ADAMService] Received command from ('192.168.1.165', 55442): log_workstation_task
+2025-11-07 07:52:12,494 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T07:52:12.273783 - Data: {'channel': 1, 'response_time': 0.218749, 'local_execution': True, 'attempt': 1}
+2025-11-07 07:52:12,494 INFO [ADAMService] Sent response to ('192.168.1.165', 55442) (95 bytes)
+2025-11-07 07:52:12,494 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55442)
+2025-11-07 07:52:13,086 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55444)
+2025-11-07 07:52:13,086 INFO [ADAMService] Received command from ('192.168.1.165', 55444): log_workstation_task
+2025-11-07 07:52:13,086 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:52:13.086419 - Data: {}
+2025-11-07 07:52:13,086 INFO [ADAMService] Sent response to ('192.168.1.165', 55444) (112 bytes)
+2025-11-07 07:52:13,086 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55444)
+2025-11-07 07:52:22,025 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55450)
+2025-11-07 07:52:22,039 INFO [ADAMService] Received command from ('192.168.1.165', 55450): log_workstation_task
+2025-11-07 07:52:22,039 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T07:52:21.695571 - Data: {'channel': 2, 'response_time': 0.327615, 'local_execution': True, 'attempt': 1}
+2025-11-07 07:52:22,039 INFO [ADAMService] Sent response to ('192.168.1.165', 55450) (95 bytes)
+2025-11-07 07:52:22,039 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55450)
+2025-11-07 07:52:32,488 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55452)
+2025-11-07 07:52:32,489 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55452)
+2025-11-07 07:52:32,490 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55453)
+2025-11-07 07:52:32,499 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55453)
+2025-11-07 07:52:32,683 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55454)
+2025-11-07 07:52:32,684 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55454)
+2025-11-07 07:52:32,884 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55455)
+2025-11-07 07:52:32,885 INFO [ADAMService] Received command from ('192.168.1.165', 55455): generate_timestamp_extension
+2025-11-07 07:52:32,885 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_07_52_32
+2025-11-07 07:52:32,885 INFO [ADAMService] Sent response to ('192.168.1.165', 55455) (19 bytes)
+2025-11-07 07:52:32,886 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55455)
+2025-11-07 07:52:33,103 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55456)
+2025-11-07 07:52:33,103 INFO [ADAMService] Received command from ('192.168.1.165', 55456): get_timestamp_subpath
+2025-11-07 07:52:33,103 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 07:52:33,103 INFO [ADAMService] Sent response to ('192.168.1.165', 55456) (10 bytes)
+2025-11-07 07:52:33,103 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55456)
+2025-11-07 07:52:33,324 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55457)
+2025-11-07 07:52:33,324 INFO [ADAMService] Received command from ('192.168.1.165', 55457): construct_path
+2025-11-07 07:52:33,324 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 07:52:33,324 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 07:52:33,324 INFO [ADAMService] Sent response to ('192.168.1.165', 55457) (100 bytes)
+2025-11-07 07:52:33,324 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55457)
+2025-11-07 07:52:33,570 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55458)
+2025-11-07 07:52:33,571 INFO [ADAMService] Received command from ('192.168.1.165', 55458): check_measurement_trials
+2025-11-07 07:52:33,571 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 07:52:33,572 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 07:52:33,572 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 07:52:33,572 INFO [ADAMService] Sent response to ('192.168.1.165', 55458) (22 bytes)
+2025-11-07 07:52:33,573 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55458)
+2025-11-07 07:52:36,621 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55464)
+2025-11-07 07:52:36,622 INFO [ADAMService] Received command from ('192.168.1.165', 55464): log_workstation_task
+2025-11-07 07:52:36,622 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T07:52:36.289362 - Data: {'channel': 1, 'response_time': 0.329659, 'local_execution': True, 'attempt': 1}
+2025-11-07 07:52:36,622 INFO [ADAMService] Sent response to ('192.168.1.165', 55464) (95 bytes)
+2025-11-07 07:52:36,622 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55464)
+2025-11-07 07:52:37,172 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55466)
+2025-11-07 07:52:37,173 INFO [ADAMService] Received command from ('192.168.1.165', 55466): log_workstation_task
+2025-11-07 07:52:37,174 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:52:37.174758 - Data: {}
+2025-11-07 07:52:37,174 INFO [ADAMService] Sent response to ('192.168.1.165', 55466) (112 bytes)
+2025-11-07 07:52:37,174 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55466)
+2025-11-07 07:52:39,869 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55469)
+2025-11-07 07:52:39,870 INFO [ADAMService] Received command from ('192.168.1.165', 55469): log_workstation_task
+2025-11-07 07:52:39,870 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:52:39.870429 - Data: {}
+2025-11-07 07:52:39,870 INFO [ADAMService] Sent response to ('192.168.1.165', 55469) (112 bytes)
+2025-11-07 07:52:39,870 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55469)
+2025-11-07 07:52:41,089 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55472)
+2025-11-07 07:52:41,090 INFO [ADAMService] Received command from ('192.168.1.165', 55472): log_workstation_task
+2025-11-07 07:52:41,090 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:52:41.090679 - Data: {}
+2025-11-07 07:52:41,090 INFO [ADAMService] Sent response to ('192.168.1.165', 55472) (112 bytes)
+2025-11-07 07:52:41,090 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55472)
+2025-11-07 07:52:47,394 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55475)
+2025-11-07 07:52:47,408 INFO [ADAMService] Received command from ('192.168.1.165', 55475): log_workstation_task
+2025-11-07 07:52:47,408 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T07:52:47.172839 - Data: {'channel': 1, 'response_time': 0.21957, 'local_execution': True, 'attempt': 1}
+2025-11-07 07:52:47,408 INFO [ADAMService] Sent response to ('192.168.1.165', 55475) (95 bytes)
+2025-11-07 07:52:47,408 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55475)
+2025-11-07 07:52:48,012 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55477)
+2025-11-07 07:52:48,023 INFO [ADAMService] Received command from ('192.168.1.165', 55477): log_workstation_task
+2025-11-07 07:52:48,023 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T07:52:48.023586 - Data: {}
+2025-11-07 07:52:48,023 INFO [ADAMService] Sent response to ('192.168.1.165', 55477) (112 bytes)
+2025-11-07 07:52:48,023 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55477)
+2025-11-07 07:52:51,872 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55479)
+2025-11-07 07:52:51,872 INFO [ADAMService] Received command from ('192.168.1.165', 55479): log_workstation_task
+2025-11-07 07:52:51,872 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T07:52:51.541415 - Data: {'channel': 2, 'response_time': 0.328821, 'local_execution': True, 'attempt': 1}
+2025-11-07 07:52:51,872 INFO [ADAMService] Sent response to ('192.168.1.165', 55479) (95 bytes)
+2025-11-07 07:52:51,872 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55479)
+2025-11-07 08:03:06,242 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54146)
+2025-11-07 08:03:06,259 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54146)
+2025-11-07 08:03:06,260 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54147)
+2025-11-07 08:03:06,260 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54147)
+2025-11-07 08:03:06,429 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54148)
+2025-11-07 08:03:06,429 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54148)
+2025-11-07 08:03:06,619 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54149)
+2025-11-07 08:03:06,619 INFO [ADAMService] Received command from ('192.168.1.165', 54149): generate_timestamp_extension
+2025-11-07 08:03:06,619 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_08_03_06
+2025-11-07 08:03:06,619 INFO [ADAMService] Sent response to ('192.168.1.165', 54149) (19 bytes)
+2025-11-07 08:03:06,619 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54149)
+2025-11-07 08:03:06,842 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54150)
+2025-11-07 08:03:06,843 INFO [ADAMService] Received command from ('192.168.1.165', 54150): get_timestamp_subpath
+2025-11-07 08:03:06,843 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 08:03:06,843 INFO [ADAMService] Sent response to ('192.168.1.165', 54150) (10 bytes)
+2025-11-07 08:03:06,843 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54150)
+2025-11-07 08:03:07,060 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54152)
+2025-11-07 08:03:07,061 INFO [ADAMService] Received command from ('192.168.1.165', 54152): construct_path
+2025-11-07 08:03:07,061 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 08:03:07,061 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 08:03:07,061 INFO [ADAMService] Sent response to ('192.168.1.165', 54152) (100 bytes)
+2025-11-07 08:03:07,061 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54152)
+2025-11-07 08:03:07,297 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54153)
+2025-11-07 08:03:07,297 INFO [ADAMService] Received command from ('192.168.1.165', 54153): check_measurement_trials
+2025-11-07 08:03:07,297 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 08:03:07,298 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 08:03:07,299 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 08:03:07,299 INFO [ADAMService] Sent response to ('192.168.1.165', 54153) (22 bytes)
+2025-11-07 08:03:07,299 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54153)
+2025-11-07 08:03:10,336 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55212)
+2025-11-07 08:03:10,349 INFO [ADAMService] Received command from ('192.168.1.165', 55212): log_workstation_task
+2025-11-07 08:03:10,349 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T08:03:10.006065 - Data: {'channel': 1, 'response_time': 0.329218, 'local_execution': True, 'attempt': 1}
+2025-11-07 08:03:10,349 INFO [ADAMService] Sent response to ('192.168.1.165', 55212) (95 bytes)
+2025-11-07 08:03:10,349 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55212)
+2025-11-07 08:03:10,895 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55215)
+2025-11-07 08:03:10,896 INFO [ADAMService] Received command from ('192.168.1.165', 55215): log_workstation_task
+2025-11-07 08:03:10,896 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:03:10.896578 - Data: {}
+2025-11-07 08:03:10,896 INFO [ADAMService] Sent response to ('192.168.1.165', 55215) (112 bytes)
+2025-11-07 08:03:10,896 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55215)
+2025-11-07 08:03:13,626 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55218)
+2025-11-07 08:03:13,628 INFO [ADAMService] Received command from ('192.168.1.165', 55218): log_workstation_task
+2025-11-07 08:03:13,628 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:03:13.628439 - Data: {}
+2025-11-07 08:03:13,628 INFO [ADAMService] Sent response to ('192.168.1.165', 55218) (112 bytes)
+2025-11-07 08:03:13,629 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55218)
+2025-11-07 08:03:14,741 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55221)
+2025-11-07 08:03:14,742 INFO [ADAMService] Received command from ('192.168.1.165', 55221): log_workstation_task
+2025-11-07 08:03:14,742 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:03:14.742281 - Data: {}
+2025-11-07 08:03:14,742 INFO [ADAMService] Sent response to ('192.168.1.165', 55221) (112 bytes)
+2025-11-07 08:03:14,743 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55221)
+2025-11-07 08:03:20,906 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55222)
+2025-11-07 08:03:20,906 INFO [ADAMService] Received command from ('192.168.1.165', 55222): log_workstation_task
+2025-11-07 08:03:20,906 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T08:03:20.685020 - Data: {'channel': 1, 'response_time': 0.219136, 'local_execution': True, 'attempt': 1}
+2025-11-07 08:03:20,907 INFO [ADAMService] Sent response to ('192.168.1.165', 55222) (95 bytes)
+2025-11-07 08:03:20,907 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55222)
+2025-11-07 08:03:21,484 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55229)
+2025-11-07 08:03:21,486 INFO [ADAMService] Received command from ('192.168.1.165', 55229): log_workstation_task
+2025-11-07 08:03:21,486 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:03:21.486711 - Data: {}
+2025-11-07 08:03:21,487 INFO [ADAMService] Sent response to ('192.168.1.165', 55229) (112 bytes)
+2025-11-07 08:03:21,487 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55229)
+2025-11-07 08:03:25,290 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55230)
+2025-11-07 08:03:25,304 INFO [ADAMService] Received command from ('192.168.1.165', 55230): log_workstation_task
+2025-11-07 08:03:25,304 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T08:03:24.960256 - Data: {'channel': 2, 'response_time': 0.32961, 'local_execution': True, 'attempt': 1}
+2025-11-07 08:03:25,304 INFO [ADAMService] Sent response to ('192.168.1.165', 55230) (95 bytes)
+2025-11-07 08:03:25,304 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55230)
+2025-11-07 08:03:59,021 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55238)
+2025-11-07 08:03:59,022 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55239)
+2025-11-07 08:03:59,022 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55238)
+2025-11-07 08:03:59,039 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55239)
+2025-11-07 08:03:59,296 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55240)
+2025-11-07 08:03:59,297 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55240)
+2025-11-07 08:03:59,499 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55241)
+2025-11-07 08:03:59,500 INFO [ADAMService] Received command from ('192.168.1.165', 55241): generate_timestamp_extension
+2025-11-07 08:03:59,500 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_08_03_59
+2025-11-07 08:03:59,500 INFO [ADAMService] Sent response to ('192.168.1.165', 55241) (19 bytes)
+2025-11-07 08:03:59,500 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55241)
+2025-11-07 08:03:59,724 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55242)
+2025-11-07 08:03:59,724 INFO [ADAMService] Received command from ('192.168.1.165', 55242): get_timestamp_subpath
+2025-11-07 08:03:59,724 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 08:03:59,724 INFO [ADAMService] Sent response to ('192.168.1.165', 55242) (10 bytes)
+2025-11-07 08:03:59,724 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55242)
+2025-11-07 08:03:59,965 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55243)
+2025-11-07 08:03:59,965 INFO [ADAMService] Received command from ('192.168.1.165', 55243): construct_path
+2025-11-07 08:03:59,965 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 08:03:59,966 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 08:03:59,966 INFO [ADAMService] Sent response to ('192.168.1.165', 55243) (100 bytes)
+2025-11-07 08:03:59,966 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55243)
+2025-11-07 08:04:00,208 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55244)
+2025-11-07 08:04:00,208 INFO [ADAMService] Received command from ('192.168.1.165', 55244): check_measurement_trials
+2025-11-07 08:04:00,208 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 08:04:00,210 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 08:04:00,210 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 08:04:00,210 INFO [ADAMService] Sent response to ('192.168.1.165', 55244) (22 bytes)
+2025-11-07 08:04:00,210 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55244)
+2025-11-07 08:04:03,215 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55250)
+2025-11-07 08:04:03,215 INFO [ADAMService] Received command from ('192.168.1.165', 55250): log_workstation_task
+2025-11-07 08:04:03,215 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T08:04:02.883736 - Data: {'channel': 1, 'response_time': 0.329497, 'local_execution': True, 'attempt': 1}
+2025-11-07 08:04:03,216 INFO [ADAMService] Sent response to ('192.168.1.165', 55250) (95 bytes)
+2025-11-07 08:04:03,216 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55250)
+2025-11-07 08:04:03,798 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55252)
+2025-11-07 08:04:03,799 INFO [ADAMService] Received command from ('192.168.1.165', 55252): log_workstation_task
+2025-11-07 08:04:03,799 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:04:03.799435 - Data: {}
+2025-11-07 08:04:03,799 INFO [ADAMService] Sent response to ('192.168.1.165', 55252) (112 bytes)
+2025-11-07 08:04:03,800 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55252)
+2025-11-07 08:04:06,457 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55254)
+2025-11-07 08:04:06,479 INFO [ADAMService] Received command from ('192.168.1.165', 55254): log_workstation_task
+2025-11-07 08:04:06,479 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:04:06.479698 - Data: {}
+2025-11-07 08:04:06,479 INFO [ADAMService] Sent response to ('192.168.1.165', 55254) (112 bytes)
+2025-11-07 08:04:06,479 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55254)
+2025-11-07 08:04:07,673 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55257)
+2025-11-07 08:04:07,674 INFO [ADAMService] Received command from ('192.168.1.165', 55257): log_workstation_task
+2025-11-07 08:04:07,674 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:04:07.674082 - Data: {}
+2025-11-07 08:04:07,674 INFO [ADAMService] Sent response to ('192.168.1.165', 55257) (112 bytes)
+2025-11-07 08:04:07,674 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55257)
+2025-11-07 08:04:13,743 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55259)
+2025-11-07 08:04:13,756 INFO [ADAMService] Received command from ('192.168.1.165', 55259): log_workstation_task
+2025-11-07 08:04:13,756 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T08:04:13.523364 - Data: {'channel': 1, 'response_time': 0.218902, 'local_execution': True, 'attempt': 1}
+2025-11-07 08:04:13,756 INFO [ADAMService] Sent response to ('192.168.1.165', 55259) (95 bytes)
+2025-11-07 08:04:13,756 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55259)
+2025-11-07 08:04:14,237 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55261)
+2025-11-07 08:04:14,238 INFO [ADAMService] Received command from ('192.168.1.165', 55261): log_workstation_task
+2025-11-07 08:04:14,238 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:04:14.238008 - Data: {}
+2025-11-07 08:04:14,238 INFO [ADAMService] Sent response to ('192.168.1.165', 55261) (112 bytes)
+2025-11-07 08:04:14,238 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55261)
+2025-11-07 08:04:17,905 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55262)
+2025-11-07 08:04:17,918 INFO [ADAMService] Received command from ('192.168.1.165', 55262): log_workstation_task
+2025-11-07 08:04:17,918 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T08:04:17.577418 - Data: {'channel': 2, 'response_time': 0.325919, 'local_execution': True, 'attempt': 1}
+2025-11-07 08:04:17,918 INFO [ADAMService] Sent response to ('192.168.1.165', 55262) (95 bytes)
+2025-11-07 08:04:17,918 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55262)
+2025-11-07 08:04:42,684 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55267)
+2025-11-07 08:04:42,685 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55268)
+2025-11-07 08:04:42,686 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55267)
+2025-11-07 08:04:42,686 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55268)
+2025-11-07 08:04:42,998 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55269)
+2025-11-07 08:04:42,998 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55269)
+2025-11-07 08:04:43,180 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55270)
+2025-11-07 08:04:43,181 INFO [ADAMService] Received command from ('192.168.1.165', 55270): generate_timestamp_extension
+2025-11-07 08:04:43,181 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_08_04_43
+2025-11-07 08:04:43,181 INFO [ADAMService] Sent response to ('192.168.1.165', 55270) (19 bytes)
+2025-11-07 08:04:43,181 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55270)
+2025-11-07 08:04:43,398 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55271)
+2025-11-07 08:04:43,399 INFO [ADAMService] Received command from ('192.168.1.165', 55271): get_timestamp_subpath
+2025-11-07 08:04:43,399 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 08:04:43,399 INFO [ADAMService] Sent response to ('192.168.1.165', 55271) (10 bytes)
+2025-11-07 08:04:43,399 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55271)
+2025-11-07 08:04:43,612 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55272)
+2025-11-07 08:04:43,612 INFO [ADAMService] Received command from ('192.168.1.165', 55272): construct_path
+2025-11-07 08:04:43,613 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 08:04:43,613 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 08:04:43,613 INFO [ADAMService] Sent response to ('192.168.1.165', 55272) (100 bytes)
+2025-11-07 08:04:43,613 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55272)
+2025-11-07 08:04:43,841 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55273)
+2025-11-07 08:04:43,841 INFO [ADAMService] Received command from ('192.168.1.165', 55273): check_measurement_trials
+2025-11-07 08:04:43,842 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 08:04:43,842 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 08:04:43,842 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 08:04:43,842 INFO [ADAMService] Sent response to ('192.168.1.165', 55273) (22 bytes)
+2025-11-07 08:04:43,842 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55273)
+2025-11-07 08:04:46,840 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55281)
+2025-11-07 08:04:46,852 INFO [ADAMService] Received command from ('192.168.1.165', 55281): log_workstation_task
+2025-11-07 08:04:46,852 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T08:04:46.511582 - Data: {'channel': 1, 'response_time': 0.325763, 'local_execution': True, 'attempt': 1}
+2025-11-07 08:04:46,853 INFO [ADAMService] Sent response to ('192.168.1.165', 55281) (95 bytes)
+2025-11-07 08:04:46,853 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55281)
+2025-11-07 08:04:47,409 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55283)
+2025-11-07 08:04:47,409 INFO [ADAMService] Received command from ('192.168.1.165', 55283): log_workstation_task
+2025-11-07 08:04:47,410 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:04:47.410128 - Data: {}
+2025-11-07 08:04:47,410 INFO [ADAMService] Sent response to ('192.168.1.165', 55283) (112 bytes)
+2025-11-07 08:04:47,410 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55283)
+2025-11-07 08:04:50,195 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55285)
+2025-11-07 08:04:50,196 INFO [ADAMService] Received command from ('192.168.1.165', 55285): log_workstation_task
+2025-11-07 08:04:50,196 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:04:50.196494 - Data: {}
+2025-11-07 08:04:50,196 INFO [ADAMService] Sent response to ('192.168.1.165', 55285) (112 bytes)
+2025-11-07 08:04:50,196 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55285)
+2025-11-07 08:04:51,346 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55287)
+2025-11-07 08:04:51,346 INFO [ADAMService] Received command from ('192.168.1.165', 55287): log_workstation_task
+2025-11-07 08:04:51,346 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:04:51.346677 - Data: {}
+2025-11-07 08:04:51,347 INFO [ADAMService] Sent response to ('192.168.1.165', 55287) (112 bytes)
+2025-11-07 08:04:51,347 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55287)
+2025-11-07 08:04:57,416 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55288)
+2025-11-07 08:04:57,417 INFO [ADAMService] Received command from ('192.168.1.165', 55288): log_workstation_task
+2025-11-07 08:04:57,417 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T08:04:57.194546 - Data: {'channel': 1, 'response_time': 0.219481, 'local_execution': True, 'attempt': 1}
+2025-11-07 08:04:57,417 INFO [ADAMService] Sent response to ('192.168.1.165', 55288) (95 bytes)
+2025-11-07 08:04:57,417 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55288)
+2025-11-07 08:04:57,983 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55290)
+2025-11-07 08:04:57,983 INFO [ADAMService] Received command from ('192.168.1.165', 55290): log_workstation_task
+2025-11-07 08:04:57,984 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:04:57.984175 - Data: {}
+2025-11-07 08:04:57,984 INFO [ADAMService] Sent response to ('192.168.1.165', 55290) (112 bytes)
+2025-11-07 08:04:57,984 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55290)
+2025-11-07 08:05:01,664 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55291)
+2025-11-07 08:05:01,664 INFO [ADAMService] Received command from ('192.168.1.165', 55291): log_workstation_task
+2025-11-07 08:05:01,664 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T08:05:01.333080 - Data: {'channel': 2, 'response_time': 0.329242, 'local_execution': True, 'attempt': 1}
+2025-11-07 08:05:01,664 INFO [ADAMService] Sent response to ('192.168.1.165', 55291) (95 bytes)
+2025-11-07 08:05:01,664 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55291)
+2025-11-07 08:07:21,980 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55329)
+2025-11-07 08:07:21,981 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55329)
+2025-11-07 08:07:21,981 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55330)
+2025-11-07 08:07:21,993 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55330)
+2025-11-07 08:07:22,275 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55331)
+2025-11-07 08:07:22,276 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55331)
+2025-11-07 08:07:22,483 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55332)
+2025-11-07 08:07:22,484 INFO [ADAMService] Received command from ('192.168.1.165', 55332): generate_timestamp_extension
+2025-11-07 08:07:22,485 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_08_07_22
+2025-11-07 08:07:22,485 INFO [ADAMService] Sent response to ('192.168.1.165', 55332) (19 bytes)
+2025-11-07 08:07:22,485 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55332)
+2025-11-07 08:07:22,709 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55333)
+2025-11-07 08:07:22,709 INFO [ADAMService] Received command from ('192.168.1.165', 55333): get_timestamp_subpath
+2025-11-07 08:07:22,710 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 08:07:22,710 INFO [ADAMService] Sent response to ('192.168.1.165', 55333) (10 bytes)
+2025-11-07 08:07:22,710 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55333)
+2025-11-07 08:07:22,931 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55334)
+2025-11-07 08:07:22,932 INFO [ADAMService] Received command from ('192.168.1.165', 55334): construct_path
+2025-11-07 08:07:22,932 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 08:07:22,932 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 08:07:22,932 INFO [ADAMService] Sent response to ('192.168.1.165', 55334) (100 bytes)
+2025-11-07 08:07:22,932 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55334)
+2025-11-07 08:07:23,174 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55335)
+2025-11-07 08:07:23,175 INFO [ADAMService] Received command from ('192.168.1.165', 55335): check_measurement_trials
+2025-11-07 08:07:23,175 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 08:07:23,176 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 08:07:23,177 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 08:07:23,177 INFO [ADAMService] Sent response to ('192.168.1.165', 55335) (22 bytes)
+2025-11-07 08:07:23,177 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55335)
+2025-11-07 08:07:26,126 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55342)
+2025-11-07 08:07:26,141 INFO [ADAMService] Received command from ('192.168.1.165', 55342): log_workstation_task
+2025-11-07 08:07:26,141 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T08:07:25.799977 - Data: {'channel': 1, 'response_time': 0.325633, 'local_execution': True, 'attempt': 1}
+2025-11-07 08:07:26,141 INFO [ADAMService] Sent response to ('192.168.1.165', 55342) (95 bytes)
+2025-11-07 08:07:26,141 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55342)
+2025-11-07 08:07:26,572 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55344)
+2025-11-07 08:07:26,592 INFO [ADAMService] Received command from ('192.168.1.165', 55344): log_workstation_task
+2025-11-07 08:07:26,592 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:07:26.592567 - Data: {}
+2025-11-07 08:07:26,592 INFO [ADAMService] Sent response to ('192.168.1.165', 55344) (112 bytes)
+2025-11-07 08:07:26,593 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55344)
+2025-11-07 08:07:29,260 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65356)
+2025-11-07 08:07:29,262 INFO [ADAMService] Received command from ('192.168.1.165', 65356): log_workstation_task
+2025-11-07 08:07:29,262 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:07:29.262052 - Data: {}
+2025-11-07 08:07:29,262 INFO [ADAMService] Sent response to ('192.168.1.165', 65356) (112 bytes)
+2025-11-07 08:07:29,262 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65356)
+2025-11-07 08:07:30,562 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65358)
+2025-11-07 08:07:30,562 INFO [ADAMService] Received command from ('192.168.1.165', 65358): log_workstation_task
+2025-11-07 08:07:30,563 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:07:30.563762 - Data: {}
+2025-11-07 08:07:30,563 INFO [ADAMService] Sent response to ('192.168.1.165', 65358) (112 bytes)
+2025-11-07 08:07:30,563 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65358)
+2025-11-07 08:07:36,803 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65359)
+2025-11-07 08:07:36,804 INFO [ADAMService] Received command from ('192.168.1.165', 65359): log_workstation_task
+2025-11-07 08:07:36,804 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T08:07:36.582098 - Data: {'channel': 1, 'response_time': 0.219641, 'local_execution': True, 'attempt': 1}
+2025-11-07 08:07:36,804 INFO [ADAMService] Sent response to ('192.168.1.165', 65359) (95 bytes)
+2025-11-07 08:07:36,804 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65359)
+2025-11-07 08:07:37,276 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65366)
+2025-11-07 08:07:37,277 INFO [ADAMService] Received command from ('192.168.1.165', 65366): log_workstation_task
+2025-11-07 08:07:37,277 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T08:07:37.277041 - Data: {}
+2025-11-07 08:07:37,277 INFO [ADAMService] Sent response to ('192.168.1.165', 65366) (112 bytes)
+2025-11-07 08:07:37,277 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65366)
+2025-11-07 08:07:40,951 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65367)
+2025-11-07 08:07:40,952 INFO [ADAMService] Received command from ('192.168.1.165', 65367): log_workstation_task
+2025-11-07 08:07:40,952 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T08:07:40.621085 - Data: {'channel': 2, 'response_time': 0.329286, 'local_execution': True, 'attempt': 1}
+2025-11-07 08:07:40,952 INFO [ADAMService] Sent response to ('192.168.1.165', 65367) (95 bytes)
+2025-11-07 08:07:40,953 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65367)
+2025-11-07 10:04:56,382 INFO [ADAMService] Workstation connection from ('192.168.1.165', 51020)
+2025-11-07 10:04:56,397 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 51020)
+2025-11-07 10:04:56,398 INFO [ADAMService] Workstation connection from ('192.168.1.165', 51021)
+2025-11-07 10:04:56,398 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 51021)
+2025-11-07 10:04:56,506 INFO [ADAMService] Workstation connection from ('192.168.1.165', 51022)
+2025-11-07 10:04:56,507 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 51022)
+2025-11-07 10:04:59,146 INFO [ADAMService] Workstation connection from ('192.168.1.165', 51025)
+2025-11-07 10:04:59,146 INFO [ADAMService] Received command from ('192.168.1.165', 51025): generate_timestamp_extension
+2025-11-07 10:04:59,147 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_10_04_59
+2025-11-07 10:04:59,147 INFO [ADAMService] Sent response to ('192.168.1.165', 51025) (19 bytes)
+2025-11-07 10:04:59,147 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 51025)
+2025-11-07 10:04:59,342 INFO [ADAMService] Workstation connection from ('192.168.1.165', 51027)
+2025-11-07 10:04:59,343 INFO [ADAMService] Received command from ('192.168.1.165', 51027): get_timestamp_subpath
+2025-11-07 10:04:59,343 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 10:04:59,343 INFO [ADAMService] Sent response to ('192.168.1.165', 51027) (10 bytes)
+2025-11-07 10:04:59,343 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 51027)
+2025-11-07 10:04:59,588 INFO [ADAMService] Workstation connection from ('192.168.1.165', 51028)
+2025-11-07 10:04:59,588 INFO [ADAMService] Received command from ('192.168.1.165', 51028): construct_path
+2025-11-07 10:04:59,588 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 10:04:59,589 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 10:04:59,589 INFO [ADAMService] Sent response to ('192.168.1.165', 51028) (100 bytes)
+2025-11-07 10:04:59,589 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 51028)
+2025-11-07 10:04:59,806 INFO [ADAMService] Workstation connection from ('192.168.1.165', 51029)
+2025-11-07 10:04:59,807 INFO [ADAMService] Received command from ('192.168.1.165', 51029): check_measurement_trials
+2025-11-07 10:04:59,807 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 10:04:59,835 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 10:04:59,835 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 10:04:59,835 INFO [ADAMService] Sent response to ('192.168.1.165', 51029) (22 bytes)
+2025-11-07 10:04:59,836 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 51029)
+2025-11-07 10:05:03,191 INFO [ADAMService] Workstation connection from ('192.168.1.165', 51036)
+2025-11-07 10:05:03,191 INFO [ADAMService] Received command from ('192.168.1.165', 51036): log_workstation_task
+2025-11-07 10:05:03,192 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:05:02.862923 - Data: {'channel': 1, 'response_time': 0.32681, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:05:03,192 INFO [ADAMService] Sent response to ('192.168.1.165', 51036) (95 bytes)
+2025-11-07 10:05:03,192 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 51036)
+2025-11-07 10:05:03,730 INFO [ADAMService] Workstation connection from ('192.168.1.165', 51038)
+2025-11-07 10:05:03,748 INFO [ADAMService] Received command from ('192.168.1.165', 51038): log_workstation_task
+2025-11-07 10:05:03,748 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:05:03.748795 - Data: {}
+2025-11-07 10:05:03,748 INFO [ADAMService] Sent response to ('192.168.1.165', 51038) (112 bytes)
+2025-11-07 10:05:03,748 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 51038)
+2025-11-07 10:05:06,697 INFO [ADAMService] Workstation connection from ('192.168.1.165', 51041)
+2025-11-07 10:05:06,706 INFO [ADAMService] Received command from ('192.168.1.165', 51041): log_workstation_task
+2025-11-07 10:05:06,706 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:05:06.706796 - Data: {}
+2025-11-07 10:05:06,706 INFO [ADAMService] Sent response to ('192.168.1.165', 51041) (112 bytes)
+2025-11-07 10:05:06,706 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 51041)
+2025-11-07 10:05:07,933 INFO [ADAMService] Workstation connection from ('192.168.1.165', 51044)
+2025-11-07 10:05:07,934 INFO [ADAMService] Received command from ('192.168.1.165', 51044): log_workstation_task
+2025-11-07 10:05:07,934 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:05:07.934458 - Data: {}
+2025-11-07 10:05:07,934 INFO [ADAMService] Sent response to ('192.168.1.165', 51044) (112 bytes)
+2025-11-07 10:05:07,934 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 51044)
+2025-11-07 10:05:14,199 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64016)
+2025-11-07 10:05:14,199 INFO [ADAMService] Received command from ('192.168.1.165', 64016): log_workstation_task
+2025-11-07 10:05:14,199 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:05:13.976213 - Data: {'channel': 1, 'response_time': 0.221199, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:05:14,199 INFO [ADAMService] Sent response to ('192.168.1.165', 64016) (95 bytes)
+2025-11-07 10:05:14,199 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64016)
+2025-11-07 10:05:14,678 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64018)
+2025-11-07 10:05:14,693 INFO [ADAMService] Received command from ('192.168.1.165', 64018): log_workstation_task
+2025-11-07 10:05:14,693 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:05:14.693991 - Data: {}
+2025-11-07 10:05:14,693 INFO [ADAMService] Sent response to ('192.168.1.165', 64018) (112 bytes)
+2025-11-07 10:05:14,694 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64018)
+2025-11-07 10:05:18,794 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64023)
+2025-11-07 10:05:18,807 INFO [ADAMService] Received command from ('192.168.1.165', 64023): log_workstation_task
+2025-11-07 10:05:18,807 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:05:18.464377 - Data: {'channel': 2, 'response_time': 0.328124, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:05:18,807 INFO [ADAMService] Sent response to ('192.168.1.165', 64023) (95 bytes)
+2025-11-07 10:05:18,807 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64023)
+2025-11-07 10:05:31,197 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64030)
+2025-11-07 10:05:31,199 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64031)
+2025-11-07 10:05:31,199 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64030)
+2025-11-07 10:05:31,223 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64031)
+2025-11-07 10:05:31,476 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64033)
+2025-11-07 10:05:31,476 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64033)
+2025-11-07 10:05:31,682 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64034)
+2025-11-07 10:05:31,682 INFO [ADAMService] Received command from ('192.168.1.165', 64034): generate_timestamp_extension
+2025-11-07 10:05:31,682 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_10_05_31
+2025-11-07 10:05:31,682 INFO [ADAMService] Sent response to ('192.168.1.165', 64034) (19 bytes)
+2025-11-07 10:05:31,682 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64034)
+2025-11-07 10:05:31,913 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64035)
+2025-11-07 10:05:31,914 INFO [ADAMService] Received command from ('192.168.1.165', 64035): get_timestamp_subpath
+2025-11-07 10:05:31,914 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 10:05:31,914 INFO [ADAMService] Sent response to ('192.168.1.165', 64035) (10 bytes)
+2025-11-07 10:05:31,914 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64035)
+2025-11-07 10:05:32,141 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64036)
+2025-11-07 10:05:32,141 INFO [ADAMService] Received command from ('192.168.1.165', 64036): construct_path
+2025-11-07 10:05:32,141 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 10:05:32,141 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 10:05:32,141 INFO [ADAMService] Sent response to ('192.168.1.165', 64036) (100 bytes)
+2025-11-07 10:05:32,141 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64036)
+2025-11-07 10:05:32,399 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64037)
+2025-11-07 10:05:32,399 INFO [ADAMService] Received command from ('192.168.1.165', 64037): check_measurement_trials
+2025-11-07 10:05:32,399 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 10:05:32,401 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 10:05:32,401 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 10:05:32,401 INFO [ADAMService] Sent response to ('192.168.1.165', 64037) (22 bytes)
+2025-11-07 10:05:32,401 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64037)
+2025-11-07 10:05:35,321 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64043)
+2025-11-07 10:05:35,335 INFO [ADAMService] Received command from ('192.168.1.165', 64043): log_workstation_task
+2025-11-07 10:05:35,335 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:05:34.990061 - Data: {'channel': 1, 'response_time': 0.330406, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:05:35,336 INFO [ADAMService] Sent response to ('192.168.1.165', 64043) (95 bytes)
+2025-11-07 10:05:35,336 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64043)
+2025-11-07 10:05:35,771 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64045)
+2025-11-07 10:05:35,771 INFO [ADAMService] Received command from ('192.168.1.165', 64045): log_workstation_task
+2025-11-07 10:05:35,772 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:05:35.772806 - Data: {}
+2025-11-07 10:05:35,772 INFO [ADAMService] Sent response to ('192.168.1.165', 64045) (112 bytes)
+2025-11-07 10:05:35,772 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64045)
+2025-11-07 10:05:38,522 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64047)
+2025-11-07 10:05:38,523 INFO [ADAMService] Received command from ('192.168.1.165', 64047): log_workstation_task
+2025-11-07 10:05:38,523 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:05:38.523188 - Data: {}
+2025-11-07 10:05:38,523 INFO [ADAMService] Sent response to ('192.168.1.165', 64047) (112 bytes)
+2025-11-07 10:05:38,523 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64047)
+2025-11-07 10:05:39,606 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64049)
+2025-11-07 10:05:39,629 INFO [ADAMService] Received command from ('192.168.1.165', 64049): log_workstation_task
+2025-11-07 10:05:39,629 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:05:39.629220 - Data: {}
+2025-11-07 10:05:39,629 INFO [ADAMService] Sent response to ('192.168.1.165', 64049) (112 bytes)
+2025-11-07 10:05:39,629 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64049)
+2025-11-07 10:05:45,858 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64051)
+2025-11-07 10:05:45,859 INFO [ADAMService] Received command from ('192.168.1.165', 64051): log_workstation_task
+2025-11-07 10:05:45,859 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:05:45.637945 - Data: {'channel': 1, 'response_time': 0.219063, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:05:45,860 INFO [ADAMService] Sent response to ('192.168.1.165', 64051) (95 bytes)
+2025-11-07 10:05:45,860 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64051)
+2025-11-07 10:05:46,419 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64053)
+2025-11-07 10:05:46,433 INFO [ADAMService] Received command from ('192.168.1.165', 64053): log_workstation_task
+2025-11-07 10:05:46,433 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:05:46.433323 - Data: {}
+2025-11-07 10:05:46,433 INFO [ADAMService] Sent response to ('192.168.1.165', 64053) (112 bytes)
+2025-11-07 10:05:46,433 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64053)
+2025-11-07 10:05:50,058 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58524)
+2025-11-07 10:05:50,059 INFO [ADAMService] Received command from ('192.168.1.165', 58524): log_workstation_task
+2025-11-07 10:05:50,059 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:05:49.723780 - Data: {'channel': 2, 'response_time': 0.332733, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:05:50,059 INFO [ADAMService] Sent response to ('192.168.1.165', 58524) (95 bytes)
+2025-11-07 10:05:50,059 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58524)
+2025-11-07 10:05:55,695 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58525)
+2025-11-07 10:05:55,697 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58526)
+2025-11-07 10:05:55,697 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58525)
+2025-11-07 10:05:55,707 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58526)
+2025-11-07 10:05:56,039 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58527)
+2025-11-07 10:05:56,040 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58527)
+2025-11-07 10:05:56,248 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58528)
+2025-11-07 10:05:56,248 INFO [ADAMService] Received command from ('192.168.1.165', 58528): generate_timestamp_extension
+2025-11-07 10:05:56,248 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_10_05_56
+2025-11-07 10:05:56,248 INFO [ADAMService] Sent response to ('192.168.1.165', 58528) (19 bytes)
+2025-11-07 10:05:56,249 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58528)
+2025-11-07 10:05:56,469 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58529)
+2025-11-07 10:05:56,469 INFO [ADAMService] Received command from ('192.168.1.165', 58529): get_timestamp_subpath
+2025-11-07 10:05:56,469 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 10:05:56,470 INFO [ADAMService] Sent response to ('192.168.1.165', 58529) (10 bytes)
+2025-11-07 10:05:56,470 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58529)
+2025-11-07 10:05:56,714 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58530)
+2025-11-07 10:05:56,715 INFO [ADAMService] Received command from ('192.168.1.165', 58530): construct_path
+2025-11-07 10:05:56,715 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 10:05:56,715 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 10:05:56,715 INFO [ADAMService] Sent response to ('192.168.1.165', 58530) (100 bytes)
+2025-11-07 10:05:56,715 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58530)
+2025-11-07 10:05:56,949 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58531)
+2025-11-07 10:05:56,949 INFO [ADAMService] Received command from ('192.168.1.165', 58531): check_measurement_trials
+2025-11-07 10:05:56,949 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 10:05:56,950 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 10:05:56,950 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 10:05:56,950 INFO [ADAMService] Sent response to ('192.168.1.165', 58531) (22 bytes)
+2025-11-07 10:05:56,950 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58531)
+2025-11-07 10:05:59,954 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58537)
+2025-11-07 10:05:59,956 INFO [ADAMService] Received command from ('192.168.1.165', 58537): log_workstation_task
+2025-11-07 10:05:59,956 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:05:59.625142 - Data: {'channel': 1, 'response_time': 0.328763, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:05:59,956 INFO [ADAMService] Sent response to ('192.168.1.165', 58537) (95 bytes)
+2025-11-07 10:05:59,956 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58537)
+2025-11-07 10:06:00,441 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58539)
+2025-11-07 10:06:00,442 INFO [ADAMService] Received command from ('192.168.1.165', 58539): log_workstation_task
+2025-11-07 10:06:00,442 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:06:00.442528 - Data: {}
+2025-11-07 10:06:00,442 INFO [ADAMService] Sent response to ('192.168.1.165', 58539) (112 bytes)
+2025-11-07 10:06:00,442 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58539)
+2025-11-07 10:06:03,170 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58541)
+2025-11-07 10:06:03,170 INFO [ADAMService] Received command from ('192.168.1.165', 58541): log_workstation_task
+2025-11-07 10:06:03,171 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:06:03.171324 - Data: {}
+2025-11-07 10:06:03,171 INFO [ADAMService] Sent response to ('192.168.1.165', 58541) (112 bytes)
+2025-11-07 10:06:03,171 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58541)
+2025-11-07 10:06:04,388 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58543)
+2025-11-07 10:06:04,388 INFO [ADAMService] Received command from ('192.168.1.165', 58543): log_workstation_task
+2025-11-07 10:06:04,389 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:06:04.388761 - Data: {}
+2025-11-07 10:06:04,389 INFO [ADAMService] Sent response to ('192.168.1.165', 58543) (112 bytes)
+2025-11-07 10:06:04,389 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58543)
+2025-11-07 10:06:10,538 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58544)
+2025-11-07 10:06:10,540 INFO [ADAMService] Received command from ('192.168.1.165', 58544): log_workstation_task
+2025-11-07 10:06:10,540 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:06:10.316685 - Data: {'channel': 1, 'response_time': 0.220574, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:06:10,541 INFO [ADAMService] Sent response to ('192.168.1.165', 58544) (95 bytes)
+2025-11-07 10:06:10,541 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58544)
+2025-11-07 10:06:11,092 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58546)
+2025-11-07 10:06:11,093 INFO [ADAMService] Received command from ('192.168.1.165', 58546): log_workstation_task
+2025-11-07 10:06:11,093 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:06:11.093106 - Data: {}
+2025-11-07 10:06:11,093 INFO [ADAMService] Sent response to ('192.168.1.165', 58546) (112 bytes)
+2025-11-07 10:06:11,093 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58546)
+2025-11-07 10:06:14,747 INFO [ADAMService] Workstation connection from ('192.168.1.165', 58547)
+2025-11-07 10:06:14,760 INFO [ADAMService] Received command from ('192.168.1.165', 58547): log_workstation_task
+2025-11-07 10:06:14,760 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:06:14.415301 - Data: {'channel': 2, 'response_time': 0.330293, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:06:14,760 INFO [ADAMService] Sent response to ('192.168.1.165', 58547) (95 bytes)
+2025-11-07 10:06:14,760 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 58547)
+2025-11-07 10:21:03,122 INFO [ADAMService] Workstation connection from ('192.168.1.165', 50614)
+2025-11-07 10:21:03,123 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 50614)
+2025-11-07 10:21:03,124 INFO [ADAMService] Workstation connection from ('192.168.1.165', 50615)
+2025-11-07 10:21:03,124 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 50615)
+2025-11-07 10:21:03,238 INFO [ADAMService] Workstation connection from ('192.168.1.165', 50616)
+2025-11-07 10:21:03,239 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 50616)
+2025-11-07 10:21:05,801 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55953)
+2025-11-07 10:21:05,802 INFO [ADAMService] Received command from ('192.168.1.165', 55953): generate_timestamp_extension
+2025-11-07 10:21:05,802 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_10_21_05
+2025-11-07 10:21:05,802 INFO [ADAMService] Sent response to ('192.168.1.165', 55953) (19 bytes)
+2025-11-07 10:21:05,802 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55953)
+2025-11-07 10:21:06,062 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55954)
+2025-11-07 10:21:06,063 INFO [ADAMService] Received command from ('192.168.1.165', 55954): get_timestamp_subpath
+2025-11-07 10:21:06,063 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 10:21:06,063 INFO [ADAMService] Sent response to ('192.168.1.165', 55954) (10 bytes)
+2025-11-07 10:21:06,063 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55954)
+2025-11-07 10:21:06,285 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55956)
+2025-11-07 10:21:06,286 INFO [ADAMService] Received command from ('192.168.1.165', 55956): construct_path
+2025-11-07 10:21:06,286 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 10:21:06,286 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 10:21:06,287 INFO [ADAMService] Sent response to ('192.168.1.165', 55956) (100 bytes)
+2025-11-07 10:21:06,287 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55956)
+2025-11-07 10:21:06,518 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55957)
+2025-11-07 10:21:06,519 INFO [ADAMService] Received command from ('192.168.1.165', 55957): check_measurement_trials
+2025-11-07 10:21:06,519 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 10:21:06,549 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 10:21:06,549 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 10:21:06,549 INFO [ADAMService] Sent response to ('192.168.1.165', 55957) (22 bytes)
+2025-11-07 10:21:06,549 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55957)
+2025-11-07 10:21:09,861 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55963)
+2025-11-07 10:21:09,861 INFO [ADAMService] Received command from ('192.168.1.165', 55963): log_workstation_task
+2025-11-07 10:21:09,861 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:21:09.531509 - Data: {'channel': 1, 'response_time': 0.326616, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:21:09,862 INFO [ADAMService] Sent response to ('192.168.1.165', 55963) (95 bytes)
+2025-11-07 10:21:09,862 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55963)
+2025-11-07 10:21:10,306 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55965)
+2025-11-07 10:21:10,306 INFO [ADAMService] Received command from ('192.168.1.165', 55965): log_workstation_task
+2025-11-07 10:21:10,306 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:21:10.306861 - Data: {}
+2025-11-07 10:21:10,308 INFO [ADAMService] Sent response to ('192.168.1.165', 55965) (112 bytes)
+2025-11-07 10:21:10,308 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55965)
+2025-11-07 10:21:13,122 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55969)
+2025-11-07 10:21:13,145 INFO [ADAMService] Received command from ('192.168.1.165', 55969): log_workstation_task
+2025-11-07 10:21:13,145 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:21:13.145730 - Data: {}
+2025-11-07 10:21:13,146 INFO [ADAMService] Sent response to ('192.168.1.165', 55969) (112 bytes)
+2025-11-07 10:21:13,146 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55969)
+2025-11-07 10:21:14,453 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55971)
+2025-11-07 10:21:14,453 INFO [ADAMService] Received command from ('192.168.1.165', 55971): log_workstation_task
+2025-11-07 10:21:14,454 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:21:14.454879 - Data: {}
+2025-11-07 10:21:14,454 INFO [ADAMService] Sent response to ('192.168.1.165', 55971) (112 bytes)
+2025-11-07 10:21:14,454 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55971)
+2025-11-07 10:21:20,656 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55974)
+2025-11-07 10:21:20,669 INFO [ADAMService] Received command from ('192.168.1.165', 55974): log_workstation_task
+2025-11-07 10:21:20,669 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:21:20.434165 - Data: {'channel': 1, 'response_time': 0.219915, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:21:20,669 INFO [ADAMService] Sent response to ('192.168.1.165', 55974) (95 bytes)
+2025-11-07 10:21:20,669 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55974)
+2025-11-07 10:21:21,130 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55976)
+2025-11-07 10:21:21,131 INFO [ADAMService] Received command from ('192.168.1.165', 55976): log_workstation_task
+2025-11-07 10:21:21,131 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:21:21.131341 - Data: {}
+2025-11-07 10:21:21,132 INFO [ADAMService] Sent response to ('192.168.1.165', 55976) (112 bytes)
+2025-11-07 10:21:21,132 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55976)
+2025-11-07 10:21:24,804 INFO [ADAMService] Workstation connection from ('192.168.1.165', 55978)
+2025-11-07 10:21:24,805 INFO [ADAMService] Received command from ('192.168.1.165', 55978): log_workstation_task
+2025-11-07 10:21:24,805 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:21:24.475080 - Data: {'channel': 2, 'response_time': 0.327326, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:21:24,805 INFO [ADAMService] Sent response to ('192.168.1.165', 55978) (95 bytes)
+2025-11-07 10:21:24,805 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 55978)
+2025-11-07 10:21:30,908 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:31,919 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:32,924 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:33,936 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:34,950 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:35,961 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:36,974 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:37,991 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:39,005 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:40,020 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:41,034 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:42,049 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:43,059 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:44,068 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:45,070 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:46,082 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:47,095 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:48,111 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:49,125 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:50,136 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:51,152 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:52,166 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:53,167 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:54,178 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:55,188 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:56,189 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:57,204 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:58,219 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:21:59,233 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:00,245 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:01,258 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:02,270 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:03,271 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:04,285 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:05,298 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:06,313 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:07,325 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:08,336 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:09,353 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:10,355 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:11,368 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:12,379 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:13,395 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:14,404 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:15,419 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:16,420 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:17,431 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:18,444 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:18,907 INFO [root] ----------------------------------- ADAM Audio Service started
+2025-11-07 10:22:19,456 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:20,465 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:21,477 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:22,491 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:23,508 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:24,518 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:25,529 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:26,537 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:27,538 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:28,540 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:29,552 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:30,553 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:31,566 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:32,575 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:33,587 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:34,341 INFO [root] ----------------------------------- ADAM Audio Service started
+2025-11-07 10:22:34,602 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:35,617 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:36,632 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:37,643 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:38,655 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:39,669 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:40,681 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:41,685 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:42,698 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:43,711 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:44,718 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:45,726 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:46,737 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:47,750 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:48,767 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:49,778 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:50,790 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:51,799 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:52,809 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:53,825 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:54,840 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:55,851 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:56,866 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:57,878 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:58,890 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:22:59,900 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:00,909 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:01,910 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:02,923 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:03,779 INFO [root] ----------------------------------- ADAM Audio Service started
+2025-11-07 10:23:03,937 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:04,947 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:05,948 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:06,960 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:07,975 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:08,986 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:10,001 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:11,015 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:12,027 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:13,031 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:14,040 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:15,053 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:16,061 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:17,071 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:18,083 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:19,096 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:20,109 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:21,125 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:22,136 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:23,148 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:24,163 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:29,302 INFO [root] ----------------------------------- ADAM Audio Service started
+2025-11-07 10:23:29,308 ERROR [ADAMService] Could not determine service connection info: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:29,309 INFO [ADAMService] Discovery service started on port 65433 (interval: 2s)
+2025-11-07 10:23:29,309 INFO [ADAMService] Starting discovery broadcast loop...
+2025-11-07 10:23:29,309 INFO [ADAMService] ADAM Audio Service started
+2025-11-07 10:23:29,309 INFO [ADAMService] ADAM Audio Service is running...
+2025-11-07 10:23:29,310 INFO [ADAMService] Waiting for workstation connections...
+2025-11-07 10:23:29,310 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:30,320 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:31,335 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:32,350 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:33,364 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:34,376 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:35,382 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:36,393 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:37,397 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:38,410 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:39,423 ERROR [ADAMService] Discovery broadcast error: [WinError 10051] A socket operation was attempted to an unreachable network
+2025-11-07 10:23:59,494 INFO [root] ----------------------------------- ADAM Audio Service started
+2025-11-07 10:23:59,498 INFO [ADAMService] === ADAM AUDIO SERVICE INFO ===
+2025-11-07 10:23:59,498 INFO [ADAMService] Company: ADAM Audio
+2025-11-07 10:23:59,498 INFO [ADAMService] Service: Production Support Service
+2025-11-07 10:23:59,498 INFO [ADAMService] Service Name: ADAMService
+2025-11-07 10:23:59,498 INFO [ADAMService] Hostname: Dell-Thilo
+2025-11-07 10:23:59,498 INFO [ADAMService] Service Port: 65432
+2025-11-07 10:23:59,498 INFO [ADAMService] Discovery Port: 65433
+2025-11-07 10:23:59,498 INFO [ADAMService] Discovery Interval: 2 seconds
+2025-11-07 10:23:59,498 INFO [ADAMService] Primary IP: 192.168.1.165
+2025-11-07 10:23:59,498 INFO [ADAMService] Host binding: 0.0.0.0 (0.0.0.0 = all interfaces)
+2025-11-07 10:23:59,498 INFO [ADAMService] Discovery service: ENABLED
+2025-11-07 10:23:59,498 INFO [ADAMService] Note: OCA device communication handled locally by workstations
+2025-11-07 10:23:59,498 INFO [ADAMService] Workstation usage examples:
+2025-11-07 10:23:59,498 INFO [ADAMService]   Helper functions: python adam_workstation.py --host 192.168.1.165 generate_timestamp_extension
+2025-11-07 10:23:59,498 INFO [ADAMService]   Biquad calculation: python adam_workstation.py --host 192.168.1.165 get_biquad_coefficients bell 3.0 1000 1.4 48000
+2025-11-07 10:23:59,498 INFO [ADAMService]   Auto-discovery: python adam_connector.py --find --service-name ADAMService
+2025-11-07 10:23:59,498 INFO [ADAMService] ================================
+2025-11-07 10:23:59,499 INFO [ADAMService] Discovery service started on port 65433 (interval: 2s)
+2025-11-07 10:23:59,499 INFO [ADAMService] ADAM Audio Service started
+2025-11-07 10:23:59,499 INFO [ADAMService] ADAM Audio Service is running...
+2025-11-07 10:23:59,499 INFO [ADAMService] Waiting for workstation connections...
+2025-11-07 10:23:59,499 INFO [ADAMService] Starting discovery broadcast loop...
+2025-11-07 10:23:59,552 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54639)
+2025-11-07 10:23:59,553 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54639)
+2025-11-07 10:23:59,553 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54643)
+2025-11-07 10:23:59,554 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54643)
+2025-11-07 10:23:59,735 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54644)
+2025-11-07 10:23:59,736 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54644)
+2025-11-07 10:23:59,936 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54645)
+2025-11-07 10:23:59,936 INFO [ADAMService] Received command from ('192.168.1.165', 54645): generate_timestamp_extension
+2025-11-07 10:23:59,936 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_10_23_59
+2025-11-07 10:23:59,936 INFO [ADAMService] Sent response to ('192.168.1.165', 54645) (19 bytes)
+2025-11-07 10:23:59,936 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54645)
+2025-11-07 10:24:00,162 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54646)
+2025-11-07 10:24:00,162 INFO [ADAMService] Received command from ('192.168.1.165', 54646): get_timestamp_subpath
+2025-11-07 10:24:00,162 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 10:24:00,162 INFO [ADAMService] Sent response to ('192.168.1.165', 54646) (10 bytes)
+2025-11-07 10:24:00,162 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54646)
+2025-11-07 10:24:00,385 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54647)
+2025-11-07 10:24:00,386 INFO [ADAMService] Received command from ('192.168.1.165', 54647): construct_path
+2025-11-07 10:24:00,386 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 10:24:00,386 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 10:24:00,386 INFO [ADAMService] Sent response to ('192.168.1.165', 54647) (100 bytes)
+2025-11-07 10:24:00,386 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54647)
+2025-11-07 10:24:00,615 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54648)
+2025-11-07 10:24:00,616 INFO [ADAMService] Received command from ('192.168.1.165', 54648): check_measurement_trials
+2025-11-07 10:24:00,616 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 10:24:00,617 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 10:24:00,617 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 10:24:00,617 INFO [ADAMService] Sent response to ('192.168.1.165', 54648) (22 bytes)
+2025-11-07 10:24:00,617 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54648)
+2025-11-07 10:24:03,225 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54654)
+2025-11-07 10:24:03,238 INFO [ADAMService] Received command from ('192.168.1.165', 54654): log_workstation_task
+2025-11-07 10:24:03,238 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:24:02.896186 - Data: {'channel': 1, 'response_time': 0.326598, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:24:03,238 INFO [ADAMService] Sent response to ('192.168.1.165', 54654) (95 bytes)
+2025-11-07 10:24:03,238 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54654)
+2025-11-07 10:24:03,661 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54656)
+2025-11-07 10:24:03,677 INFO [ADAMService] Received command from ('192.168.1.165', 54656): log_workstation_task
+2025-11-07 10:24:03,677 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:24:03.677635 - Data: {}
+2025-11-07 10:24:03,677 INFO [ADAMService] Sent response to ('192.168.1.165', 54656) (112 bytes)
+2025-11-07 10:24:03,677 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54656)
+2025-11-07 10:24:06,376 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54658)
+2025-11-07 10:24:06,399 INFO [ADAMService] Received command from ('192.168.1.165', 54658): log_workstation_task
+2025-11-07 10:24:06,399 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:24:06.399753 - Data: {}
+2025-11-07 10:24:06,399 INFO [ADAMService] Sent response to ('192.168.1.165', 54658) (112 bytes)
+2025-11-07 10:24:06,399 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54658)
+2025-11-07 10:24:07,696 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54660)
+2025-11-07 10:24:07,696 INFO [ADAMService] Received command from ('192.168.1.165', 54660): log_workstation_task
+2025-11-07 10:24:07,697 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:24:07.697965 - Data: {}
+2025-11-07 10:24:07,697 INFO [ADAMService] Sent response to ('192.168.1.165', 54660) (112 bytes)
+2025-11-07 10:24:07,697 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54660)
+2025-11-07 10:24:13,842 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64438)
+2025-11-07 10:24:13,842 INFO [ADAMService] Received command from ('192.168.1.165', 64438): log_workstation_task
+2025-11-07 10:24:13,842 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:24:13.620013 - Data: {'channel': 1, 'response_time': 0.219726, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:24:13,842 INFO [ADAMService] Sent response to ('192.168.1.165', 64438) (95 bytes)
+2025-11-07 10:24:13,842 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64438)
+2025-11-07 10:24:14,321 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64440)
+2025-11-07 10:24:14,340 INFO [ADAMService] Received command from ('192.168.1.165', 64440): log_workstation_task
+2025-11-07 10:24:14,340 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:24:14.340321 - Data: {}
+2025-11-07 10:24:14,340 INFO [ADAMService] Sent response to ('192.168.1.165', 64440) (112 bytes)
+2025-11-07 10:24:14,340 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64440)
+2025-11-07 10:24:17,999 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64442)
+2025-11-07 10:24:18,012 INFO [ADAMService] Received command from ('192.168.1.165', 64442): log_workstation_task
+2025-11-07 10:24:18,012 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:24:17.671591 - Data: {'channel': 2, 'response_time': 0.325904, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:24:18,012 INFO [ADAMService] Sent response to ('192.168.1.165', 64442) (95 bytes)
+2025-11-07 10:24:18,012 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64442)
+2025-11-07 10:24:22,118 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64443)
+2025-11-07 10:24:22,119 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64444)
+2025-11-07 10:24:22,119 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64443)
+2025-11-07 10:24:22,144 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64444)
+2025-11-07 10:24:22,412 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64445)
+2025-11-07 10:24:22,426 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64445)
+2025-11-07 10:24:22,717 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64446)
+2025-11-07 10:24:22,718 INFO [ADAMService] Received command from ('192.168.1.165', 64446): generate_timestamp_extension
+2025-11-07 10:24:22,718 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_10_24_22
+2025-11-07 10:24:22,718 INFO [ADAMService] Sent response to ('192.168.1.165', 64446) (19 bytes)
+2025-11-07 10:24:22,718 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64446)
+2025-11-07 10:24:22,947 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64447)
+2025-11-07 10:24:22,947 INFO [ADAMService] Received command from ('192.168.1.165', 64447): get_timestamp_subpath
+2025-11-07 10:24:22,947 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 10:24:22,947 INFO [ADAMService] Sent response to ('192.168.1.165', 64447) (10 bytes)
+2025-11-07 10:24:22,947 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64447)
+2025-11-07 10:24:23,184 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64448)
+2025-11-07 10:24:23,184 INFO [ADAMService] Received command from ('192.168.1.165', 64448): construct_path
+2025-11-07 10:24:23,185 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 10:24:23,185 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 10:24:23,185 INFO [ADAMService] Sent response to ('192.168.1.165', 64448) (100 bytes)
+2025-11-07 10:24:23,185 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64448)
+2025-11-07 10:24:23,398 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64449)
+2025-11-07 10:24:23,398 INFO [ADAMService] Received command from ('192.168.1.165', 64449): check_measurement_trials
+2025-11-07 10:24:23,398 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 10:24:23,399 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 10:24:23,400 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 10:24:23,400 INFO [ADAMService] Sent response to ('192.168.1.165', 64449) (22 bytes)
+2025-11-07 10:24:23,400 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64449)
+2025-11-07 10:24:26,414 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64455)
+2025-11-07 10:24:26,428 INFO [ADAMService] Received command from ('192.168.1.165', 64455): log_workstation_task
+2025-11-07 10:24:26,428 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:24:26.085101 - Data: {'channel': 1, 'response_time': 0.327885, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:24:26,428 INFO [ADAMService] Sent response to ('192.168.1.165', 64455) (95 bytes)
+2025-11-07 10:24:26,428 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64455)
+2025-11-07 10:24:26,888 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64457)
+2025-11-07 10:24:26,913 INFO [ADAMService] Received command from ('192.168.1.165', 64457): log_workstation_task
+2025-11-07 10:24:26,913 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:24:26.913471 - Data: {}
+2025-11-07 10:24:26,914 INFO [ADAMService] Sent response to ('192.168.1.165', 64457) (112 bytes)
+2025-11-07 10:24:26,914 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64457)
+2025-11-07 10:24:29,572 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64463)
+2025-11-07 10:24:29,597 INFO [ADAMService] Received command from ('192.168.1.165', 64463): log_workstation_task
+2025-11-07 10:24:29,597 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:24:29.597198 - Data: {}
+2025-11-07 10:24:29,597 INFO [ADAMService] Sent response to ('192.168.1.165', 64463) (112 bytes)
+2025-11-07 10:24:29,597 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64463)
+2025-11-07 10:24:30,803 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64465)
+2025-11-07 10:24:30,828 INFO [ADAMService] Received command from ('192.168.1.165', 64465): log_workstation_task
+2025-11-07 10:24:30,828 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:24:30.828055 - Data: {}
+2025-11-07 10:24:30,828 INFO [ADAMService] Sent response to ('192.168.1.165', 64465) (112 bytes)
+2025-11-07 10:24:30,829 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64465)
+2025-11-07 10:24:36,897 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64467)
+2025-11-07 10:24:36,909 INFO [ADAMService] Received command from ('192.168.1.165', 64467): log_workstation_task
+2025-11-07 10:24:36,909 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:24:36.677225 - Data: {'channel': 1, 'response_time': 0.217805, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:24:36,909 INFO [ADAMService] Sent response to ('192.168.1.165', 64467) (95 bytes)
+2025-11-07 10:24:36,910 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64467)
+2025-11-07 10:24:37,449 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64469)
+2025-11-07 10:24:37,471 INFO [ADAMService] Received command from ('192.168.1.165', 64469): log_workstation_task
+2025-11-07 10:24:37,471 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:24:37.471736 - Data: {}
+2025-11-07 10:24:37,471 INFO [ADAMService] Sent response to ('192.168.1.165', 64469) (112 bytes)
+2025-11-07 10:24:37,471 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64469)
+2025-11-07 10:24:41,135 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64471)
+2025-11-07 10:24:41,149 INFO [ADAMService] Received command from ('192.168.1.165', 64471): log_workstation_task
+2025-11-07 10:24:41,149 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:24:40.806187 - Data: {'channel': 2, 'response_time': 0.328483, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:24:41,149 INFO [ADAMService] Sent response to ('192.168.1.165', 64471) (95 bytes)
+2025-11-07 10:24:41,149 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64471)
+2025-11-07 10:25:37,089 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61931)
+2025-11-07 10:25:37,089 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61932)
+2025-11-07 10:25:37,090 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61931)
+2025-11-07 10:25:37,114 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61932)
+2025-11-07 10:25:37,345 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61934)
+2025-11-07 10:25:37,346 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61934)
+2025-11-07 10:25:37,661 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61935)
+2025-11-07 10:25:37,661 INFO [ADAMService] Received command from ('192.168.1.165', 61935): generate_timestamp_extension
+2025-11-07 10:25:37,661 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_10_25_37
+2025-11-07 10:25:37,662 INFO [ADAMService] Sent response to ('192.168.1.165', 61935) (19 bytes)
+2025-11-07 10:25:37,662 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61935)
+2025-11-07 10:25:37,866 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61936)
+2025-11-07 10:25:37,867 INFO [ADAMService] Received command from ('192.168.1.165', 61936): get_timestamp_subpath
+2025-11-07 10:25:37,867 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 10:25:37,867 INFO [ADAMService] Sent response to ('192.168.1.165', 61936) (10 bytes)
+2025-11-07 10:25:37,867 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61936)
+2025-11-07 10:25:38,096 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61937)
+2025-11-07 10:25:38,096 INFO [ADAMService] Received command from ('192.168.1.165', 61937): construct_path
+2025-11-07 10:25:38,096 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 10:25:38,096 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 10:25:38,096 INFO [ADAMService] Sent response to ('192.168.1.165', 61937) (100 bytes)
+2025-11-07 10:25:38,096 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61937)
+2025-11-07 10:25:38,312 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61938)
+2025-11-07 10:25:38,312 INFO [ADAMService] Received command from ('192.168.1.165', 61938): check_measurement_trials
+2025-11-07 10:25:38,312 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 10:25:38,314 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 10:25:38,314 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 10:25:38,314 INFO [ADAMService] Sent response to ('192.168.1.165', 61938) (22 bytes)
+2025-11-07 10:25:38,314 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61938)
+2025-11-07 10:25:40,979 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61945)
+2025-11-07 10:25:40,979 INFO [ADAMService] Received command from ('192.168.1.165', 61945): log_workstation_task
+2025-11-07 10:25:40,979 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:25:40.652976 - Data: {'channel': 1, 'response_time': 0.324758, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:25:40,979 INFO [ADAMService] Sent response to ('192.168.1.165', 61945) (95 bytes)
+2025-11-07 10:25:40,979 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61945)
+2025-11-07 10:25:41,426 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61947)
+2025-11-07 10:25:41,445 INFO [ADAMService] Received command from ('192.168.1.165', 61947): log_workstation_task
+2025-11-07 10:25:41,445 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:25:41.445145 - Data: {}
+2025-11-07 10:25:41,445 INFO [ADAMService] Sent response to ('192.168.1.165', 61947) (112 bytes)
+2025-11-07 10:25:41,445 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61947)
+2025-11-07 10:25:44,205 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61952)
+2025-11-07 10:25:44,230 INFO [ADAMService] Received command from ('192.168.1.165', 61952): log_workstation_task
+2025-11-07 10:25:44,230 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:25:44.230825 - Data: {}
+2025-11-07 10:25:44,230 INFO [ADAMService] Sent response to ('192.168.1.165', 61952) (112 bytes)
+2025-11-07 10:25:44,230 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61952)
+2025-11-07 10:25:45,336 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61954)
+2025-11-07 10:25:45,360 INFO [ADAMService] Received command from ('192.168.1.165', 61954): log_workstation_task
+2025-11-07 10:25:45,360 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:25:45.360007 - Data: {}
+2025-11-07 10:25:45,360 INFO [ADAMService] Sent response to ('192.168.1.165', 61954) (112 bytes)
+2025-11-07 10:25:45,360 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61954)
+2025-11-07 10:25:51,547 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61959)
+2025-11-07 10:25:51,562 INFO [ADAMService] Received command from ('192.168.1.165', 61959): log_workstation_task
+2025-11-07 10:25:51,562 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:25:51.325648 - Data: {'channel': 1, 'response_time': 0.221331, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:25:51,563 INFO [ADAMService] Sent response to ('192.168.1.165', 61959) (95 bytes)
+2025-11-07 10:25:51,563 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61959)
+2025-11-07 10:25:52,111 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61961)
+2025-11-07 10:25:52,111 INFO [ADAMService] Received command from ('192.168.1.165', 61961): log_workstation_task
+2025-11-07 10:25:52,111 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:25:52.111250 - Data: {}
+2025-11-07 10:25:52,112 INFO [ADAMService] Sent response to ('192.168.1.165', 61961) (112 bytes)
+2025-11-07 10:25:52,112 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61961)
+2025-11-07 10:25:55,710 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61962)
+2025-11-07 10:25:55,710 INFO [ADAMService] Received command from ('192.168.1.165', 61962): log_workstation_task
+2025-11-07 10:25:55,711 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:25:55.376437 - Data: {'channel': 2, 'response_time': 0.331613, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:25:55,711 INFO [ADAMService] Sent response to ('192.168.1.165', 61962) (95 bytes)
+2025-11-07 10:25:55,711 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61962)
+2025-11-07 10:26:46,015 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61971)
+2025-11-07 10:26:46,033 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61971)
+2025-11-07 10:26:46,033 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61972)
+2025-11-07 10:26:46,034 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61972)
+2025-11-07 10:26:46,339 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61973)
+2025-11-07 10:26:46,339 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61973)
+2025-11-07 10:26:46,537 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61974)
+2025-11-07 10:26:46,537 INFO [ADAMService] Received command from ('192.168.1.165', 61974): generate_timestamp_extension
+2025-11-07 10:26:46,537 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_10_26_46
+2025-11-07 10:26:46,537 INFO [ADAMService] Sent response to ('192.168.1.165', 61974) (19 bytes)
+2025-11-07 10:26:46,539 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61974)
+2025-11-07 10:26:46,775 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61975)
+2025-11-07 10:26:46,776 INFO [ADAMService] Received command from ('192.168.1.165', 61975): get_timestamp_subpath
+2025-11-07 10:26:46,776 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 10:26:46,776 INFO [ADAMService] Sent response to ('192.168.1.165', 61975) (10 bytes)
+2025-11-07 10:26:46,776 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61975)
+2025-11-07 10:26:46,999 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61976)
+2025-11-07 10:26:46,999 INFO [ADAMService] Received command from ('192.168.1.165', 61976): construct_path
+2025-11-07 10:26:47,000 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 10:26:47,000 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 10:26:47,000 INFO [ADAMService] Sent response to ('192.168.1.165', 61976) (100 bytes)
+2025-11-07 10:26:47,000 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61976)
+2025-11-07 10:26:47,223 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61980)
+2025-11-07 10:26:47,223 INFO [ADAMService] Received command from ('192.168.1.165', 61980): check_measurement_trials
+2025-11-07 10:26:47,223 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 10:26:47,224 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 10:26:47,224 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 10:26:47,224 INFO [ADAMService] Sent response to ('192.168.1.165', 61980) (22 bytes)
+2025-11-07 10:26:47,225 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61980)
+2025-11-07 10:26:49,862 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61986)
+2025-11-07 10:26:49,863 INFO [ADAMService] Received command from ('192.168.1.165', 61986): log_workstation_task
+2025-11-07 10:26:49,863 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:26:49.530652 - Data: {'channel': 1, 'response_time': 0.329772, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:26:49,863 INFO [ADAMService] Sent response to ('192.168.1.165', 61986) (95 bytes)
+2025-11-07 10:26:49,863 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61986)
+2025-11-07 10:26:50,404 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61988)
+2025-11-07 10:26:50,425 INFO [ADAMService] Received command from ('192.168.1.165', 61988): log_workstation_task
+2025-11-07 10:26:50,425 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:26:50.425788 - Data: {}
+2025-11-07 10:26:50,425 INFO [ADAMService] Sent response to ('192.168.1.165', 61988) (112 bytes)
+2025-11-07 10:26:50,425 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61988)
+2025-11-07 10:26:53,212 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61990)
+2025-11-07 10:26:53,234 INFO [ADAMService] Received command from ('192.168.1.165', 61990): log_workstation_task
+2025-11-07 10:26:53,235 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:26:53.235760 - Data: {}
+2025-11-07 10:26:53,235 INFO [ADAMService] Sent response to ('192.168.1.165', 61990) (112 bytes)
+2025-11-07 10:26:53,235 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61990)
+2025-11-07 10:26:54,382 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61992)
+2025-11-07 10:26:54,382 INFO [ADAMService] Received command from ('192.168.1.165', 61992): log_workstation_task
+2025-11-07 10:26:54,382 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:26:54.382184 - Data: {}
+2025-11-07 10:26:54,382 INFO [ADAMService] Sent response to ('192.168.1.165', 61992) (112 bytes)
+2025-11-07 10:26:54,382 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61992)
+2025-11-07 10:27:00,478 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61993)
+2025-11-07 10:27:00,492 INFO [ADAMService] Received command from ('192.168.1.165', 61993): log_workstation_task
+2025-11-07 10:27:00,492 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:27:00.257506 - Data: {'channel': 1, 'response_time': 0.219033, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:27:00,492 INFO [ADAMService] Sent response to ('192.168.1.165', 61993) (95 bytes)
+2025-11-07 10:27:00,492 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61993)
+2025-11-07 10:27:01,045 INFO [ADAMService] Workstation connection from ('192.168.1.165', 61995)
+2025-11-07 10:27:01,045 INFO [ADAMService] Received command from ('192.168.1.165', 61995): log_workstation_task
+2025-11-07 10:27:01,045 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T10:27:01.045593 - Data: {}
+2025-11-07 10:27:01,046 INFO [ADAMService] Sent response to ('192.168.1.165', 61995) (112 bytes)
+2025-11-07 10:27:01,046 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 61995)
+2025-11-07 10:27:04,820 INFO [ADAMService] Workstation connection from ('192.168.1.165', 62000)
+2025-11-07 10:27:04,820 INFO [ADAMService] Received command from ('192.168.1.165', 62000): log_workstation_task
+2025-11-07 10:27:04,820 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T10:27:04.493643 - Data: {'channel': 2, 'response_time': 0.32599, 'local_execution': True, 'attempt': 1}
+2025-11-07 10:27:04,820 INFO [ADAMService] Sent response to ('192.168.1.165', 62000) (95 bytes)
+2025-11-07 10:27:04,821 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 62000)
+2025-11-07 13:11:49,271 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64984)
+2025-11-07 13:11:49,273 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64985)
+2025-11-07 13:11:49,273 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64984)
+2025-11-07 13:11:49,274 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64985)
+2025-11-07 13:11:49,385 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64986)
+2025-11-07 13:11:49,408 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64986)
+2025-11-07 13:11:52,037 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64989)
+2025-11-07 13:11:52,038 INFO [ADAMService] Received command from ('192.168.1.165', 64989): generate_timestamp_extension
+2025-11-07 13:11:52,039 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_13_11_52
+2025-11-07 13:11:52,039 INFO [ADAMService] Sent response to ('192.168.1.165', 64989) (19 bytes)
+2025-11-07 13:11:52,039 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64989)
+2025-11-07 13:11:52,328 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64990)
+2025-11-07 13:11:52,328 INFO [ADAMService] Received command from ('192.168.1.165', 64990): get_timestamp_subpath
+2025-11-07 13:11:52,329 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 13:11:52,329 INFO [ADAMService] Sent response to ('192.168.1.165', 64990) (10 bytes)
+2025-11-07 13:11:52,330 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64990)
+2025-11-07 13:11:52,582 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64991)
+2025-11-07 13:11:52,582 INFO [ADAMService] Received command from ('192.168.1.165', 64991): construct_path
+2025-11-07 13:11:52,582 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 13:11:52,582 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 13:11:52,582 INFO [ADAMService] Sent response to ('192.168.1.165', 64991) (100 bytes)
+2025-11-07 13:11:52,583 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64991)
+2025-11-07 13:11:52,792 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64992)
+2025-11-07 13:11:52,793 INFO [ADAMService] Received command from ('192.168.1.165', 64992): check_measurement_trials
+2025-11-07 13:11:52,793 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 13:11:52,827 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 13:11:52,827 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 13:11:52,828 INFO [ADAMService] Sent response to ('192.168.1.165', 64992) (22 bytes)
+2025-11-07 13:11:52,828 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64992)
+2025-11-07 13:11:56,235 INFO [ADAMService] Workstation connection from ('192.168.1.165', 64998)
+2025-11-07 13:11:56,236 INFO [ADAMService] Received command from ('192.168.1.165', 64998): log_workstation_task
+2025-11-07 13:11:56,236 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:11:55.903906 - Data: {'channel': 1, 'response_time': 0.329881, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:11:56,237 INFO [ADAMService] Sent response to ('192.168.1.165', 64998) (95 bytes)
+2025-11-07 13:11:56,237 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 64998)
+2025-11-07 13:11:56,802 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65000)
+2025-11-07 13:11:56,813 INFO [ADAMService] Received command from ('192.168.1.165', 65000): log_workstation_task
+2025-11-07 13:11:56,813 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:11:56.813413 - Data: {}
+2025-11-07 13:11:56,813 INFO [ADAMService] Sent response to ('192.168.1.165', 65000) (112 bytes)
+2025-11-07 13:11:56,813 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65000)
+2025-11-07 13:11:59,984 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65002)
+2025-11-07 13:11:59,986 INFO [ADAMService] Received command from ('192.168.1.165', 65002): log_workstation_task
+2025-11-07 13:11:59,986 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:11:59.986777 - Data: {}
+2025-11-07 13:11:59,986 INFO [ADAMService] Sent response to ('192.168.1.165', 65002) (112 bytes)
+2025-11-07 13:11:59,986 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65002)
+2025-11-07 13:12:01,173 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65005)
+2025-11-07 13:12:01,174 INFO [ADAMService] Received command from ('192.168.1.165', 65005): log_workstation_task
+2025-11-07 13:12:01,174 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:12:01.174605 - Data: {}
+2025-11-07 13:12:01,174 INFO [ADAMService] Sent response to ('192.168.1.165', 65005) (112 bytes)
+2025-11-07 13:12:01,175 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65005)
+2025-11-07 13:12:07,680 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65011)
+2025-11-07 13:12:07,681 INFO [ADAMService] Received command from ('192.168.1.165', 65011): log_workstation_task
+2025-11-07 13:12:07,681 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:12:07.459458 - Data: {'channel': 1, 'response_time': 0.218201, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:12:07,681 INFO [ADAMService] Sent response to ('192.168.1.165', 65011) (95 bytes)
+2025-11-07 13:12:07,681 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65011)
+2025-11-07 13:12:08,282 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65013)
+2025-11-07 13:12:08,283 INFO [ADAMService] Received command from ('192.168.1.165', 65013): log_workstation_task
+2025-11-07 13:12:08,283 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:12:08.283712 - Data: {}
+2025-11-07 13:12:08,284 INFO [ADAMService] Sent response to ('192.168.1.165', 65013) (112 bytes)
+2025-11-07 13:12:08,284 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65013)
+2025-11-07 13:12:11,739 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65015)
+2025-11-07 13:12:11,753 INFO [ADAMService] Received command from ('192.168.1.165', 65015): log_workstation_task
+2025-11-07 13:12:11,753 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:12:11.408305 - Data: {'channel': 2, 'response_time': 0.329192, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:12:11,753 INFO [ADAMService] Sent response to ('192.168.1.165', 65015) (95 bytes)
+2025-11-07 13:12:11,753 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65015)
+2025-11-07 13:12:18,964 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65017)
+2025-11-07 13:12:18,987 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65017)
+2025-11-07 13:12:18,988 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65018)
+2025-11-07 13:12:19,003 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65018)
+2025-11-07 13:12:19,205 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65019)
+2025-11-07 13:12:19,205 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65019)
+2025-11-07 13:12:19,409 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65020)
+2025-11-07 13:12:19,410 INFO [ADAMService] Received command from ('192.168.1.165', 65020): generate_timestamp_extension
+2025-11-07 13:12:19,410 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_13_12_19
+2025-11-07 13:12:19,410 INFO [ADAMService] Sent response to ('192.168.1.165', 65020) (19 bytes)
+2025-11-07 13:12:19,411 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65020)
+2025-11-07 13:12:19,616 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65021)
+2025-11-07 13:12:19,617 INFO [ADAMService] Received command from ('192.168.1.165', 65021): get_timestamp_subpath
+2025-11-07 13:12:19,617 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 13:12:19,618 INFO [ADAMService] Sent response to ('192.168.1.165', 65021) (10 bytes)
+2025-11-07 13:12:19,618 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65021)
+2025-11-07 13:12:19,852 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65022)
+2025-11-07 13:12:19,853 INFO [ADAMService] Received command from ('192.168.1.165', 65022): construct_path
+2025-11-07 13:12:19,853 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 13:12:19,854 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 13:12:19,854 INFO [ADAMService] Sent response to ('192.168.1.165', 65022) (100 bytes)
+2025-11-07 13:12:19,854 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65022)
+2025-11-07 13:12:20,063 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65023)
+2025-11-07 13:12:20,064 INFO [ADAMService] Received command from ('192.168.1.165', 65023): check_measurement_trials
+2025-11-07 13:12:20,064 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 13:12:20,066 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 13:12:20,067 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 13:12:20,067 INFO [ADAMService] Sent response to ('192.168.1.165', 65023) (22 bytes)
+2025-11-07 13:12:20,067 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65023)
+2025-11-07 13:12:22,939 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65030)
+2025-11-07 13:12:22,953 INFO [ADAMService] Received command from ('192.168.1.165', 65030): log_workstation_task
+2025-11-07 13:12:22,953 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:12:22.609072 - Data: {'channel': 1, 'response_time': 0.328098, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:12:22,953 INFO [ADAMService] Sent response to ('192.168.1.165', 65030) (95 bytes)
+2025-11-07 13:12:22,953 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65030)
+2025-11-07 13:12:23,500 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65032)
+2025-11-07 13:12:23,516 INFO [ADAMService] Received command from ('192.168.1.165', 65032): log_workstation_task
+2025-11-07 13:12:23,516 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:12:23.516438 - Data: {}
+2025-11-07 13:12:23,516 INFO [ADAMService] Sent response to ('192.168.1.165', 65032) (112 bytes)
+2025-11-07 13:12:23,517 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65032)
+2025-11-07 13:12:26,133 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65034)
+2025-11-07 13:12:26,134 INFO [ADAMService] Received command from ('192.168.1.165', 65034): log_workstation_task
+2025-11-07 13:12:26,134 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:12:26.134989 - Data: {}
+2025-11-07 13:12:26,135 INFO [ADAMService] Sent response to ('192.168.1.165', 65034) (112 bytes)
+2025-11-07 13:12:26,135 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65034)
+2025-11-07 13:12:27,372 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65036)
+2025-11-07 13:12:27,372 INFO [ADAMService] Received command from ('192.168.1.165', 65036): log_workstation_task
+2025-11-07 13:12:27,373 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:12:27.373895 - Data: {}
+2025-11-07 13:12:27,373 INFO [ADAMService] Sent response to ('192.168.1.165', 65036) (112 bytes)
+2025-11-07 13:12:27,373 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65036)
+2025-11-07 13:12:33,488 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65039)
+2025-11-07 13:12:33,500 INFO [ADAMService] Received command from ('192.168.1.165', 65039): log_workstation_task
+2025-11-07 13:12:33,500 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:12:33.266102 - Data: {'channel': 1, 'response_time': 0.220277, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:12:33,501 INFO [ADAMService] Sent response to ('192.168.1.165', 65039) (95 bytes)
+2025-11-07 13:12:33,501 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65039)
+2025-11-07 13:12:34,055 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65041)
+2025-11-07 13:12:34,056 INFO [ADAMService] Received command from ('192.168.1.165', 65041): log_workstation_task
+2025-11-07 13:12:34,056 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:12:34.056707 - Data: {}
+2025-11-07 13:12:34,056 INFO [ADAMService] Sent response to ('192.168.1.165', 65041) (112 bytes)
+2025-11-07 13:12:34,057 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65041)
+2025-11-07 13:12:37,546 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65042)
+2025-11-07 13:12:37,560 INFO [ADAMService] Received command from ('192.168.1.165', 65042): log_workstation_task
+2025-11-07 13:12:37,560 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:12:37.216405 - Data: {'channel': 2, 'response_time': 0.328431, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:12:37,560 INFO [ADAMService] Sent response to ('192.168.1.165', 65042) (95 bytes)
+2025-11-07 13:12:37,560 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65042)
+2025-11-07 13:12:41,817 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65044)
+2025-11-07 13:12:41,837 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65044)
+2025-11-07 13:12:41,838 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65045)
+2025-11-07 13:12:41,838 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65045)
+2025-11-07 13:12:42,080 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65046)
+2025-11-07 13:12:42,100 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65046)
+2025-11-07 13:12:42,382 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65047)
+2025-11-07 13:12:42,384 INFO [ADAMService] Received command from ('192.168.1.165', 65047): generate_timestamp_extension
+2025-11-07 13:12:42,384 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_13_12_42
+2025-11-07 13:12:42,384 INFO [ADAMService] Sent response to ('192.168.1.165', 65047) (19 bytes)
+2025-11-07 13:12:42,384 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65047)
+2025-11-07 13:12:42,618 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65048)
+2025-11-07 13:12:42,618 INFO [ADAMService] Received command from ('192.168.1.165', 65048): get_timestamp_subpath
+2025-11-07 13:12:42,619 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 13:12:42,619 INFO [ADAMService] Sent response to ('192.168.1.165', 65048) (10 bytes)
+2025-11-07 13:12:42,619 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65048)
+2025-11-07 13:12:42,843 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65049)
+2025-11-07 13:12:42,844 INFO [ADAMService] Received command from ('192.168.1.165', 65049): construct_path
+2025-11-07 13:12:42,844 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 13:12:42,845 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 13:12:42,845 INFO [ADAMService] Sent response to ('192.168.1.165', 65049) (100 bytes)
+2025-11-07 13:12:42,845 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65049)
+2025-11-07 13:12:43,074 INFO [ADAMService] Workstation connection from ('192.168.1.165', 65050)
+2025-11-07 13:12:43,074 INFO [ADAMService] Received command from ('192.168.1.165', 65050): check_measurement_trials
+2025-11-07 13:12:43,074 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 13:12:43,078 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 13:12:43,078 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 13:12:43,079 INFO [ADAMService] Sent response to ('192.168.1.165', 65050) (22 bytes)
+2025-11-07 13:12:43,079 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 65050)
+2025-11-07 13:12:45,956 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60243)
+2025-11-07 13:12:45,970 INFO [ADAMService] Received command from ('192.168.1.165', 60243): log_workstation_task
+2025-11-07 13:12:45,970 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:12:45.624360 - Data: {'channel': 1, 'response_time': 0.330361, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:12:45,970 INFO [ADAMService] Sent response to ('192.168.1.165', 60243) (95 bytes)
+2025-11-07 13:12:45,970 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60243)
+2025-11-07 13:12:46,424 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60245)
+2025-11-07 13:12:46,425 INFO [ADAMService] Received command from ('192.168.1.165', 60245): log_workstation_task
+2025-11-07 13:12:46,425 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:12:46.425038 - Data: {}
+2025-11-07 13:12:46,426 INFO [ADAMService] Sent response to ('192.168.1.165', 60245) (112 bytes)
+2025-11-07 13:12:46,426 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60245)
+2025-11-07 13:12:49,012 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60247)
+2025-11-07 13:12:49,035 INFO [ADAMService] Received command from ('192.168.1.165', 60247): log_workstation_task
+2025-11-07 13:12:49,035 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:12:49.035709 - Data: {}
+2025-11-07 13:12:49,036 INFO [ADAMService] Sent response to ('192.168.1.165', 60247) (112 bytes)
+2025-11-07 13:12:49,036 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60247)
+2025-11-07 13:12:50,216 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60249)
+2025-11-07 13:12:50,226 INFO [ADAMService] Received command from ('192.168.1.165', 60249): log_workstation_task
+2025-11-07 13:12:50,226 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:12:50.226758 - Data: {}
+2025-11-07 13:12:50,226 INFO [ADAMService] Sent response to ('192.168.1.165', 60249) (112 bytes)
+2025-11-07 13:12:50,226 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60249)
+2025-11-07 13:12:56,346 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60250)
+2025-11-07 13:12:56,360 INFO [ADAMService] Received command from ('192.168.1.165', 60250): log_workstation_task
+2025-11-07 13:12:56,360 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:12:56.126768 - Data: {'channel': 1, 'response_time': 0.218555, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:12:56,360 INFO [ADAMService] Sent response to ('192.168.1.165', 60250) (95 bytes)
+2025-11-07 13:12:56,360 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60250)
+2025-11-07 13:12:56,908 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60252)
+2025-11-07 13:12:56,909 INFO [ADAMService] Received command from ('192.168.1.165', 60252): log_workstation_task
+2025-11-07 13:12:56,909 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:12:56.909084 - Data: {}
+2025-11-07 13:12:56,909 INFO [ADAMService] Sent response to ('192.168.1.165', 60252) (112 bytes)
+2025-11-07 13:12:56,910 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60252)
+2025-11-07 13:13:00,445 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60256)
+2025-11-07 13:13:00,458 INFO [ADAMService] Received command from ('192.168.1.165', 60256): log_workstation_task
+2025-11-07 13:13:00,458 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:13:00.115889 - Data: {'channel': 2, 'response_time': 0.327148, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:13:00,458 INFO [ADAMService] Sent response to ('192.168.1.165', 60256) (95 bytes)
+2025-11-07 13:13:00,458 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60256)
+2025-11-07 13:13:05,674 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60258)
+2025-11-07 13:13:05,689 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60258)
+2025-11-07 13:13:05,689 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60259)
+2025-11-07 13:13:05,705 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60259)
+2025-11-07 13:13:05,890 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60260)
+2025-11-07 13:13:05,891 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60260)
+2025-11-07 13:13:06,082 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60261)
+2025-11-07 13:13:06,082 INFO [ADAMService] Received command from ('192.168.1.165', 60261): generate_timestamp_extension
+2025-11-07 13:13:06,083 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_13_13_06
+2025-11-07 13:13:06,083 INFO [ADAMService] Sent response to ('192.168.1.165', 60261) (19 bytes)
+2025-11-07 13:13:06,083 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60261)
+2025-11-07 13:13:06,300 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60262)
+2025-11-07 13:13:06,301 INFO [ADAMService] Received command from ('192.168.1.165', 60262): get_timestamp_subpath
+2025-11-07 13:13:06,302 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 13:13:06,302 INFO [ADAMService] Sent response to ('192.168.1.165', 60262) (10 bytes)
+2025-11-07 13:13:06,302 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60262)
+2025-11-07 13:13:06,528 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60263)
+2025-11-07 13:13:06,530 INFO [ADAMService] Received command from ('192.168.1.165', 60263): construct_path
+2025-11-07 13:13:06,530 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 13:13:06,530 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 13:13:06,531 INFO [ADAMService] Sent response to ('192.168.1.165', 60263) (100 bytes)
+2025-11-07 13:13:06,531 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60263)
+2025-11-07 13:13:06,754 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60264)
+2025-11-07 13:13:06,755 INFO [ADAMService] Received command from ('192.168.1.165', 60264): check_measurement_trials
+2025-11-07 13:13:06,755 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 13:13:06,758 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 13:13:06,758 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 13:13:06,759 INFO [ADAMService] Sent response to ('192.168.1.165', 60264) (22 bytes)
+2025-11-07 13:13:06,759 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60264)
+2025-11-07 13:13:09,659 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60271)
+2025-11-07 13:13:09,673 INFO [ADAMService] Received command from ('192.168.1.165', 60271): log_workstation_task
+2025-11-07 13:13:09,673 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:13:09.327663 - Data: {'channel': 1, 'response_time': 0.330443, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:13:09,673 INFO [ADAMService] Sent response to ('192.168.1.165', 60271) (95 bytes)
+2025-11-07 13:13:09,673 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60271)
+2025-11-07 13:13:10,127 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60273)
+2025-11-07 13:13:10,144 INFO [ADAMService] Received command from ('192.168.1.165', 60273): log_workstation_task
+2025-11-07 13:13:10,144 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:13:10.144325 - Data: {}
+2025-11-07 13:13:10,144 INFO [ADAMService] Sent response to ('192.168.1.165', 60273) (112 bytes)
+2025-11-07 13:13:10,144 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60273)
+2025-11-07 13:13:12,773 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60277)
+2025-11-07 13:13:12,796 INFO [ADAMService] Received command from ('192.168.1.165', 60277): log_workstation_task
+2025-11-07 13:13:12,796 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:13:12.796903 - Data: {}
+2025-11-07 13:13:12,796 INFO [ADAMService] Sent response to ('192.168.1.165', 60277) (112 bytes)
+2025-11-07 13:13:12,796 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60277)
+2025-11-07 13:13:14,011 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60279)
+2025-11-07 13:13:14,012 INFO [ADAMService] Received command from ('192.168.1.165', 60279): log_workstation_task
+2025-11-07 13:13:14,012 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:13:14.012664 - Data: {}
+2025-11-07 13:13:14,012 INFO [ADAMService] Sent response to ('192.168.1.165', 60279) (112 bytes)
+2025-11-07 13:13:14,013 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60279)
+2025-11-07 13:13:20,208 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60280)
+2025-11-07 13:13:20,222 INFO [ADAMService] Received command from ('192.168.1.165', 60280): log_workstation_task
+2025-11-07 13:13:20,222 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:13:19.988881 - Data: {'channel': 1, 'response_time': 0.217997, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:13:20,222 INFO [ADAMService] Sent response to ('192.168.1.165', 60280) (95 bytes)
+2025-11-07 13:13:20,222 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60280)
+2025-11-07 13:13:20,694 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60282)
+2025-11-07 13:13:20,694 INFO [ADAMService] Received command from ('192.168.1.165', 60282): log_workstation_task
+2025-11-07 13:13:20,694 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:13:20.694336 - Data: {}
+2025-11-07 13:13:20,695 INFO [ADAMService] Sent response to ('192.168.1.165', 60282) (112 bytes)
+2025-11-07 13:13:20,695 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60282)
+2025-11-07 13:13:24,206 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60284)
+2025-11-07 13:13:24,207 INFO [ADAMService] Received command from ('192.168.1.165', 60284): log_workstation_task
+2025-11-07 13:13:24,207 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:13:23.876993 - Data: {'channel': 2, 'response_time': 0.327186, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:13:24,208 INFO [ADAMService] Sent response to ('192.168.1.165', 60284) (95 bytes)
+2025-11-07 13:13:24,208 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60284)
+2025-11-07 13:13:27,649 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60285)
+2025-11-07 13:13:27,649 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60286)
+2025-11-07 13:13:27,649 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60285)
+2025-11-07 13:13:27,650 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60286)
+2025-11-07 13:13:27,893 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60287)
+2025-11-07 13:13:27,914 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60287)
+2025-11-07 13:13:28,107 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60288)
+2025-11-07 13:13:28,108 INFO [ADAMService] Received command from ('192.168.1.165', 60288): generate_timestamp_extension
+2025-11-07 13:13:28,108 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_13_13_28
+2025-11-07 13:13:28,109 INFO [ADAMService] Sent response to ('192.168.1.165', 60288) (19 bytes)
+2025-11-07 13:13:28,109 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60288)
+2025-11-07 13:13:28,340 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60291)
+2025-11-07 13:13:28,340 INFO [ADAMService] Received command from ('192.168.1.165', 60291): get_timestamp_subpath
+2025-11-07 13:13:28,341 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 13:13:28,341 INFO [ADAMService] Sent response to ('192.168.1.165', 60291) (10 bytes)
+2025-11-07 13:13:28,341 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60291)
+2025-11-07 13:13:28,574 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60292)
+2025-11-07 13:13:28,574 INFO [ADAMService] Received command from ('192.168.1.165', 60292): construct_path
+2025-11-07 13:13:28,575 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 13:13:28,575 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 13:13:28,575 INFO [ADAMService] Sent response to ('192.168.1.165', 60292) (100 bytes)
+2025-11-07 13:13:28,576 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60292)
+2025-11-07 13:13:28,802 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60293)
+2025-11-07 13:13:28,802 INFO [ADAMService] Received command from ('192.168.1.165', 60293): check_measurement_trials
+2025-11-07 13:13:28,803 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 13:13:28,805 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 13:13:28,805 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 13:13:28,806 INFO [ADAMService] Sent response to ('192.168.1.165', 60293) (22 bytes)
+2025-11-07 13:13:28,806 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60293)
+2025-11-07 13:13:31,746 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60299)
+2025-11-07 13:13:31,761 INFO [ADAMService] Received command from ('192.168.1.165', 60299): log_workstation_task
+2025-11-07 13:13:31,761 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:13:31.417178 - Data: {'channel': 1, 'response_time': 0.328151, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:13:31,761 INFO [ADAMService] Sent response to ('192.168.1.165', 60299) (95 bytes)
+2025-11-07 13:13:31,761 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60299)
+2025-11-07 13:13:32,218 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60301)
+2025-11-07 13:13:32,219 INFO [ADAMService] Received command from ('192.168.1.165', 60301): log_workstation_task
+2025-11-07 13:13:32,219 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:13:32.219918 - Data: {}
+2025-11-07 13:13:32,219 INFO [ADAMService] Sent response to ('192.168.1.165', 60301) (112 bytes)
+2025-11-07 13:13:32,219 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60301)
+2025-11-07 13:13:34,792 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60303)
+2025-11-07 13:13:34,816 INFO [ADAMService] Received command from ('192.168.1.165', 60303): log_workstation_task
+2025-11-07 13:13:34,816 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:13:34.816760 - Data: {}
+2025-11-07 13:13:34,817 INFO [ADAMService] Sent response to ('192.168.1.165', 60303) (112 bytes)
+2025-11-07 13:13:34,817 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60303)
+2025-11-07 13:13:35,974 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60306)
+2025-11-07 13:13:35,975 INFO [ADAMService] Received command from ('192.168.1.165', 60306): log_workstation_task
+2025-11-07 13:13:35,975 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:13:35.975843 - Data: {}
+2025-11-07 13:13:35,975 INFO [ADAMService] Sent response to ('192.168.1.165', 60306) (112 bytes)
+2025-11-07 13:13:35,975 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60306)
+2025-11-07 13:13:42,099 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60308)
+2025-11-07 13:13:42,113 INFO [ADAMService] Received command from ('192.168.1.165', 60308): log_workstation_task
+2025-11-07 13:13:42,113 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:13:41.880520 - Data: {'channel': 1, 'response_time': 0.216702, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:13:42,113 INFO [ADAMService] Sent response to ('192.168.1.165', 60308) (95 bytes)
+2025-11-07 13:13:42,113 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60308)
+2025-11-07 13:13:42,667 INFO [ADAMService] Workstation connection from ('192.168.1.165', 60310)
+2025-11-07 13:13:42,687 INFO [ADAMService] Received command from ('192.168.1.165', 60310): log_workstation_task
+2025-11-07 13:13:42,687 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:13:42.687763 - Data: {}
+2025-11-07 13:13:42,687 INFO [ADAMService] Sent response to ('192.168.1.165', 60310) (112 bytes)
+2025-11-07 13:13:42,687 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 60310)
+2025-11-07 13:13:46,174 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54402)
+2025-11-07 13:13:46,175 INFO [ADAMService] Received command from ('192.168.1.165', 54402): log_workstation_task
+2025-11-07 13:13:46,175 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:13:45.844664 - Data: {'channel': 2, 'response_time': 0.327607, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:13:46,176 INFO [ADAMService] Sent response to ('192.168.1.165', 54402) (95 bytes)
+2025-11-07 13:13:46,176 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54402)
+2025-11-07 13:13:51,430 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54403)
+2025-11-07 13:13:51,440 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54403)
+2025-11-07 13:13:51,445 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54404)
+2025-11-07 13:13:51,447 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54404)
+2025-11-07 13:13:51,676 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54405)
+2025-11-07 13:13:51,677 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54405)
+2025-11-07 13:13:51,870 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54406)
+2025-11-07 13:13:51,870 INFO [ADAMService] Received command from ('192.168.1.165', 54406): generate_timestamp_extension
+2025-11-07 13:13:51,871 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_13_13_51
+2025-11-07 13:13:51,871 INFO [ADAMService] Sent response to ('192.168.1.165', 54406) (19 bytes)
+2025-11-07 13:13:51,871 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54406)
+2025-11-07 13:13:52,099 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54407)
+2025-11-07 13:13:52,099 INFO [ADAMService] Received command from ('192.168.1.165', 54407): get_timestamp_subpath
+2025-11-07 13:13:52,099 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 13:13:52,099 INFO [ADAMService] Sent response to ('192.168.1.165', 54407) (10 bytes)
+2025-11-07 13:13:52,099 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54407)
+2025-11-07 13:13:52,324 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54408)
+2025-11-07 13:13:52,325 INFO [ADAMService] Received command from ('192.168.1.165', 54408): construct_path
+2025-11-07 13:13:52,325 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 13:13:52,325 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 13:13:52,326 INFO [ADAMService] Sent response to ('192.168.1.165', 54408) (100 bytes)
+2025-11-07 13:13:52,326 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54408)
+2025-11-07 13:13:52,560 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54409)
+2025-11-07 13:13:52,560 INFO [ADAMService] Received command from ('192.168.1.165', 54409): check_measurement_trials
+2025-11-07 13:13:52,561 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 13:13:52,563 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 13:13:52,563 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 13:13:52,563 INFO [ADAMService] Sent response to ('192.168.1.165', 54409) (22 bytes)
+2025-11-07 13:13:52,564 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54409)
+2025-11-07 13:13:55,519 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54416)
+2025-11-07 13:13:55,533 INFO [ADAMService] Received command from ('192.168.1.165', 54416): log_workstation_task
+2025-11-07 13:13:55,534 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:13:55.188742 - Data: {'channel': 1, 'response_time': 0.329903, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:13:55,535 INFO [ADAMService] Sent response to ('192.168.1.165', 54416) (95 bytes)
+2025-11-07 13:13:55,535 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54416)
+2025-11-07 13:13:55,988 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54418)
+2025-11-07 13:13:55,989 INFO [ADAMService] Received command from ('192.168.1.165', 54418): log_workstation_task
+2025-11-07 13:13:55,989 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:13:55.989597 - Data: {}
+2025-11-07 13:13:55,990 INFO [ADAMService] Sent response to ('192.168.1.165', 54418) (112 bytes)
+2025-11-07 13:13:55,990 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54418)
+2025-11-07 13:13:58,727 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54422)
+2025-11-07 13:13:58,728 INFO [ADAMService] Received command from ('192.168.1.165', 54422): log_workstation_task
+2025-11-07 13:13:58,728 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:13:58.728133 - Data: {}
+2025-11-07 13:13:58,728 INFO [ADAMService] Sent response to ('192.168.1.165', 54422) (112 bytes)
+2025-11-07 13:13:58,729 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54422)
+2025-11-07 13:13:59,848 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54424)
+2025-11-07 13:13:59,849 INFO [ADAMService] Received command from ('192.168.1.165', 54424): log_workstation_task
+2025-11-07 13:13:59,849 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:13:59.849190 - Data: {}
+2025-11-07 13:13:59,849 INFO [ADAMService] Sent response to ('192.168.1.165', 54424) (112 bytes)
+2025-11-07 13:13:59,850 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54424)
+2025-11-07 13:14:05,933 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54425)
+2025-11-07 13:14:05,934 INFO [ADAMService] Received command from ('192.168.1.165', 54425): log_workstation_task
+2025-11-07 13:14:05,934 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:14:05.713990 - Data: {'channel': 1, 'response_time': 0.216783, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:14:05,934 INFO [ADAMService] Sent response to ('192.168.1.165', 54425) (95 bytes)
+2025-11-07 13:14:05,934 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54425)
+2025-11-07 13:14:06,485 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54427)
+2025-11-07 13:14:06,485 INFO [ADAMService] Received command from ('192.168.1.165', 54427): log_workstation_task
+2025-11-07 13:14:06,486 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:14:06.486398 - Data: {}
+2025-11-07 13:14:06,486 INFO [ADAMService] Sent response to ('192.168.1.165', 54427) (112 bytes)
+2025-11-07 13:14:06,486 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54427)
+2025-11-07 13:14:10,075 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54428)
+2025-11-07 13:14:10,089 INFO [ADAMService] Received command from ('192.168.1.165', 54428): log_workstation_task
+2025-11-07 13:14:10,089 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:14:09.745824 - Data: {'channel': 2, 'response_time': 0.32754, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:14:10,089 INFO [ADAMService] Sent response to ('192.168.1.165', 54428) (95 bytes)
+2025-11-07 13:14:10,089 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54428)
+2025-11-07 13:14:25,120 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54430)
+2025-11-07 13:14:25,142 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54430)
+2025-11-07 13:14:25,143 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54431)
+2025-11-07 13:14:25,143 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54431)
+2025-11-07 13:14:25,431 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54432)
+2025-11-07 13:14:25,454 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54432)
+2025-11-07 13:14:25,742 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54433)
+2025-11-07 13:14:25,742 INFO [ADAMService] Received command from ('192.168.1.165', 54433): generate_timestamp_extension
+2025-11-07 13:14:25,743 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_13_14_25
+2025-11-07 13:14:25,743 INFO [ADAMService] Sent response to ('192.168.1.165', 54433) (19 bytes)
+2025-11-07 13:14:25,743 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54433)
+2025-11-07 13:14:25,983 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54434)
+2025-11-07 13:14:25,983 INFO [ADAMService] Received command from ('192.168.1.165', 54434): get_timestamp_subpath
+2025-11-07 13:14:25,984 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 13:14:25,984 INFO [ADAMService] Sent response to ('192.168.1.165', 54434) (10 bytes)
+2025-11-07 13:14:25,984 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54434)
+2025-11-07 13:14:26,206 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54438)
+2025-11-07 13:14:26,206 INFO [ADAMService] Received command from ('192.168.1.165', 54438): construct_path
+2025-11-07 13:14:26,207 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 13:14:26,207 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 13:14:26,207 INFO [ADAMService] Sent response to ('192.168.1.165', 54438) (100 bytes)
+2025-11-07 13:14:26,207 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54438)
+2025-11-07 13:14:26,427 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54439)
+2025-11-07 13:14:26,427 INFO [ADAMService] Received command from ('192.168.1.165', 54439): check_measurement_trials
+2025-11-07 13:14:26,427 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 13:14:26,431 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 13:14:26,431 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 13:14:26,431 INFO [ADAMService] Sent response to ('192.168.1.165', 54439) (22 bytes)
+2025-11-07 13:14:26,432 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54439)
+2025-11-07 13:14:29,427 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54445)
+2025-11-07 13:14:29,440 INFO [ADAMService] Received command from ('192.168.1.165', 54445): log_workstation_task
+2025-11-07 13:14:29,440 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:14:29.097463 - Data: {'channel': 1, 'response_time': 0.327799, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:14:29,440 INFO [ADAMService] Sent response to ('192.168.1.165', 54445) (95 bytes)
+2025-11-07 13:14:29,440 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54445)
+2025-11-07 13:14:29,890 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54447)
+2025-11-07 13:14:29,891 INFO [ADAMService] Received command from ('192.168.1.165', 54447): log_workstation_task
+2025-11-07 13:14:29,891 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:14:29.891769 - Data: {}
+2025-11-07 13:14:29,892 INFO [ADAMService] Sent response to ('192.168.1.165', 54447) (112 bytes)
+2025-11-07 13:14:29,893 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54447)
+2025-11-07 13:14:32,709 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54450)
+2025-11-07 13:14:32,709 INFO [ADAMService] Received command from ('192.168.1.165', 54450): log_workstation_task
+2025-11-07 13:14:32,710 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:14:32.710684 - Data: {}
+2025-11-07 13:14:32,710 INFO [ADAMService] Sent response to ('192.168.1.165', 54450) (112 bytes)
+2025-11-07 13:14:32,710 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54450)
+2025-11-07 13:14:33,881 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54452)
+2025-11-07 13:14:33,881 INFO [ADAMService] Received command from ('192.168.1.165', 54452): log_workstation_task
+2025-11-07 13:14:33,882 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:14:33.882469 - Data: {}
+2025-11-07 13:14:33,882 INFO [ADAMService] Sent response to ('192.168.1.165', 54452) (112 bytes)
+2025-11-07 13:14:33,882 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54452)
+2025-11-07 13:14:40,364 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54453)
+2025-11-07 13:14:40,365 INFO [ADAMService] Received command from ('192.168.1.165', 54453): log_workstation_task
+2025-11-07 13:14:40,365 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:14:40.142857 - Data: {'channel': 1, 'response_time': 0.21864, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:14:40,365 INFO [ADAMService] Sent response to ('192.168.1.165', 54453) (95 bytes)
+2025-11-07 13:14:40,366 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54453)
+2025-11-07 13:14:40,845 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54455)
+2025-11-07 13:14:40,845 INFO [ADAMService] Received command from ('192.168.1.165', 54455): log_workstation_task
+2025-11-07 13:14:40,845 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:14:40.845553 - Data: {}
+2025-11-07 13:14:40,846 INFO [ADAMService] Sent response to ('192.168.1.165', 54455) (112 bytes)
+2025-11-07 13:14:40,846 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54455)
+2025-11-07 13:14:44,662 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54456)
+2025-11-07 13:14:44,662 INFO [ADAMService] Received command from ('192.168.1.165', 54456): log_workstation_task
+2025-11-07 13:14:44,662 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:14:44.331714 - Data: {'channel': 2, 'response_time': 0.329065, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:14:44,663 INFO [ADAMService] Sent response to ('192.168.1.165', 54456) (95 bytes)
+2025-11-07 13:14:44,663 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54456)
+2025-11-07 13:14:55,719 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54460)
+2025-11-07 13:14:55,739 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54460)
+2025-11-07 13:14:55,740 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54461)
+2025-11-07 13:14:55,741 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54461)
+2025-11-07 13:14:55,984 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54462)
+2025-11-07 13:14:55,985 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54462)
+2025-11-07 13:14:56,170 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54463)
+2025-11-07 13:14:56,171 INFO [ADAMService] Received command from ('192.168.1.165', 54463): generate_timestamp_extension
+2025-11-07 13:14:56,171 INFO [AdamHelpers] Generated timestamp extension: 2025_11_07_13_14_56
+2025-11-07 13:14:56,171 INFO [ADAMService] Sent response to ('192.168.1.165', 54463) (19 bytes)
+2025-11-07 13:14:56,172 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54463)
+2025-11-07 13:14:56,401 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54464)
+2025-11-07 13:14:56,402 INFO [ADAMService] Received command from ('192.168.1.165', 54464): get_timestamp_subpath
+2025-11-07 13:14:56,402 INFO [AdamHelpers] Generated timestamp subpath: 2025\11_07
+2025-11-07 13:14:56,403 INFO [ADAMService] Sent response to ('192.168.1.165', 54464) (10 bytes)
+2025-11-07 13:14:56,403 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54464)
+2025-11-07 13:14:56,642 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54465)
+2025-11-07 13:14:56,643 INFO [ADAMService] Received command from ('192.168.1.165', 54465): construct_path
+2025-11-07 13:14:56,643 INFO [ADAMService] Constructing path from: ['C:\\Users\\ThiloRode\\OneDrive - Focusrite Group\\Dokumente\\ADAM_Audio_ASubs\\Measurements', 'EOL', '2025\\11_07']
+2025-11-07 13:14:56,644 INFO [AdamHelpers] Constructed path: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\2025\11_07
+2025-11-07 13:14:56,644 INFO [ADAMService] Sent response to ('192.168.1.165', 54465) (100 bytes)
+2025-11-07 13:14:56,644 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54465)
+2025-11-07 13:14:56,869 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54466)
+2025-11-07 13:14:56,870 INFO [ADAMService] Received command from ('192.168.1.165', 54466): check_measurement_trials
+2025-11-07 13:14:56,870 INFO [ADAMService] Checking measurement trials for serial: X0019IADGB, file: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv, max: 100
+2025-11-07 13:14:56,873 INFO [ADAMService] Serial X0019IADGB found 28 times with Failed status in C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\ADAM_Audio_ASubs\Measurements\EOL\SequenceStatistics.csv
+2025-11-07 13:14:56,877 INFO [ADAMService] Measurement permitted. (serial=X0019IADGB, failed_count=28, max=100)
+2025-11-07 13:14:56,877 INFO [ADAMService] Sent response to ('192.168.1.165', 54466) (22 bytes)
+2025-11-07 13:14:56,878 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54466)
+2025-11-07 13:14:59,794 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54472)
+2025-11-07 13:14:59,794 INFO [ADAMService] Received command from ('192.168.1.165', 54472): log_workstation_task
+2025-11-07 13:14:59,795 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:14:59.468469 - Data: {'channel': 1, 'response_time': 0.324304, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:14:59,795 INFO [ADAMService] Sent response to ('192.168.1.165', 54472) (95 bytes)
+2025-11-07 13:14:59,795 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54472)
+2025-11-07 13:15:00,284 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54474)
+2025-11-07 13:15:00,309 INFO [ADAMService] Received command from ('192.168.1.165', 54474): log_workstation_task
+2025-11-07 13:15:00,309 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:15:00.309447 - Data: {}
+2025-11-07 13:15:00,309 INFO [ADAMService] Sent response to ('192.168.1.165', 54474) (112 bytes)
+2025-11-07 13:15:00,309 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54474)
+2025-11-07 13:15:03,030 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54478)
+2025-11-07 13:15:03,054 INFO [ADAMService] Received command from ('192.168.1.165', 54478): log_workstation_task
+2025-11-07 13:15:03,055 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:15:03.054167 - Data: {}
+2025-11-07 13:15:03,055 INFO [ADAMService] Sent response to ('192.168.1.165', 54478) (112 bytes)
+2025-11-07 13:15:03,055 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54478)
+2025-11-07 13:15:04,197 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54480)
+2025-11-07 13:15:04,198 INFO [ADAMService] Received command from ('192.168.1.165', 54480): log_workstation_task
+2025-11-07 13:15:04,198 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:15:04.198159 - Data: {}
+2025-11-07 13:15:04,198 INFO [ADAMService] Sent response to ('192.168.1.165', 54480) (112 bytes)
+2025-11-07 13:15:04,198 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54480)
+2025-11-07 13:15:10,379 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54483)
+2025-11-07 13:15:10,379 INFO [ADAMService] Received command from ('192.168.1.165', 54483): log_workstation_task
+2025-11-07 13:15:10,379 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:15:10.159762 - Data: {'channel': 1, 'response_time': 0.21765, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:15:10,379 INFO [ADAMService] Sent response to ('192.168.1.165', 54483) (95 bytes)
+2025-11-07 13:15:10,380 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54483)
+2025-11-07 13:15:10,948 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54485)
+2025-11-07 13:15:10,948 INFO [ADAMService] Received command from ('192.168.1.165', 54485): log_workstation_task
+2025-11-07 13:15:10,948 INFO [ADAMService] WORKSTATION[Dell-Thilo] UNKNOWN.UNKNOWN result={'success': True, 'raw': 'Done'} at 2025-11-07T13:15:10.948234 - Data: {}
+2025-11-07 13:15:10,949 INFO [ADAMService] Sent response to ('192.168.1.165', 54485) (112 bytes)
+2025-11-07 13:15:10,949 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54485)
+2025-11-07 13:15:14,723 INFO [ADAMService] Workstation connection from ('192.168.1.165', 54489)
+2025-11-07 13:15:14,723 INFO [ADAMService] Received command from ('192.168.1.165', 54489): log_workstation_task
+2025-11-07 13:15:14,724 INFO [ADAMService] WORKSTATION[Dell-Thilo] SWITCHBOX.set_channel result=success at 2025-11-07T13:15:14.391735 - Data: {'channel': 2, 'response_time': 0.328618, 'local_execution': True, 'attempt': 1}
+2025-11-07 13:15:14,724 INFO [ADAMService] Sent response to ('192.168.1.165', 54489) (95 bytes)
+2025-11-07 13:15:14,724 INFO [ADAMService] Workstation connection closed: ('192.168.1.165', 54489)

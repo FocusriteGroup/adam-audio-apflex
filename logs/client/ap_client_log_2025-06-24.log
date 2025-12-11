@@ -1,0 +1,829 @@
+2025-06-24 11:31:35,697 - INFO - ----------------------------------- APClient started
+2025-06-24 11:31:35,796 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-06-24 11:31:35,796 - INFO - Executing 'generate_timestamp_extension' command.
+2025-06-24 11:31:35,796 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:31:35,798 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-06-24 11:31:35,801 - INFO - Received response from server: 2025_06_24_11_31_35
+2025-06-24 11:31:35,922 - INFO - ----------------------------------- APClient started
+2025-06-24 11:31:35,932 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-06-24 11:31:35,932 - INFO - Executing 'get_timestamp_subpath' command.
+2025-06-24 11:31:35,932 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:31:35,933 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-06-24 11:31:35,934 - INFO - Received response from server: 2025\06_24
+2025-06-24 11:31:36,039 - INFO - ----------------------------------- APClient started
+2025-06-24 11:31:36,050 - INFO - Parsing and executing command: generate_file_prefix
+2025-06-24 11:31:36,050 - INFO - Executing 'generate_file_prefix' command with strings: ['raew', '2025_06_24_11_31_35']
+2025-06-24 11:31:36,050 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:31:36,051 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['raew', '2025_06_24_11_31_35']}
+2025-06-24 11:31:36,052 - INFO - Received response from server: raew_2025_06_24_11_31_35
+2025-06-24 11:31:36,171 - INFO - ----------------------------------- APClient started
+2025-06-24 11:31:36,186 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:31:36,186 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-24 11:31:36,186 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:31:36,188 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-06-24 11:31:36,189 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-24 11:31:36,287 - INFO - ----------------------------------- APClient started
+2025-06-24 11:31:36,296 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:31:36,296 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-24 11:31:36,296 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:31:36,297 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-06-24 11:31:36,299 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-24 11:31:36,394 - INFO - ----------------------------------- APClient started
+2025-06-24 11:31:36,408 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:31:36,408 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']
+2025-06-24 11:31:36,408 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:31:36,410 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']}
+2025-06-24 11:31:36,411 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24
+2025-06-24 11:31:36,541 - INFO - ----------------------------------- APClient started
+2025-06-24 11:31:36,551 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:31:36,551 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_31_35']
+2025-06-24 11:31:36,551 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:31:36,552 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_31_35']}
+2025-06-24 11:31:36,554 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_24\2025_06_24_11_31_35
+2025-06-24 11:31:36,661 - INFO - ----------------------------------- APClient started
+2025-06-24 11:31:36,676 - INFO - Parsing and executing command: check_measurement_trials
+2025-06-24 11:31:36,676 - INFO - Sending check_measurement_trials: serial=raew, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24\SequenceStatistics.csv, max=1000
+2025-06-24 11:31:36,676 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:31:36,678 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'raew', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-06-24 11:31:36,680 - INFO - Received response from server: Error: [Errno 2] No such file or directory: 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv'
+2025-06-24 11:31:36,680 - INFO - Server response: Error: [Errno 2] No such file or directory: 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv'
+2025-06-24 11:32:07,227 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:07,242 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-06-24 11:32:07,242 - INFO - Executing 'generate_timestamp_extension' command.
+2025-06-24 11:32:07,242 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:07,243 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-06-24 11:32:07,246 - INFO - Received response from server: 2025_06_24_11_32_07
+2025-06-24 11:32:07,408 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:07,422 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-06-24 11:32:07,422 - INFO - Executing 'get_timestamp_subpath' command.
+2025-06-24 11:32:07,422 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:07,424 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-06-24 11:32:07,425 - INFO - Received response from server: 2025\06_24
+2025-06-24 11:32:07,546 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:07,557 - INFO - Parsing and executing command: generate_file_prefix
+2025-06-24 11:32:07,557 - INFO - Executing 'generate_file_prefix' command with strings: ['raew', '2025_06_24_11_32_07']
+2025-06-24 11:32:07,557 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:07,558 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['raew', '2025_06_24_11_32_07']}
+2025-06-24 11:32:07,559 - INFO - Received response from server: raew_2025_06_24_11_32_07
+2025-06-24 11:32:07,691 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:07,701 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:32:07,701 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-24 11:32:07,701 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:07,702 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-06-24 11:32:07,716 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-24 11:32:07,815 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:07,829 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:32:07,829 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-24 11:32:07,829 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:07,831 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-06-24 11:32:07,832 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-24 11:32:07,921 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:07,929 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:32:07,929 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']
+2025-06-24 11:32:07,929 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:07,930 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']}
+2025-06-24 11:32:07,932 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24
+2025-06-24 11:32:08,040 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:08,055 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:32:08,055 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_32_07']
+2025-06-24 11:32:08,055 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:08,056 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_32_07']}
+2025-06-24 11:32:08,058 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_24\2025_06_24_11_32_07
+2025-06-24 11:32:08,166 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:08,181 - INFO - Parsing and executing command: check_measurement_trials
+2025-06-24 11:32:08,181 - INFO - Sending check_measurement_trials: serial=raew, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24\SequenceStatistics.csv, max=1000
+2025-06-24 11:32:08,181 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:08,182 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'raew', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-06-24 11:32:08,184 - INFO - Received response from server: Measurement permitted.
+2025-06-24 11:32:08,184 - INFO - Server response: Measurement permitted.
+2025-06-24 11:32:39,759 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:39,772 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-06-24 11:32:39,772 - INFO - Executing 'generate_timestamp_extension' command.
+2025-06-24 11:32:39,772 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:39,774 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-06-24 11:32:39,777 - INFO - Received response from server: 2025_06_24_11_32_39
+2025-06-24 11:32:39,960 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:39,980 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-06-24 11:32:39,980 - INFO - Executing 'get_timestamp_subpath' command.
+2025-06-24 11:32:39,980 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:39,983 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-06-24 11:32:39,984 - INFO - Received response from server: 2025\06_24
+2025-06-24 11:32:40,102 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:40,111 - INFO - Parsing and executing command: generate_file_prefix
+2025-06-24 11:32:40,111 - INFO - Executing 'generate_file_prefix' command with strings: ['raew', '2025_06_24_11_32_39']
+2025-06-24 11:32:40,111 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:40,112 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['raew', '2025_06_24_11_32_39']}
+2025-06-24 11:32:40,114 - INFO - Received response from server: raew_2025_06_24_11_32_39
+2025-06-24 11:32:40,226 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:40,238 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:32:40,238 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-24 11:32:40,238 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:40,239 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-06-24 11:32:40,241 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-24 11:32:40,338 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:40,352 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:32:40,352 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-24 11:32:40,352 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:40,354 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-06-24 11:32:40,355 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-24 11:32:40,456 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:40,466 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:32:40,466 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']
+2025-06-24 11:32:40,466 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:40,468 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']}
+2025-06-24 11:32:40,470 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24
+2025-06-24 11:32:40,565 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:40,575 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:32:40,575 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_32_39']
+2025-06-24 11:32:40,575 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:40,576 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_32_39']}
+2025-06-24 11:32:40,578 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_24\2025_06_24_11_32_39
+2025-06-24 11:32:40,687 - INFO - ----------------------------------- APClient started
+2025-06-24 11:32:40,696 - INFO - Parsing and executing command: check_measurement_trials
+2025-06-24 11:32:40,697 - INFO - Sending check_measurement_trials: serial=raew, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24\SequenceStatistics.csv, max=1000
+2025-06-24 11:32:40,697 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:32:40,698 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'raew', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-06-24 11:32:40,700 - INFO - Received response from server: Measurement permitted.
+2025-06-24 11:32:40,700 - INFO - Server response: Measurement permitted.
+2025-06-24 11:33:03,486 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:03,595 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-06-24 11:33:03,595 - INFO - Executing 'generate_timestamp_extension' command.
+2025-06-24 11:33:03,595 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:03,596 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-06-24 11:33:03,597 - INFO - Received response from server: 2025_06_24_11_33_03
+2025-06-24 11:33:03,749 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:03,761 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-06-24 11:33:03,761 - INFO - Executing 'get_timestamp_subpath' command.
+2025-06-24 11:33:03,761 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:03,763 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-06-24 11:33:03,765 - INFO - Received response from server: 2025\06_24
+2025-06-24 11:33:03,890 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:03,900 - INFO - Parsing and executing command: generate_file_prefix
+2025-06-24 11:33:03,900 - INFO - Executing 'generate_file_prefix' command with strings: ['raew', '2025_06_24_11_33_03']
+2025-06-24 11:33:03,900 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:03,902 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['raew', '2025_06_24_11_33_03']}
+2025-06-24 11:33:03,903 - INFO - Received response from server: raew_2025_06_24_11_33_03
+2025-06-24 11:33:04,020 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:04,032 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:33:04,032 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-24 11:33:04,032 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:04,033 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-06-24 11:33:04,034 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-24 11:33:04,165 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:04,175 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:33:04,175 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-24 11:33:04,175 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:04,176 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-06-24 11:33:04,180 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-24 11:33:04,292 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:04,301 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:33:04,302 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']
+2025-06-24 11:33:04,302 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:04,303 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']}
+2025-06-24 11:33:04,305 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24
+2025-06-24 11:33:04,430 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:04,441 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:33:04,441 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_33_03']
+2025-06-24 11:33:04,441 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:04,442 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_33_03']}
+2025-06-24 11:33:04,444 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_24\2025_06_24_11_33_03
+2025-06-24 11:33:04,572 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:04,582 - INFO - Parsing and executing command: check_measurement_trials
+2025-06-24 11:33:04,582 - INFO - Sending check_measurement_trials: serial=raew, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24\SequenceStatistics.csv, max=1000
+2025-06-24 11:33:04,582 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:04,583 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'raew', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-06-24 11:33:04,601 - INFO - Received response from server: Measurement permitted.
+2025-06-24 11:33:04,601 - INFO - Server response: Measurement permitted.
+2025-06-24 11:33:34,791 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:34,804 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-06-24 11:33:34,804 - INFO - Executing 'generate_timestamp_extension' command.
+2025-06-24 11:33:34,804 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:34,806 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-06-24 11:33:34,808 - INFO - Received response from server: 2025_06_24_11_33_34
+2025-06-24 11:33:34,956 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:34,970 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-06-24 11:33:34,970 - INFO - Executing 'get_timestamp_subpath' command.
+2025-06-24 11:33:34,970 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:34,971 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-06-24 11:33:34,973 - INFO - Received response from server: 2025\06_24
+2025-06-24 11:33:35,101 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:35,114 - INFO - Parsing and executing command: generate_file_prefix
+2025-06-24 11:33:35,114 - INFO - Executing 'generate_file_prefix' command with strings: ['raew', '2025_06_24_11_33_34']
+2025-06-24 11:33:35,114 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:35,116 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['raew', '2025_06_24_11_33_34']}
+2025-06-24 11:33:35,117 - INFO - Received response from server: raew_2025_06_24_11_33_34
+2025-06-24 11:33:35,249 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:35,260 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:33:35,261 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-24 11:33:35,261 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:35,262 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-06-24 11:33:35,264 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-24 11:33:35,370 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:35,381 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:33:35,381 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-24 11:33:35,381 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:35,382 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-06-24 11:33:35,384 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-24 11:33:35,489 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:35,499 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:33:35,499 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']
+2025-06-24 11:33:35,499 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:35,500 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']}
+2025-06-24 11:33:35,501 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24
+2025-06-24 11:33:35,608 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:35,621 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:33:35,621 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_33_34']
+2025-06-24 11:33:35,621 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:35,623 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_33_34']}
+2025-06-24 11:33:35,625 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_24\2025_06_24_11_33_34
+2025-06-24 11:33:35,760 - INFO - ----------------------------------- APClient started
+2025-06-24 11:33:35,771 - INFO - Parsing and executing command: check_measurement_trials
+2025-06-24 11:33:35,771 - INFO - Sending check_measurement_trials: serial=raew, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24\SequenceStatistics.csv, max=1000
+2025-06-24 11:33:35,771 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:33:35,773 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'raew', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-06-24 11:33:35,774 - INFO - Received response from server: Measurement permitted.
+2025-06-24 11:33:35,775 - INFO - Server response: Measurement permitted.
+2025-06-24 11:34:17,962 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:17,976 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-06-24 11:34:17,976 - INFO - Executing 'generate_timestamp_extension' command.
+2025-06-24 11:34:17,976 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:17,978 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-06-24 11:34:17,979 - INFO - Received response from server: 2025_06_24_11_34_17
+2025-06-24 11:34:18,104 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:18,120 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-06-24 11:34:18,120 - INFO - Executing 'get_timestamp_subpath' command.
+2025-06-24 11:34:18,120 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:18,122 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-06-24 11:34:18,122 - INFO - Received response from server: 2025\06_24
+2025-06-24 11:34:18,244 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:18,257 - INFO - Parsing and executing command: generate_file_prefix
+2025-06-24 11:34:18,257 - INFO - Executing 'generate_file_prefix' command with strings: ['raew', '2025_06_24_11_34_17']
+2025-06-24 11:34:18,258 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:18,259 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['raew', '2025_06_24_11_34_17']}
+2025-06-24 11:34:18,260 - INFO - Received response from server: raew_2025_06_24_11_34_17
+2025-06-24 11:34:18,373 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:18,385 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:34:18,385 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-24 11:34:18,385 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:18,387 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-06-24 11:34:18,388 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-24 11:34:18,517 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:18,531 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:34:18,531 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-24 11:34:18,531 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:18,532 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-06-24 11:34:18,533 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-24 11:34:18,702 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:18,721 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:34:18,721 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']
+2025-06-24 11:34:18,721 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:18,723 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']}
+2025-06-24 11:34:18,725 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24
+2025-06-24 11:34:18,844 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:18,857 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:34:18,857 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_34_17']
+2025-06-24 11:34:18,857 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:18,858 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_34_17']}
+2025-06-24 11:34:18,860 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_24\2025_06_24_11_34_17
+2025-06-24 11:34:19,004 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:19,019 - INFO - Parsing and executing command: check_measurement_trials
+2025-06-24 11:34:19,019 - INFO - Sending check_measurement_trials: serial=raew, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24\SequenceStatistics.csv, max=1000
+2025-06-24 11:34:19,019 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:19,020 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'raew', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-06-24 11:34:19,022 - INFO - Received response from server: Measurement permitted.
+2025-06-24 11:34:19,022 - INFO - Server response: Measurement permitted.
+2025-06-24 11:34:28,694 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:28,715 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-06-24 11:34:28,715 - INFO - Executing 'generate_timestamp_extension' command.
+2025-06-24 11:34:28,715 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:28,717 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-06-24 11:34:28,718 - INFO - Received response from server: 2025_06_24_11_34_28
+2025-06-24 11:34:28,872 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:28,884 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-06-24 11:34:28,884 - INFO - Executing 'get_timestamp_subpath' command.
+2025-06-24 11:34:28,884 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:28,885 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-06-24 11:34:28,886 - INFO - Received response from server: 2025\06_24
+2025-06-24 11:34:29,009 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:29,024 - INFO - Parsing and executing command: generate_file_prefix
+2025-06-24 11:34:29,024 - INFO - Executing 'generate_file_prefix' command with strings: ['raew', '2025_06_24_11_34_28']
+2025-06-24 11:34:29,024 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:29,025 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['raew', '2025_06_24_11_34_28']}
+2025-06-24 11:34:29,026 - INFO - Received response from server: raew_2025_06_24_11_34_28
+2025-06-24 11:34:29,163 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:29,178 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:34:29,178 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-24 11:34:29,178 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:29,179 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-06-24 11:34:29,180 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-24 11:34:29,295 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:29,308 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:34:29,308 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-24 11:34:29,308 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:29,313 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-06-24 11:34:29,314 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-24 11:34:29,441 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:29,457 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:34:29,457 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']
+2025-06-24 11:34:29,457 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:29,458 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']}
+2025-06-24 11:34:29,459 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24
+2025-06-24 11:34:29,593 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:29,607 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:34:29,673 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_34_28']
+2025-06-24 11:34:29,674 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:29,675 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_34_28']}
+2025-06-24 11:34:29,675 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_24\2025_06_24_11_34_28
+2025-06-24 11:34:29,811 - INFO - ----------------------------------- APClient started
+2025-06-24 11:34:29,829 - INFO - Parsing and executing command: check_measurement_trials
+2025-06-24 11:34:29,829 - INFO - Sending check_measurement_trials: serial=raew, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24\SequenceStatistics.csv, max=1000
+2025-06-24 11:34:29,829 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:34:29,831 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'raew', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-06-24 11:34:29,833 - INFO - Received response from server: Measurement permitted.
+2025-06-24 11:34:29,833 - INFO - Server response: Measurement permitted.
+2025-06-24 11:46:14,161 - INFO - ----------------------------------- APClient started
+2025-06-24 11:46:14,256 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-06-24 11:46:14,257 - INFO - Executing 'generate_timestamp_extension' command.
+2025-06-24 11:46:14,257 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:46:14,259 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-06-24 11:46:14,260 - INFO - Received response from server: 2025_06_24_11_46_14
+2025-06-24 11:46:14,440 - INFO - ----------------------------------- APClient started
+2025-06-24 11:46:14,459 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-06-24 11:46:14,459 - INFO - Executing 'get_timestamp_subpath' command.
+2025-06-24 11:46:14,460 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:46:14,462 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-06-24 11:46:14,463 - INFO - Received response from server: 2025\06_24
+2025-06-24 11:46:14,612 - INFO - ----------------------------------- APClient started
+2025-06-24 11:46:14,630 - INFO - Parsing and executing command: generate_file_prefix
+2025-06-24 11:46:14,630 - INFO - Executing 'generate_file_prefix' command with strings: ['raew', '2025_06_24_11_46_14']
+2025-06-24 11:46:14,630 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:46:14,633 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['raew', '2025_06_24_11_46_14']}
+2025-06-24 11:46:14,634 - INFO - Received response from server: raew_2025_06_24_11_46_14
+2025-06-24 11:46:14,770 - INFO - ----------------------------------- APClient started
+2025-06-24 11:46:14,786 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:46:14,786 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-24 11:46:14,786 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:46:14,787 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-06-24 11:46:14,788 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-24 11:46:14,905 - INFO - ----------------------------------- APClient started
+2025-06-24 11:46:14,922 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:46:14,922 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-24 11:46:14,922 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:46:14,924 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-06-24 11:46:14,924 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-24 11:46:15,060 - INFO - ----------------------------------- APClient started
+2025-06-24 11:46:15,068 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:46:15,068 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']
+2025-06-24 11:46:15,068 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:46:15,069 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']}
+2025-06-24 11:46:15,070 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24
+2025-06-24 11:46:15,182 - INFO - ----------------------------------- APClient started
+2025-06-24 11:46:15,192 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:46:15,192 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_46_14']
+2025-06-24 11:46:15,192 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:46:15,194 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_46_14']}
+2025-06-24 11:46:15,195 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_24\2025_06_24_11_46_14
+2025-06-24 11:46:15,320 - INFO - ----------------------------------- APClient started
+2025-06-24 11:46:15,331 - INFO - Parsing and executing command: check_measurement_trials
+2025-06-24 11:46:15,331 - INFO - Sending check_measurement_trials: serial=raew, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24\SequenceStatistics.csv, max=1000
+2025-06-24 11:46:15,331 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:46:15,332 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'raew', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-06-24 11:46:15,349 - INFO - Received response from server: Measurement permitted.
+2025-06-24 11:46:15,349 - INFO - Server response: Measurement permitted.
+2025-06-24 11:47:00,555 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:00,568 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-06-24 11:47:00,569 - INFO - Executing 'generate_timestamp_extension' command.
+2025-06-24 11:47:00,569 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:00,571 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-06-24 11:47:00,572 - INFO - Received response from server: 2025_06_24_11_47_00
+2025-06-24 11:47:00,682 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:00,692 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-06-24 11:47:00,692 - INFO - Executing 'get_timestamp_subpath' command.
+2025-06-24 11:47:00,692 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:00,693 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-06-24 11:47:00,694 - INFO - Received response from server: 2025\06_24
+2025-06-24 11:47:00,824 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:00,841 - INFO - Parsing and executing command: generate_file_prefix
+2025-06-24 11:47:00,842 - INFO - Executing 'generate_file_prefix' command with strings: ['raew', '2025_06_24_11_47_00']
+2025-06-24 11:47:00,842 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:00,844 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['raew', '2025_06_24_11_47_00']}
+2025-06-24 11:47:00,845 - INFO - Received response from server: raew_2025_06_24_11_47_00
+2025-06-24 11:47:00,970 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:00,983 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:47:00,983 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-24 11:47:00,983 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:00,984 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-06-24 11:47:00,985 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-24 11:47:01,106 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:01,114 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:47:01,114 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-24 11:47:01,114 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:01,115 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-06-24 11:47:01,116 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-24 11:47:01,212 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:01,225 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:47:01,225 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']
+2025-06-24 11:47:01,225 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:01,226 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']}
+2025-06-24 11:47:01,227 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24
+2025-06-24 11:47:01,324 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:01,334 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:47:01,334 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_47_00']
+2025-06-24 11:47:01,334 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:01,335 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_47_00']}
+2025-06-24 11:47:01,336 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_24\2025_06_24_11_47_00
+2025-06-24 11:47:01,437 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:01,453 - INFO - Parsing and executing command: check_measurement_trials
+2025-06-24 11:47:01,453 - INFO - Sending check_measurement_trials: serial=raew, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24\SequenceStatistics.csv, max=1000
+2025-06-24 11:47:01,453 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:01,455 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'raew', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-06-24 11:47:01,456 - INFO - Received response from server: Measurement permitted.
+2025-06-24 11:47:01,456 - INFO - Server response: Measurement permitted.
+2025-06-24 11:47:19,599 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:19,613 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-06-24 11:47:19,613 - INFO - Executing 'generate_timestamp_extension' command.
+2025-06-24 11:47:19,613 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:19,615 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-06-24 11:47:19,617 - INFO - Received response from server: 2025_06_24_11_47_19
+2025-06-24 11:47:19,772 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:19,790 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-06-24 11:47:19,791 - INFO - Executing 'get_timestamp_subpath' command.
+2025-06-24 11:47:19,791 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:19,793 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-06-24 11:47:19,794 - INFO - Received response from server: 2025\06_24
+2025-06-24 11:47:19,947 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:19,967 - INFO - Parsing and executing command: generate_file_prefix
+2025-06-24 11:47:19,967 - INFO - Executing 'generate_file_prefix' command with strings: ['raew', '2025_06_24_11_47_19']
+2025-06-24 11:47:19,967 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:19,969 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['raew', '2025_06_24_11_47_19']}
+2025-06-24 11:47:19,970 - INFO - Received response from server: raew_2025_06_24_11_47_19
+2025-06-24 11:47:20,149 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:20,166 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:47:20,167 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-24 11:47:20,167 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:20,169 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-06-24 11:47:20,169 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-24 11:47:20,329 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:20,349 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:47:20,349 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-24 11:47:20,349 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:20,351 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-06-24 11:47:20,352 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-24 11:47:20,508 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:20,524 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:47:20,525 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']
+2025-06-24 11:47:20,525 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:20,527 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']}
+2025-06-24 11:47:20,528 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24
+2025-06-24 11:47:20,643 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:20,657 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:47:20,658 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_47_19']
+2025-06-24 11:47:20,658 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:20,659 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_47_19']}
+2025-06-24 11:47:20,660 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_24\2025_06_24_11_47_19
+2025-06-24 11:47:20,782 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:20,797 - INFO - Parsing and executing command: check_measurement_trials
+2025-06-24 11:47:20,797 - INFO - Sending check_measurement_trials: serial=raew, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24\SequenceStatistics.csv, max=1000
+2025-06-24 11:47:20,797 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:20,798 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'raew', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-06-24 11:47:20,799 - INFO - Received response from server: Measurement permitted.
+2025-06-24 11:47:20,800 - INFO - Server response: Measurement permitted.
+2025-06-24 11:47:42,246 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:42,273 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-06-24 11:47:42,274 - INFO - Executing 'generate_timestamp_extension' command.
+2025-06-24 11:47:42,274 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:42,276 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-06-24 11:47:42,277 - INFO - Received response from server: 2025_06_24_11_47_42
+2025-06-24 11:47:42,403 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:42,420 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-06-24 11:47:42,420 - INFO - Executing 'get_timestamp_subpath' command.
+2025-06-24 11:47:42,421 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:42,423 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-06-24 11:47:42,424 - INFO - Received response from server: 2025\06_24
+2025-06-24 11:47:42,589 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:42,609 - INFO - Parsing and executing command: generate_file_prefix
+2025-06-24 11:47:42,609 - INFO - Executing 'generate_file_prefix' command with strings: ['raew', '2025_06_24_11_47_42']
+2025-06-24 11:47:42,610 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:42,611 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['raew', '2025_06_24_11_47_42']}
+2025-06-24 11:47:42,612 - INFO - Received response from server: raew_2025_06_24_11_47_42
+2025-06-24 11:47:42,742 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:42,758 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:47:42,758 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-24 11:47:42,758 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:42,760 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-06-24 11:47:42,761 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-24 11:47:42,904 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:42,917 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:47:42,918 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-24 11:47:42,919 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:42,921 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-06-24 11:47:42,922 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-24 11:47:43,054 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:43,068 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:47:43,068 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']
+2025-06-24 11:47:43,068 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:43,069 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']}
+2025-06-24 11:47:43,070 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24
+2025-06-24 11:47:43,215 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:43,229 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:47:43,229 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_47_42']
+2025-06-24 11:47:43,229 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:43,230 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_47_42']}
+2025-06-24 11:47:43,231 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_24\2025_06_24_11_47_42
+2025-06-24 11:47:43,374 - INFO - ----------------------------------- APClient started
+2025-06-24 11:47:43,383 - INFO - Parsing and executing command: check_measurement_trials
+2025-06-24 11:47:43,383 - INFO - Sending check_measurement_trials: serial=raew, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24\SequenceStatistics.csv, max=1000
+2025-06-24 11:47:43,383 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:47:43,384 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'raew', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-06-24 11:47:43,385 - INFO - Received response from server: Measurement permitted.
+2025-06-24 11:47:43,385 - INFO - Server response: Measurement permitted.
+2025-06-24 11:49:05,233 - INFO - ----------------------------------- APClient started
+2025-06-24 11:49:05,278 - INFO - Parsing and executing command: get_audio_input
+2025-06-24 11:49:05,278 - INFO - Executing 'get_audio_input' for 192.168.10.20:50001
+2025-06-24 11:49:05,278 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:49:05,279 - INFO - Connected to server. Sending command: {'action': 'get_audio_input', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 11:49:07,082 - INFO - Received response from server: [Input: Analogue]
+2025-06-24 11:50:25,317 - INFO - ----------------------------------- APClient started
+2025-06-24 11:50:25,428 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-06-24 11:50:25,428 - INFO - Executing 'generate_timestamp_extension' command.
+2025-06-24 11:50:25,428 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:50:25,430 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-06-24 11:50:25,431 - INFO - Received response from server: 2025_06_24_11_50_25
+2025-06-24 11:50:25,553 - INFO - ----------------------------------- APClient started
+2025-06-24 11:50:25,567 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-06-24 11:50:25,567 - INFO - Executing 'get_timestamp_subpath' command.
+2025-06-24 11:50:25,567 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:50:25,568 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-06-24 11:50:25,569 - INFO - Received response from server: 2025\06_24
+2025-06-24 11:50:25,731 - INFO - ----------------------------------- APClient started
+2025-06-24 11:50:25,744 - INFO - Parsing and executing command: generate_file_prefix
+2025-06-24 11:50:25,745 - INFO - Executing 'generate_file_prefix' command with strings: ['raew', '2025_06_24_11_50_25']
+2025-06-24 11:50:25,745 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:50:25,746 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['raew', '2025_06_24_11_50_25']}
+2025-06-24 11:50:25,746 - INFO - Received response from server: raew_2025_06_24_11_50_25
+2025-06-24 11:50:25,902 - INFO - ----------------------------------- APClient started
+2025-06-24 11:50:25,919 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:50:25,919 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-24 11:50:25,919 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:50:25,921 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-06-24 11:50:25,922 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-24 11:50:26,029 - INFO - ----------------------------------- APClient started
+2025-06-24 11:50:26,041 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:50:26,041 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-24 11:50:26,041 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:50:26,043 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-06-24 11:50:26,044 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-24 11:50:26,177 - INFO - ----------------------------------- APClient started
+2025-06-24 11:50:26,197 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:50:26,197 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']
+2025-06-24 11:50:26,197 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:50:26,198 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']}
+2025-06-24 11:50:26,200 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24
+2025-06-24 11:50:26,336 - INFO - ----------------------------------- APClient started
+2025-06-24 11:50:26,346 - INFO - Parsing and executing command: construct_path
+2025-06-24 11:50:26,346 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_50_25']
+2025-06-24 11:50:26,346 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:50:26,347 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_11_50_25']}
+2025-06-24 11:50:26,348 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_24\2025_06_24_11_50_25
+2025-06-24 11:50:26,506 - INFO - ----------------------------------- APClient started
+2025-06-24 11:50:26,521 - INFO - Parsing and executing command: check_measurement_trials
+2025-06-24 11:50:26,521 - INFO - Sending check_measurement_trials: serial=raew, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24\SequenceStatistics.csv, max=1000
+2025-06-24 11:50:26,521 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 11:50:26,522 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'raew', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-06-24 11:50:26,539 - INFO - Received response from server: Measurement permitted.
+2025-06-24 11:50:26,539 - INFO - Server response: Measurement permitted.
+2025-06-24 12:00:39,765 - INFO - ----------------------------------- APClient started
+2025-06-24 12:00:39,809 - INFO - Parsing and executing command: get_audio_input
+2025-06-24 12:00:39,810 - INFO - Executing 'get_audio_input' for 192.168.10.20:50001
+2025-06-24 12:00:39,810 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:00:39,811 - INFO - Connected to server. Sending command: {'action': 'get_audio_input', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 12:00:40,754 - INFO - Received response from server: [Input: Analogue]
+2025-06-24 12:01:10,587 - INFO - ----------------------------------- APClient started
+2025-06-24 12:01:10,622 - INFO - Parsing and executing command: get_mute
+2025-06-24 12:01:10,623 - INFO - Executing 'get_mute' for 192.168.10.20:50001
+2025-06-24 12:01:10,623 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:01:10,624 - INFO - Connected to server. Sending command: {'action': 'get_mute', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 12:01:18,356 - INFO - Received response from server: Unmuted
+2025-06-24 12:01:46,115 - INFO - ----------------------------------- APClient started
+2025-06-24 12:01:46,164 - INFO - Parsing and executing command: get_audio_input
+2025-06-24 12:01:46,164 - INFO - Executing 'get_audio_input' for 192.168.10.20:50001
+2025-06-24 12:01:46,164 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:01:46,165 - INFO - Connected to server. Sending command: {'action': 'get_audio_input', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 12:02:02,065 - INFO - Received response from server: [Input: Analogue]
+2025-06-24 12:02:49,821 - INFO - ----------------------------------- APClient started
+2025-06-24 12:02:49,858 - INFO - Parsing and executing command: set_device_biquad
+2025-06-24 12:02:49,859 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:02:49,860 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 1, 'coefficients': [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 12:02:50,593 - INFO - Received response from server: Done
+2025-06-24 12:04:57,818 - INFO - ----------------------------------- APClient started
+2025-06-24 12:04:57,862 - INFO - Parsing and executing command: get_audio_input
+2025-06-24 12:04:57,862 - INFO - Executing 'get_audio_input' for 192.168.10.20:50001
+2025-06-24 12:04:57,862 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:04:57,864 - INFO - Connected to server. Sending command: {'action': 'get_audio_input', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 12:04:58,604 - INFO - Received response from server: [Input: Analogue]
+2025-06-24 12:05:10,961 - INFO - ----------------------------------- APClient started
+2025-06-24 12:05:11,003 - INFO - Parsing and executing command: get_audio_input
+2025-06-24 12:05:11,003 - INFO - Executing 'get_audio_input' for 192.168.10.20:50001
+2025-06-24 12:05:11,003 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:05:11,005 - INFO - Connected to server. Sending command: {'action': 'get_audio_input', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 12:05:26,843 - INFO - Received response from server: [Input: Analogue]
+2025-06-24 12:08:40,635 - INFO - ----------------------------------- APClient started
+2025-06-24 12:08:40,771 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-06-24 12:08:40,771 - INFO - Executing 'generate_timestamp_extension' command.
+2025-06-24 12:08:40,772 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:08:40,774 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-06-24 12:08:40,775 - INFO - Received response from server: 2025_06_24_12_08_40
+2025-06-24 12:08:40,939 - INFO - ----------------------------------- APClient started
+2025-06-24 12:08:40,958 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-06-24 12:08:40,959 - INFO - Executing 'get_timestamp_subpath' command.
+2025-06-24 12:08:40,959 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:08:40,961 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-06-24 12:08:40,962 - INFO - Received response from server: 2025\06_24
+2025-06-24 12:08:41,096 - INFO - ----------------------------------- APClient started
+2025-06-24 12:08:41,107 - INFO - Parsing and executing command: generate_file_prefix
+2025-06-24 12:08:41,108 - INFO - Executing 'generate_file_prefix' command with strings: ['raew', '2025_06_24_12_08_40']
+2025-06-24 12:08:41,108 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:08:41,109 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['raew', '2025_06_24_12_08_40']}
+2025-06-24 12:08:41,110 - INFO - Received response from server: raew_2025_06_24_12_08_40
+2025-06-24 12:08:41,273 - INFO - ----------------------------------- APClient started
+2025-06-24 12:08:41,287 - INFO - Parsing and executing command: construct_path
+2025-06-24 12:08:41,287 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-24 12:08:41,287 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:08:41,289 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-06-24 12:08:41,290 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-24 12:08:41,446 - INFO - ----------------------------------- APClient started
+2025-06-24 12:08:41,467 - INFO - Parsing and executing command: construct_path
+2025-06-24 12:08:41,468 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-24 12:08:41,468 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:08:41,470 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-06-24 12:08:41,471 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-24 12:08:41,621 - INFO - ----------------------------------- APClient started
+2025-06-24 12:08:41,637 - INFO - Parsing and executing command: construct_path
+2025-06-24 12:08:41,637 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']
+2025-06-24 12:08:41,637 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:08:41,639 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_24']}
+2025-06-24 12:08:41,640 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24
+2025-06-24 12:08:41,757 - INFO - ----------------------------------- APClient started
+2025-06-24 12:08:41,769 - INFO - Parsing and executing command: construct_path
+2025-06-24 12:08:41,770 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_12_08_40']
+2025-06-24 12:08:41,770 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:08:41,771 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_24', '2025_06_24_12_08_40']}
+2025-06-24 12:08:41,771 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_24\2025_06_24_12_08_40
+2025-06-24 12:08:41,913 - INFO - ----------------------------------- APClient started
+2025-06-24 12:08:41,931 - INFO - Parsing and executing command: check_measurement_trials
+2025-06-24 12:08:41,931 - INFO - Sending check_measurement_trials: serial=raew, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_24\SequenceStatistics.csv, max=1000
+2025-06-24 12:08:41,932 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:08:41,933 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'raew', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_24\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-06-24 12:08:41,979 - INFO - Received response from server: Measurement permitted.
+2025-06-24 12:08:41,979 - INFO - Server response: Measurement permitted.
+2025-06-24 12:21:59,348 - INFO - ----------------------------------- APClient started
+2025-06-24 12:21:59,405 - INFO - Parsing and executing command: get_audio_input
+2025-06-24 12:21:59,406 - INFO - Executing 'get_audio_input' for 192.168.10.20:50001
+2025-06-24 12:21:59,406 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:21:59,407 - INFO - Connected to server. Sending command: {'action': 'get_audio_input', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 12:22:21,138 - INFO - Received response from server: Error: Failed to get audio input (Command failed:
+)
+2025-06-24 12:31:40,545 - INFO - ----------------------------------- APClient started
+2025-06-24 12:31:40,592 - INFO - Parsing and executing command: get_mute
+2025-06-24 12:31:40,592 - INFO - Executing 'get_mute' for 192.168.10.20:50001
+2025-06-24 12:31:40,593 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:31:40,594 - INFO - Connected to server. Sending command: {'action': 'get_mute', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 12:31:41,259 - INFO - Received response from server: Unmuted
+2025-06-24 12:32:18,027 - INFO - ----------------------------------- APClient started
+2025-06-24 12:32:18,065 - INFO - Parsing and executing command: set_mute
+2025-06-24 12:32:18,065 - INFO - Executing 'set_mute' to muted for 192.168.10.20:50001
+2025-06-24 12:32:18,065 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:32:18,067 - INFO - Connected to server. Sending command: {'action': 'set_mute', 'state': 'muted', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 12:32:19,256 - INFO - Received response from server: Done
+2025-06-24 12:32:31,364 - INFO - ----------------------------------- APClient started
+2025-06-24 12:32:31,401 - INFO - Parsing and executing command: set_mute
+2025-06-24 12:32:31,402 - INFO - Executing 'set_mute' to unmuted for 192.168.10.20:50001
+2025-06-24 12:32:31,402 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 12:32:31,403 - INFO - Connected to server. Sending command: {'action': 'set_mute', 'state': 'unmuted', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 12:32:32,084 - INFO - Received response from server: Done
+2025-06-24 16:39:27,880 - INFO - ----------------------------------- APClient started
+2025-06-24 16:39:27,913 - INFO - Parsing and executing command: set_mute
+2025-06-24 16:39:27,914 - INFO - Executing 'set_mute' to muted for 192.168.10.20:50001
+2025-06-24 16:39:27,914 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 16:39:27,915 - INFO - Connected to server. Sending command: {'action': 'set_mute', 'state': 'muted', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 16:39:28,671 - INFO - Received response from server: Done
+2025-06-24 16:39:47,253 - INFO - ----------------------------------- APClient started
+2025-06-24 16:39:47,282 - INFO - Parsing and executing command: set_mute
+2025-06-24 16:39:47,282 - INFO - Executing 'set_mute' to unmuted for 192.168.10.20:50001
+2025-06-24 16:39:47,282 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 16:39:47,284 - INFO - Connected to server. Sending command: {'action': 'set_mute', 'state': 'unmuted', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 16:39:47,929 - INFO - Received response from server: Done
+2025-06-24 16:40:17,402 - INFO - ----------------------------------- APClient started
+2025-06-24 16:42:17,904 - INFO - ----------------------------------- APClient started
+2025-06-24 16:43:55,747 - INFO - ----------------------------------- APClient started
+2025-06-24 16:43:55,779 - INFO - Parsing and executing command: get_device_biquad
+2025-06-24 16:43:55,779 - INFO - Executing 'get_device_biquad' for index=0 192.168.1.100:1234
+2025-06-24 16:43:55,780 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 16:43:55,782 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.1.100', 'port': 1234, 'wait_for_response': True}
+2025-06-24 16:44:17,476 - INFO - Received response from server: Error: Failed to get device biquad (Command failed:
+)
+2025-06-24 16:44:28,056 - INFO - ----------------------------------- APClient started
+2025-06-24 16:44:28,089 - INFO - Parsing and executing command: get_device_biquad
+2025-06-24 16:44:28,090 - INFO - Executing 'get_device_biquad' for index=0 192.168.1.100:1234
+2025-06-24 16:44:28,090 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 16:44:28,091 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.1.100', 'port': 1234, 'wait_for_response': True}
+2025-06-24 16:44:49,649 - INFO - Received response from server: Error: Failed to get device biquad (Command failed:
+)
+2025-06-24 16:45:15,373 - INFO - ----------------------------------- APClient started
+2025-06-24 16:45:29,578 - INFO - ----------------------------------- APClient started
+2025-06-24 16:45:54,621 - INFO - ----------------------------------- APClient started
+2025-06-24 16:45:54,659 - INFO - Parsing and executing command: get_device_biquad
+2025-06-24 16:45:54,659 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-06-24 16:45:54,659 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 16:45:54,660 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 16:45:55,307 - INFO - Received response from server: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-06-24 16:46:03,601 - INFO - ----------------------------------- APClient started
+2025-06-24 16:46:03,638 - INFO - Parsing and executing command: get_device_biquad
+2025-06-24 16:46:03,638 - INFO - Executing 'get_device_biquad' for index=2 192.168.10.20:50001
+2025-06-24 16:46:03,638 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 16:46:03,639 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 2, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 16:46:04,297 - INFO - Received response from server: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-06-24 16:46:14,027 - INFO - ----------------------------------- APClient started
+2025-06-24 16:46:14,065 - INFO - Parsing and executing command: get_device_biquad
+2025-06-24 16:46:14,065 - INFO - Executing 'get_device_biquad' for index=3 192.168.10.20:50001
+2025-06-24 16:46:14,065 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 16:46:14,067 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 3, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 16:46:14,696 - INFO - Received response from server: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-06-24 16:53:18,773 - INFO - ----------------------------------- APClient started
+2025-06-24 16:53:18,814 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-06-24 16:53:18,814 - INFO - Executing 'get_biquad_coefficients' with: type=bell, gain=3.0, peak_freq=1000.0, Q=0.707, sample_rate=48000
+2025-06-24 16:53:18,814 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 16:53:18,816 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'bell', 'gain': 3.0, 'peak_freq': 1000.0, 'Q': 0.707, 'sample_rate': 48000, 'wait_for_response': True}
+2025-06-24 16:53:18,819 - INFO - Received response from server: [-1.8399801267226594, 0.8558572427044137, 1.0297321495849374, -1.8399801267226594, 0.8261250931194762]
+2025-06-24 16:54:06,675 - INFO - ----------------------------------- APClient started
+2025-06-24 16:54:06,705 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-06-24 16:54:06,705 - INFO - Executing 'get_biquad_coefficients' with: type=bell, gain=3.0, peak_freq=1000.0, Q=0.707, sample_rate=48000
+2025-06-24 16:54:06,705 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 16:54:06,706 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'bell', 'gain': 3.0, 'peak_freq': 1000.0, 'Q': 0.707, 'sample_rate': 48000, 'wait_for_response': True}
+2025-06-24 16:54:06,707 - INFO - Received response from server: [-1.8399801267226594, 0.8558572427044137, 1.0297321495849374, -1.8399801267226594, 0.8261250931194762]
+2025-06-24 16:54:52,307 - INFO - ----------------------------------- APClient started
+2025-06-24 16:54:52,346 - INFO - Parsing and executing command: set_device_biquad
+2025-06-24 16:55:20,899 - INFO - ----------------------------------- APClient started
+2025-06-24 16:55:34,586 - INFO - ----------------------------------- APClient started
+2025-06-24 16:55:34,627 - INFO - Parsing and executing command: set_device_biquad
+2025-06-24 16:55:34,628 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 16:55:34,629 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 1, 'coefficients': [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 16:55:35,471 - INFO - Received response from server: Done
+2025-06-24 16:57:49,159 - INFO - ----------------------------------- APClient started
+2025-06-24 16:57:49,194 - INFO - Parsing and executing command: set_device_biquad
+2025-06-24 16:57:49,194 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 16:57:49,195 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 1, 'coefficients': [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 16:57:49,924 - INFO - Received response from server: Done
+2025-06-24 16:57:59,356 - INFO - ----------------------------------- APClient started
+2025-06-24 16:57:59,391 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-06-24 16:57:59,391 - INFO - Executing 'get_biquad_coefficients' with: type=bell, gain=3.0, peak_freq=1000.0, Q=0.707, sample_rate=48000
+2025-06-24 16:57:59,391 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 16:57:59,393 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'bell', 'gain': 3.0, 'peak_freq': 1000.0, 'Q': 0.707, 'sample_rate': 48000, 'wait_for_response': True}
+2025-06-24 16:57:59,395 - INFO - Received response from server: [-1.8399801267226594, 0.8558572427044137, 1.0297321495849374, -1.8399801267226594, 0.8261250931194762]
+2025-06-24 16:58:34,643 - INFO - ----------------------------------- APClient started
+2025-06-24 16:58:34,684 - INFO - Parsing and executing command: set_device_biquad
+2025-06-24 16:58:34,684 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 16:58:34,685 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 1, 'coefficients': [-1.8399801267226594, 0.8558572427044137, 1.0297321495849374, -1.8399801267226594, 0.8261250931194762], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 16:58:35,453 - INFO - Received response from server: Done
+2025-06-24 17:01:45,105 - INFO - ----------------------------------- APClient started
+2025-06-24 17:01:45,143 - INFO - Parsing and executing command: set_device_biquad
+2025-06-24 17:01:45,144 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 17:01:45,145 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 1, 'coefficients': [1.0, 0.0, 0.0, 0.0, 0.0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 17:01:45,899 - INFO - Received response from server: Done
+2025-06-24 17:05:25,197 - INFO - ----------------------------------- APClient started
+2025-06-24 17:05:25,242 - INFO - Parsing and executing command: set_device_biquad
+2025-06-24 17:05:25,242 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 17:05:25,243 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 1, 'coefficients': [-1.8399801267226594, 0.8558572427044137, 1.0297321495849374, -1.8399801267226594, 0.8261250931194762], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 17:05:26,191 - INFO - Received response from server: Done
+2025-06-24 17:05:53,250 - INFO - ----------------------------------- APClient started
+2025-06-24 17:05:53,289 - INFO - Parsing and executing command: set_device_biquad
+2025-06-24 17:05:53,289 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 17:05:53,290 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 1, 'coefficients': [1.0, 0.0, 0.0, 0.0, 0.0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 17:05:53,972 - INFO - Received response from server: Done
+2025-06-24 17:06:35,978 - INFO - ----------------------------------- APClient started
+2025-06-24 17:06:36,017 - INFO - Parsing and executing command: set_device_biquad
+2025-06-24 17:06:36,017 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 17:06:36,019 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 1, 'coefficients': [1.0, 0.0, 0.0, 0.0, 0.0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 17:06:57,699 - INFO - Received response from server: Error: Command failed:
+
+2025-06-24 17:08:12,399 - INFO - ----------------------------------- APClient started
+2025-06-24 17:08:12,438 - INFO - Parsing and executing command: set_device_biquad
+2025-06-24 17:08:12,438 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 17:08:12,439 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 1, 'coefficients': [1.0, 0.0, 0.0, 0.0, 0.0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 17:08:13,177 - INFO - Received response from server: Done
+2025-06-24 17:08:22,679 - INFO - ----------------------------------- APClient started
+2025-06-24 17:08:22,715 - INFO - Parsing and executing command: set_device_biquad
+2025-06-24 17:08:22,716 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 17:08:22,718 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 1, 'coefficients': [-1.8399801267226594, 0.8558572427044137, 1.0297321495849374, -1.8399801267226594, 0.8261250931194762], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 17:08:23,437 - INFO - Received response from server: Done
+2025-06-24 17:08:47,914 - INFO - ----------------------------------- APClient started
+2025-06-24 17:08:47,943 - INFO - Parsing and executing command: set_device_biquad
+2025-06-24 17:08:47,943 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 17:08:47,944 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 1, 'coefficients': [1.0, 0.0, 0.0, 0.0, 0.0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 17:08:48,736 - INFO - Received response from server: Done
+2025-06-24 17:11:01,808 - INFO - ----------------------------------- APClient started
+2025-06-24 17:11:01,842 - INFO - Parsing and executing command: get_device_biquad
+2025-06-24 17:11:01,842 - INFO - Executing 'get_device_biquad' for index=1 192.168.10.20:50001
+2025-06-24 17:11:01,842 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-06-24 17:11:01,843 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 1, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-06-24 17:11:02,505 - INFO - Received response from server: [Biquad: a = (1.00, 0.00), b = (0.00, 0.00, 0.00)]

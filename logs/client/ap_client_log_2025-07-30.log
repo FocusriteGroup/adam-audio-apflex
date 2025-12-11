@@ -1,0 +1,1143 @@
+2025-07-30 10:58:47,096 - INFO - ----------------------------------- APClient started
+2025-07-30 10:58:47,122 - INFO - Parsing and executing command: scan_serial
+2025-07-30 10:58:47,122 - INFO - Executing 'scan_serial' command.
+2025-07-30 10:58:47,122 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 10:58:47,124 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 10:58:47,809 - INFO - Received response from server: X0019IADGB
+2025-07-30 10:59:10,469 - INFO - ----------------------------------- APClient started
+2025-07-30 10:59:10,500 - INFO - Parsing and executing command: scan_serial
+2025-07-30 10:59:10,500 - INFO - Executing 'scan_serial' command.
+2025-07-30 10:59:10,500 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 10:59:10,501 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 10:59:14,579 - INFO - Received response from server: X0019IADGB
+2025-07-30 10:59:26,121 - INFO - ----------------------------------- APClient started
+2025-07-30 10:59:26,149 - INFO - Parsing and executing command: scan_serial
+2025-07-30 10:59:26,149 - INFO - Executing 'scan_serial' command.
+2025-07-30 10:59:26,149 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 10:59:26,151 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 10:59:26,684 - INFO - Received response from server: X0019IADGB
+2025-07-30 10:59:40,618 - INFO - ----------------------------------- APClient started
+2025-07-30 10:59:40,660 - INFO - Parsing and executing command: scan_serial
+2025-07-30 10:59:40,660 - INFO - Executing 'scan_serial' command.
+2025-07-30 10:59:40,660 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 10:59:40,662 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 10:59:41,212 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:00:35,077 - INFO - ----------------------------------- APClient started
+2025-07-30 11:00:35,114 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:00:35,114 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:00:35,114 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:00:35,116 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:00:38,057 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:00:46,566 - INFO - ----------------------------------- APClient started
+2025-07-30 11:00:46,604 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:00:46,604 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:00:46,604 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:00:46,605 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:00:47,145 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:00:53,972 - INFO - ----------------------------------- APClient started
+2025-07-30 11:00:54,011 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:00:54,011 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:00:54,011 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:00:54,012 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:00:54,560 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:01:35,944 - INFO - ----------------------------------- APClient started
+2025-07-30 11:01:35,982 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:01:35,982 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:01:35,982 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:01:35,984 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:01:36,509 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:01:38,978 - INFO - ----------------------------------- APClient started
+2025-07-30 11:01:39,015 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:01:39,017 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:01:39,017 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:01:39,018 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:01:39,566 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:01:43,913 - INFO - ----------------------------------- APClient started
+2025-07-30 11:01:43,947 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:01:43,947 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:01:43,947 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:01:43,948 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:01:44,497 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:01:47,895 - INFO - ----------------------------------- APClient started
+2025-07-30 11:01:47,930 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:01:47,930 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:01:47,930 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:01:47,931 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:01:48,477 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:01:51,487 - INFO - ----------------------------------- APClient started
+2025-07-30 11:01:51,523 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:01:51,523 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:01:51,523 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:01:51,525 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:01:52,076 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:25:04,938 - INFO - ----------------------------------- APClient started
+2025-07-30 11:25:04,974 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:25:04,974 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:25:04,974 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:25:04,976 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:25:15,486 - INFO - Received response from server: Error: Failed to scan serial number.
+2025-07-30 11:37:44,769 - INFO - ----------------------------------- APClient started
+2025-07-30 11:37:44,797 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:37:44,797 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:37:44,797 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:37:44,799 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:37:46,421 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:38:10,425 - INFO - ----------------------------------- APClient started
+2025-07-30 11:38:10,462 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:38:10,462 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:38:10,462 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:38:10,463 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:38:11,247 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:38:17,449 - INFO - ----------------------------------- APClient started
+2025-07-30 11:38:17,483 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:38:17,483 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:38:17,483 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:38:17,484 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:38:28,013 - INFO - Received response from server: Error: Failed to scan serial number.
+2025-07-30 11:43:59,641 - INFO - ----------------------------------- APClient started
+2025-07-30 11:43:59,678 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:43:59,678 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:43:59,679 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:43:59,680 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:44:10,198 - INFO - Received response from server: Error: Failed to scan serial number.
+2025-07-30 11:44:14,074 - INFO - ----------------------------------- APClient started
+2025-07-30 11:44:14,106 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:44:14,107 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:44:14,107 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:44:14,109 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:44:14,634 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:46:54,606 - INFO - ----------------------------------- APClient started
+2025-07-30 11:46:54,641 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:46:54,641 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:46:54,641 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:46:54,642 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:46:58,582 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:47:07,109 - INFO - ----------------------------------- APClient started
+2025-07-30 11:47:07,139 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:47:07,140 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:47:07,140 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:47:07,141 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:47:08,746 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:47:12,866 - INFO - ----------------------------------- APClient started
+2025-07-30 11:47:12,900 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:47:12,901 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:47:12,901 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:47:12,902 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:47:13,448 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:47:17,682 - INFO - ----------------------------------- APClient started
+2025-07-30 11:47:17,711 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:47:17,711 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:47:17,711 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:47:17,712 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:47:18,262 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:47:27,954 - INFO - ----------------------------------- APClient started
+2025-07-30 11:47:27,983 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:47:27,983 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:47:27,984 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:47:27,985 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:47:28,518 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:47:31,932 - INFO - ----------------------------------- APClient started
+2025-07-30 11:47:31,962 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:47:31,962 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:47:31,962 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:47:31,964 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:47:32,516 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:47:33,912 - INFO - ----------------------------------- APClient started
+2025-07-30 11:47:33,952 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:47:33,952 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:47:33,952 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:47:33,953 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:47:34,487 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:47:36,291 - INFO - ----------------------------------- APClient started
+2025-07-30 11:47:36,318 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:47:36,318 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:47:36,318 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:47:36,319 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:47:36,872 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:47:38,160 - INFO - ----------------------------------- APClient started
+2025-07-30 11:47:38,199 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:47:38,199 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:47:38,199 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:47:38,200 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:47:38,731 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:47:39,971 - INFO - ----------------------------------- APClient started
+2025-07-30 11:47:40,003 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:47:40,003 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:47:40,003 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:47:40,004 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:47:40,555 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:48:06,079 - INFO - ----------------------------------- APClient started
+2025-07-30 11:48:06,105 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:48:06,106 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:48:06,106 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:48:06,107 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:48:06,648 - INFO - Received response from server: X0019IADGB
+2025-07-30 11:57:16,344 - INFO - ----------------------------------- APClient started
+2025-07-30 11:57:16,376 - INFO - Parsing and executing command: scan_serial
+2025-07-30 11:57:16,376 - INFO - Executing 'scan_serial' command.
+2025-07-30 11:57:16,376 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 11:57:16,378 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 11:57:20,739 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:08:46,770 - INFO - ----------------------------------- APClient started
+2025-07-30 12:08:46,809 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:08:46,810 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:08:46,810 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:08:46,811 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:08:49,465 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:08:58,476 - INFO - ----------------------------------- APClient started
+2025-07-30 12:08:58,510 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:08:58,510 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:08:58,510 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:08:58,511 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:08:59,051 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:09:01,015 - INFO - ----------------------------------- APClient started
+2025-07-30 12:09:01,049 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:09:01,050 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:09:01,050 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:09:01,051 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:09:01,588 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:10:00,428 - INFO - ----------------------------------- APClient started
+2025-07-30 12:10:00,464 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:10:00,464 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:10:00,464 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:10:00,466 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:10:01,017 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:10:30,636 - INFO - ----------------------------------- APClient started
+2025-07-30 12:10:30,674 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:10:30,674 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:10:30,674 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:10:30,675 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:10:41,208 - INFO - Received response from server: Error: Failed to scan serial number.
+2025-07-30 12:13:10,293 - INFO - ----------------------------------- APClient started
+2025-07-30 12:13:10,382 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:13:10,382 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:13:10,382 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:13:10,383 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:13:14,644 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:13:14,798 - INFO - ----------------------------------- APClient started
+2025-07-30 12:13:14,817 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 12:13:14,817 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 12:13:14,817 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:13:14,819 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 12:13:14,821 - INFO - Received response from server: 2025_07_30_12_13_14
+2025-07-30 12:13:14,978 - INFO - ----------------------------------- APClient started
+2025-07-30 12:13:14,991 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 12:13:14,992 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 12:13:14,992 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:13:14,994 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 12:13:14,996 - INFO - Received response from server: 2025\07_30
+2025-07-30 12:13:15,128 - INFO - ----------------------------------- APClient started
+2025-07-30 12:13:15,143 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 12:13:15,143 - INFO - Executing 'generate_file_prefix' command with strings: ['X0019IADGB', '2025_07_30_12_13_14']
+2025-07-30 12:13:15,144 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:13:15,145 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['X0019IADGB', '2025_07_30_12_13_14']}
+2025-07-30 12:13:15,146 - INFO - Received response from server: X0019IADGB_2025_07_30_12_13_14
+2025-07-30 12:13:15,265 - INFO - ----------------------------------- APClient started
+2025-07-30 12:13:15,280 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:13:15,280 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:13:15,281 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:13:15,282 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 12:13:15,284 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:13:15,436 - INFO - ----------------------------------- APClient started
+2025-07-30 12:13:15,454 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:13:15,454 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:13:15,454 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:13:15,455 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 12:13:15,457 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:13:15,591 - INFO - ----------------------------------- APClient started
+2025-07-30 12:13:15,606 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:13:15,606 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:13:15,606 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:13:15,608 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 12:13:15,609 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:13:15,737 - INFO - ----------------------------------- APClient started
+2025-07-30 12:13:15,748 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:13:15,748 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_13_14']
+2025-07-30 12:13:15,748 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:13:15,749 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_13_14']}
+2025-07-30 12:13:15,751 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_13_14
+2025-07-30 12:13:15,895 - INFO - ----------------------------------- APClient started
+2025-07-30 12:13:15,911 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:13:15,911 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:13:15,911 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:13:15,913 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 12:13:15,915 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:14:57,557 - INFO - ----------------------------------- APClient started
+2025-07-30 12:14:57,576 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:14:57,576 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:14:57,577 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:14:57,578 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:15:02,046 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:15:02,196 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:02,212 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 12:15:02,213 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 12:15:02,213 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:02,214 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 12:15:02,216 - INFO - Received response from server: 2025_07_30_12_15_02
+2025-07-30 12:15:02,375 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:02,383 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 12:15:02,383 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 12:15:02,383 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:02,384 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 12:15:02,386 - INFO - Received response from server: 2025\07_30
+2025-07-30 12:15:02,515 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:02,523 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 12:15:02,523 - INFO - Executing 'generate_file_prefix' command with strings: ['X0019IADGB', '2025_07_30_12_15_02']
+2025-07-30 12:15:02,523 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:02,524 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['X0019IADGB', '2025_07_30_12_15_02']}
+2025-07-30 12:15:02,526 - INFO - Received response from server: X0019IADGB_2025_07_30_12_15_02
+2025-07-30 12:15:02,691 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:02,701 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:02,701 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:15:02,701 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:02,702 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 12:15:02,703 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:15:02,821 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:02,836 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:02,836 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:15:02,836 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:02,838 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 12:15:02,840 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:15:02,988 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:03,004 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:03,005 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:15:03,005 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:03,006 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 12:15:03,008 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:15:03,155 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:03,171 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:03,171 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_15_02']
+2025-07-30 12:15:03,171 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:03,172 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_15_02']}
+2025-07-30 12:15:03,173 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_15_02
+2025-07-30 12:15:03,337 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:03,351 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:03,351 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:15:03,351 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:03,353 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 12:15:03,354 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:15:22,144 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:22,163 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:15:22,163 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:15:22,165 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:22,167 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:15:22,717 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:15:22,873 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:22,881 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 12:15:22,881 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 12:15:22,881 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:22,882 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 12:15:22,884 - INFO - Received response from server: 2025_07_30_12_15_22
+2025-07-30 12:15:23,002 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:23,014 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 12:15:23,014 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 12:15:23,014 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:23,016 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 12:15:23,018 - INFO - Received response from server: 2025\07_30
+2025-07-30 12:15:23,139 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:23,153 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 12:15:23,153 - INFO - Executing 'generate_file_prefix' command with strings: ['X0019IADGB', '2025_07_30_12_15_22']
+2025-07-30 12:15:23,153 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:23,154 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['X0019IADGB', '2025_07_30_12_15_22']}
+2025-07-30 12:15:23,157 - INFO - Received response from server: X0019IADGB_2025_07_30_12_15_22
+2025-07-30 12:15:23,287 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:23,307 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:23,307 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:15:23,308 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:23,309 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 12:15:23,311 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:15:23,460 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:23,479 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:23,479 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:15:23,481 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:23,483 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 12:15:23,485 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:15:23,625 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:23,638 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:23,638 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:15:23,638 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:23,639 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 12:15:23,641 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:15:23,743 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:23,753 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:23,753 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_15_22']
+2025-07-30 12:15:23,753 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:23,755 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_15_22']}
+2025-07-30 12:15:23,755 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_15_22
+2025-07-30 12:15:23,868 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:23,875 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:23,875 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:15:23,875 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:23,876 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 12:15:23,878 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:15:39,035 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:39,044 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:15:39,044 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:15:39,044 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:39,045 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:15:39,589 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:15:39,715 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:39,724 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 12:15:39,724 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 12:15:39,724 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:39,725 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 12:15:39,727 - INFO - Received response from server: 2025_07_30_12_15_39
+2025-07-30 12:15:39,881 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:39,897 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 12:15:39,898 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 12:15:39,898 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:39,899 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 12:15:39,900 - INFO - Received response from server: 2025\07_30
+2025-07-30 12:15:39,994 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:40,007 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 12:15:40,008 - INFO - Executing 'generate_file_prefix' command with strings: ['X0019IADGB', '2025_07_30_12_15_39']
+2025-07-30 12:15:40,008 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:40,008 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['X0019IADGB', '2025_07_30_12_15_39']}
+2025-07-30 12:15:40,011 - INFO - Received response from server: X0019IADGB_2025_07_30_12_15_39
+2025-07-30 12:15:40,140 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:40,151 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:40,151 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:15:40,151 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:40,152 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 12:15:40,153 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:15:40,276 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:40,294 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:40,294 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:15:40,294 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:40,295 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 12:15:40,297 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:15:40,436 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:40,451 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:40,451 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:15:40,451 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:40,452 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 12:15:40,453 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:15:40,595 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:40,604 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:40,604 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_15_39']
+2025-07-30 12:15:40,604 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:40,605 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_15_39']}
+2025-07-30 12:15:40,607 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_15_39
+2025-07-30 12:15:40,728 - INFO - ----------------------------------- APClient started
+2025-07-30 12:15:40,738 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:15:40,738 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:15:40,738 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:15:40,739 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 12:15:40,740 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:16:23,389 - INFO - ----------------------------------- APClient started
+2025-07-30 12:16:23,409 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:16:23,409 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:16:23,410 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:16:23,411 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:16:33,965 - INFO - Received response from server: Error: Failed to scan serial number.
+2025-07-30 12:16:34,146 - INFO - ----------------------------------- APClient started
+2025-07-30 12:16:34,163 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 12:16:34,164 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 12:16:34,164 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:16:34,166 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 12:16:34,168 - INFO - Received response from server: 2025_07_30_12_16_34
+2025-07-30 12:16:34,311 - INFO - ----------------------------------- APClient started
+2025-07-30 12:16:34,326 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 12:16:34,326 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 12:16:34,327 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:16:34,329 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 12:16:34,330 - INFO - Received response from server: 2025\07_30
+2025-07-30 12:16:34,465 - INFO - ----------------------------------- APClient started
+2025-07-30 12:16:34,479 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 12:16:34,480 - INFO - Executing 'generate_file_prefix' command with strings: ['Error:', 'Failed', 'to', 'scan', 'serial', 'number.', '2025_07_30_12_16_34']
+2025-07-30 12:16:34,480 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:16:34,481 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['Error:', 'Failed', 'to', 'scan', 'serial', 'number.', '2025_07_30_12_16_34']}
+2025-07-30 12:16:34,482 - INFO - Received response from server: Error:_Failed_to_scan_serial_number._2025_07_30_12_16_34
+2025-07-30 12:16:34,621 - INFO - ----------------------------------- APClient started
+2025-07-30 12:16:34,635 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:16:34,636 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:16:34,636 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:16:34,637 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 12:16:34,638 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:16:34,771 - INFO - ----------------------------------- APClient started
+2025-07-30 12:16:34,784 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:16:34,784 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:16:34,785 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:16:34,787 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 12:16:34,789 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:16:34,927 - INFO - ----------------------------------- APClient started
+2025-07-30 12:16:34,936 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:16:34,936 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:16:34,937 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:16:34,938 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 12:16:34,940 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:16:35,066 - INFO - ----------------------------------- APClient started
+2025-07-30 12:16:35,078 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:16:35,078 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_16_34']
+2025-07-30 12:16:35,078 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:16:35,080 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_16_34']}
+2025-07-30 12:16:35,082 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_16_34
+2025-07-30 12:16:35,193 - INFO - ----------------------------------- APClient started
+2025-07-30 12:16:35,207 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:16:35,208 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:16:35,208 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:16:35,209 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 12:16:35,211 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:19:10,430 - INFO - ----------------------------------- APClient started
+2025-07-30 12:19:10,530 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:19:10,531 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:19:10,531 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:19:10,533 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:19:21,080 - INFO - Received response from server: Error: Failed to scan serial number.
+2025-07-30 12:19:21,218 - INFO - ----------------------------------- APClient started
+2025-07-30 12:19:21,232 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 12:19:21,232 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 12:19:21,232 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:19:21,234 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 12:19:21,236 - INFO - Received response from server: 2025_07_30_12_19_21
+2025-07-30 12:19:21,351 - INFO - ----------------------------------- APClient started
+2025-07-30 12:19:21,365 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 12:19:21,366 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 12:19:21,366 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:19:21,368 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 12:19:21,370 - INFO - Received response from server: 2025\07_30
+2025-07-30 12:19:21,525 - INFO - ----------------------------------- APClient started
+2025-07-30 12:19:21,534 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 12:19:21,534 - INFO - Executing 'generate_file_prefix' command with strings: ['Error:', 'Failed', 'to', 'scan', 'serial', 'number.', '2025_07_30_12_19_21']
+2025-07-30 12:19:21,535 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:19:21,536 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['Error:', 'Failed', 'to', 'scan', 'serial', 'number.', '2025_07_30_12_19_21']}
+2025-07-30 12:19:21,537 - INFO - Received response from server: Error:_Failed_to_scan_serial_number._2025_07_30_12_19_21
+2025-07-30 12:19:21,649 - INFO - ----------------------------------- APClient started
+2025-07-30 12:19:21,664 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:19:21,664 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:19:21,665 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:19:21,666 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 12:19:21,668 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:19:21,781 - INFO - ----------------------------------- APClient started
+2025-07-30 12:19:21,796 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:19:21,796 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:19:21,796 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:19:21,797 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 12:19:21,799 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:19:21,917 - INFO - ----------------------------------- APClient started
+2025-07-30 12:19:21,929 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:19:21,929 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:19:21,929 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:19:21,930 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 12:19:21,931 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:19:22,059 - INFO - ----------------------------------- APClient started
+2025-07-30 12:19:22,069 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:19:22,069 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_19_21']
+2025-07-30 12:19:22,069 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:19:22,070 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_19_21']}
+2025-07-30 12:19:22,072 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_19_21
+2025-07-30 12:19:22,175 - INFO - ----------------------------------- APClient started
+2025-07-30 12:19:22,189 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:19:22,189 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:19:22,189 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:19:22,190 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 12:19:22,192 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:22:15,690 - INFO - ----------------------------------- APClient started
+2025-07-30 12:22:15,709 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:22:15,710 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:22:15,710 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:22:15,712 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:22:16,249 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:22:16,411 - INFO - ----------------------------------- APClient started
+2025-07-30 12:22:16,426 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 12:22:16,426 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 12:22:16,426 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:22:16,427 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 12:22:16,429 - INFO - Received response from server: 2025_07_30_12_22_16
+2025-07-30 12:22:16,561 - INFO - ----------------------------------- APClient started
+2025-07-30 12:22:16,579 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 12:22:16,579 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 12:22:16,580 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:22:16,582 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 12:22:16,584 - INFO - Received response from server: 2025\07_30
+2025-07-30 12:22:16,722 - INFO - ----------------------------------- APClient started
+2025-07-30 12:22:16,734 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 12:22:16,734 - INFO - Executing 'generate_file_prefix' command with strings: ['X0019IADGB', '2025_07_30_12_22_16']
+2025-07-30 12:22:16,734 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:22:16,735 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['X0019IADGB', '2025_07_30_12_22_16']}
+2025-07-30 12:22:16,737 - INFO - Received response from server: X0019IADGB_2025_07_30_12_22_16
+2025-07-30 12:22:16,867 - INFO - ----------------------------------- APClient started
+2025-07-30 12:22:16,880 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:22:16,881 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:22:16,881 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:22:16,883 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 12:22:16,885 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:22:17,029 - INFO - ----------------------------------- APClient started
+2025-07-30 12:22:17,043 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:22:17,044 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:22:17,044 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:22:17,047 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 12:22:17,049 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:22:17,176 - INFO - ----------------------------------- APClient started
+2025-07-30 12:22:17,190 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:22:17,190 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:22:17,191 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:22:17,192 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 12:22:17,194 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:22:17,348 - INFO - ----------------------------------- APClient started
+2025-07-30 12:22:17,363 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:22:17,363 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_22_16']
+2025-07-30 12:22:17,363 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:22:17,364 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_22_16']}
+2025-07-30 12:22:17,365 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_22_16
+2025-07-30 12:22:17,511 - INFO - ----------------------------------- APClient started
+2025-07-30 12:22:17,523 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:22:17,523 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:22:17,523 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:22:17,526 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 12:22:17,528 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:24:05,521 - INFO - ----------------------------------- APClient started
+2025-07-30 12:24:05,540 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:24:05,540 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:24:05,540 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:24:05,543 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:24:16,061 - INFO - Received response from server: Error: Failed to scan serial number.
+2025-07-30 12:24:21,748 - INFO - ----------------------------------- APClient started
+2025-07-30 12:24:21,762 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 12:24:21,762 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 12:24:21,762 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:24:21,764 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 12:24:21,766 - INFO - Received response from server: 2025_07_30_12_24_21
+2025-07-30 12:24:21,936 - INFO - ----------------------------------- APClient started
+2025-07-30 12:24:21,951 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 12:24:21,951 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 12:24:21,952 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:24:21,953 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 12:24:21,954 - INFO - Received response from server: 2025\07_30
+2025-07-30 12:24:22,067 - INFO - ----------------------------------- APClient started
+2025-07-30 12:24:22,076 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 12:24:22,076 - INFO - Executing 'generate_file_prefix' command with strings: ['Error:', 'Failed', 'to', 'scan', 'serial', 'number.', '2025_07_30_12_24_21']
+2025-07-30 12:24:22,076 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:24:22,077 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['Error:', 'Failed', 'to', 'scan', 'serial', 'number.', '2025_07_30_12_24_21']}
+2025-07-30 12:24:22,079 - INFO - Received response from server: Error:_Failed_to_scan_serial_number._2025_07_30_12_24_21
+2025-07-30 12:24:22,183 - INFO - ----------------------------------- APClient started
+2025-07-30 12:24:22,191 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:24:22,192 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:24:22,192 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:24:22,193 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 12:24:22,194 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:24:22,301 - INFO - ----------------------------------- APClient started
+2025-07-30 12:24:22,308 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:24:22,308 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:24:22,308 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:24:22,309 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 12:24:22,311 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:24:22,404 - INFO - ----------------------------------- APClient started
+2025-07-30 12:24:22,413 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:24:22,413 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:24:22,413 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:24:22,414 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 12:24:22,415 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:24:22,528 - INFO - ----------------------------------- APClient started
+2025-07-30 12:24:22,538 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:24:22,538 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_24_21']
+2025-07-30 12:24:22,538 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:24:22,539 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_24_21']}
+2025-07-30 12:24:22,540 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_24_21
+2025-07-30 12:24:22,642 - INFO - ----------------------------------- APClient started
+2025-07-30 12:24:22,651 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:24:22,651 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:24:22,651 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:24:22,652 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 12:24:22,654 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:24:48,664 - INFO - ----------------------------------- APClient started
+2025-07-30 12:24:48,684 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:24:48,685 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:24:48,685 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:24:48,687 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:25:00,517 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:00,532 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:25:00,532 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:25:00,532 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:00,534 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:25:25,831 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:25,850 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:25:25,851 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:25:25,851 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:25,853 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:25:26,385 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:25:26,515 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:26,528 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 12:25:26,528 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 12:25:26,528 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:26,529 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 12:25:26,531 - INFO - Received response from server: 2025_07_30_12_25_26
+2025-07-30 12:25:26,626 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:26,635 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 12:25:26,636 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 12:25:26,636 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:26,637 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 12:25:26,638 - INFO - Received response from server: 2025\07_30
+2025-07-30 12:25:26,744 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:26,753 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 12:25:26,753 - INFO - Executing 'generate_file_prefix' command with strings: ['X0019IADGB', '2025_07_30_12_25_26']
+2025-07-30 12:25:26,753 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:26,754 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['X0019IADGB', '2025_07_30_12_25_26']}
+2025-07-30 12:25:26,756 - INFO - Received response from server: X0019IADGB_2025_07_30_12_25_26
+2025-07-30 12:25:26,895 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:26,904 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:25:26,904 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:25:26,904 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:26,905 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 12:25:26,907 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:25:27,024 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:27,040 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:25:27,040 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:25:27,040 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:27,042 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 12:25:27,043 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:25:27,157 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:27,166 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:25:27,166 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:25:27,166 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:27,167 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 12:25:27,170 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:25:27,304 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:27,314 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:25:27,314 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_25_26']
+2025-07-30 12:25:27,314 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:27,316 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_25_26']}
+2025-07-30 12:25:27,318 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_25_26
+2025-07-30 12:25:27,460 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:27,476 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:25:27,476 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:25:27,476 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:27,477 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 12:25:27,479 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:25:42,864 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:42,883 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:25:42,883 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:25:42,883 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:42,885 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:25:43,436 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:25:43,559 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:43,569 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 12:25:43,569 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 12:25:43,569 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:43,570 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 12:25:43,571 - INFO - Received response from server: 2025_07_30_12_25_43
+2025-07-30 12:25:43,715 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:43,730 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 12:25:43,731 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 12:25:43,731 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:43,732 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 12:25:43,733 - INFO - Received response from server: 2025\07_30
+2025-07-30 12:25:43,881 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:43,890 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 12:25:43,890 - INFO - Executing 'generate_file_prefix' command with strings: ['X0019IADGB', '2025_07_30_12_25_43']
+2025-07-30 12:25:43,890 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:43,891 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['X0019IADGB', '2025_07_30_12_25_43']}
+2025-07-30 12:25:43,893 - INFO - Received response from server: X0019IADGB_2025_07_30_12_25_43
+2025-07-30 12:25:44,034 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:44,049 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:25:44,049 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:25:44,049 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:44,050 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 12:25:44,052 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:25:44,171 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:44,180 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:25:44,180 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:25:44,180 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:44,181 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 12:25:44,183 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:25:44,335 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:44,345 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:25:44,345 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:25:44,345 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:44,347 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 12:25:44,349 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:25:44,472 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:44,487 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:25:44,487 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_25_43']
+2025-07-30 12:25:44,487 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:44,489 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_25_43']}
+2025-07-30 12:25:44,490 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_25_43
+2025-07-30 12:25:44,587 - INFO - ----------------------------------- APClient started
+2025-07-30 12:25:44,601 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:25:44,601 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:25:44,601 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:25:44,603 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 12:25:44,604 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:26:03,994 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:04,003 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:26:04,003 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:26:04,003 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:04,004 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:26:04,549 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:26:04,719 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:04,734 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 12:26:04,734 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 12:26:04,734 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:04,736 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 12:26:04,738 - INFO - Received response from server: 2025_07_30_12_26_04
+2025-07-30 12:26:04,877 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:04,894 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 12:26:04,894 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 12:26:04,894 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:04,896 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 12:26:04,898 - INFO - Received response from server: 2025\07_30
+2025-07-30 12:26:05,030 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:05,041 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 12:26:05,041 - INFO - Executing 'generate_file_prefix' command with strings: ['X0019IADGB', '2025_07_30_12_26_04']
+2025-07-30 12:26:05,041 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:05,042 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['X0019IADGB', '2025_07_30_12_26_04']}
+2025-07-30 12:26:05,044 - INFO - Received response from server: X0019IADGB_2025_07_30_12_26_04
+2025-07-30 12:26:05,203 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:05,214 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:26:05,215 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:26:05,215 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:05,216 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 12:26:05,218 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:26:05,331 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:05,347 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:26:05,347 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:26:05,347 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:05,348 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 12:26:05,350 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:26:05,479 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:05,492 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:26:05,492 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:26:05,492 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:05,493 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 12:26:05,495 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:26:05,642 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:05,657 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:26:05,657 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_26_04']
+2025-07-30 12:26:05,657 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:05,659 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_26_04']}
+2025-07-30 12:26:05,661 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_26_04
+2025-07-30 12:26:05,780 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:05,798 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:26:05,798 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:26:05,799 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:05,800 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 12:26:05,802 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:26:38,689 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:38,708 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:26:38,708 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:26:38,708 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:38,710 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:26:39,237 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:26:39,408 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:39,425 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 12:26:39,426 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 12:26:39,426 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:39,427 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 12:26:39,429 - INFO - Received response from server: 2025_07_30_12_26_39
+2025-07-30 12:26:39,552 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:39,561 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 12:26:39,561 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 12:26:39,561 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:39,562 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 12:26:39,568 - INFO - Received response from server: 2025\07_30
+2025-07-30 12:26:39,687 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:39,706 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 12:26:39,707 - INFO - Executing 'generate_file_prefix' command with strings: ['X0019IADGB', '2025_07_30_12_26_39']
+2025-07-30 12:26:39,707 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:39,708 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['X0019IADGB', '2025_07_30_12_26_39']}
+2025-07-30 12:26:39,710 - INFO - Received response from server: X0019IADGB_2025_07_30_12_26_39
+2025-07-30 12:26:39,827 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:39,842 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:26:39,842 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:26:39,842 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:39,844 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 12:26:39,845 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:26:39,959 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:39,974 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:26:39,974 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:26:39,974 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:39,976 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 12:26:39,977 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:26:40,089 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:40,097 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:26:40,098 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:26:40,098 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:40,099 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 12:26:40,100 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:26:40,201 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:40,214 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:26:40,214 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_26_39']
+2025-07-30 12:26:40,214 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:40,216 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_26_39']}
+2025-07-30 12:26:40,217 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_26_39
+2025-07-30 12:26:40,346 - INFO - ----------------------------------- APClient started
+2025-07-30 12:26:40,359 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:26:40,359 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:26:40,359 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:26:40,360 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 12:26:40,362 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:27:33,393 - INFO - ----------------------------------- APClient started
+2025-07-30 12:27:33,412 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:27:33,413 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:27:33,413 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:27:33,415 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:27:33,963 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:27:34,119 - INFO - ----------------------------------- APClient started
+2025-07-30 12:27:34,134 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 12:27:34,134 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 12:27:34,135 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:27:34,136 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 12:27:34,139 - INFO - Received response from server: 2025_07_30_12_27_34
+2025-07-30 12:27:34,283 - INFO - ----------------------------------- APClient started
+2025-07-30 12:27:34,296 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 12:27:34,296 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 12:27:34,296 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:27:34,297 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 12:27:34,299 - INFO - Received response from server: 2025\07_30
+2025-07-30 12:27:34,411 - INFO - ----------------------------------- APClient started
+2025-07-30 12:27:34,421 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 12:27:34,421 - INFO - Executing 'generate_file_prefix' command with strings: ['X0019IADGB', '2025_07_30_12_27_34']
+2025-07-30 12:27:34,421 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:27:34,422 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['X0019IADGB', '2025_07_30_12_27_34']}
+2025-07-30 12:27:34,425 - INFO - Received response from server: X0019IADGB_2025_07_30_12_27_34
+2025-07-30 12:27:34,554 - INFO - ----------------------------------- APClient started
+2025-07-30 12:27:34,562 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:27:34,562 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:27:34,562 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:27:34,563 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 12:27:34,568 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:27:34,666 - INFO - ----------------------------------- APClient started
+2025-07-30 12:27:34,680 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:27:34,680 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:27:34,680 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:27:34,682 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 12:27:34,684 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:27:34,817 - INFO - ----------------------------------- APClient started
+2025-07-30 12:27:34,830 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:27:34,830 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:27:34,830 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:27:34,832 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 12:27:34,833 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:27:34,958 - INFO - ----------------------------------- APClient started
+2025-07-30 12:27:34,966 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:27:34,967 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_27_34']
+2025-07-30 12:27:34,967 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:27:34,968 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_27_34']}
+2025-07-30 12:27:34,969 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_27_34
+2025-07-30 12:27:35,105 - INFO - ----------------------------------- APClient started
+2025-07-30 12:27:35,118 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:27:35,118 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:27:35,118 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:27:35,119 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 12:27:35,121 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:28:22,052 - INFO - ----------------------------------- APClient started
+2025-07-30 12:28:22,082 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:28:22,082 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:28:22,082 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:28:22,085 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:28:22,636 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:28:34,409 - INFO - ----------------------------------- APClient started
+2025-07-30 12:28:34,446 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:28:34,446 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:28:34,446 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:28:34,448 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:28:34,986 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:28:45,536 - INFO - ----------------------------------- APClient started
+2025-07-30 12:28:45,575 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:28:45,576 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:28:45,576 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:28:45,577 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:28:47,576 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:29:03,786 - INFO - ----------------------------------- APClient started
+2025-07-30 12:29:03,821 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:29:03,821 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:29:03,822 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:29:03,822 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:29:04,359 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:29:15,581 - INFO - ----------------------------------- APClient started
+2025-07-30 12:29:15,608 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:29:15,609 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:29:15,609 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:29:15,610 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:29:16,150 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:33:06,313 - INFO - ----------------------------------- APClient started
+2025-07-30 12:33:06,325 - INFO - Parsing and executing command: scan_serial
+2025-07-30 12:33:06,325 - INFO - Executing 'scan_serial' command.
+2025-07-30 12:33:06,326 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:33:06,327 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 12:33:06,870 - INFO - Received response from server: X0019IADGB
+2025-07-30 12:33:07,027 - INFO - ----------------------------------- APClient started
+2025-07-30 12:33:07,042 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 12:33:07,042 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 12:33:07,042 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:33:07,044 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 12:33:07,047 - INFO - Received response from server: 2025_07_30_12_33_07
+2025-07-30 12:33:07,189 - INFO - ----------------------------------- APClient started
+2025-07-30 12:33:07,198 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 12:33:07,198 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 12:33:07,198 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:33:07,199 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 12:33:07,201 - INFO - Received response from server: 2025\07_30
+2025-07-30 12:33:07,325 - INFO - ----------------------------------- APClient started
+2025-07-30 12:33:07,334 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 12:33:07,334 - INFO - Executing 'generate_file_prefix' command with strings: ['X0019IADGB', '2025_07_30_12_33_07']
+2025-07-30 12:33:07,334 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:33:07,335 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['X0019IADGB', '2025_07_30_12_33_07']}
+2025-07-30 12:33:07,338 - INFO - Received response from server: X0019IADGB_2025_07_30_12_33_07
+2025-07-30 12:33:07,487 - INFO - ----------------------------------- APClient started
+2025-07-30 12:33:07,498 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:33:07,498 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:33:07,498 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:33:07,499 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 12:33:07,501 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:33:07,623 - INFO - ----------------------------------- APClient started
+2025-07-30 12:33:07,636 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:33:07,636 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:33:07,636 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:33:07,637 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 12:33:07,640 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:33:07,787 - INFO - ----------------------------------- APClient started
+2025-07-30 12:33:07,800 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:33:07,800 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:33:07,800 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:33:07,801 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 12:33:07,803 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:33:07,940 - INFO - ----------------------------------- APClient started
+2025-07-30 12:33:07,951 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:33:07,951 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_33_07']
+2025-07-30 12:33:07,951 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:33:07,952 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_33_07']}
+2025-07-30 12:33:07,954 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_33_07
+2025-07-30 12:33:08,065 - INFO - ----------------------------------- APClient started
+2025-07-30 12:33:08,075 - INFO - Parsing and executing command: construct_path
+2025-07-30 12:33:08,075 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:33:08,075 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 12:33:08,076 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 12:33:08,078 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 13:01:43,720 - INFO - ----------------------------------- APClient started
+2025-07-30 13:01:43,756 - INFO - Parsing and executing command: scan_serial
+2025-07-30 13:01:43,757 - INFO - Executing 'scan_serial' command.
+2025-07-30 13:01:43,757 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 13:01:43,757 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 13:01:44,308 - INFO - Received response from server: X0019IADGB
+2025-07-30 13:01:50,431 - INFO - ----------------------------------- APClient started
+2025-07-30 13:01:50,464 - INFO - Parsing and executing command: scan_serial
+2025-07-30 13:01:50,464 - INFO - Executing 'scan_serial' command.
+2025-07-30 13:01:50,464 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 13:01:50,465 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 13:01:51,000 - INFO - Received response from server: X0019IADGB
+2025-07-30 13:01:58,896 - INFO - ----------------------------------- APClient started
+2025-07-30 13:01:58,925 - INFO - Parsing and executing command: scan_serial
+2025-07-30 13:01:58,925 - INFO - Executing 'scan_serial' command.
+2025-07-30 13:01:58,925 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 13:01:58,927 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 13:02:09,474 - INFO - Received response from server: Error: Failed to scan serial number.
+2025-07-30 15:22:12,759 - INFO - ----------------------------------- APClient started
+2025-07-30 15:22:12,876 - INFO - Parsing and executing command: scan_serial
+2025-07-30 15:22:12,876 - INFO - Executing 'scan_serial' command.
+2025-07-30 15:22:12,876 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:22:12,878 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 15:22:16,152 - INFO - Received response from server: X0019IADGB
+2025-07-30 15:22:21,034 - INFO - ----------------------------------- APClient started
+2025-07-30 15:22:21,051 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 15:22:21,052 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 15:22:21,052 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:22:21,055 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 15:22:21,058 - INFO - Received response from server: 2025_07_30_15_22_21
+2025-07-30 15:22:21,189 - INFO - ----------------------------------- APClient started
+2025-07-30 15:22:21,205 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 15:22:21,205 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 15:22:21,206 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:22:21,207 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 15:22:21,210 - INFO - Received response from server: 2025\07_30
+2025-07-30 15:22:21,339 - INFO - ----------------------------------- APClient started
+2025-07-30 15:22:21,353 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 15:22:21,353 - INFO - Executing 'generate_file_prefix' command with strings: ['X0019IADGB', '2025_07_30_15_22_21']
+2025-07-30 15:22:21,354 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:22:21,355 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['X0019IADGB', '2025_07_30_15_22_21']}
+2025-07-30 15:22:21,358 - INFO - Received response from server: X0019IADGB_2025_07_30_15_22_21
+2025-07-30 15:22:21,461 - INFO - ----------------------------------- APClient started
+2025-07-30 15:22:21,472 - INFO - Parsing and executing command: construct_path
+2025-07-30 15:22:21,472 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 15:22:21,472 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:22:21,474 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 15:22:21,477 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 15:22:21,630 - INFO - ----------------------------------- APClient started
+2025-07-30 15:22:21,649 - INFO - Parsing and executing command: construct_path
+2025-07-30 15:22:21,649 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 15:22:21,649 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:22:21,654 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 15:22:21,676 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 15:22:21,790 - INFO - ----------------------------------- APClient started
+2025-07-30 15:22:21,801 - INFO - Parsing and executing command: construct_path
+2025-07-30 15:22:21,801 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 15:22:21,801 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:22:21,802 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 15:22:21,805 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 15:22:21,945 - INFO - ----------------------------------- APClient started
+2025-07-30 15:22:21,954 - INFO - Parsing and executing command: construct_path
+2025-07-30 15:22:21,954 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_15_22_21']
+2025-07-30 15:22:21,954 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:22:21,956 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_15_22_21']}
+2025-07-30 15:22:21,958 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_15_22_21
+2025-07-30 15:22:22,093 - INFO - ----------------------------------- APClient started
+2025-07-30 15:22:22,112 - INFO - Parsing and executing command: construct_path
+2025-07-30 15:22:22,112 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 15:22:22,112 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:22:22,114 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 15:22:22,116 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 15:22:50,133 - INFO - ----------------------------------- APClient started
+2025-07-30 15:22:50,147 - INFO - Parsing and executing command: scan_serial
+2025-07-30 15:22:50,148 - INFO - Executing 'scan_serial' command.
+2025-07-30 15:22:50,148 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:22:50,151 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 15:22:54,255 - INFO - Received response from server: X0019IADGB
+2025-07-30 15:23:01,837 - INFO - ----------------------------------- APClient started
+2025-07-30 15:23:01,856 - INFO - Parsing and executing command: scan_serial
+2025-07-30 15:23:01,857 - INFO - Executing 'scan_serial' command.
+2025-07-30 15:23:01,857 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:23:01,859 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}
+2025-07-30 15:23:02,435 - INFO - Received response from server: X0019IADGB
+2025-07-30 15:23:02,562 - INFO - ----------------------------------- APClient started
+2025-07-30 15:23:02,570 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-07-30 15:23:02,570 - INFO - Executing 'generate_timestamp_extension' command.
+2025-07-30 15:23:02,571 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:23:02,572 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-07-30 15:23:02,574 - INFO - Received response from server: 2025_07_30_15_23_02
+2025-07-30 15:23:02,680 - INFO - ----------------------------------- APClient started
+2025-07-30 15:23:02,695 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-07-30 15:23:02,695 - INFO - Executing 'get_timestamp_subpath' command.
+2025-07-30 15:23:02,696 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:23:02,697 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-07-30 15:23:02,699 - INFO - Received response from server: 2025\07_30
+2025-07-30 15:23:02,852 - INFO - ----------------------------------- APClient started
+2025-07-30 15:23:02,863 - INFO - Parsing and executing command: generate_file_prefix
+2025-07-30 15:23:02,863 - INFO - Executing 'generate_file_prefix' command with strings: ['X0019IADGB', '2025_07_30_15_23_02']
+2025-07-30 15:23:02,865 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:23:02,867 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['X0019IADGB', '2025_07_30_15_23_02']}
+2025-07-30 15:23:02,870 - INFO - Received response from server: X0019IADGB_2025_07_30_15_23_02
+2025-07-30 15:23:02,995 - INFO - ----------------------------------- APClient started
+2025-07-30 15:23:03,004 - INFO - Parsing and executing command: construct_path
+2025-07-30 15:23:03,004 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 15:23:03,004 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:23:03,005 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-07-30 15:23:03,007 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 15:23:03,118 - INFO - ----------------------------------- APClient started
+2025-07-30 15:23:03,127 - INFO - Parsing and executing command: construct_path
+2025-07-30 15:23:03,127 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 15:23:03,128 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:23:03,129 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-07-30 15:23:03,130 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 15:23:03,231 - INFO - ----------------------------------- APClient started
+2025-07-30 15:23:03,241 - INFO - Parsing and executing command: construct_path
+2025-07-30 15:23:03,241 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 15:23:03,241 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:23:03,242 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']}
+2025-07-30 15:23:03,243 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 15:23:03,382 - INFO - ----------------------------------- APClient started
+2025-07-30 15:23:03,396 - INFO - Parsing and executing command: construct_path
+2025-07-30 15:23:03,397 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_15_23_02']
+2025-07-30 15:23:03,397 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:23:03,398 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_15_23_02']}
+2025-07-30 15:23:03,399 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_15_23_02
+2025-07-30 15:23:03,530 - INFO - ----------------------------------- APClient started
+2025-07-30 15:23:03,546 - INFO - Parsing and executing command: construct_path
+2025-07-30 15:23:03,546 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 15:23:03,546 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 15:23:03,548 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-07-30 15:23:03,549 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 23:24:43,190 - INFO - ----------------------------------- APClient started
+2025-07-30 23:24:43,281 - INFO - Parsing and executing command: scan_serial
+2025-07-30 23:24:43,281 - INFO - Executing 'scan_serial' command.
+2025-07-30 23:24:43,281 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-30 23:24:43,282 - INFO - Connected to server. Sending command: {'action': 'scan_serial', 'wait_for_response': True}

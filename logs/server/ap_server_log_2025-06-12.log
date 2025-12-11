@@ -1,0 +1,58 @@
+2025-06-12 09:16:14,894 INFO [root] ----------------------------------------------------------------- APServer started
+2025-06-12 09:16:14,896 INFO [APServer] Server started
+2025-06-12 09:16:14,896 INFO [APServer] Server is running...
+2025-06-12 09:16:14,896 INFO [APServer] Waiting for connections...
+2025-06-12 09:16:15,123 INFO [APServer] Connection from ('127.0.0.1', 57656)
+2025-06-12 09:16:15,124 INFO [APServer] Client connection closed.
+2025-06-12 09:16:19,734 INFO [APServer] Connection from ('127.0.0.1', 57658)
+2025-06-12 09:16:19,734 INFO [APServer] Client connection closed.
+2025-06-12 09:17:06,551 INFO [APServer] Connection from ('127.0.0.1', 57666)
+2025-06-12 09:17:06,553 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "low_shelf", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-06-12 09:17:06,553 INFO [APServer] Biquad coefficients generated: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-12 09:17:06,553 INFO [APServer] Sent response: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-12 09:17:06,553 INFO [APServer] Client connection closed.
+2025-06-12 09:18:31,712 INFO [root] ----------------------------------- APServer started
+2025-06-12 09:18:31,716 INFO [APServer] Server started
+2025-06-12 09:18:31,716 INFO [APServer] Server is running...
+2025-06-12 09:18:31,716 INFO [APServer] Waiting for connections...
+2025-06-12 09:18:31,940 INFO [APServer] Connection from ('127.0.0.1', 57700)
+2025-06-12 09:18:31,955 INFO [APServer] Client connection closed.
+2025-06-12 09:18:37,452 INFO [APServer] Connection from ('127.0.0.1', 57701)
+2025-06-12 09:18:37,453 INFO [APServer] Received: {"action": "get_biquad_coefficients", "filter_type": "low_shelf", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "wait_for_response": true}
+2025-06-12 09:18:37,453 INFO [APServer] Biquad coefficients generated: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-12 09:18:37,454 INFO [APServer] Sent response: [-1.8444568671609198, 0.8557101722987808, 1.0325624832475901, -1.8388568718996405, 0.8287476843124698]
+2025-06-12 09:18:37,454 INFO [APServer] Client connection closed.
+2025-06-12 09:31:43,723 INFO [root] ----------------------------------- APServer started
+2025-06-12 09:31:43,726 INFO [APServer] Server started
+2025-06-12 09:31:43,727 INFO [APServer] Server is running...
+2025-06-12 09:31:43,727 INFO [APServer] Waiting for connections...
+2025-06-12 09:31:43,735 INFO [APServer] Connection from ('127.0.0.1', 58071)
+2025-06-12 09:31:43,736 INFO [APServer] Client connection closed.
+2025-06-12 09:33:07,530 INFO [root] ----------------------------------- APServer started
+2025-06-12 09:33:07,533 INFO [APServer] Server started
+2025-06-12 09:33:07,533 INFO [APServer] Server is running...
+2025-06-12 09:33:07,533 INFO [APServer] Waiting for connections...
+2025-06-12 09:33:07,773 INFO [APServer] Connection from ('127.0.0.1', 58094)
+2025-06-12 09:33:07,788 INFO [APServer] Client connection closed.
+2025-06-12 10:07:40,444 INFO [root] ----------------------------------- APServer started
+2025-06-12 10:07:40,446 INFO [APServer] Server started
+2025-06-12 10:07:40,446 INFO [APServer] Server is running...
+2025-06-12 10:07:40,446 INFO [APServer] Waiting for connections...
+2025-06-12 10:07:40,685 INFO [APServer] Connection from ('127.0.0.1', 59083)
+2025-06-12 10:07:40,686 INFO [APServer] Client connection closed.
+2025-06-12 10:07:46,335 INFO [APServer] Connection from ('127.0.0.1', 59086)
+2025-06-12 10:07:46,335 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "filter_type": "bell", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-12 10:07:46,335 ERROR [APServer] Failed to set device biquad: __init__() missing 1 required positional argument: 'cli_path'
+2025-06-12 10:07:46,335 INFO [APServer] Sent response: Error: Failed to set device biquad (__init__() missing 1 required positional argument: 'cli_path')
+2025-06-12 10:07:46,336 INFO [APServer] Client connection closed.
+2025-06-12 10:12:06,634 INFO [root] ----------------------------------- APServer started
+2025-06-12 10:12:06,637 INFO [APServer] Server started
+2025-06-12 10:12:06,637 INFO [APServer] Server is running...
+2025-06-12 10:12:06,637 INFO [APServer] Waiting for connections...
+2025-06-12 10:12:06,645 INFO [APServer] Connection from ('127.0.0.1', 59223)
+2025-06-12 10:12:06,646 INFO [APServer] Client connection closed.
+2025-06-12 10:12:10,127 INFO [APServer] Connection from ('127.0.0.1', 59224)
+2025-06-12 10:12:10,128 INFO [APServer] Received: {"action": "set_device_biquad", "index": 0, "filter_type": "bell", "gain": 6.0, "peak_freq": 1000.0, "Q": 1.0, "sample_rate": 48000, "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-06-12 10:12:10,128 ERROR [APServer] Failed to set device biquad: __init__() missing 1 required positional argument: 'cli_path'
+2025-06-12 10:12:10,128 INFO [APServer] Sent response: Error: Failed to set device biquad (__init__() missing 1 required positional argument: 'cli_path')
+2025-06-12 10:12:10,128 INFO [APServer] Client connection closed.

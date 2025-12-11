@@ -1,0 +1,171 @@
+2025-09-01 14:53:03,107 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:03,221 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-09-01 14:53:03,221 - INFO - Executing 'generate_timestamp_extension' command.
+2025-09-01 14:53:03,221 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:03,223 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-09-01 14:53:03,225 - INFO - Received response from server: 2025_09_01_14_53_03
+2025-09-01 14:53:03,358 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:03,372 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-09-01 14:53:03,372 - INFO - Executing 'get_timestamp_subpath' command.
+2025-09-01 14:53:03,372 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:03,373 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-09-01 14:53:03,374 - INFO - Received response from server: 2025\09_01
+2025-09-01 14:53:03,501 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:03,727 - INFO - Parsing and executing command: generate_file_prefix
+2025-09-01 14:53:03,727 - INFO - Executing 'generate_file_prefix' command with strings: ['GA4700120', '2025_09_01_14_53_03']
+2025-09-01 14:53:03,727 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:03,730 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['GA4700120', '2025_09_01_14_53_03']}
+2025-09-01 14:53:03,732 - INFO - Received response from server: GA4700120_2025_09_01_14_53_03
+2025-09-01 14:53:03,915 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:03,931 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:53:03,932 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-09-01 14:53:03,932 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:03,933 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-09-01 14:53:03,935 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-09-01 14:53:04,090 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:04,107 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:53:04,107 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-09-01 14:53:04,107 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:04,108 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-09-01 14:53:04,110 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-09-01 14:53:04,253 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:04,269 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:53:04,269 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\09_01']
+2025-09-01 14:53:04,269 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:04,270 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\09_01']}
+2025-09-01 14:53:04,274 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01
+2025-09-01 14:53:04,413 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:04,427 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:53:04,427 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\09_01', '2025_09_01_14_53_03']
+2025-09-01 14:53:04,427 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:04,429 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\09_01', '2025_09_01_14_53_03']}
+2025-09-01 14:53:04,432 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\09_01\2025_09_01_14_53_03
+2025-09-01 14:53:04,591 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:04,608 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:53:04,608 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-09-01 14:53:04,608 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:04,609 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-09-01 14:53:04,612 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-09-01 14:53:04,789 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:04,805 - INFO - Parsing and executing command: check_measurement_trials
+2025-09-01 14:53:04,805 - INFO - Sending check_measurement_trials: serial=GA4700120, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01\SequenceStatistics.csv, max=1000
+2025-09-01 14:53:04,805 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:04,807 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'GA4700120', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\09_01\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-09-01 14:53:04,810 - INFO - Received response from server: Error: [Errno 2] No such file or directory: 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\09_01\\SequenceStatistics.csv'
+2025-09-01 14:53:04,810 - INFO - Server response: Error: [Errno 2] No such file or directory: 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\09_01\\SequenceStatistics.csv'
+2025-09-01 14:53:23,377 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:23,404 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-09-01 14:53:23,404 - INFO - Executing 'generate_timestamp_extension' command.
+2025-09-01 14:53:23,404 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:23,406 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-09-01 14:53:23,409 - INFO - Received response from server: 2025_09_01_14_53_23
+2025-09-01 14:53:23,639 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:23,661 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-09-01 14:53:23,661 - INFO - Executing 'get_timestamp_subpath' command.
+2025-09-01 14:53:23,661 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:23,662 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-09-01 14:53:23,666 - INFO - Received response from server: 2025\09_01
+2025-09-01 14:53:23,836 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:23,853 - INFO - Parsing and executing command: generate_file_prefix
+2025-09-01 14:53:23,853 - INFO - Executing 'generate_file_prefix' command with strings: ['GA4700120', '2025_09_01_14_53_23']
+2025-09-01 14:53:23,854 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:23,855 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['GA4700120', '2025_09_01_14_53_23']}
+2025-09-01 14:53:23,858 - INFO - Received response from server: GA4700120_2025_09_01_14_53_23
+2025-09-01 14:53:24,023 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:24,039 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:53:24,039 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-09-01 14:53:24,039 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:24,040 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-09-01 14:53:24,042 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-09-01 14:53:24,196 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:24,210 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:53:24,210 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-09-01 14:53:24,210 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:24,212 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-09-01 14:53:24,215 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-09-01 14:53:24,412 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:24,426 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:53:24,426 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\09_01']
+2025-09-01 14:53:24,426 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:24,427 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\09_01']}
+2025-09-01 14:53:24,430 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01
+2025-09-01 14:53:24,552 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:24,566 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:53:24,566 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\09_01', '2025_09_01_14_53_23']
+2025-09-01 14:53:24,566 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:24,568 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\09_01', '2025_09_01_14_53_23']}
+2025-09-01 14:53:24,570 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\09_01\2025_09_01_14_53_23
+2025-09-01 14:53:24,697 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:24,708 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:53:24,708 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-09-01 14:53:24,708 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:24,709 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-09-01 14:53:24,711 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-09-01 14:53:24,828 - INFO - ----------------------------------- APClient started
+2025-09-01 14:53:24,839 - INFO - Parsing and executing command: check_measurement_trials
+2025-09-01 14:53:24,839 - INFO - Sending check_measurement_trials: serial=GA4700120, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01\SequenceStatistics.csv, max=1000
+2025-09-01 14:53:24,839 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:53:24,840 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'GA4700120', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\09_01\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-09-01 14:53:24,842 - INFO - Received response from server: Measurement permitted.
+2025-09-01 14:53:24,843 - INFO - Server response: Measurement permitted.
+2025-09-01 14:55:23,357 - INFO - ----------------------------------- APClient started
+2025-09-01 14:55:23,451 - INFO - Parsing and executing command: generate_timestamp_extension
+2025-09-01 14:55:23,452 - INFO - Executing 'generate_timestamp_extension' command.
+2025-09-01 14:55:23,452 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:55:23,454 - INFO - Connected to server. Sending command: {'action': 'generate_timestamp_extension'}
+2025-09-01 14:55:23,456 - INFO - Received response from server: 2025_09_01_14_55_23
+2025-09-01 14:55:23,602 - INFO - ----------------------------------- APClient started
+2025-09-01 14:55:23,616 - INFO - Parsing and executing command: get_timestamp_subpath
+2025-09-01 14:55:23,617 - INFO - Executing 'get_timestamp_subpath' command.
+2025-09-01 14:55:23,617 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:55:23,619 - INFO - Connected to server. Sending command: {'action': 'get_timestamp_subpath'}
+2025-09-01 14:55:23,620 - INFO - Received response from server: 2025\09_01
+2025-09-01 14:55:23,745 - INFO - ----------------------------------- APClient started
+2025-09-01 14:55:23,759 - INFO - Parsing and executing command: generate_file_prefix
+2025-09-01 14:55:23,760 - INFO - Executing 'generate_file_prefix' command with strings: ['GA4700120', '2025_09_01_14_55_23']
+2025-09-01 14:55:23,760 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:55:23,762 - INFO - Connected to server. Sending command: {'action': 'generate_file_prefix', 'strings': ['GA4700120', '2025_09_01_14_55_23']}
+2025-09-01 14:55:23,765 - INFO - Received response from server: GA4700120_2025_09_01_14_55_23
+2025-09-01 14:55:23,884 - INFO - ----------------------------------- APClient started
+2025-09-01 14:55:23,895 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:55:23,895 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-09-01 14:55:23,895 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:55:23,897 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']}
+2025-09-01 14:55:23,900 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data
+2025-09-01 14:55:24,011 - INFO - ----------------------------------- APClient started
+2025-09-01 14:55:24,023 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:55:24,023 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-09-01 14:55:24,024 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:55:24,025 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']}
+2025-09-01 14:55:24,028 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-09-01 14:55:24,149 - INFO - ----------------------------------- APClient started
+2025-09-01 14:55:24,160 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:55:24,161 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\09_01']
+2025-09-01 14:55:24,161 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:55:24,162 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\09_01']}
+2025-09-01 14:55:24,166 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01
+2025-09-01 14:55:24,290 - INFO - ----------------------------------- APClient started
+2025-09-01 14:55:24,302 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:55:24,302 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\09_01', '2025_09_01_14_55_23']
+2025-09-01 14:55:24,302 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:55:24,303 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\09_01', '2025_09_01_14_55_23']}
+2025-09-01 14:55:24,304 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\09_01\2025_09_01_14_55_23
+2025-09-01 14:55:24,431 - INFO - ----------------------------------- APClient started
+2025-09-01 14:55:24,443 - INFO - Parsing and executing command: construct_path
+2025-09-01 14:55:24,443 - INFO - Executing 'construct_path' command with paths: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-09-01 14:55:24,443 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:55:24,445 - INFO - Connected to server. Sending command: {'action': 'construct_path', 'paths': ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']}
+2025-09-01 14:55:24,450 - INFO - Received response from server: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-09-01 14:55:24,576 - INFO - ----------------------------------- APClient started
+2025-09-01 14:55:24,591 - INFO - Parsing and executing command: check_measurement_trials
+2025-09-01 14:55:24,591 - INFO - Sending check_measurement_trials: serial=GA4700120, csv=C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\09_01\SequenceStatistics.csv, max=1000
+2025-09-01 14:55:24,591 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:55:24,593 - INFO - Connected to server. Sending command: {'action': 'check_measurement_trials', 'serial_number': 'GA4700120', 'csv_path': 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\09_01\\SequenceStatistics.csv', 'max_trials': 1000, 'wait_for_response': True}
+2025-09-01 14:55:24,609 - INFO - Received response from server: Measurement permitted.
+2025-09-01 14:55:24,609 - INFO - Server response: Measurement permitted.
+2025-09-01 14:55:27,672 - INFO - ----------------------------------- APClient started
+2025-09-01 14:55:27,687 - INFO - Parsing and executing command: set_channel
+2025-09-01 14:55:27,687 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-01 14:55:27,688 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-01 14:55:27,689 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-01 14:55:27,690 - INFO - Received response from server: Error: SwitchBox not connected.

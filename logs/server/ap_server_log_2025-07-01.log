@@ -1,0 +1,205 @@
+2025-07-01 14:04:49,504 INFO [root] ----------------------------------- APServer started
+2025-07-01 14:04:49,508 INFO [APServer] Server started
+2025-07-01 14:04:49,508 INFO [APServer] Server is running...
+2025-07-01 14:04:49,509 INFO [APServer] Waiting for connections...
+2025-07-01 14:04:49,544 INFO [APServer] Connection from ('127.0.0.1', 54606)
+2025-07-01 14:04:49,559 INFO [APServer] Client connection closed.
+2025-07-01 14:04:55,255 INFO [APServer] Connection from ('127.0.0.1', 54609)
+2025-07-01 14:04:55,256 INFO [APServer] Received: {"action": "get_serial_number", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 14:04:55,283 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 14:04:55,284 INFO [OCP1ToolWrapper] Requesting serial number.
+2025-07-01 14:04:55,284 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-serial-number --target-ip 192.168.10.20 --port 50001
+2025-07-01 14:04:55,531 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-07-01 14:04:55,531 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 14:04:55,531 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-07-01 14:04:55,531 INFO [APServer] Serial number received: 123456789
+2025-07-01 14:04:55,532 INFO [APServer] Sent response: 123456789
+2025-07-01 14:04:55,532 INFO [APServer] Client connection closed.
+2025-07-01 14:25:29,552 INFO [APServer] Connection from ('127.0.0.1', 54715)
+2025-07-01 14:25:29,553 INFO [APServer] Received: {"action": "get_serial_number", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 14:25:29,555 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 14:25:29,556 INFO [OCP1ToolWrapper] Requesting serial number.
+2025-07-01 14:25:29,556 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-serial-number --target-ip 192.168.10.20 --port 50001
+2025-07-01 14:25:31,106 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-07-01 14:25:31,107 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 14:25:31,107 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-07-01 14:25:31,107 INFO [APServer] Serial number received: 123456789
+2025-07-01 14:25:31,108 INFO [APServer] Sent response: 123456789
+2025-07-01 14:25:31,109 INFO [APServer] Client connection closed.
+2025-07-01 14:25:52,221 INFO [APServer] Connection from ('127.0.0.1', 54723)
+2025-07-01 14:25:52,222 INFO [APServer] Received: {"action": "get_serial_number", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 14:25:52,223 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 14:25:52,223 INFO [OCP1ToolWrapper] Requesting serial number.
+2025-07-01 14:25:52,223 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-serial-number --target-ip 192.168.10.20 --port 50001
+2025-07-01 14:26:07,500 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-07-01 14:26:07,501 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 14:26:07,501 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-07-01 14:26:07,501 INFO [APServer] Serial number received: 123456789
+2025-07-01 14:26:07,501 INFO [APServer] Sent response: 123456789
+2025-07-01 14:26:07,502 INFO [APServer] Client connection closed.
+2025-07-01 14:29:40,667 INFO [APServer] Connection from ('127.0.0.1', 54793)
+2025-07-01 14:29:40,667 INFO [APServer] Received: {"action": "get_gain", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 14:29:40,669 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 14:29:40,669 INFO [OCP1ToolWrapper] Requesting gain.
+2025-07-01 14:29:40,669 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-gain --target-ip 192.168.10.20 --port 50001
+2025-07-01 14:29:47,739 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 14:29:47,740 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 14:29:47,740 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 14:29:47,740 INFO [APServer] Gain received: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 14:29:47,740 INFO [APServer] Sent response: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 14:29:47,741 INFO [APServer] Client connection closed.
+2025-07-01 14:38:14,135 INFO [APServer] Connection from ('127.0.0.1', 54969)
+2025-07-01 14:38:14,136 INFO [APServer] Received: {"action": "get_gain", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 14:38:14,136 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 14:38:14,136 INFO [OCP1ToolWrapper] Requesting gain.
+2025-07-01 14:38:14,136 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-gain --target-ip 192.168.10.20 --port 50001
+2025-07-01 14:38:14,399 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 14:38:14,399 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 14:38:14,400 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 14:38:14,401 INFO [APServer] Gain received: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 14:38:14,401 INFO [APServer] Sent response: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 14:38:14,402 INFO [APServer] Client connection closed.
+2025-07-01 15:29:25,783 INFO [APServer] Connection from ('127.0.0.1', 55484)
+2025-07-01 15:29:25,784 INFO [APServer] Received: {"action": "get_gain", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 15:29:25,784 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 15:29:25,785 INFO [OCP1ToolWrapper] Requesting gain.
+2025-07-01 15:29:25,785 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-gain --target-ip 192.168.10.20 --port 50001
+2025-07-01 15:29:26,041 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:29:26,041 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 15:29:26,042 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:29:26,042 INFO [APServer] Gain received: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:29:26,042 INFO [APServer] Sent response: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:29:26,043 INFO [APServer] Client connection closed.
+2025-07-01 15:30:05,843 INFO [APServer] Connection from ('127.0.0.1', 55491)
+2025-07-01 15:30:05,843 INFO [APServer] Received: {"action": "get_serial_number", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 15:30:05,844 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 15:30:05,844 INFO [OCP1ToolWrapper] Requesting serial number.
+2025-07-01 15:30:05,844 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-serial-number --target-ip 192.168.10.20 --port 50001
+2025-07-01 15:30:06,082 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-07-01 15:30:06,082 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 15:30:06,082 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-07-01 15:30:06,082 INFO [APServer] Serial number received: 123456789
+2025-07-01 15:30:06,083 INFO [APServer] Sent response: 123456789
+2025-07-01 15:30:06,083 INFO [APServer] Client connection closed.
+2025-07-01 15:30:21,593 INFO [APServer] Connection from ('127.0.0.1', 55497)
+2025-07-01 15:30:21,593 INFO [APServer] Received: {"action": "get_serial_number", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 15:30:21,593 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 15:30:21,594 INFO [OCP1ToolWrapper] Requesting serial number.
+2025-07-01 15:30:21,594 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-serial-number --target-ip 192.168.10.20 --port 50001
+2025-07-01 15:30:36,862 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-07-01 15:30:36,862 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 15:30:36,863 INFO [OCP1ToolWrapper] Command output: 123456789
+2025-07-01 15:30:36,863 INFO [APServer] Serial number received: 123456789
+2025-07-01 15:30:36,864 INFO [APServer] Sent response: 123456789
+2025-07-01 15:30:36,864 INFO [APServer] Client connection closed.
+2025-07-01 15:36:58,190 INFO [APServer] Connection from ('127.0.0.1', 55633)
+2025-07-01 15:36:58,191 INFO [APServer] Received: {"action": "get_gain", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 15:36:58,191 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 15:36:58,191 INFO [OCP1ToolWrapper] Requesting gain.
+2025-07-01 15:36:58,192 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-gain --target-ip 192.168.10.20 --port 50001
+2025-07-01 15:37:13,470 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:37:13,470 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 15:37:13,471 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:37:13,471 INFO [APServer] Gain received: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:37:13,472 INFO [APServer] Sent response: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:37:13,473 INFO [APServer] Client connection closed.
+2025-07-01 15:40:29,982 INFO [APServer] Connection from ('127.0.0.1', 55701)
+2025-07-01 15:40:29,983 INFO [APServer] Received: {"action": "get_gain", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 15:40:29,983 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 15:40:29,983 INFO [OCP1ToolWrapper] Requesting gain.
+2025-07-01 15:40:29,983 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-gain --target-ip 192.168.10.20 --port 50001
+2025-07-01 15:40:45,254 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:40:45,254 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 15:40:45,254 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:40:45,255 INFO [APServer] Gain received: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:40:45,255 INFO [APServer] Sent response: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:40:45,256 INFO [APServer] Client connection closed.
+2025-07-01 15:45:13,543 INFO [root] ----------------------------------- APServer started
+2025-07-01 15:45:13,546 INFO [APServer] Server started
+2025-07-01 15:45:13,546 INFO [APServer] Server is running...
+2025-07-01 15:45:13,547 INFO [APServer] Waiting for connections...
+2025-07-01 15:45:13,833 INFO [APServer] Connection from ('127.0.0.1', 55769)
+2025-07-01 15:45:13,835 INFO [APServer] Client connection closed.
+2025-07-01 15:45:17,756 INFO [APServer] Connection from ('127.0.0.1', 55771)
+2025-07-01 15:45:17,756 INFO [APServer] Received: {"action": "get_gain", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 15:45:17,782 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 15:45:17,782 INFO [OCP1ToolWrapper] Requesting gain.
+2025-07-01 15:45:17,783 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-gain --target-ip 192.168.10.20 --port 50001
+2025-07-01 15:45:18,026 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:45:18,029 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 15:45:18,029 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:45:18,030 INFO [APServer] Gain received: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:45:18,031 INFO [APServer] Sent response: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:45:18,032 INFO [APServer] Client connection closed.
+2025-07-01 15:47:40,071 INFO [APServer] Connection from ('127.0.0.1', 55804)
+2025-07-01 15:47:40,072 INFO [APServer] Received: {"action": "get_gain", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 15:47:40,074 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 15:47:40,074 INFO [OCP1ToolWrapper] Requesting gain.
+2025-07-01 15:47:40,075 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-gain --target-ip 192.168.10.20 --port 50001
+2025-07-01 15:47:40,143 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:47:40,144 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 15:47:40,145 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:47:40,145 INFO [APServer] Gain received: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:47:40,145 INFO [APServer] Sent response: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:47:40,146 INFO [APServer] Client connection closed.
+2025-07-01 15:49:09,128 INFO [APServer] Connection from ('127.0.0.1', 55824)
+2025-07-01 15:49:09,129 INFO [APServer] Received: {"action": "get_gain", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 15:49:09,129 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 15:49:09,130 INFO [OCP1ToolWrapper] Requesting gain.
+2025-07-01 15:49:09,130 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-gain --target-ip 192.168.10.20 --port 50001
+2025-07-01 15:49:09,205 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:49:09,205 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 15:49:09,206 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:49:09,206 INFO [APServer] Gain received: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:49:09,207 INFO [APServer] Sent response: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:49:09,207 INFO [APServer] Client connection closed.
+2025-07-01 15:52:47,021 INFO [root] ----------------------------------- APServer started
+2025-07-01 15:52:47,025 INFO [APServer] Server started
+2025-07-01 15:52:47,026 INFO [APServer] Server is running...
+2025-07-01 15:52:47,027 INFO [APServer] Waiting for connections...
+2025-07-01 15:52:47,099 INFO [APServer] Connection from ('127.0.0.1', 55853)
+2025-07-01 15:52:47,114 INFO [APServer] Client connection closed.
+2025-07-01 15:53:09,549 INFO [APServer] Connection from ('127.0.0.1', 55859)
+2025-07-01 15:53:09,550 INFO [APServer] Received: {"action": "get_gain", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 15:53:09,582 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 15:53:09,583 INFO [OCP1ToolWrapper] Requesting gain.
+2025-07-01 15:53:09,584 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-gain --target-ip 192.168.10.20 --port 50001
+2025-07-01 15:53:09,829 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:53:09,830 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 15:53:09,831 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:53:09,831 INFO [APServer] Gain received: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:53:09,832 INFO [APServer] Sent response: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 15:53:09,832 INFO [APServer] Client connection closed.
+2025-07-01 16:00:24,408 INFO [APServer] Connection from ('127.0.0.1', 55966)
+2025-07-01 16:00:24,410 INFO [APServer] Received: {"action": "get_gain", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 16:00:24,412 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 16:00:24,412 INFO [OCP1ToolWrapper] Requesting gain.
+2025-07-01 16:00:24,412 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-gain --target-ip 192.168.10.20 --port 50001
+2025-07-01 16:00:39,683 INFO [OCP1ToolWrapper] Command output: [Gain: -30.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:00:39,683 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 16:00:39,683 INFO [OCP1ToolWrapper] Command output: [Gain: -30.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:00:39,684 INFO [APServer] Gain received: [Gain: -30.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:00:39,684 INFO [APServer] Sent response: [Gain: -30.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:00:39,685 INFO [APServer] Client connection closed.
+2025-07-01 16:08:36,716 INFO [APServer] Connection from ('127.0.0.1', 56048)
+2025-07-01 16:08:36,717 INFO [APServer] Received: {"action": "get_gain", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 16:08:36,718 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 16:08:36,719 INFO [OCP1ToolWrapper] Requesting gain.
+2025-07-01 16:08:36,719 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-gain --target-ip 192.168.10.20 --port 50001
+2025-07-01 16:08:39,799 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:08:39,799 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 16:08:39,800 INFO [OCP1ToolWrapper] Command output: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:08:39,800 INFO [APServer] Gain received: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:08:39,801 INFO [APServer] Sent response: [Gain: -0.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:08:39,803 INFO [APServer] Client connection closed.
+2025-07-01 16:09:16,753 INFO [APServer] Connection from ('127.0.0.1', 56057)
+2025-07-01 16:09:16,754 INFO [APServer] Received: {"action": "get_gain", "target_ip": "192.168.10.20", "port": 50001, "wait_for_response": true}
+2025-07-01 16:09:16,755 INFO [OCP1ToolWrapper] Initialized OCP1ToolWrapper with cli_path=C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe, target_ip=192.168.10.20, port=50001
+2025-07-01 16:09:16,756 INFO [OCP1ToolWrapper] Requesting gain.
+2025-07-01 16:09:16,756 INFO [OCP1ToolWrapper] Executing command: C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\.venv\lib\site-packages\oca_tools\aes70-cli.exe get-gain --target-ip 192.168.10.20 --port 50001
+2025-07-01 16:09:17,024 INFO [OCP1ToolWrapper] Command output: [Gain: -30.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:09:17,024 INFO [OCP1ToolWrapper] Command executed with return code: 0
+2025-07-01 16:09:17,025 INFO [OCP1ToolWrapper] Command output: [Gain: -30.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:09:17,025 INFO [APServer] Gain received: [Gain: -30.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:09:17,026 INFO [APServer] Sent response: [Gain: -30.00 dB, Min Gain: -30.00 dB, Max Gain: 0.00 dB]
+2025-07-01 16:09:17,026 INFO [APServer] Client connection closed.

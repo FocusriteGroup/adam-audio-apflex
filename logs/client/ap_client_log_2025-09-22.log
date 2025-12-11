@@ -1,0 +1,325 @@
+2025-09-22 20:57:46,736 - INFO - ----------------------------------- APClient started
+2025-09-22 20:58:10,663 - INFO - ----------------------------------- APClient started
+2025-09-22 20:58:17,239 - INFO - ----------------------------------- APClient started
+2025-09-22 20:58:17,269 - INFO - Parsing and executing command: set_channel
+2025-09-22 20:58:17,269 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 20:58:17,269 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 20:58:19,316 - ERROR - Socket error: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-09-22 20:59:54,157 - INFO - ----------------------------------- APClient started
+2025-09-22 20:59:54,197 - INFO - Parsing and executing command: set_channel
+2025-09-22 20:59:54,197 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 20:59:54,197 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 20:59:54,198 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 20:59:54,206 - INFO - Received response from server: Error: SwitchBox not connected.
+2025-09-22 21:00:09,071 - INFO - ----------------------------------- APClient started
+2025-09-22 21:00:09,100 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:00:09,100 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:00:09,100 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:00:09,101 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:00:09,103 - INFO - Received response from server: Error: SwitchBox not connected.
+2025-09-22 21:01:17,455 - INFO - ----------------------------------- APClient started
+2025-09-22 21:01:17,505 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:01:17,505 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:01:17,505 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:01:17,507 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:01:17,509 - INFO - Received response from server: Error: SwitchBox not connected.
+2025-09-22 21:02:20,067 - INFO - ----------------------------------- APClient started
+2025-09-22 21:02:20,105 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:02:20,105 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:02:20,106 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:02:20,106 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:02:20,107 - INFO - Received response from server: Error: SwitchBox not connected.
+2025-09-22 21:09:26,228 - INFO - ----------------------------------- APClient started
+2025-09-22 21:09:26,272 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:09:26,272 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:09:26,272 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:09:26,273 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:09:26,500 - INFO - Received response from server: Channel set to 1
+2025-09-22 21:09:37,026 - INFO - ----------------------------------- APClient started
+2025-09-22 21:09:37,059 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:09:37,059 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:09:37,059 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:09:37,061 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-22 21:09:37,398 - INFO - Received response from server: Channel set to 2
+2025-09-22 21:09:51,168 - INFO - ----------------------------------- APClient started
+2025-09-22 21:09:51,205 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:09:51,205 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:09:51,205 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:09:51,206 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-22 21:09:51,433 - INFO - Received response from server: Channel set to 2
+2025-09-22 21:14:09,363 - INFO - ----------------------------------- APClient started
+2025-09-22 21:14:09,398 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:14:09,398 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:14:09,398 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:14:11,431 - ERROR - Socket error: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-09-22 21:14:42,291 - INFO - ----------------------------------- APClient started
+2025-09-22 21:14:42,328 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:14:42,329 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:14:42,329 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:14:42,330 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-22 21:14:42,560 - INFO - Received response from server: Channel set to 2
+2025-09-22 21:15:12,348 - INFO - ----------------------------------- APClient started
+2025-09-22 21:15:12,383 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:15:12,383 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:15:12,384 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:15:12,386 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:15:12,713 - INFO - Received response from server: Channel set to 1
+2025-09-22 21:15:42,230 - INFO - ----------------------------------- APClient started
+2025-09-22 21:16:19,355 - INFO - ----------------------------------- APClient started
+2025-09-22 21:16:30,386 - INFO - ----------------------------------- APClient started
+2025-09-22 21:16:30,413 - INFO - Parsing and executing command: open_box
+2025-09-22 21:16:30,414 - INFO - Executing 'open_box' command.
+2025-09-22 21:16:30,414 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:16:30,415 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': False}
+2025-09-22 21:16:30,415 - INFO - No response expected for this command.
+2025-09-22 21:16:45,535 - INFO - ----------------------------------- APClient started
+2025-09-22 21:16:45,561 - INFO - Parsing and executing command: open_box
+2025-09-22 21:16:45,562 - INFO - Executing 'open_box' command.
+2025-09-22 21:16:45,562 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:16:45,565 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': False}
+2025-09-22 21:16:45,565 - INFO - No response expected for this command.
+2025-09-22 21:17:51,192 - INFO - ----------------------------------- APClient started
+2025-09-22 21:17:51,218 - INFO - Parsing and executing command: open_box
+2025-09-22 21:17:51,218 - INFO - Executing 'open_box' command.
+2025-09-22 21:17:51,218 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:17:51,219 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': False}
+2025-09-22 21:17:51,220 - INFO - No response expected for this command.
+2025-09-22 21:18:23,245 - INFO - ----------------------------------- APClient started
+2025-09-22 21:18:23,274 - INFO - Parsing and executing command: open_box
+2025-09-22 21:18:23,274 - INFO - Executing 'open_box' command.
+2025-09-22 21:18:23,274 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:18:23,275 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': False}
+2025-09-22 21:18:23,275 - INFO - No response expected for this command.
+2025-09-22 21:18:56,301 - INFO - ----------------------------------- APClient started
+2025-09-22 21:18:56,328 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:18:56,328 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:18:56,328 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:18:56,329 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:18:56,555 - INFO - Received response from server: Channel set to 1
+2025-09-22 21:19:20,260 - INFO - ----------------------------------- APClient started
+2025-09-22 21:19:20,290 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:19:20,290 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:19:20,290 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:19:20,292 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-22 21:19:20,622 - INFO - Received response from server: Channel set to 2
+2025-09-22 21:19:33,662 - INFO - ----------------------------------- APClient started
+2025-09-22 21:19:33,688 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:19:33,688 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:19:33,689 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:19:33,690 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-22 21:19:33,691 - INFO - Received response from server: Error: SwitchBox not connected.
+2025-09-22 21:20:12,945 - INFO - ----------------------------------- APClient started
+2025-09-22 21:20:12,983 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:20:12,983 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:20:12,983 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:20:15,008 - ERROR - Socket error: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-09-22 21:21:52,152 - INFO - ----------------------------------- APClient started
+2025-09-22 21:21:52,184 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:21:52,184 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:21:52,184 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:21:52,185 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:21:52,410 - INFO - Received response from server: Channel set to 1
+2025-09-22 21:21:55,441 - INFO - ----------------------------------- APClient started
+2025-09-22 21:21:55,468 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:21:55,468 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:21:55,468 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:21:55,469 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-22 21:21:55,795 - INFO - Received response from server: Channel set to 2
+2025-09-22 21:22:01,462 - INFO - ----------------------------------- APClient started
+2025-09-22 21:22:01,487 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:22:01,488 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:22:01,488 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:22:01,489 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-22 21:22:01,491 - INFO - Received response from server: Error: SwitchBox not connected.
+2025-09-22 21:22:48,835 - INFO - ----------------------------------- APClient started
+2025-09-22 21:22:48,868 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:22:48,869 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:22:48,869 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:22:48,870 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-22 21:22:49,221 - INFO - Received response from server: Channel set to 2
+2025-09-22 21:22:52,959 - INFO - ----------------------------------- APClient started
+2025-09-22 21:22:52,994 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:22:52,994 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:22:52,994 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:22:52,995 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:22:53,350 - INFO - Received response from server: Channel set to 1
+2025-09-22 21:26:43,474 - INFO - ----------------------------------- APClient started
+2025-09-22 21:26:43,508 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:26:43,508 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:26:43,509 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:26:43,510 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-22 21:26:43,847 - INFO - Received response from server: Channel set to 2
+2025-09-22 21:26:49,388 - INFO - ----------------------------------- APClient started
+2025-09-22 21:26:49,417 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:26:49,417 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:26:49,417 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:26:49,418 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:26:49,746 - INFO - Received response from server: Channel set to 1
+2025-09-22 21:26:54,082 - INFO - ----------------------------------- APClient started
+2025-09-22 21:26:54,114 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:26:54,114 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:26:54,114 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:26:54,116 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:26:54,331 - INFO - Received response from server: Channel set to 1
+2025-09-22 21:26:58,528 - INFO - ----------------------------------- APClient started
+2025-09-22 21:26:58,558 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:26:58,558 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:26:58,559 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:26:58,560 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-22 21:26:58,901 - INFO - Received response from server: Channel set to 2
+2025-09-22 21:27:04,100 - INFO - ----------------------------------- APClient started
+2025-09-22 21:27:04,134 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:27:04,134 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:27:04,134 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:27:04,135 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:27:04,472 - INFO - Received response from server: Channel set to 1
+2025-09-22 21:27:12,132 - INFO - ----------------------------------- APClient started
+2025-09-22 21:27:12,166 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:27:12,167 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:27:12,167 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:27:12,168 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:27:12,169 - INFO - Received response from server: Error: SwitchBox not connected.
+2025-09-22 21:27:38,509 - INFO - ----------------------------------- APClient started
+2025-09-22 21:27:38,539 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:27:38,539 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:27:38,539 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:27:38,540 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-22 21:27:38,875 - INFO - Received response from server: Channel set to 2
+2025-09-22 21:27:40,749 - INFO - ----------------------------------- APClient started
+2025-09-22 21:27:40,781 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:27:40,781 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:27:40,782 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:27:40,782 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:27:41,111 - INFO - Received response from server: Channel set to 1
+2025-09-22 21:30:26,136 - INFO - ----------------------------------- APClient started
+2025-09-22 21:30:26,177 - INFO - Parsing and executing command: open_box
+2025-09-22 21:30:26,177 - INFO - Executing 'open_box' command.
+2025-09-22 21:30:26,177 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:30:26,179 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:30:26,406 - INFO - Received response from server: Box opened.
+2025-09-22 21:31:14,863 - INFO - ----------------------------------- APClient started
+2025-09-22 21:31:14,902 - INFO - Parsing and executing command: open_box
+2025-09-22 21:31:14,902 - INFO - Executing 'open_box' command.
+2025-09-22 21:31:14,902 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:31:14,904 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:31:15,134 - INFO - Received response from server: Box opened.
+2025-09-22 21:35:03,137 - INFO - ----------------------------------- APClient started
+2025-09-22 21:35:03,163 - INFO - Parsing and executing command: open_box
+2025-09-22 21:35:03,163 - INFO - Executing 'open_box' command.
+2025-09-22 21:35:03,163 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:35:03,165 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:35:03,393 - INFO - Received response from server: Box status: Open
+2025-09-22 21:35:19,984 - INFO - ----------------------------------- APClient started
+2025-09-22 21:35:20,021 - INFO - Parsing and executing command: open_box
+2025-09-22 21:35:20,021 - INFO - Executing 'open_box' command.
+2025-09-22 21:35:20,022 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:35:20,024 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:35:24,523 - INFO - Received response from server: Box status: Open
+2025-09-22 21:35:39,193 - INFO - ----------------------------------- APClient started
+2025-09-22 21:35:39,231 - INFO - Parsing and executing command: open_box
+2025-09-22 21:35:39,231 - INFO - Executing 'open_box' command.
+2025-09-22 21:35:39,231 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:35:39,232 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:35:53,057 - INFO - Received response from server: Box status: Open
+2025-09-22 21:36:03,863 - INFO - ----------------------------------- APClient started
+2025-09-22 21:36:03,896 - INFO - Parsing and executing command: open_box
+2025-09-22 21:36:03,896 - INFO - Executing 'open_box' command.
+2025-09-22 21:36:03,896 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:36:03,897 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:36:04,009 - INFO - Received response from server: Box status: Open
+2025-09-22 21:36:10,709 - INFO - ----------------------------------- APClient started
+2025-09-22 21:36:10,738 - INFO - Parsing and executing command: open_box
+2025-09-22 21:36:10,738 - INFO - Executing 'open_box' command.
+2025-09-22 21:36:10,738 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:36:10,739 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:36:24,345 - INFO - Received response from server: Box status: Open
+2025-09-22 21:36:57,421 - INFO - ----------------------------------- APClient started
+2025-09-22 21:36:57,449 - INFO - Parsing and executing command: open_box
+2025-09-22 21:36:57,449 - INFO - Executing 'open_box' command.
+2025-09-22 21:36:57,449 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:36:57,450 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:36:57,561 - INFO - Received response from server: Box status: Open
+2025-09-22 21:37:08,005 - INFO - ----------------------------------- APClient started
+2025-09-22 21:37:08,033 - INFO - Parsing and executing command: open_box
+2025-09-22 21:37:08,033 - INFO - Executing 'open_box' command.
+2025-09-22 21:37:08,033 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:37:08,034 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:37:08,264 - INFO - Received response from server: Box status: Open
+2025-09-22 21:37:14,850 - INFO - ----------------------------------- APClient started
+2025-09-22 21:37:14,894 - INFO - Parsing and executing command: open_box
+2025-09-22 21:37:14,894 - INFO - Executing 'open_box' command.
+2025-09-22 21:37:14,894 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:37:14,896 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:37:16,978 - INFO - Received response from server: Box status: Open
+2025-09-22 21:37:30,638 - INFO - ----------------------------------- APClient started
+2025-09-22 21:37:30,666 - INFO - Parsing and executing command: open_box
+2025-09-22 21:37:30,667 - INFO - Executing 'open_box' command.
+2025-09-22 21:37:30,667 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:37:30,668 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:37:30,902 - INFO - Received response from server: Box status: Open
+2025-09-22 21:38:01,872 - INFO - ----------------------------------- APClient started
+2025-09-22 21:38:01,907 - INFO - Parsing and executing command: open_box
+2025-09-22 21:38:01,908 - INFO - Executing 'open_box' command.
+2025-09-22 21:38:01,908 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:38:01,909 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:38:01,911 - INFO - Received response from server: Error: SwitchBox not connected.
+2025-09-22 21:38:19,867 - INFO - ----------------------------------- APClient started
+2025-09-22 21:38:19,896 - INFO - Parsing and executing command: open_box
+2025-09-22 21:38:19,897 - INFO - Executing 'open_box' command.
+2025-09-22 21:38:19,897 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:38:19,898 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:38:20,123 - INFO - Received response from server: Box status: Open
+2025-09-22 21:38:25,809 - INFO - ----------------------------------- APClient started
+2025-09-22 21:38:25,845 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:38:25,845 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:38:25,846 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:38:25,847 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:38:26,076 - INFO - Received response from server: Channel set to 1
+2025-09-22 21:38:44,684 - INFO - ----------------------------------- APClient started
+2025-09-22 21:38:44,720 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:38:44,720 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:38:44,720 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:38:44,721 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-22 21:38:45,052 - INFO - Received response from server: Channel set to 2
+2025-09-22 21:38:51,402 - INFO - ----------------------------------- APClient started
+2025-09-22 21:38:51,439 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:38:51,439 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:38:51,440 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:38:51,441 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:38:51,779 - INFO - Received response from server: Channel set to 1
+2025-09-22 21:38:58,883 - INFO - ----------------------------------- APClient started
+2025-09-22 21:38:58,913 - INFO - Parsing and executing command: open_box
+2025-09-22 21:38:58,913 - INFO - Executing 'open_box' command.
+2025-09-22 21:38:58,913 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:38:58,914 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:39:02,085 - INFO - Received response from server: Box status: Open
+2025-09-22 21:39:33,078 - INFO - ----------------------------------- APClient started
+2025-09-22 21:39:33,115 - INFO - Parsing and executing command: open_box
+2025-09-22 21:39:33,115 - INFO - Executing 'open_box' command.
+2025-09-22 21:39:33,115 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:39:33,115 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:39:37,941 - INFO - Received response from server: Box status: Open
+2025-09-22 21:41:15,744 - INFO - ----------------------------------- APClient started
+2025-09-22 21:41:15,775 - INFO - Parsing and executing command: open_box
+2025-09-22 21:41:15,775 - INFO - Executing 'open_box' command.
+2025-09-22 21:41:15,776 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:41:15,777 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:41:16,004 - INFO - Received response from server: Box status: Open
+2025-09-22 21:41:33,815 - INFO - ----------------------------------- APClient started
+2025-09-22 21:41:33,844 - INFO - Parsing and executing command: open_box
+2025-09-22 21:41:33,845 - INFO - Executing 'open_box' command.
+2025-09-22 21:41:33,845 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:41:33,847 - INFO - Connected to server. Sending command: {'action': 'open_box', 'wait_for_response': True}
+2025-09-22 21:41:38,920 - INFO - Received response from server: Box status: Open
+2025-09-22 21:44:44,480 - INFO - ----------------------------------- APClient started
+2025-09-22 21:44:44,506 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:44:44,506 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-22 21:44:44,506 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:44:44,507 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-22 21:44:44,728 - INFO - Received response from server: Channel set to 1
+2025-09-22 21:44:49,231 - INFO - ----------------------------------- APClient started
+2025-09-22 21:44:49,271 - INFO - Parsing and executing command: set_channel
+2025-09-22 21:44:49,271 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-22 21:44:49,271 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-22 21:44:49,273 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-22 21:44:49,605 - INFO - Received response from server: Channel set to 2

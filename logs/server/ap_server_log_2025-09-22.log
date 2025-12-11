@@ -1,0 +1,931 @@
+2025-09-22 20:59:00,685 INFO [root] ----------------------------------- APServer started
+2025-09-22 20:59:00,688 INFO [APServer] Server started
+2025-09-22 20:59:00,689 INFO [APServer] Server is running...
+2025-09-22 20:59:00,689 INFO [APServer] Waiting for connections...
+2025-09-22 20:59:00,720 INFO [APServer] Connection from ('127.0.0.1', 56289)
+2025-09-22 20:59:00,722 INFO [APServer] Client connection closed.
+2025-09-22 20:59:00,755 INFO [SerialDevice] Device physically connected.
+2025-09-22 20:59:00,755 INFO [APServer] SwitchBox connected.
+2025-09-22 20:59:54,198 INFO [APServer] Connection from ('127.0.0.1', 56313)
+2025-09-22 20:59:54,204 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 20:59:54,205 ERROR [APServer] SwitchBox not connected.
+2025-09-22 20:59:54,206 INFO [APServer] Sent response: Error: SwitchBox not connected.
+2025-09-22 20:59:54,206 INFO [APServer] Client connection closed.
+2025-09-22 21:00:09,101 INFO [APServer] Connection from ('127.0.0.1', 56324)
+2025-09-22 21:00:09,102 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:00:09,102 ERROR [APServer] SwitchBox not connected.
+2025-09-22 21:00:09,103 INFO [APServer] Sent response: Error: SwitchBox not connected.
+2025-09-22 21:00:09,103 INFO [APServer] Client connection closed.
+2025-09-22 21:01:05,788 INFO [SerialDevice] Device physically disconnected.
+2025-09-22 21:01:05,789 INFO [APServer] SwitchBox disconnected.
+2025-09-22 21:01:09,820 INFO [SerialDevice] Device physically connected.
+2025-09-22 21:01:09,820 INFO [APServer] SwitchBox connected.
+2025-09-22 21:01:17,508 INFO [APServer] Connection from ('127.0.0.1', 49833)
+2025-09-22 21:01:17,508 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:01:17,508 ERROR [APServer] SwitchBox not connected.
+2025-09-22 21:01:17,509 INFO [APServer] Sent response: Error: SwitchBox not connected.
+2025-09-22 21:01:17,509 INFO [APServer] Client connection closed.
+2025-09-22 21:01:48,174 INFO [SerialDevice] Device physically disconnected.
+2025-09-22 21:01:48,174 INFO [APServer] SwitchBox disconnected.
+2025-09-22 21:01:56,230 INFO [SerialDevice] Device physically connected.
+2025-09-22 21:01:56,231 INFO [APServer] SwitchBox connected.
+2025-09-22 21:02:20,106 INFO [APServer] Connection from ('127.0.0.1', 49844)
+2025-09-22 21:02:20,107 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:02:20,107 ERROR [APServer] SwitchBox not connected.
+2025-09-22 21:02:20,107 INFO [APServer] Sent response: Error: SwitchBox not connected.
+2025-09-22 21:02:20,108 INFO [APServer] Client connection closed.
+2025-09-22 21:07:25,079 INFO [APServer] Connection from ('127.0.0.1', 58388)
+2025-09-22 21:07:25,096 INFO [APServer] Client connection closed.
+2025-09-22 21:08:00,754 INFO [APServer] Connection from ('127.0.0.1', 60088)
+2025-09-22 21:08:00,755 INFO [APServer] Client connection closed.
+2025-09-22 21:08:50,938 INFO [root] ----------------------------------- APServer started
+2025-09-22 21:08:50,941 INFO [APServer] Server started
+2025-09-22 21:08:50,941 INFO [APServer] Server is running...
+2025-09-22 21:08:50,941 INFO [APServer] Waiting for connections...
+2025-09-22 21:08:50,949 INFO [SerialDevice] Device physically connected.
+2025-09-22 21:08:50,949 INFO [APServer] SwitchBox connected.
+2025-09-22 21:08:51,026 INFO [APServer] Connection from ('127.0.0.1', 60104)
+2025-09-22 21:08:51,027 INFO [APServer] Client connection closed.
+2025-09-22 21:09:26,273 INFO [APServer] Connection from ('127.0.0.1', 60109)
+2025-09-22 21:09:26,274 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:09:26,277 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:09:26,278 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:09:26,278 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:09:26,278 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:09:26,390 INFO [SwitchBox] Received message: 1
+2025-09-22 21:09:26,391 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:09:26,391 INFO [SwitchBox] Status update detected.
+2025-09-22 21:09:26,391 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:09:26,391 INFO [SwitchBox] SwitchBox already on channel 1
+2025-09-22 21:09:26,392 INFO [APServer] Channel set to 1
+2025-09-22 21:09:26,499 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:09:26,499 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:09:26,500 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:09:26,500 INFO [APServer] Sent response: Channel set to 1
+2025-09-22 21:09:26,501 INFO [APServer] Client connection closed.
+2025-09-22 21:09:37,061 INFO [APServer] Connection from ('127.0.0.1', 60111)
+2025-09-22 21:09:37,062 INFO [APServer] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-09-22 21:09:37,063 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:09:37,064 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:09:37,064 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:09:37,064 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:09:37,176 INFO [SwitchBox] Received message: 1
+2025-09-22 21:09:37,176 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:09:37,176 INFO [SwitchBox] Status update detected.
+2025-09-22 21:09:37,178 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:09:37,178 INFO [SwitchBox] Command 'SET_CHANNEL_2' sent.
+2025-09-22 21:09:37,286 INFO [SwitchBox] Received message: 11
+2025-09-22 21:09:37,286 INFO [SwitchBox] SwitchBox switched to channel 2
+2025-09-22 21:09:37,286 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:09:37,287 INFO [SwitchBox] Status update detected.
+2025-09-22 21:09:37,287 INFO [APServer] Channel set to 2
+2025-09-22 21:09:37,396 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:09:37,396 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:09:37,397 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:09:37,398 INFO [APServer] Sent response: Channel set to 2
+2025-09-22 21:09:37,398 INFO [APServer] Client connection closed.
+2025-09-22 21:09:51,206 INFO [APServer] Connection from ('127.0.0.1', 60114)
+2025-09-22 21:09:51,207 INFO [APServer] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-09-22 21:09:51,208 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:09:51,209 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:09:51,209 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:09:51,209 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:09:51,323 INFO [SwitchBox] Received message: 11
+2025-09-22 21:09:51,323 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:09:51,323 INFO [SwitchBox] Status update detected.
+2025-09-22 21:09:51,324 INFO [SwitchBox] SwitchBox status: channel=2, box_status=Open
+2025-09-22 21:09:51,324 INFO [SwitchBox] SwitchBox already on channel 2
+2025-09-22 21:09:51,324 INFO [APServer] Channel set to 2
+2025-09-22 21:09:51,432 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:09:51,432 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:09:51,433 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:09:51,433 INFO [APServer] Sent response: Channel set to 2
+2025-09-22 21:09:51,434 INFO [APServer] Client connection closed.
+2025-09-22 21:14:21,211 INFO [root] ----------------------------------- APServer started
+2025-09-22 21:14:21,215 INFO [APServer] Server started
+2025-09-22 21:14:21,216 INFO [APServer] Server is running...
+2025-09-22 21:14:21,216 INFO [APServer] Waiting for connections...
+2025-09-22 21:14:21,224 INFO [SerialDevice] Device physically connected.
+2025-09-22 21:14:21,225 INFO [APServer] SwitchBox connected.
+2025-09-22 21:14:21,342 INFO [APServer] Connection from ('127.0.0.1', 61718)
+2025-09-22 21:14:21,343 INFO [APServer] Client connection closed.
+2025-09-22 21:14:42,330 INFO [APServer] Connection from ('127.0.0.1', 61722)
+2025-09-22 21:14:42,331 INFO [APServer] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-09-22 21:14:42,334 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:14:42,334 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:14:42,334 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:14:42,335 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:14:42,449 INFO [SwitchBox] Received message: 11
+2025-09-22 21:14:42,449 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:14:42,450 INFO [SwitchBox] Status update detected.
+2025-09-22 21:14:42,450 INFO [SwitchBox] SwitchBox status: channel=2, box_status=Open
+2025-09-22 21:14:42,450 INFO [SwitchBox] SwitchBox already on channel 2
+2025-09-22 21:14:42,450 INFO [APServer] Channel set to 2
+2025-09-22 21:14:42,558 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:14:42,558 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:14:42,560 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:14:42,560 INFO [APServer] Sent response: Channel set to 2
+2025-09-22 21:14:42,561 INFO [APServer] Client connection closed.
+2025-09-22 21:15:12,386 INFO [APServer] Connection from ('127.0.0.1', 61731)
+2025-09-22 21:15:12,387 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:15:12,389 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:15:12,390 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:15:12,390 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:15:12,390 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:15:12,493 INFO [SwitchBox] Received message: 11
+2025-09-22 21:15:12,493 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:15:12,494 INFO [SwitchBox] Status update detected.
+2025-09-22 21:15:12,494 INFO [SwitchBox] SwitchBox status: channel=2, box_status=Open
+2025-09-22 21:15:12,494 INFO [SwitchBox] Command 'SET_CHANNEL_1' sent.
+2025-09-22 21:15:12,603 INFO [SwitchBox] Received message: 1
+2025-09-22 21:15:12,603 INFO [SwitchBox] SwitchBox switched to channel 1
+2025-09-22 21:15:12,603 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:15:12,604 INFO [SwitchBox] Status update detected.
+2025-09-22 21:15:12,604 INFO [APServer] Channel set to 1
+2025-09-22 21:15:12,711 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:15:12,711 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:15:12,712 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:15:12,713 INFO [APServer] Sent response: Channel set to 1
+2025-09-22 21:15:12,714 INFO [APServer] Client connection closed.
+2025-09-22 21:16:30,415 INFO [APServer] Connection from ('127.0.0.1', 51647)
+2025-09-22 21:16:30,416 INFO [APServer] Received: {"action": "open_box", "wait_for_response": false}
+2025-09-22 21:16:30,418 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:16:30,419 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:16:30,419 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:16:30,420 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:16:30,526 INFO [SwitchBox] Received message: 1
+2025-09-22 21:16:30,526 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:16:30,527 INFO [SwitchBox] Status update detected.
+2025-09-22 21:16:30,527 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:16:30,527 INFO [SwitchBox] SwitchBox is already open.
+2025-09-22 21:16:30,527 INFO [APServer] Box opened.
+2025-09-22 21:16:30,634 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:16:30,634 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:16:30,635 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:16:30,635 INFO [APServer] No response sent.
+2025-09-22 21:16:30,636 INFO [APServer] Client connection closed.
+2025-09-22 21:16:45,565 INFO [APServer] Connection from ('127.0.0.1', 51651)
+2025-09-22 21:16:45,566 INFO [APServer] Received: {"action": "open_box", "wait_for_response": false}
+2025-09-22 21:16:45,568 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:16:45,568 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:16:45,568 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:16:45,569 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:16:45,684 INFO [SwitchBox] Received message: 0
+2025-09-22 21:16:45,684 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Closed
+2025-09-22 21:16:45,685 INFO [SwitchBox] Status update detected.
+2025-09-22 21:16:45,685 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Closed
+2025-09-22 21:16:45,686 INFO [SwitchBox] Command 'OPEN_BOX' sent.
+2025-09-22 21:16:50,060 INFO [SwitchBox] Received message: 1
+2025-09-22 21:16:50,074 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:16:50,074 INFO [SwitchBox] SwitchBox opened.
+2025-09-22 21:16:50,076 INFO [APServer] Box opened.
+2025-09-22 21:16:50,185 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:16:50,185 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:16:50,186 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:16:50,186 INFO [APServer] No response sent.
+2025-09-22 21:16:50,187 INFO [APServer] Client connection closed.
+2025-09-22 21:17:51,220 INFO [APServer] Connection from ('127.0.0.1', 51664)
+2025-09-22 21:17:51,221 INFO [APServer] Received: {"action": "open_box", "wait_for_response": false}
+2025-09-22 21:17:51,223 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:17:51,225 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:17:51,225 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:17:51,226 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:17:51,337 INFO [SwitchBox] Received message: 1
+2025-09-22 21:17:51,338 INFO [SwitchBox] Status update detected.
+2025-09-22 21:17:51,338 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:17:51,339 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:17:51,340 INFO [SwitchBox] SwitchBox is already open.
+2025-09-22 21:17:51,341 INFO [APServer] Box opened.
+2025-09-22 21:17:51,446 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:17:51,448 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:17:51,450 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:17:51,450 INFO [APServer] No response sent.
+2025-09-22 21:17:51,451 INFO [APServer] Client connection closed.
+2025-09-22 21:18:23,275 INFO [APServer] Connection from ('127.0.0.1', 51668)
+2025-09-22 21:18:23,276 INFO [APServer] Received: {"action": "open_box", "wait_for_response": false}
+2025-09-22 21:18:23,279 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:18:23,279 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:18:23,280 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:18:23,281 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:18:23,395 INFO [SwitchBox] Received message: 1
+2025-09-22 21:18:23,396 INFO [SwitchBox] Status update detected.
+2025-09-22 21:18:23,396 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:18:23,397 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:18:23,398 INFO [SwitchBox] SwitchBox is already open.
+2025-09-22 21:18:23,398 INFO [APServer] Box opened.
+2025-09-22 21:18:23,505 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:18:23,505 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:18:23,506 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:18:23,506 INFO [APServer] No response sent.
+2025-09-22 21:18:23,507 INFO [APServer] Client connection closed.
+2025-09-22 21:18:56,329 INFO [APServer] Connection from ('127.0.0.1', 51673)
+2025-09-22 21:18:56,330 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:18:56,332 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:18:56,332 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:18:56,333 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:18:56,333 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:18:56,442 INFO [SwitchBox] Received message: 1
+2025-09-22 21:18:56,443 INFO [SwitchBox] Status update detected.
+2025-09-22 21:18:56,443 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:18:56,443 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:18:56,444 INFO [SwitchBox] SwitchBox already on channel 1
+2025-09-22 21:18:56,444 INFO [APServer] Channel set to 1
+2025-09-22 21:18:56,552 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:18:56,552 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:18:56,554 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:18:56,555 INFO [APServer] Sent response: Channel set to 1
+2025-09-22 21:18:56,555 INFO [APServer] Client connection closed.
+2025-09-22 21:19:20,292 INFO [APServer] Connection from ('127.0.0.1', 51678)
+2025-09-22 21:19:20,293 INFO [APServer] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-09-22 21:19:20,295 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:19:20,295 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:19:20,295 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:19:20,295 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:19:20,403 INFO [SwitchBox] Received message: 1
+2025-09-22 21:19:20,404 INFO [SwitchBox] Status update detected.
+2025-09-22 21:19:20,404 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:19:20,405 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:19:20,406 INFO [SwitchBox] Command 'SET_CHANNEL_2' sent.
+2025-09-22 21:19:20,511 INFO [SwitchBox] Received message: 11
+2025-09-22 21:19:20,512 INFO [SwitchBox] SwitchBox switched to channel 2
+2025-09-22 21:19:20,512 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:19:20,513 INFO [SwitchBox] Status update detected.
+2025-09-22 21:19:20,514 INFO [APServer] Channel set to 2
+2025-09-22 21:19:20,620 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:19:20,621 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:19:20,622 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:19:20,622 INFO [APServer] Sent response: Channel set to 2
+2025-09-22 21:19:20,623 INFO [APServer] Client connection closed.
+2025-09-22 21:19:27,333 INFO [SerialDevice] Device physically disconnected.
+2025-09-22 21:19:27,334 INFO [APServer] SwitchBox disconnected.
+2025-09-22 21:19:33,690 INFO [APServer] Connection from ('127.0.0.1', 51682)
+2025-09-22 21:19:33,691 INFO [APServer] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-09-22 21:19:33,691 ERROR [APServer] SwitchBox not connected.
+2025-09-22 21:19:33,691 INFO [APServer] Sent response: Error: SwitchBox not connected.
+2025-09-22 21:19:33,695 INFO [APServer] Client connection closed.
+2025-09-22 21:19:51,490 INFO [SerialDevice] Device physically connected.
+2025-09-22 21:19:51,491 INFO [APServer] SwitchBox connected.
+2025-09-22 21:21:22,358 INFO [root] ----------------------------------- APServer started
+2025-09-22 21:21:22,361 INFO [APServer] Server started
+2025-09-22 21:21:22,361 INFO [APServer] Server is running...
+2025-09-22 21:21:22,362 INFO [APServer] Waiting for connections...
+2025-09-22 21:21:22,369 INFO [APServer] Connection from ('127.0.0.1', 52114)
+2025-09-22 21:21:22,371 INFO [SerialDevice] Device physically connected.
+2025-09-22 21:21:22,371 INFO [APServer] SwitchBox physically connected.
+2025-09-22 21:21:22,384 INFO [APServer] Client connection closed.
+2025-09-22 21:21:36,479 INFO [SerialDevice] Device physically disconnected.
+2025-09-22 21:21:36,479 INFO [APServer] SwitchBox physically disconnected.
+2025-09-22 21:21:44,526 INFO [SerialDevice] Device physically connected.
+2025-09-22 21:21:44,528 INFO [APServer] SwitchBox physically connected.
+2025-09-22 21:21:52,185 INFO [APServer] Connection from ('127.0.0.1', 52133)
+2025-09-22 21:21:52,186 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:21:52,188 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:21:52,190 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:21:52,190 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:21:52,191 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:21:52,296 INFO [SwitchBox] Received message: 1
+2025-09-22 21:21:52,296 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:21:52,297 INFO [SwitchBox] Status update detected.
+2025-09-22 21:21:52,297 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:21:52,297 INFO [SwitchBox] SwitchBox already on channel 1
+2025-09-22 21:21:52,298 INFO [APServer] Channel set to 1
+2025-09-22 21:21:52,408 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:21:52,408 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:21:52,409 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:21:52,410 INFO [APServer] Sent response: Channel set to 1
+2025-09-22 21:21:52,410 INFO [APServer] Client connection closed.
+2025-09-22 21:21:55,469 INFO [APServer] Connection from ('127.0.0.1', 52135)
+2025-09-22 21:21:55,470 INFO [APServer] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-09-22 21:21:55,472 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:21:55,472 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:21:55,472 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:21:55,473 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:21:55,574 INFO [SwitchBox] Received message: 1
+2025-09-22 21:21:55,574 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:21:55,575 INFO [SwitchBox] Status update detected.
+2025-09-22 21:21:55,575 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:21:55,575 INFO [SwitchBox] Command 'SET_CHANNEL_2' sent.
+2025-09-22 21:21:55,683 INFO [SwitchBox] Received message: 11
+2025-09-22 21:21:55,684 INFO [SwitchBox] SwitchBox switched to channel 2
+2025-09-22 21:21:55,684 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:21:55,684 INFO [SwitchBox] Status update detected.
+2025-09-22 21:21:55,685 INFO [APServer] Channel set to 2
+2025-09-22 21:21:55,793 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:21:55,793 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:21:55,794 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:21:55,795 INFO [APServer] Sent response: Channel set to 2
+2025-09-22 21:21:55,795 INFO [APServer] Client connection closed.
+2025-09-22 21:21:58,642 INFO [SerialDevice] Device physically disconnected.
+2025-09-22 21:21:58,643 INFO [APServer] SwitchBox physically disconnected.
+2025-09-22 21:22:01,489 INFO [APServer] Connection from ('127.0.0.1', 52138)
+2025-09-22 21:22:01,490 INFO [APServer] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-09-22 21:22:01,491 ERROR [APServer] SwitchBox not connected.
+2025-09-22 21:22:01,491 INFO [APServer] Sent response: Error: SwitchBox not connected.
+2025-09-22 21:22:01,492 INFO [APServer] Client connection closed.
+2025-09-22 21:22:36,896 INFO [SerialDevice] Device physically connected.
+2025-09-22 21:22:36,896 INFO [APServer] SwitchBox physically connected.
+2025-09-22 21:22:48,870 INFO [APServer] Connection from ('127.0.0.1', 59110)
+2025-09-22 21:22:48,871 INFO [APServer] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-09-22 21:22:48,873 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:22:48,873 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:22:48,873 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:22:48,874 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:22:48,984 INFO [SwitchBox] Received message: 1
+2025-09-22 21:22:48,995 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:22:48,995 INFO [SwitchBox] Status update detected.
+2025-09-22 21:22:48,995 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:22:48,996 INFO [SwitchBox] Command 'SET_CHANNEL_2' sent.
+2025-09-22 21:22:49,110 INFO [SwitchBox] Received message: 11
+2025-09-22 21:22:49,111 INFO [SwitchBox] SwitchBox switched to channel 2
+2025-09-22 21:22:49,111 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:22:49,112 INFO [SwitchBox] Status update detected.
+2025-09-22 21:22:49,112 INFO [APServer] Channel set to 2
+2025-09-22 21:22:49,219 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:22:49,219 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:22:49,221 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:22:49,221 INFO [APServer] Sent response: Channel set to 2
+2025-09-22 21:22:49,221 INFO [APServer] Client connection closed.
+2025-09-22 21:22:52,995 INFO [APServer] Connection from ('127.0.0.1', 59113)
+2025-09-22 21:22:52,996 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:22:52,997 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:22:52,999 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:22:52,999 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:22:53,000 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:22:53,114 INFO [SwitchBox] Received message: 11
+2025-09-22 21:22:53,125 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:22:53,126 INFO [SwitchBox] Status update detected.
+2025-09-22 21:22:53,126 INFO [SwitchBox] SwitchBox status: channel=2, box_status=Open
+2025-09-22 21:22:53,126 INFO [SwitchBox] Command 'SET_CHANNEL_1' sent.
+2025-09-22 21:22:53,240 INFO [SwitchBox] Received message: 1
+2025-09-22 21:22:53,241 INFO [SwitchBox] SwitchBox switched to channel 1
+2025-09-22 21:22:53,241 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:22:53,241 INFO [SwitchBox] Status update detected.
+2025-09-22 21:22:53,242 INFO [APServer] Channel set to 1
+2025-09-22 21:22:53,349 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:22:53,349 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:22:53,350 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:22:53,350 INFO [APServer] Sent response: Channel set to 1
+2025-09-22 21:22:53,351 INFO [APServer] Client connection closed.
+2025-09-22 21:26:43,510 INFO [APServer] Connection from ('127.0.0.1', 57545)
+2025-09-22 21:26:43,511 INFO [APServer] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-09-22 21:26:43,514 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:26:43,514 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:26:43,514 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:26:43,515 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:26:43,626 INFO [SwitchBox] Received message: 1
+2025-09-22 21:26:43,627 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:26:43,627 INFO [SwitchBox] Status update detected.
+2025-09-22 21:26:43,628 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:26:43,628 INFO [SwitchBox] Command 'SET_CHANNEL_2' sent.
+2025-09-22 21:26:43,735 INFO [SwitchBox] Received message: 11
+2025-09-22 21:26:43,736 INFO [SwitchBox] SwitchBox switched to channel 2
+2025-09-22 21:26:43,736 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:26:43,736 INFO [SwitchBox] Status update detected.
+2025-09-22 21:26:43,737 INFO [APServer] Channel set to 2
+2025-09-22 21:26:43,844 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:26:43,844 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:26:43,846 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:26:43,846 INFO [APServer] Sent response: Channel set to 2
+2025-09-22 21:26:43,848 INFO [APServer] Client connection closed.
+2025-09-22 21:26:49,418 INFO [APServer] Connection from ('127.0.0.1', 57556)
+2025-09-22 21:26:49,419 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:26:49,422 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:26:49,422 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:26:49,422 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:26:49,423 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:26:49,529 INFO [SwitchBox] Received message: 11
+2025-09-22 21:26:49,530 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:26:49,531 INFO [SwitchBox] Status update detected.
+2025-09-22 21:26:49,531 INFO [SwitchBox] SwitchBox status: channel=2, box_status=Open
+2025-09-22 21:26:49,532 INFO [SwitchBox] Command 'SET_CHANNEL_1' sent.
+2025-09-22 21:26:49,637 INFO [SwitchBox] Received message: 1
+2025-09-22 21:26:49,638 INFO [SwitchBox] SwitchBox switched to channel 1
+2025-09-22 21:26:49,638 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:26:49,639 INFO [SwitchBox] Status update detected.
+2025-09-22 21:26:49,639 INFO [APServer] Channel set to 1
+2025-09-22 21:26:49,745 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:26:49,745 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:26:49,746 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:26:49,746 INFO [APServer] Sent response: Channel set to 1
+2025-09-22 21:26:49,747 INFO [APServer] Client connection closed.
+2025-09-22 21:26:54,116 INFO [APServer] Connection from ('127.0.0.1', 57561)
+2025-09-22 21:26:54,117 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:26:54,118 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:26:54,120 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:26:54,120 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:26:54,120 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:26:54,221 INFO [SwitchBox] Received message: 1
+2025-09-22 21:26:54,222 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:26:54,223 INFO [SwitchBox] Status update detected.
+2025-09-22 21:26:54,224 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:26:54,224 INFO [SwitchBox] SwitchBox already on channel 1
+2025-09-22 21:26:54,224 INFO [APServer] Channel set to 1
+2025-09-22 21:26:54,330 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:26:54,330 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:26:54,331 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:26:54,332 INFO [APServer] Sent response: Channel set to 1
+2025-09-22 21:26:54,332 INFO [APServer] Client connection closed.
+2025-09-22 21:26:58,560 INFO [APServer] Connection from ('127.0.0.1', 57563)
+2025-09-22 21:26:58,560 INFO [APServer] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-09-22 21:26:58,562 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:26:58,563 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:26:58,563 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:26:58,564 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:26:58,678 INFO [SwitchBox] Received message: 1
+2025-09-22 21:26:58,678 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:26:58,679 INFO [SwitchBox] Status update detected.
+2025-09-22 21:26:58,679 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:26:58,679 INFO [SwitchBox] Command 'SET_CHANNEL_2' sent.
+2025-09-22 21:26:58,788 INFO [SwitchBox] Received message: 11
+2025-09-22 21:26:58,788 INFO [SwitchBox] SwitchBox switched to channel 2
+2025-09-22 21:26:58,789 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:26:58,789 INFO [SwitchBox] Status update detected.
+2025-09-22 21:26:58,790 INFO [APServer] Channel set to 2
+2025-09-22 21:26:58,899 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:26:58,899 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:26:58,900 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:26:58,901 INFO [APServer] Sent response: Channel set to 2
+2025-09-22 21:26:58,901 INFO [APServer] Client connection closed.
+2025-09-22 21:27:04,135 INFO [APServer] Connection from ('127.0.0.1', 57572)
+2025-09-22 21:27:04,136 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:27:04,138 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:27:04,139 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:27:04,139 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:27:04,139 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:27:04,253 INFO [SwitchBox] Received message: 11
+2025-09-22 21:27:04,254 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:27:04,254 INFO [SwitchBox] Status update detected.
+2025-09-22 21:27:04,254 INFO [SwitchBox] SwitchBox status: channel=2, box_status=Open
+2025-09-22 21:27:04,255 INFO [SwitchBox] Command 'SET_CHANNEL_1' sent.
+2025-09-22 21:27:04,363 INFO [SwitchBox] Received message: 1
+2025-09-22 21:27:04,363 INFO [SwitchBox] SwitchBox switched to channel 1
+2025-09-22 21:27:04,364 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:27:04,364 INFO [SwitchBox] Status update detected.
+2025-09-22 21:27:04,364 INFO [APServer] Channel set to 1
+2025-09-22 21:27:04,471 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:27:04,471 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:27:04,472 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:27:04,472 INFO [APServer] Sent response: Channel set to 1
+2025-09-22 21:27:04,473 INFO [APServer] Client connection closed.
+2025-09-22 21:27:09,093 INFO [SerialDevice] Device physically disconnected.
+2025-09-22 21:27:09,093 INFO [APServer] SwitchBox physically disconnected.
+2025-09-22 21:27:12,168 INFO [APServer] Connection from ('127.0.0.1', 64583)
+2025-09-22 21:27:12,169 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:27:12,169 ERROR [APServer] SwitchBox not connected.
+2025-09-22 21:27:12,169 INFO [APServer] Sent response: Error: SwitchBox not connected.
+2025-09-22 21:27:12,170 INFO [APServer] Client connection closed.
+2025-09-22 21:27:29,242 INFO [SerialDevice] Device physically connected.
+2025-09-22 21:27:29,242 INFO [APServer] SwitchBox physically connected.
+2025-09-22 21:27:38,540 INFO [APServer] Connection from ('127.0.0.1', 64595)
+2025-09-22 21:27:38,541 INFO [APServer] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-09-22 21:27:38,543 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:27:38,543 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:27:38,543 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:27:38,544 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:27:38,655 INFO [SwitchBox] Received message: 1
+2025-09-22 21:27:38,655 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:27:38,656 INFO [SwitchBox] Status update detected.
+2025-09-22 21:27:38,656 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:27:38,656 INFO [SwitchBox] Command 'SET_CHANNEL_2' sent.
+2025-09-22 21:27:38,764 INFO [SwitchBox] Received message: 11
+2025-09-22 21:27:38,765 INFO [SwitchBox] SwitchBox switched to channel 2
+2025-09-22 21:27:38,765 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:27:38,766 INFO [SwitchBox] Status update detected.
+2025-09-22 21:27:38,766 INFO [APServer] Channel set to 2
+2025-09-22 21:27:38,873 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:27:38,874 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:27:38,874 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:27:38,875 INFO [APServer] Sent response: Channel set to 2
+2025-09-22 21:27:38,875 INFO [APServer] Client connection closed.
+2025-09-22 21:27:40,783 INFO [APServer] Connection from ('127.0.0.1', 64597)
+2025-09-22 21:27:40,783 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:27:40,785 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:27:40,786 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:27:40,786 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:27:40,786 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:27:40,889 INFO [SwitchBox] Received message: 11
+2025-09-22 21:27:40,889 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:27:40,890 INFO [SwitchBox] Status update detected.
+2025-09-22 21:27:40,890 INFO [SwitchBox] SwitchBox status: channel=2, box_status=Open
+2025-09-22 21:27:40,890 INFO [SwitchBox] Command 'SET_CHANNEL_1' sent.
+2025-09-22 21:27:40,999 INFO [SwitchBox] Received message: 1
+2025-09-22 21:27:41,000 INFO [SwitchBox] SwitchBox switched to channel 1
+2025-09-22 21:27:41,000 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:27:41,000 INFO [SwitchBox] Status update detected.
+2025-09-22 21:27:41,001 INFO [APServer] Channel set to 1
+2025-09-22 21:27:41,109 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:27:41,110 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:27:41,110 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:27:41,111 INFO [APServer] Sent response: Channel set to 1
+2025-09-22 21:27:41,111 INFO [APServer] Client connection closed.
+2025-09-22 21:30:26,179 INFO [APServer] Connection from ('127.0.0.1', 64652)
+2025-09-22 21:30:26,180 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:30:26,182 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:30:26,182 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:30:26,182 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:30:26,183 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:30:26,294 INFO [SwitchBox] Received message: 1
+2025-09-22 21:30:26,294 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:30:26,295 INFO [SwitchBox] Status update detected.
+2025-09-22 21:30:26,295 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:30:26,295 INFO [SwitchBox] SwitchBox is already open.
+2025-09-22 21:30:26,295 INFO [APServer] Box opened.
+2025-09-22 21:30:26,404 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:30:26,404 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:30:26,405 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:30:26,405 INFO [APServer] Sent response: Box opened.
+2025-09-22 21:30:26,406 INFO [APServer] Client connection closed.
+2025-09-22 21:31:14,904 INFO [APServer] Connection from ('127.0.0.1', 59313)
+2025-09-22 21:31:14,905 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:31:14,906 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:31:14,906 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:31:14,907 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:31:14,907 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:31:15,022 INFO [SwitchBox] Received message: 1
+2025-09-22 21:31:15,022 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:31:15,024 INFO [SwitchBox] Status update detected.
+2025-09-22 21:31:15,024 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:31:15,024 INFO [SwitchBox] SwitchBox is already open.
+2025-09-22 21:31:15,024 INFO [APServer] Box opened.
+2025-09-22 21:31:15,132 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:31:15,132 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:31:15,133 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:31:15,134 INFO [APServer] Sent response: Box opened.
+2025-09-22 21:31:15,135 INFO [APServer] Client connection closed.
+2025-09-22 21:34:51,545 INFO [root] ----------------------------------- APServer started
+2025-09-22 21:34:51,548 INFO [APServer] Server started
+2025-09-22 21:34:51,549 INFO [APServer] Server is running...
+2025-09-22 21:34:51,549 INFO [APServer] Waiting for connections...
+2025-09-22 21:34:51,556 INFO [SerialDevice] Device physically connected.
+2025-09-22 21:34:51,557 INFO [APServer] SwitchBox physically connected.
+2025-09-22 21:34:52,451 INFO [APServer] Connection from ('127.0.0.1', 59409)
+2025-09-22 21:34:52,453 INFO [APServer] Client connection closed.
+2025-09-22 21:35:03,165 INFO [APServer] Connection from ('127.0.0.1', 59413)
+2025-09-22 21:35:03,167 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:35:03,170 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:35:03,171 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:35:03,172 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:35:03,175 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:35:03,279 INFO [SwitchBox] Received message: 1
+2025-09-22 21:35:03,280 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:35:03,281 INFO [SwitchBox] Status update detected.
+2025-09-22 21:35:03,281 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:35:03,282 INFO [SwitchBox] SwitchBox is already open.
+2025-09-22 21:35:03,283 INFO [APServer] Box opened.
+2025-09-22 21:35:03,389 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:35:03,390 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:35:03,392 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:35:03,393 INFO [APServer] Sent response: Box status: Open
+2025-09-22 21:35:03,393 INFO [APServer] Client connection closed.
+2025-09-22 21:35:20,025 INFO [APServer] Connection from ('127.0.0.1', 59417)
+2025-09-22 21:35:20,026 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:35:20,027 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:35:20,028 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:35:20,028 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:35:20,028 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:35:20,138 INFO [SwitchBox] Received message: 0
+2025-09-22 21:35:20,138 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Closed
+2025-09-22 21:35:20,139 INFO [SwitchBox] Status update detected.
+2025-09-22 21:35:20,139 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Closed
+2025-09-22 21:35:20,139 INFO [SwitchBox] Command 'OPEN_BOX' sent.
+2025-09-22 21:35:24,397 INFO [SwitchBox] Received message: 1
+2025-09-22 21:35:24,410 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:35:24,411 INFO [SwitchBox] SwitchBox opened.
+2025-09-22 21:35:24,411 INFO [APServer] Box opened.
+2025-09-22 21:35:24,521 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:35:24,521 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:35:24,523 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:35:24,523 INFO [APServer] Sent response: Box status: Open
+2025-09-22 21:35:24,524 INFO [APServer] Client connection closed.
+2025-09-22 21:35:39,233 INFO [APServer] Connection from ('127.0.0.1', 59420)
+2025-09-22 21:35:39,233 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:35:39,234 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:35:39,235 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:35:39,235 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:35:39,235 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:35:39,337 INFO [SwitchBox] Received message: 0
+2025-09-22 21:35:39,337 INFO [SwitchBox] Status update detected.
+2025-09-22 21:35:39,338 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Closed
+2025-09-22 21:35:39,338 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Closed
+2025-09-22 21:35:39,339 INFO [SwitchBox] Command 'OPEN_BOX' sent.
+2025-09-22 21:35:44,341 WARNING [SwitchBox] No response received for command 'OPEN_BOX'.
+2025-09-22 21:35:52,896 INFO [SwitchBox] Received message: 1
+2025-09-22 21:35:52,944 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:35:52,944 INFO [SwitchBox] SwitchBox opened.
+2025-09-22 21:35:52,945 INFO [APServer] Box opened.
+2025-09-22 21:35:53,053 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:35:53,056 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:35:53,057 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:35:53,057 INFO [APServer] Sent response: Box status: Open
+2025-09-22 21:35:53,058 INFO [APServer] Client connection closed.
+2025-09-22 21:36:03,898 INFO [APServer] Connection from ('127.0.0.1', 60626)
+2025-09-22 21:36:03,898 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:36:03,901 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:36:03,901 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:36:03,901 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:36:03,902 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:36:03,902 INFO [SwitchBox] Status update detected.
+2025-09-22 21:36:03,903 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:36:03,903 INFO [SwitchBox] SwitchBox is already open.
+2025-09-22 21:36:03,904 INFO [APServer] Box opened.
+2025-09-22 21:36:04,007 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:36:04,007 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:36:04,008 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:36:04,008 INFO [APServer] Sent response: Box status: Open
+2025-09-22 21:36:04,009 INFO [APServer] Client connection closed.
+2025-09-22 21:36:10,739 INFO [APServer] Connection from ('127.0.0.1', 60630)
+2025-09-22 21:36:10,740 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:36:10,742 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:36:10,743 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:36:10,743 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:36:10,743 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:36:10,857 INFO [SwitchBox] Received message: 0
+2025-09-22 21:36:10,857 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Closed
+2025-09-22 21:36:10,858 INFO [SwitchBox] Status update detected.
+2025-09-22 21:36:10,858 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Closed
+2025-09-22 21:36:10,858 INFO [SwitchBox] Command 'OPEN_BOX' sent.
+2025-09-22 21:36:15,860 WARNING [SwitchBox] No response received for command 'OPEN_BOX'.
+2025-09-22 21:36:24,218 INFO [SwitchBox] Received message: 1
+2025-09-22 21:36:24,234 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:36:24,234 INFO [SwitchBox] SwitchBox opened.
+2025-09-22 21:36:24,235 INFO [APServer] Box opened.
+2025-09-22 21:36:24,344 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:36:24,344 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:36:24,345 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:36:24,345 INFO [APServer] Sent response: Box status: Open
+2025-09-22 21:36:24,346 INFO [APServer] Client connection closed.
+2025-09-22 21:36:57,450 INFO [APServer] Connection from ('127.0.0.1', 60640)
+2025-09-22 21:36:57,451 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:36:57,453 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:36:57,454 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:36:57,454 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:36:57,454 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:36:57,454 INFO [SwitchBox] Status update detected.
+2025-09-22 21:36:57,455 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:36:57,455 INFO [SwitchBox] SwitchBox is already open.
+2025-09-22 21:36:57,455 INFO [APServer] Box opened.
+2025-09-22 21:36:57,560 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:36:57,560 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:36:57,561 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:36:57,561 INFO [APServer] Sent response: Box status: Open
+2025-09-22 21:36:57,561 INFO [APServer] Client connection closed.
+2025-09-22 21:37:08,034 INFO [APServer] Connection from ('127.0.0.1', 60643)
+2025-09-22 21:37:08,035 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:37:08,036 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:37:08,037 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:37:08,037 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:37:08,038 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:37:08,152 INFO [SwitchBox] Received message: 1
+2025-09-22 21:37:08,152 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:37:08,153 INFO [SwitchBox] Status update detected.
+2025-09-22 21:37:08,153 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:37:08,153 INFO [SwitchBox] SwitchBox is already open.
+2025-09-22 21:37:08,153 INFO [APServer] Box opened.
+2025-09-22 21:37:08,263 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:37:08,263 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:37:08,263 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:37:08,264 INFO [APServer] Sent response: Box status: Open
+2025-09-22 21:37:08,264 INFO [APServer] Client connection closed.
+2025-09-22 21:37:14,896 INFO [APServer] Connection from ('127.0.0.1', 60645)
+2025-09-22 21:37:14,896 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:37:14,898 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:37:14,898 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:37:14,898 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:37:14,899 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:37:15,010 INFO [SwitchBox] Received message: 0
+2025-09-22 21:37:15,010 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Closed
+2025-09-22 21:37:15,011 INFO [SwitchBox] Status update detected.
+2025-09-22 21:37:15,011 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Closed
+2025-09-22 21:37:15,011 INFO [SwitchBox] Command 'OPEN_BOX' sent.
+2025-09-22 21:37:16,866 INFO [SwitchBox] Received message: 1
+2025-09-22 21:37:16,875 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:37:16,876 INFO [SwitchBox] SwitchBox opened.
+2025-09-22 21:37:16,876 INFO [APServer] Box opened.
+2025-09-22 21:37:16,976 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:37:16,976 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:37:16,977 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:37:16,978 INFO [APServer] Sent response: Box status: Open
+2025-09-22 21:37:16,978 INFO [APServer] Client connection closed.
+2025-09-22 21:37:30,668 INFO [APServer] Connection from ('127.0.0.1', 64748)
+2025-09-22 21:37:30,669 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:37:30,671 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:37:30,672 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:37:30,672 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:37:30,673 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:37:30,789 INFO [SwitchBox] Received message: 1
+2025-09-22 21:37:30,791 INFO [SwitchBox] Status update detected.
+2025-09-22 21:37:30,791 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:37:30,792 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:37:30,793 INFO [SwitchBox] SwitchBox is already open.
+2025-09-22 21:37:30,793 INFO [APServer] Box opened.
+2025-09-22 21:37:30,899 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:37:30,900 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:37:30,901 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:37:30,902 INFO [APServer] Sent response: Box status: Open
+2025-09-22 21:37:30,903 INFO [APServer] Client connection closed.
+2025-09-22 21:37:57,203 INFO [SerialDevice] Device physically disconnected.
+2025-09-22 21:37:57,204 INFO [APServer] SwitchBox physically disconnected.
+2025-09-22 21:38:01,909 INFO [APServer] Connection from ('127.0.0.1', 64760)
+2025-09-22 21:38:01,910 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:38:01,910 ERROR [APServer] SwitchBox not connected.
+2025-09-22 21:38:01,911 INFO [APServer] Sent response: Error: SwitchBox not connected.
+2025-09-22 21:38:01,911 INFO [APServer] Client connection closed.
+2025-09-22 21:38:15,350 INFO [SerialDevice] Device physically connected.
+2025-09-22 21:38:15,351 INFO [APServer] SwitchBox physically connected.
+2025-09-22 21:38:19,898 INFO [APServer] Connection from ('127.0.0.1', 64770)
+2025-09-22 21:38:19,899 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:38:19,901 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:38:19,902 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:38:19,902 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:38:19,903 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:38:20,013 INFO [SwitchBox] Received message: 1
+2025-09-22 21:38:20,014 INFO [SwitchBox] Status update detected.
+2025-09-22 21:38:20,014 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:38:20,018 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:38:20,022 INFO [SwitchBox] SwitchBox is already open.
+2025-09-22 21:38:20,022 INFO [APServer] Box opened.
+2025-09-22 21:38:20,121 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:38:20,121 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:38:20,122 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:38:20,123 INFO [APServer] Sent response: Box status: Open
+2025-09-22 21:38:20,123 INFO [APServer] Client connection closed.
+2025-09-22 21:38:25,847 INFO [APServer] Connection from ('127.0.0.1', 64774)
+2025-09-22 21:38:25,847 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:38:25,849 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:38:25,850 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:38:25,850 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:38:25,850 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:38:25,964 INFO [SwitchBox] Received message: 1
+2025-09-22 21:38:25,964 INFO [SwitchBox] Status update detected.
+2025-09-22 21:38:25,964 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:38:25,966 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:38:25,966 INFO [SwitchBox] SwitchBox already on channel 1
+2025-09-22 21:38:25,966 INFO [APServer] Channel set to 1
+2025-09-22 21:38:26,075 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:38:26,075 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:38:26,076 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:38:26,076 INFO [APServer] Sent response: Channel set to 1
+2025-09-22 21:38:26,077 INFO [APServer] Client connection closed.
+2025-09-22 21:38:44,721 INFO [APServer] Connection from ('127.0.0.1', 64777)
+2025-09-22 21:38:44,722 INFO [APServer] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-09-22 21:38:44,724 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:38:44,725 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:38:44,725 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:38:44,725 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:38:44,831 INFO [SwitchBox] Received message: 1
+2025-09-22 21:38:44,831 INFO [SwitchBox] Status update detected.
+2025-09-22 21:38:44,832 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:38:44,832 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:38:44,832 INFO [SwitchBox] Command 'SET_CHANNEL_2' sent.
+2025-09-22 21:38:44,940 INFO [SwitchBox] Received message: 11
+2025-09-22 21:38:44,941 INFO [SwitchBox] SwitchBox switched to channel 2
+2025-09-22 21:38:44,941 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:38:44,941 INFO [SwitchBox] Status update detected.
+2025-09-22 21:38:44,942 INFO [APServer] Channel set to 2
+2025-09-22 21:38:45,048 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:38:45,050 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:38:45,051 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:38:45,052 INFO [APServer] Sent response: Channel set to 2
+2025-09-22 21:38:45,053 INFO [APServer] Client connection closed.
+2025-09-22 21:38:51,441 INFO [APServer] Connection from ('127.0.0.1', 64779)
+2025-09-22 21:38:51,442 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:38:51,443 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:38:51,444 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:38:51,444 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:38:51,444 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:38:51,557 INFO [SwitchBox] Received message: 11
+2025-09-22 21:38:51,557 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:38:51,558 INFO [SwitchBox] Status update detected.
+2025-09-22 21:38:51,558 INFO [SwitchBox] SwitchBox status: channel=2, box_status=Open
+2025-09-22 21:38:51,558 INFO [SwitchBox] Command 'SET_CHANNEL_1' sent.
+2025-09-22 21:38:51,667 INFO [SwitchBox] Received message: 1
+2025-09-22 21:38:51,667 INFO [SwitchBox] SwitchBox switched to channel 1
+2025-09-22 21:38:51,676 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:38:51,676 INFO [SwitchBox] Status update detected.
+2025-09-22 21:38:51,677 INFO [APServer] Channel set to 1
+2025-09-22 21:38:51,777 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:38:51,777 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:38:51,779 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:38:51,779 INFO [APServer] Sent response: Channel set to 1
+2025-09-22 21:38:51,780 INFO [APServer] Client connection closed.
+2025-09-22 21:38:58,914 INFO [APServer] Connection from ('127.0.0.1', 64784)
+2025-09-22 21:38:58,915 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:38:58,915 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:38:58,916 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:38:58,916 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:38:58,916 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:38:59,019 INFO [SwitchBox] Received message: 0
+2025-09-22 21:38:59,020 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Closed
+2025-09-22 21:38:59,020 INFO [SwitchBox] Status update detected.
+2025-09-22 21:38:59,020 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Closed
+2025-09-22 21:38:59,021 INFO [SwitchBox] Command 'OPEN_BOX' sent.
+2025-09-22 21:39:01,973 INFO [SwitchBox] Received message: 1
+2025-09-22 21:39:01,982 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:39:01,982 INFO [SwitchBox] SwitchBox opened.
+2025-09-22 21:39:01,982 INFO [APServer] Box opened.
+2025-09-22 21:39:02,083 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:39:02,083 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:39:02,084 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:39:02,085 INFO [APServer] Sent response: Box status: Open
+2025-09-22 21:39:02,085 INFO [APServer] Client connection closed.
+2025-09-22 21:39:33,117 INFO [APServer] Connection from ('127.0.0.1', 64790)
+2025-09-22 21:39:33,117 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:39:33,118 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:39:33,119 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:39:33,119 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:39:33,120 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:39:33,234 INFO [SwitchBox] Received message: 0
+2025-09-22 21:39:33,234 INFO [SwitchBox] Status update detected.
+2025-09-22 21:39:33,235 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Closed
+2025-09-22 21:39:33,235 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Closed
+2025-09-22 21:39:33,235 INFO [SwitchBox] Command 'OPEN_BOX' sent.
+2025-09-22 21:39:37,831 INFO [SwitchBox] Received message: 1
+2025-09-22 21:39:37,838 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:39:37,839 INFO [SwitchBox] SwitchBox opened.
+2025-09-22 21:39:37,840 INFO [APServer] Box opened.
+2025-09-22 21:39:37,940 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:39:37,940 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:39:37,941 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:39:37,941 INFO [APServer] Sent response: Box status: Open
+2025-09-22 21:39:37,942 INFO [APServer] Client connection closed.
+2025-09-22 21:39:55,968 INFO [SerialDevice] Device physically disconnected.
+2025-09-22 21:39:55,969 INFO [APServer] SwitchBox physically disconnected.
+2025-09-22 21:40:06,049 INFO [SerialDevice] Device physically connected.
+2025-09-22 21:40:06,049 INFO [APServer] SwitchBox physically connected.
+2025-09-22 21:41:15,777 INFO [APServer] Connection from ('127.0.0.1', 49715)
+2025-09-22 21:41:15,778 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:41:15,780 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:41:15,781 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:41:15,781 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:41:15,781 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:41:15,894 INFO [SwitchBox] Received message: 1
+2025-09-22 21:41:15,894 INFO [SwitchBox] Status update detected.
+2025-09-22 21:41:15,894 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:41:15,894 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:41:15,895 INFO [SwitchBox] SwitchBox is already open.
+2025-09-22 21:41:15,895 INFO [APServer] Box opened.
+2025-09-22 21:41:16,002 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:41:16,002 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:41:16,003 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:41:16,004 INFO [APServer] Sent response: Box status: Open
+2025-09-22 21:41:16,005 INFO [APServer] Client connection closed.
+2025-09-22 21:41:33,847 INFO [APServer] Connection from ('127.0.0.1', 49721)
+2025-09-22 21:41:33,848 INFO [APServer] Received: {"action": "open_box", "wait_for_response": true}
+2025-09-22 21:41:33,849 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:41:33,850 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:41:33,850 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:41:33,851 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:41:33,964 INFO [SwitchBox] Received message: 0
+2025-09-22 21:41:33,965 INFO [SwitchBox] Status update detected.
+2025-09-22 21:41:33,965 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Closed
+2025-09-22 21:41:33,966 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Closed
+2025-09-22 21:41:33,967 INFO [SwitchBox] Command 'OPEN_BOX' sent.
+2025-09-22 21:41:38,790 INFO [SwitchBox] Received message: 1
+2025-09-22 21:41:38,801 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:41:38,801 INFO [SwitchBox] SwitchBox opened.
+2025-09-22 21:41:38,803 INFO [APServer] Box opened.
+2025-09-22 21:41:38,916 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:41:38,917 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:41:38,918 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:41:38,920 INFO [APServer] Sent response: Box status: Open
+2025-09-22 21:41:38,921 INFO [APServer] Client connection closed.
+2025-09-22 21:44:44,507 INFO [APServer] Connection from ('127.0.0.1', 49773)
+2025-09-22 21:44:44,509 INFO [APServer] Received: {"action": "set_channel", "channel": 1, "wait_for_response": true}
+2025-09-22 21:44:44,511 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:44:44,511 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:44:44,511 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:44:44,511 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:44:44,616 INFO [SwitchBox] Received message: 1
+2025-09-22 21:44:44,616 INFO [SwitchBox] Status update detected.
+2025-09-22 21:44:44,616 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:44:44,617 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:44:44,617 INFO [SwitchBox] SwitchBox already on channel 1
+2025-09-22 21:44:44,617 INFO [APServer] Channel set to 1
+2025-09-22 21:44:44,725 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:44:44,726 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:44:44,727 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:44:44,728 INFO [APServer] Sent response: Channel set to 1
+2025-09-22 21:44:44,735 INFO [APServer] Client connection closed.
+2025-09-22 21:44:49,273 INFO [APServer] Connection from ('127.0.0.1', 49775)
+2025-09-22 21:44:49,275 INFO [APServer] Received: {"action": "set_channel", "channel": 2, "wait_for_response": true}
+2025-09-22 21:44:49,277 INFO [SerialDevice] Serial connection established on port COM5.
+2025-09-22 21:44:49,278 INFO [SwitchBox] Listening for messages from the SwitchBox...
+2025-09-22 21:44:49,278 INFO [SwitchBox] Started listening thread for SwitchBox messages.
+2025-09-22 21:44:49,279 INFO [SwitchBox] Command 'GET_STATUS' sent.
+2025-09-22 21:44:49,388 INFO [SwitchBox] Received message: 1
+2025-09-22 21:44:49,388 INFO [SwitchBox] Status update detected.
+2025-09-22 21:44:49,388 INFO [SwitchBox] SwitchBox status updated: channel=1, box_status=Open
+2025-09-22 21:44:49,389 INFO [SwitchBox] SwitchBox status: channel=1, box_status=Open
+2025-09-22 21:44:49,389 INFO [SwitchBox] Command 'SET_CHANNEL_2' sent.
+2025-09-22 21:44:49,495 INFO [SwitchBox] Received message: 11
+2025-09-22 21:44:49,495 INFO [SwitchBox] SwitchBox switched to channel 2
+2025-09-22 21:44:49,495 INFO [SwitchBox] SwitchBox status updated: channel=2, box_status=Open
+2025-09-22 21:44:49,496 INFO [SwitchBox] Status update detected.
+2025-09-22 21:44:49,496 INFO [APServer] Channel set to 2
+2025-09-22 21:44:49,604 INFO [SwitchBox] Stopped listening for messages.
+2025-09-22 21:44:49,604 INFO [SwitchBox] Stopped listening thread for SwitchBox messages.
+2025-09-22 21:44:49,605 INFO [SerialDevice] Serial connection closed.
+2025-09-22 21:44:49,605 INFO [APServer] Sent response: Channel set to 2
+2025-09-22 21:44:49,606 INFO [APServer] Client connection closed.
+2025-09-22 21:46:00,804 INFO [SerialDevice] Device physically disconnected.
+2025-09-22 21:46:00,805 INFO [APServer] SwitchBox physically disconnected.

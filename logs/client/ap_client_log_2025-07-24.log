@@ -1,0 +1,267 @@
+2025-07-24 10:13:24,407 - INFO - ----------------------------------- APClient started
+2025-07-24 10:13:24,450 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 10:13:45,699 - INFO - ----------------------------------- APClient started
+2025-07-24 10:13:45,737 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-07-24 10:13:45,737 - INFO - Executing 'get_biquad_coefficients' with: type=low_shelf, gain=-3.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-07-24 10:13:45,737 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 10:13:45,739 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'low_shelf', 'gain': -3.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-07-24 10:13:45,741 - INFO - Received response from server: [-1.7988291073524278, 0.8172920849225686, 0.984162770896376, -1.8015252025685178, 0.8304332188101022]
+2025-07-24 10:14:08,998 - INFO - ----------------------------------- APClient started
+2025-07-24 10:17:59,608 - INFO - ----------------------------------- APClient started
+2025-07-24 10:18:02,461 - INFO - ----------------------------------- APClient started
+2025-07-24 10:18:40,220 - INFO - ----------------------------------- APClient started
+2025-07-24 10:18:40,257 - INFO - Parsing and executing command: get_serial_number
+2025-07-24 10:18:40,257 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-07-24 10:18:40,257 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 10:18:40,258 - INFO - Connected to server. Sending command: {'action': 'get_serial_number', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 10:18:42,626 - INFO - Received response from server: Error: Failed to get serial number (Command failed:
+)
+2025-07-24 10:18:47,982 - INFO - ----------------------------------- APClient started
+2025-07-24 10:18:48,032 - INFO - Parsing and executing command: get_serial_number
+2025-07-24 10:18:48,032 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-07-24 10:18:48,032 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 10:18:48,033 - INFO - Connected to server. Sending command: {'action': 'get_serial_number', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 10:18:50,074 - INFO - Received response from server: Error: Failed to get serial number (Command failed:
+)
+2025-07-24 10:19:10,122 - INFO - ----------------------------------- APClient started
+2025-07-24 10:19:10,150 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-07-24 10:19:10,150 - INFO - Executing 'get_biquad_coefficients' with: type=low_shelf, gain=-3.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-07-24 10:19:10,150 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 10:19:10,151 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'low_shelf', 'gain': -3.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-07-24 10:19:10,153 - INFO - Received response from server: [-1.7988291073524278, 0.8172920849225686, 0.984162770896376, -1.8015252025685178, 0.8304332188101022]
+2025-07-24 10:19:21,720 - INFO - ----------------------------------- APClient started
+2025-07-24 10:19:21,750 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 10:19:21,750 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 10:19:21,751 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [0, 0, 1, 0, 0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 10:19:24,074 - INFO - Received response from server: Error: Command failed:
+
+2025-07-24 10:19:50,936 - INFO - ----------------------------------- APClient started
+2025-07-24 10:19:50,970 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 10:19:50,970 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 10:19:50,970 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 10:19:50,971 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 10:19:53,325 - INFO - Received response from server: Error: Failed to get device biquad (Command failed:
+)
+2025-07-24 10:21:26,246 - INFO - ----------------------------------- APClient started
+2025-07-24 10:21:26,280 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 10:21:26,280 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 10:21:26,280 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 10:21:26,282 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 10:21:26,321 - INFO - Received response from server: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 10:22:29,849 - INFO - ----------------------------------- APClient started
+2025-07-24 10:22:29,884 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 10:22:29,884 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 10:22:29,886 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [0, 0, 1, 0, 0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 10:22:29,976 - INFO - Received response from server: Done
+2025-07-24 10:22:52,531 - INFO - ----------------------------------- APClient started
+2025-07-24 10:22:52,559 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 10:23:15,040 - INFO - ----------------------------------- APClient started
+2025-07-24 10:23:15,075 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 10:23:15,075 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 10:23:15,076 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [0, 0, 0.5, 0, 0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 10:23:15,167 - INFO - Received response from server: Done
+2025-07-24 10:23:26,180 - INFO - ----------------------------------- APClient started
+2025-07-24 10:23:26,212 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 10:23:26,212 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 10:23:26,213 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [0, 0, 1, 0, 0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 10:23:26,297 - INFO - Received response from server: Done
+2025-07-24 10:27:20,535 - INFO - ----------------------------------- APClient started
+2025-07-24 10:27:20,569 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 10:27:20,570 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 10:27:20,571 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [0, 0, 1, 0, 0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 10:27:41,662 - INFO - Received response from server: Error: Command failed:
+
+2025-07-24 10:27:46,551 - INFO - ----------------------------------- APClient started
+2025-07-24 10:27:46,582 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 10:27:46,583 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 10:27:46,584 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [0, 0, 1, 0, 0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 10:27:47,674 - INFO - Received response from server: Done
+2025-07-24 10:27:54,945 - INFO - ----------------------------------- APClient started
+2025-07-24 10:27:54,974 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 10:27:54,975 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 10:27:54,975 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 10:27:54,976 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 10:27:54,992 - INFO - Received response from server: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:29:31,803 - INFO - ----------------------------------- APClient started
+2025-07-24 13:29:31,835 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 13:29:31,835 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 13:29:31,836 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:29:31,837 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 13:29:34,900 - INFO - Received response from server: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:29:40,939 - INFO - ----------------------------------- APClient started
+2025-07-24 13:29:40,976 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 13:29:40,976 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 13:29:40,976 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:29:40,978 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 13:29:41,020 - INFO - Received response from server: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:38:01,737 - INFO - ----------------------------------- APClient started
+2025-07-24 13:38:01,765 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-07-24 13:38:01,766 - INFO - Executing 'get_biquad_coefficients' with: type=bell, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-07-24 13:38:01,766 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:38:01,767 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'bell', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-07-24 13:38:01,770 - INFO - Received response from server: [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566]
+2025-07-24 13:39:05,722 - INFO - ----------------------------------- APClient started
+2025-07-24 13:39:05,756 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 13:39:05,757 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:39:05,758 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 13:39:05,850 - INFO - Received response from server: Done
+2025-07-24 13:39:51,127 - INFO - ----------------------------------- APClient started
+2025-07-24 13:39:51,159 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 13:39:51,159 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 13:39:51,159 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:39:51,160 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 13:40:12,242 - INFO - Received response from server: Error: Failed to get device biquad (Command failed:
+)
+2025-07-24 13:40:22,531 - INFO - ----------------------------------- APClient started
+2025-07-24 13:40:22,558 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 13:40:22,559 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 13:40:22,559 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:40:22,560 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 13:40:24,635 - INFO - Received response from server: Error: Failed to get device biquad (Command failed:
+)
+2025-07-24 13:40:33,702 - INFO - ----------------------------------- APClient started
+2025-07-24 13:40:33,731 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 13:40:33,732 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:40:33,733 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 13:40:35,786 - INFO - Received response from server: Error: Command failed:
+
+2025-07-24 13:40:57,743 - INFO - ----------------------------------- APClient started
+2025-07-24 13:40:57,775 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 13:40:57,775 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:40:57,777 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 13:41:18,837 - INFO - Received response from server: Error: Command failed:
+
+2025-07-24 13:41:52,421 - INFO - ----------------------------------- APClient started
+2025-07-24 13:41:52,464 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 13:41:52,464 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 13:41:52,464 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:41:52,465 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 13:41:54,529 - INFO - Received response from server: Error: Failed to get device biquad (Command failed:
+)
+2025-07-24 13:42:07,454 - INFO - ----------------------------------- APClient started
+2025-07-24 13:42:07,486 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 13:42:07,486 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:42:07,487 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [0, 0, 1, 0, 0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 13:42:09,557 - INFO - Received response from server: Error: Command failed:
+
+2025-07-24 13:42:21,101 - INFO - ----------------------------------- APClient started
+2025-07-24 13:42:21,130 - INFO - Parsing and executing command: get_serial_number
+2025-07-24 13:42:21,130 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-07-24 13:42:21,131 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:42:21,132 - INFO - Connected to server. Sending command: {'action': 'get_serial_number', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 13:42:23,210 - INFO - Received response from server: Error: Failed to get serial number (Command failed:
+)
+2025-07-24 13:43:25,816 - INFO - ----------------------------------- APClient started
+2025-07-24 13:43:25,848 - INFO - Parsing and executing command: get_serial_number
+2025-07-24 13:43:25,848 - INFO - Executing 'get_serial_number' for 192.168.10.20:50001
+2025-07-24 13:43:25,848 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:43:25,849 - INFO - Connected to server. Sending command: {'action': 'get_serial_number', 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 13:43:25,867 - INFO - Received response from server: 123456789
+2025-07-24 13:43:32,111 - INFO - ----------------------------------- APClient started
+2025-07-24 13:43:32,141 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 13:43:32,141 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 13:43:32,141 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:43:32,142 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 13:43:32,160 - INFO - Received response from server: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 13:43:45,100 - INFO - ----------------------------------- APClient started
+2025-07-24 13:43:45,131 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 13:43:45,131 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:43:45,132 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 13:43:45,213 - INFO - Received response from server: Done
+2025-07-24 13:44:05,320 - INFO - ----------------------------------- APClient started
+2025-07-24 13:44:05,347 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 13:44:05,347 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 13:44:05,347 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 13:44:05,348 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 13:44:05,368 - INFO - Received response from server: [Biquad: a = (-1.90, 0.91), b = (1.04, -1.90, 0.87)]
+2025-07-24 15:38:39,436 - INFO - ----------------------------------- APClient started
+2025-07-24 15:38:39,466 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-07-24 15:38:39,467 - INFO - Executing 'get_biquad_coefficients' with: type=bell, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-07-24 15:38:39,467 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:38:39,468 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'bell', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-07-24 15:38:39,474 - INFO - Received response from server: [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566]
+2025-07-24 15:40:45,246 - INFO - ----------------------------------- APClient started
+2025-07-24 15:40:45,279 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-07-24 15:40:45,281 - INFO - Executing 'get_biquad_coefficients' with: type=bell, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-07-24 15:40:45,281 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:40:45,282 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'bell', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-07-24 15:40:45,284 - INFO - Received response from server: [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566]
+2025-07-24 15:41:28,041 - INFO - ----------------------------------- APClient started
+2025-07-24 15:41:28,074 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-07-24 15:41:28,074 - INFO - Executing 'get_biquad_coefficients' with: type=bell, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=48000
+2025-07-24 15:41:28,075 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:41:28,076 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'bell', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 48000, 'wait_for_response': True}
+2025-07-24 15:41:28,078 - INFO - Received response from server: [-1.8953207239365961, 0.9116753717501915, 1.043953086990335, -1.8953207239365961, 0.8677222847598566]
+2025-07-24 15:41:48,963 - INFO - ----------------------------------- APClient started
+2025-07-24 15:41:48,991 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-07-24 15:41:48,991 - INFO - Executing 'get_biquad_coefficients' with: type=bell, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=96000
+2025-07-24 15:41:48,991 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:41:48,993 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'bell', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 96000, 'wait_for_response': True}
+2025-07-24 15:41:48,995 - INFO - Received response from server: [-1.950560546420164, 0.9547458072424884, 1.0225198963229445, -1.950560546420164, 0.9322259109195438]
+2025-07-24 15:43:46,057 - INFO - ----------------------------------- APClient started
+2025-07-24 15:43:46,089 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-07-24 15:43:46,089 - INFO - Executing 'get_biquad_coefficients' with: type=bell, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=96000
+2025-07-24 15:43:46,090 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:43:46,091 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'bell', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 96000, 'wait_for_response': True}
+2025-07-24 15:43:46,094 - INFO - Received response from server: [-1.950560546420164, 0.9547458072424884, 1.0225198963229445, -1.950560546420164, 0.9322259109195438]
+2025-07-24 15:45:06,243 - INFO - ----------------------------------- APClient started
+2025-07-24 15:45:06,271 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 15:45:06,272 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 15:45:06,272 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:45:06,273 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 15:45:06,308 - INFO - Received response from server: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 15:46:10,196 - INFO - ----------------------------------- APClient started
+2025-07-24 15:46:10,225 - INFO - Parsing and executing command: get_biquad_coefficients
+2025-07-24 15:46:10,225 - INFO - Executing 'get_biquad_coefficients' with: type=bell, gain=6.0, peak_freq=1000.0, Q=1.0, sample_rate=96000
+2025-07-24 15:46:10,225 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:46:10,226 - INFO - Connected to server. Sending command: {'action': 'get_biquad_coefficients', 'filter_type': 'bell', 'gain': 6.0, 'peak_freq': 1000.0, 'Q': 1.0, 'sample_rate': 96000, 'wait_for_response': True}
+2025-07-24 15:46:10,228 - INFO - Received response from server: [-1.950560546420164, 0.9547458072424884, 1.0225198963229445, -1.950560546420164, 0.9322259109195438]
+2025-07-24 15:46:45,519 - INFO - ----------------------------------- APClient started
+2025-07-24 15:46:45,546 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 15:46:45,547 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:46:45,548 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [-1.950560546420164, 0.9547458072424884, 1.0225198963229445, -1.950560546420164, 0.9322259109195438], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 15:46:45,646 - INFO - Received response from server: Done
+2025-07-24 15:46:52,471 - INFO - ----------------------------------- APClient started
+2025-07-24 15:46:52,499 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 15:46:52,499 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 15:46:52,499 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:46:52,501 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 15:46:52,517 - INFO - Received response from server: [Biquad: a = (-1.95, 0.95), b = (1.02, -1.95, 0.93)]
+2025-07-24 15:47:45,022 - INFO - ----------------------------------- APClient started
+2025-07-24 15:47:45,051 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 15:47:45,051 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:47:45,052 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [0, 0, 1, 0, 0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 15:47:45,135 - INFO - Received response from server: Done
+2025-07-24 15:47:48,724 - INFO - ----------------------------------- APClient started
+2025-07-24 15:47:48,752 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 15:47:48,752 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 15:47:48,752 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:47:48,753 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 15:47:48,770 - INFO - Received response from server: [Biquad: a = (0.00, 0.00), b = (1.00, 0.00, 0.00)]
+2025-07-24 15:49:08,631 - INFO - ----------------------------------- APClient started
+2025-07-24 15:49:08,664 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 15:49:08,664 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:49:08,665 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [0, 0, 0.5, 0, 0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 15:49:08,768 - INFO - Received response from server: Done
+2025-07-24 15:49:12,408 - INFO - ----------------------------------- APClient started
+2025-07-24 15:49:12,438 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 15:49:12,438 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 15:49:12,438 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:49:12,439 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 15:49:12,460 - INFO - Received response from server: [Biquad: a = (0.00, 0.00), b = (0.50, 0.00, 0.00)]
+2025-07-24 15:49:31,535 - INFO - ----------------------------------- APClient started
+2025-07-24 15:49:31,567 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 15:49:31,568 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:49:31,569 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [0, 0, 1, 0, 0], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 15:49:31,648 - INFO - Received response from server: Done
+2025-07-24 15:51:31,232 - INFO - ----------------------------------- APClient started
+2025-07-24 15:51:31,262 - INFO - Parsing and executing command: set_device_biquad
+2025-07-24 15:51:31,263 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:51:31,264 - INFO - Connected to server. Sending command: {'action': 'set_device_biquad', 'index': 0, 'coefficients': [-1.950560546420164, 0.9547458072424884, 1.0225198963229445, -1.950560546420164, 0.9322259109195438], 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 15:51:31,351 - INFO - Received response from server: Done
+2025-07-24 15:52:53,541 - INFO - ----------------------------------- APClient started
+2025-07-24 15:52:53,570 - INFO - Parsing and executing command: get_device_biquad
+2025-07-24 15:52:53,570 - INFO - Executing 'get_device_biquad' for index=0 192.168.10.20:50001
+2025-07-24 15:52:53,571 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-07-24 15:52:53,572 - INFO - Connected to server. Sending command: {'action': 'get_device_biquad', 'index': 0, 'target_ip': '192.168.10.20', 'port': 50001, 'wait_for_response': True}
+2025-07-24 15:52:53,589 - INFO - Received response from server: [Biquad: a = (-1.95, 0.95), b = (1.02, -1.95, 0.93)]

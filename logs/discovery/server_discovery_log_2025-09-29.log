@@ -1,0 +1,139 @@
+2025-09-29 10:53:56,180 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 10:53:56,181 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: 192.168.1.166 ===
+2025-09-29 10:53:56,181 INFO [ServerDiscovery] Finding server - target_ip: 192.168.1.166, port: 65432, discovery_timeout: 5s
+2025-09-29 10:53:56,184 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 10:53:56,184 INFO [ServerDiscovery] Server found at specified IP: 192.168.1.166:65432
+2025-09-29 10:53:56,185 INFO [ServerDiscovery] Find result: Server found at 192.168.1.166
+2025-09-29 10:54:10,661 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 10:54:10,662 INFO [ServerDiscovery] === ServerDiscovery started - Mode: check, Target IP: 192.168.1.166 ===
+2025-09-29 10:54:10,662 INFO [ServerDiscovery] Attempting to start server - script: ap_server.py, timeout: 10s, target_ip: 192.168.1.166
+2025-09-29 10:54:13,688 INFO [ServerDiscovery] Starting server process: ap_server.py
+2025-09-29 10:54:15,602 INFO [ServerDiscovery] Server discovered via broadcast from 192.168.1.166: {'service': 'APServer', 'ip': '192.168.1.166', 'port': 65432, 'hostname': 'Dell-Thilo', 'timestamp': 1759136055.603, 'version': '1.0', 'capabilities': ['OCA', 'SwitchBox', 'Scanner', 'BiquadFilters', 'MeasurementTrials'], 'discovery_port': 65433, 'status': 'running', 'sequence': 1}
+2025-09-29 10:54:15,604 INFO [ServerDiscovery] Server started successfully in 1.9s
+2025-09-29 10:54:15,605 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 10:54:15,605 INFO [ServerDiscovery] Check result: Server available at 192.168.1.166:65432
+2025-09-29 11:15:50,919 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:15:50,919 INFO [ServerDiscovery] === ServerDiscovery started - Mode: check, Target IP: 192.168.1.166 ===
+2025-09-29 11:15:54,960 INFO [ServerDiscovery] Check result: No server available
+2025-09-29 11:16:01,469 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:16:01,469 INFO [ServerDiscovery] === ServerDiscovery started - Mode: check, Target IP: 192.168.1.166 ===
+2025-09-29 11:16:01,469 INFO [ServerDiscovery] Attempting to start server - script: ap_server.py, timeout: 10s, target_ip: 192.168.1.166
+2025-09-29 11:16:04,500 INFO [ServerDiscovery] Starting server process: ap_server.py
+2025-09-29 11:16:07,077 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 11:16:07,077 INFO [ServerDiscovery] Server started successfully in 2.5s
+2025-09-29 11:16:07,078 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 11:16:07,078 INFO [ServerDiscovery] Check result: Server available at 192.168.1.166:65432
+2025-09-29 11:16:10,559 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:16:10,559 INFO [ServerDiscovery] === ServerDiscovery started - Mode: check, Target IP: 192.168.1.166 ===
+2025-09-29 11:16:10,559 INFO [ServerDiscovery] Attempting to start server - script: ap_server.py, timeout: 10s, target_ip: 192.168.1.166
+2025-09-29 11:16:10,564 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 11:16:10,564 INFO [ServerDiscovery] Server already running at specified IP: 192.168.1.166
+2025-09-29 11:16:10,580 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 11:16:10,580 INFO [ServerDiscovery] Check result: Server available at 192.168.1.166:65432
+2025-09-29 11:16:27,145 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:16:27,146 INFO [ServerDiscovery] === ServerDiscovery started - Mode: check, Target IP: 192.168.1.166 ===
+2025-09-29 11:16:27,150 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 11:16:27,150 INFO [ServerDiscovery] Check result: Server available at 192.168.1.166:65432
+2025-09-29 11:16:31,255 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:16:31,255 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: 192.168.1.166 ===
+2025-09-29 11:16:31,255 INFO [ServerDiscovery] Finding server - target_ip: 192.168.1.166, port: 65432, discovery_timeout: 5s
+2025-09-29 11:16:31,260 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 11:16:31,260 INFO [ServerDiscovery] Server found at specified IP: 192.168.1.166:65432
+2025-09-29 11:16:31,260 INFO [ServerDiscovery] Find result: Server found at 192.168.1.166
+2025-09-29 11:16:34,520 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:16:34,520 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: 192.168.1.166 ===
+2025-09-29 11:16:34,520 INFO [ServerDiscovery] Finding server - target_ip: 192.168.1.166, port: 65432, discovery_timeout: 5s
+2025-09-29 11:16:34,524 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 11:16:34,524 INFO [ServerDiscovery] Server found at specified IP: 192.168.1.166:65432
+2025-09-29 11:16:34,524 INFO [ServerDiscovery] Find result: Server found at 192.168.1.166
+2025-09-29 11:16:42,785 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:16:42,785 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: 192.168.1.166 ===
+2025-09-29 11:16:42,785 INFO [ServerDiscovery] Finding server - target_ip: 192.168.1.166, port: 65432, discovery_timeout: 5s
+2025-09-29 11:16:42,790 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 11:16:42,790 INFO [ServerDiscovery] Server found at specified IP: 192.168.1.166:65432
+2025-09-29 11:16:42,791 INFO [ServerDiscovery] Find result: Server found at 192.168.1.166
+2025-09-29 11:28:32,732 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:28:32,733 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: 192.168.1.166 ===
+2025-09-29 11:28:32,733 INFO [ServerDiscovery] Finding server - target_ip: 192.168.1.166, port: 65432, discovery_timeout: 5s
+2025-09-29 11:28:32,757 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 11:28:32,757 INFO [ServerDiscovery] Server found at specified IP: 192.168.1.166:65432
+2025-09-29 11:28:32,758 INFO [ServerDiscovery] Find result: Server found at 192.168.1.166
+2025-09-29 11:28:38,660 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:28:38,660 INFO [ServerDiscovery] === ServerDiscovery started - Mode: check, Target IP: None ===
+2025-09-29 11:28:39,398 INFO [ServerDiscovery] Server discovered via broadcast from 192.168.1.166: {'service': 'APServer', 'ip': '192.168.1.166', 'port': 65432, 'hostname': 'Dell-Thilo', 'timestamp': 1759138119.3988624, 'version': '1.0', 'capabilities': ['OCA', 'SwitchBox', 'Scanner', 'BiquadFilters', 'MeasurementTrials'], 'discovery_port': 65433, 'status': 'running', 'sequence': 377}
+2025-09-29 11:28:39,399 INFO [ServerDiscovery] Check result: Server available via discovery
+2025-09-29 11:28:44,917 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:28:44,917 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: None ===
+2025-09-29 11:28:44,917 INFO [ServerDiscovery] Finding server - target_ip: None, port: 65432, discovery_timeout: 5s
+2025-09-29 11:28:45,470 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 11:28:45,470 INFO [ServerDiscovery] Server found via discovery: 192.168.1.166:65432
+2025-09-29 11:28:45,471 INFO [ServerDiscovery] Find result: Server found at 192.168.1.166
+2025-09-29 11:28:50,108 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:28:50,108 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: 192.168.1.166 ===
+2025-09-29 11:28:50,109 INFO [ServerDiscovery] Finding server - target_ip: 192.168.1.166, port: 65432, discovery_timeout: 5s
+2025-09-29 11:28:50,112 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 11:28:50,112 INFO [ServerDiscovery] Server found at specified IP: 192.168.1.166:65432
+2025-09-29 11:28:50,112 INFO [ServerDiscovery] Find result: Server found at 192.168.1.166
+2025-09-29 11:29:02,204 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:29:02,204 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: 192.168.1.166 ===
+2025-09-29 11:29:02,204 INFO [ServerDiscovery] Finding server - target_ip: 192.168.1.166, port: 65432, discovery_timeout: 5s
+2025-09-29 11:29:02,208 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 11:29:02,208 INFO [ServerDiscovery] Server found at specified IP: 192.168.1.166:65432
+2025-09-29 11:29:02,208 INFO [ServerDiscovery] Find result: Server found at 192.168.1.166
+2025-09-29 11:29:19,478 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:29:19,478 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: None ===
+2025-09-29 11:29:19,478 INFO [ServerDiscovery] Finding server - target_ip: None, port: 65432, discovery_timeout: 5s
+2025-09-29 11:29:19,648 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 11:29:19,648 INFO [ServerDiscovery] Server found via discovery: 192.168.1.166:65432
+2025-09-29 11:29:19,648 INFO [ServerDiscovery] Find result: Server found at 192.168.1.166
+2025-09-29 11:32:19,790 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:32:19,791 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: None ===
+2025-09-29 11:32:19,791 INFO [ServerDiscovery] Finding server - target_ip: None, port: 65432, discovery_timeout: 5s
+2025-09-29 11:32:20,627 INFO [ServerDiscovery] Connection successful to 192.168.1.166:65432
+2025-09-29 11:32:20,628 INFO [ServerDiscovery] Server found via discovery: 192.168.1.166:65432
+2025-09-29 11:32:20,628 INFO [ServerDiscovery] Find result: Server found at 192.168.1.166
+2025-09-29 11:38:50,254 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:38:50,254 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: None ===
+2025-09-29 11:38:50,254 INFO [ServerDiscovery] Finding server - target_ip: None, port: 65432, discovery_timeout: 5s
+2025-09-29 11:38:52,064 INFO [ServerDiscovery] Connection successful to 192.168.1.112:65432
+2025-09-29 11:38:52,064 INFO [ServerDiscovery] Server found via discovery: 192.168.1.112:65432
+2025-09-29 11:38:52,065 INFO [ServerDiscovery] Find result: Server found at 192.168.1.112
+2025-09-29 11:39:21,478 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:39:21,479 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: None ===
+2025-09-29 11:39:21,479 INFO [ServerDiscovery] Finding server - target_ip: None, port: 65432, discovery_timeout: 5s
+2025-09-29 11:39:26,585 WARNING [ServerDiscovery] No server found after 5s discovery timeout
+2025-09-29 11:39:26,585 WARNING [ServerDiscovery] Find result: No server found
+2025-09-29 11:40:07,255 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:40:07,256 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: 192.168.1.166 ===
+2025-09-29 11:40:07,256 INFO [ServerDiscovery] Finding server - target_ip: 192.168.1.166, port: 65432, discovery_timeout: 5s
+2025-09-29 11:40:11,110 INFO [ServerDiscovery] Connection successful to 192.168.1.112:65432
+2025-09-29 11:40:11,111 INFO [ServerDiscovery] Server found via discovery: 192.168.1.112:65432
+2025-09-29 11:40:11,111 INFO [ServerDiscovery] Find result: Server found at 192.168.1.112
+2025-09-29 11:43:01,186 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:43:01,187 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: 192.168.1.166 ===
+2025-09-29 11:43:01,187 INFO [ServerDiscovery] Finding server - target_ip: 192.168.1.166, port: 65432, discovery_timeout: 5s
+2025-09-29 11:43:04,987 INFO [ServerDiscovery] Connection successful to 192.168.1.112:65432
+2025-09-29 11:43:04,987 INFO [ServerDiscovery] Server found via discovery: 192.168.1.112:65432
+2025-09-29 11:43:04,987 INFO [ServerDiscovery] Find result: Server found at 192.168.1.112
+2025-09-29 11:43:11,860 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:43:11,860 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: 192.168.1.112 ===
+2025-09-29 11:43:11,861 INFO [ServerDiscovery] Finding server - target_ip: 192.168.1.112, port: 65432, discovery_timeout: 5s
+2025-09-29 11:43:11,880 INFO [ServerDiscovery] Connection successful to 192.168.1.112:65432
+2025-09-29 11:43:11,880 INFO [ServerDiscovery] Server found at specified IP: 192.168.1.112:65432
+2025-09-29 11:43:11,881 INFO [ServerDiscovery] Find result: Server found at 192.168.1.112
+2025-09-29 11:43:58,387 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:43:58,387 INFO [ServerDiscovery] === ServerDiscovery started - Mode: check, Target IP: 192.168.1.166 ===
+2025-09-29 11:43:58,388 INFO [ServerDiscovery] Attempting to start server - script: ap_server.py, timeout: 10s, target_ip: 192.168.1.166
+2025-09-29 11:44:01,100 INFO [ServerDiscovery] Server discovered via broadcast from 192.168.1.112: {'service': 'APServer', 'ip': '192.168.1.112', 'port': 65432, 'hostname': 'MacBook-Pro-von-Thilo-2.local', 'timestamp': 1759139041.108076, 'version': '1.0', 'capabilities': ['OCA', 'SwitchBox', 'Scanner', 'BiquadFilters', 'MeasurementTrials'], 'discovery_port': 65433, 'status': 'running', 'sequence': 36}
+2025-09-29 11:44:01,100 INFO [ServerDiscovery] Server already running (found via discovery)
+2025-09-29 11:44:03,148 INFO [ServerDiscovery] Server discovered via broadcast from 192.168.1.112: {'service': 'APServer', 'ip': '192.168.1.112', 'port': 65432, 'hostname': 'MacBook-Pro-von-Thilo-2.local', 'timestamp': 1759139043.113866, 'version': '1.0', 'capabilities': ['OCA', 'SwitchBox', 'Scanner', 'BiquadFilters', 'MeasurementTrials'], 'discovery_port': 65433, 'status': 'running', 'sequence': 37}
+2025-09-29 11:44:03,149 INFO [ServerDiscovery] Check result: Server available via discovery
+2025-09-29 11:44:10,728 INFO [ServerDiscovery] ServerDiscovery initialized - port: 65432, discovery_port: 65433
+2025-09-29 11:44:10,728 INFO [ServerDiscovery] === ServerDiscovery started - Mode: find, Target IP: 192.168.1.166 ===
+2025-09-29 11:44:10,728 INFO [ServerDiscovery] Attempting to start server - script: ap_server.py, timeout: 10s, target_ip: 192.168.1.166
+2025-09-29 11:44:13,183 INFO [ServerDiscovery] Server discovered via broadcast from 192.168.1.112: {'service': 'APServer', 'ip': '192.168.1.112', 'port': 65432, 'hostname': 'MacBook-Pro-von-Thilo-2.local', 'timestamp': 1759139053.138047, 'version': '1.0', 'capabilities': ['OCA', 'SwitchBox', 'Scanner', 'BiquadFilters', 'MeasurementTrials'], 'discovery_port': 65433, 'status': 'running', 'sequence': 42}
+2025-09-29 11:44:13,183 INFO [ServerDiscovery] Server already running (found via discovery)
+2025-09-29 11:44:13,185 INFO [ServerDiscovery] Finding server - target_ip: 192.168.1.166, port: 65432, discovery_timeout: 5s
+2025-09-29 11:44:17,199 INFO [ServerDiscovery] Connection successful to 192.168.1.112:65432
+2025-09-29 11:44:17,199 INFO [ServerDiscovery] Server found via discovery: 192.168.1.112:65432
+2025-09-29 11:44:17,200 INFO [ServerDiscovery] Find result: Server found at 192.168.1.112

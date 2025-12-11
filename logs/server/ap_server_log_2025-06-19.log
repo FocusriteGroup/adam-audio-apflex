@@ -1,0 +1,914 @@
+2025-06-19 10:13:08,507 INFO [root] ----------------------------------- APServer started
+2025-06-19 10:13:08,511 INFO [APServer] Server started
+2025-06-19 10:13:08,511 INFO [APServer] Server is running...
+2025-06-19 10:13:08,511 INFO [APServer] Waiting for connections...
+2025-06-19 10:13:36,174 INFO [APServer] Connection from ('127.0.0.1', 51338)
+2025-06-19 10:13:36,175 INFO [APServer] Client connection closed.
+2025-06-19 10:13:36,543 INFO [APServer] Connection from ('127.0.0.1', 51339)
+2025-06-19 10:13:36,544 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 10:13:36,545 INFO [Utilities] Generated timestamp extension: 2025_06_19_10_13_36
+2025-06-19 10:13:36,546 INFO [APServer] Sent response: 2025_06_19_10_13_36
+2025-06-19 10:13:36,546 INFO [APServer] Client connection closed.
+2025-06-19 10:13:36,751 INFO [APServer] Connection from ('127.0.0.1', 51340)
+2025-06-19 10:13:36,752 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 10:13:36,753 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 10:13:36,753 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 10:13:36,754 INFO [APServer] Client connection closed.
+2025-06-19 10:13:36,954 INFO [APServer] Connection from ('127.0.0.1', 51341)
+2025-06-19 10:13:36,955 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_10_13_36"]}
+2025-06-19 10:13:36,955 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_10_13_36']
+2025-06-19 10:13:36,955 INFO [Utilities] Generated file prefix: raew_2025_06_19_10_13_36
+2025-06-19 10:13:36,956 INFO [APServer] Sent response: raew_2025_06_19_10_13_36
+2025-06-19 10:13:36,956 INFO [APServer] Client connection closed.
+2025-06-19 10:13:37,175 INFO [APServer] Connection from ('127.0.0.1', 51342)
+2025-06-19 10:13:37,176 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 10:13:37,177 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 10:13:37,177 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 10:13:37,177 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 10:13:37,177 INFO [APServer] Client connection closed.
+2025-06-19 10:13:37,367 INFO [APServer] Connection from ('127.0.0.1', 51343)
+2025-06-19 10:13:37,368 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 10:13:37,368 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 10:13:37,368 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 10:13:37,368 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 10:13:37,369 INFO [APServer] Client connection closed.
+2025-06-19 10:13:37,584 INFO [APServer] Connection from ('127.0.0.1', 51344)
+2025-06-19 10:13:37,586 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 10:13:37,586 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 10:13:37,586 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 10:13:37,586 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 10:13:37,587 INFO [APServer] Client connection closed.
+2025-06-19 10:13:37,803 INFO [APServer] Connection from ('127.0.0.1', 51345)
+2025-06-19 10:13:37,804 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_10_13_36"]}
+2025-06-19 10:13:37,804 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_10_13_36']
+2025-06-19 10:13:37,805 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_10_13_36
+2025-06-19 10:13:37,805 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_10_13_36
+2025-06-19 10:13:37,805 INFO [APServer] Client connection closed.
+2025-06-19 10:13:39,265 INFO [APServer] Connection from ('127.0.0.1', 51346)
+2025-06-19 10:13:39,265 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 4, "wait_for_response": true}
+2025-06-19 10:13:39,265 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 4
+2025-06-19 10:13:39,266 ERROR [APServer] Error checking measurement trials: [Errno 2] No such file or directory: 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv'
+2025-06-19 10:13:39,266 INFO [APServer] Sent response: Error: [Errno 2] No such file or directory: 'C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv'
+2025-06-19 10:13:39,266 INFO [APServer] Client connection closed.
+2025-06-19 10:14:03,587 INFO [root] ----------------------------------- APServer started
+2025-06-19 10:14:03,591 INFO [APServer] Server started
+2025-06-19 10:14:03,591 INFO [APServer] Server is running...
+2025-06-19 10:14:03,591 INFO [APServer] Waiting for connections...
+2025-06-19 10:14:03,753 INFO [APServer] Connection from ('127.0.0.1', 51354)
+2025-06-19 10:14:03,754 INFO [APServer] Client connection closed.
+2025-06-19 10:14:04,001 INFO [APServer] Connection from ('127.0.0.1', 51355)
+2025-06-19 10:14:04,002 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 10:14:04,002 INFO [Utilities] Generated timestamp extension: 2025_06_19_10_14_04
+2025-06-19 10:14:04,002 INFO [APServer] Sent response: 2025_06_19_10_14_04
+2025-06-19 10:14:04,003 INFO [APServer] Client connection closed.
+2025-06-19 10:14:04,219 INFO [APServer] Connection from ('127.0.0.1', 51356)
+2025-06-19 10:14:04,219 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 10:14:04,220 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 10:14:04,220 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 10:14:04,220 INFO [APServer] Client connection closed.
+2025-06-19 10:14:04,435 INFO [APServer] Connection from ('127.0.0.1', 51357)
+2025-06-19 10:14:04,436 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_10_14_04"]}
+2025-06-19 10:14:04,436 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_10_14_04']
+2025-06-19 10:14:04,436 INFO [Utilities] Generated file prefix: raew_2025_06_19_10_14_04
+2025-06-19 10:14:04,436 INFO [APServer] Sent response: raew_2025_06_19_10_14_04
+2025-06-19 10:14:04,437 INFO [APServer] Client connection closed.
+2025-06-19 10:14:04,642 INFO [APServer] Connection from ('127.0.0.1', 51358)
+2025-06-19 10:14:04,643 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 10:14:04,643 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 10:14:04,643 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 10:14:04,643 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 10:14:04,644 INFO [APServer] Client connection closed.
+2025-06-19 10:14:04,847 INFO [APServer] Connection from ('127.0.0.1', 51359)
+2025-06-19 10:14:04,848 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 10:14:04,848 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 10:14:04,848 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 10:14:04,848 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 10:14:04,849 INFO [APServer] Client connection closed.
+2025-06-19 10:14:05,042 INFO [APServer] Connection from ('127.0.0.1', 51360)
+2025-06-19 10:14:05,043 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 10:14:05,043 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 10:14:05,043 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 10:14:05,043 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 10:14:05,044 INFO [APServer] Client connection closed.
+2025-06-19 10:14:05,255 INFO [APServer] Connection from ('127.0.0.1', 51361)
+2025-06-19 10:14:05,256 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_10_14_04"]}
+2025-06-19 10:14:05,256 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_10_14_04']
+2025-06-19 10:14:05,257 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_10_14_04
+2025-06-19 10:14:05,257 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_10_14_04
+2025-06-19 10:14:05,257 INFO [APServer] Client connection closed.
+2025-06-19 10:14:06,519 INFO [APServer] Connection from ('127.0.0.1', 51362)
+2025-06-19 10:14:06,519 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 4, "wait_for_response": true}
+2025-06-19 10:14:06,520 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 4
+2025-06-19 10:14:06,520 INFO [APServer] Serial raew found 1 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 10:14:06,520 INFO [APServer] Measurement permitted. (serial=raew, count=1, max=4)
+2025-06-19 10:14:06,520 INFO [APServer] Sent response: Measurement permitted.
+2025-06-19 10:14:06,520 INFO [APServer] Client connection closed.
+2025-06-19 10:14:23,218 INFO [APServer] Connection from ('127.0.0.1', 51366)
+2025-06-19 10:14:23,219 INFO [APServer] Client connection closed.
+2025-06-19 10:14:23,503 INFO [APServer] Connection from ('127.0.0.1', 51367)
+2025-06-19 10:14:23,504 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 10:14:23,504 INFO [Utilities] Generated timestamp extension: 2025_06_19_10_14_23
+2025-06-19 10:14:23,505 INFO [APServer] Sent response: 2025_06_19_10_14_23
+2025-06-19 10:14:23,505 INFO [APServer] Client connection closed.
+2025-06-19 10:14:23,735 INFO [APServer] Connection from ('127.0.0.1', 51368)
+2025-06-19 10:14:23,736 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 10:14:23,736 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 10:14:23,736 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 10:14:23,736 INFO [APServer] Client connection closed.
+2025-06-19 10:14:23,947 INFO [APServer] Connection from ('127.0.0.1', 51369)
+2025-06-19 10:14:23,948 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_10_14_23"]}
+2025-06-19 10:14:23,948 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_10_14_23']
+2025-06-19 10:14:23,948 INFO [Utilities] Generated file prefix: raew_2025_06_19_10_14_23
+2025-06-19 10:14:23,948 INFO [APServer] Sent response: raew_2025_06_19_10_14_23
+2025-06-19 10:14:23,950 INFO [APServer] Client connection closed.
+2025-06-19 10:14:24,154 INFO [APServer] Connection from ('127.0.0.1', 51370)
+2025-06-19 10:14:24,154 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 10:14:24,155 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 10:14:24,155 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 10:14:24,155 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 10:14:24,155 INFO [APServer] Client connection closed.
+2025-06-19 10:14:24,373 INFO [APServer] Connection from ('127.0.0.1', 51371)
+2025-06-19 10:14:24,374 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 10:14:24,374 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 10:14:24,374 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 10:14:24,374 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 10:14:24,375 INFO [APServer] Client connection closed.
+2025-06-19 10:14:24,585 INFO [APServer] Connection from ('127.0.0.1', 51372)
+2025-06-19 10:14:24,586 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 10:14:24,586 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 10:14:24,586 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 10:14:24,586 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 10:14:24,586 INFO [APServer] Client connection closed.
+2025-06-19 10:14:24,804 INFO [APServer] Connection from ('127.0.0.1', 51373)
+2025-06-19 10:14:24,804 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_10_14_23"]}
+2025-06-19 10:14:24,805 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_10_14_23']
+2025-06-19 10:14:24,805 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_10_14_23
+2025-06-19 10:14:24,805 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_10_14_23
+2025-06-19 10:14:24,805 INFO [APServer] Client connection closed.
+2025-06-19 10:14:26,153 INFO [APServer] Connection from ('127.0.0.1', 51374)
+2025-06-19 10:14:26,153 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 4, "wait_for_response": true}
+2025-06-19 10:14:26,153 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 4
+2025-06-19 10:14:26,155 INFO [APServer] Serial raew found 2 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 10:14:26,155 INFO [APServer] Measurement permitted. (serial=raew, count=2, max=4)
+2025-06-19 10:14:26,155 INFO [APServer] Sent response: Measurement permitted.
+2025-06-19 10:14:26,155 INFO [APServer] Client connection closed.
+2025-06-19 12:57:33,059 INFO [root] ----------------------------------- APServer started
+2025-06-19 12:57:33,065 INFO [APServer] Server started
+2025-06-19 12:57:33,066 INFO [APServer] Server is running...
+2025-06-19 12:57:33,066 INFO [APServer] Waiting for connections...
+2025-06-19 12:58:01,063 INFO [root] ----------------------------------- APServer started
+2025-06-19 12:58:01,067 INFO [APServer] Server started
+2025-06-19 12:58:01,067 INFO [APServer] Server is running...
+2025-06-19 12:58:01,069 INFO [APServer] Waiting for connections...
+2025-06-19 12:58:01,252 INFO [APServer] Connection from ('127.0.0.1', 54294)
+2025-06-19 12:58:01,253 INFO [APServer] Client connection closed.
+2025-06-19 12:58:01,581 INFO [APServer] Connection from ('127.0.0.1', 54295)
+2025-06-19 12:58:01,582 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 12:58:01,582 INFO [Utilities] Generated timestamp extension: 2025_06_19_12_58_01
+2025-06-19 12:58:01,582 INFO [APServer] Sent response: 2025_06_19_12_58_01
+2025-06-19 12:58:01,583 INFO [APServer] Client connection closed.
+2025-06-19 12:58:01,822 INFO [APServer] Connection from ('127.0.0.1', 54296)
+2025-06-19 12:58:01,823 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 12:58:01,823 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 12:58:01,823 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 12:58:01,824 INFO [APServer] Client connection closed.
+2025-06-19 12:58:02,043 INFO [APServer] Connection from ('127.0.0.1', 54297)
+2025-06-19 12:58:02,043 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_12_58_01"]}
+2025-06-19 12:58:02,044 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_12_58_01']
+2025-06-19 12:58:02,044 INFO [Utilities] Generated file prefix: raew_2025_06_19_12_58_01
+2025-06-19 12:58:02,044 INFO [APServer] Sent response: raew_2025_06_19_12_58_01
+2025-06-19 12:58:02,045 INFO [APServer] Client connection closed.
+2025-06-19 12:58:02,242 INFO [APServer] Connection from ('127.0.0.1', 54298)
+2025-06-19 12:58:02,242 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 12:58:02,242 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 12:58:02,242 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 12:58:02,243 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 12:58:02,243 INFO [APServer] Client connection closed.
+2025-06-19 12:58:02,449 INFO [APServer] Connection from ('127.0.0.1', 54299)
+2025-06-19 12:58:02,450 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 12:58:02,450 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 12:58:02,450 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 12:58:02,450 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 12:58:02,451 INFO [APServer] Client connection closed.
+2025-06-19 12:58:02,640 INFO [APServer] Connection from ('127.0.0.1', 54300)
+2025-06-19 12:58:02,641 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 12:58:02,641 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 12:58:02,641 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 12:58:02,641 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 12:58:02,642 INFO [APServer] Client connection closed.
+2025-06-19 12:58:02,858 INFO [APServer] Connection from ('127.0.0.1', 54301)
+2025-06-19 12:58:02,859 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_12_58_01"]}
+2025-06-19 12:58:02,859 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_12_58_01']
+2025-06-19 12:58:02,859 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_12_58_01
+2025-06-19 12:58:02,859 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_12_58_01
+2025-06-19 12:58:02,860 INFO [APServer] Client connection closed.
+2025-06-19 12:58:03,086 INFO [APServer] Connection from ('127.0.0.1', 54302)
+2025-06-19 12:58:03,087 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 4, "wait_for_response": true}
+2025-06-19 12:58:03,087 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 4
+2025-06-19 12:58:03,088 INFO [APServer] Serial raew found 4 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 12:58:03,088 WARNING [APServer] Maximum number of permitted measurements reached. (serial=raew, count=4, max=4)
+2025-06-19 12:58:03,088 INFO [APServer] Sent response: Maximum number of permitted measurements reached.
+2025-06-19 12:58:03,088 INFO [APServer] Client connection closed.
+2025-06-19 13:12:47,897 INFO [root] ----------------------------------- APServer started
+2025-06-19 13:12:47,909 INFO [root] ----------------------------------- APServer started
+2025-06-19 13:12:47,915 INFO [APServer] Server started
+2025-06-19 13:12:47,916 INFO [APServer] Server is running...
+2025-06-19 13:12:47,916 INFO [APServer] Waiting for connections...
+2025-06-19 13:13:34,048 INFO [root] ----------------------------------- APServer started
+2025-06-19 13:13:34,152 INFO [APServer] Server started
+2025-06-19 13:13:34,152 INFO [APServer] Server is running...
+2025-06-19 13:13:34,153 INFO [APServer] Waiting for connections...
+2025-06-19 13:13:34,429 INFO [APServer] Connection from ('127.0.0.1', 54715)
+2025-06-19 13:13:34,472 INFO [APServer] Client connection closed.
+2025-06-19 13:13:35,174 INFO [APServer] Connection from ('127.0.0.1', 54716)
+2025-06-19 13:13:35,178 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 13:13:35,179 INFO [Utilities] Generated timestamp extension: 2025_06_19_13_13_35
+2025-06-19 13:13:35,181 INFO [APServer] Sent response: 2025_06_19_13_13_35
+2025-06-19 13:13:35,183 INFO [APServer] Client connection closed.
+2025-06-19 13:13:35,874 INFO [APServer] Connection from ('127.0.0.1', 54717)
+2025-06-19 13:13:35,876 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 13:13:35,877 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 13:13:35,879 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 13:13:35,880 INFO [APServer] Client connection closed.
+2025-06-19 13:13:36,455 INFO [APServer] Connection from ('127.0.0.1', 54719)
+2025-06-19 13:13:36,483 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_13_13_35"]}
+2025-06-19 13:13:36,485 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_13_13_35']
+2025-06-19 13:13:36,486 INFO [Utilities] Generated file prefix: raew_2025_06_19_13_13_35
+2025-06-19 13:13:36,487 INFO [APServer] Sent response: raew_2025_06_19_13_13_35
+2025-06-19 13:13:36,490 INFO [APServer] Client connection closed.
+2025-06-19 13:13:37,158 INFO [APServer] Connection from ('127.0.0.1', 54721)
+2025-06-19 13:13:37,163 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 13:13:37,165 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 13:13:37,166 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 13:13:37,178 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 13:13:37,180 INFO [APServer] Client connection closed.
+2025-06-19 13:13:37,749 INFO [APServer] Connection from ('127.0.0.1', 54722)
+2025-06-19 13:13:37,835 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 13:13:37,920 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 13:13:37,951 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 13:13:37,954 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 13:13:37,956 INFO [APServer] Client connection closed.
+2025-06-19 13:13:38,476 INFO [APServer] Connection from ('127.0.0.1', 54723)
+2025-06-19 13:13:38,583 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 13:13:38,584 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 13:13:38,585 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 13:13:38,586 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 13:13:38,588 INFO [APServer] Client connection closed.
+2025-06-19 13:13:39,177 INFO [APServer] Connection from ('127.0.0.1', 54724)
+2025-06-19 13:13:39,242 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_13_13_35"]}
+2025-06-19 13:13:39,244 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_13_13_35']
+2025-06-19 13:13:39,245 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_13_13_35
+2025-06-19 13:13:39,246 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_13_13_35
+2025-06-19 13:13:39,247 INFO [APServer] Client connection closed.
+2025-06-19 13:13:39,776 INFO [APServer] Connection from ('127.0.0.1', 54725)
+2025-06-19 13:13:39,933 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 4, "wait_for_response": true}
+2025-06-19 13:13:39,934 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 4
+2025-06-19 13:13:39,935 INFO [APServer] Serial raew found 7 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 13:13:39,937 WARNING [APServer] Maximum number of permitted measurements reached. (serial=raew, count=7, max=4)
+2025-06-19 13:13:39,937 INFO [APServer] Sent response: Maximum number of permitted measurements reached.
+2025-06-19 13:13:39,938 INFO [APServer] Client connection closed.
+2025-06-19 13:13:52,773 INFO [APServer] Connection from ('127.0.0.1', 54726)
+2025-06-19 13:13:52,924 INFO [APServer] Client connection closed.
+2025-06-19 13:13:53,806 INFO [APServer] Connection from ('127.0.0.1', 54727)
+2025-06-19 13:13:53,817 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 13:13:53,819 INFO [Utilities] Generated timestamp extension: 2025_06_19_13_13_53
+2025-06-19 13:13:53,821 INFO [APServer] Sent response: 2025_06_19_13_13_53
+2025-06-19 13:13:53,828 INFO [APServer] Client connection closed.
+2025-06-19 13:13:54,487 INFO [APServer] Connection from ('127.0.0.1', 54729)
+2025-06-19 13:13:54,489 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 13:13:54,490 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 13:13:54,490 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 13:13:54,491 INFO [APServer] Client connection closed.
+2025-06-19 13:13:55,326 INFO [APServer] Connection from ('127.0.0.1', 54730)
+2025-06-19 13:13:55,329 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_13_13_53"]}
+2025-06-19 13:13:55,330 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_13_13_53']
+2025-06-19 13:13:55,331 INFO [Utilities] Generated file prefix: raew_2025_06_19_13_13_53
+2025-06-19 13:13:55,337 INFO [APServer] Sent response: raew_2025_06_19_13_13_53
+2025-06-19 13:13:55,340 INFO [APServer] Client connection closed.
+2025-06-19 13:13:55,928 INFO [APServer] Connection from ('127.0.0.1', 54732)
+2025-06-19 13:13:55,952 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 13:13:55,953 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 13:13:55,954 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 13:13:55,954 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 13:13:55,955 INFO [APServer] Client connection closed.
+2025-06-19 13:13:56,391 INFO [APServer] Connection from ('127.0.0.1', 54733)
+2025-06-19 13:13:56,395 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 13:13:56,396 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 13:13:56,397 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 13:13:56,398 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 13:13:56,399 INFO [APServer] Client connection closed.
+2025-06-19 13:13:56,832 INFO [APServer] Connection from ('127.0.0.1', 54734)
+2025-06-19 13:13:56,885 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 13:13:56,894 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 13:13:56,896 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 13:13:56,897 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 13:13:56,954 INFO [APServer] Client connection closed.
+2025-06-19 13:13:57,427 INFO [APServer] Connection from ('127.0.0.1', 54735)
+2025-06-19 13:13:57,500 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_13_13_53"]}
+2025-06-19 13:13:57,532 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_13_13_53']
+2025-06-19 13:13:57,556 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_13_13_53
+2025-06-19 13:13:57,574 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_13_13_53
+2025-06-19 13:13:57,575 INFO [APServer] Client connection closed.
+2025-06-19 13:13:58,375 INFO [APServer] Connection from ('127.0.0.1', 54736)
+2025-06-19 13:13:58,402 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 4, "wait_for_response": true}
+2025-06-19 13:13:58,453 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 4
+2025-06-19 13:13:58,474 INFO [APServer] Serial raew found 8 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 13:13:58,487 WARNING [APServer] Maximum number of permitted measurements reached. (serial=raew, count=8, max=4)
+2025-06-19 13:13:58,521 INFO [APServer] Sent response: Maximum number of permitted measurements reached.
+2025-06-19 13:13:58,533 INFO [APServer] Client connection closed.
+2025-06-19 13:14:25,641 INFO [root] ----------------------------------- APServer started
+2025-06-19 13:14:25,650 INFO [APServer] Server started
+2025-06-19 13:14:25,651 INFO [APServer] Server is running...
+2025-06-19 13:14:25,652 INFO [APServer] Waiting for connections...
+2025-06-19 13:14:25,655 INFO [APServer] Connection from ('127.0.0.1', 54752)
+2025-06-19 13:14:25,671 INFO [APServer] Client connection closed.
+2025-06-19 13:14:26,416 INFO [APServer] Connection from ('127.0.0.1', 54753)
+2025-06-19 13:14:26,434 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 13:14:26,435 INFO [Utilities] Generated timestamp extension: 2025_06_19_13_14_26
+2025-06-19 13:14:26,436 INFO [APServer] Sent response: 2025_06_19_13_14_26
+2025-06-19 13:14:26,437 INFO [APServer] Client connection closed.
+2025-06-19 13:14:26,992 INFO [APServer] Connection from ('127.0.0.1', 54754)
+2025-06-19 13:14:26,995 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 13:14:26,996 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 13:14:26,998 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 13:14:26,999 INFO [APServer] Client connection closed.
+2025-06-19 13:14:27,686 INFO [APServer] Connection from ('127.0.0.1', 54755)
+2025-06-19 13:14:27,691 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_13_14_26"]}
+2025-06-19 13:14:27,698 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_13_14_26']
+2025-06-19 13:14:27,812 INFO [Utilities] Generated file prefix: raew_2025_06_19_13_14_26
+2025-06-19 13:14:27,814 INFO [APServer] Sent response: raew_2025_06_19_13_14_26
+2025-06-19 13:14:27,815 INFO [APServer] Client connection closed.
+2025-06-19 13:14:28,374 INFO [APServer] Connection from ('127.0.0.1', 54756)
+2025-06-19 13:14:28,376 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 13:14:28,377 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 13:14:28,378 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 13:14:28,378 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 13:14:28,379 INFO [APServer] Client connection closed.
+2025-06-19 13:14:29,049 INFO [APServer] Connection from ('127.0.0.1', 54757)
+2025-06-19 13:14:29,103 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 13:14:29,103 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 13:14:29,104 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 13:14:29,105 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 13:14:29,106 INFO [APServer] Client connection closed.
+2025-06-19 13:14:29,945 INFO [APServer] Connection from ('127.0.0.1', 54758)
+2025-06-19 13:14:29,948 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 13:14:29,950 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 13:14:29,952 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 13:14:29,953 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 13:14:29,954 INFO [APServer] Client connection closed.
+2025-06-19 13:14:30,603 INFO [APServer] Connection from ('127.0.0.1', 54759)
+2025-06-19 13:14:30,605 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_13_14_26"]}
+2025-06-19 13:14:30,606 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_13_14_26']
+2025-06-19 13:14:30,607 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_13_14_26
+2025-06-19 13:14:30,607 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_13_14_26
+2025-06-19 13:14:30,609 INFO [APServer] Client connection closed.
+2025-06-19 13:14:31,323 INFO [APServer] Connection from ('127.0.0.1', 54760)
+2025-06-19 13:14:31,326 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 4, "wait_for_response": true}
+2025-06-19 13:14:31,327 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 4
+2025-06-19 13:14:31,329 INFO [APServer] Serial raew found 9 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 13:14:31,331 WARNING [APServer] Maximum number of permitted measurements reached. (serial=raew, count=9, max=4)
+2025-06-19 13:14:31,331 INFO [APServer] Sent response: Maximum number of permitted measurements reached.
+2025-06-19 13:14:31,332 INFO [APServer] Client connection closed.
+2025-06-19 13:15:07,725 INFO [APServer] Connection from ('127.0.0.1', 54764)
+2025-06-19 13:15:07,728 INFO [APServer] Client connection closed.
+2025-06-19 13:15:09,441 INFO [APServer] Connection from ('127.0.0.1', 54765)
+2025-06-19 13:15:09,448 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 13:15:09,450 INFO [Utilities] Generated timestamp extension: 2025_06_19_13_15_09
+2025-06-19 13:15:09,453 INFO [APServer] Sent response: 2025_06_19_13_15_09
+2025-06-19 13:15:09,455 INFO [APServer] Client connection closed.
+2025-06-19 13:15:09,933 INFO [APServer] Connection from ('127.0.0.1', 54766)
+2025-06-19 13:15:09,935 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 13:15:09,935 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 13:15:09,936 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 13:15:09,937 INFO [APServer] Client connection closed.
+2025-06-19 13:15:10,560 INFO [APServer] Connection from ('127.0.0.1', 54767)
+2025-06-19 13:15:10,563 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_13_15_09"]}
+2025-06-19 13:15:10,563 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_13_15_09']
+2025-06-19 13:15:10,564 INFO [Utilities] Generated file prefix: raew_2025_06_19_13_15_09
+2025-06-19 13:15:10,565 INFO [APServer] Sent response: raew_2025_06_19_13_15_09
+2025-06-19 13:15:10,566 INFO [APServer] Client connection closed.
+2025-06-19 13:15:11,082 INFO [APServer] Connection from ('127.0.0.1', 54768)
+2025-06-19 13:15:11,139 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 13:15:11,141 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 13:15:11,144 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 13:15:11,144 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 13:15:11,146 INFO [APServer] Client connection closed.
+2025-06-19 13:15:11,623 INFO [APServer] Connection from ('127.0.0.1', 54769)
+2025-06-19 13:15:11,625 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 13:15:11,626 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 13:15:11,627 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 13:15:11,627 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 13:15:11,632 INFO [APServer] Client connection closed.
+2025-06-19 13:15:12,311 INFO [APServer] Connection from ('127.0.0.1', 54770)
+2025-06-19 13:15:12,312 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 13:15:12,313 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 13:15:12,314 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 13:15:12,315 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 13:15:12,317 INFO [APServer] Client connection closed.
+2025-06-19 13:15:12,844 INFO [APServer] Connection from ('127.0.0.1', 54771)
+2025-06-19 13:15:12,847 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_13_15_09"]}
+2025-06-19 13:15:12,848 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_13_15_09']
+2025-06-19 13:15:12,849 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_13_15_09
+2025-06-19 13:15:12,850 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_13_15_09
+2025-06-19 13:15:12,850 INFO [APServer] Client connection closed.
+2025-06-19 13:15:13,430 INFO [APServer] Connection from ('127.0.0.1', 54772)
+2025-06-19 13:15:13,432 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 1000, "wait_for_response": true}
+2025-06-19 13:15:13,433 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 1000
+2025-06-19 13:15:13,434 INFO [APServer] Serial raew found 10 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 13:15:13,435 INFO [APServer] Measurement permitted. (serial=raew, count=10, max=1000)
+2025-06-19 13:15:13,437 INFO [APServer] Sent response: Measurement permitted.
+2025-06-19 13:15:13,440 INFO [APServer] Client connection closed.
+2025-06-19 14:44:00,523 INFO [root] ----------------------------------- APServer started
+2025-06-19 14:44:00,528 INFO [APServer] Server started
+2025-06-19 14:44:00,528 INFO [APServer] Server is running...
+2025-06-19 14:44:00,529 INFO [APServer] Waiting for connections...
+2025-06-19 14:44:01,021 INFO [APServer] Connection from ('127.0.0.1', 56253)
+2025-06-19 14:44:01,025 INFO [APServer] Client connection closed.
+2025-06-19 14:44:02,505 INFO [APServer] Connection from ('127.0.0.1', 56254)
+2025-06-19 14:44:02,508 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 14:44:02,509 INFO [Utilities] Generated timestamp extension: 2025_06_19_14_44_02
+2025-06-19 14:44:02,510 INFO [APServer] Sent response: 2025_06_19_14_44_02
+2025-06-19 14:44:02,512 INFO [APServer] Client connection closed.
+2025-06-19 14:44:02,683 INFO [APServer] Connection from ('127.0.0.1', 56255)
+2025-06-19 14:44:02,684 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 14:44:02,684 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 14:44:02,685 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 14:44:02,685 INFO [APServer] Client connection closed.
+2025-06-19 14:44:02,799 INFO [APServer] Connection from ('127.0.0.1', 56256)
+2025-06-19 14:44:02,801 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_14_44_02"]}
+2025-06-19 14:44:02,802 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_14_44_02']
+2025-06-19 14:44:02,802 INFO [Utilities] Generated file prefix: raew_2025_06_19_14_44_02
+2025-06-19 14:44:02,803 INFO [APServer] Sent response: raew_2025_06_19_14_44_02
+2025-06-19 14:44:02,803 INFO [APServer] Client connection closed.
+2025-06-19 14:44:02,932 INFO [APServer] Connection from ('127.0.0.1', 56257)
+2025-06-19 14:44:02,934 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 14:44:02,935 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 14:44:02,936 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 14:44:02,936 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 14:44:02,936 INFO [APServer] Client connection closed.
+2025-06-19 14:44:03,065 INFO [APServer] Connection from ('127.0.0.1', 56258)
+2025-06-19 14:44:03,066 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 14:44:03,067 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 14:44:03,067 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 14:44:03,067 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 14:44:03,068 INFO [APServer] Client connection closed.
+2025-06-19 14:44:03,180 INFO [APServer] Connection from ('127.0.0.1', 56259)
+2025-06-19 14:44:03,181 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 14:44:03,181 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 14:44:03,181 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 14:44:03,181 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 14:44:03,181 INFO [APServer] Client connection closed.
+2025-06-19 14:44:03,312 INFO [APServer] Connection from ('127.0.0.1', 56260)
+2025-06-19 14:44:03,312 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_14_44_02"]}
+2025-06-19 14:44:03,314 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_14_44_02']
+2025-06-19 14:44:03,314 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_14_44_02
+2025-06-19 14:44:03,314 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_14_44_02
+2025-06-19 14:44:03,314 INFO [APServer] Client connection closed.
+2025-06-19 14:44:03,459 INFO [APServer] Connection from ('127.0.0.1', 56261)
+2025-06-19 14:44:03,460 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 1000, "wait_for_response": true}
+2025-06-19 14:44:03,460 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 1000
+2025-06-19 14:44:03,484 INFO [APServer] Serial raew found 10 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 14:44:03,485 INFO [APServer] Measurement permitted. (serial=raew, count=10, max=1000)
+2025-06-19 14:44:03,485 INFO [APServer] Sent response: Measurement permitted.
+2025-06-19 14:44:03,486 INFO [APServer] Client connection closed.
+2025-06-19 14:52:17,062 INFO [APServer] Connection from ('127.0.0.1', 56390)
+2025-06-19 14:52:17,074 INFO [APServer] Client connection closed.
+2025-06-19 14:52:17,256 INFO [APServer] Connection from ('127.0.0.1', 56391)
+2025-06-19 14:52:17,257 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 14:52:17,258 INFO [Utilities] Generated timestamp extension: 2025_06_19_14_52_17
+2025-06-19 14:52:17,258 INFO [APServer] Sent response: 2025_06_19_14_52_17
+2025-06-19 14:52:17,258 INFO [APServer] Client connection closed.
+2025-06-19 14:52:17,448 INFO [APServer] Connection from ('127.0.0.1', 56392)
+2025-06-19 14:52:17,449 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 14:52:17,449 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 14:52:17,450 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 14:52:17,450 INFO [APServer] Client connection closed.
+2025-06-19 14:52:17,620 INFO [APServer] Connection from ('127.0.0.1', 56393)
+2025-06-19 14:52:17,621 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_14_52_17"]}
+2025-06-19 14:52:17,622 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_14_52_17']
+2025-06-19 14:52:17,622 INFO [Utilities] Generated file prefix: raew_2025_06_19_14_52_17
+2025-06-19 14:52:17,623 INFO [APServer] Sent response: raew_2025_06_19_14_52_17
+2025-06-19 14:52:17,623 INFO [APServer] Client connection closed.
+2025-06-19 14:52:17,770 INFO [APServer] Connection from ('127.0.0.1', 56394)
+2025-06-19 14:52:17,770 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 14:52:17,771 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 14:52:17,771 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 14:52:17,771 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 14:52:17,772 INFO [APServer] Client connection closed.
+2025-06-19 14:52:17,896 INFO [APServer] Connection from ('127.0.0.1', 56395)
+2025-06-19 14:52:17,897 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 14:52:17,897 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 14:52:17,897 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 14:52:17,898 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 14:52:17,898 INFO [APServer] Client connection closed.
+2025-06-19 14:52:18,007 INFO [APServer] Connection from ('127.0.0.1', 56396)
+2025-06-19 14:52:18,007 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 14:52:18,008 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 14:52:18,008 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 14:52:18,009 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 14:52:18,009 INFO [APServer] Client connection closed.
+2025-06-19 14:52:18,127 INFO [APServer] Connection from ('127.0.0.1', 56397)
+2025-06-19 14:52:18,128 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_14_52_17"]}
+2025-06-19 14:52:18,128 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_14_52_17']
+2025-06-19 14:52:18,129 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_14_52_17
+2025-06-19 14:52:18,129 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_14_52_17
+2025-06-19 14:52:18,129 INFO [APServer] Client connection closed.
+2025-06-19 14:52:18,264 INFO [APServer] Connection from ('127.0.0.1', 56398)
+2025-06-19 14:52:18,265 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 1000, "wait_for_response": true}
+2025-06-19 14:52:18,265 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 1000
+2025-06-19 14:52:18,266 INFO [APServer] Serial raew found 11 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 14:52:18,266 INFO [APServer] Measurement permitted. (serial=raew, count=11, max=1000)
+2025-06-19 14:52:18,266 INFO [APServer] Sent response: Measurement permitted.
+2025-06-19 14:52:18,267 INFO [APServer] Client connection closed.
+2025-06-19 14:53:05,655 INFO [APServer] Connection from ('127.0.0.1', 56408)
+2025-06-19 14:53:05,657 INFO [APServer] Client connection closed.
+2025-06-19 14:53:05,824 INFO [APServer] Connection from ('127.0.0.1', 56409)
+2025-06-19 14:53:05,825 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 14:53:05,825 INFO [Utilities] Generated timestamp extension: 2025_06_19_14_53_05
+2025-06-19 14:53:05,826 INFO [APServer] Sent response: 2025_06_19_14_53_05
+2025-06-19 14:53:05,826 INFO [APServer] Client connection closed.
+2025-06-19 14:53:06,003 INFO [APServer] Connection from ('127.0.0.1', 56410)
+2025-06-19 14:53:06,003 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 14:53:06,004 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 14:53:06,004 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 14:53:06,005 INFO [APServer] Client connection closed.
+2025-06-19 14:53:06,167 INFO [APServer] Connection from ('127.0.0.1', 56411)
+2025-06-19 14:53:06,169 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_14_53_05"]}
+2025-06-19 14:53:06,170 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_14_53_05']
+2025-06-19 14:53:06,170 INFO [Utilities] Generated file prefix: raew_2025_06_19_14_53_05
+2025-06-19 14:53:06,170 INFO [APServer] Sent response: raew_2025_06_19_14_53_05
+2025-06-19 14:53:06,170 INFO [APServer] Client connection closed.
+2025-06-19 14:53:06,293 INFO [APServer] Connection from ('127.0.0.1', 56412)
+2025-06-19 14:53:06,293 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 14:53:06,293 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 14:53:06,294 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 14:53:06,294 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 14:53:06,294 INFO [APServer] Client connection closed.
+2025-06-19 14:53:06,421 INFO [APServer] Connection from ('127.0.0.1', 56414)
+2025-06-19 14:53:06,421 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 14:53:06,421 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 14:53:06,422 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 14:53:06,422 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 14:53:06,422 INFO [APServer] Client connection closed.
+2025-06-19 14:53:06,541 INFO [APServer] Connection from ('127.0.0.1', 56415)
+2025-06-19 14:53:06,543 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 14:53:06,543 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 14:53:06,544 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 14:53:06,544 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 14:53:06,544 INFO [APServer] Client connection closed.
+2025-06-19 14:53:06,663 INFO [APServer] Connection from ('127.0.0.1', 56416)
+2025-06-19 14:53:06,663 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_14_53_05"]}
+2025-06-19 14:53:06,664 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_14_53_05']
+2025-06-19 14:53:06,664 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_14_53_05
+2025-06-19 14:53:06,664 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_14_53_05
+2025-06-19 14:53:06,665 INFO [APServer] Client connection closed.
+2025-06-19 14:53:06,788 INFO [APServer] Connection from ('127.0.0.1', 56417)
+2025-06-19 14:53:06,789 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 1000, "wait_for_response": true}
+2025-06-19 14:53:06,789 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 1000
+2025-06-19 14:53:06,790 INFO [APServer] Serial raew found 11 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 14:53:06,790 INFO [APServer] Measurement permitted. (serial=raew, count=11, max=1000)
+2025-06-19 14:53:06,790 INFO [APServer] Sent response: Measurement permitted.
+2025-06-19 14:53:06,790 INFO [APServer] Client connection closed.
+2025-06-19 14:56:41,498 INFO [APServer] Connection from ('127.0.0.1', 56473)
+2025-06-19 14:56:41,518 INFO [APServer] Client connection closed.
+2025-06-19 14:56:41,732 INFO [APServer] Connection from ('127.0.0.1', 56474)
+2025-06-19 14:56:41,733 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 14:56:41,734 INFO [Utilities] Generated timestamp extension: 2025_06_19_14_56_41
+2025-06-19 14:56:41,734 INFO [APServer] Sent response: 2025_06_19_14_56_41
+2025-06-19 14:56:41,735 INFO [APServer] Client connection closed.
+2025-06-19 14:56:41,917 INFO [APServer] Connection from ('127.0.0.1', 56475)
+2025-06-19 14:56:41,919 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 14:56:41,919 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 14:56:41,920 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 14:56:41,921 INFO [APServer] Client connection closed.
+2025-06-19 14:56:42,094 INFO [APServer] Connection from ('127.0.0.1', 56476)
+2025-06-19 14:56:42,096 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_14_56_41"]}
+2025-06-19 14:56:42,096 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_14_56_41']
+2025-06-19 14:56:42,096 INFO [Utilities] Generated file prefix: raew_2025_06_19_14_56_41
+2025-06-19 14:56:42,097 INFO [APServer] Sent response: raew_2025_06_19_14_56_41
+2025-06-19 14:56:42,098 INFO [APServer] Client connection closed.
+2025-06-19 14:56:42,225 INFO [APServer] Connection from ('127.0.0.1', 56477)
+2025-06-19 14:56:42,226 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 14:56:42,226 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 14:56:42,226 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 14:56:42,227 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 14:56:42,227 INFO [APServer] Client connection closed.
+2025-06-19 14:56:42,355 INFO [APServer] Connection from ('127.0.0.1', 56478)
+2025-06-19 14:56:42,356 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 14:56:42,357 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 14:56:42,358 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 14:56:42,358 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 14:56:42,358 INFO [APServer] Client connection closed.
+2025-06-19 14:56:42,496 INFO [APServer] Connection from ('127.0.0.1', 56479)
+2025-06-19 14:56:42,497 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 14:56:42,497 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 14:56:42,498 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 14:56:42,498 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 14:56:42,499 INFO [APServer] Client connection closed.
+2025-06-19 14:56:42,650 INFO [APServer] Connection from ('127.0.0.1', 56480)
+2025-06-19 14:56:42,652 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_14_56_41"]}
+2025-06-19 14:56:42,652 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_14_56_41']
+2025-06-19 14:56:42,652 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_14_56_41
+2025-06-19 14:56:42,653 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_14_56_41
+2025-06-19 14:56:42,653 INFO [APServer] Client connection closed.
+2025-06-19 14:56:42,795 INFO [APServer] Connection from ('127.0.0.1', 56481)
+2025-06-19 14:56:42,798 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 1000, "wait_for_response": true}
+2025-06-19 14:56:42,799 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 1000
+2025-06-19 14:56:42,822 INFO [APServer] Serial raew found 12 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 14:56:42,826 INFO [APServer] Measurement permitted. (serial=raew, count=12, max=1000)
+2025-06-19 14:56:42,828 INFO [APServer] Sent response: Measurement permitted.
+2025-06-19 14:56:42,828 INFO [APServer] Client connection closed.
+2025-06-19 15:01:43,723 INFO [APServer] Connection from ('127.0.0.1', 56532)
+2025-06-19 15:01:43,724 INFO [APServer] Client connection closed.
+2025-06-19 15:01:43,925 INFO [APServer] Connection from ('127.0.0.1', 56533)
+2025-06-19 15:01:43,926 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 15:01:43,926 INFO [Utilities] Generated timestamp extension: 2025_06_19_15_01_43
+2025-06-19 15:01:43,927 INFO [APServer] Sent response: 2025_06_19_15_01_43
+2025-06-19 15:01:43,927 INFO [APServer] Client connection closed.
+2025-06-19 15:01:44,099 INFO [APServer] Connection from ('127.0.0.1', 56534)
+2025-06-19 15:01:44,099 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 15:01:44,100 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 15:01:44,100 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 15:01:44,100 INFO [APServer] Client connection closed.
+2025-06-19 15:01:44,278 INFO [APServer] Connection from ('127.0.0.1', 56535)
+2025-06-19 15:01:44,279 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_15_01_43"]}
+2025-06-19 15:01:44,279 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_15_01_43']
+2025-06-19 15:01:44,279 INFO [Utilities] Generated file prefix: raew_2025_06_19_15_01_43
+2025-06-19 15:01:44,279 INFO [APServer] Sent response: raew_2025_06_19_15_01_43
+2025-06-19 15:01:44,280 INFO [APServer] Client connection closed.
+2025-06-19 15:01:44,435 INFO [APServer] Connection from ('127.0.0.1', 56536)
+2025-06-19 15:01:44,436 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 15:01:44,436 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 15:01:44,436 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 15:01:44,437 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 15:01:44,437 INFO [APServer] Client connection closed.
+2025-06-19 15:01:44,562 INFO [APServer] Connection from ('127.0.0.1', 56537)
+2025-06-19 15:01:44,564 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 15:01:44,564 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 15:01:44,564 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 15:01:44,564 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 15:01:44,564 INFO [APServer] Client connection closed.
+2025-06-19 15:01:44,670 INFO [APServer] Connection from ('127.0.0.1', 56538)
+2025-06-19 15:01:44,671 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 15:01:44,671 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 15:01:44,671 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 15:01:44,672 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 15:01:44,672 INFO [APServer] Client connection closed.
+2025-06-19 15:01:44,820 INFO [APServer] Connection from ('127.0.0.1', 56539)
+2025-06-19 15:01:44,821 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_15_01_43"]}
+2025-06-19 15:01:44,821 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_15_01_43']
+2025-06-19 15:01:44,822 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_15_01_43
+2025-06-19 15:01:44,822 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_15_01_43
+2025-06-19 15:01:44,822 INFO [APServer] Client connection closed.
+2025-06-19 15:01:44,944 INFO [APServer] Connection from ('127.0.0.1', 56540)
+2025-06-19 15:01:44,946 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 1000, "wait_for_response": true}
+2025-06-19 15:01:44,946 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 1000
+2025-06-19 15:01:44,962 INFO [APServer] Serial raew found 13 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 15:01:44,962 INFO [APServer] Measurement permitted. (serial=raew, count=13, max=1000)
+2025-06-19 15:01:44,962 INFO [APServer] Sent response: Measurement permitted.
+2025-06-19 15:01:44,963 INFO [APServer] Client connection closed.
+2025-06-19 15:02:30,017 INFO [APServer] Connection from ('127.0.0.1', 56566)
+2025-06-19 15:02:30,018 INFO [APServer] Client connection closed.
+2025-06-19 15:02:30,250 INFO [APServer] Connection from ('127.0.0.1', 56567)
+2025-06-19 15:02:30,252 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 15:02:30,252 INFO [Utilities] Generated timestamp extension: 2025_06_19_15_02_30
+2025-06-19 15:02:30,253 INFO [APServer] Sent response: 2025_06_19_15_02_30
+2025-06-19 15:02:30,254 INFO [APServer] Client connection closed.
+2025-06-19 15:02:30,449 INFO [APServer] Connection from ('127.0.0.1', 56568)
+2025-06-19 15:02:30,449 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 15:02:30,450 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 15:02:30,450 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 15:02:30,451 INFO [APServer] Client connection closed.
+2025-06-19 15:02:30,593 INFO [APServer] Connection from ('127.0.0.1', 56569)
+2025-06-19 15:02:30,594 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_15_02_30"]}
+2025-06-19 15:02:30,595 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_15_02_30']
+2025-06-19 15:02:30,596 INFO [Utilities] Generated file prefix: raew_2025_06_19_15_02_30
+2025-06-19 15:02:30,597 INFO [APServer] Sent response: raew_2025_06_19_15_02_30
+2025-06-19 15:02:30,597 INFO [APServer] Client connection closed.
+2025-06-19 15:02:30,743 INFO [APServer] Connection from ('127.0.0.1', 56570)
+2025-06-19 15:02:30,744 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 15:02:30,744 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 15:02:30,745 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 15:02:30,745 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 15:02:30,746 INFO [APServer] Client connection closed.
+2025-06-19 15:02:30,888 INFO [APServer] Connection from ('127.0.0.1', 56571)
+2025-06-19 15:02:30,888 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 15:02:30,889 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 15:02:30,889 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 15:02:30,889 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 15:02:30,889 INFO [APServer] Client connection closed.
+2025-06-19 15:02:31,028 INFO [APServer] Connection from ('127.0.0.1', 56572)
+2025-06-19 15:02:31,029 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 15:02:31,029 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 15:02:31,030 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 15:02:31,030 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 15:02:31,030 INFO [APServer] Client connection closed.
+2025-06-19 15:02:31,165 INFO [APServer] Connection from ('127.0.0.1', 56573)
+2025-06-19 15:02:31,166 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_15_02_30"]}
+2025-06-19 15:02:31,166 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_15_02_30']
+2025-06-19 15:02:31,166 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_15_02_30
+2025-06-19 15:02:31,167 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_15_02_30
+2025-06-19 15:02:31,168 INFO [APServer] Client connection closed.
+2025-06-19 15:02:31,290 INFO [APServer] Connection from ('127.0.0.1', 56574)
+2025-06-19 15:02:31,291 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 1000, "wait_for_response": true}
+2025-06-19 15:02:31,291 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 1000
+2025-06-19 15:02:31,310 INFO [APServer] Serial raew found 14 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 15:02:31,310 INFO [APServer] Measurement permitted. (serial=raew, count=14, max=1000)
+2025-06-19 15:02:31,310 INFO [APServer] Sent response: Measurement permitted.
+2025-06-19 15:02:31,311 INFO [APServer] Client connection closed.
+2025-06-19 15:06:31,299 INFO [APServer] Connection from ('127.0.0.1', 56696)
+2025-06-19 15:06:31,300 INFO [APServer] Client connection closed.
+2025-06-19 15:06:32,835 INFO [APServer] Connection from ('127.0.0.1', 56697)
+2025-06-19 15:06:32,837 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 15:06:32,837 INFO [Utilities] Generated timestamp extension: 2025_06_19_15_06_32
+2025-06-19 15:06:32,838 INFO [APServer] Sent response: 2025_06_19_15_06_32
+2025-06-19 15:06:32,839 INFO [APServer] Client connection closed.
+2025-06-19 15:06:33,037 INFO [APServer] Connection from ('127.0.0.1', 56698)
+2025-06-19 15:06:33,038 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 15:06:33,038 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 15:06:33,039 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 15:06:33,039 INFO [APServer] Client connection closed.
+2025-06-19 15:06:33,209 INFO [APServer] Connection from ('127.0.0.1', 56699)
+2025-06-19 15:06:33,217 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_15_06_32"]}
+2025-06-19 15:06:33,218 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_15_06_32']
+2025-06-19 15:06:33,219 INFO [Utilities] Generated file prefix: raew_2025_06_19_15_06_32
+2025-06-19 15:06:33,220 INFO [APServer] Sent response: raew_2025_06_19_15_06_32
+2025-06-19 15:06:33,220 INFO [APServer] Client connection closed.
+2025-06-19 15:06:33,352 INFO [APServer] Connection from ('127.0.0.1', 56700)
+2025-06-19 15:06:33,354 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 15:06:33,354 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 15:06:33,355 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 15:06:33,355 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 15:06:33,356 INFO [APServer] Client connection closed.
+2025-06-19 15:06:33,469 INFO [APServer] Connection from ('127.0.0.1', 56701)
+2025-06-19 15:06:33,471 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 15:06:33,471 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 15:06:33,472 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 15:06:33,472 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 15:06:33,472 INFO [APServer] Client connection closed.
+2025-06-19 15:06:33,581 INFO [APServer] Connection from ('127.0.0.1', 56702)
+2025-06-19 15:06:33,582 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 15:06:33,582 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 15:06:33,582 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 15:06:33,583 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 15:06:33,583 INFO [APServer] Client connection closed.
+2025-06-19 15:06:33,706 INFO [APServer] Connection from ('127.0.0.1', 56703)
+2025-06-19 15:06:33,711 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_15_06_32"]}
+2025-06-19 15:06:33,712 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_15_06_32']
+2025-06-19 15:06:33,712 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_15_06_32
+2025-06-19 15:06:33,712 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_15_06_32
+2025-06-19 15:06:33,712 INFO [APServer] Client connection closed.
+2025-06-19 15:06:33,824 INFO [APServer] Connection from ('127.0.0.1', 56704)
+2025-06-19 15:06:33,825 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 1000, "wait_for_response": true}
+2025-06-19 15:06:33,825 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 1000
+2025-06-19 15:06:33,845 INFO [APServer] Serial raew found 15 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 15:06:33,845 INFO [APServer] Measurement permitted. (serial=raew, count=15, max=1000)
+2025-06-19 15:06:33,845 INFO [APServer] Sent response: Measurement permitted.
+2025-06-19 15:06:33,845 INFO [APServer] Client connection closed.
+2025-06-19 15:06:47,482 INFO [APServer] Connection from ('127.0.0.1', 56708)
+2025-06-19 15:06:47,483 INFO [APServer] Client connection closed.
+2025-06-19 15:06:47,714 INFO [APServer] Connection from ('127.0.0.1', 56709)
+2025-06-19 15:06:47,715 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 15:06:47,715 INFO [Utilities] Generated timestamp extension: 2025_06_19_15_06_47
+2025-06-19 15:06:47,716 INFO [APServer] Sent response: 2025_06_19_15_06_47
+2025-06-19 15:06:47,716 INFO [APServer] Client connection closed.
+2025-06-19 15:06:47,861 INFO [APServer] Connection from ('127.0.0.1', 56710)
+2025-06-19 15:06:47,861 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 15:06:47,862 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 15:06:47,862 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 15:06:47,862 INFO [APServer] Client connection closed.
+2025-06-19 15:06:48,017 INFO [APServer] Connection from ('127.0.0.1', 56711)
+2025-06-19 15:06:48,018 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_15_06_47"]}
+2025-06-19 15:06:48,018 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_15_06_47']
+2025-06-19 15:06:48,018 INFO [Utilities] Generated file prefix: raew_2025_06_19_15_06_47
+2025-06-19 15:06:48,018 INFO [APServer] Sent response: raew_2025_06_19_15_06_47
+2025-06-19 15:06:48,018 INFO [APServer] Client connection closed.
+2025-06-19 15:06:48,160 INFO [APServer] Connection from ('127.0.0.1', 56712)
+2025-06-19 15:06:48,160 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 15:06:48,161 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 15:06:48,161 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 15:06:48,161 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 15:06:48,163 INFO [APServer] Client connection closed.
+2025-06-19 15:06:48,299 INFO [APServer] Connection from ('127.0.0.1', 56713)
+2025-06-19 15:06:48,299 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 15:06:48,300 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 15:06:48,300 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 15:06:48,300 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 15:06:48,301 INFO [APServer] Client connection closed.
+2025-06-19 15:06:48,445 INFO [APServer] Connection from ('127.0.0.1', 56714)
+2025-06-19 15:06:48,445 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 15:06:48,445 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 15:06:48,446 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 15:06:48,446 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 15:06:48,446 INFO [APServer] Client connection closed.
+2025-06-19 15:06:48,564 INFO [APServer] Connection from ('127.0.0.1', 56715)
+2025-06-19 15:06:48,565 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_15_06_47"]}
+2025-06-19 15:06:48,565 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_15_06_47']
+2025-06-19 15:06:48,566 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_15_06_47
+2025-06-19 15:06:48,566 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_15_06_47
+2025-06-19 15:06:48,566 INFO [APServer] Client connection closed.
+2025-06-19 15:06:48,720 INFO [APServer] Connection from ('127.0.0.1', 56716)
+2025-06-19 15:06:48,720 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 1000, "wait_for_response": true}
+2025-06-19 15:06:48,720 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 1000
+2025-06-19 15:06:48,721 INFO [APServer] Serial raew found 15 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 15:06:48,721 INFO [APServer] Measurement permitted. (serial=raew, count=15, max=1000)
+2025-06-19 15:06:48,721 INFO [APServer] Sent response: Measurement permitted.
+2025-06-19 15:06:48,722 INFO [APServer] Client connection closed.
+2025-06-19 15:09:34,792 INFO [APServer] Connection from ('127.0.0.1', 56726)
+2025-06-19 15:09:34,793 INFO [APServer] Client connection closed.
+2025-06-19 15:09:34,996 INFO [APServer] Connection from ('127.0.0.1', 56727)
+2025-06-19 15:09:34,996 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 15:09:34,996 INFO [Utilities] Generated timestamp extension: 2025_06_19_15_09_34
+2025-06-19 15:09:34,997 INFO [APServer] Sent response: 2025_06_19_15_09_34
+2025-06-19 15:09:34,998 INFO [APServer] Client connection closed.
+2025-06-19 15:09:35,180 INFO [APServer] Connection from ('127.0.0.1', 56728)
+2025-06-19 15:09:35,181 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 15:09:35,182 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 15:09:35,183 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 15:09:35,184 INFO [APServer] Client connection closed.
+2025-06-19 15:09:35,349 INFO [APServer] Connection from ('127.0.0.1', 56729)
+2025-06-19 15:09:35,350 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_15_09_34"]}
+2025-06-19 15:09:35,351 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_15_09_34']
+2025-06-19 15:09:35,352 INFO [Utilities] Generated file prefix: raew_2025_06_19_15_09_34
+2025-06-19 15:09:35,352 INFO [APServer] Sent response: raew_2025_06_19_15_09_34
+2025-06-19 15:09:35,352 INFO [APServer] Client connection closed.
+2025-06-19 15:09:35,485 INFO [APServer] Connection from ('127.0.0.1', 56730)
+2025-06-19 15:09:35,486 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 15:09:35,487 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 15:09:35,487 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 15:09:35,487 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 15:09:35,488 INFO [APServer] Client connection closed.
+2025-06-19 15:09:35,613 INFO [APServer] Connection from ('127.0.0.1', 56731)
+2025-06-19 15:09:35,614 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 15:09:35,614 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 15:09:35,617 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 15:09:35,618 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 15:09:35,621 INFO [APServer] Client connection closed.
+2025-06-19 15:09:35,730 INFO [APServer] Connection from ('127.0.0.1', 56732)
+2025-06-19 15:09:35,730 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 15:09:35,731 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 15:09:35,731 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 15:09:35,731 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 15:09:35,731 INFO [APServer] Client connection closed.
+2025-06-19 15:09:35,858 INFO [APServer] Connection from ('127.0.0.1', 56733)
+2025-06-19 15:09:35,859 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_15_09_34"]}
+2025-06-19 15:09:35,859 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_15_09_34']
+2025-06-19 15:09:35,860 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_15_09_34
+2025-06-19 15:09:35,860 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_15_09_34
+2025-06-19 15:09:35,861 INFO [APServer] Client connection closed.
+2025-06-19 15:09:36,014 INFO [APServer] Connection from ('127.0.0.1', 56734)
+2025-06-19 15:09:36,015 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 1000, "wait_for_response": true}
+2025-06-19 15:09:36,015 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 1000
+2025-06-19 15:09:36,026 INFO [APServer] Serial raew found 16 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 15:09:36,027 INFO [APServer] Measurement permitted. (serial=raew, count=16, max=1000)
+2025-06-19 15:09:36,027 INFO [APServer] Sent response: Measurement permitted.
+2025-06-19 15:09:36,028 INFO [APServer] Client connection closed.
+2025-06-19 15:13:21,958 INFO [APServer] Connection from ('127.0.0.1', 56803)
+2025-06-19 15:13:21,961 INFO [APServer] Client connection closed.
+2025-06-19 15:13:22,185 INFO [APServer] Connection from ('127.0.0.1', 56804)
+2025-06-19 15:13:22,187 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-06-19 15:13:22,188 INFO [Utilities] Generated timestamp extension: 2025_06_19_15_13_22
+2025-06-19 15:13:22,189 INFO [APServer] Sent response: 2025_06_19_15_13_22
+2025-06-19 15:13:22,190 INFO [APServer] Client connection closed.
+2025-06-19 15:13:22,368 INFO [APServer] Connection from ('127.0.0.1', 56805)
+2025-06-19 15:13:22,370 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-06-19 15:13:22,370 INFO [Utilities] Generated timestamp subpath: 2025\06_19
+2025-06-19 15:13:22,371 INFO [APServer] Sent response: 2025\06_19
+2025-06-19 15:13:22,372 INFO [APServer] Client connection closed.
+2025-06-19 15:13:22,523 INFO [APServer] Connection from ('127.0.0.1', 56806)
+2025-06-19 15:13:22,527 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["raew", "2025_06_19_15_13_22"]}
+2025-06-19 15:13:22,530 INFO [APServer] Generating file prefix from: ['raew', '2025_06_19_15_13_22']
+2025-06-19 15:13:22,530 INFO [Utilities] Generated file prefix: raew_2025_06_19_15_13_22
+2025-06-19 15:13:22,533 INFO [APServer] Sent response: raew_2025_06_19_15_13_22
+2025-06-19 15:13:22,534 INFO [APServer] Client connection closed.
+2025-06-19 15:13:22,683 INFO [APServer] Connection from ('127.0.0.1', 56807)
+2025-06-19 15:13:22,685 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-06-19 15:13:22,686 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-06-19 15:13:22,687 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 15:13:22,687 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-06-19 15:13:22,688 INFO [APServer] Client connection closed.
+2025-06-19 15:13:22,802 INFO [APServer] Connection from ('127.0.0.1', 56808)
+2025-06-19 15:13:22,804 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-06-19 15:13:22,804 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-06-19 15:13:22,805 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 15:13:22,806 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-06-19 15:13:22,806 INFO [APServer] Client connection closed.
+2025-06-19 15:13:22,920 INFO [APServer] Connection from ('127.0.0.1', 56809)
+2025-06-19 15:13:22,923 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\06_19"]}
+2025-06-19 15:13:22,924 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\06_19']
+2025-06-19 15:13:22,924 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 15:13:22,925 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19
+2025-06-19 15:13:22,925 INFO [APServer] Client connection closed.
+2025-06-19 15:13:23,059 INFO [APServer] Connection from ('127.0.0.1', 56810)
+2025-06-19 15:13:23,060 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "EOL", "2025\\06_19", "2025_06_19_15_13_22"]}
+2025-06-19 15:13:23,060 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'EOL', '2025\\06_19', '2025_06_19_15_13_22']
+2025-06-19 15:13:23,061 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_15_13_22
+2025-06-19 15:13:23,061 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\EOL\2025\06_19\2025_06_19_15_13_22
+2025-06-19 15:13:23,062 INFO [APServer] Client connection closed.
+2025-06-19 15:13:23,210 INFO [APServer] Connection from ('127.0.0.1', 56811)
+2025-06-19 15:13:23,213 INFO [APServer] Received: {"action": "check_measurement_trials", "serial_number": "raew", "csv_path": "C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements\\Statistics\\2025\\06_19\\SequenceStatistics.csv", "max_trials": 1000, "wait_for_response": true}
+2025-06-19 15:13:23,213 INFO [APServer] Checking measurement trials for serial: raew, file: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv, max: 1000
+2025-06-19 15:13:23,235 INFO [APServer] Serial raew found 17 times in C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\06_19\SequenceStatistics.csv
+2025-06-19 15:13:23,236 INFO [APServer] Measurement permitted. (serial=raew, count=17, max=1000)
+2025-06-19 15:13:23,236 INFO [APServer] Sent response: Measurement permitted.
+2025-06-19 15:13:23,237 INFO [APServer] Client connection closed.

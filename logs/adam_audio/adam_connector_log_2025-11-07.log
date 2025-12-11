@@ -1,0 +1,334 @@
+2025-11-07 07:48:52,146 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 07:48:52,146 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: None, Service: ADAMService ===
+2025-11-07 07:48:52,146 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: None
+2025-11-07 07:48:53,175 INFO [AdamConnector] Starting ADAM service process: adam_service.py
+2025-11-07 07:48:55,441 INFO [AdamConnector] ADAM service discovered via broadcast from 169.254.74.100: {'service': 'ADAMService', 'company': 'ADAM Audio', 'ip': '192.168.1.165', 'port': 65432, 'hostname': 'Dell-Thilo', 'timestamp': 1762498135.441472, 'version': '1.0', 'capabilities': ['BiquadFilters', 'MeasurementTrials', 'ProductionLogging', 'HelperFunctions', 'WorkstationSupport'], 'discovery_port': 65433, 'status': 'running', 'note': 'OCA communication handled locally by workstations', 'sequence': 1}
+2025-11-07 07:48:55,446 INFO [AdamConnector] ADAM service started successfully in 2.3s
+2025-11-07 07:48:55,446 INFO [AdamConnector] Finding ADAM service - target_ip: None, port: 65432, discovery_timeout: 5s
+2025-11-07 07:48:56,457 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 07:48:56,457 INFO [AdamConnector] ADAM service found via discovery: 192.168.1.165:65432
+2025-11-07 07:48:56,457 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 07:49:03,799 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 07:49:03,799 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 07:49:03,799 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 07:49:03,802 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 07:49:03,802 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 07:49:03,824 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 07:49:03,824 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 07:49:03,965 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 07:49:03,965 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 07:49:03,965 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 07:49:03,980 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 07:49:03,980 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 07:49:03,980 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 07:51:57,383 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 07:51:57,383 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 07:51:57,383 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 07:51:57,402 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 07:51:57,402 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 07:51:57,403 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 07:51:57,404 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 07:51:57,665 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 07:51:57,665 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 07:51:57,665 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 07:51:57,668 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 07:51:57,668 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 07:51:57,669 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 07:52:32,432 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 07:52:32,432 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 07:52:32,432 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 07:52:32,488 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 07:52:32,488 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 07:52:32,499 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 07:52:32,499 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 07:52:32,679 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 07:52:32,679 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 07:52:32,679 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 07:52:32,683 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 07:52:32,683 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 07:52:32,684 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 08:03:06,237 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 08:03:06,237 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 08:03:06,238 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 08:03:06,259 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 08:03:06,259 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 08:03:06,260 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 08:03:06,260 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 08:03:06,424 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 08:03:06,424 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 08:03:06,424 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 08:03:06,429 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 08:03:06,429 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 08:03:06,429 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 08:03:59,015 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 08:03:59,016 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 08:03:59,016 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 08:03:59,020 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 08:03:59,021 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 08:03:59,039 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 08:03:59,039 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 08:03:59,293 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 08:03:59,293 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 08:03:59,293 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 08:03:59,296 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 08:03:59,296 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 08:03:59,296 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 08:04:42,679 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 08:04:42,679 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 08:04:42,679 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 08:04:42,684 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 08:04:42,684 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 08:04:42,685 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 08:04:42,685 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 08:04:42,994 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 08:04:42,994 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 08:04:42,994 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 08:04:42,998 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 08:04:42,998 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 08:04:42,998 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 08:07:21,974 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 08:07:21,975 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 08:07:21,975 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 08:07:21,980 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 08:07:21,980 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 08:07:21,993 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 08:07:21,993 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 08:07:22,271 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 08:07:22,271 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 08:07:22,271 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 08:07:22,275 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 08:07:22,275 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 08:07:22,275 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 10:04:56,329 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:04:56,329 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:04:56,330 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 10:04:56,396 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:04:56,397 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 10:04:56,398 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:04:56,398 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 10:04:56,502 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:04:56,502 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:04:56,502 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 10:04:56,506 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:04:56,506 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 10:04:56,506 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 10:05:31,190 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:05:31,190 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:05:31,191 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 10:05:31,197 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:05:31,198 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 10:05:31,223 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:05:31,223 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 10:05:31,472 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:05:31,472 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:05:31,472 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 10:05:31,475 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:05:31,476 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 10:05:31,476 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 10:05:55,690 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:05:55,690 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:05:55,690 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 10:05:55,695 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:05:55,695 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 10:05:55,707 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:05:55,707 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 10:05:56,036 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:05:56,036 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:05:56,036 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 10:05:56,039 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:05:56,039 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 10:05:56,039 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 10:21:03,085 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:21:03,085 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:21:03,085 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 10:21:03,122 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:21:03,122 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 10:21:03,123 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:21:03,123 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 10:21:03,235 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:21:03,235 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:21:03,235 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 10:21:03,238 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:21:03,238 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 10:21:03,238 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 10:22:12,983 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:22:12,983 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:22:12,983 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 10:22:14,000 INFO [AdamConnector] Starting ADAM service process: adam_service.py
+2025-11-07 10:22:24,707 WARNING [AdamConnector] ADAM service did not start within 10s timeout
+2025-11-07 10:22:24,712 ERROR [AdamConnector] Failed to start ADAM service
+2025-11-07 10:22:32,876 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:22:32,876 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:22:32,876 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 10:22:33,898 INFO [AdamConnector] Starting ADAM service process: adam_service.py
+2025-11-07 10:22:44,610 WARNING [AdamConnector] ADAM service did not start within 10s timeout
+2025-11-07 10:22:44,610 ERROR [AdamConnector] Failed to start ADAM service
+2025-11-07 10:23:02,300 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:23:02,301 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: None, Service: ADAMService ===
+2025-11-07 10:23:02,301 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: None
+2025-11-07 10:23:03,327 INFO [AdamConnector] Starting ADAM service process: adam_service.py
+2025-11-07 10:23:14,040 WARNING [AdamConnector] ADAM service did not start within 10s timeout
+2025-11-07 10:23:14,041 ERROR [AdamConnector] Failed to start ADAM service
+2025-11-07 10:23:27,766 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:23:27,766 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:23:27,766 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 10:23:28,794 INFO [AdamConnector] Starting ADAM service process: adam_service.py
+2025-11-07 10:23:39,515 WARNING [AdamConnector] ADAM service did not start within 10s timeout
+2025-11-07 10:23:39,515 ERROR [AdamConnector] Failed to start ADAM service
+2025-11-07 10:23:56,016 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:23:56,016 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:23:56,016 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 10:23:59,038 INFO [AdamConnector] Starting ADAM service process: adam_service.py
+2025-11-07 10:23:59,552 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:23:59,552 INFO [AdamConnector] ADAM service started successfully in 0.5s
+2025-11-07 10:23:59,553 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:23:59,553 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 10:23:59,731 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:23:59,731 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:23:59,731 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 10:23:59,735 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:23:59,735 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 10:23:59,735 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 10:24:22,114 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:24:22,114 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:24:22,114 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 10:24:22,118 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:24:22,118 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 10:24:22,144 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:24:22,144 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 10:24:22,409 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:24:22,409 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:24:22,409 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 10:24:22,426 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:24:22,426 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 10:24:22,426 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 10:25:37,085 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:25:37,085 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:25:37,085 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 10:25:37,089 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:25:37,089 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 10:25:37,114 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:25:37,114 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 10:25:37,342 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:25:37,342 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:25:37,342 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 10:25:37,345 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:25:37,345 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 10:25:37,345 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 10:26:46,010 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:26:46,010 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:26:46,010 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 10:26:46,033 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:26:46,033 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 10:26:46,033 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:26:46,034 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 10:26:46,335 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 10:26:46,336 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 10:26:46,336 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 10:26:46,339 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 10:26:46,339 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 10:26:46,339 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 13:11:49,226 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:11:49,226 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:11:49,226 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 13:11:49,271 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:11:49,271 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 13:11:49,272 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:11:49,272 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 13:11:49,382 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:11:49,382 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:11:49,382 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 13:11:49,408 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:11:49,408 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 13:11:49,408 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 13:12:18,961 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:12:18,961 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:12:18,961 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 13:12:18,987 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:12:18,987 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 13:12:19,002 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:12:19,003 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 13:12:19,201 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:12:19,201 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:12:19,201 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 13:12:19,205 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:12:19,205 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 13:12:19,205 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 13:12:41,804 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:12:41,807 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:12:41,808 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 13:12:41,836 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:12:41,837 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 13:12:41,838 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:12:41,838 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 13:12:42,076 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:12:42,077 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:12:42,077 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 13:12:42,100 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:12:42,100 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 13:12:42,100 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 13:13:05,669 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:13:05,669 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:13:05,669 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 13:13:05,689 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:13:05,689 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 13:13:05,705 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:13:05,705 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 13:13:05,886 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:13:05,886 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:13:05,886 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 13:13:05,890 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:13:05,890 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 13:13:05,890 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 13:13:27,644 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:13:27,644 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:13:27,644 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 13:13:27,648 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:13:27,649 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 13:13:27,649 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:13:27,649 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 13:13:27,889 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:13:27,890 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:13:27,890 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 13:13:27,914 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:13:27,914 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 13:13:27,914 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 13:13:51,425 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:13:51,425 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:13:51,425 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 13:13:51,440 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:13:51,440 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 13:13:51,445 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:13:51,445 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 13:13:51,673 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:13:51,673 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:13:51,673 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 13:13:51,676 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:13:51,677 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 13:13:51,677 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 13:14:25,115 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:14:25,115 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:14:25,115 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 13:14:25,142 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:14:25,142 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 13:14:25,143 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:14:25,143 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 13:14:25,427 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:14:25,427 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:14:25,427 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 13:14:25,454 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:14:25,454 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 13:14:25,454 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165
+2025-11-07 13:14:55,713 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:14:55,713 INFO [AdamConnector] === ADAM Audio Connector started - Mode: check, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:14:55,713 INFO [AdamConnector] Attempting to start ADAM service - script: adam_service.py, timeout: 10s, target_ip: 192.168.1.165
+2025-11-07 13:14:55,739 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:14:55,739 INFO [AdamConnector] ADAM service already running at specified IP: 192.168.1.165
+2025-11-07 13:14:55,740 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:14:55,740 INFO [AdamConnector] Check result: ADAM service available at 192.168.1.165:65432
+2025-11-07 13:14:55,981 INFO [AdamConnector] ADAM Audio Connector initialized - service: ADAMService, port: 65432, discovery_port: 65433
+2025-11-07 13:14:55,981 INFO [AdamConnector] === ADAM Audio Connector started - Mode: find, Target IP: 192.168.1.165, Service: ADAMService ===
+2025-11-07 13:14:55,981 INFO [AdamConnector] Finding ADAM service - target_ip: 192.168.1.165, port: 65432, discovery_timeout: 5s
+2025-11-07 13:14:55,984 INFO [AdamConnector] Connection successful to ADAM service 192.168.1.165:65432
+2025-11-07 13:14:55,984 INFO [AdamConnector] ADAM service found at specified IP: 192.168.1.165:65432
+2025-11-07 13:14:55,984 INFO [AdamConnector] Find result: ADAM service found at 192.168.1.165

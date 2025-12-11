@@ -1,0 +1,1188 @@
+2025-07-30 10:58:01,880 INFO [root] ----------------------------------- APServer started
+2025-07-30 10:58:01,883 INFO [APServer] Server started
+2025-07-30 10:58:01,884 INFO [APServer] Server is running...
+2025-07-30 10:58:01,884 INFO [APServer] Waiting for connections...
+2025-07-30 10:58:01,941 INFO [SerialDevice] Connected to serial device on COM4
+2025-07-30 10:58:01,942 INFO [APServer] Scanner connected.
+2025-07-30 10:58:47,125 INFO [APServer] Connection from ('127.0.0.1', 61686)
+2025-07-30 10:58:47,126 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 10:58:47,808 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 10:58:47,808 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 10:58:47,808 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 10:58:47,809 INFO [APServer] Client connection closed.
+2025-07-30 10:59:10,501 INFO [APServer] Connection from ('127.0.0.1', 61691)
+2025-07-30 10:59:10,502 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 10:59:14,578 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 10:59:14,579 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 10:59:14,579 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 10:59:14,579 INFO [APServer] Client connection closed.
+2025-07-30 10:59:26,151 INFO [APServer] Connection from ('127.0.0.1', 61696)
+2025-07-30 10:59:26,152 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 10:59:26,683 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 10:59:26,683 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 10:59:26,684 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 10:59:26,684 INFO [APServer] Client connection closed.
+2025-07-30 10:59:40,662 INFO [APServer] Connection from ('127.0.0.1', 61698)
+2025-07-30 10:59:40,663 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 10:59:41,211 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 10:59:41,211 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 10:59:41,212 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 10:59:41,212 INFO [APServer] Client connection closed.
+2025-07-30 11:00:35,116 INFO [APServer] Connection from ('127.0.0.1', 61707)
+2025-07-30 11:00:35,117 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:00:38,057 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:00:38,057 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:00:38,057 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:00:38,057 INFO [APServer] Client connection closed.
+2025-07-30 11:00:46,605 INFO [APServer] Connection from ('127.0.0.1', 61712)
+2025-07-30 11:00:46,607 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:00:47,143 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:00:47,143 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:00:47,145 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:00:47,145 INFO [APServer] Client connection closed.
+2025-07-30 11:00:54,012 INFO [APServer] Connection from ('127.0.0.1', 61717)
+2025-07-30 11:00:54,012 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:00:54,559 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:00:54,559 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:00:54,560 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:00:54,561 INFO [APServer] Client connection closed.
+2025-07-30 11:01:35,984 INFO [APServer] Connection from ('127.0.0.1', 61729)
+2025-07-30 11:01:35,985 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:01:36,508 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:01:36,508 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:01:36,509 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:01:36,510 INFO [APServer] Client connection closed.
+2025-07-30 11:01:39,018 INFO [APServer] Connection from ('127.0.0.1', 61734)
+2025-07-30 11:01:39,018 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:01:39,565 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:01:39,565 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:01:39,566 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:01:39,567 INFO [APServer] Client connection closed.
+2025-07-30 11:01:43,948 INFO [APServer] Connection from ('127.0.0.1', 61740)
+2025-07-30 11:01:43,949 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:01:44,496 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:01:44,496 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:01:44,497 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:01:44,497 INFO [APServer] Client connection closed.
+2025-07-30 11:01:47,931 INFO [APServer] Connection from ('127.0.0.1', 61744)
+2025-07-30 11:01:47,932 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:01:48,476 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:01:48,476 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:01:48,477 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:01:48,477 INFO [APServer] Client connection closed.
+2025-07-30 11:01:51,525 INFO [APServer] Connection from ('127.0.0.1', 61746)
+2025-07-30 11:01:51,526 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:01:52,075 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:01:52,075 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:01:52,076 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:01:52,076 INFO [APServer] Client connection closed.
+2025-07-30 11:05:47,806 INFO [root] ----------------------------------- APServer started
+2025-07-30 11:05:47,811 INFO [APServer] Server started
+2025-07-30 11:05:47,811 INFO [APServer] Server is running...
+2025-07-30 11:05:47,811 INFO [APServer] Waiting for connections...
+2025-07-30 11:05:47,853 INFO [SerialDevice] Connected to serial device on COM4
+2025-07-30 11:05:47,853 INFO [APServer] Scanner connected.
+2025-07-30 11:07:17,369 INFO [root] ----------------------------------- APServer started
+2025-07-30 11:07:17,373 INFO [APServer] Server started
+2025-07-30 11:07:17,373 INFO [APServer] Server is running...
+2025-07-30 11:07:17,373 INFO [APServer] Waiting for connections...
+2025-07-30 11:07:25,468 INFO [SerialDevice] Connected to serial device on COM4
+2025-07-30 11:07:25,468 INFO [APServer] Scanner connected.
+2025-07-30 11:08:32,853 INFO [root] ----------------------------------- APServer started
+2025-07-30 11:08:32,857 INFO [APServer] Server started
+2025-07-30 11:08:32,857 INFO [APServer] Server is running...
+2025-07-30 11:08:32,857 INFO [APServer] Waiting for connections...
+2025-07-30 11:08:42,983 INFO [SerialDevice] Connected to serial device on COM4
+2025-07-30 11:08:42,983 INFO [APServer] Scanner connected.
+2025-07-30 11:25:04,977 INFO [APServer] Connection from ('127.0.0.1', 61988)
+2025-07-30 11:25:04,978 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:25:15,486 ERROR [APServer] Failed to scan serial number.
+2025-07-30 11:25:15,486 INFO [APServer] Sent response: Error: Failed to scan serial number.
+2025-07-30 11:25:15,487 INFO [APServer] Client connection closed.
+2025-07-30 11:37:07,284 INFO [root] ----------------------------------- APServer started
+2025-07-30 11:37:07,288 INFO [APServer] Server started
+2025-07-30 11:37:07,288 INFO [APServer] Server is running...
+2025-07-30 11:37:07,288 INFO [APServer] Waiting for connections...
+2025-07-30 11:37:17,397 INFO [SerialDevice] Connected to serial device on COM4
+2025-07-30 11:37:17,397 INFO [APServer] Scanner connected.
+2025-07-30 11:37:44,799 INFO [APServer] Connection from ('127.0.0.1', 62151)
+2025-07-30 11:37:44,800 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:37:46,420 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:37:46,420 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:37:46,421 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:37:46,422 INFO [APServer] Client connection closed.
+2025-07-30 11:38:10,464 INFO [APServer] Connection from ('127.0.0.1', 62155)
+2025-07-30 11:38:10,464 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:38:11,246 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:38:11,246 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:38:11,247 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:38:11,247 INFO [APServer] Client connection closed.
+2025-07-30 11:38:17,485 INFO [APServer] Connection from ('127.0.0.1', 62157)
+2025-07-30 11:38:17,485 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:38:28,013 ERROR [APServer] Failed to scan serial number.
+2025-07-30 11:38:28,013 INFO [APServer] Sent response: Error: Failed to scan serial number.
+2025-07-30 11:38:28,014 INFO [APServer] Client connection closed.
+2025-07-30 11:43:59,680 INFO [APServer] Connection from ('127.0.0.1', 62290)
+2025-07-30 11:43:59,681 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:44:10,198 ERROR [APServer] Failed to scan serial number.
+2025-07-30 11:44:10,198 INFO [APServer] Sent response: Error: Failed to scan serial number.
+2025-07-30 11:44:10,199 INFO [APServer] Client connection closed.
+2025-07-30 11:44:14,109 INFO [APServer] Connection from ('127.0.0.1', 62295)
+2025-07-30 11:44:14,110 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:44:14,633 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:44:14,633 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:44:14,634 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:44:14,635 INFO [APServer] Client connection closed.
+2025-07-30 11:46:54,643 INFO [APServer] Connection from ('127.0.0.1', 62325)
+2025-07-30 11:46:54,643 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:46:58,581 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:46:58,581 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:46:58,581 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:46:58,582 INFO [APServer] Client connection closed.
+2025-07-30 11:47:07,141 INFO [APServer] Connection from ('127.0.0.1', 62330)
+2025-07-30 11:47:07,142 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:47:08,745 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:47:08,745 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:47:08,746 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:47:08,746 INFO [APServer] Client connection closed.
+2025-07-30 11:47:12,902 INFO [APServer] Connection from ('127.0.0.1', 62333)
+2025-07-30 11:47:12,903 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:47:13,448 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:47:13,448 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:47:13,448 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:47:13,449 INFO [APServer] Client connection closed.
+2025-07-30 11:47:17,713 INFO [APServer] Connection from ('127.0.0.1', 62335)
+2025-07-30 11:47:17,713 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:47:18,261 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:47:18,261 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:47:18,262 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:47:18,263 INFO [APServer] Client connection closed.
+2025-07-30 11:47:27,985 INFO [APServer] Connection from ('127.0.0.1', 62337)
+2025-07-30 11:47:27,985 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:47:28,517 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:47:28,517 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:47:28,518 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:47:28,519 INFO [APServer] Client connection closed.
+2025-07-30 11:47:31,964 INFO [APServer] Connection from ('127.0.0.1', 62339)
+2025-07-30 11:47:31,964 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:47:32,512 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:47:32,516 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:47:32,516 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:47:32,517 INFO [APServer] Client connection closed.
+2025-07-30 11:47:33,953 INFO [APServer] Connection from ('127.0.0.1', 62341)
+2025-07-30 11:47:33,954 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:47:34,486 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:47:34,486 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:47:34,487 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:47:34,487 INFO [APServer] Client connection closed.
+2025-07-30 11:47:36,319 INFO [APServer] Connection from ('127.0.0.1', 62342)
+2025-07-30 11:47:36,320 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:47:36,871 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:47:36,871 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:47:36,872 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:47:36,872 INFO [APServer] Client connection closed.
+2025-07-30 11:47:38,200 INFO [APServer] Connection from ('127.0.0.1', 62344)
+2025-07-30 11:47:38,201 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:47:38,730 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:47:38,730 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:47:38,731 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:47:38,731 INFO [APServer] Client connection closed.
+2025-07-30 11:47:40,004 INFO [APServer] Connection from ('127.0.0.1', 62346)
+2025-07-30 11:47:40,005 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:47:40,554 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:47:40,554 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:47:40,555 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:47:40,555 INFO [APServer] Client connection closed.
+2025-07-30 11:48:06,107 INFO [APServer] Connection from ('127.0.0.1', 62350)
+2025-07-30 11:48:06,107 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:48:06,647 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:48:06,647 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:48:06,648 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:48:06,648 INFO [APServer] Client connection closed.
+2025-07-30 11:57:16,378 INFO [APServer] Connection from ('127.0.0.1', 62491)
+2025-07-30 11:57:16,379 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 11:57:20,738 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 11:57:20,738 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 11:57:20,739 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 11:57:20,739 INFO [APServer] Client connection closed.
+2025-07-30 12:06:42,408 INFO [root] ----------------------------------- APServer started
+2025-07-30 12:06:42,412 INFO [APServer] Server started
+2025-07-30 12:06:42,412 INFO [APServer] Server is running...
+2025-07-30 12:06:42,413 INFO [APServer] Waiting for connections...
+2025-07-30 12:06:42,458 INFO [SerialDevice] Connected to serial device on COM4
+2025-07-30 12:06:42,458 INFO [APServer] Scanner connected.
+2025-07-30 12:08:46,811 INFO [APServer] Connection from ('127.0.0.1', 62647)
+2025-07-30 12:08:46,812 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:08:49,464 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:08:49,465 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:08:49,465 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:08:49,466 INFO [APServer] Client connection closed.
+2025-07-30 12:08:58,511 INFO [APServer] Connection from ('127.0.0.1', 62650)
+2025-07-30 12:08:58,512 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:08:59,050 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:08:59,050 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:08:59,050 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:08:59,051 INFO [APServer] Client connection closed.
+2025-07-30 12:09:01,051 INFO [APServer] Connection from ('127.0.0.1', 62652)
+2025-07-30 12:09:01,052 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:09:01,587 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:09:01,587 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:09:01,588 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:09:01,588 INFO [APServer] Client connection closed.
+2025-07-30 12:09:41,580 INFO [root] ----------------------------------- APServer started
+2025-07-30 12:09:41,584 INFO [APServer] Server started
+2025-07-30 12:09:41,584 INFO [APServer] Server is running...
+2025-07-30 12:09:41,585 INFO [APServer] Waiting for connections...
+2025-07-30 12:09:53,711 INFO [SerialDevice] Connected to serial device on COM4
+2025-07-30 12:09:53,711 INFO [APServer] Scanner connected.
+2025-07-30 12:10:00,466 INFO [APServer] Connection from ('127.0.0.1', 62666)
+2025-07-30 12:10:00,467 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:10:01,014 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:10:01,017 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:10:01,018 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:10:01,018 INFO [APServer] Client connection closed.
+2025-07-30 12:10:30,675 INFO [APServer] Connection from ('127.0.0.1', 62675)
+2025-07-30 12:10:30,676 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:10:41,207 ERROR [APServer] Failed to scan serial number.
+2025-07-30 12:10:41,208 INFO [APServer] Sent response: Error: Failed to scan serial number.
+2025-07-30 12:10:41,210 INFO [APServer] Client connection closed.
+2025-07-30 12:13:09,967 INFO [APServer] Connection from ('127.0.0.1', 62727)
+2025-07-30 12:13:09,969 INFO [APServer] Client connection closed.
+2025-07-30 12:13:10,384 INFO [APServer] Connection from ('127.0.0.1', 62728)
+2025-07-30 12:13:10,385 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:13:14,642 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:13:14,643 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:13:14,644 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:13:14,645 INFO [APServer] Client connection closed.
+2025-07-30 12:13:14,819 INFO [APServer] Connection from ('127.0.0.1', 62729)
+2025-07-30 12:13:14,820 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 12:13:14,821 INFO [Utilities] Generated timestamp extension: 2025_07_30_12_13_14
+2025-07-30 12:13:14,821 INFO [APServer] Sent response: 2025_07_30_12_13_14
+2025-07-30 12:13:14,822 INFO [APServer] Client connection closed.
+2025-07-30 12:13:14,994 INFO [APServer] Connection from ('127.0.0.1', 62730)
+2025-07-30 12:13:14,995 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 12:13:14,996 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 12:13:14,996 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 12:13:14,997 INFO [APServer] Client connection closed.
+2025-07-30 12:13:15,145 INFO [APServer] Connection from ('127.0.0.1', 62731)
+2025-07-30 12:13:15,146 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["X0019IADGB", "2025_07_30_12_13_14"]}
+2025-07-30 12:13:15,146 INFO [APServer] Generating file prefix from: ['X0019IADGB', '2025_07_30_12_13_14']
+2025-07-30 12:13:15,146 INFO [Utilities] Generated file prefix: X0019IADGB_2025_07_30_12_13_14
+2025-07-30 12:13:15,146 INFO [APServer] Sent response: X0019IADGB_2025_07_30_12_13_14
+2025-07-30 12:13:15,147 INFO [APServer] Client connection closed.
+2025-07-30 12:13:15,283 INFO [APServer] Connection from ('127.0.0.1', 62732)
+2025-07-30 12:13:15,283 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 12:13:15,284 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:13:15,284 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:13:15,284 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:13:15,284 INFO [APServer] Client connection closed.
+2025-07-30 12:13:15,455 INFO [APServer] Connection from ('127.0.0.1', 62733)
+2025-07-30 12:13:15,455 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 12:13:15,457 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:13:15,457 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:13:15,457 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:13:15,457 INFO [APServer] Client connection closed.
+2025-07-30 12:13:15,608 INFO [APServer] Connection from ('127.0.0.1', 62734)
+2025-07-30 12:13:15,608 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 12:13:15,609 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:13:15,609 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:13:15,609 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:13:15,609 INFO [APServer] Client connection closed.
+2025-07-30 12:13:15,749 INFO [APServer] Connection from ('127.0.0.1', 62735)
+2025-07-30 12:13:15,750 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_12_13_14"]}
+2025-07-30 12:13:15,750 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_13_14']
+2025-07-30 12:13:15,750 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_13_14
+2025-07-30 12:13:15,751 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_13_14
+2025-07-30 12:13:15,751 INFO [APServer] Client connection closed.
+2025-07-30 12:13:15,913 INFO [APServer] Connection from ('127.0.0.1', 62736)
+2025-07-30 12:13:15,914 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 12:13:15,914 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:13:15,915 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:13:15,915 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:13:15,915 INFO [APServer] Client connection closed.
+2025-07-30 12:14:57,308 INFO [APServer] Connection from ('127.0.0.1', 62743)
+2025-07-30 12:14:57,309 INFO [APServer] Client connection closed.
+2025-07-30 12:14:57,579 INFO [APServer] Connection from ('127.0.0.1', 62744)
+2025-07-30 12:14:57,579 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:15:02,045 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:15:02,046 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:15:02,046 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:15:02,047 INFO [APServer] Client connection closed.
+2025-07-30 12:15:02,214 INFO [APServer] Connection from ('127.0.0.1', 62745)
+2025-07-30 12:15:02,215 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 12:15:02,215 INFO [Utilities] Generated timestamp extension: 2025_07_30_12_15_02
+2025-07-30 12:15:02,216 INFO [APServer] Sent response: 2025_07_30_12_15_02
+2025-07-30 12:15:02,216 INFO [APServer] Client connection closed.
+2025-07-30 12:15:02,384 INFO [APServer] Connection from ('127.0.0.1', 62746)
+2025-07-30 12:15:02,384 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 12:15:02,385 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 12:15:02,386 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 12:15:02,386 INFO [APServer] Client connection closed.
+2025-07-30 12:15:02,524 INFO [APServer] Connection from ('127.0.0.1', 62747)
+2025-07-30 12:15:02,525 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["X0019IADGB", "2025_07_30_12_15_02"]}
+2025-07-30 12:15:02,525 INFO [APServer] Generating file prefix from: ['X0019IADGB', '2025_07_30_12_15_02']
+2025-07-30 12:15:02,526 INFO [Utilities] Generated file prefix: X0019IADGB_2025_07_30_12_15_02
+2025-07-30 12:15:02,526 INFO [APServer] Sent response: X0019IADGB_2025_07_30_12_15_02
+2025-07-30 12:15:02,526 INFO [APServer] Client connection closed.
+2025-07-30 12:15:02,702 INFO [APServer] Connection from ('127.0.0.1', 62748)
+2025-07-30 12:15:02,702 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 12:15:02,703 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:15:02,703 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:15:02,703 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:15:02,704 INFO [APServer] Client connection closed.
+2025-07-30 12:15:02,838 INFO [APServer] Connection from ('127.0.0.1', 62749)
+2025-07-30 12:15:02,839 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 12:15:02,839 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:15:02,840 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:15:02,840 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:15:02,840 INFO [APServer] Client connection closed.
+2025-07-30 12:15:03,006 INFO [APServer] Connection from ('127.0.0.1', 62750)
+2025-07-30 12:15:03,007 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 12:15:03,008 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:15:03,008 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:15:03,008 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:15:03,009 INFO [APServer] Client connection closed.
+2025-07-30 12:15:03,172 INFO [APServer] Connection from ('127.0.0.1', 62751)
+2025-07-30 12:15:03,172 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_12_15_02"]}
+2025-07-30 12:15:03,172 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_15_02']
+2025-07-30 12:15:03,173 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_15_02
+2025-07-30 12:15:03,173 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_15_02
+2025-07-30 12:15:03,173 INFO [APServer] Client connection closed.
+2025-07-30 12:15:03,353 INFO [APServer] Connection from ('127.0.0.1', 62752)
+2025-07-30 12:15:03,354 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 12:15:03,354 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:15:03,354 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:15:03,354 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:15:03,355 INFO [APServer] Client connection closed.
+2025-07-30 12:15:21,869 INFO [APServer] Connection from ('127.0.0.1', 62758)
+2025-07-30 12:15:21,871 INFO [APServer] Client connection closed.
+2025-07-30 12:15:22,167 INFO [APServer] Connection from ('127.0.0.1', 62759)
+2025-07-30 12:15:22,168 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:15:22,716 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:15:22,716 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:15:22,717 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:15:22,718 INFO [APServer] Client connection closed.
+2025-07-30 12:15:22,882 INFO [APServer] Connection from ('127.0.0.1', 62760)
+2025-07-30 12:15:22,883 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 12:15:22,883 INFO [Utilities] Generated timestamp extension: 2025_07_30_12_15_22
+2025-07-30 12:15:22,884 INFO [APServer] Sent response: 2025_07_30_12_15_22
+2025-07-30 12:15:22,884 INFO [APServer] Client connection closed.
+2025-07-30 12:15:23,016 INFO [APServer] Connection from ('127.0.0.1', 62761)
+2025-07-30 12:15:23,017 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 12:15:23,018 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 12:15:23,018 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 12:15:23,019 INFO [APServer] Client connection closed.
+2025-07-30 12:15:23,155 INFO [APServer] Connection from ('127.0.0.1', 62762)
+2025-07-30 12:15:23,156 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["X0019IADGB", "2025_07_30_12_15_22"]}
+2025-07-30 12:15:23,157 INFO [APServer] Generating file prefix from: ['X0019IADGB', '2025_07_30_12_15_22']
+2025-07-30 12:15:23,157 INFO [Utilities] Generated file prefix: X0019IADGB_2025_07_30_12_15_22
+2025-07-30 12:15:23,157 INFO [APServer] Sent response: X0019IADGB_2025_07_30_12_15_22
+2025-07-30 12:15:23,158 INFO [APServer] Client connection closed.
+2025-07-30 12:15:23,310 INFO [APServer] Connection from ('127.0.0.1', 62763)
+2025-07-30 12:15:23,310 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 12:15:23,311 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:15:23,311 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:15:23,311 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:15:23,311 INFO [APServer] Client connection closed.
+2025-07-30 12:15:23,483 INFO [APServer] Connection from ('127.0.0.1', 62764)
+2025-07-30 12:15:23,484 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 12:15:23,484 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:15:23,485 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:15:23,485 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:15:23,485 INFO [APServer] Client connection closed.
+2025-07-30 12:15:23,639 INFO [APServer] Connection from ('127.0.0.1', 62765)
+2025-07-30 12:15:23,641 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 12:15:23,641 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:15:23,641 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:15:23,641 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:15:23,641 INFO [APServer] Client connection closed.
+2025-07-30 12:15:23,755 INFO [APServer] Connection from ('127.0.0.1', 62766)
+2025-07-30 12:15:23,755 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_12_15_22"]}
+2025-07-30 12:15:23,755 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_15_22']
+2025-07-30 12:15:23,755 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_15_22
+2025-07-30 12:15:23,755 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_15_22
+2025-07-30 12:15:23,757 INFO [APServer] Client connection closed.
+2025-07-30 12:15:23,876 INFO [APServer] Connection from ('127.0.0.1', 62767)
+2025-07-30 12:15:23,877 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 12:15:23,877 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:15:23,878 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:15:23,878 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:15:23,878 INFO [APServer] Client connection closed.
+2025-07-30 12:15:38,752 INFO [APServer] Connection from ('127.0.0.1', 62770)
+2025-07-30 12:15:38,764 INFO [APServer] Client connection closed.
+2025-07-30 12:15:39,045 INFO [APServer] Connection from ('127.0.0.1', 62771)
+2025-07-30 12:15:39,046 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:15:39,589 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:15:39,589 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:15:39,589 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:15:39,590 INFO [APServer] Client connection closed.
+2025-07-30 12:15:39,725 INFO [APServer] Connection from ('127.0.0.1', 62772)
+2025-07-30 12:15:39,726 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 12:15:39,726 INFO [Utilities] Generated timestamp extension: 2025_07_30_12_15_39
+2025-07-30 12:15:39,727 INFO [APServer] Sent response: 2025_07_30_12_15_39
+2025-07-30 12:15:39,727 INFO [APServer] Client connection closed.
+2025-07-30 12:15:39,899 INFO [APServer] Connection from ('127.0.0.1', 62773)
+2025-07-30 12:15:39,900 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 12:15:39,900 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 12:15:39,900 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 12:15:39,900 INFO [APServer] Client connection closed.
+2025-07-30 12:15:40,009 INFO [APServer] Connection from ('127.0.0.1', 62774)
+2025-07-30 12:15:40,010 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["X0019IADGB", "2025_07_30_12_15_39"]}
+2025-07-30 12:15:40,010 INFO [APServer] Generating file prefix from: ['X0019IADGB', '2025_07_30_12_15_39']
+2025-07-30 12:15:40,010 INFO [Utilities] Generated file prefix: X0019IADGB_2025_07_30_12_15_39
+2025-07-30 12:15:40,011 INFO [APServer] Sent response: X0019IADGB_2025_07_30_12_15_39
+2025-07-30 12:15:40,011 INFO [APServer] Client connection closed.
+2025-07-30 12:15:40,152 INFO [APServer] Connection from ('127.0.0.1', 62775)
+2025-07-30 12:15:40,153 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 12:15:40,153 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:15:40,153 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:15:40,153 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:15:40,154 INFO [APServer] Client connection closed.
+2025-07-30 12:15:40,296 INFO [APServer] Connection from ('127.0.0.1', 62776)
+2025-07-30 12:15:40,296 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 12:15:40,297 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:15:40,297 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:15:40,297 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:15:40,297 INFO [APServer] Client connection closed.
+2025-07-30 12:15:40,452 INFO [APServer] Connection from ('127.0.0.1', 62777)
+2025-07-30 12:15:40,453 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 12:15:40,453 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:15:40,453 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:15:40,453 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:15:40,454 INFO [APServer] Client connection closed.
+2025-07-30 12:15:40,605 INFO [APServer] Connection from ('127.0.0.1', 62778)
+2025-07-30 12:15:40,606 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_12_15_39"]}
+2025-07-30 12:15:40,606 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_15_39']
+2025-07-30 12:15:40,607 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_15_39
+2025-07-30 12:15:40,607 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_15_39
+2025-07-30 12:15:40,607 INFO [APServer] Client connection closed.
+2025-07-30 12:15:40,739 INFO [APServer] Connection from ('127.0.0.1', 62779)
+2025-07-30 12:15:40,739 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 12:15:40,740 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:15:40,740 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:15:40,740 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:15:40,740 INFO [APServer] Client connection closed.
+2025-07-30 12:16:23,134 INFO [APServer] Connection from ('127.0.0.1', 62780)
+2025-07-30 12:16:23,137 INFO [APServer] Client connection closed.
+2025-07-30 12:16:23,412 INFO [APServer] Connection from ('127.0.0.1', 62781)
+2025-07-30 12:16:23,413 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:16:33,965 ERROR [APServer] Failed to scan serial number.
+2025-07-30 12:16:33,965 INFO [APServer] Sent response: Error: Failed to scan serial number.
+2025-07-30 12:16:33,966 INFO [APServer] Client connection closed.
+2025-07-30 12:16:34,166 INFO [APServer] Connection from ('127.0.0.1', 62782)
+2025-07-30 12:16:34,167 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 12:16:34,168 INFO [Utilities] Generated timestamp extension: 2025_07_30_12_16_34
+2025-07-30 12:16:34,168 INFO [APServer] Sent response: 2025_07_30_12_16_34
+2025-07-30 12:16:34,169 INFO [APServer] Client connection closed.
+2025-07-30 12:16:34,329 INFO [APServer] Connection from ('127.0.0.1', 62783)
+2025-07-30 12:16:34,330 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 12:16:34,330 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 12:16:34,330 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 12:16:34,331 INFO [APServer] Client connection closed.
+2025-07-30 12:16:34,481 INFO [APServer] Connection from ('127.0.0.1', 62784)
+2025-07-30 12:16:34,482 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["Error:", "Failed", "to", "scan", "serial", "number.", "2025_07_30_12_16_34"]}
+2025-07-30 12:16:34,482 INFO [APServer] Generating file prefix from: ['Error:', 'Failed', 'to', 'scan', 'serial', 'number.', '2025_07_30_12_16_34']
+2025-07-30 12:16:34,482 INFO [Utilities] Generated file prefix: Error:_Failed_to_scan_serial_number._2025_07_30_12_16_34
+2025-07-30 12:16:34,482 INFO [APServer] Sent response: Error:_Failed_to_scan_serial_number._2025_07_30_12_16_34
+2025-07-30 12:16:34,483 INFO [APServer] Client connection closed.
+2025-07-30 12:16:34,637 INFO [APServer] Connection from ('127.0.0.1', 62786)
+2025-07-30 12:16:34,638 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 12:16:34,638 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:16:34,638 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:16:34,638 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:16:34,639 INFO [APServer] Client connection closed.
+2025-07-30 12:16:34,787 INFO [APServer] Connection from ('127.0.0.1', 62787)
+2025-07-30 12:16:34,788 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 12:16:34,788 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:16:34,789 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:16:34,789 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:16:34,789 INFO [APServer] Client connection closed.
+2025-07-30 12:16:34,938 INFO [APServer] Connection from ('127.0.0.1', 62788)
+2025-07-30 12:16:34,939 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 12:16:34,939 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:16:34,939 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:16:34,940 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:16:34,940 INFO [APServer] Client connection closed.
+2025-07-30 12:16:35,080 INFO [APServer] Connection from ('127.0.0.1', 62789)
+2025-07-30 12:16:35,081 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_12_16_34"]}
+2025-07-30 12:16:35,082 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_16_34']
+2025-07-30 12:16:35,082 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_16_34
+2025-07-30 12:16:35,082 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_16_34
+2025-07-30 12:16:35,083 INFO [APServer] Client connection closed.
+2025-07-30 12:16:35,209 INFO [APServer] Connection from ('127.0.0.1', 62790)
+2025-07-30 12:16:35,210 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 12:16:35,211 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:16:35,211 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:16:35,211 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:16:35,212 INFO [APServer] Client connection closed.
+2025-07-30 12:19:09,867 INFO [APServer] Connection from ('127.0.0.1', 62800)
+2025-07-30 12:19:09,880 INFO [APServer] Client connection closed.
+2025-07-30 12:19:10,533 INFO [APServer] Connection from ('127.0.0.1', 62801)
+2025-07-30 12:19:10,534 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:19:21,079 ERROR [APServer] Failed to scan serial number.
+2025-07-30 12:19:21,079 INFO [APServer] Sent response: Error: Failed to scan serial number.
+2025-07-30 12:19:21,080 INFO [APServer] Client connection closed.
+2025-07-30 12:19:21,234 INFO [APServer] Connection from ('127.0.0.1', 62802)
+2025-07-30 12:19:21,235 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 12:19:21,235 INFO [Utilities] Generated timestamp extension: 2025_07_30_12_19_21
+2025-07-30 12:19:21,236 INFO [APServer] Sent response: 2025_07_30_12_19_21
+2025-07-30 12:19:21,236 INFO [APServer] Client connection closed.
+2025-07-30 12:19:21,368 INFO [APServer] Connection from ('127.0.0.1', 62803)
+2025-07-30 12:19:21,369 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 12:19:21,369 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 12:19:21,369 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 12:19:21,370 INFO [APServer] Client connection closed.
+2025-07-30 12:19:21,536 INFO [APServer] Connection from ('127.0.0.1', 62804)
+2025-07-30 12:19:21,537 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["Error:", "Failed", "to", "scan", "serial", "number.", "2025_07_30_12_19_21"]}
+2025-07-30 12:19:21,537 INFO [APServer] Generating file prefix from: ['Error:', 'Failed', 'to', 'scan', 'serial', 'number.', '2025_07_30_12_19_21']
+2025-07-30 12:19:21,537 INFO [Utilities] Generated file prefix: Error:_Failed_to_scan_serial_number._2025_07_30_12_19_21
+2025-07-30 12:19:21,537 INFO [APServer] Sent response: Error:_Failed_to_scan_serial_number._2025_07_30_12_19_21
+2025-07-30 12:19:21,538 INFO [APServer] Client connection closed.
+2025-07-30 12:19:21,666 INFO [APServer] Connection from ('127.0.0.1', 62805)
+2025-07-30 12:19:21,667 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 12:19:21,667 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:19:21,667 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:19:21,668 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:19:21,668 INFO [APServer] Client connection closed.
+2025-07-30 12:19:21,797 INFO [APServer] Connection from ('127.0.0.1', 62806)
+2025-07-30 12:19:21,798 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 12:19:21,798 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:19:21,799 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:19:21,799 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:19:21,799 INFO [APServer] Client connection closed.
+2025-07-30 12:19:21,930 INFO [APServer] Connection from ('127.0.0.1', 62807)
+2025-07-30 12:19:21,931 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 12:19:21,931 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:19:21,931 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:19:21,931 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:19:21,932 INFO [APServer] Client connection closed.
+2025-07-30 12:19:22,070 INFO [APServer] Connection from ('127.0.0.1', 62808)
+2025-07-30 12:19:22,071 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_12_19_21"]}
+2025-07-30 12:19:22,071 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_19_21']
+2025-07-30 12:19:22,072 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_19_21
+2025-07-30 12:19:22,072 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_19_21
+2025-07-30 12:19:22,072 INFO [APServer] Client connection closed.
+2025-07-30 12:19:22,190 INFO [APServer] Connection from ('127.0.0.1', 62809)
+2025-07-30 12:19:22,191 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 12:19:22,191 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:19:22,192 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:19:22,192 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:19:22,192 INFO [APServer] Client connection closed.
+2025-07-30 12:22:15,463 INFO [APServer] Connection from ('127.0.0.1', 62839)
+2025-07-30 12:22:15,465 INFO [APServer] Client connection closed.
+2025-07-30 12:22:15,712 INFO [APServer] Connection from ('127.0.0.1', 62840)
+2025-07-30 12:22:15,713 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:22:16,247 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:22:16,248 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:22:16,249 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:22:16,250 INFO [APServer] Client connection closed.
+2025-07-30 12:22:16,428 INFO [APServer] Connection from ('127.0.0.1', 62841)
+2025-07-30 12:22:16,428 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 12:22:16,429 INFO [Utilities] Generated timestamp extension: 2025_07_30_12_22_16
+2025-07-30 12:22:16,429 INFO [APServer] Sent response: 2025_07_30_12_22_16
+2025-07-30 12:22:16,429 INFO [APServer] Client connection closed.
+2025-07-30 12:22:16,582 INFO [APServer] Connection from ('127.0.0.1', 62842)
+2025-07-30 12:22:16,583 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 12:22:16,583 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 12:22:16,584 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 12:22:16,584 INFO [APServer] Client connection closed.
+2025-07-30 12:22:16,736 INFO [APServer] Connection from ('127.0.0.1', 62843)
+2025-07-30 12:22:16,736 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["X0019IADGB", "2025_07_30_12_22_16"]}
+2025-07-30 12:22:16,736 INFO [APServer] Generating file prefix from: ['X0019IADGB', '2025_07_30_12_22_16']
+2025-07-30 12:22:16,736 INFO [Utilities] Generated file prefix: X0019IADGB_2025_07_30_12_22_16
+2025-07-30 12:22:16,737 INFO [APServer] Sent response: X0019IADGB_2025_07_30_12_22_16
+2025-07-30 12:22:16,737 INFO [APServer] Client connection closed.
+2025-07-30 12:22:16,883 INFO [APServer] Connection from ('127.0.0.1', 62844)
+2025-07-30 12:22:16,884 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 12:22:16,884 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:22:16,884 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:22:16,885 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:22:16,885 INFO [APServer] Client connection closed.
+2025-07-30 12:22:17,047 INFO [APServer] Connection from ('127.0.0.1', 62845)
+2025-07-30 12:22:17,048 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 12:22:17,048 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:22:17,048 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:22:17,049 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:22:17,049 INFO [APServer] Client connection closed.
+2025-07-30 12:22:17,192 INFO [APServer] Connection from ('127.0.0.1', 62846)
+2025-07-30 12:22:17,193 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 12:22:17,193 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:22:17,194 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:22:17,194 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:22:17,194 INFO [APServer] Client connection closed.
+2025-07-30 12:22:17,364 INFO [APServer] Connection from ('127.0.0.1', 62847)
+2025-07-30 12:22:17,364 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_12_22_16"]}
+2025-07-30 12:22:17,365 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_22_16']
+2025-07-30 12:22:17,365 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_22_16
+2025-07-30 12:22:17,365 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_22_16
+2025-07-30 12:22:17,366 INFO [APServer] Client connection closed.
+2025-07-30 12:22:17,526 INFO [APServer] Connection from ('127.0.0.1', 62848)
+2025-07-30 12:22:17,527 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 12:22:17,527 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:22:17,528 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:22:17,528 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:22:17,528 INFO [APServer] Client connection closed.
+2025-07-30 12:24:05,340 INFO [APServer] Connection from ('127.0.0.1', 62853)
+2025-07-30 12:24:05,341 INFO [APServer] Client connection closed.
+2025-07-30 12:24:05,543 INFO [APServer] Connection from ('127.0.0.1', 62854)
+2025-07-30 12:24:05,544 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:24:16,060 ERROR [APServer] Failed to scan serial number.
+2025-07-30 12:24:16,061 INFO [APServer] Sent response: Error: Failed to scan serial number.
+2025-07-30 12:24:16,062 INFO [APServer] Client connection closed.
+2025-07-30 12:24:21,764 INFO [APServer] Connection from ('127.0.0.1', 62855)
+2025-07-30 12:24:21,766 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 12:24:21,766 INFO [Utilities] Generated timestamp extension: 2025_07_30_12_24_21
+2025-07-30 12:24:21,766 INFO [APServer] Sent response: 2025_07_30_12_24_21
+2025-07-30 12:24:21,767 INFO [APServer] Client connection closed.
+2025-07-30 12:24:21,953 INFO [APServer] Connection from ('127.0.0.1', 62856)
+2025-07-30 12:24:21,954 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 12:24:21,954 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 12:24:21,954 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 12:24:21,955 INFO [APServer] Client connection closed.
+2025-07-30 12:24:22,077 INFO [APServer] Connection from ('127.0.0.1', 62857)
+2025-07-30 12:24:22,078 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["Error:", "Failed", "to", "scan", "serial", "number.", "2025_07_30_12_24_21"]}
+2025-07-30 12:24:22,079 INFO [APServer] Generating file prefix from: ['Error:', 'Failed', 'to', 'scan', 'serial', 'number.', '2025_07_30_12_24_21']
+2025-07-30 12:24:22,079 INFO [Utilities] Generated file prefix: Error:_Failed_to_scan_serial_number._2025_07_30_12_24_21
+2025-07-30 12:24:22,079 INFO [APServer] Sent response: Error:_Failed_to_scan_serial_number._2025_07_30_12_24_21
+2025-07-30 12:24:22,079 INFO [APServer] Client connection closed.
+2025-07-30 12:24:22,193 INFO [APServer] Connection from ('127.0.0.1', 62858)
+2025-07-30 12:24:22,193 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 12:24:22,193 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:24:22,194 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:24:22,194 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:24:22,194 INFO [APServer] Client connection closed.
+2025-07-30 12:24:22,309 INFO [APServer] Connection from ('127.0.0.1', 62859)
+2025-07-30 12:24:22,310 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 12:24:22,310 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:24:22,311 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:24:22,311 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:24:22,311 INFO [APServer] Client connection closed.
+2025-07-30 12:24:22,414 INFO [APServer] Connection from ('127.0.0.1', 62860)
+2025-07-30 12:24:22,414 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 12:24:22,415 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:24:22,415 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:24:22,415 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:24:22,415 INFO [APServer] Client connection closed.
+2025-07-30 12:24:22,539 INFO [APServer] Connection from ('127.0.0.1', 62861)
+2025-07-30 12:24:22,539 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_12_24_21"]}
+2025-07-30 12:24:22,540 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_24_21']
+2025-07-30 12:24:22,540 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_24_21
+2025-07-30 12:24:22,540 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_24_21
+2025-07-30 12:24:22,540 INFO [APServer] Client connection closed.
+2025-07-30 12:24:22,652 INFO [APServer] Connection from ('127.0.0.1', 62862)
+2025-07-30 12:24:22,653 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 12:24:22,654 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:24:22,654 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:24:22,654 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:24:22,654 INFO [APServer] Client connection closed.
+2025-07-30 12:24:48,405 INFO [APServer] Connection from ('127.0.0.1', 62867)
+2025-07-30 12:24:48,407 INFO [APServer] Client connection closed.
+2025-07-30 12:24:48,688 INFO [APServer] Connection from ('127.0.0.1', 62868)
+2025-07-30 12:24:48,688 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:24:59,202 ERROR [APServer] Failed to scan serial number.
+2025-07-30 12:24:59,202 ERROR [APServer] Error processing command: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-07-30 12:24:59,203 ERROR [APServer] Connection error: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-07-30 12:24:59,203 INFO [APServer] Client connection closed.
+2025-07-30 12:25:00,274 INFO [APServer] Connection from ('127.0.0.1', 62871)
+2025-07-30 12:25:00,297 INFO [APServer] Client connection closed.
+2025-07-30 12:25:00,534 INFO [APServer] Connection from ('127.0.0.1', 62872)
+2025-07-30 12:25:00,535 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:25:11,052 ERROR [APServer] Failed to scan serial number.
+2025-07-30 12:25:11,052 ERROR [APServer] Error processing command: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-07-30 12:25:11,053 ERROR [APServer] Connection error: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-07-30 12:25:11,053 INFO [APServer] Client connection closed.
+2025-07-30 12:25:25,612 INFO [APServer] Connection from ('127.0.0.1', 62886)
+2025-07-30 12:25:25,613 INFO [APServer] Client connection closed.
+2025-07-30 12:25:25,853 INFO [APServer] Connection from ('127.0.0.1', 62887)
+2025-07-30 12:25:25,854 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:25:26,384 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:25:26,384 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:25:26,385 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:25:26,385 INFO [APServer] Client connection closed.
+2025-07-30 12:25:26,530 INFO [APServer] Connection from ('127.0.0.1', 62888)
+2025-07-30 12:25:26,530 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 12:25:26,531 INFO [Utilities] Generated timestamp extension: 2025_07_30_12_25_26
+2025-07-30 12:25:26,531 INFO [APServer] Sent response: 2025_07_30_12_25_26
+2025-07-30 12:25:26,531 INFO [APServer] Client connection closed.
+2025-07-30 12:25:26,637 INFO [APServer] Connection from ('127.0.0.1', 62889)
+2025-07-30 12:25:26,638 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 12:25:26,638 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 12:25:26,638 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 12:25:26,638 INFO [APServer] Client connection closed.
+2025-07-30 12:25:26,754 INFO [APServer] Connection from ('127.0.0.1', 62890)
+2025-07-30 12:25:26,755 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["X0019IADGB", "2025_07_30_12_25_26"]}
+2025-07-30 12:25:26,755 INFO [APServer] Generating file prefix from: ['X0019IADGB', '2025_07_30_12_25_26']
+2025-07-30 12:25:26,755 INFO [Utilities] Generated file prefix: X0019IADGB_2025_07_30_12_25_26
+2025-07-30 12:25:26,756 INFO [APServer] Sent response: X0019IADGB_2025_07_30_12_25_26
+2025-07-30 12:25:26,756 INFO [APServer] Client connection closed.
+2025-07-30 12:25:26,906 INFO [APServer] Connection from ('127.0.0.1', 62891)
+2025-07-30 12:25:26,906 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 12:25:26,906 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:25:26,906 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:25:26,907 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:25:26,907 INFO [APServer] Client connection closed.
+2025-07-30 12:25:27,042 INFO [APServer] Connection from ('127.0.0.1', 62892)
+2025-07-30 12:25:27,043 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 12:25:27,043 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:25:27,043 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:25:27,043 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:25:27,044 INFO [APServer] Client connection closed.
+2025-07-30 12:25:27,168 INFO [APServer] Connection from ('127.0.0.1', 62893)
+2025-07-30 12:25:27,168 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 12:25:27,169 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:25:27,169 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:25:27,170 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:25:27,170 INFO [APServer] Client connection closed.
+2025-07-30 12:25:27,316 INFO [APServer] Connection from ('127.0.0.1', 62894)
+2025-07-30 12:25:27,317 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_12_25_26"]}
+2025-07-30 12:25:27,317 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_25_26']
+2025-07-30 12:25:27,318 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_25_26
+2025-07-30 12:25:27,318 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_25_26
+2025-07-30 12:25:27,318 INFO [APServer] Client connection closed.
+2025-07-30 12:25:27,477 INFO [APServer] Connection from ('127.0.0.1', 62895)
+2025-07-30 12:25:27,478 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 12:25:27,478 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:25:27,479 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:25:27,479 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:25:27,479 INFO [APServer] Client connection closed.
+2025-07-30 12:25:42,662 INFO [APServer] Connection from ('127.0.0.1', 62899)
+2025-07-30 12:25:42,663 INFO [APServer] Client connection closed.
+2025-07-30 12:25:42,885 INFO [APServer] Connection from ('127.0.0.1', 62900)
+2025-07-30 12:25:42,886 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:25:43,435 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:25:43,436 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:25:43,436 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:25:43,436 INFO [APServer] Client connection closed.
+2025-07-30 12:25:43,570 INFO [APServer] Connection from ('127.0.0.1', 62901)
+2025-07-30 12:25:43,571 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 12:25:43,571 INFO [Utilities] Generated timestamp extension: 2025_07_30_12_25_43
+2025-07-30 12:25:43,571 INFO [APServer] Sent response: 2025_07_30_12_25_43
+2025-07-30 12:25:43,572 INFO [APServer] Client connection closed.
+2025-07-30 12:25:43,732 INFO [APServer] Connection from ('127.0.0.1', 62902)
+2025-07-30 12:25:43,733 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 12:25:43,733 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 12:25:43,733 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 12:25:43,734 INFO [APServer] Client connection closed.
+2025-07-30 12:25:43,892 INFO [APServer] Connection from ('127.0.0.1', 62903)
+2025-07-30 12:25:43,892 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["X0019IADGB", "2025_07_30_12_25_43"]}
+2025-07-30 12:25:43,893 INFO [APServer] Generating file prefix from: ['X0019IADGB', '2025_07_30_12_25_43']
+2025-07-30 12:25:43,893 INFO [Utilities] Generated file prefix: X0019IADGB_2025_07_30_12_25_43
+2025-07-30 12:25:43,893 INFO [APServer] Sent response: X0019IADGB_2025_07_30_12_25_43
+2025-07-30 12:25:43,894 INFO [APServer] Client connection closed.
+2025-07-30 12:25:44,050 INFO [APServer] Connection from ('127.0.0.1', 62904)
+2025-07-30 12:25:44,051 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 12:25:44,051 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:25:44,051 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:25:44,052 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:25:44,052 INFO [APServer] Client connection closed.
+2025-07-30 12:25:44,182 INFO [APServer] Connection from ('127.0.0.1', 62905)
+2025-07-30 12:25:44,182 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 12:25:44,183 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:25:44,183 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:25:44,183 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:25:44,184 INFO [APServer] Client connection closed.
+2025-07-30 12:25:44,347 INFO [APServer] Connection from ('127.0.0.1', 62906)
+2025-07-30 12:25:44,348 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 12:25:44,348 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:25:44,349 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:25:44,349 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:25:44,349 INFO [APServer] Client connection closed.
+2025-07-30 12:25:44,489 INFO [APServer] Connection from ('127.0.0.1', 62907)
+2025-07-30 12:25:44,489 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_12_25_43"]}
+2025-07-30 12:25:44,489 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_25_43']
+2025-07-30 12:25:44,489 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_25_43
+2025-07-30 12:25:44,490 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_25_43
+2025-07-30 12:25:44,490 INFO [APServer] Client connection closed.
+2025-07-30 12:25:44,603 INFO [APServer] Connection from ('127.0.0.1', 62908)
+2025-07-30 12:25:44,604 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 12:25:44,604 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:25:44,604 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:25:44,604 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:25:44,604 INFO [APServer] Client connection closed.
+2025-07-30 12:26:03,730 INFO [APServer] Connection from ('127.0.0.1', 62909)
+2025-07-30 12:26:03,731 INFO [APServer] Client connection closed.
+2025-07-30 12:26:04,004 INFO [APServer] Connection from ('127.0.0.1', 62910)
+2025-07-30 12:26:04,005 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:26:04,548 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:26:04,548 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:26:04,549 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:26:04,549 INFO [APServer] Client connection closed.
+2025-07-30 12:26:04,736 INFO [APServer] Connection from ('127.0.0.1', 62911)
+2025-07-30 12:26:04,737 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 12:26:04,737 INFO [Utilities] Generated timestamp extension: 2025_07_30_12_26_04
+2025-07-30 12:26:04,738 INFO [APServer] Sent response: 2025_07_30_12_26_04
+2025-07-30 12:26:04,738 INFO [APServer] Client connection closed.
+2025-07-30 12:26:04,896 INFO [APServer] Connection from ('127.0.0.1', 62912)
+2025-07-30 12:26:04,897 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 12:26:04,897 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 12:26:04,898 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 12:26:04,898 INFO [APServer] Client connection closed.
+2025-07-30 12:26:05,043 INFO [APServer] Connection from ('127.0.0.1', 62913)
+2025-07-30 12:26:05,043 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["X0019IADGB", "2025_07_30_12_26_04"]}
+2025-07-30 12:26:05,043 INFO [APServer] Generating file prefix from: ['X0019IADGB', '2025_07_30_12_26_04']
+2025-07-30 12:26:05,044 INFO [Utilities] Generated file prefix: X0019IADGB_2025_07_30_12_26_04
+2025-07-30 12:26:05,044 INFO [APServer] Sent response: X0019IADGB_2025_07_30_12_26_04
+2025-07-30 12:26:05,044 INFO [APServer] Client connection closed.
+2025-07-30 12:26:05,216 INFO [APServer] Connection from ('127.0.0.1', 62914)
+2025-07-30 12:26:05,217 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 12:26:05,217 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:26:05,217 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:26:05,218 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:26:05,218 INFO [APServer] Client connection closed.
+2025-07-30 12:26:05,348 INFO [APServer] Connection from ('127.0.0.1', 62915)
+2025-07-30 12:26:05,349 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 12:26:05,350 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:26:05,350 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:26:05,350 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:26:05,351 INFO [APServer] Client connection closed.
+2025-07-30 12:26:05,494 INFO [APServer] Connection from ('127.0.0.1', 62916)
+2025-07-30 12:26:05,494 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 12:26:05,495 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:26:05,495 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:26:05,495 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:26:05,495 INFO [APServer] Client connection closed.
+2025-07-30 12:26:05,659 INFO [APServer] Connection from ('127.0.0.1', 62917)
+2025-07-30 12:26:05,660 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_12_26_04"]}
+2025-07-30 12:26:05,660 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_26_04']
+2025-07-30 12:26:05,660 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_26_04
+2025-07-30 12:26:05,661 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_26_04
+2025-07-30 12:26:05,661 INFO [APServer] Client connection closed.
+2025-07-30 12:26:05,800 INFO [APServer] Connection from ('127.0.0.1', 62918)
+2025-07-30 12:26:05,801 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 12:26:05,801 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:26:05,801 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:26:05,802 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:26:05,802 INFO [APServer] Client connection closed.
+2025-07-30 12:26:38,455 INFO [APServer] Connection from ('127.0.0.1', 62929)
+2025-07-30 12:26:38,457 INFO [APServer] Client connection closed.
+2025-07-30 12:26:38,710 INFO [APServer] Connection from ('127.0.0.1', 62930)
+2025-07-30 12:26:38,711 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:26:39,236 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:26:39,236 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:26:39,237 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:26:39,237 INFO [APServer] Client connection closed.
+2025-07-30 12:26:39,427 INFO [APServer] Connection from ('127.0.0.1', 62931)
+2025-07-30 12:26:39,428 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 12:26:39,428 INFO [Utilities] Generated timestamp extension: 2025_07_30_12_26_39
+2025-07-30 12:26:39,429 INFO [APServer] Sent response: 2025_07_30_12_26_39
+2025-07-30 12:26:39,429 INFO [APServer] Client connection closed.
+2025-07-30 12:26:39,562 INFO [APServer] Connection from ('127.0.0.1', 62932)
+2025-07-30 12:26:39,563 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 12:26:39,568 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 12:26:39,568 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 12:26:39,569 INFO [APServer] Client connection closed.
+2025-07-30 12:26:39,708 INFO [APServer] Connection from ('127.0.0.1', 62933)
+2025-07-30 12:26:39,709 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["X0019IADGB", "2025_07_30_12_26_39"]}
+2025-07-30 12:26:39,709 INFO [APServer] Generating file prefix from: ['X0019IADGB', '2025_07_30_12_26_39']
+2025-07-30 12:26:39,710 INFO [Utilities] Generated file prefix: X0019IADGB_2025_07_30_12_26_39
+2025-07-30 12:26:39,710 INFO [APServer] Sent response: X0019IADGB_2025_07_30_12_26_39
+2025-07-30 12:26:39,711 INFO [APServer] Client connection closed.
+2025-07-30 12:26:39,844 INFO [APServer] Connection from ('127.0.0.1', 62934)
+2025-07-30 12:26:39,845 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 12:26:39,845 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:26:39,845 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:26:39,845 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:26:39,845 INFO [APServer] Client connection closed.
+2025-07-30 12:26:39,976 INFO [APServer] Connection from ('127.0.0.1', 62935)
+2025-07-30 12:26:39,976 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 12:26:39,977 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:26:39,977 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:26:39,977 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:26:39,978 INFO [APServer] Client connection closed.
+2025-07-30 12:26:40,099 INFO [APServer] Connection from ('127.0.0.1', 62936)
+2025-07-30 12:26:40,099 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 12:26:40,100 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:26:40,100 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:26:40,100 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:26:40,100 INFO [APServer] Client connection closed.
+2025-07-30 12:26:40,216 INFO [APServer] Connection from ('127.0.0.1', 62937)
+2025-07-30 12:26:40,217 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_12_26_39"]}
+2025-07-30 12:26:40,217 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_26_39']
+2025-07-30 12:26:40,217 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_26_39
+2025-07-30 12:26:40,217 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_26_39
+2025-07-30 12:26:40,218 INFO [APServer] Client connection closed.
+2025-07-30 12:26:40,360 INFO [APServer] Connection from ('127.0.0.1', 62938)
+2025-07-30 12:26:40,361 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 12:26:40,361 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:26:40,362 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:26:40,362 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:26:40,363 INFO [APServer] Client connection closed.
+2025-07-30 12:27:33,115 INFO [APServer] Connection from ('127.0.0.1', 62969)
+2025-07-30 12:27:33,139 INFO [APServer] Client connection closed.
+2025-07-30 12:27:33,416 INFO [APServer] Connection from ('127.0.0.1', 62970)
+2025-07-30 12:27:33,417 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:27:33,961 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:27:33,962 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:27:33,963 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:27:33,963 INFO [APServer] Client connection closed.
+2025-07-30 12:27:34,136 INFO [APServer] Connection from ('127.0.0.1', 62971)
+2025-07-30 12:27:34,137 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 12:27:34,138 INFO [Utilities] Generated timestamp extension: 2025_07_30_12_27_34
+2025-07-30 12:27:34,139 INFO [APServer] Sent response: 2025_07_30_12_27_34
+2025-07-30 12:27:34,139 INFO [APServer] Client connection closed.
+2025-07-30 12:27:34,297 INFO [APServer] Connection from ('127.0.0.1', 62972)
+2025-07-30 12:27:34,298 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 12:27:34,298 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 12:27:34,299 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 12:27:34,299 INFO [APServer] Client connection closed.
+2025-07-30 12:27:34,422 INFO [APServer] Connection from ('127.0.0.1', 62973)
+2025-07-30 12:27:34,423 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["X0019IADGB", "2025_07_30_12_27_34"]}
+2025-07-30 12:27:34,424 INFO [APServer] Generating file prefix from: ['X0019IADGB', '2025_07_30_12_27_34']
+2025-07-30 12:27:34,425 INFO [Utilities] Generated file prefix: X0019IADGB_2025_07_30_12_27_34
+2025-07-30 12:27:34,425 INFO [APServer] Sent response: X0019IADGB_2025_07_30_12_27_34
+2025-07-30 12:27:34,426 INFO [APServer] Client connection closed.
+2025-07-30 12:27:34,563 INFO [APServer] Connection from ('127.0.0.1', 62974)
+2025-07-30 12:27:34,566 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 12:27:34,567 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:27:34,568 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:27:34,568 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:27:34,569 INFO [APServer] Client connection closed.
+2025-07-30 12:27:34,682 INFO [APServer] Connection from ('127.0.0.1', 62975)
+2025-07-30 12:27:34,683 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 12:27:34,683 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:27:34,684 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:27:34,684 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:27:34,684 INFO [APServer] Client connection closed.
+2025-07-30 12:27:34,832 INFO [APServer] Connection from ('127.0.0.1', 62976)
+2025-07-30 12:27:34,833 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 12:27:34,833 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:27:34,833 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:27:34,833 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:27:34,833 INFO [APServer] Client connection closed.
+2025-07-30 12:27:34,968 INFO [APServer] Connection from ('127.0.0.1', 62977)
+2025-07-30 12:27:34,968 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_12_27_34"]}
+2025-07-30 12:27:34,969 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_27_34']
+2025-07-30 12:27:34,969 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_27_34
+2025-07-30 12:27:34,969 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_27_34
+2025-07-30 12:27:34,970 INFO [APServer] Client connection closed.
+2025-07-30 12:27:35,119 INFO [APServer] Connection from ('127.0.0.1', 62978)
+2025-07-30 12:27:35,120 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 12:27:35,121 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:27:35,121 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:27:35,121 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:27:35,121 INFO [APServer] Client connection closed.
+2025-07-30 12:28:22,085 INFO [APServer] Connection from ('127.0.0.1', 62988)
+2025-07-30 12:28:22,086 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:28:22,634 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:28:22,635 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:28:22,636 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:28:22,637 INFO [APServer] Client connection closed.
+2025-07-30 12:28:34,448 INFO [APServer] Connection from ('127.0.0.1', 62990)
+2025-07-30 12:28:34,449 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:28:34,984 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:28:34,985 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:28:34,986 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:28:34,987 INFO [APServer] Client connection closed.
+2025-07-30 12:28:45,577 INFO [APServer] Connection from ('127.0.0.1', 62993)
+2025-07-30 12:28:45,578 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:28:47,575 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:28:47,575 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:28:47,576 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:28:47,577 INFO [APServer] Client connection closed.
+2025-07-30 12:29:03,822 INFO [APServer] Connection from ('127.0.0.1', 62997)
+2025-07-30 12:29:03,823 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:29:04,358 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:29:04,359 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:29:04,359 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:29:04,360 INFO [APServer] Client connection closed.
+2025-07-30 12:29:15,610 INFO [APServer] Connection from ('127.0.0.1', 62999)
+2025-07-30 12:29:15,611 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:29:16,149 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:29:16,149 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:29:16,150 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:29:16,151 INFO [APServer] Client connection closed.
+2025-07-30 12:33:06,088 INFO [APServer] Connection from ('127.0.0.1', 63051)
+2025-07-30 12:33:06,090 INFO [APServer] Client connection closed.
+2025-07-30 12:33:06,327 INFO [APServer] Connection from ('127.0.0.1', 63053)
+2025-07-30 12:33:06,328 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 12:33:06,868 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 12:33:06,869 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 12:33:06,870 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 12:33:06,870 INFO [APServer] Client connection closed.
+2025-07-30 12:33:07,044 INFO [APServer] Connection from ('127.0.0.1', 63054)
+2025-07-30 12:33:07,045 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 12:33:07,046 INFO [Utilities] Generated timestamp extension: 2025_07_30_12_33_07
+2025-07-30 12:33:07,047 INFO [APServer] Sent response: 2025_07_30_12_33_07
+2025-07-30 12:33:07,048 INFO [APServer] Client connection closed.
+2025-07-30 12:33:07,199 INFO [APServer] Connection from ('127.0.0.1', 63055)
+2025-07-30 12:33:07,200 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 12:33:07,201 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 12:33:07,201 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 12:33:07,202 INFO [APServer] Client connection closed.
+2025-07-30 12:33:07,335 INFO [APServer] Connection from ('127.0.0.1', 63057)
+2025-07-30 12:33:07,336 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["X0019IADGB", "2025_07_30_12_33_07"]}
+2025-07-30 12:33:07,337 INFO [APServer] Generating file prefix from: ['X0019IADGB', '2025_07_30_12_33_07']
+2025-07-30 12:33:07,338 INFO [Utilities] Generated file prefix: X0019IADGB_2025_07_30_12_33_07
+2025-07-30 12:33:07,338 INFO [APServer] Sent response: X0019IADGB_2025_07_30_12_33_07
+2025-07-30 12:33:07,339 INFO [APServer] Client connection closed.
+2025-07-30 12:33:07,499 INFO [APServer] Connection from ('127.0.0.1', 63058)
+2025-07-30 12:33:07,500 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 12:33:07,501 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 12:33:07,501 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:33:07,501 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 12:33:07,502 INFO [APServer] Client connection closed.
+2025-07-30 12:33:07,637 INFO [APServer] Connection from ('127.0.0.1', 63059)
+2025-07-30 12:33:07,639 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 12:33:07,639 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 12:33:07,640 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:33:07,640 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 12:33:07,642 INFO [APServer] Client connection closed.
+2025-07-30 12:33:07,802 INFO [APServer] Connection from ('127.0.0.1', 63060)
+2025-07-30 12:33:07,803 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 12:33:07,803 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 12:33:07,803 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:33:07,803 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 12:33:07,804 INFO [APServer] Client connection closed.
+2025-07-30 12:33:07,953 INFO [APServer] Connection from ('127.0.0.1', 63061)
+2025-07-30 12:33:07,953 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_12_33_07"]}
+2025-07-30 12:33:07,953 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_12_33_07']
+2025-07-30 12:33:07,954 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_33_07
+2025-07-30 12:33:07,954 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_12_33_07
+2025-07-30 12:33:07,954 INFO [APServer] Client connection closed.
+2025-07-30 12:33:08,076 INFO [APServer] Connection from ('127.0.0.1', 63062)
+2025-07-30 12:33:08,077 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 12:33:08,077 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 12:33:08,078 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:33:08,078 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 12:33:08,079 INFO [APServer] Client connection closed.
+2025-07-30 13:01:43,758 INFO [APServer] Connection from ('127.0.0.1', 63386)
+2025-07-30 13:01:43,759 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 13:01:44,307 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 13:01:44,307 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 13:01:44,308 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 13:01:44,309 INFO [APServer] Client connection closed.
+2025-07-30 13:01:50,466 INFO [APServer] Connection from ('127.0.0.1', 63389)
+2025-07-30 13:01:50,466 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 13:01:50,998 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 13:01:50,999 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 13:01:51,000 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 13:01:51,001 INFO [APServer] Client connection closed.
+2025-07-30 13:01:58,927 INFO [APServer] Connection from ('127.0.0.1', 63392)
+2025-07-30 13:01:58,928 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 13:02:09,473 ERROR [APServer] Failed to scan serial number.
+2025-07-30 13:02:09,473 INFO [APServer] Sent response: Error: Failed to scan serial number.
+2025-07-30 13:02:09,474 INFO [APServer] Client connection closed.
+2025-07-30 15:22:12,286 INFO [APServer] Connection from ('127.0.0.1', 64804)
+2025-07-30 15:22:12,292 INFO [APServer] Client connection closed.
+2025-07-30 15:22:12,879 INFO [APServer] Connection from ('127.0.0.1', 64805)
+2025-07-30 15:22:12,879 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 15:22:16,151 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 15:22:16,151 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 15:22:16,152 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 15:22:16,153 INFO [APServer] Client connection closed.
+2025-07-30 15:22:21,055 INFO [APServer] Connection from ('127.0.0.1', 64810)
+2025-07-30 15:22:21,056 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 15:22:21,057 INFO [Utilities] Generated timestamp extension: 2025_07_30_15_22_21
+2025-07-30 15:22:21,057 INFO [APServer] Sent response: 2025_07_30_15_22_21
+2025-07-30 15:22:21,058 INFO [APServer] Client connection closed.
+2025-07-30 15:22:21,207 INFO [APServer] Connection from ('127.0.0.1', 64811)
+2025-07-30 15:22:21,208 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 15:22:21,209 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 15:22:21,210 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 15:22:21,210 INFO [APServer] Client connection closed.
+2025-07-30 15:22:21,355 INFO [APServer] Connection from ('127.0.0.1', 64812)
+2025-07-30 15:22:21,356 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["X0019IADGB", "2025_07_30_15_22_21"]}
+2025-07-30 15:22:21,357 INFO [APServer] Generating file prefix from: ['X0019IADGB', '2025_07_30_15_22_21']
+2025-07-30 15:22:21,357 INFO [Utilities] Generated file prefix: X0019IADGB_2025_07_30_15_22_21
+2025-07-30 15:22:21,358 INFO [APServer] Sent response: X0019IADGB_2025_07_30_15_22_21
+2025-07-30 15:22:21,359 INFO [APServer] Client connection closed.
+2025-07-30 15:22:21,474 INFO [APServer] Connection from ('127.0.0.1', 64813)
+2025-07-30 15:22:21,475 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 15:22:21,476 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 15:22:21,477 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 15:22:21,477 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 15:22:21,478 INFO [APServer] Client connection closed.
+2025-07-30 15:22:21,654 INFO [APServer] Connection from ('127.0.0.1', 64814)
+2025-07-30 15:22:21,672 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 15:22:21,674 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 15:22:21,675 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 15:22:21,676 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 15:22:21,677 INFO [APServer] Client connection closed.
+2025-07-30 15:22:21,802 INFO [APServer] Connection from ('127.0.0.1', 64815)
+2025-07-30 15:22:21,803 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 15:22:21,804 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 15:22:21,804 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 15:22:21,805 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 15:22:21,806 INFO [APServer] Client connection closed.
+2025-07-30 15:22:21,956 INFO [APServer] Connection from ('127.0.0.1', 64816)
+2025-07-30 15:22:21,957 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_15_22_21"]}
+2025-07-30 15:22:21,958 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_15_22_21']
+2025-07-30 15:22:21,958 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_15_22_21
+2025-07-30 15:22:21,958 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_15_22_21
+2025-07-30 15:22:21,958 INFO [APServer] Client connection closed.
+2025-07-30 15:22:22,114 INFO [APServer] Connection from ('127.0.0.1', 64817)
+2025-07-30 15:22:22,115 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 15:22:22,115 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 15:22:22,116 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 15:22:22,116 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 15:22:22,116 INFO [APServer] Client connection closed.
+2025-07-30 15:22:49,928 INFO [APServer] Connection from ('127.0.0.1', 64819)
+2025-07-30 15:22:49,930 INFO [APServer] Client connection closed.
+2025-07-30 15:22:50,151 INFO [APServer] Connection from ('127.0.0.1', 64820)
+2025-07-30 15:22:50,152 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 15:22:54,253 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 15:22:54,254 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 15:22:54,255 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 15:22:54,255 INFO [APServer] Client connection closed.
+2025-07-30 15:23:01,597 INFO [APServer] Connection from ('127.0.0.1', 64821)
+2025-07-30 15:23:01,597 INFO [APServer] Client connection closed.
+2025-07-30 15:23:01,859 INFO [APServer] Connection from ('127.0.0.1', 64822)
+2025-07-30 15:23:01,860 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 15:23:02,433 INFO [HoneywellScanner] Scanned serial number: X0019IADGB
+2025-07-30 15:23:02,434 INFO [APServer] Serial number scanned: X0019IADGB
+2025-07-30 15:23:02,435 INFO [APServer] Sent response: X0019IADGB
+2025-07-30 15:23:02,436 INFO [APServer] Client connection closed.
+2025-07-30 15:23:02,572 INFO [APServer] Connection from ('127.0.0.1', 64823)
+2025-07-30 15:23:02,573 INFO [APServer] Received: {"action": "generate_timestamp_extension"}
+2025-07-30 15:23:02,574 INFO [Utilities] Generated timestamp extension: 2025_07_30_15_23_02
+2025-07-30 15:23:02,574 INFO [APServer] Sent response: 2025_07_30_15_23_02
+2025-07-30 15:23:02,575 INFO [APServer] Client connection closed.
+2025-07-30 15:23:02,697 INFO [APServer] Connection from ('127.0.0.1', 64824)
+2025-07-30 15:23:02,698 INFO [APServer] Received: {"action": "get_timestamp_subpath"}
+2025-07-30 15:23:02,698 INFO [Utilities] Generated timestamp subpath: 2025\07_30
+2025-07-30 15:23:02,699 INFO [APServer] Sent response: 2025\07_30
+2025-07-30 15:23:02,699 INFO [APServer] Client connection closed.
+2025-07-30 15:23:02,867 INFO [APServer] Connection from ('127.0.0.1', 64825)
+2025-07-30 15:23:02,868 INFO [APServer] Received: {"action": "generate_file_prefix", "strings": ["X0019IADGB", "2025_07_30_15_23_02"]}
+2025-07-30 15:23:02,869 INFO [APServer] Generating file prefix from: ['X0019IADGB', '2025_07_30_15_23_02']
+2025-07-30 15:23:02,870 INFO [Utilities] Generated file prefix: X0019IADGB_2025_07_30_15_23_02
+2025-07-30 15:23:02,870 INFO [APServer] Sent response: X0019IADGB_2025_07_30_15_23_02
+2025-07-30 15:23:02,871 INFO [APServer] Client connection closed.
+2025-07-30 15:23:03,005 INFO [APServer] Connection from ('127.0.0.1', 64826)
+2025-07-30 15:23:03,006 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode", "Audio_Precision_Data"]}
+2025-07-30 15:23:03,007 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode', 'Audio_Precision_Data']
+2025-07-30 15:23:03,007 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 15:23:03,007 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data
+2025-07-30 15:23:03,008 INFO [APServer] Client connection closed.
+2025-07-30 15:23:03,129 INFO [APServer] Connection from ('127.0.0.1', 64827)
+2025-07-30 15:23:03,129 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "Measurements"]}
+2025-07-30 15:23:03,130 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'Measurements']
+2025-07-30 15:23:03,130 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 15:23:03,130 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements
+2025-07-30 15:23:03,130 INFO [APServer] Client connection closed.
+2025-07-30 15:23:03,242 INFO [APServer] Connection from ('127.0.0.1', 64828)
+2025-07-30 15:23:03,243 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "Statistics", "2025\\07_30"]}
+2025-07-30 15:23:03,243 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'Statistics', '2025\\07_30']
+2025-07-30 15:23:03,243 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 15:23:03,243 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\Statistics\2025\07_30
+2025-07-30 15:23:03,243 INFO [APServer] Client connection closed.
+2025-07-30 15:23:03,398 INFO [APServer] Connection from ('127.0.0.1', 64829)
+2025-07-30 15:23:03,398 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements", "GoldenSampleValidation", "2025\\07_30", "2025_07_30_15_23_02"]}
+2025-07-30 15:23:03,399 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data\\Measurements', 'GoldenSampleValidation', '2025\\07_30', '2025_07_30_15_23_02']
+2025-07-30 15:23:03,399 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_15_23_02
+2025-07-30 15:23:03,399 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\Measurements\GoldenSampleValidation\2025\07_30\2025_07_30_15_23_02
+2025-07-30 15:23:03,400 INFO [APServer] Client connection closed.
+2025-07-30 15:23:03,548 INFO [APServer] Connection from ('127.0.0.1', 64830)
+2025-07-30 15:23:03,548 INFO [APServer] Received: {"action": "construct_path", "paths": ["C:\\Users\\ThiloRode\\Audio_Precision_Data", "References", "GoldenSample"]}
+2025-07-30 15:23:03,549 INFO [APServer] Constructing path from: ['C:\\Users\\ThiloRode\\Audio_Precision_Data', 'References', 'GoldenSample']
+2025-07-30 15:23:03,549 INFO [Utilities] Constructed path: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 15:23:03,549 INFO [APServer] Sent response: C:\Users\ThiloRode\Audio_Precision_Data\References\GoldenSample
+2025-07-30 15:23:03,549 INFO [APServer] Client connection closed.
+2025-07-30 23:24:42,746 INFO [APServer] Connection from ('127.0.0.1', 54577)
+2025-07-30 23:24:42,751 INFO [APServer] Client connection closed.
+2025-07-30 23:24:43,283 INFO [APServer] Connection from ('127.0.0.1', 54578)
+2025-07-30 23:24:43,284 INFO [APServer] Received: {"action": "scan_serial", "wait_for_response": true}
+2025-07-30 23:24:53,827 ERROR [APServer] Failed to scan serial number.
+2025-07-30 23:24:53,830 ERROR [APServer] Error processing command: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-07-30 23:24:53,831 ERROR [APServer] Connection error: [WinError 10054] An existing connection was forcibly closed by the remote host
+2025-07-30 23:24:53,832 INFO [APServer] Client connection closed.

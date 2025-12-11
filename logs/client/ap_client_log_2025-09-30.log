@@ -1,0 +1,37 @@
+2025-09-30 13:26:12,728 - INFO - ----------------------------------- APClient started
+2025-09-30 13:26:28,336 - INFO - ----------------------------------- APClient started
+2025-09-30 13:26:28,364 - INFO - Parsing and executing command: set_channel
+2025-09-30 13:26:28,364 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-30 13:26:28,364 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-30 13:26:28,365 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-30 13:26:28,587 - INFO - Received response from server: Channel set to 1
+2025-09-30 13:26:32,458 - INFO - ----------------------------------- APClient started
+2025-09-30 13:26:32,488 - INFO - Parsing and executing command: set_channel
+2025-09-30 13:26:32,488 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-30 13:26:32,488 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-30 13:26:32,489 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-30 13:26:32,826 - INFO - Received response from server: Channel set to 2
+2025-09-30 13:26:42,334 - INFO - ----------------------------------- APClient started
+2025-09-30 13:26:42,372 - INFO - Parsing and executing command: set_channel
+2025-09-30 13:26:42,373 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-30 13:26:42,373 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-30 13:26:42,374 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-30 13:26:42,709 - INFO - Received response from server: Channel set to 1
+2025-09-30 13:26:46,394 - INFO - ----------------------------------- APClient started
+2025-09-30 13:26:46,430 - INFO - Parsing and executing command: set_channel
+2025-09-30 13:26:46,430 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-30 13:26:46,430 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-30 13:26:46,432 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-30 13:26:46,769 - INFO - Received response from server: Channel set to 2
+2025-09-30 13:26:52,589 - INFO - ----------------------------------- APClient started
+2025-09-30 13:26:52,632 - INFO - Parsing and executing command: set_channel
+2025-09-30 13:26:52,632 - INFO - Executing 'set_channel' command with channel: 1
+2025-09-30 13:26:52,632 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-30 13:26:52,634 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 1, 'wait_for_response': True}
+2025-09-30 13:26:52,972 - INFO - Received response from server: Channel set to 1
+2025-09-30 13:26:56,111 - INFO - ----------------------------------- APClient started
+2025-09-30 13:26:56,147 - INFO - Parsing and executing command: set_channel
+2025-09-30 13:26:56,147 - INFO - Executing 'set_channel' command with channel: 2
+2025-09-30 13:26:56,147 - INFO - Connecting to server at 127.0.0.1:65432...
+2025-09-30 13:26:56,148 - INFO - Connected to server. Sending command: {'action': 'set_channel', 'channel': 2, 'wait_for_response': True}
+2025-09-30 13:26:56,482 - INFO - Received response from server: Channel set to 2
