@@ -315,6 +315,13 @@ class AdamWorkstation:
 
         Prints the service response.
         """
+        if args.server:
+            WORKSTATION_LOGGER.info("Executing 'generate_timestamp_extension' via service.")
+            command = {"action": "generate_timestamp_extension"}
+            response = self.send_command(command, wait_for_response=True)
+            print(response)
+            return
+
         # Log the command execution
         WORKSTATION_LOGGER.info("Executing 'generate_timestamp_extension' command locally.")
         # Generate the timestamp locally
@@ -330,6 +337,13 @@ class AdamWorkstation:
 
         Prints the constructed path from the service response.
         """
+        if args.server:
+            WORKSTATION_LOGGER.info("Executing 'construct_path' via service with paths: %s", args.paths)
+            command = {"action": "construct_path", "paths": args.paths}
+            response = self.send_command(command, wait_for_response=True)
+            print(response)
+            return
+
         # Log the command execution and arguments
         WORKSTATION_LOGGER.info("Executing 'construct_path' locally with paths: %s", args.paths)
         # Build and print the path locally
@@ -345,6 +359,13 @@ class AdamWorkstation:
 
         Prints the generated subpath from the service response.
         """
+        if args.server:
+            WORKSTATION_LOGGER.info("Executing 'get_timestamp_subpath' via service.")
+            command = {"action": "get_timestamp_subpath"}
+            response = self.send_command(command, wait_for_response=True)
+            print(response)
+            return
+
         # Log the command execution
         WORKSTATION_LOGGER.info("Executing 'get_timestamp_subpath' command locally.")
         # Generate the subpath locally
@@ -360,6 +381,13 @@ class AdamWorkstation:
 
         Prints the generated prefix from the service response.
         """
+        if args.server:
+            WORKSTATION_LOGGER.info("Executing 'generate_file_prefix' via service with strings: %s", args.strings)
+            command = {"action": "generate_file_prefix", "strings": args.strings}
+            response = self.send_command(command, wait_for_response=True)
+            print(response)
+            return
+
         # Log the command execution and arguments
         WORKSTATION_LOGGER.info("Executing 'generate_file_prefix' locally with strings: %s", args.strings)
         # Generate and print the prefix locally
@@ -760,12 +788,16 @@ class AdamWorkstation:
             help="OCA device port (optional for device name)")
 
         # Produktions-/Hardware-/Service-Kommandos (NICHT entfernen!)
-        subparsers.add_parser("generate_timestamp_extension", help="Generate a timestamp extension.")
+        parser_timestamp_ext = subparsers.add_parser("generate_timestamp_extension", help="Generate a timestamp extension.")
+        parser_timestamp_ext.add_argument("--server", action="store_true", help="Use service for timestamp generation")
         parser_construct_path = subparsers.add_parser("construct_path", help="Construct a path.")
         parser_construct_path.add_argument("paths", type=str, nargs="+", help="List of paths to join.")
-        subparsers.add_parser("get_timestamp_subpath", help="Get a timestamp subpath.")
+        parser_construct_path.add_argument("--server", action="store_true", help="Use service for path construction")
+        parser_timestamp_subpath = subparsers.add_parser("get_timestamp_subpath", help="Get a timestamp subpath.")
+        parser_timestamp_subpath.add_argument("--server", action="store_true", help="Use service for timestamp generation")
         parser_generate_file_prefix = subparsers.add_parser("generate_file_prefix", help="Generate a file prefix.")
         parser_generate_file_prefix.add_argument("strings", type=str, nargs="+", help="List of strings to combine.")
+        parser_generate_file_prefix.add_argument("--server", action="store_true", help="Use service for prefix generation")
         parser_set_channel = subparsers.add_parser("set_channel", help="Set the channel (1 or 2).")
         parser_set_channel.add_argument("channel", type=int, choices=[1, 2], help="Channel to set (1 or 2).")
         subparsers.add_parser("open_box", help="Open the box.")
