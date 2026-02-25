@@ -479,17 +479,10 @@ class AdamService:
         self.logger.info("Checking measurement trials for serial: %s, file: %s, max: %d", serial_number, csv_path, max_trials)
 
         try:
-            # Check if CSV file exists, create it if not
+            # Check if CSV file exists
             if not os.path.exists(csv_path):
-                self.logger.info("CSV file does not exist, creating: %s", csv_path)
-                # Create directory if it doesn't exist
-                os.makedirs(os.path.dirname(csv_path), exist_ok=True)
-                # Create CSV file with header
-                with open(csv_path, 'w', newline='', encoding='utf-8') as csvfile:
-                    writer = csv.writer(csvfile)
-                    writer.writerow(["Date", "Time", "Status", "ResultsPath", "SerialNumber", "FilePrefix"])
                 msg = "Measurement permitted."
-                self.logger.info("%s (CSV file created, serial=%s)", msg, serial_number)
+                self.logger.info("%s (CSV file does not exist, serial=%s)", msg, serial_number)
                 return msg
 
             # File exists, count Failed entries

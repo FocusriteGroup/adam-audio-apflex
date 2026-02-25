@@ -1,0 +1,57 @@
+@startuml ADAM Audio Production System
+
+!theme plain
+title ADAM Audio Production System - Simplified Architecture
+
+' User Interfaces
+package "Control Interfaces" {
+    component [Audio Precision\nSoftware] as AP
+    component [GUI Tools] as GUI
+    component [Terminal/CLI] as CLI
+}
+
+' Main Components
+component [Workstation 1\n(CLI)] as Workstation1
+component [Workstation 2\n(CLI)] as Workstation2
+component [Workstation N\n(CLI)] as WorkstationN
+component [Service\n(TCP Server)] as Service
+component [Hardware Manager] as Hardware
+component [OCA Device\nController] as OCA
+
+' External Hardware
+component [Scanner] as Scanner
+component [SwitchBox] as SwitchBox
+component [ADAM Device] as ADAMDevice
+
+' Storage
+database [Measurement Data\n& Logs] as Data
+cloud [AWS Cloud] as AWS
+
+' Main Flow
+AP <--> Workstation1 : Commands/Results
+GUI <--> Workstation2 : Commands/Results
+CLI <--> WorkstationN : Commands/Results
+
+Workstation1 --> Service : TCP/IP
+Workstation2 --> Service : TCP/IP
+WorkstationN --> Service : TCP/IP
+Workstation1 ..> Service : UDP Discovery
+
+Service <--> AWS : Upload/Download Data
+
+Workstation1 --> Hardware : Controls
+Hardware --> Scanner : Serial/USB
+Hardware --> SwitchBox : Serial/USB
+
+Workstation1 --> OCA : Controls
+OCA --> ADAMDevice : OCA Protocol
+
+Workstation1 --> Data : Store/Analyze
+
+Service <--> Data : Read/Write Logs
+
+
+
+
+
+@enduml

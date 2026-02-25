@@ -35,6 +35,7 @@ from datetime import datetime # For timestamps
 import csv     # For parsing measurement files
 import math
 import numpy as np
+import shutil  # For copying files and directories
 
 # External module imports
 #from oca.oca_manager import OCAManager # OCA device manager
@@ -134,6 +135,7 @@ class AdamWorkstation:
             "get_mute": self.get_mute,
             "set_mute": self.set_mute,
             "init_asub": self.init_asub,  # Add new command to map
+            "setup_references": self.setup_references,  # Setup References directory
         }
 
         # Set up argument parser for CLI usage
@@ -658,6 +660,58 @@ class AdamWorkstation:
             print(f"Initialization failed: {str(e)}")
             return False
 
+    def setup_references(self, args):
+        """Setup References directory by copying DefaultReferences if needed."""
+        try:
+            target_path = os.path.abspath(args.path)
+            references_dir = os.path.join(target_path, "References")
+            
+            WORKSTATION_LOGGER.info("Checking References directory at: %s", references_dir)
+            
+            # Check if References directory exists
+            if os.path.exists(references_dir):
+                WORKSTATION_LOGGER.info("References directory already exists")
+                print("References directory already exists")
+                return True
+            
+            # References doesn't exist, need to create and copy
+            WORKSTATION_LOGGER.info("References directory not found, creating...")
+            
+            # Get DefaultReferences path from working directory
+            default_refs = os.path.join(os.getcwd(), "DefaultReferences")
+            
+            if not os.path.exists(default_refs):
+                error_msg = f"DefaultReferences directory not found at: {default_refs}"
+                WORKSTATION_LOGGER.error(error_msg)
+                print(f"ERROR: {error_msg}")
+                return False
+            
+            # Create References directory and copy contents
+            os.makedirs(references_dir, exist_ok=True)
+            WORKSTATION_LOGGER.info("Created References directory")
+            
+            # Copy all contents from DefaultReferences to References
+            for item in os.listdir(default_refs):
+                src_path = os.path.join(default_refs, item)
+                dst_path = os.path.join(references_dir, item)
+                
+                if os.path.isdir(src_path):
+                    shutil.copytree(src_path, dst_path)
+                    WORKSTATION_LOGGER.info("Copied directory: %s", item)
+                else:
+                    shutil.copy2(src_path, dst_path)
+                    WORKSTATION_LOGGER.info("Copied file: %s", item)
+            
+            WORKSTATION_LOGGER.info("Successfully copied DefaultReferences to References")
+            print("References directory created and populated successfully")
+            return True
+            
+        except Exception as e:
+            error_msg = f"Failed to setup References: {str(e)}"
+            WORKSTATION_LOGGER.error(error_msg)
+            print(f"ERROR: {error_msg}")
+            return False
+
     def setup_arg_parser(self):
         parser = argparse.ArgumentParser(
             description="ADAM Audio Production Workstation",
@@ -835,6 +889,12 @@ class AdamWorkstation:
             help="OCA device name or IP address")
         init_parser.add_argument("port", type=int, nargs="?", default=None,
             help="OCA device port (optional for device name)")
+
+        # Add References setup parser
+        setup_refs_parser = subparsers.add_parser("setup_references",
+            help="Setup References directory by copying DefaultReferences if it doesn't exist")
+        setup_refs_parser.add_argument("path", type=str,
+            help="Target path where References directory should be created")
 
         self.parser = parser
 
