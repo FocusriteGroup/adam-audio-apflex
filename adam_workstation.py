@@ -41,6 +41,12 @@ import shutil  # For copying files and directories
 #from oca.oca_manager import OCAManager # OCA device manager
 from oca.oca_device import OCADevice
 from analysis import MeasurementParser, MeasurementUpload, GainCalibration
+from helpers import (
+    generate_timestamp_extension,
+    construct_path,
+    generate_timestamp_subpath,
+    generate_file_prefix,
+)
 
 # Set up logging directory and file for workstation events
 log_dir = "logs/adam_audio"
@@ -310,12 +316,9 @@ class AdamWorkstation:
         Prints the service response.
         """
         # Log the command execution
-        WORKSTATION_LOGGER.info("Executing 'generate_timestamp_extension' command.")
-        # Build the command dictionary
-        command = {"action": "generate_timestamp_extension"}
-        # Send the command and print the response
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
+        WORKSTATION_LOGGER.info("Executing 'generate_timestamp_extension' command locally.")
+        # Generate the timestamp locally
+        print(generate_timestamp_extension())
 
     def construct_path(self, args):
         """
@@ -328,12 +331,9 @@ class AdamWorkstation:
         Prints the constructed path from the service response.
         """
         # Log the command execution and arguments
-        WORKSTATION_LOGGER.info("Executing 'construct_path' command with paths: %s", args.paths)
-        # Build the command dictionary
-        command = {"action": "construct_path", "paths": args.paths}
-        # Send the command and print the response
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
+        WORKSTATION_LOGGER.info("Executing 'construct_path' locally with paths: %s", args.paths)
+        # Build and print the path locally
+        print(construct_path(args.paths))
 
     def get_timestamp_subpath(self, args):
         """
@@ -346,12 +346,9 @@ class AdamWorkstation:
         Prints the generated subpath from the service response.
         """
         # Log the command execution
-        WORKSTATION_LOGGER.info("Executing 'get_timestamp_subpath' command.")
-        # Build the command dictionary
-        command = {"action": "get_timestamp_subpath"}
-        # Send the command and print the response
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
+        WORKSTATION_LOGGER.info("Executing 'get_timestamp_subpath' command locally.")
+        # Generate the subpath locally
+        print(generate_timestamp_subpath())
 
     def generate_file_prefix(self, args):
         """
@@ -364,12 +361,9 @@ class AdamWorkstation:
         Prints the generated prefix from the service response.
         """
         # Log the command execution and arguments
-        WORKSTATION_LOGGER.info("Executing 'generate_file_prefix' command with strings: %s", args.strings)
-        # Build the command dictionary
-        command = {"action": "generate_file_prefix", "strings": args.strings}
-        # Send the command and print the response
-        response = self.send_command(command, wait_for_response=True)
-        print(response)
+        WORKSTATION_LOGGER.info("Executing 'generate_file_prefix' locally with strings: %s", args.strings)
+        # Generate and print the prefix locally
+        print(generate_file_prefix(args.strings))
 
     # Hardware-Commands verwenden Properties (Lazy Loading)
     def set_channel(self, args):
