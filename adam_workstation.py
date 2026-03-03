@@ -41,6 +41,7 @@ import shutil  # For copying files and directories
 #from oca.oca_manager import OCAManager # OCA device manager
 from oca.oca_device import OCADevice
 from analysis import MeasurementParser, MeasurementUpload, GainCalibration
+from analysis.csv_processing import extract_csv_columns as extract_csv_columns_local
 from helpers import (
     generate_timestamp_extension,
     construct_path,
@@ -126,6 +127,7 @@ class AdamWorkstation:
             "construct_path": self.construct_path,
             "get_timestamp_subpath": self.get_timestamp_subpath,
             "generate_file_prefix": self.generate_file_prefix,
+            "extract_csv_columns": self.extract_csv_columns,
             "set_channel": self.set_channel,
             "open_box": self.open_box,
             "scan_serial": self.scan_serial,
@@ -393,6 +395,46 @@ class AdamWorkstation:
         WORKSTATION_LOGGER.info("Executing 'generate_file_prefix' locally with strings: %s", args.strings)
         # Generate and print the prefix locally
         print(generate_file_prefix(args.strings))
+
+    def extract_csv_columns(self, args):
+        """
+        Extract selected CSV columns from row 2 onward into a new CSV file.
+
+        Runs locally by default. If --server is provided, delegates to ADAM service.
+        """
+        if args.server:
+            WORKSTATION_LOGGER.info(
+                "Executing 'extract_csv_columns' via service: input=%s, columns=%s, output=%s, output_dir=%s",
+                args.input_path,
+                args.columns,
+                args.output_filename,
+                args.output_dir,
+            )
+            command = {
+                "action": "extract_csv_columns",
+                "input_path": args.input_path,
+                "columns": args.columns,
+                "output_filename": args.output_filename,
+                "output_dir": args.output_dir,
+            }
+            response = self.send_command(command, wait_for_response=True)
+            print(response)
+            return
+
+        WORKSTATION_LOGGER.info(
+            "Executing 'extract_csv_columns' locally: input=%s, columns=%s, output=%s, output_dir=%s",
+            args.input_path,
+            args.columns,
+            args.output_filename,
+            args.output_dir,
+        )
+        output_path = extract_csv_columns_local(
+            input_path=args.input_path,
+            columns=args.columns,
+            output_filename=args.output_filename,
+            output_dir=args.output_dir,
+        )
+        print(output_path)
 
     # Hardware-Commands verwenden Properties (Lazy Loading)
     def set_channel(self, args):

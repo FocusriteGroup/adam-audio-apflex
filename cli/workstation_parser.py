@@ -71,6 +71,25 @@ def build_workstation_parser():
     parser_generate_file_prefix = subparsers.add_parser("generate_file_prefix", help="Generate a file prefix.")
     parser_generate_file_prefix.add_argument("strings", type=str, nargs="+", help="List of strings to combine.")
     parser_generate_file_prefix.add_argument("--server", action="store_true", help="Use service for prefix generation")
+    parser_extract_csv = subparsers.add_parser(
+        "extract_csv_columns",
+        help="Extract selected CSV columns (from row 2 onward) into a new CSV file",
+    )
+    parser_extract_csv.add_argument("input_path", type=str, help="Path to the source CSV file")
+    parser_extract_csv.add_argument(
+        "columns",
+        type=int,
+        nargs="+",
+        help="Zero-based column indices to extract (e.g. 0 1 2)",
+    )
+    parser_extract_csv.add_argument("output_filename", type=str, help="Output CSV filename")
+    parser_extract_csv.add_argument(
+        "--output-dir",
+        dest="output_dir",
+        default=None,
+        help="Output directory (defaults to input file directory)",
+    )
+    parser_extract_csv.add_argument("--server", action="store_true", help="Run extraction via ADAM service")
     parser_set_channel = subparsers.add_parser("set_channel", help="Set the channel (1 or 2).")
     parser_set_channel.add_argument("channel", type=int, choices=[1, 2], help="Channel to set (1 or 2).")
     subparsers.add_parser("open_box", help="Open the box.")

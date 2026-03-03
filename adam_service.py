@@ -48,6 +48,7 @@ import threading
 import json
 import time
 from biquad_tools.biquad_designer import Biquad_Filter
+from analysis.csv_processing import extract_csv_columns
 
 # ÄNDERUNG 1: Import von helpers statt ap_utils
 from helpers import generate_timestamp_extension, construct_path, generate_timestamp_subpath, generate_file_prefix
@@ -359,6 +360,7 @@ class AdamService:
             "construct_path": lambda: self._construct_path(command),
             "get_timestamp_subpath": generate_timestamp_subpath,
             "generate_file_prefix": lambda: self._generate_file_prefix(command),
+            "extract_csv_columns": lambda: self._extract_csv_columns(command),
 
             # Biquad Calculations
             "get_biquad_coefficients": lambda: self._get_biquad_coefficients(command),
@@ -422,6 +424,47 @@ class AdamService:
         self.logger.info("Generating file prefix from: %s", strings)
         # ÄNDERUNG 4: Direkte Funktion statt Utilities-Klasse
         return generate_file_prefix(strings)
+
+    def _extract_csv_columns(self, command):
+        """
+        Extract selected CSV columns from row 2 onward into a new CSV file.
+
+        Args:
+            command (dict): Command with input_path, columns, output_filename, and optional output_dir.
+
+        Returns:
+            str: Written output CSV path or error message.
+        """
+        input_path = command.get("input_path")
+        columns = command.get("columns")
+        output_filename = command.get("output_filename")
+        output_dir = command.get("output_dir")
+
+        if not isinstance(input_path, str) or not input_path.strip():
+            return "Error: 'input_path' must be a non-empty string."
+        if not isinstance(columns, list) or not columns:
+            return "Error: 'columns' must be a non-empty list of integers."
+        if not all(isinstance(index, int) for index in columns):
+            return "Error: All values in 'columns' must be integers."
+        if not isinstance(output_filename, str) or not output_filename.strip():
+            return "Error: 'output_filename' must be a non-empty string."
+        if output_dir is not None and not isinstance(output_dir, str):
+            return "Error: 'output_dir' must be a string when provided."
+
+        self.logger.info(
+            "Running extract_csv_columns via service: input=%s, columns=%s, output=%s, output_dir=%s",
+            input_path,
+            columns,
+            output_filename,
+            output_dir,
+        )
+
+        return extract_csv_columns(
+            input_path=input_path,
+            columns=columns,
+            output_filename=output_filename,
+            output_dir=output_dir,
+        )
 
     def _get_biquad_coefficients(self, command):
         """
