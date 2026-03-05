@@ -626,9 +626,9 @@ class AdamWorkstation:
             )
             # Print the scanned serial number
             print(serial_number)
-        except (ValueError, FileNotFoundError, json.JSONDecodeError, socket.error) as e:
-            # Print error and exit
-            print(f"Error: {e}")
+        except Exception as e:
+            # Print error to stderr (keeps stdout clean for filename use) and exit
+            print(f"Error: {e}", file=sys.stderr)
             sys.exit(1)
 
     # OCA Device Commands
