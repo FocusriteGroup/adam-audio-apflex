@@ -48,7 +48,7 @@ import threading
 import json
 import time
 from biquad_tools.biquad_designer import Biquad_Filter
-from analysis.csv_processing import extract_csv_columns
+from analysis.csv_processing import extract_csv_columns, split_ap_distortion_csv, octave_smooth_ap_csv, merge_ap_distortion_csvs
 
 # ÄNDERUNG 1: Import von helpers statt ap_utils
 from helpers import generate_timestamp_extension, construct_path, generate_timestamp_subpath, generate_file_prefix
@@ -361,6 +361,9 @@ class AdamService:
             "get_timestamp_subpath": generate_timestamp_subpath,
             "generate_file_prefix": lambda: self._generate_file_prefix(command),
             "extract_csv_columns": lambda: self._extract_csv_columns(command),
+            "split_ap_distortion_csv": lambda: self._split_ap_distortion_csv(command),
+            "octave_smooth_ap_csv": lambda: self._octave_smooth_ap_csv(command),
+            "merge_ap_distortion_csvs": lambda: self._merge_ap_distortion_csvs(command),
 
             # Biquad Calculations
             "get_biquad_coefficients": lambda: self._get_biquad_coefficients(command),
@@ -465,6 +468,122 @@ class AdamService:
             output_filename=output_filename,
             output_dir=output_dir,
         )
+
+    def _split_ap_distortion_csv(self, command):
+        """
+        Split an AP Level & Distortion CSV into per-metric files (F, H2, H3, Total).
+
+        Args:
+            command (dict): Command with 'input_path' and optional 'output_dir'.
+
+        Returns:
+            str: JSON-encoded dict mapping metric name to output file path, or error message.
+        """
+        import json as _json
+        input_path = command.get("input_path")
+        output_dir = command.get("output_dir")
+        fraction = command.get("fraction")  # None = no smoothing
+        output_prefix = command.get("output_prefix")
+
+        if not isinstance(input_path, str) or not input_path.strip():
+            return "Error: 'input_path' must be a non-empty string."
+        if output_dir is not None and not isinstance(output_dir, str):
+            return "Error: 'output_dir' must be a string when provided."
+        if fraction is not None and (not isinstance(fraction, int) or fraction < 1):
+            return "Error: 'fraction' must be an integer >= 1 when provided."
+        if output_prefix is not None and not isinstance(output_prefix, str):
+            return "Error: 'output_prefix' must be a string when provided."
+
+        self.logger.info(
+            "Running split_ap_distortion_csv via service: input=%s, output_dir=%s, fraction=%s, output_prefix=%s",
+            input_path,
+            output_dir,
+            fraction,
+            output_prefix,
+        )
+        results = split_ap_distortion_csv(
+            input_path=input_path,
+            output_dir=output_dir,
+            fraction=fraction,
+            output_prefix=output_prefix,
+        )
+        return _json.dumps(results)
+
+    def _octave_smooth_ap_csv(self, command):
+        """
+        Apply 1/n-octave smoothing to all Y columns of an AP measurement CSV.
+
+        Args:
+            command (dict): Command with 'input_path', 'fraction' (int, default 3),
+                            optional 'output_filename' and 'output_dir'.
+
+        Returns:
+            str: Written output CSV path or error message.
+        """
+        import json as _json
+        input_path = command.get("input_path")
+        fraction = command.get("fraction", 3)
+        output_filename = command.get("output_filename")  # may be None
+        output_dir = command.get("output_dir")
+
+        if not isinstance(input_path, str) or not input_path.strip():
+            return "Error: 'input_path' must be a non-empty string."
+        if not isinstance(fraction, int) or fraction < 1:
+            return "Error: 'fraction' must be an integer >= 1."
+        if output_dir is not None and not isinstance(output_dir, str):
+            return "Error: 'output_dir' must be a string when provided."
+
+        self.logger.info(
+            "Running octave_smooth_ap_csv via service: input=%s, fraction=%d, output=%s, output_dir=%s",
+            input_path, fraction, output_filename, output_dir,
+        )
+        return octave_smooth_ap_csv(
+            input_path=input_path,
+            fraction=fraction,
+            output_filename=output_filename,
+            output_dir=output_dir,
+        )
+
+    def _merge_ap_distortion_csvs(self, command):
+        """
+        Merge multiple AP Level & Distortion CSV files into per-metric combined files.
+
+        Args:
+            command (dict): Command with 'input_paths' (list of str), optional
+                            'output_dir', 'fraction', and 'output_prefix'.
+
+        Returns:
+            str: JSON-encoded dict mapping metric name to output file path, or error message.
+        """
+        import json as _json
+        input_paths = command.get("input_paths")
+        output_dir = command.get("output_dir")
+        fraction = command.get("fraction")
+        output_prefix = command.get("output_prefix")
+
+        if not isinstance(input_paths, list) or len(input_paths) < 2:
+            return "Error: 'input_paths' must be a list of at least 2 file paths."
+        if not all(isinstance(p, str) and p.strip() for p in input_paths):
+            return "Error: all entries in 'input_paths' must be non-empty strings."
+        if output_dir is not None and not isinstance(output_dir, str):
+            return "Error: 'output_dir' must be a string when provided."
+        if fraction is not None and (not isinstance(fraction, int) or fraction < 1):
+            return "Error: 'fraction' must be an integer >= 1 when provided."
+        if output_prefix is not None and not isinstance(output_prefix, str):
+            return "Error: 'output_prefix' must be a string when provided."
+
+        self.logger.info(
+            "Running merge_ap_distortion_csvs via service: inputs=%s, output_dir=%s, "
+            "fraction=%s, output_prefix=%s",
+            input_paths, output_dir, fraction, output_prefix,
+        )
+        results = merge_ap_distortion_csvs(
+            input_paths=input_paths,
+            output_dir=output_dir,
+            fraction=fraction,
+            output_prefix=output_prefix,
+        )
+        return _json.dumps(results)
 
     def _get_biquad_coefficients(self, command):
         """

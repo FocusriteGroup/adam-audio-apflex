@@ -42,6 +42,9 @@ import shutil  # For copying files and directories
 from oca.oca_device import OCADevice
 from analysis import MeasurementParser, MeasurementUpload, GainCalibration
 from analysis.csv_processing import extract_csv_columns as extract_csv_columns_local
+from analysis.csv_processing import split_ap_distortion_csv as split_ap_distortion_csv_local
+from analysis.csv_processing import octave_smooth_ap_csv as octave_smooth_ap_csv_local
+from analysis.csv_processing import merge_ap_distortion_csvs as merge_ap_distortion_csvs_local
 from helpers import (
     generate_timestamp_extension,
     construct_path,
@@ -128,6 +131,9 @@ class AdamWorkstation:
             "get_timestamp_subpath": self.get_timestamp_subpath,
             "generate_file_prefix": self.generate_file_prefix,
             "extract_csv_columns": self.extract_csv_columns,
+            "split_ap_distortion_csv": self.split_ap_distortion_csv,
+            "octave_smooth_ap_csv": self.octave_smooth_ap_csv,
+            "merge_ap_distortion_csvs": self.merge_ap_distortion_csvs,
             "set_channel": self.set_channel,
             "open_box": self.open_box,
             "scan_serial": self.scan_serial,
@@ -431,6 +437,124 @@ class AdamWorkstation:
         output_path = extract_csv_columns_local(
             input_path=args.input_path,
             columns=args.columns,
+            output_filename=args.output_filename,
+            output_dir=args.output_dir,
+        )
+        print(output_path)
+
+    def split_ap_distortion_csv(self, args):
+        """
+        Split an AP Level & Distortion CSV into per-metric files (F, H2, H3, Total).
+
+        Runs locally by default. If --server is provided, delegates to ADAM service.
+        """
+        if args.server:
+            WORKSTATION_LOGGER.info(
+                "Executing 'split_ap_distortion_csv' via service: input=%s, output_dir=%s, fraction=%s, output_prefix=%s",
+                args.input_path,
+                args.output_dir,
+                args.fraction,
+                args.output_prefix,
+            )
+            command = {
+                "action": "split_ap_distortion_csv",
+                "input_path": args.input_path,
+                "output_dir": args.output_dir,
+                "fraction": args.fraction,
+                "output_prefix": args.output_prefix,
+            }
+            response = self.send_command(command, wait_for_response=True)
+            print(response)
+            return
+
+        WORKSTATION_LOGGER.info(
+            "Executing 'split_ap_distortion_csv' locally: input=%s, output_dir=%s, fraction=%s, output_prefix=%s",
+            args.input_path,
+            args.output_dir,
+            args.fraction,
+            args.output_prefix,
+        )
+        results = split_ap_distortion_csv_local(
+            input_path=args.input_path,
+            output_dir=args.output_dir,
+            fraction=args.fraction,
+            output_prefix=args.output_prefix,
+        )
+        for metric, path in results.items():
+            print(f"{metric}: {path}")
+
+    def merge_ap_distortion_csvs(self, args):
+        """
+        Merge two or more AP Level & Distortion CSV files into per-metric combined files.
+
+        Runs locally by default. If --server is provided, delegates to ADAM service.
+        """
+        if args.server:
+            WORKSTATION_LOGGER.info(
+                "Executing 'merge_ap_distortion_csvs' via service: inputs=%s, output_dir=%s, "
+                "fraction=%s, output_prefix=%s",
+                args.input_paths,
+                args.output_dir,
+                args.fraction,
+                args.output_prefix,
+            )
+            command = {
+                "action": "merge_ap_distortion_csvs",
+                "input_paths": args.input_paths,
+                "output_dir": args.output_dir,
+                "fraction": args.fraction,
+                "output_prefix": args.output_prefix,
+            }
+            response = self.send_command(command, wait_for_response=True)
+            print(response)
+            return
+
+        WORKSTATION_LOGGER.info(
+            "Executing 'merge_ap_distortion_csvs' locally: inputs=%s, output_dir=%s, "
+            "fraction=%s, output_prefix=%s",
+            args.input_paths,
+            args.output_dir,
+            args.fraction,
+            args.output_prefix,
+        )
+        results = merge_ap_distortion_csvs_local(
+            input_paths=args.input_paths,
+            output_dir=args.output_dir,
+            fraction=args.fraction,
+            output_prefix=args.output_prefix,
+        )
+        for metric, path in results.items():
+            print(f"{metric}: {path}")
+
+    def octave_smooth_ap_csv(self, args):
+        """
+        Apply 1/n-octave smoothing to all Y columns of an AP measurement CSV.
+
+        Runs locally by default. If --server is provided, delegates to ADAM service.
+        """
+        if args.server:
+            WORKSTATION_LOGGER.info(
+                "Executing 'octave_smooth_ap_csv' via service: input=%s, fraction=%d, output=%s, output_dir=%s",
+                args.input_path, args.fraction, args.output_filename, args.output_dir,
+            )
+            command = {
+                "action": "octave_smooth_ap_csv",
+                "input_path": args.input_path,
+                "fraction": args.fraction,
+                "output_filename": args.output_filename,
+                "output_dir": args.output_dir,
+            }
+            response = self.send_command(command, wait_for_response=True)
+            print(response)
+            return
+
+        WORKSTATION_LOGGER.info(
+            "Executing 'octave_smooth_ap_csv' locally: input=%s, fraction=%d, output=%s, output_dir=%s",
+            args.input_path, args.fraction, args.output_filename, args.output_dir,
+        )
+        output_path = octave_smooth_ap_csv_local(
+            input_path=args.input_path,
+            fraction=args.fraction,
             output_filename=args.output_filename,
             output_dir=args.output_dir,
         )
@@ -794,6 +918,9 @@ class AdamWorkstation:
         if args.service_host:
             self.host = args.service_host
             WORKSTATION_LOGGER.info("Using specified ADAM service host: %s", self.host)
+            # --host implies --server for all commands that support it
+            if hasattr(args, "server"):
+                args.server = True
 
         if args.service_port != 65432:
             self.port = args.service_port

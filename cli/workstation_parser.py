@@ -90,6 +90,86 @@ def build_workstation_parser():
         help="Output directory (defaults to input file directory)",
     )
     parser_extract_csv.add_argument("--server", action="store_true", help="Run extraction via ADAM service")
+    parser_split_ap = subparsers.add_parser(
+        "split_ap_distortion_csv",
+        help="Split an AP Level & Distortion CSV into per-metric files (F, H2, H3, Total)",
+    )
+    parser_split_ap.add_argument("input_path", type=str, help="Path to the source AP measurement CSV file")
+    parser_split_ap.add_argument(
+        "--output-dir",
+        dest="output_dir",
+        default=None,
+        help="Output directory (defaults to input file directory)",
+    )
+    parser_split_ap.add_argument(
+        "--fraction",
+        type=int,
+        default=None,
+        dest="fraction",
+        help="If set, apply 1/n-octave smoothing to each metric file (e.g. 3 = 1/3 octave)",
+    )
+    parser_split_ap.add_argument(
+        "--output-prefix",
+        dest="output_prefix",
+        default=None,
+        help="Base name for output files (default: input file stem)",
+    )
+    parser_split_ap.add_argument("--server", action="store_true", help="Run via ADAM service")
+    parser_smooth = subparsers.add_parser(
+        "octave_smooth_ap_csv",
+        help="Apply 1/n-octave smoothing to all Y columns of an AP measurement CSV",
+    )
+    parser_smooth.add_argument("input_path", type=str, help="Path to the source AP CSV file")
+    parser_smooth.add_argument(
+        "--fraction",
+        type=int,
+        default=3,
+        dest="fraction",
+        help="Octave fraction denominator (e.g. 3 = 1/3 octave, default: 3)",
+    )
+    parser_smooth.add_argument(
+        "--output-filename",
+        dest="output_filename",
+        default=None,
+        help="Output filename (default: <stem>_smooth<fraction>.csv)",
+    )
+    parser_smooth.add_argument(
+        "--output-dir",
+        dest="output_dir",
+        default=None,
+        help="Output directory (defaults to input file directory)",
+    )
+    parser_smooth.add_argument("--server", action="store_true", help="Run via ADAM service")
+    parser_merge_ap = subparsers.add_parser(
+        "merge_ap_distortion_csvs",
+        help="Merge two or more AP Level & Distortion CSV files into per-metric combined files (F, H2, H3, Total)",
+    )
+    parser_merge_ap.add_argument(
+        "input_paths",
+        type=str,
+        nargs="+",
+        help="Two or more source AP measurement CSV file paths",
+    )
+    parser_merge_ap.add_argument(
+        "--output-dir",
+        dest="output_dir",
+        default=None,
+        help="Output directory (defaults to directory of the first input file)",
+    )
+    parser_merge_ap.add_argument(
+        "--fraction",
+        type=int,
+        default=None,
+        dest="fraction",
+        help="If set, apply 1/n-octave smoothing to each merged metric file (e.g. 3 = 1/3 octave)",
+    )
+    parser_merge_ap.add_argument(
+        "--output-prefix",
+        dest="output_prefix",
+        default=None,
+        help="Base name for output files (default: longest common prefix of input file stems)",
+    )
+    parser_merge_ap.add_argument("--server", action="store_true", help="Run via ADAM service")
     parser_set_channel = subparsers.add_parser("set_channel", help="Set the channel (1 or 2).")
     parser_set_channel.add_argument("channel", type=int, choices=[1, 2], help="Channel to set (1 or 2).")
     subparsers.add_parser("open_box", help="Open the box.")
