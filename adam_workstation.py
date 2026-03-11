@@ -156,6 +156,18 @@ class AdamWorkstation:
         # Set up argument parser for CLI usage
         self.setup_arg_parser()
 
+    def _show_error_popup(self, title, message):
+        """Display a modal error dialog with an OK button. Silently skipped if tkinter is unavailable."""
+        try:
+            import tkinter as tk
+            from tkinter import messagebox
+            root = tk.Tk()
+            root.withdraw()
+            messagebox.showerror(title, message)
+            root.destroy()
+        except Exception:
+            pass  # tkinter not available, silently skip popup
+
     # NEU: Properties für Lazy Loading
     @property
     def switchbox_manager(self):
@@ -580,8 +592,8 @@ class AdamWorkstation:
             )
             # Print the result to the user
             print(f"Channel set to {result_channel}")
-        except (ValueError, FileNotFoundError, json.JSONDecodeError) as e:
-            # Print error and exit
+        except Exception as e:
+            self._show_error_popup("SwitchBox Error", f"Failed to set channel.\n\n{e}")
             print(f"Error: {e}")
             sys.exit(1)
 
@@ -603,8 +615,8 @@ class AdamWorkstation:
             )
             # Print the box status
             print(f"Box status: {box_status}")
-        except (ValueError, FileNotFoundError, json.JSONDecodeError, socket.error) as e:
-            # Print error and exit
+        except Exception as e:
+            self._show_error_popup("SwitchBox Error", f"Failed to open box.\n\n{e}")
             print(f"Error: {e}")
             sys.exit(1)
 
@@ -627,8 +639,10 @@ class AdamWorkstation:
             # Print the scanned serial number
             print(serial_number)
         except Exception as e:
-            # Print error to stderr (keeps stdout clean for filename use) and exit
-            print(f"Error: {e}", file=sys.stderr)
+            # Scanner not available - show popup, return NaN so caller can detect the failure
+            WORKSTATION_LOGGER.error("scan_serial failed: %s", e)
+            self._show_error_popup("Scanner Not Found", f"No scanner connected.\n\n{e}")
+            print("NaN")
             sys.exit(1)
 
     # OCA Device Commands
