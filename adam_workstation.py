@@ -151,6 +151,7 @@ class AdamWorkstation:
             "set_mute": self.set_mute,
             "init_asub": self.init_asub,  # Add new command to map
             "setup_references": self.setup_references,  # Setup References directory
+            "is_golden_sample": self.is_golden_sample,
         }
 
         # Set up argument parser for CLI usage
@@ -164,6 +165,18 @@ class AdamWorkstation:
             root = tk.Tk()
             root.withdraw()
             messagebox.showerror(title, message)
+            root.destroy()
+        except Exception:
+            pass  # tkinter not available, silently skip popup
+
+    def _show_warning_popup(self, title, message):
+        """Display a modal warning dialog with an OK button. Silently skipped if tkinter is unavailable."""
+        try:
+            import tkinter as tk
+            from tkinter import messagebox
+            root = tk.Tk()
+            root.withdraw()
+            messagebox.showwarning(title, message)
             root.destroy()
         except Exception:
             pass  # tkinter not available, silently skip popup
@@ -914,6 +927,49 @@ class AdamWorkstation:
             WORKSTATION_LOGGER.error(error_msg)
             print(f"ERROR: {error_msg}")
             return False
+
+    def is_golden_sample(self, args):
+        """Checks whether the scanned serial number matches the Golden Sample serial number
+        and validates whether the correct unit type is connected.
+
+        Args:
+            args: CLI arguments with 'scanned_serial', 'golden_sample_serial', and
+                  'measure_golden_sample' (True = Golden Sample expected,
+                  False = EOL unit expected).
+
+        Prints 'True' if the scanned serial matches the Golden Sample, 'False' otherwise.
+        Shows a warning popup on mismatch between expected and actual unit type.
+        """
+        scanned = args.scanned_serial.strip()
+        golden = args.golden_sample_serial.strip()
+        measure_golden = args.measure_golden_sample
+        is_golden = scanned == golden
+
+        WORKSTATION_LOGGER.info(
+            "is_golden_sample: scanned='%s', golden='%s', measure_golden=%s, is_golden=%s",
+            scanned, golden, measure_golden, is_golden
+        )
+
+        if measure_golden and not is_golden:
+            msg = (
+                f"The Golden Sample is expected to be measured, "
+                f"but a different unit is connected.\n\n"
+                f"Expected: {golden}\n"
+                f"Scanned:  {scanned}"
+            )
+            WORKSTATION_LOGGER.warning("Golden Sample expected but different unit connected: scanned='%s'", scanned)
+            self._show_warning_popup("Wrong Unit Connected", msg)
+        elif not measure_golden and is_golden:
+            msg = (
+                f"An EOL unit is expected to be measured, "
+                f"but the Golden Sample is connected.\n\n"
+                f"Golden Sample: {golden}\n"
+                f"Scanned:       {scanned}"
+            )
+            WORKSTATION_LOGGER.warning("EOL unit expected but Golden Sample is connected: scanned='%s'", scanned)
+            self._show_warning_popup("Golden Sample Connected", msg)
+
+        print(is_golden)
 
     def setup_arg_parser(self):
         self.parser = build_workstation_parser()

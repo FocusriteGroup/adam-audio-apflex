@@ -294,4 +294,14 @@ def build_workstation_parser():
     setup_refs_parser.add_argument("path", type=str,
         help="Target path where References directory should be created")
 
+    # Golden Sample check
+    golden_sample_parser = subparsers.add_parser("is_golden_sample",
+        help="Check whether the scanned serial number matches the Golden Sample serial number")
+    golden_sample_parser.add_argument("scanned_serial", type=str,
+        help="Serial number scanned from the device under test")
+    golden_sample_parser.add_argument("golden_sample_serial", type=str,
+        help="Golden Sample serial number stored in the project parameters")
+    golden_sample_parser.add_argument("measure_golden_sample", type=lambda x: x.lower() == "true",
+        help="True if the Golden Sample should be measured, False if an EOL unit should be measured")
+
     return parser
