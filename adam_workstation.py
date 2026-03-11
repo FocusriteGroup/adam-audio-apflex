@@ -789,35 +789,45 @@ class AdamWorkstation:
         print(response)
 
     def upload_measurement(self, args):
-        """Uploads a measurement file to the service."""
+        """Uploads a measurement file locally or to the ADAM service (with --server)."""
         try:
             upload_data = MeasurementUpload.prepare_upload(
                 args.measurement_path,
                 args.serial_number,
                 self.workstation_id
             )
-            
-            command = {
-                "action": "add_measurement",
-                "serial_number": args.serial_number,
-                "json_directory": args.json_directory,
-                "measurement_data": upload_data
-            }
-            
-            WORKSTATION_LOGGER.info("Sending measurement to service host=%s port=%s", 
-                                  self.host, self.port)
-            response = self.send_command(command, wait_for_response=True)
-            
-            # Parse response and print simple confirmation
-            try:
-                response_data = json.loads(response)
-                if response_data.get("status") == "success":
-                    print("Measurement uploaded successfully.")
+
+            if getattr(args, "server", False):
+                command = {
+                    "action": "add_measurement",
+                    "serial_number": args.serial_number,
+                    "json_directory": args.json_directory,
+                    "measurement_data": upload_data
+                }
+                WORKSTATION_LOGGER.info("Sending measurement to service host=%s port=%s",
+                                        self.host, self.port)
+                response = self.send_command(command, wait_for_response=True)
+                try:
+                    response_data = json.loads(response)
+                    if response_data.get("status") == "success":
+                        print("Measurement uploaded successfully.")
+                    else:
+                        print(f"Upload failed: {response_data.get('error', 'Unknown error')}")
+                except json.JSONDecodeError:
+                    print("Error: Invalid response format")
+            else:
+                WORKSTATION_LOGGER.info("Writing measurement locally: dir=%s, serial=%s",
+                                        args.json_directory, args.serial_number)
+                result = MeasurementUpload.write_measurement_local(
+                    upload_data,
+                    args.serial_number,
+                    args.json_directory
+                )
+                if result.get("status") == "success":
+                    print(f"Measurement written successfully: {result['json_file']}")
                 else:
-                    print(f"Upload failed: {response_data.get('error', 'Unknown error')}")
-            except json.JSONDecodeError:
-                print(f"Error: Invalid response format")
-                
+                    print(f"Write failed: {result.get('error', 'Unknown error')}")
+
         except Exception as e:
             WORKSTATION_LOGGER.error("Measurement upload failed: %s", str(e))
             print(f"ERROR: {str(e)}")
@@ -881,47 +891,55 @@ class AdamWorkstation:
         try:
             target_path = os.path.abspath(args.path)
             references_dir = os.path.join(target_path, "References")
-            
+
             WORKSTATION_LOGGER.info("Checking References directory at: %s", references_dir)
-            
+
             # Check if References directory exists
             if os.path.exists(references_dir):
                 WORKSTATION_LOGGER.info("References directory already exists")
                 print("References directory already exists")
                 return True
-            
+
             # References doesn't exist, need to create and copy
             WORKSTATION_LOGGER.info("References directory not found, creating...")
-            
-            # Get DefaultReferences path from working directory
-            default_refs = os.path.join(os.getcwd(), "DefaultReferences")
-            
+
+            # Determine source directory (stereo or mono)
+            use_mono = getattr(args, "mono", False)
+            if use_mono:
+                default_refs = os.path.join(os.getcwd(), "DefaultReferences", "Mono")
+                WORKSTATION_LOGGER.info("Using mono references from: %s", default_refs)
+            else:
+                default_refs = os.path.join(os.getcwd(), "DefaultReferences")
+                WORKSTATION_LOGGER.info("Using stereo references from: %s", default_refs)
+
             if not os.path.exists(default_refs):
-                error_msg = f"DefaultReferences directory not found at: {default_refs}"
+                mono_suffix = "\\Mono" if use_mono else ""
+                error_msg = f"DefaultReferences{mono_suffix} directory not found at: {default_refs}"
                 WORKSTATION_LOGGER.error(error_msg)
                 print(f"ERROR: {error_msg}")
                 return False
-            
+
             # Create References directory and copy contents
             os.makedirs(references_dir, exist_ok=True)
             WORKSTATION_LOGGER.info("Created References directory")
-            
-            # Copy all contents from DefaultReferences to References
+
+            # Copy all contents from source to References
             for item in os.listdir(default_refs):
                 src_path = os.path.join(default_refs, item)
                 dst_path = os.path.join(references_dir, item)
-                
+
                 if os.path.isdir(src_path):
                     shutil.copytree(src_path, dst_path)
                     WORKSTATION_LOGGER.info("Copied directory: %s", item)
                 else:
                     shutil.copy2(src_path, dst_path)
                     WORKSTATION_LOGGER.info("Copied file: %s", item)
-            
-            WORKSTATION_LOGGER.info("Successfully copied DefaultReferences to References")
-            print("References directory created and populated successfully")
+
+            mode = "mono" if use_mono else "stereo"
+            WORKSTATION_LOGGER.info("Successfully copied %s DefaultReferences to References", mode)
+            print(f"References directory created and populated successfully ({mode})")
             return True
-            
+
         except Exception as e:
             error_msg = f"Failed to setup References: {str(e)}"
             WORKSTATION_LOGGER.error(error_msg)

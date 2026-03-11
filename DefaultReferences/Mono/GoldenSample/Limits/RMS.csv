@@ -1,0 +1,12 @@
+Upper Limit for Acoustic Response.Smooth RMS Validation ,
+Ch1,
+X,Y
+Hz,dB
+20,3
+300,3
+300,4.5
+700,4.5
+700,2
+2000,2
+2000,4.5
+8000,4.5

@@ -1,0 +1,10 @@
+Upper Limit for Acoustic Response.Smooth THD Validation ,
+Ch1,
+X,Y
+Hz,dB
+100,10
+300,10
+300,10
+800,10
+800,10
+5000,10

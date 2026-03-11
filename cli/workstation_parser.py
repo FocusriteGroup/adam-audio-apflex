@@ -194,13 +194,15 @@ def build_workstation_parser():
     check_trials_parser.add_argument("csv_path", type=str, help="Path to the CSV file")
     check_trials_parser.add_argument("max_trials", type=int, help="Maximum allowed trials")
     upload_measurement_parser = subparsers.add_parser("upload_measurement",
-        help="Upload measurement data to service")
+        help="Upload measurement data to service or write locally")
     upload_measurement_parser.add_argument("measurement_path", type=str,
         help="Path to measurement file")
     upload_measurement_parser.add_argument("--serial-number", "-s",
         dest="serial_number", required=True, help="Explicit device serial number")
     upload_measurement_parser.add_argument("--json-directory", type=str,
-        default="measurements", help="JSON directory on service")
+        default="measurements", help="JSON directory (local path or service directory)")
+    upload_measurement_parser.add_argument("--server", action="store_true",
+        help="Send to ADAM service instead of writing locally")
 
     # NEU: Parser für Gain Calibration
     calibrate_parser = subparsers.add_parser("calibrate_gain",
@@ -293,6 +295,8 @@ def build_workstation_parser():
         help="Setup References directory by copying DefaultReferences if it doesn't exist")
     setup_refs_parser.add_argument("path", type=str,
         help="Target path where References directory should be created")
+    setup_refs_parser.add_argument("--mono", action="store_true",
+        help="Use mono references from DefaultReferences/Mono/ instead of stereo")
 
     # Golden Sample check
     golden_sample_parser = subparsers.add_parser("is_golden_sample",
