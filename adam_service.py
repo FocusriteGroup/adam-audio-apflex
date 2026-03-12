@@ -745,6 +745,15 @@ class AdamService:
                     "measurements": {}
                 }
 
+            # Ablehnen falls Seriennummer bereits vorhanden
+            serial_number = command.get("serial_number", measurement_data.get("device_serial", "UNKNOWN"))
+            existing_serials = {
+                v.get("serial_number") for v in json_data.get("measurements", {}).values()
+            }
+            if serial_number in existing_serials:
+                self.logger.warning("Duplicate measurement rejected: serial=%s", serial_number)
+                return json.dumps({"error": "duplicate", "serial_number": serial_number})
+
             # Prüfen ob globaler Frequenzvektor existiert
             global_freq = json_data.get("frequency_vector", None)
 

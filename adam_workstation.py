@@ -810,11 +810,20 @@ class AdamWorkstation:
                 try:
                     response_data = json.loads(response)
                     if response_data.get("status") == "success":
-                        print("Measurement uploaded successfully.")
+                        WORKSTATION_LOGGER.info("Measurement uploaded successfully via service.")
+                        print(True)
+                    elif response_data.get("error") == "duplicate":
+                        sn = response_data.get("serial_number", args.serial_number)
+                        msg = f"DUT {sn} has already been measured successfully.\nMeasurement rejected."
+                        WORKSTATION_LOGGER.warning("Duplicate measurement rejected: serial=%s", sn)
+                        self._show_error_popup("DUT Already Measured", msg)
+                        print(False)
                     else:
-                        print(f"Upload failed: {response_data.get('error', 'Unknown error')}")
+                        WORKSTATION_LOGGER.error("Upload failed: %s", response_data.get("error", "Unknown error"))
+                        print(False)
                 except json.JSONDecodeError:
-                    print("Error: Invalid response format")
+                    WORKSTATION_LOGGER.error("Invalid response format from service.")
+                    print(False)
             else:
                 WORKSTATION_LOGGER.info("Writing measurement locally: dir=%s, serial=%s",
                                         args.json_directory, args.serial_number)
@@ -824,13 +833,21 @@ class AdamWorkstation:
                     args.json_directory
                 )
                 if result.get("status") == "success":
-                    print(f"Measurement written successfully: {result['json_file']}")
+                    WORKSTATION_LOGGER.info("Measurement written locally: %s", result["json_file"])
+                    print(True)
+                elif result.get("error") == "duplicate":
+                    sn = result.get("serial_number", args.serial_number)
+                    msg = f"DUT {sn} has already been measured successfully.\nMeasurement rejected."
+                    WORKSTATION_LOGGER.warning("Duplicate measurement rejected: serial=%s", sn)
+                    self._show_error_popup("DUT Already Measured", msg)
+                    print(False)
                 else:
-                    print(f"Write failed: {result.get('error', 'Unknown error')}")
+                    WORKSTATION_LOGGER.error("Write failed: %s", result.get("error", "Unknown error"))
+                    print(False)
 
         except Exception as e:
             WORKSTATION_LOGGER.error("Measurement upload failed: %s", str(e))
-            print(f"ERROR: {str(e)}")
+            print(False)
 
     def calibrate_gain(self, args):
         """Calculates gain calibration between input and target measurements."""

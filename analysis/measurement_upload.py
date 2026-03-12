@@ -82,6 +82,14 @@ class MeasurementUpload:
                     "measurements": {},
                 }
 
+            # Reject if this serial number was already measured
+            existing_serials = {
+                v.get("serial_number") for v in json_data.get("measurements", {}).values()
+            }
+            if serial_number in existing_serials:
+                UPLOAD_LOGGER.warning("Duplicate measurement rejected: serial=%s", serial_number)
+                return {"error": "duplicate", "serial_number": serial_number}
+
             global_freq = json_data.get("frequency_vector", None)
 
             # Adopt frequency vector from first measurement if not yet present
