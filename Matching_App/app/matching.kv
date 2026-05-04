@@ -1,0 +1,82 @@
+#:kivy 2.0
+
+<TopBar>:
+    orientation: "horizontal"
+    size_hint_y: None
+    height: "48dp"
+    padding: "12dp", "8dp"
+    spacing: "8dp"
+    canvas.before:
+        Color:
+            rgba: 0.15, 0.15, 0.15, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        id: pool_status
+        text: "In pool: -- | Open pairs: --"
+        halign: "left"
+        valign: "middle"
+        text_size: self.size
+        font_size: "14sp"
+        color: 1, 1, 1, 1
+
+    Button:
+        text: "Manage"
+        size_hint_x: None
+        width: "64dp"
+        font_size: "12sp"
+        background_color: 0.25, 0.25, 0.25, 1
+        on_release: app.open_manage_popup()
+
+
+<BottomBar>:
+    orientation: "vertical"
+    size_hint_y: None
+    height: "80dp"
+    padding: "12dp", "8dp"
+    spacing: "4dp"
+    canvas.before:
+        Color:
+            rgba: 0.15, 0.15, 0.15, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    TextInput:
+        id: scan_input
+        hint_text: "Scan driver QR code..."
+        size_hint_y: None
+        height: "36dp"
+        font_size: "14sp"
+        multiline: False
+        write_tab: False
+        background_color: 0.2, 0.2, 0.2, 1
+        foreground_color: 1, 1, 1, 1
+        hint_text_color: 0.5, 0.5, 0.5, 1
+        cursor_color: 1, 1, 1, 1
+        padding: "8dp", "6dp"
+        on_text_validate: root.on_scan(self.text)
+
+    Label:
+        id: status_line
+        text: "Scan first driver..."
+        halign: "left"
+        valign: "middle"
+        text_size: self.size
+        font_size: "24sp"
+        color: 0.7, 0.7, 0.7, 1
+
+
+<RootWidget>:
+    orientation: "vertical"
+
+    TopBar:
+        id: top_bar
+
+    ChartArea:
+        id: chart_area
+
+    BottomBar:
+        id: bottom_bar

@@ -723,9 +723,22 @@ class AdamService:
         """
         try:
             requested_dir = command.get("json_directory", "measurements")
-            measurement_data = command.get("measurement_data")
-            if not measurement_data:
+            payload = command.get("measurement_data")
+            if not payload:
                 return json.dumps({"error": "No measurement_data provided"})
+
+            # Support both payload variants for compatibility:
+            # 1) Full upload wrapper from MeasurementUpload.prepare_upload()
+            # 2) Raw parsed measurement object
+            if isinstance(payload, dict) and "measurement_data" in payload:
+                upload_data = payload
+                measurement_data = upload_data.get("measurement_data", {})
+            else:
+                upload_data = {}
+                measurement_data = payload
+
+            if not isinstance(measurement_data, dict) or not measurement_data:
+                return json.dumps({"error": "Invalid measurement_data payload"})
 
             target_dir = self._resolve_json_directory(requested_dir)
             target_dir.mkdir(parents=True, exist_ok=True)
@@ -746,7 +759,11 @@ class AdamService:
                 }
 
             # Ablehnen falls Seriennummer bereits vorhanden
-            serial_number = command.get("serial_number", measurement_data.get("device_serial", "UNKNOWN"))
+            serial_number = (
+                command.get("serial_number")
+                or upload_data.get("serial_number")
+                or measurement_data.get("device_serial", "UNKNOWN")
+            )
             existing_serials = {
                 v.get("serial_number") for v in json_data.get("measurements", {}).values()
             }
@@ -801,10 +818,14 @@ class AdamService:
                 if "levels" in ch_data and isinstance(ch_data["levels"], list):
                     ch_data["data_points"] = len(ch_data["levels"])
 
-            device_serial = measurement_data.get("device_serial", "UNKNOWN")
-            measurement_id = f"{device_serial}_{int(time.time())}"
+            measurement_id = f"{serial_number}_{int(time.time())}"
 
-            json_data["measurements"][measurement_id] = measurement_data
+            json_data["measurements"][measurement_id] = {
+                "workstation_id": upload_data.get("workstation_id"),
+                "serial_number": serial_number,
+                "timestamp": upload_data.get("timestamp"),
+                **measurement_data,
+            }
             json_data["metadata"]["last_updated"] = datetime.now().isoformat()
             json_data["metadata"]["total_measurements"] = len(json_data["measurements"])
 

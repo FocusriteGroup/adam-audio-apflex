@@ -1,0 +1,5 @@
+{
+  "rmse_threshold": 0.1,
+  "freq_min": 30,
+  "freq_max": 20000
+}
