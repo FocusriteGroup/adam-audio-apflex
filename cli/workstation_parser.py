@@ -203,6 +203,11 @@ def build_workstation_parser():
         default="measurements", help="JSON directory (local path or service directory)")
     upload_measurement_parser.add_argument("--server", action="store_true",
         help="Send to ADAM service instead of writing locally")
+    upload_measurement_parser.add_argument("--write-db", action="store_true",
+        help="Write measurement into local matcher SQLite DB (local mode only)")
+    upload_measurement_parser.add_argument("--db-path", type=str,
+        default="Matching_App/Data/db/matcher.db",
+        help="Local matcher DB path used with --write-db (default: Matching_App/Data/db/matcher.db)")
 
     # NEU: Parser für Gain Calibration
     calibrate_parser = subparsers.add_parser("calibrate_gain",

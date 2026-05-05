@@ -1,5 +1,6 @@
 import json
 import logging
+import sqlite3
 import time
 from datetime import datetime
 from pathlib import Path
@@ -155,4 +156,109 @@ class MeasurementUpload:
 
         except (FileNotFoundError, PermissionError, json.JSONDecodeError, KeyError, ValueError) as e:
             UPLOAD_LOGGER.error("Failed to write measurement locally: %s", str(e))
+            return {"error": str(e)}
+
+    @staticmethod
+    def write_measurement_local_db(upload_data: dict, serial_number: str, db_path: str) -> dict:
+        """
+        Writes a prepared measurement directly into the local matcher SQLite database.
+
+        Existing rows are updated only when status is 'unmatched'.
+        """
+        try:
+            db_file = Path(db_path)
+            db_file.parent.mkdir(parents=True, exist_ok=True)
+
+            measurement_data = upload_data.get("measurement_data", {})
+            channels = measurement_data.get("channels", {}) if isinstance(measurement_data, dict) else {}
+            ch1 = channels.get("Ch1", {})
+            levels = ch1.get("levels")
+
+            if not isinstance(levels, list) or not levels:
+                return {"error": "No Ch1 levels found in measurement data"}
+
+            if serial_number.startswith("IA"):
+                side = "left"
+            elif serial_number.startswith("IB"):
+                side = "right"
+            else:
+                return {"error": f"Unsupported serial prefix for matching pool: {serial_number}"}
+
+            con = sqlite3.connect(str(db_file))
+            cur = con.cursor()
+            cur.execute("PRAGMA journal_mode=WAL")
+
+            # Ensure matcher schema exists for standalone local usage.
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS frequency_vector (
+                    id INTEGER PRIMARY KEY CHECK (id = 1),
+                    frequencies TEXT NOT NULL
+                )
+            """)
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS drivers (
+                    serial      TEXT PRIMARY KEY,
+                    side        TEXT NOT NULL,
+                    levels      TEXT NOT NULL,
+                    status      TEXT NOT NULL DEFAULT 'unmatched',
+                    partner     TEXT,
+                    loaded_at   TEXT NOT NULL,
+                    matched_at  TEXT
+                )
+            """)
+
+            freqs = ch1.get("frequencies")
+            if isinstance(freqs, list) and freqs:
+                cur.execute("SELECT id FROM frequency_vector WHERE id = 1")
+                if cur.fetchone() is None:
+                    cur.execute(
+                        "INSERT INTO frequency_vector (id, frequencies) VALUES (1, ?)",
+                        (json.dumps(freqs),),
+                    )
+
+            now = datetime.now().isoformat()
+            cur.execute("SELECT status FROM drivers WHERE serial = ?", (serial_number,))
+            row = cur.fetchone()
+
+            if row is None:
+                cur.execute(
+                    "INSERT INTO drivers (serial, side, levels, status, loaded_at) VALUES (?, ?, ?, 'unmatched', ?)",
+                    (serial_number, side, json.dumps(levels), now),
+                )
+                operation = "inserted"
+            else:
+                status = row[0]
+                if status != "unmatched":
+                    con.close()
+                    return {
+                        "error": "status_blocked",
+                        "serial_number": serial_number,
+                        "current_status": status,
+                    }
+
+                cur.execute(
+                    "UPDATE drivers SET side = ?, levels = ?, loaded_at = ? WHERE serial = ?",
+                    (side, json.dumps(levels), now, serial_number),
+                )
+                operation = "updated"
+
+            con.commit()
+            con.close()
+
+            UPLOAD_LOGGER.info(
+                "Measurement written to local DB (%s): serial=%s, db=%s",
+                operation,
+                serial_number,
+                db_file,
+            )
+
+            return {
+                "status": "success",
+                "operation": operation,
+                "serial_number": serial_number,
+                "db_file": str(db_file.resolve()),
+            }
+
+        except (sqlite3.Error, OSError, KeyError, ValueError, TypeError) as e:
+            UPLOAD_LOGGER.error("Failed to write measurement to local DB: %s", str(e))
             return {"error": str(e)}

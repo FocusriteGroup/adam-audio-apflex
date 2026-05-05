@@ -797,6 +797,15 @@ class AdamWorkstation:
                 self.workstation_id
             )
 
+            if getattr(args, "server", False) and getattr(args, "write_db", False):
+                WORKSTATION_LOGGER.error("--write-db is local-only and not supported with --server")
+                self._show_error_popup(
+                    "Unsupported Option Combination",
+                    "--write-db is local-only and cannot be combined with --server."
+                )
+                print(False)
+                return
+
             if getattr(args, "server", False):
                 command = {
                     "action": "add_measurement",
@@ -825,21 +834,49 @@ class AdamWorkstation:
                     WORKSTATION_LOGGER.error("Invalid response format from service.")
                     print(False)
             else:
-                WORKSTATION_LOGGER.info("Writing measurement locally: dir=%s, serial=%s",
-                                        args.json_directory, args.serial_number)
-                result = MeasurementUpload.write_measurement_local(
-                    upload_data,
-                    args.serial_number,
-                    args.json_directory
-                )
+                if getattr(args, "write_db", False):
+                    WORKSTATION_LOGGER.info(
+                        "Writing measurement to local DB: db=%s, serial=%s",
+                        args.db_path,
+                        args.serial_number,
+                    )
+                    result = MeasurementUpload.write_measurement_local_db(
+                        upload_data,
+                        args.serial_number,
+                        args.db_path,
+                    )
+                else:
+                    WORKSTATION_LOGGER.info("Writing measurement locally: dir=%s, serial=%s",
+                                            args.json_directory, args.serial_number)
+                    result = MeasurementUpload.write_measurement_local(
+                        upload_data,
+                        args.serial_number,
+                        args.json_directory
+                    )
+
                 if result.get("status") == "success":
-                    WORKSTATION_LOGGER.info("Measurement written locally: %s", result["json_file"])
+                    target_file = result.get("json_file") or result.get("db_file")
+                    WORKSTATION_LOGGER.info("Measurement written locally: %s", target_file)
                     print(True)
                 elif result.get("error") == "duplicate":
                     sn = result.get("serial_number", args.serial_number)
                     msg = f"DUT {sn} has already been measured successfully.\nMeasurement rejected."
                     WORKSTATION_LOGGER.warning("Duplicate measurement rejected: serial=%s", sn)
                     self._show_error_popup("DUT Already Measured", msg)
+                    print(False)
+                elif result.get("error") == "status_blocked":
+                    sn = result.get("serial_number", args.serial_number)
+                    current_status = result.get("current_status", "unknown")
+                    msg = (
+                        f"DUT {sn} is currently '{current_status}'.\n"
+                        "Unmatch/unpair in the Matching App first, then remeasure."
+                    )
+                    WORKSTATION_LOGGER.warning(
+                        "Measurement rejected due to status: serial=%s, status=%s",
+                        sn,
+                        current_status,
+                    )
+                    self._show_error_popup("DUT Not In Pool", msg)
                     print(False)
                 else:
                     WORKSTATION_LOGGER.error("Write failed: %s", result.get("error", "Unknown error"))
