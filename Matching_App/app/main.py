@@ -11,10 +11,14 @@ from kivy.uix.button import Button
 from kivy.uix.slider import Slider
 from kivy.uix.textinput import TextInput
 from kivy_garden.graph import Graph, LinePlot
+import csv
+import json
+import os
+from datetime import datetime, timedelta
 from app.database import (
     init_db, get_pool_counts, get_data_signature, lookup_driver, confirm_pair,
-    get_driver_levels, reset_matched_drivers, get_pool_serials,
-    get_paired_list, get_status_serials, get_matched_pairs, get_status_count,
+    get_driver_levels, get_frequency_vector, reset_matched_drivers, get_pool_serials,
+    get_paired_list, get_status_serials, get_matched_pairs, get_status_count, get_all_drivers,
     unpair, unpair_by_serial, delete_driver, restore_from_quarantine, quarantine_old_modules,
     load_settings, save_settings,
 )
@@ -854,6 +858,191 @@ class RootWidget(BoxLayout):
     pass
 
 
+class ExportOptionsPopup(Popup):
+    """Export options popup for time-windowed CSV/JSON exports."""
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.title = ""
+        self.separator_height = 0
+        self.size_hint = (0.56, 0.36)
+        self.auto_dismiss = True
+        self.bind(on_open=lambda *a: setattr(App.get_running_app(), 'popup_open', True))
+        self.bind(on_dismiss=lambda *a: setattr(App.get_running_app(), 'popup_open', False))
+
+        content = BoxLayout(orientation="vertical", spacing=12, padding=[16, 14, 16, 14])
+        header = Label(
+            text="Export Time Window",
+            size_hint_y=None,
+            height=24,
+            color=(0.9, 0.9, 0.9, 1),
+            font_size="16sp",
+        )
+        content.add_widget(header)
+
+        window_type_row = BoxLayout(orientation="horizontal", size_hint_y=None, height=38, spacing=10)
+        window_type_label = Label(
+            text="Window Type",
+            size_hint_x=0.36,
+            halign="left",
+            valign="middle",
+            color=(0.85, 0.85, 0.85, 1),
+        )
+        window_type_label.bind(size=lambda w, s: setattr(w, "text_size", s))
+        window_type_row.add_widget(window_type_label)
+        self._window_type_values = ["Matching time", "Load time"]
+        self._window_type = Button(
+            text=self._window_type_values[0],
+            size_hint_x=0.64,
+            background_normal="",
+            background_down="",
+            background_color=(0.32, 0.32, 0.32, 1),
+            color=(1, 1, 1, 1),
+        )
+        self._window_type.bind(on_release=lambda *_: self._cycle_value(self._window_type, self._window_type_values))
+        window_type_row.add_widget(self._window_type)
+        content.add_widget(window_type_row)
+
+        time_range_row = BoxLayout(orientation="horizontal", size_hint_y=None, height=38, spacing=10)
+        time_range_label = Label(
+            text="Time Range",
+            size_hint_x=0.36,
+            halign="left",
+            valign="middle",
+            color=(0.85, 0.85, 0.85, 1),
+        )
+        time_range_label.bind(size=lambda w, s: setattr(w, "text_size", s))
+        time_range_row.add_widget(time_range_label)
+        self._range_type_values = [
+            "Full snapshot", "Last 24h", "Last 3d", "Last 7d",
+            "Last 14d", "Last 30d", "Last 60d", "Last 90d",
+        ]
+        self._range_type = Button(
+            text=self._range_type_values[0],
+            size_hint_x=0.64,
+            background_normal="",
+            background_down="",
+            background_color=(0.32, 0.32, 0.32, 1),
+            color=(1, 1, 1, 1),
+        )
+        self._range_type.bind(on_release=lambda *_: self._cycle_value(self._range_type, self._range_type_values))
+        time_range_row.add_widget(self._range_type)
+        content.add_widget(time_range_row)
+
+        btn_row = BoxLayout(orientation="horizontal", size_hint_y=None, height=40, spacing=10)
+        export_btn = Button(
+            text="Choose Folder & Export",
+            background_normal="",
+            background_down="",
+            background_color=(0.12, 0.38, 0.14, 1),
+            color=(1, 1, 1, 1),
+        )
+        cancel_btn = Button(
+            text="Cancel",
+            background_normal="",
+            background_down="",
+            background_color=(0.35, 0.35, 0.35, 1),
+            color=(1, 1, 1, 1),
+        )
+        export_btn.bind(on_release=lambda *_: self._start_export())
+        cancel_btn.bind(on_release=lambda *_: self.dismiss())
+        btn_row.add_widget(export_btn)
+        btn_row.add_widget(cancel_btn)
+        content.add_widget(btn_row)
+
+        self._info_label = Label(text="", size_hint_y=None, height=22, color=(0.7, 0.7, 0.7, 1))
+        content.add_widget(self._info_label)
+
+        self.content = content
+
+    def _cycle_value(self, button, values):
+        try:
+            idx = values.index(button.text)
+        except ValueError:
+            idx = 0
+        button.text = values[(idx + 1) % len(values)]
+
+    def _build_filter_options(self):
+        window_type = "matching" if self._window_type.text == "Matching time" else "load"
+        range_type = self._range_type.text
+        now = datetime.now()
+        if range_type == "Full snapshot":
+            return {
+                "window_type": window_type,
+                "window_label": range_type,
+                "window_start": None,
+                "window_end": None,
+            }
+        if range_type == "Last 24h":
+            return {
+                "window_type": window_type,
+                "window_label": range_type,
+                "window_start": now.replace(microsecond=0) - timedelta(hours=24),
+                "window_end": now.replace(microsecond=0),
+            }
+        if range_type == "Last 3d":
+            return {
+                "window_type": window_type,
+                "window_label": range_type,
+                "window_start": now.replace(microsecond=0) - timedelta(days=3),
+                "window_end": now.replace(microsecond=0),
+            }
+        if range_type == "Last 7d":
+            return {
+                "window_type": window_type,
+                "window_label": range_type,
+                "window_start": now.replace(microsecond=0) - timedelta(days=7),
+                "window_end": now.replace(microsecond=0),
+            }
+        if range_type == "Last 14d":
+            return {
+                "window_type": window_type,
+                "window_label": range_type,
+                "window_start": now.replace(microsecond=0) - timedelta(days=14),
+                "window_end": now.replace(microsecond=0),
+            }
+        if range_type == "Last 30d":
+            return {
+                "window_type": window_type,
+                "window_label": range_type,
+                "window_start": now.replace(microsecond=0) - timedelta(days=30),
+                "window_end": now.replace(microsecond=0),
+            }
+        if range_type == "Last 60d":
+            return {
+                "window_type": window_type,
+                "window_label": range_type,
+                "window_start": now.replace(microsecond=0) - timedelta(days=60),
+                "window_end": now.replace(microsecond=0),
+            }
+        if range_type == "Last 90d":
+            return {
+                "window_type": window_type,
+                "window_label": range_type,
+                "window_start": now.replace(microsecond=0) - timedelta(days=90),
+                "window_end": now.replace(microsecond=0),
+            }
+
+        raise ValueError("Unknown time range option.")
+
+        return {
+            "window_type": window_type,
+            "window_label": range_type,
+            "window_start": None,
+            "window_end": None,
+        }
+
+    def _start_export(self):
+        try:
+            options = self._build_filter_options()
+        except ValueError as exc:
+            self._info_label.text = str(exc)
+            self._info_label.color = (1, 0.4, 0.4, 1)
+            return
+        self.dismiss()
+        App.get_running_app().run_export_with_options(options)
+
+
 class MatchingApp(App):
     title = "H600 Matching"
 
@@ -906,6 +1095,237 @@ class MatchingApp(App):
 
     def open_quarantine_popup(self):
         PinPopup(on_success=lambda: QuarantinePopup().open()).open()
+
+    def open_export_popup(self):
+        ExportOptionsPopup().open()
+
+    def run_export_with_options(self, options):
+        selected_dir = self._pick_export_directory()
+        if not selected_dir:
+            return
+        out_dir, file_count = self.export_csv_bundle(selected_dir, options)
+        if out_dir:
+            self._show_export_info(
+                "Export Complete",
+                f"Exported {file_count} files to:\n{out_dir}",
+            )
+        else:
+            self._show_export_info(
+                "Export Failed",
+                "Could not export files. Check destination permissions.",
+                error=True,
+            )
+
+    def _pick_export_directory(self):
+        selected_dir = None
+        try:
+            import tkinter as tk
+            from tkinter import filedialog
+
+            tk_root = tk.Tk()
+            tk_root.withdraw()
+            tk_root.attributes("-topmost", True)
+            selected_dir = filedialog.askdirectory(
+                title="Select export destination folder",
+                initialdir=os.getcwd(),
+                mustexist=True,
+            )
+            tk_root.destroy()
+        except Exception:
+            self._show_export_info(
+                "Export Failed",
+                "Could not open native folder picker on this system.",
+                error=True,
+            )
+            return ""
+        return selected_dir
+
+    def _show_export_info(self, title, text, error=False):
+        popup = Popup(title=title, size_hint=(0.55, 0.3), auto_dismiss=True)
+        box = BoxLayout(orientation="vertical", spacing=8, padding=10)
+        box.add_widget(Label(text=text, color=(1, 0.4, 0.4, 1) if error else (0.8, 0.8, 0.8, 1)))
+        ok = Button(text="OK", size_hint_y=None, height=36)
+        ok.bind(on_release=lambda *_: popup.dismiss())
+        box.add_widget(ok)
+        popup.content = box
+        popup.open()
+
+    def _write_csv(self, path, headers, rows):
+        with open(path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(headers)
+            writer.writerows(rows)
+
+    def _parse_iso_datetime(self, text):
+        if not text:
+            return None
+        try:
+            return datetime.fromisoformat(text)
+        except ValueError:
+            return None
+
+    def _row_reference_time(self, row, window_type):
+        if window_type == "load":
+            return self._parse_iso_datetime(row.get("loaded_at"))
+        if row.get("status") in ("matched", "paired"):
+            return self._parse_iso_datetime(row.get("matched_at"))
+        return self._parse_iso_datetime(row.get("loaded_at"))
+
+    def _filter_rows_by_window(self, rows, options):
+        start = options.get("window_start")
+        end = options.get("window_end")
+        window_type = options.get("window_type", "matching")
+        if start is None and end is None:
+            return rows
+
+        filtered = []
+        for row in rows:
+            ref_time = self._row_reference_time(row, window_type)
+            if ref_time is None:
+                continue
+            if start is not None and ref_time < start:
+                continue
+            if end is not None and ref_time > end:
+                continue
+            filtered.append(row)
+        return filtered
+
+    def export_csv_bundle(self, base_dir, options):
+        """Export filtered status lists into a timestamped directory inside base_dir."""
+        try:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            export_dir = os.path.join(base_dir, f"matching_export_{timestamp}")
+            os.makedirs(export_dir, exist_ok=True)
+
+            all_rows = get_all_drivers(include_levels=True)
+            filtered_rows = self._filter_rows_by_window(all_rows, options)
+            by_serial = {r["serial"]: r for r in filtered_rows}
+
+            unmatched = [r for r in filtered_rows if r["status"] == "unmatched"]
+            quarantined = [r for r in filtered_rows if r["status"] == "quarantined"]
+
+            matched_pairs = []
+            paired_pairs = []
+            for row in filtered_rows:
+                if row["side"] != "left" or not row.get("partner"):
+                    continue
+                partner = by_serial.get(row["partner"])
+                if not partner:
+                    continue
+                if row["status"] == "matched" and partner.get("status") == "matched":
+                    matched_pairs.append((row["serial"], row["partner"], row.get("matched_at") or ""))
+                if row["status"] == "paired" and partner.get("status") == "paired":
+                    paired_pairs.append((row["serial"], row["partner"], row.get("matched_at") or ""))
+
+            summary_counts = {
+                "unmatched": len(unmatched),
+                "matched": len([r for r in filtered_rows if r["status"] == "matched"]),
+                "paired": len([r for r in filtered_rows if r["status"] == "paired"]),
+                "quarantined": len(quarantined),
+            }
+            window_start = options.get("window_start")
+            window_end = options.get("window_end")
+
+            self._write_csv(
+                os.path.join(export_dir, "summary.csv"),
+                ["metric", "value"],
+                [
+                    ["exported_at", datetime.now().isoformat(timespec="seconds")],
+                    ["window_type", options.get("window_type", "matching")],
+                    ["window_label", options.get("window_label", "Full snapshot")],
+                    ["window_start", window_start.isoformat(timespec="seconds") if window_start else ""],
+                    ["window_end", window_end.isoformat(timespec="seconds") if window_end else ""],
+                    ["total_devices", len(filtered_rows)],
+                    ["unmatched", summary_counts["unmatched"]],
+                    ["matched", summary_counts["matched"]],
+                    ["paired", summary_counts["paired"]],
+                    ["quarantined", summary_counts["quarantined"]],
+                    ["rmse_threshold", self.rmse_threshold],
+                    ["freq_min", self.freq_min],
+                    ["freq_max", self.freq_max],
+                    ["max_module_age_days", self.max_module_age_days],
+                ],
+            )
+
+            self._write_csv(
+                os.path.join(export_dir, "pool_unmatched.csv"),
+                ["serial", "side", "loaded_at", "status"],
+                [[r["serial"], r["side"], r["loaded_at"], r["status"]] for r in unmatched],
+            )
+
+            self._write_csv(
+                os.path.join(export_dir, "pool_matched_pairs.csv"),
+                ["left_serial", "right_serial", "matched_at"],
+                [[left, right, matched_at] for left, right, matched_at in matched_pairs],
+            )
+
+            self._write_csv(
+                os.path.join(export_dir, "paired.csv"),
+                ["left_serial", "right_serial", "paired_at"],
+                [[left, right, paired_at] for left, right, paired_at in paired_pairs],
+            )
+
+            self._write_csv(
+                os.path.join(export_dir, "quarantined.csv"),
+                ["serial", "side", "loaded_at", "status"],
+                [[r["serial"], r["side"], r["loaded_at"], r["status"]] for r in quarantined],
+            )
+
+            self._write_csv(
+                os.path.join(export_dir, "all_devices.csv"),
+                ["serial", "side", "status", "partner", "loaded_at", "matched_at"],
+                [
+                    [
+                        r["serial"],
+                        r["side"],
+                        r["status"],
+                        r["partner"] or "",
+                        r["loaded_at"],
+                        r["matched_at"] or "",
+                    ]
+                    for r in filtered_rows
+                ],
+            )
+
+            export_json = {
+                "schema_version": "1.0",
+                "exported_at": datetime.now().isoformat(timespec="seconds"),
+                "window": {
+                    "type": options.get("window_type", "matching"),
+                    "label": options.get("window_label", "Full snapshot"),
+                    "start": window_start.isoformat(timespec="seconds") if window_start else None,
+                    "end": window_end.isoformat(timespec="seconds") if window_end else None,
+                },
+                "settings": {
+                    "rmse_threshold": self.rmse_threshold,
+                    "freq_min": self.freq_min,
+                    "freq_max": self.freq_max,
+                    "max_module_age_days": self.max_module_age_days,
+                },
+                "summary": {
+                    "total_devices": len(filtered_rows),
+                    "unmatched": summary_counts["unmatched"],
+                    "matched": summary_counts["matched"],
+                    "paired": summary_counts["paired"],
+                    "quarantined": summary_counts["quarantined"],
+                },
+                "frequency_vector": get_frequency_vector() or [],
+                "devices": filtered_rows,
+                "matched_pairs": [
+                    {"left_serial": left, "right_serial": right, "matched_at": matched_at}
+                    for left, right, matched_at in matched_pairs
+                ],
+                "paired_pairs": [
+                    {"left_serial": left, "right_serial": right, "paired_at": paired_at}
+                    for left, right, paired_at in paired_pairs
+                ],
+            }
+            with open(os.path.join(export_dir, "export_data.json"), "w", encoding="utf-8") as f:
+                json.dump(export_json, f, indent=2)
+
+            return export_dir, 7
+        except Exception:
+            return None, 0
 
     def recompute_now(self):
         reset_count = reset_matched_drivers()

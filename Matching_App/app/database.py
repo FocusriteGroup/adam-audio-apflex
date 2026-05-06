@@ -261,6 +261,54 @@ def get_matched_pairs():
     return [(left, right) for left, right in rows if right]
 
 
+def get_all_drivers(include_levels=False):
+    """Return all driver rows as dicts for reporting/export."""
+    con = _get_connection()
+    cur = con.cursor()
+    if include_levels:
+        cur.execute(
+            """
+            SELECT serial, side, status, partner, loaded_at, matched_at, levels
+            FROM drivers
+            ORDER BY status, side, serial
+            """
+        )
+    else:
+        cur.execute(
+            """
+            SELECT serial, side, status, partner, loaded_at, matched_at
+            FROM drivers
+            ORDER BY status, side, serial
+            """
+        )
+    rows = cur.fetchall()
+    con.close()
+    if include_levels:
+        return [
+            {
+                "serial": r[0],
+                "side": r[1],
+                "status": r[2],
+                "partner": r[3],
+                "loaded_at": r[4],
+                "matched_at": r[5],
+                "levels": json.loads(r[6]) if r[6] else [],
+            }
+            for r in rows
+        ]
+    return [
+        {
+            "serial": r[0],
+            "side": r[1],
+            "status": r[2],
+            "partner": r[3],
+            "loaded_at": r[4],
+            "matched_at": r[5],
+        }
+        for r in rows
+    ]
+
+
 def store_pairs(pairs):
     """Store matched pairs in the database.
 
