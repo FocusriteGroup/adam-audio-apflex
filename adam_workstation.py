@@ -789,7 +789,7 @@ class AdamWorkstation:
         print(response)
 
     def upload_measurement(self, args):
-        """Uploads a measurement file locally or to the ADAM service (with --server)."""
+        """Uploads a measurement file into local matcher DB (JSON path deprecated)."""
         try:
             upload_data = MeasurementUpload.prepare_upload(
                 args.measurement_path,
@@ -797,90 +797,53 @@ class AdamWorkstation:
                 self.workstation_id
             )
 
-            if getattr(args, "server", False) and getattr(args, "write_db", False):
-                WORKSTATION_LOGGER.error("--write-db is local-only and not supported with --server")
+            if getattr(args, "server", False):
+                WORKSTATION_LOGGER.error("upload_measurement currently supports local DB writes only")
                 self._show_error_popup(
-                    "Unsupported Option Combination",
-                    "--write-db is local-only and cannot be combined with --server."
+                    "Feature Not Available",
+                    "upload_measurement currently supports local DB writes only.\n"
+                    "Service mode is disabled for this feature."
                 )
                 print(False)
                 return
 
-            if getattr(args, "server", False):
-                command = {
-                    "action": "add_measurement",
-                    "serial_number": args.serial_number,
-                    "json_directory": args.json_directory,
-                    "measurement_data": upload_data
-                }
-                WORKSTATION_LOGGER.info("Sending measurement to service host=%s port=%s",
-                                        self.host, self.port)
-                response = self.send_command(command, wait_for_response=True)
-                try:
-                    response_data = json.loads(response)
-                    if response_data.get("status") == "success":
-                        WORKSTATION_LOGGER.info("Measurement uploaded successfully via service.")
-                        print(True)
-                    elif response_data.get("error") == "duplicate":
-                        sn = response_data.get("serial_number", args.serial_number)
-                        msg = f"DUT {sn} has already been measured successfully.\nMeasurement rejected."
-                        WORKSTATION_LOGGER.warning("Duplicate measurement rejected: serial=%s", sn)
-                        self._show_error_popup("DUT Already Measured", msg)
-                        print(False)
-                    else:
-                        WORKSTATION_LOGGER.error("Upload failed: %s", response_data.get("error", "Unknown error"))
-                        print(False)
-                except json.JSONDecodeError:
-                    WORKSTATION_LOGGER.error("Invalid response format from service.")
-                    print(False)
-            else:
-                if getattr(args, "write_db", False):
-                    WORKSTATION_LOGGER.info(
-                        "Writing measurement to local DB: db=%s, serial=%s",
-                        args.db_path,
-                        args.serial_number,
-                    )
-                    result = MeasurementUpload.write_measurement_local_db(
-                        upload_data,
-                        args.serial_number,
-                        args.db_path,
+            WORKSTATION_LOGGER.info(
+                "Writing measurement to local DB: db=%s, serial=%s",
+                args.db_path,
+                args.serial_number,
+            )
+            result = MeasurementUpload.write_measurement_local_db(
+                upload_data,
+                args.serial_number,
+                args.db_path,
+            )
+
+            if result.get("status") == "success":
+                WORKSTATION_LOGGER.info("Measurement written locally: %s", result.get("db_file"))
+                print(True)
+            elif result.get("error") == "status_blocked":
+                sn = result.get("serial_number", args.serial_number)
+                current_status = result.get("current_status", "unknown")
+                if current_status == "paired":
+                    msg = (
+                        f"DUT {sn} is currently paired.\n"
+                        "Unpair in the Matching App first, then remeasure."
                     )
                 else:
-                    WORKSTATION_LOGGER.info("Writing measurement locally: dir=%s, serial=%s",
-                                            args.json_directory, args.serial_number)
-                    result = MeasurementUpload.write_measurement_local(
-                        upload_data,
-                        args.serial_number,
-                        args.json_directory
-                    )
-
-                if result.get("status") == "success":
-                    target_file = result.get("json_file") or result.get("db_file")
-                    WORKSTATION_LOGGER.info("Measurement written locally: %s", target_file)
-                    print(True)
-                elif result.get("error") == "duplicate":
-                    sn = result.get("serial_number", args.serial_number)
-                    msg = f"DUT {sn} has already been measured successfully.\nMeasurement rejected."
-                    WORKSTATION_LOGGER.warning("Duplicate measurement rejected: serial=%s", sn)
-                    self._show_error_popup("DUT Already Measured", msg)
-                    print(False)
-                elif result.get("error") == "status_blocked":
-                    sn = result.get("serial_number", args.serial_number)
-                    current_status = result.get("current_status", "unknown")
                     msg = (
                         f"DUT {sn} is currently '{current_status}'.\n"
-                        "Unmatch/unpair in the Matching App first, then remeasure."
+                        "Please resolve this state in the Matching App before remeasurement."
                     )
-                    WORKSTATION_LOGGER.warning(
-                        "Measurement rejected due to status: serial=%s, status=%s",
-                        sn,
-                        current_status,
-                    )
-                    self._show_error_popup("DUT Not In Pool", msg)
-                    print(False)
-                else:
-                    WORKSTATION_LOGGER.error("Write failed: %s", result.get("error", "Unknown error"))
-                    print(False)
+                WORKSTATION_LOGGER.warning(
+                    "Measurement rejected due to status: serial=%s, status=%s",
+                    sn,
+                    current_status,
+                )
+                self._show_error_popup("DUT Not In Pool", msg)
+                print(False)
+            else:
+                WORKSTATION_LOGGER.error("Write failed: %s", result.get("error", "Unknown error"))
+                print(False)
 
         except Exception as e:
             WORKSTATION_LOGGER.error("Measurement upload failed: %s", str(e))

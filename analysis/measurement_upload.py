@@ -163,7 +163,8 @@ class MeasurementUpload:
         """
         Writes a prepared measurement directly into the local matcher SQLite database.
 
-        Existing rows are updated only when status is 'unmatched'.
+        Existing rows are updated when status is 'unmatched' or 'matched'.
+        Paired rows are rejected and must be unpaired first.
         """
         try:
             db_file = Path(db_path)
@@ -217,7 +218,7 @@ class MeasurementUpload:
                     )
 
             now = datetime.now().isoformat()
-            cur.execute("SELECT status FROM drivers WHERE serial = ?", (serial_number,))
+            cur.execute("SELECT status, partner FROM drivers WHERE serial = ?", (serial_number,))
             row = cur.fetchone()
 
             if row is None:
@@ -227,8 +228,30 @@ class MeasurementUpload:
                 )
                 operation = "inserted"
             else:
-                status = row[0]
-                if status != "unmatched":
+                status, partner = row
+                if status == "paired":
+                    con.close()
+                    return {
+                        "error": "status_blocked",
+                        "serial_number": serial_number,
+                        "current_status": status,
+                    }
+
+                if status == "matched":
+                    # Matched is transient in this workflow: reset the affected pair back to unmatched.
+                    if partner:
+                        cur.execute(
+                            "UPDATE drivers SET status='unmatched', partner=NULL, matched_at=NULL "
+                            "WHERE serial IN (?, ?)",
+                            (serial_number, partner),
+                        )
+                    else:
+                        cur.execute(
+                            "UPDATE drivers SET status='unmatched', partner=NULL, matched_at=NULL "
+                            "WHERE serial = ?",
+                            (serial_number,),
+                        )
+                elif status != "unmatched":
                     con.close()
                     return {
                         "error": "status_blocked",

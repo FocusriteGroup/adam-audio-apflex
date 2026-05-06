@@ -10,9 +10,8 @@ from kivy.uix.button import Button
 from kivy.uix.slider import Slider
 from kivy.uix.textinput import TextInput
 from kivy_garden.graph import Graph, LinePlot
-from app.watcher import DataWatcher
 from app.database import (
-    init_db, load_json_into_db, get_pool_counts, lookup_driver, confirm_pair,
+    init_db, get_pool_counts, get_data_signature, lookup_driver, confirm_pair,
     get_driver_levels, reset_matched_drivers, get_pool_serials,
     get_paired_list, unpair, delete_driver, load_settings, save_settings,
 )
@@ -539,13 +538,14 @@ class MatchingApp(App):
         self.freq_min = settings["freq_min"]
         self.freq_max = settings["freq_max"]
         self.root_widget = RootWidget()
-        self._watcher = DataWatcher(on_file_ready=self._on_file_ready)
+        self._last_data_signature = None
         return self.root_widget
 
     def on_start(self):
-        self._watcher.start()
+        self._sync_from_db(force=True)
         self._refresh_top_bar()
         self.popup_open = False
+        Clock.schedule_interval(self._sync_from_db, 1.0)
         # Force focus on scan input every 0.2s so workers never have to click
         bottom_bar = self.root_widget.ids.get("bottom_bar")
         if bottom_bar:
@@ -559,20 +559,23 @@ class MatchingApp(App):
             bottom_bar.focus_input()
 
     def on_stop(self):
-        self._watcher.stop()
+        pass
 
     def open_manage_popup(self):
         PinPopup().open()
 
-    def _on_file_ready(self, archive_path):
-        inserted = load_json_into_db(archive_path)
+    def _sync_from_db(self, dt=0, force=False):
+        signature = get_data_signature()
+        if not force and signature == self._last_data_signature:
+            return
+
+        self._last_data_signature = signature
         reset_matched_drivers()  # re-evaluate all non-paired drivers
-        new_pairs = compute_pairs(
+        compute_pairs(
             rmse_threshold=self.rmse_threshold,
             freq_min=self.freq_min,
             freq_max=self.freq_max,
         )
-        print(f"Loaded {inserted} new drivers, {new_pairs} new pairs")
         self._refresh_top_bar()
 
     def _refresh_top_bar(self):

@@ -194,17 +194,17 @@ def build_workstation_parser():
     check_trials_parser.add_argument("csv_path", type=str, help="Path to the CSV file")
     check_trials_parser.add_argument("max_trials", type=int, help="Maximum allowed trials")
     upload_measurement_parser = subparsers.add_parser("upload_measurement",
-        help="Upload measurement data to service or write locally")
+        help="Upload measurement data to local matcher DB")
     upload_measurement_parser.add_argument("measurement_path", type=str,
         help="Path to measurement file")
     upload_measurement_parser.add_argument("--serial-number", "-s",
         dest="serial_number", required=True, help="Explicit device serial number")
     upload_measurement_parser.add_argument("--json-directory", type=str,
-        default="measurements", help="JSON directory (local path or service directory)")
+        default="measurements", help="Deprecated: JSON upload path is no longer used")
     upload_measurement_parser.add_argument("--server", action="store_true",
-        help="Send to ADAM service instead of writing locally")
+        help="Deprecated for upload_measurement: service mode is disabled")
     upload_measurement_parser.add_argument("--write-db", action="store_true",
-        help="Write measurement into local matcher SQLite DB (local mode only)")
+        help="Optional compatibility flag; upload_measurement writes to DB by default")
     upload_measurement_parser.add_argument("--db-path", type=str,
         default="Matching_App/Data/db/matcher.db",
         help="Local matcher DB path used with --write-db (default: Matching_App/Data/db/matcher.db)")

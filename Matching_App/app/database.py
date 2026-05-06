@@ -133,6 +133,16 @@ def get_pool_counts():
     return unmatched, matched, paired
 
 
+def get_data_signature():
+    """Return a small signature used to detect new/updated measurement rows."""
+    con = _get_connection()
+    cur = con.cursor()
+    cur.execute("SELECT COUNT(*), COALESCE(MAX(loaded_at), '') FROM drivers")
+    count, max_loaded_at = cur.fetchone()
+    con.close()
+    return count, max_loaded_at
+
+
 def get_unmatched_drivers():
     """Return (left_drivers, right_drivers) as lists of (serial, levels_json) tuples."""
     con = _get_connection()
