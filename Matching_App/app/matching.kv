@@ -23,12 +23,36 @@
         color: 1, 1, 1, 1
 
     Button:
-        text: "Manage"
+        text: "Paired"
+        size_hint_x: None
+        width: "72dp"
+        font_size: "12sp"
+        background_color: 0.25, 0.25, 0.25, 1
+        on_release: app.open_paired_popup()
+
+    Button:
+        text: "Pool"
         size_hint_x: None
         width: "64dp"
         font_size: "12sp"
         background_color: 0.25, 0.25, 0.25, 1
-        on_release: app.open_manage_popup()
+        on_release: app.open_pool_popup()
+
+    Button:
+        text: "Quarantine"
+        size_hint_x: None
+        width: "88dp"
+        font_size: "12sp"
+        background_color: 0.25, 0.25, 0.25, 1
+        on_release: app.open_quarantine_popup()
+
+    Button:
+        text: "Settings"
+        size_hint_x: None
+        width: "76dp"
+        font_size: "12sp"
+        background_color: 0.25, 0.25, 0.25, 1
+        on_release: app.open_settings_popup()
 
 
 <BottomBar>:

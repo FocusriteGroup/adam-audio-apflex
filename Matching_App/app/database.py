@@ -13,6 +13,7 @@ _DEFAULT_SETTINGS = {
     "freq_min": 200,
     "freq_max": 8000,
     "pin": "1234",
+    "max_module_age_days": 14,
 }
 
 
@@ -133,6 +134,16 @@ def get_pool_counts():
     return unmatched, matched, paired
 
 
+def get_status_count(status):
+    """Return count of drivers in the requested status."""
+    con = _get_connection()
+    cur = con.cursor()
+    cur.execute("SELECT COUNT(*) FROM drivers WHERE status = ?", (status,))
+    count = cur.fetchone()[0]
+    con.close()
+    return count
+
+
 def get_data_signature():
     """Return a small signature used to detect new/updated measurement rows."""
     con = _get_connection()
@@ -185,6 +196,69 @@ def get_pool_serials():
     right = [row[0] for row in cur.fetchall()]
     con.close()
     return left, right
+
+
+def get_status_serials(status):
+    """Return sorted serial list for a given status."""
+    con = _get_connection()
+    cur = con.cursor()
+    if status != "matched":
+        cur.execute(
+            "SELECT serial FROM drivers WHERE status = ? ORDER BY side, serial",
+            (status,),
+        )
+        rows = [row[0] for row in cur.fetchall()]
+        con.close()
+        return rows
+
+    # For matched status, return serials in pair-adjacent order: left, right.
+    cur.execute(
+        "SELECT serial, partner, side FROM drivers WHERE status = 'matched'"
+    )
+    matched_rows = cur.fetchall()
+    con.close()
+
+    by_serial = {serial: (partner, side) for serial, partner, side in matched_rows}
+    ordered = []
+    seen = set()
+
+    # Start from left side to create stable pair ordering.
+    left_serials = sorted(
+        [serial for serial, (_partner, side) in by_serial.items() if side == "left"]
+    )
+    for left in left_serials:
+        if left in seen:
+            continue
+        partner, _ = by_serial[left]
+        ordered.append(left)
+        seen.add(left)
+        if partner in by_serial and partner not in seen:
+            ordered.append(partner)
+            seen.add(partner)
+
+    # Append any remaining rows (defensive for inconsistent data).
+    for serial in sorted(by_serial.keys()):
+        if serial not in seen:
+            ordered.append(serial)
+            seen.add(serial)
+
+    return ordered
+
+
+def get_matched_pairs():
+    """Return matched pairs as list of (left_serial, right_serial)."""
+    con = _get_connection()
+    cur = con.cursor()
+    cur.execute(
+        """
+        SELECT serial, partner FROM drivers
+        WHERE status = 'matched' AND side = 'left'
+        ORDER BY serial
+        """
+    )
+    rows = cur.fetchall()
+    con.close()
+    return [(left, right) for left, right in rows if right]
 
 
 def store_pairs(pairs):
@@ -282,6 +356,26 @@ def get_paired_list():
     return [(r[0], r[1], r[2]) for r in rows]
 
 
+def find_paired_by_serial(serial):
+    """Return (left_serial, right_serial) if serial is in a paired set, else None."""
+    con = _get_connection()
+    cur = con.cursor()
+    cur.execute(
+        "SELECT serial, partner, side FROM drivers WHERE serial = ? AND status = 'paired'",
+        (serial,),
+    )
+    row = cur.fetchone()
+    con.close()
+    if row is None:
+        return None
+    s, partner, side = row
+    if not partner:
+        return None
+    if side == "left":
+        return s, partner
+    return partner, s
+
+
 def unpair(left_serial, right_serial):
     """Reset a paired pair back to unmatched.
 
@@ -298,6 +392,16 @@ def unpair(left_serial, right_serial):
     con.commit()
     con.close()
     return count > 0
+
+
+def unpair_by_serial(serial):
+    """Unpair by one serial; returns (ok, left_serial, right_serial)."""
+    pair = find_paired_by_serial(serial)
+    if not pair:
+        return False, None, None
+    left_serial, right_serial = pair
+    ok = unpair(left_serial, right_serial)
+    return ok, left_serial, right_serial
 
 
 def delete_driver(serial):
@@ -325,6 +429,74 @@ def delete_driver(serial):
     con.commit()
     con.close()
     return True
+
+
+def restore_from_quarantine(serial):
+    """Move a quarantined driver back to pool (unmatched status).
+    
+    Returns True if the driver was restored.
+    """
+    con = _get_connection()
+    cur = con.cursor()
+    cur.execute("SELECT status FROM drivers WHERE serial = ?", (serial,))
+    row = cur.fetchone()
+    if row is None or row[0] != 'quarantined':
+        con.close()
+        return False
+    cur.execute(
+        "UPDATE drivers SET status='unmatched', partner=NULL, matched_at=NULL "
+        "WHERE serial = ?",
+        (serial,),
+    )
+    con.commit()
+    con.close()
+    return True
+
+
+def quarantine_old_modules(max_age_days):
+    """Move old pool modules (unmatched/matched) to quarantined; returns count."""
+    try:
+        days = int(max_age_days)
+    except (TypeError, ValueError):
+        days = 0
+    if days <= 0:
+        return 0
+
+    con = _get_connection()
+    cur = con.cursor()
+    cur.execute(
+        """
+        SELECT serial, partner, status FROM drivers
+        WHERE status IN ('unmatched', 'matched')
+          AND loaded_at <= datetime('now', '-' || ? || ' days')
+        """,
+        (str(days),),
+    )
+    rows = cur.fetchall()
+    if not rows:
+        con.close()
+        return 0
+
+    serials_to_quarantine = {r[0] for r in rows}
+    affected_partners = set()
+    for serial, partner, status in rows:
+        if status == 'matched' and partner and partner not in serials_to_quarantine:
+            affected_partners.add(partner)
+
+    if affected_partners:
+        cur.executemany(
+            "UPDATE drivers SET status='unmatched', partner=NULL, matched_at=NULL WHERE serial = ?",
+            [(s,) for s in affected_partners],
+        )
+
+    cur.executemany(
+        "UPDATE drivers SET status='quarantined', partner=NULL, matched_at=NULL WHERE serial = ?",
+        [(s,) for s in serials_to_quarantine],
+    )
+    count = len(serials_to_quarantine)
+    con.commit()
+    con.close()
+    return count
 
 
 def get_driver_levels(serial):

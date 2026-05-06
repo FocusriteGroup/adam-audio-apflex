@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.clock import Clock
 from kivy.core.window import Window
+from kivy.graphics import Color, Rectangle
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.popup import Popup
@@ -13,7 +14,9 @@ from kivy_garden.graph import Graph, LinePlot
 from app.database import (
     init_db, get_pool_counts, get_data_signature, lookup_driver, confirm_pair,
     get_driver_levels, reset_matched_drivers, get_pool_serials,
-    get_paired_list, unpair, delete_driver, load_settings, save_settings,
+    get_paired_list, get_status_serials, get_matched_pairs, get_status_count,
+    unpair, unpair_by_serial, delete_driver, restore_from_quarantine, quarantine_old_modules,
+    load_settings, save_settings,
 )
 from app.matcher import compute_pairs
 
@@ -200,10 +203,11 @@ class ChartArea(BoxLayout):
 
 
 class PinPopup(Popup):
-    """PIN dialog that gates access to Management."""
+    """PIN dialog that gates access to settings and operations."""
 
-    def __init__(self, **kwargs):
+    def __init__(self, on_success=None, **kwargs):
         super().__init__(**kwargs)
+        self._on_success = on_success
         self.title = "Enter PIN"
         self.size_hint = (0.35, 0.25)
         self.auto_dismiss = True
@@ -253,38 +257,45 @@ class PinPopup(Popup):
         App.get_running_app().popup_open = False
 
     def _on_submit(self, *args):
-        app = App.get_running_app()
         settings = load_settings()
         if self._pin_input.text == settings.get("pin", "1234"):
             self.dismiss()
-            ManagePopup().open()
+            if self._on_success:
+                self._on_success()
+            else:
+                SettingsPopup().open()
         else:
             self._error_label.text = "Wrong PIN"
             self._pin_input.text = ""
 
 
-class ManagePopup(Popup):
-    """Management overlay for configuring the RMSE threshold."""
+class SettingsPopup(Popup):
+    """Settings overlay for matching parameters and housekeeping."""
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.title = "Management"
-        self.size_hint = (0.6, 0.75)
+        self.title = "Settings"
+        self.size_hint = (0.6, 0.7)
         self.auto_dismiss = True
-        self.bind(on_open=lambda *a: setattr(
-            App.get_running_app(), 'popup_open', True))
-        self.bind(on_dismiss=lambda *a: setattr(
-            App.get_running_app(), 'popup_open', False))
+        self.bind(on_open=lambda *a: setattr(App.get_running_app(), 'popup_open', True))
+        self.bind(on_dismiss=lambda *a: setattr(App.get_running_app(), 'popup_open', False))
 
         app = App.get_running_app()
-        content = BoxLayout(orientation="vertical", spacing=10, padding=10)
+        
+        # Outer container
+        outer = BoxLayout(orientation="vertical", padding=10, spacing=8)
+        
+        # Scrollable content
+        scroll = ScrollView(size_hint=(1, 0.9))
+        content = BoxLayout(orientation="vertical", spacing=12, padding=5, size_hint_y=None)
+        content.bind(minimum_height=content.setter("height"))
 
         # --- Threshold section ---
         threshold_label = Label(
             text=f"RMSE Threshold: {app.rmse_threshold:.2f} dB",
             font_size="15sp",
             size_hint_y=None,
-            height=30,
+            height=28,
         )
         self._threshold_label = threshold_label
 
@@ -294,7 +305,7 @@ class ManagePopup(Popup):
             value=app.rmse_threshold,
             step=0.05,
             size_hint_y=None,
-            height=40,
+            height=36,
         )
         slider.bind(value=self._on_slider_change)
         self._slider = slider
@@ -304,30 +315,67 @@ class ManagePopup(Popup):
             text=f"Freq Range: {app.freq_min} Hz – {app.freq_max} Hz",
             font_size="15sp",
             size_hint_y=None,
-            height=30,
+            height=28,
         )
         self._freq_range_label = freq_range_label
 
-        freq_box = BoxLayout(orientation="horizontal", size_hint_y=None, height=40, spacing=10)
+        freq_min_box = BoxLayout(orientation="horizontal", size_hint_y=None, height=32, spacing=8)
+        freq_min_box.add_widget(Label(text="Min:", size_hint_x=None, width=45, font_size="13sp"))
         freq_min_slider = Slider(
             min=20, max=2000, value=app.freq_min, step=10,
         )
         freq_min_slider.bind(value=self._on_freq_change)
         self._freq_min_slider = freq_min_slider
+        freq_min_box.add_widget(freq_min_slider)
 
+        freq_max_box = BoxLayout(orientation="horizontal", size_hint_y=None, height=32, spacing=8)
+        freq_max_box.add_widget(Label(text="Max:", size_hint_x=None, width=45, font_size="13sp"))
         freq_max_slider = Slider(
             min=2000, max=20000, value=app.freq_max, step=100,
         )
         freq_max_slider.bind(value=self._on_freq_change)
         self._freq_max_slider = freq_max_slider
+        freq_max_box.add_widget(freq_max_slider)
 
-        freq_box.add_widget(freq_min_slider)
-        freq_box.add_widget(freq_max_slider)
+        # --- Module age section ---
+        age_label = Label(
+            text=self._format_age(app.max_module_age_days),
+            font_size="15sp",
+            size_hint_y=None,
+            height=28,
+        )
+        self._age_label = age_label
 
+        age_slider = Slider(
+            min=1,
+            max=120,
+            value=app.max_module_age_days,
+            step=1,
+            size_hint_y=None,
+            height=36,
+        )
+        age_slider.bind(value=self._on_age_change)
+        self._age_slider = age_slider
+
+        # Add all to scrollable content
+        content.add_widget(threshold_label)
+        content.add_widget(slider)
+        content.add_widget(Label(text="", size_hint_y=None, height=4))  # spacer
+        content.add_widget(freq_range_label)
+        content.add_widget(freq_min_box)
+        content.add_widget(freq_max_box)
+        content.add_widget(Label(text="", size_hint_y=None, height=4))  # spacer
+        content.add_widget(age_label)
+        content.add_widget(age_slider)
+        
+        scroll.add_widget(content)
+        outer.add_widget(scroll)
+
+        # --- Button section (not scrollable) ---
         rematch_btn = Button(
             text="Apply & Rematch",
             size_hint_y=None,
-            height=42,
+            height=40,
             font_size="14sp",
             background_color=(0.3, 0.6, 0.3, 1),
         )
@@ -336,111 +384,21 @@ class ManagePopup(Popup):
 
         self._info_label = Label(
             text="",
-            font_size="13sp",
+            font_size="12sp",
             size_hint_y=None,
-            height=30,
+            height=24,
             color=(0.7, 0.7, 0.7, 1),
         )
+        
+        outer.add_widget(rematch_btn)
+        outer.add_widget(self._info_label)
 
-        content.add_widget(threshold_label)
-        content.add_widget(slider)
-        content.add_widget(freq_range_label)
-        content.add_widget(freq_box)
-        content.add_widget(rematch_btn)
-        content.add_widget(self._info_label)
+        self.content = outer
 
-        # --- Waiting list section ---
-        pool_header = Label(
-            text="Waiting List (unmatched)",
-            font_size="15sp",
-            size_hint_y=None,
-            height=30,
-            bold=True,
-        )
-        content.add_widget(pool_header)
-
-        pool_box = BoxLayout(orientation="horizontal", spacing=10)
-
-        # Left column (IA)
-        left_col = BoxLayout(orientation="vertical", spacing=2)
-        self._left_header = Label(
-            text="Left / IA  (--)",
-            font_size="13sp", size_hint_y=None, height=24, bold=True,
-            color=(0.2, 0.6, 1, 1),
-        )
-        left_col.add_widget(self._left_header)
-        left_scroll = ScrollView()
-        self._left_grid = GridLayout(cols=1, size_hint_y=None, spacing=1)
-        self._left_grid.bind(minimum_height=self._left_grid.setter("height"))
-        left_scroll.add_widget(self._left_grid)
-        left_col.add_widget(left_scroll)
-
-        # Right column (IB)
-        right_col = BoxLayout(orientation="vertical", spacing=2)
-        self._right_header = Label(
-            text="Right / IB  (--)",
-            font_size="13sp", size_hint_y=None, height=24, bold=True,
-            color=(1, 0.4, 0.2, 1),
-        )
-        right_col.add_widget(self._right_header)
-        right_scroll = ScrollView()
-        self._right_grid = GridLayout(cols=1, size_hint_y=None, spacing=1)
-        self._right_grid.bind(minimum_height=self._right_grid.setter("height"))
-        right_scroll.add_widget(self._right_grid)
-        right_col.add_widget(right_scroll)
-
-        pool_box.add_widget(left_col)
-        pool_box.add_widget(right_col)
-        content.add_widget(pool_box)
-
-        self._build_pool_rows()
-
-        # --- Paired drivers section ---
-        paired_header = Label(
-            text="Paired Drivers",
-            font_size="15sp",
-            size_hint_y=None,
-            height=30,
-            bold=True,
-        )
-        content.add_widget(paired_header)
-
-        paired_scroll = ScrollView(size_hint_y=1)
-        self._paired_grid = GridLayout(cols=1, size_hint_y=None, spacing=2)
-        self._paired_grid.bind(minimum_height=self._paired_grid.setter("height"))
-        self._build_paired_rows()
-        paired_scroll.add_widget(self._paired_grid)
-        content.add_widget(paired_scroll)
-
-        self.content = content
-
-    def _build_paired_rows(self):
-        self._paired_grid.clear_widgets()
-        pairs = get_paired_list()
-        if not pairs:
-            self._paired_grid.add_widget(Label(
-                text="No paired drivers yet",
-                font_size="12sp", size_hint_y=None, height=24,
-                color=(0.5, 0.5, 0.5, 1),
-            ))
-            return
-        for left_s, right_s, matched_at in pairs:
-            row = BoxLayout(
-                orientation="horizontal", size_hint_y=None, height=28, spacing=6
-            )
-            row.add_widget(Label(
-                text=f"{left_s}  +  {right_s}",
-                font_size="12sp", color=(0.8, 0.8, 0.8, 1),
-            ))
-            btn = Button(
-                text="Unpair",
-                size_hint_x=None, width=60,
-                font_size="11sp",
-                background_color=(0.6, 0.25, 0.25, 1),
-            )
-            btn.bind(on_release=lambda inst, l=left_s, r=right_s: self._on_unpair(l, r))
-            row.add_widget(btn)
-            self._paired_grid.add_widget(row)
+    def _format_age(self, days):
+        """Format age label with proper singular/plural."""
+        day_word = "day" if days == 1 else "days"
+        return f"Max Module Age: {int(days)} {day_word}"
 
     def _on_slider_change(self, instance, value):
         self._threshold_label.text = f"RMSE Threshold: {value:.2f} dB"
@@ -450,75 +408,446 @@ class ManagePopup(Popup):
         fmax = int(self._freq_max_slider.value)
         self._freq_range_label.text = f"Freq Range: {fmin} Hz \u2013 {fmax} Hz"
 
-    def _build_pool_rows(self):
-        self._left_grid.clear_widgets()
-        self._right_grid.clear_widgets()
-        left_serials, right_serials = get_pool_serials()
-        self._left_header.text = f"Left / IA  ({len(left_serials)})"
-        self._right_header.text = f"Right / IB  ({len(right_serials)})"
-        for s in left_serials:
-            row = BoxLayout(orientation="horizontal", size_hint_y=None, height=22, spacing=4)
-            row.add_widget(Label(
-                text=s, font_size="12sp", color=(0.8, 0.8, 0.8, 1),
-            ))
-            btn = Button(
-                text="X", size_hint_x=None, width=28,
-                font_size="10sp", background_color=(0.5, 0.2, 0.2, 1),
-            )
-            btn.bind(on_release=lambda inst, serial=s: self._on_delete_driver(serial))
-            row.add_widget(btn)
-            self._left_grid.add_widget(row)
-        for s in right_serials:
-            row = BoxLayout(orientation="horizontal", size_hint_y=None, height=22, spacing=4)
-            row.add_widget(Label(
-                text=s, font_size="12sp", color=(0.8, 0.8, 0.8, 1),
-            ))
-            btn = Button(
-                text="X", size_hint_x=None, width=28,
-                font_size="10sp", background_color=(0.5, 0.2, 0.2, 1),
-            )
-            btn.bind(on_release=lambda inst, serial=s: self._on_delete_driver(serial))
-            row.add_widget(btn)
-            self._right_grid.add_widget(row)
-
-    def _on_delete_driver(self, serial):
-        ok = delete_driver(serial)
-        if ok:
-            self._build_pool_rows()
-            app = App.get_running_app()
-            app._refresh_top_bar()
+    def _on_age_change(self, instance, value):
+        self._age_label.text = self._format_age(value)
 
     def _on_rematch(self, instance):
         app = App.get_running_app()
         app.rmse_threshold = self._slider.value
         app.freq_min = int(self._freq_min_slider.value)
         app.freq_max = int(self._freq_max_slider.value)
+        app.max_module_age_days = int(self._age_slider.value)
         save_settings({
             "rmse_threshold": app.rmse_threshold,
             "freq_min": app.freq_min,
             "freq_max": app.freq_max,
+            "max_module_age_days": app.max_module_age_days,
         })
-        reset_count = reset_matched_drivers()
-        new_pairs = compute_pairs(
-            rmse_threshold=app.rmse_threshold,
-            freq_min=app.freq_min,
-            freq_max=app.freq_max,
-        )
+        reset_count, new_pairs = app.recompute_now()
         self._info_label.text = (
             f"Reset {reset_count} drivers, formed {new_pairs} new pairs"
         )
         self._info_label.color = (0.4, 1, 0.4, 1)
-        app._refresh_top_bar()
-        self._build_pool_rows()
-        self._build_paired_rows()
 
-    def _on_unpair(self, left_serial, right_serial):
+
+class PairedPopup(Popup):
+    """Operations for paired devices: list, unpair by click, unpair by serial."""
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.title = "Paired Devices"
+        self.size_hint = (0.55, 0.7)
+        self.auto_dismiss = True
+        self.bind(on_open=lambda *a: self._on_popup_open())
+        self.bind(on_dismiss=lambda *a: self._on_popup_close())
+
+        content = BoxLayout(orientation="vertical", spacing=8, padding=10)
+        self._header = Label(text="Paired (0)", size_hint_y=None, height=28, font_size="15sp")
+        content.add_widget(self._header)
+
+        scroll = ScrollView(size_hint=(1, 1))
+        self._grid = GridLayout(cols=1, size_hint_y=None, spacing=2)
+        self._grid.bind(minimum_height=self._grid.setter("height"))
+        scroll.add_widget(self._grid)
+        content.add_widget(scroll)
+
+        scan_box = BoxLayout(orientation="horizontal", size_hint_y=None, height=38, spacing=6)
+        self._serial_input = TextInput(
+            hint_text="Scan or type serial to unpair",
+            multiline=False,
+        )
+        self._serial_input.bind(on_text_validate=lambda *_: self._on_unpair_serial())
+        btn = Button(text="Unpair Serial", size_hint_x=None, width=120)
+        btn.bind(on_release=lambda *_: self._on_unpair_serial())
+        scan_box.add_widget(self._serial_input)
+        scan_box.add_widget(btn)
+        content.add_widget(scan_box)
+
+        self.content = content
+        self.bind(on_open=lambda *_: self._refresh_rows())
+
+    def _on_popup_open(self):
+        App.get_running_app().popup_open = True
+        Clock.schedule_once(lambda dt: setattr(self._serial_input, 'focus', True), 0.1)
+
+    def _on_popup_close(self):
+        App.get_running_app().popup_open = False
+
+    def _show_info(self, title, text):
+        popup = Popup(title=title, size_hint=(0.45, 0.25), auto_dismiss=True)
+        box = BoxLayout(orientation="vertical", spacing=8, padding=10)
+        box.add_widget(Label(text=text))
+        ok = Button(text="OK", size_hint_y=None, height=36)
+        ok.bind(on_release=lambda *_: popup.dismiss())
+        box.add_widget(ok)
+        popup.content = box
+        popup.bind(on_dismiss=lambda *_: self._focus_serial_input())
+        popup.open()
+
+    def _show_confirm(self, title, text, on_yes):
+        popup = Popup(title=title, size_hint=(0.5, 0.3), auto_dismiss=True)
+        box = BoxLayout(orientation="vertical", spacing=8, padding=10)
+        box.add_widget(Label(text=text))
+        row = BoxLayout(orientation="horizontal", size_hint_y=None, height=36, spacing=8)
+        yes = Button(text="Yes")
+        no = Button(text="No")
+        yes.bind(on_release=lambda *_: (popup.dismiss(), on_yes()))
+        no.bind(on_release=lambda *_: popup.dismiss())
+        row.add_widget(yes)
+        row.add_widget(no)
+        box.add_widget(row)
+        popup.content = box
+        popup.bind(on_dismiss=lambda *_: self._focus_serial_input())
+        popup.open()
+
+    def _focus_serial_input(self):
+        Clock.schedule_once(lambda dt: setattr(self._serial_input, 'focus', True), 0.05)
+
+    def _refresh_rows(self):
+        self._grid.clear_widgets()
+        pairs = get_paired_list()
+        total = len(pairs) * 2
+        self._header.text = f"Paired ({total})"
+        if not pairs:
+            self._grid.add_widget(Label(text="No paired devices", size_hint_y=None, height=24))
+            return
+        for left_s, right_s, _ in pairs:
+            row = BoxLayout(orientation="horizontal", size_hint_y=None, height=22, spacing=4)
+            row.add_widget(Label(text=left_s))
+            left_btn = Button(text="X", size_hint_x=None, width=24)
+            left_btn.bind(on_release=lambda *_x, l=left_s, r=right_s: self._confirm_unpair(l, r))
+            row.add_widget(left_btn)
+
+            row.add_widget(Label(text=right_s))
+            right_btn = Button(text="X", size_hint_x=None, width=24)
+            right_btn.bind(on_release=lambda *_x, l=left_s, r=right_s: self._confirm_unpair(l, r))
+            row.add_widget(right_btn)
+
+            self._grid.add_widget(row)
+
+    def _confirm_unpair(self, left_serial, right_serial):
+        self._show_confirm(
+            "Confirm Unpair",
+            f"Unpair {left_serial} and {right_serial}?",
+            lambda: self._do_unpair(left_serial, right_serial),
+        )
+
+    def _do_unpair(self, left_serial, right_serial):
         ok = unpair(left_serial, right_serial)
         if ok:
-            self._build_paired_rows()
-            self._build_pool_rows()
             app = App.get_running_app()
-            app._refresh_top_bar()
+            app.recompute_now()
+            self._refresh_rows()
+            self._show_info("Unpaired", f"{left_serial} and {right_serial} moved back to pool.")
+        else:
+            self._show_info("Not Found", "Selected pair could not be unpaired.")
+        self._focus_serial_input()
+
+    def _on_unpair_serial(self):
+        serial = self._serial_input.text.strip()
+        self._serial_input.text = ""
+        if not serial:
+            self._focus_serial_input()
+            return
+        ok, left_serial, right_serial = unpair_by_serial(serial)
+        if not ok:
+            self._show_info("Not Found", f"Serial {serial} is not in paired devices.")
+            self._focus_serial_input()
+            return
+        self._confirm_unpair(left_serial, right_serial)
+
+
+class PoolPopup(Popup):
+    """Operations for in-pool devices (matched and unmatched)."""
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.title = "Pool Devices"
+        self.size_hint = (0.7, 0.75)
+        self.auto_dismiss = True
+        self.bind(on_open=lambda *a: self._on_popup_open())
+        self.bind(on_dismiss=lambda *a: self._on_popup_close())
+
+        content = BoxLayout(orientation="vertical", spacing=8, padding=10)
+
+        lists = BoxLayout(orientation="horizontal", spacing=10)
+        self._unmatched_col = self._build_list_column("Unmatched")
+        self._matched_col = self._build_list_column("Matched")
+        lists.add_widget(self._unmatched_col["container"])
+        
+        # Divider
+        divider = BoxLayout(size_hint_x=None, width=2)
+        with divider.canvas.before:
+            Color(0.0, 0.75, 1.0, 0.9)
+            divider_rect = Rectangle(size=divider.size, pos=divider.pos)
+        divider.bind(pos=lambda instance, value: setattr(divider_rect, "pos", value))
+        divider.bind(size=lambda instance, value: setattr(divider_rect, "size", value))
+        lists.add_widget(divider)
+        
+        lists.add_widget(self._matched_col["container"])
+        content.add_widget(lists)
+
+        scan_box = BoxLayout(orientation="horizontal", size_hint_y=None, height=38, spacing=6)
+        self._serial_input = TextInput(
+            hint_text="Scan or type serial to remove from pool",
+            multiline=False,
+        )
+        self._serial_input.bind(on_text_validate=lambda *_: self._remove_serial())
+        btn = Button(text="Remove Serial", size_hint_x=None, width=120)
+        btn.bind(on_release=lambda *_: self._remove_serial())
+        scan_box.add_widget(self._serial_input)
+        scan_box.add_widget(btn)
+        content.add_widget(scan_box)
+
+        self.content = content
+        self.bind(on_open=lambda *_: self._refresh_rows())
+
+    def _on_popup_open(self):
+        App.get_running_app().popup_open = True
+        Clock.schedule_once(lambda dt: setattr(self._serial_input, 'focus', True), 0.1)
+
+    def _on_popup_close(self):
+        App.get_running_app().popup_open = False
+
+    def _build_list_column(self, title):
+        container = BoxLayout(orientation="vertical", spacing=4)
+        header = Label(text=f"{title} (0)", size_hint_y=None, height=24)
+        scroll = ScrollView()
+        grid = GridLayout(cols=1, size_hint_y=None, spacing=1)
+        grid.bind(minimum_height=grid.setter("height"))
+        scroll.add_widget(grid)
+        container.add_widget(header)
+        container.add_widget(scroll)
+        return {"container": container, "header": header, "grid": grid}
+
+    def _show_info(self, title, text):
+        popup = Popup(title=title, size_hint=(0.45, 0.25), auto_dismiss=True)
+        box = BoxLayout(orientation="vertical", spacing=8, padding=10)
+        box.add_widget(Label(text=text))
+        ok = Button(text="OK", size_hint_y=None, height=36)
+        ok.bind(on_release=lambda *_: popup.dismiss())
+        box.add_widget(ok)
+        popup.content = box
+        popup.bind(on_dismiss=lambda *_: self._focus_serial_input())
+        popup.open()
+
+    def _focus_serial_input(self):
+        Clock.schedule_once(lambda dt: setattr(self._serial_input, 'focus', True), 0.05)
+
+    def _refresh_rows(self):
+        unmatched = get_status_serials("unmatched")
+        matched_pairs = get_matched_pairs()
+        self._populate(self._unmatched_col, "Unmatched", unmatched)
+        self._populate_matched_pairs(self._matched_col, "Matched", matched_pairs)
+
+    def _populate(self, col, title, serials):
+        col["grid"].clear_widgets()
+        col["header"].text = f"{title} ({len(serials)})"
+        if not serials:
+            col["grid"].add_widget(Label(text="-", size_hint_y=None, height=20))
+            return
+        for serial in serials:
+            row = BoxLayout(orientation="horizontal", size_hint_y=None, height=22, spacing=4)
+            row.add_widget(Label(text=serial))
+            btn = Button(text="X", size_hint_x=None, width=28)
+            btn.bind(on_release=lambda *_x, s=serial: self._remove_serial(s))
+            row.add_widget(btn)
+            col["grid"].add_widget(row)
+
+    def _populate_matched_pairs(self, col, title, pairs):
+        col["grid"].clear_widgets()
+        total = len(pairs) * 2
+        col["header"].text = f"{title} ({total})"
+        if not pairs:
+            col["grid"].add_widget(Label(text="-", size_hint_y=None, height=20))
+            return
+
+        for left_serial, right_serial in pairs:
+            row = BoxLayout(orientation="horizontal", size_hint_y=None, height=22, spacing=4)
+            row.add_widget(Label(text=left_serial))
+            left_btn = Button(text="X", size_hint_x=None, width=24)
+            left_btn.bind(on_release=lambda *_x, s=left_serial: self._remove_serial(s))
+            row.add_widget(left_btn)
+
+            row.add_widget(Label(text=right_serial))
+            right_btn = Button(text="X", size_hint_x=None, width=24)
+            right_btn.bind(on_release=lambda *_x, s=right_serial: self._remove_serial(s))
+            row.add_widget(right_btn)
+
+            col["grid"].add_widget(row)
+
+    def _remove_serial(self, serial=None):
+        s = serial or self._serial_input.text.strip()
+        self._serial_input.text = ""
+        if not s:
+            self._focus_serial_input()
+            return
+        driver = lookup_driver(s)
+        if driver is None:
+            self._show_info("Not Found", f"Serial {s} not found in database.")
+            self._focus_serial_input()
+            return
+        if driver["status"] not in ("unmatched", "matched"):
+            self._show_info("Not In Pool", f"Serial {s} has status '{driver['status']}' and cannot be removed here.")
+            self._focus_serial_input()
+            return
+        ok = delete_driver(s)
+        if ok:
+            app = App.get_running_app()
+            app.recompute_now()
+            self._refresh_rows()
+            self._show_info("Removed", f"Serial {s} removed from pool/database.")
+        else:
+            self._show_info("Failed", f"Could not remove serial {s}.")
+        self._focus_serial_input()
+
+
+class QuarantinePopup(Popup):
+    """Operations for quarantined devices and age-based quarantine."""
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.title = "Quarantine"
+        self.size_hint = (0.6, 0.75)
+        self.auto_dismiss = True
+        self.bind(on_open=lambda *a: self._on_popup_open())
+        self.bind(on_dismiss=lambda *a: self._on_popup_close())
+
+        content = BoxLayout(orientation="vertical", spacing=8, padding=10)
+        self._header = Label(text="Quarantined (0)", size_hint_y=None, height=24)
+        content.add_widget(self._header)
+
+        quarantine_btn = Button(
+            text="Quarantine Old Modules Now",
+            size_hint_y=None,
+            height=36,
+            background_color=(0.5, 0.35, 0.2, 1),
+        )
+        quarantine_btn.bind(on_release=lambda *_: self._quarantine_old_now())
+        content.add_widget(quarantine_btn)
+
+        self._age_info = Label(text="", size_hint_y=None, height=20, color=(0.8, 0.8, 0.8, 1))
+        content.add_widget(self._age_info)
+
+        scroll = ScrollView()
+        self._grid = GridLayout(cols=1, size_hint_y=None, spacing=1)
+        self._grid.bind(minimum_height=self._grid.setter("height"))
+        scroll.add_widget(self._grid)
+        content.add_widget(scroll)
+
+        scan_box = BoxLayout(orientation="horizontal", size_hint_y=None, height=38, spacing=6)
+        self._serial_input = TextInput(
+            hint_text="Scan or type quarantined serial",
+            multiline=False,
+        )
+        self._serial_input.bind(on_text_validate=lambda *_: self._restore_serial(self._serial_input.text.strip()))
+        restore_btn = Button(text="Restore", size_hint_x=None, width=90, background_color=(0.3, 0.5, 0.3, 1))
+        restore_btn.bind(on_release=lambda *_: self._restore_serial(self._serial_input.text.strip()))
+        remove_btn = Button(text="Delete", size_hint_x=None, width=90)
+        remove_btn.bind(on_release=lambda *_: self._remove_serial(self._serial_input.text.strip()))
+        scan_box.add_widget(self._serial_input)
+        scan_box.add_widget(restore_btn)
+        scan_box.add_widget(remove_btn)
+        content.add_widget(scan_box)
+
+        self.content = content
+        self.bind(on_open=lambda *_: self._refresh_rows())
+
+    def _on_popup_open(self):
+        App.get_running_app().popup_open = True
+        Clock.schedule_once(lambda dt: setattr(self._serial_input, 'focus', True), 0.1)
+
+    def _on_popup_close(self):
+        App.get_running_app().popup_open = False
+
+    def _show_info(self, title, text):
+        popup = Popup(title=title, size_hint=(0.45, 0.25), auto_dismiss=True)
+        box = BoxLayout(orientation="vertical", spacing=8, padding=10)
+        box.add_widget(Label(text=text))
+        ok = Button(text="OK", size_hint_y=None, height=36)
+        ok.bind(on_release=lambda *_: popup.dismiss())
+        box.add_widget(ok)
+        popup.content = box
+        popup.bind(on_dismiss=lambda *_: self._focus_serial_input())
+        popup.open()
+
+    def _focus_serial_input(self):
+        Clock.schedule_once(lambda dt: setattr(self._serial_input, 'focus', True), 0.05)
+
+    def _refresh_rows(self):
+        serials = get_status_serials("quarantined")
+        self._header.text = f"Quarantined ({len(serials)})"
+        app = App.get_running_app()
+        self._age_info.text = f"Max age threshold: {int(app.max_module_age_days)} days"
+        self._grid.clear_widgets()
+        if not serials:
+            self._grid.add_widget(Label(text="No quarantined devices", size_hint_y=None, height=22))
+            return
+        for serial in serials:
+            row = BoxLayout(orientation="horizontal", size_hint_y=None, height=22, spacing=4)
+            row.add_widget(Label(text=serial))
+            restore_btn = Button(text="↑", size_hint_x=None, width=28, background_color=(0.3, 0.5, 0.3, 1))
+            restore_btn.bind(on_release=lambda *_x, s=serial: self._restore_serial(s))
+            row.add_widget(restore_btn)
+            delete_btn = Button(text="X", size_hint_x=None, width=28)
+            delete_btn.bind(on_release=lambda *_x, s=serial: self._remove_serial(s))
+            row.add_widget(delete_btn)
+            self._grid.add_widget(row)
+
+    def _quarantine_old_now(self):
+        app = App.get_running_app()
+        moved = quarantine_old_modules(app.max_module_age_days)
+        if moved > 0:
+            app.recompute_now()
+        self._refresh_rows()
+        self._show_info("Quarantine", f"Moved {moved} modules to quarantine.")
+        self._focus_serial_input()
+
+    def _remove_serial(self, serial=None):
+        s = serial or self._serial_input.text.strip()
+        self._serial_input.text = ""
+        if not s:
+            self._focus_serial_input()
+            return
+        driver = lookup_driver(s)
+        if driver is None:
+            self._show_info("Not Found", f"Serial {s} not found in database.")
+            self._focus_serial_input()
+            return
+        if driver["status"] != "quarantined":
+            self._show_info("Not Quarantined", f"Serial {s} is '{driver['status']}', not quarantined.")
+            self._focus_serial_input()
+            return
+        ok = delete_driver(s)
+        if ok:
+            self._refresh_rows()
+            self._show_info("Removed", f"Serial {s} removed from database.")
+        else:
+            self._show_info("Failed", f"Could not remove serial {s}.")
+        self._focus_serial_input()
+
+    def _restore_serial(self, serial):
+        """Restore a quarantined driver back to pool (unmatched status)."""
+        s = serial.strip() if isinstance(serial, str) else ""
+        self._serial_input.text = ""
+        if not s:
+            self._focus_serial_input()
+            return
+        ok = restore_from_quarantine(s)
+        if ok:
+            app = App.get_running_app()
+            app.recompute_now()
+            self._refresh_rows()
+            self._show_info("Restored", f"Serial {s} moved back to pool.")
+        else:
+            driver = lookup_driver(s)
+            if driver is None:
+                self._show_info("Not Found", f"Serial {s} not found in database.")
+            elif driver["status"] != "quarantined":
+                self._show_info("Not Quarantined", f"Serial {s} is '{driver['status']}', not quarantined.")
+            else:
+                self._show_info("Failed", f"Could not restore serial {s}.")
+        self._focus_serial_input()
 
 
 class RootWidget(BoxLayout):
@@ -537,6 +866,7 @@ class MatchingApp(App):
         self.rmse_threshold = settings["rmse_threshold"]
         self.freq_min = settings["freq_min"]
         self.freq_max = settings["freq_max"]
+        self.max_module_age_days = int(settings.get("max_module_age_days", 14))
         self.root_widget = RootWidget()
         self._last_data_signature = None
         return self.root_widget
@@ -562,7 +892,31 @@ class MatchingApp(App):
         pass
 
     def open_manage_popup(self):
-        PinPopup().open()
+        # Backward-compatible alias.
+        self.open_settings_popup()
+
+    def open_settings_popup(self):
+        PinPopup(on_success=lambda: SettingsPopup().open()).open()
+
+    def open_paired_popup(self):
+        PinPopup(on_success=lambda: PairedPopup().open()).open()
+
+    def open_pool_popup(self):
+        PinPopup(on_success=lambda: PoolPopup().open()).open()
+
+    def open_quarantine_popup(self):
+        PinPopup(on_success=lambda: QuarantinePopup().open()).open()
+
+    def recompute_now(self):
+        reset_count = reset_matched_drivers()
+        new_pairs = compute_pairs(
+            rmse_threshold=self.rmse_threshold,
+            freq_min=self.freq_min,
+            freq_max=self.freq_max,
+        )
+        self._last_data_signature = get_data_signature()
+        self._refresh_top_bar()
+        return reset_count, new_pairs
 
     def _sync_from_db(self, dt=0, force=False):
         signature = get_data_signature()
@@ -570,18 +924,13 @@ class MatchingApp(App):
             return
 
         self._last_data_signature = signature
-        reset_matched_drivers()  # re-evaluate all non-paired drivers
-        compute_pairs(
-            rmse_threshold=self.rmse_threshold,
-            freq_min=self.freq_min,
-            freq_max=self.freq_max,
-        )
-        self._refresh_top_bar()
+        self.recompute_now()
 
     def _refresh_top_bar(self):
         unmatched, matched, paired = get_pool_counts()
+        quarantined = get_status_count("quarantined")
         top_bar = self.root_widget.ids.get("top_bar")
         if top_bar:
             top_bar.ids.pool_status.text = (
-                f"In pool: {unmatched} | Matched: {matched} | Paired: {paired}"
+                f"In pool: {unmatched} | Matched: {matched} | Paired: {paired} | Quarantine: {quarantined}"
             )
