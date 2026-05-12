@@ -1032,7 +1032,8 @@ class AdamWorkstation:
             import os as _os
             _os.makedirs(_os.path.dirname(_os.path.abspath(db_path)), exist_ok=True)
             con = _sqlite3.connect(db_path)
-            con.execute("PRAGMA journal_mode=WAL")
+            con.execute("PRAGMA journal_mode=DELETE")
+            con.execute("PRAGMA busy_timeout=5000")
 
             # Ensure system_builds table exists
             con.execute("""

@@ -37,7 +37,8 @@ def save_settings(settings):
 def _get_connection():
     os.makedirs(_DB_DIR, exist_ok=True)
     con = sqlite3.connect(DB_PATH)
-    con.execute("PRAGMA journal_mode=WAL")
+    con.execute("PRAGMA journal_mode=DELETE")
+    con.execute("PRAGMA busy_timeout=5000")
     return con
 
 
@@ -574,7 +575,8 @@ def verify_and_link_system(system_sn, sn1, sn2, db_path=None):
             import os as _os
             _os.makedirs(_os.path.dirname(_os.path.abspath(db_path)), exist_ok=True)
             con = sqlite3.connect(db_path)
-            con.execute("PRAGMA journal_mode=WAL")
+            con.execute("PRAGMA journal_mode=DELETE")
+            con.execute("PRAGMA busy_timeout=5000")
         else:
             con = _get_connection()
 

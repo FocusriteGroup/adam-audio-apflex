@@ -187,7 +187,8 @@ class MeasurementUpload:
 
             con = sqlite3.connect(str(db_file))
             cur = con.cursor()
-            cur.execute("PRAGMA journal_mode=WAL")
+            cur.execute("PRAGMA journal_mode=DELETE")
+            cur.execute("PRAGMA busy_timeout=5000")
 
             # Ensure matcher schema exists for standalone local usage.
             cur.execute("""
