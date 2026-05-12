@@ -62,6 +62,14 @@ def init_db():
             matched_at  TEXT
         )
     """)
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS system_builds (
+            system_serial TEXT PRIMARY KEY,
+            module_1      TEXT NOT NULL,
+            module_2      TEXT NOT NULL,
+            built_at      TEXT NOT NULL
+        )
+    """)
     con.commit()
     con.close()
 
@@ -545,6 +553,114 @@ def quarantine_old_modules(max_age_days):
     con.commit()
     con.close()
     return count
+
+
+def verify_and_link_system(system_sn, sn1, sn2, db_path=None):
+    """Verify two modules are a valid matched/paired pair and link them to a system.
+
+    Returns (success: bool, reason: str).
+
+    Pass/Fail conditions:
+    - FAIL if either serial does not exist.
+    - FAIL if either module is not in 'matched' or 'paired' status.
+    - FAIL if modules are not matched/paired to each other.
+    - FAIL if either module is already paired to a different partner.
+    - PASS if modules are matched to each other (auto-pairs if needed).
+    - PASS if modules are already paired to each other.
+    On success, the system_sn is linked in system_builds.
+    """
+    try:
+        if db_path:
+            import os as _os
+            _os.makedirs(_os.path.dirname(_os.path.abspath(db_path)), exist_ok=True)
+            con = sqlite3.connect(db_path)
+            con.execute("PRAGMA journal_mode=WAL")
+        else:
+            con = _get_connection()
+
+        # Ensure system_builds table exists (for callers using a custom db_path)
+        con.execute("""
+            CREATE TABLE IF NOT EXISTS system_builds (
+                system_serial TEXT PRIMARY KEY,
+                module_1      TEXT NOT NULL,
+                module_2      TEXT NOT NULL,
+                built_at      TEXT NOT NULL
+            )
+        """)
+        con.commit()
+
+        cur = con.cursor()
+
+        # 1. Check both serials exist
+        cur.execute("SELECT serial, status, partner FROM drivers WHERE serial = ?", (sn1,))
+        row1 = cur.fetchone()
+        cur.execute("SELECT serial, status, partner FROM drivers WHERE serial = ?", (sn2,))
+        row2 = cur.fetchone()
+
+        if row1 is None:
+            con.close()
+            return False, f"Module {sn1} not found in database"
+        if row2 is None:
+            con.close()
+            return False, f"Module {sn2} not found in database"
+
+        _, status1, partner1 = row1
+        _, status2, partner2 = row2
+
+        # 2. Check modules are in an acceptable status
+        valid_statuses = {'matched', 'paired'}
+        if status1 not in valid_statuses:
+            con.close()
+            return False, f"Module {sn1} is not matched or paired (status: {status1})"
+        if status2 not in valid_statuses:
+            con.close()
+            return False, f"Module {sn2} is not matched or paired (status: {status2})"
+
+        # 3. Check they are matched/paired to each other (not to different partners)
+        if partner1 != sn2:
+            if partner1:
+                con.close()
+                return False, f"Module {sn1} is matched/paired to a different module: {partner1}"
+            else:
+                con.close()
+                return False, f"Module {sn1} has no partner"
+        if partner2 != sn1:
+            if partner2:
+                con.close()
+                return False, f"Module {sn2} is matched/paired to a different module: {partner2}"
+            else:
+                con.close()
+                return False, f"Module {sn2} has no partner"
+
+        # 4. Auto-pair if matched but not yet paired
+        now = datetime.now().isoformat()
+        action = "already paired"
+        if status1 == 'matched' or status2 == 'matched':
+            cur.execute(
+                "UPDATE drivers SET status='paired', matched_at=? WHERE serial IN (?, ?)",
+                (now, sn1, sn2),
+            )
+            action = "auto-paired"
+
+        # 5. Unlink any existing system_builds entries that reference these modules
+        cur.execute(
+            "DELETE FROM system_builds WHERE module_1 IN (?, ?) OR module_2 IN (?, ?)",
+            (sn1, sn2, sn1, sn2),
+        )
+
+        # 6. Link system_sn → the two modules
+        cur.execute(
+            "INSERT OR REPLACE INTO system_builds (system_serial, module_1, module_2, built_at) "
+            "VALUES (?, ?, ?, ?)",
+            (system_sn, sn1, sn2, now),
+        )
+
+        con.commit()
+        con.close()
+        return True, f"System {system_sn} linked to {sn1} and {sn2} ({action})"
+
+    except Exception as e:
+        return False, f"Database error: {str(e)}"
 
 
 def get_driver_levels(serial):

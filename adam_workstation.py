@@ -152,6 +152,7 @@ class AdamWorkstation:
             "init_asub": self.init_asub,  # Add new command to map
             "setup_references": self.setup_references,  # Setup References directory
             "is_golden_sample": self.is_golden_sample,
+            "verify_system": self.verify_system,
         }
 
         # Set up argument parser for CLI usage
@@ -1009,6 +1010,139 @@ class AdamWorkstation:
             self._show_warning_popup("Golden Sample Connected", msg)
 
         print(is_golden)
+
+    def verify_system(self, args):
+        """Verify two modules are a matched pair and link them to a system serial.
+
+        Prints True if successful, False otherwise.
+        All diagnostic output goes to the log file and error popups only.
+        """
+        import sqlite3 as _sqlite3
+        try:
+            db_path = args.db_path
+            sn1 = args.module_sn_1.strip()
+            sn2 = args.module_sn_2.strip()
+            system_sn = args.system_sn.strip()
+
+            WORKSTATION_LOGGER.info(
+                "verify_system: system=%s, module1=%s, module2=%s, db=%s",
+                system_sn, sn1, sn2, db_path,
+            )
+
+            import os as _os
+            _os.makedirs(_os.path.dirname(_os.path.abspath(db_path)), exist_ok=True)
+            con = _sqlite3.connect(db_path)
+            con.execute("PRAGMA journal_mode=WAL")
+
+            # Ensure system_builds table exists
+            con.execute("""
+                CREATE TABLE IF NOT EXISTS system_builds (
+                    system_serial TEXT PRIMARY KEY,
+                    module_1      TEXT NOT NULL,
+                    module_2      TEXT NOT NULL,
+                    built_at      TEXT NOT NULL
+                )
+            """)
+            con.commit()
+            cur = con.cursor()
+
+            # 1. Check both serials exist
+            cur.execute("SELECT serial, status, partner FROM drivers WHERE serial = ?", (sn1,))
+            row1 = cur.fetchone()
+            cur.execute("SELECT serial, status, partner FROM drivers WHERE serial = ?", (sn2,))
+            row2 = cur.fetchone()
+
+            if row1 is None:
+                con.close()
+                WORKSTATION_LOGGER.warning("verify_system FAIL: module %s not found", sn1)
+                self._show_error_popup("System Verification Failed", f"Module {sn1} not found in database.")
+                print(False)
+                return
+            if row2 is None:
+                con.close()
+                WORKSTATION_LOGGER.warning("verify_system FAIL: module %s not found", sn2)
+                self._show_error_popup("System Verification Failed", f"Module {sn2} not found in database.")
+                print(False)
+                return
+
+            _, status1, partner1 = row1
+            _, status2, partner2 = row2
+
+            # 2. Check modules are in an acceptable status
+            valid_statuses = {'matched', 'paired'}
+            if status1 not in valid_statuses:
+                con.close()
+                msg = f"Module {sn1} is not matched or paired (status: {status1})."
+                WORKSTATION_LOGGER.warning("verify_system FAIL: %s", msg)
+                self._show_error_popup("System Verification Failed", msg)
+                print(False)
+                return
+            if status2 not in valid_statuses:
+                con.close()
+                msg = f"Module {sn2} is not matched or paired (status: {status2})."
+                WORKSTATION_LOGGER.warning("verify_system FAIL: %s", msg)
+                self._show_error_popup("System Verification Failed", msg)
+                print(False)
+                return
+
+            # 3. Check they are matched/paired to each other
+            if partner1 != sn2:
+                con.close()
+                msg = (
+                    f"Module {sn1} is not matched to {sn2}.\n"
+                    f"Its current partner is: {partner1 or 'none'}."
+                )
+                WORKSTATION_LOGGER.warning("verify_system FAIL: %s", msg)
+                self._show_error_popup("System Verification Failed", msg)
+                print(False)
+                return
+            if partner2 != sn1:
+                con.close()
+                msg = (
+                    f"Module {sn2} is not matched to {sn1}.\n"
+                    f"Its current partner is: {partner2 or 'none'}."
+                )
+                WORKSTATION_LOGGER.warning("verify_system FAIL: %s", msg)
+                self._show_error_popup("System Verification Failed", msg)
+                print(False)
+                return
+
+            # 4. Auto-pair if matched but not yet paired
+            now = datetime.now().isoformat()
+            action = "already paired"
+            if status1 == 'matched' or status2 == 'matched':
+                cur.execute(
+                    "UPDATE drivers SET status='paired', matched_at=? WHERE serial IN (?, ?)",
+                    (now, sn1, sn2),
+                )
+                action = "auto-paired"
+                WORKSTATION_LOGGER.info("verify_system: auto-paired %s and %s", sn1, sn2)
+
+            # 5. Unlink any existing system_builds entries referencing these modules
+            cur.execute(
+                "DELETE FROM system_builds WHERE module_1 IN (?, ?) OR module_2 IN (?, ?)",
+                (sn1, sn2, sn1, sn2),
+            )
+
+            # 6. Link system_sn to the two modules
+            cur.execute(
+                "INSERT OR REPLACE INTO system_builds "
+                "(system_serial, module_1, module_2, built_at) VALUES (?, ?, ?, ?)",
+                (system_sn, sn1, sn2, now),
+            )
+            con.commit()
+            con.close()
+
+            WORKSTATION_LOGGER.info(
+                "verify_system PASS: system=%s linked to %s and %s (%s)",
+                system_sn, sn1, sn2, action,
+            )
+            print(True)
+
+        except Exception as e:
+            WORKSTATION_LOGGER.error("verify_system error: %s", str(e))
+            self._show_error_popup("System Verification Error", str(e))
+            print(False)
 
     def setup_arg_parser(self):
         self.parser = build_workstation_parser()

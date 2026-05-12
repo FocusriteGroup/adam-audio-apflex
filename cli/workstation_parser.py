@@ -313,4 +313,17 @@ def build_workstation_parser():
     golden_sample_parser.add_argument("measure_golden_sample", type=lambda x: x.lower() == "true",
         help="True if the Golden Sample should be measured, False if an EOL unit should be measured")
 
+    # System build verification
+    verify_system_parser = subparsers.add_parser("verify_system",
+        help="Verify two modules form a matched pair and link them to a system serial number")
+    verify_system_parser.add_argument("system_sn", type=str,
+        help="System serial number")
+    verify_system_parser.add_argument("module_sn_1", type=str,
+        help="First module serial number")
+    verify_system_parser.add_argument("module_sn_2", type=str,
+        help="Second module serial number")
+    verify_system_parser.add_argument("--db-path", type=str,
+        default="Matching_App/Data/db/matcher.db",
+        help="Local matcher DB path (default: Matching_App/Data/db/matcher.db)")
+
     return parser
