@@ -942,6 +942,10 @@ class AdamWorkstation:
 
             # Copy all contents from source to References
             for item in os.listdir(default_refs):
+                # Skip the Mono subdirectory when copying stereo references
+                if not use_mono and item == "Mono":
+                    continue
+
                 src_path = os.path.join(default_refs, item)
                 dst_path = os.path.join(references_dir, item)
 
