@@ -2,5 +2,6 @@
   "rmse_threshold": 1.1,
   "freq_min": 30,
   "freq_max": 20000,
+  "pin": "1234",
   "max_module_age_days": 1
 }
