@@ -103,7 +103,6 @@ class OCADevice:
             position (str): Input mode. One of:
                 - "aes3"
                 - "analogue-xlr"
-                - "analogue-rca"
         """
         wrapper = self._get_wrapper()
         options = self._cli_options()
@@ -115,16 +114,15 @@ class OCADevice:
     def get_bass_management(self):
         wrapper = self._get_wrapper()
         options = self._cli_options()
-        result = wrapper.run_cli_command(command="bass-management", subcommand="get", options=options)
+        result = wrapper.run_cli_command(command_path=["bass-management", "mode", "get"], options=options)
         self._log_to_service("get_bass_management", result)
         return result
 
     def set_bass_management(self, position):
         """Set bass management mode.
-        
+
         Args:
             position (str): Bass management mode. One of:
-                - "stereo-bass"
                 - "stereo"
                 - "wide"
                 - "lfe"
@@ -132,8 +130,37 @@ class OCADevice:
         wrapper = self._get_wrapper()
         options = self._cli_options()
         options["--position"] = position
-        result = wrapper.run_cli_command(command="bass-management", subcommand="set", options=options)
+        result = wrapper.run_cli_command(command_path=["bass-management", "mode", "set"], options=options)
         self._log_to_service("set_bass_management", result)
+        return result
+
+    def get_bass_management_bypass(self):
+        """Get bass management bypass state (enabled/disabled)."""
+        wrapper = self._get_wrapper()
+        options = self._cli_options()
+        result = wrapper.run_cli_command(
+            command_path=["bass-management", "bypass", "get"],
+            options=options
+        )
+        self._log_to_service("get_bass_management_bypass", result)
+        return result
+
+    def set_bass_management_bypass(self, state):
+        """Set bass management bypass state.
+
+        Args:
+            state (str): Bypass state. One of:
+                - "enabled"
+                - "disabled"
+        """
+        wrapper = self._get_wrapper()
+        options = self._cli_options()
+        options["--position"] = state
+        result = wrapper.run_cli_command(
+            command_path=["bass-management", "bypass", "set"],
+            options=options
+        )
+        self._log_to_service("set_bass_management_bypass", result)
         return result
 
     def get_gain(self):
@@ -162,40 +189,97 @@ class OCADevice:
         wrapper = self._get_wrapper()
         options = self._cli_options()
         result = wrapper.run_cli_command(command="phase-delay", subcommand="get", options=options)
+        self._log_to_service("get_phase_delay", result)
         return result
 
     def set_phase_delay(self, position):
         """Set phase delay setting."""
         wrapper = self._get_wrapper()
-        result = wrapper.run_cli_command(
-            command="phase-delay",
-            subcommand="set",
-            options={
-                "--position": position,
-                "--target": self.target
-            }
-        )
+        options = self._cli_options()
+        options["--position"] = position
+        result = wrapper.run_cli_command(command="phase-delay", subcommand="set", options=options)
+        self._log_to_service("set_phase_delay", result)
         return result
 
     def get_mute(self):
         """Get current mute state."""
-        wrapper = OCP1ToolWrapper(target_ip=None, port=None)
-        result = wrapper.run_cli_command(
-            command="mute",
-            subcommand="get",
-            options={"--target": self.target}
-        )
+        wrapper = self._get_wrapper()
+        options = self._cli_options()
+        result = wrapper.run_cli_command(command="mute", subcommand="get", options=options)
+        self._log_to_service("get_mute", result)
         return result
 
     def set_mute(self, position):
         """Set mute state."""
-        wrapper = OCP1ToolWrapper(target_ip=None, port=None)
-        result = wrapper.run_cli_command(
-            command="mute",
-            subcommand="set",
-            options={
-                "--position": position,
-                "--target": self.target
-            }
-        )
+        wrapper = self._get_wrapper()
+        options = self._cli_options()
+        options["--position"] = position
+        result = wrapper.run_cli_command(command="mute", subcommand="set", options=options)
+        self._log_to_service("set_mute", result)
         return result
+
+    def get_mac_address(self):
+        """Get the MAC address of the device."""
+        wrapper = self._get_wrapper()
+        options = self._cli_options()
+        result = wrapper.run_cli_command(
+            command_path=["factory-settings", "get-mac-address"],
+            options=options
+        )
+        self._log_to_service("get_mac_address", result)
+        return result
+
+    def set_mac_address(self, mac_address):
+        """Set the MAC address of the device.
+
+        Args:
+            mac_address (str): MAC address in format "XX:XX:XX:XX:XX:XX"
+        """
+        wrapper = self._get_wrapper()
+        options = self._cli_options()
+        options["--value"] = mac_address
+        result = wrapper.run_cli_command(
+            command_path=["factory-settings", "set-mac-address"],
+            options=options
+        )
+        self._log_to_service("set_mac_address", result)
+        return result
+
+    def get_serial_number(self):
+        """Get the serial number of the device."""
+        wrapper = self._get_wrapper()
+        options = self._cli_options()
+        result = wrapper.run_cli_command(
+            command_path=["factory-settings", "get-serial-number"],
+            options=options
+        )
+        self._log_to_service("get_serial_number", result)
+        return result
+
+    def set_serial_number(self, value):
+        """Set the serial number of the device.
+
+        Args:
+            value (str): Serial number string
+        """
+        wrapper = self._get_wrapper()
+        options = self._cli_options()
+        options["--value"] = value
+        result = wrapper.run_cli_command(
+            command_path=["factory-settings", "set-serial-number"],
+            options=options
+        )
+        self._log_to_service("set_serial_number", result)
+        return result
+
+    def get_model_description(self):
+        """Get model description (manufacturer, model name, firmware version)."""
+        wrapper = self._get_wrapper()
+        options = self._cli_options()
+        result = wrapper.run_cli_command(
+            command_path=["model-description", "get"],
+            options=options
+        )
+        self._log_to_service("get_model_description", result)
+        return result
+

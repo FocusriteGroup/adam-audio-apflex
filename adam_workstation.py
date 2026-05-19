@@ -143,12 +143,19 @@ class AdamWorkstation:
             "calibrate_gain": self.calibrate_gain,  # NEU: Gain Calibration
             "get_bass_management": self.get_bass_management,
             "set_bass_management": self.set_bass_management,
+            "get_bass_management_bypass": self.get_bass_management_bypass,
+            "set_bass_management_bypass": self.set_bass_management_bypass,
             "get_gain": self.get_gain,
             "set_gain": self.set_gain,
             "get_phase_delay": self.get_phase_delay,
             "set_phase_delay": self.set_phase_delay,
             "get_mute": self.get_mute,
             "set_mute": self.set_mute,
+            "get_mac_address": self.get_mac_address,
+            "set_mac_address": self.set_mac_address,
+            "get_serial_number": self.get_serial_number,
+            "set_serial_number": self.set_serial_number,
+            "get_model_description": self.get_model_description,
             "init_asub": self.init_asub,  # Add new command to map
             "setup_references": self.setup_references,  # Setup References directory
             "is_golden_sample": self.is_golden_sample,
@@ -709,7 +716,10 @@ class AdamWorkstation:
 
     def get_gain_calibration(self, args):
         device = self._get_oca_device(args)
-        print(device.get_gain_calibration())
+        result = device.get_gain_calibration()
+        WORKSTATION_LOGGER.debug("get_gain_calibration result: %s", result)
+        values = result.get("calibration_values", [])
+        print(values[0] if values else "")
 
     def set_gain_calibration(self, args):
         device = self._get_oca_device(args)
@@ -717,7 +727,9 @@ class AdamWorkstation:
 
     def get_mode(self, args):
         device = self._get_oca_device(args)
-        print(device.get_mode())
+        result = device.get_mode()
+        WORKSTATION_LOGGER.debug("get_mode result: %s", result)
+        print(result.get("mode", ""))
 
     def set_mode(self, args):
         device = self._get_oca_device(args)
@@ -725,7 +737,9 @@ class AdamWorkstation:
 
     def get_audio_input(self, args):
         device = self._get_oca_device(args)
-        print(device.get_audio_input())
+        result = device.get_audio_input()
+        WORKSTATION_LOGGER.debug("get_audio_input result: %s", result)
+        print(result.get("input_mode", ""))
 
     def set_audio_input(self, args):
         """Set audio input mode."""
@@ -734,16 +748,31 @@ class AdamWorkstation:
 
     def get_bass_management(self, args):
         device = self._get_oca_device(args)
-        print(device.get_bass_management())
+        result = device.get_bass_management()
+        WORKSTATION_LOGGER.debug("get_bass_management result: %s", result)
+        print(result.get("bass_management_mode", ""))
 
     def set_bass_management(self, args):
         device = self._get_oca_device(args)
         print(device.set_bass_management(args.position)["success"])
 
+    def get_bass_management_bypass(self, args):
+        device = self._get_oca_device(args)
+        result = device.get_bass_management_bypass()
+        WORKSTATION_LOGGER.debug("get_bass_management_bypass result: %s", result)
+        print(result.get("bypass_state", ""))
+
+    def set_bass_management_bypass(self, args):
+        device = self._get_oca_device(args)
+        result = device.set_bass_management_bypass(args.position)
+        print(result.get("success", result.get("bypass_state", result)))
+
     def get_gain(self, args):
         """Get subwoofer gain level."""
         device = self._get_oca_device(args)
-        print(device.get_gain())
+        result = device.get_gain()
+        WORKSTATION_LOGGER.debug("get_gain result: %s", result)
+        print(result.get("gain", ""))
 
     def set_gain(self, args):
         """Set subwoofer gain level."""
@@ -754,7 +783,8 @@ class AdamWorkstation:
         """Get current phase delay setting."""
         device = self._get_oca_device(args)
         result = device.get_phase_delay()
-        print(result)  # This will print the parsed response from the wrapper
+        WORKSTATION_LOGGER.debug("get_phase_delay result: %s", result)
+        print(result.get("phase_delay", ""))
 
     def set_phase_delay(self, args):
         device = self._get_oca_device(args)
@@ -762,11 +792,41 @@ class AdamWorkstation:
 
     def get_mute(self, args):
         device = self._get_oca_device(args)
-        print(device.get_mute())
+        result = device.get_mute()
+        WORKSTATION_LOGGER.debug("get_mute result: %s", result)
+        print(result.get("mute_state", ""))
 
     def set_mute(self, args):
         device = self._get_oca_device(args)
         print(device.set_mute(args.position)["success"])
+
+    def get_mac_address(self, args):
+        device = self._get_oca_device(args)
+        result = device.get_mac_address()
+        WORKSTATION_LOGGER.debug("get_mac_address result: %s", result)
+        print(result.get("value", ""))
+
+    def set_mac_address(self, args):
+        device = self._get_oca_device(args)
+        result = device.set_mac_address(args.value)
+        print(result.get("success", result.get("value", result)))
+
+    def get_serial_number(self, args):
+        device = self._get_oca_device(args)
+        result = device.get_serial_number()
+        WORKSTATION_LOGGER.debug("get_serial_number result: %s", result)
+        print(result.get("value", ""))
+
+    def set_serial_number(self, args):
+        device = self._get_oca_device(args)
+        result = device.set_serial_number(args.value)
+        print(result.get("success", result.get("value", result)))
+
+    def get_model_description(self, args):
+        device = self._get_oca_device(args)
+        result = device.get_model_description()
+        WORKSTATION_LOGGER.debug("get_model_description result: %s", result)
+        print(result.get("model", result.get("raw", "")))
 
     def check_measurement_trials(self, args):
         """
@@ -893,7 +953,19 @@ class AdamWorkstation:
             # Set gain calibration to 0 dB
             result = device.set_gain_calibration(0)
             WORKSTATION_LOGGER.debug("Set gain calibration result: %s", result)
-            
+
+            # Set audio input to analogue XLR
+            result = device.set_audio_input("analogue-xlr")
+            WORKSTATION_LOGGER.debug("Set audio input result: %s", result)
+
+            # Set bass management to wide
+            result = device.set_bass_management("wide")
+            WORKSTATION_LOGGER.debug("Set bass management result: %s", result)
+
+            # Disable bass management bypass (so bass management is active)
+            result = device.set_bass_management_bypass("disabled")
+            WORKSTATION_LOGGER.debug("Set bass management bypass result: %s", result)
+
             WORKSTATION_LOGGER.info("ASubs initialization sequence completed successfully")
             print("Initialization successful")
             return True

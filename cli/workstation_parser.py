@@ -52,9 +52,9 @@ def build_workstation_parser():
     get_audio_input_parser.add_argument("port", type=int, nargs="?", default=None, help="OCA device port (optional for device name)")
 
     set_audio_parser = subparsers.add_parser("set_audio_input",
-        help="Set audio input (aes3, analogue-xlr, analogue-rca)")
+        help="Set audio input (aes3, analogue-xlr)")
     set_audio_parser.add_argument("mode", type=str,
-        help="Input mode (aes3, analogue-xlr, analogue-rca)")
+        help="Input mode (aes3, analogue-xlr)")
     set_audio_parser.add_argument("target", type=str,
         help="OCA device name or IP address")
     set_audio_parser.add_argument("port", type=int, nargs="?", default=None,
@@ -230,10 +230,26 @@ def build_workstation_parser():
     set_bass_parser = subparsers.add_parser("set_bass_management",
         help="Set bass management mode on OCA device")
     set_bass_parser.add_argument("position", type=str,
-        help="Bass management mode (e.g. 'stereo-bass', 'stereo', 'wide', 'lfe')")
+        help="Bass management mode (stereo, wide, lfe)")
     set_bass_parser.add_argument("target", type=str,
         help="OCA device name or IP address")
     set_bass_parser.add_argument("port", type=int, nargs="?", default=None,
+        help="OCA device port (optional for device name)")
+
+    get_bm_bypass_parser = subparsers.add_parser("get_bass_management_bypass",
+        help="Get bass management bypass state from OCA device")
+    get_bm_bypass_parser.add_argument("target", type=str,
+        help="OCA device name or IP address")
+    get_bm_bypass_parser.add_argument("port", type=int, nargs="?", default=None,
+        help="OCA device port (optional for device name)")
+
+    set_bm_bypass_parser = subparsers.add_parser("set_bass_management_bypass",
+        help="Set bass management bypass state on OCA device")
+    set_bm_bypass_parser.add_argument("position", type=str,
+        help="Bypass state (enabled, disabled)")
+    set_bm_bypass_parser.add_argument("target", type=str,
+        help="OCA device name or IP address")
+    set_bm_bypass_parser.add_argument("port", type=int, nargs="?", default=None,
         help="OCA device port (optional for device name)")
 
     # NEU: Parser für Subwoofer Gain
@@ -287,9 +303,51 @@ def build_workstation_parser():
     set_mute_parser.add_argument("port", type=int, nargs="?", default=None,
         help="OCA device port (optional for device name)")
 
+    # MAC address parsers (factory-settings EOL)
+    get_mac_parser = subparsers.add_parser("get_mac_address",
+        help="Get the MAC address from the OCA device")
+    get_mac_parser.add_argument("target", type=str,
+        help="OCA device name or IP address")
+    get_mac_parser.add_argument("port", type=int, nargs="?", default=None,
+        help="OCA device port (optional for device name)")
+
+    set_mac_parser = subparsers.add_parser("set_mac_address",
+        help="Set the MAC address on the OCA device (format: XX:XX:XX:XX:XX:XX)")
+    set_mac_parser.add_argument("value", type=str,
+        help="MAC address in format XX:XX:XX:XX:XX:XX")
+    set_mac_parser.add_argument("target", type=str,
+        help="OCA device name or IP address")
+    set_mac_parser.add_argument("port", type=int, nargs="?", default=None,
+        help="OCA device port (optional for device name)")
+
+    # Serial number parsers (factory-settings EOL)
+    get_serial_parser = subparsers.add_parser("get_serial_number",
+        help="Get the serial number from the OCA device")
+    get_serial_parser.add_argument("target", type=str,
+        help="OCA device name or IP address")
+    get_serial_parser.add_argument("port", type=int, nargs="?", default=None,
+        help="OCA device port (optional for device name)")
+
+    set_serial_parser = subparsers.add_parser("set_serial_number",
+        help="Set the serial number on the OCA device")
+    set_serial_parser.add_argument("value", type=str,
+        help="Serial number string")
+    set_serial_parser.add_argument("target", type=str,
+        help="OCA device name or IP address")
+    set_serial_parser.add_argument("port", type=int, nargs="?", default=None,
+        help="OCA device port (optional for device name)")
+
+    # Model description (read-only)
+    get_model_parser = subparsers.add_parser("get_model_description",
+        help="Get the model description from the OCA device")
+    get_model_parser.add_argument("target", type=str,
+        help="OCA device name or IP address")
+    get_model_parser.add_argument("port", type=int, nargs="?", default=None,
+        help="OCA device port (optional for device name)")
+
     # Add ASubs initialization parser
     init_parser = subparsers.add_parser("init_asub",
-        help="Initialize ASubs with default settings (internal-dsp, gain 0, unmuted, phase 0, calibration 0)")
+        help="Initialize ASubs with default settings (internal-dsp, gain 0, unmuted, phase 0, calibration 0, analogue-xlr input, wide bass management)")
     init_parser.add_argument("target", type=str,
         help="OCA device name or IP address")
     init_parser.add_argument("port", type=int, nargs="?", default=None,
