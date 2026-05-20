@@ -1,0 +1,80 @@
+@startuml mac_provisioning_flow
+title SubPro EOL Flow
+
+skinparam ActivityBackgroundColor #f5f5f5
+skinparam ActivityBorderColor #888888
+
+start
+
+:Read Serial Number from device **[OCA]**;
+
+if (Default SN?) then (yes)
+  :ABORT\nNo valid serial number; <<#pink>>
+  stop
+endif
+
+if (Golden Sample SN?) then (yes)
+  :ABORT\nGolden Sample - no provisioning; <<#lightyellow>>
+  stop
+endif
+
+:Run APx500 EOL measurement;
+
+if (Test passed?) then (no)
+  :FAIL\nDevice rejected; <<#pink>>
+  stop
+endif
+
+note right: MAC provisioning starts here
+
+:Read current MAC from device **[OCA]**;
+
+if (current_mac == DEFAULT_MAC?) then (Initial Test)
+
+  if (SN already in DB?) then (yes)
+    :DUPLICATE SN; <<#pink>>
+    stop
+  endif
+
+  :Get next MAC from range **[DB]**\n(pointer advances by 1);
+
+  if (Range exhausted?) then (yes)
+    :RANGE EXHAUSTED; <<#pink>>
+    stop
+  endif
+
+  if (Few MACs remaining?) then (yes)
+    :WARN operator:\nLow range; <<#lightyellow>>
+  endif
+
+  :Write MAC to device **[OCA]**;
+  :Read back MAC from device **[OCA]**;
+
+  if (read_back == written MAC?) then (yes)
+    :confirm_mac_verified() **[DB]**;
+    :SUCCESS; <<#lightgreen>>
+    stop
+  else (no)
+    :rollback_mac() **[DB]**;
+    :VERIFY FAILED; <<#pink>>
+    stop
+  endif
+
+else (Re-test)
+
+  if (SN found in DB?) then (yes)
+    if (current_mac == db_mac?) then (yes)
+      :RETEST OK; <<#lightgreen>>
+      stop
+    else (no)
+      :MAC MISMATCH; <<#pink>>
+      stop
+    endif
+  else (no)
+    :UNKNOWN DEVICE; <<#pink>>
+    stop
+  endif
+
+endif
+
+@enduml
