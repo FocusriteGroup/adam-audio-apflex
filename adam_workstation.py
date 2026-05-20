@@ -45,6 +45,7 @@ from analysis.csv_processing import extract_csv_columns as extract_csv_columns_l
 from analysis.csv_processing import split_ap_distortion_csv as split_ap_distortion_csv_local
 from analysis.csv_processing import octave_smooth_ap_csv as octave_smooth_ap_csv_local
 from analysis.csv_processing import merge_ap_distortion_csvs as merge_ap_distortion_csvs_local
+from analysis.csv_processing import filter_reference_by_limits as filter_reference_by_limits_local
 from helpers import (
     generate_timestamp_extension,
     construct_path,
@@ -160,6 +161,7 @@ class AdamWorkstation:
             "setup_references": self.setup_references,  # Setup References directory
             "is_golden_sample": self.is_golden_sample,
             "verify_system": self.verify_system,
+            "filter_reference_by_limits": self.filter_reference_by_limits,  # Filter reference by limits
         }
 
         # Set up argument parser for CLI usage
@@ -592,6 +594,39 @@ class AdamWorkstation:
             output_dir=args.output_dir,
         )
         print(output_path)
+
+    def filter_reference_by_limits(self, args):
+        """
+        Filter a reference measurement CSV to include only frequencies within limits ranges.
+
+        Identifies frequency ranges covered by a limits CSV (which may have gaps) and
+        creates a new reference CSV containing only frequencies that fall within those ranges.
+
+        Runs locally (no server support).
+        """
+        WORKSTATION_LOGGER.info(
+            "Executing 'filter_reference_by_limits': reference=%s, limits=%s, output=%s, output_dir=%s",
+            args.reference_path,
+            args.limits_path,
+            args.output_filename,
+            args.output_dir,
+        )
+        
+        try:
+            output_path = filter_reference_by_limits_local(
+                reference_path=args.reference_path,
+                limits_path=args.limits_path,
+                output_filename=args.output_filename,
+                output_dir=args.output_dir,
+            )
+            WORKSTATION_LOGGER.info(f"Filter operation completed successfully. Output: {output_path}")
+            # Success string for AP sequence
+            print("successful")
+        except Exception as e:
+            WORKSTATION_LOGGER.error(f"Error filtering reference by limits: {e}")
+            # Specific error message for AP report
+            print(str(e))
+            raise
 
     # Hardware-Commands verwenden Properties (Lazy Loading)
     def set_channel(self, args):

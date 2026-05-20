@@ -384,4 +384,16 @@ def build_workstation_parser():
         default="Matching_App/Data/db/matcher.db",
         help="Local matcher DB path (default: Matching_App/Data/db/matcher.db)")
 
+    # Filter reference by limits
+    filter_ref_parser = subparsers.add_parser("filter_reference_by_limits",
+        help="Filter a reference measurement CSV to include only frequencies within limits ranges")
+    filter_ref_parser.add_argument("reference_path", type=str,
+        help="Path to the reference measurement CSV file (can be stereo or mono)")
+    filter_ref_parser.add_argument("limits_path", type=str,
+        help="Path to the limits CSV file (always mono)")
+    filter_ref_parser.add_argument("--output-filename", type=str, default=None,
+        help="Output filename (defaults to <reference_name>_filtered.csv)")
+    filter_ref_parser.add_argument("--output-dir", type=str, default=None,
+        help="Output directory (defaults to reference file directory)")
+
     return parser

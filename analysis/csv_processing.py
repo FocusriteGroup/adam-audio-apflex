@@ -5,10 +5,19 @@ CSV processing utilities for ADAM Audio analysis workflows.
 """
 
 import csv
+import logging
 import math
 import os
 from itertools import chain
 from typing import Iterable, Optional
+
+try:
+    import numpy as np
+    NUMPY_AVAILABLE = True
+except ImportError:
+    NUMPY_AVAILABLE = False
+
+logger = logging.getLogger(__name__)
 
 
 def _write_rows_with_fallback(output_path: str, rows: Iterable[list[str]]) -> str:
@@ -455,15 +464,458 @@ def merge_ap_distortion_csvs(
     return results
 
 
+def _apply_limits_offset(
+    ref_value: float,
+    limit_value: float,
+    ref_unit: str,
+    limit_unit: str,
+) -> float:
+    """
+    Apply limits offset to reference value with unit conversion.
+    
+    Args:
+        ref_value: Reference value (in ref_unit).
+        limit_value: Limits offset value (in limit_unit).
+        ref_unit: Unit of reference value ("dB", "dBSPL", or "%").
+        limit_unit: Unit of limits value ("dB" or "%").
+    
+    Returns:
+        New value with offset applied (in ref_unit).
+    
+    Notes:
+        - dB + dB → addition: ref_value + limit_value
+        - dB + % → convert % to dB, then add: ref_value + 20*log10(1 + limit%/100)
+        - % + % → multiply factors: ref_value * (1 + limit%/100)
+        - % + dB → convert dB to factor: ref_value * 10^(limit_dB/20)
+    """
+    import math
+    
+    # Normalize units (dBSPL is treated as dB)
+    ref_is_db = ref_unit.upper() in ("DB", "DBSPL")
+    ref_is_percent = ref_unit == "%"
+    
+    limit_is_db = limit_unit.upper() in ("DB", "DBSPL")
+    limit_is_percent = limit_unit == "%"
+    
+    if ref_is_db and limit_is_db:
+        # dB + dB → simple addition
+        return ref_value + limit_value
+    
+    elif ref_is_db and limit_is_percent:
+        # dB + % → convert % to dB, then add
+        factor = 1 + limit_value / 100
+        if factor <= 0:
+            return float('-inf')  # Avoid log of non-positive
+        dB_change = 20 * math.log10(factor)
+        return ref_value + dB_change
+    
+    elif ref_is_percent and limit_is_percent:
+        # % + % → multiply factors
+        return ref_value * (1 + limit_value / 100)
+    
+    elif ref_is_percent and limit_is_db:
+        # % + dB → convert dB to factor, then multiply
+        factor = 10 ** (limit_value / 20)
+        return ref_value * factor
+    
+    else:
+        raise ValueError(f"Unsupported unit combination: ref={ref_unit}, limit={limit_unit}")
+
+
+def _interpolate_reference_frequencies(
+    ref_frequencies: list[float],
+    ref_values: list[list[float]],
+    target_frequencies: list[float],
+    num_channels: int,
+) -> list[list[str]]:
+    """
+    Interpolate reference values at target frequencies using logarithmic-linear interpolation.
+    
+    Args:
+        ref_frequencies: Original reference frequencies (Hz).
+        ref_values: List of value arrays, one per column (X,Y for each channel).
+        target_frequencies: Target frequencies to interpolate at (from limits CSV).
+        num_channels: Number of channels (1 for mono, 2 for stereo).
+    
+    Returns:
+        List of rows with interpolated values as strings.
+    """
+    import numpy as np
+    
+    # Convert to numpy arrays
+    ref_freq_array = np.array(ref_frequencies)
+    log_ref_freq = np.log10(ref_freq_array)
+    log_target_freq = np.log10(target_frequencies)
+    
+    interpolated_rows: list[list[str]] = []
+    
+    for target_freq, log_target in zip(target_frequencies, log_target_freq):
+        row_data: list[str] = []
+        
+        # Process each column (X,Y for each channel)
+        for col_idx in range(num_channels * 2):
+            if col_idx % 2 == 0:
+                # X column (frequency) - use target frequency
+                row_data.append(str(target_freq))
+            else:
+                # Y column (dB value) - interpolate
+                ref_col_values = np.array(ref_values[col_idx])
+                
+                # Filter out NaN values for interpolation
+                valid_mask = ~np.isnan(ref_col_values)
+                if not valid_mask.any():
+                    row_data.append("")
+                    continue
+                
+                valid_log_freq = log_ref_freq[valid_mask]
+                valid_values = ref_col_values[valid_mask]
+                
+                # Perform logarithmic-linear interpolation
+                # extrapolate with edge values if outside range
+                interpolated = np.interp(log_target, valid_log_freq, valid_values)
+                row_data.append(str(interpolated))
+        
+        interpolated_rows.append(row_data)
+    
+    return interpolated_rows
+
+
+def _interpolate_limits_values(
+    limits_frequencies: list[float],
+    limits_values: list[float],
+    target_frequencies: list[float],
+) -> list[float]:
+    """
+    Interpolate limits values at target frequencies using logarithmic-linear interpolation.
+    
+    Args:
+        limits_frequencies: Original limits frequencies (Hz).
+        limits_values: Limits Y-values (dB or %).
+        target_frequencies: Target frequencies to interpolate at.
+    
+    Returns:
+        Interpolated limits values at target frequencies.
+    """
+    import numpy as np
+    
+    if not NUMPY_AVAILABLE:
+        raise RuntimeError("numpy is required for limits interpolation")
+    
+    # Convert to numpy arrays
+    limits_freq_array = np.array(limits_frequencies)
+    log_limits_freq = np.log10(limits_freq_array)
+    log_target_freq = np.log10(target_frequencies)
+    
+    # Filter out NaN values
+    valid_mask = ~np.isnan(limits_values)
+    if not valid_mask.any():
+        return [float('nan')] * len(target_frequencies)
+    
+    valid_log_freq = log_limits_freq[valid_mask]
+    valid_values = np.array(limits_values)[valid_mask]
+    
+    # Perform logarithmic-linear interpolation
+    interpolated = np.interp(log_target_freq, valid_log_freq, valid_values)
+    
+    return interpolated.tolist()
+
+
+def filter_reference_by_limits(
+    reference_path: str,
+    limits_path: str,
+    output_filename: Optional[str] = None,
+    output_dir: Optional[str] = None,
+) -> str:
+    """
+    Filter a reference measurement CSV and apply limits as offset to create absolute limits.
+
+    Takes a reference measurement (e.g., 100 dBSPL) and applies limits offsets (e.g., +3 dB)
+    to create absolute limit values (e.g., 103 dBSPL). Handles unit conversion between
+    dB/dBSPL and % according to Audio Precision conventions.
+
+    Process:
+    1. Extract frequency range from limits CSV (min to max frequency)
+    2. Filter reference to only include frequencies within that range
+    3. Interpolate missing limits frequencies into reference (if needed)
+    4. Apply limits offsets to reference Y-values with unit conversion
+    5. Output contains reference values + limits offsets in reference units
+
+    Unit Conversion Logic:
+    - dB + dB → addition: new_value = ref + limit
+    - dB + % → convert % to dB: new_value = ref + 20*log10(1 + limit%/100)
+    - % + % → multiply factors: new_value = ref * (1 + limit%/100)
+    - % + dB → convert dB to factor: new_value = ref * 10^(limit_dB/20)
+
+    Args:
+        reference_path: Path to the reference measurement CSV (can be stereo or mono).
+        limits_path:    Path to the limits CSV (mono, defines frequency ranges and offsets).
+        output_filename: Output filename. Defaults to ``<ref_stem>_filtered.csv``.
+        output_dir:      Output directory. Defaults to the reference file's directory.
+
+    Returns:
+        Path to the written output CSV file.
+
+    Raises:
+        FileNotFoundError: If reference_path or limits_path does not exist.
+        ValueError:        If CSV format is invalid or no data rows remain after filtering.
+
+    Notes:
+        - Both CSVs must have 4 header rows (Audio Precision format).
+        - Reference can be stereo (X,Y,X,Y) or mono (X,Y) format.
+        - Limits CSV is always mono (X,Y) with relative offset values.
+        - Frequency ranges are determined by min/max limits frequency.
+        - Requires numpy for interpolation and offset calculations.
+    """
+    if not reference_path or not os.path.isfile(reference_path):
+        raise FileNotFoundError(f"Reference CSV not found: {reference_path}")
+    if not limits_path or not os.path.isfile(limits_path):
+        raise FileNotFoundError(f"Limits CSV not found: {limits_path}")
+
+    # Read limits CSV and extract frequency ranges and Y-values
+    with open(limits_path, "r", newline="", encoding="utf-8") as f:
+        limits_reader = csv.reader(f)
+        limits_rows = list(limits_reader)
+
+    if len(limits_rows) <= _AP_NUM_HEADER_ROWS:
+        raise ValueError("Limits CSV has no data rows after the header.")
+
+    limits_header_rows = limits_rows[:_AP_NUM_HEADER_ROWS]
+    limits_data_rows = limits_rows[_AP_NUM_HEADER_ROWS:]
+    
+    # Extract units from limits header (row 4, index 3)
+    limits_units_row = limits_header_rows[3] if len(limits_header_rows) > 3 else []
+    limits_y_unit = limits_units_row[1].strip() if len(limits_units_row) > 1 else "dB"
+    
+    # Extract frequency and Y values from limits (column 0 = X = Hz, column 1 = Y)
+    limit_frequencies: list[float] = []
+    limit_y_values: list[float] = []
+    for row in limits_data_rows:
+        if row and row[0].strip():
+            try:
+                freq = float(row[0])
+                y_val = float(row[1]) if len(row) > 1 and row[1].strip() else float('nan')
+                limit_frequencies.append(freq)
+                limit_y_values.append(y_val)
+            except ValueError:
+                continue
+
+    if not limit_frequencies:
+        raise ValueError("No valid frequency values found in limits CSV.")
+
+    # Sort frequencies and corresponding Y-values
+    freq_y_pairs = list(zip(limit_frequencies, limit_y_values))
+    freq_y_pairs.sort(key=lambda x: x[0])
+    limit_frequencies = [f for f, _ in freq_y_pairs]
+    limit_y_values = [y for _, y in freq_y_pairs]
+    
+    logger.info(f"Loaded {len(limit_frequencies)} frequency points from limits CSV")
+
+    # Define frequency range from min to max limits frequency (no gaps)
+    freq_min = min(limit_frequencies)
+    freq_max = max(limit_frequencies)
+    
+    logger.info(f"Limits frequency range: [{freq_min:.1f}-{freq_max:.1f}] Hz")
+
+    # Read reference CSV
+    with open(reference_path, "r", newline="", encoding="utf-8") as f:
+        ref_reader = csv.reader(f)
+        ref_rows = list(ref_reader)
+
+    if len(ref_rows) <= _AP_NUM_HEADER_ROWS:
+        raise ValueError("Reference CSV has no data rows after the header.")
+
+    ref_header_rows = ref_rows[:_AP_NUM_HEADER_ROWS]
+    ref_data_rows = ref_rows[_AP_NUM_HEADER_ROWS:]
+
+    # Extract units from reference header (row 4, index 3)
+    ref_units_row = ref_header_rows[3] if len(ref_header_rows) > 3 else []
+    ref_y_unit = ref_units_row[1].strip() if len(ref_units_row) > 1 else "dBSPL"
+    
+    logger.info(f"Reference Y-unit: {ref_y_unit}, Limits Y-unit: {limits_y_unit}")
+
+    # Detect if reference is stereo or mono by checking number of non-empty columns in header row 3
+    # Header row 3 (index 2) contains X,Y or X,Y,X,Y
+    header_row_3 = ref_header_rows[2] if len(ref_header_rows) > 2 else []
+    num_channels = sum(1 for i, val in enumerate(header_row_3) if i % 2 == 0 and val.strip())
+    
+    ref_type = "Stereo" if num_channels > 1 else "Mono"
+    logger.info(f"Reference type: {ref_type} ({num_channels} channel(s))")
+
+    # Parse reference data into structured format
+    ref_frequencies: list[float] = []
+    ref_values: list[list[float]] = [[] for _ in range(num_channels * 2)]  # X,Y for each channel
+    
+    for row in ref_data_rows:
+        if not row or not row[0].strip():
+            continue
+        
+        try:
+            freq = float(row[0])
+            ref_frequencies.append(freq)
+            
+            # Parse all column values
+            for col_idx in range(min(len(row), num_channels * 2)):
+                try:
+                    val = float(row[col_idx]) if row[col_idx].strip() else float('nan')
+                    ref_values[col_idx].append(val)
+                except (ValueError, IndexError):
+                    ref_values[col_idx].append(float('nan'))
+        except ValueError:
+            continue
+
+    if not ref_frequencies:
+        raise ValueError("No valid frequency data found in reference CSV.")
+    
+    logger.info(f"Loaded {len(ref_frequencies)} frequency points from reference CSV")
+
+    # Step 1: Filter reference data rows to include only frequencies within limits range
+    filtered_frequencies: list[float] = []
+    filtered_data_rows: list[list[str]] = []
+    
+    for i, freq in enumerate(ref_frequencies):
+        # Check if frequency falls within the limits range
+        if freq_min <= freq <= freq_max:
+            filtered_frequencies.append(freq)
+            row_data = []
+            for col_idx in range(num_channels * 2):
+                val = ref_values[col_idx][i]
+                row_data.append("" if math.isnan(val) else str(val))
+            filtered_data_rows.append(row_data)
+    
+    logger.info(f"Filtered to {len(filtered_data_rows)} frequency points from reference")
+
+    # Step 2: Check if limits frequencies need to be added via interpolation
+    # Find limits frequencies that are NOT already in the filtered reference
+    missing_limit_freqs = [freq for freq in limit_frequencies if freq not in filtered_frequencies]
+    
+    if missing_limit_freqs:
+        if not NUMPY_AVAILABLE:
+            logger.warning(
+                f"{len(missing_limit_freqs)} limits frequencies are missing from reference but cannot be interpolated "
+                f"(numpy not available). Continuing with existing frequencies only."
+            )
+        else:
+            logger.info(
+                f"Interpolating {len(missing_limit_freqs)} missing limits frequencies: "
+                f"{[f'{f:.1f}' for f in missing_limit_freqs[:5]]}{'...' if len(missing_limit_freqs) > 5 else ''}"
+            )
+            
+            # Interpolate missing limits frequencies
+            interpolated_rows = _interpolate_reference_frequencies(
+                ref_frequencies,
+                ref_values,
+                missing_limit_freqs,
+                num_channels
+            )
+            
+            # Add interpolated rows to filtered data
+            for i, interp_row in enumerate(interpolated_rows):
+                filtered_frequencies.append(missing_limit_freqs[i])
+                filtered_data_rows.append(interp_row)
+            
+            logger.info(f"Added {len(interpolated_rows)} interpolated frequency points")
+    
+    # Step 3: Sort all rows by frequency
+    if filtered_data_rows:
+        # Create list of (frequency, row) tuples, sort by frequency, then extract rows
+        freq_row_pairs = list(zip(filtered_frequencies, filtered_data_rows))
+        freq_row_pairs.sort(key=lambda x: x[0])
+        filtered_frequencies = [freq for freq, _ in freq_row_pairs]
+        filtered_data_rows = [row for _, row in freq_row_pairs]
+        
+        logger.info(f"Total output frequencies: {len(filtered_data_rows)} (sorted by frequency)")
+    else:
+        raise ValueError(
+            f"No frequencies in reference CSV fall within limits range: [{freq_min:.1f}-{freq_max:.1f}] Hz."
+        )
+
+    # Step 4: Apply limits as offset to reference Y-values
+    # Interpolate limits Y-values for all output frequencies
+    if not NUMPY_AVAILABLE:
+        logger.warning("numpy not available - cannot apply limits offset. Output will contain reference values only.")
+        limits_at_output_freq = [float('nan')] * len(filtered_frequencies)
+    else:
+        limits_at_output_freq = _interpolate_limits_values(
+            limit_frequencies,
+            limit_y_values,
+            filtered_frequencies
+        )
+        logger.info(f"Interpolated limits values for {len(filtered_frequencies)} output frequencies")
+    
+    # Apply offset to each Y-value in filtered_data_rows
+    for row_idx, row in enumerate(filtered_data_rows):
+        limit_offset = limits_at_output_freq[row_idx]
+        
+        # Skip if limits value is NaN
+        if math.isnan(limit_offset):
+            continue
+        
+        # Apply offset to each Y column (every odd column index)
+        for col_idx in range(len(row)):
+            if col_idx % 2 == 1:  # Y columns only
+                if row[col_idx].strip():
+                    try:
+                        ref_y_value = float(row[col_idx])
+                        new_y_value = _apply_limits_offset(
+                            ref_y_value,
+                            limit_offset,
+                            ref_y_unit,
+                            limits_y_unit
+                        )
+                        row[col_idx] = str(new_y_value)
+                    except (ValueError, ArithmeticError) as e:
+                        logger.warning(f"Could not apply offset at row {row_idx}, col {col_idx}: {e}")
+                        continue
+    
+    logger.info(f"Applied limits offset to all Y-values (ref unit: {ref_y_unit}, limit unit: {limits_y_unit})")
+
+    # Prepare output
+    base_name = os.path.splitext(os.path.basename(reference_path))[0]
+    if output_filename is None:
+        output_filename = f"{base_name}_filtered.csv"
+
+    output_base = output_dir if output_dir else os.path.dirname(os.path.abspath(reference_path))
+    os.makedirs(output_base, exist_ok=True)
+    output_path = os.path.join(output_base, output_filename)
+
+    # Write filtered CSV
+    all_output_rows = ref_header_rows + filtered_data_rows
+    written_path = _write_rows_with_fallback(output_path, all_output_rows)
+    
+    logger.info(f"Output written to: {written_path}")
+    
+    return written_path
+
+
 if __name__ == "__main__":
+    # Demo 1: Split distortion CSV
     demo_input_path = (
         r"C:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\H200Data12"
         r"\Measurements\EOL\2026\03_03\dsfsdc_2026_03_03_11_24_08_Lvl_Dist_Ch_1.csv"
     )
 
-    if not os.path.isfile(demo_input_path):
-        raise FileNotFoundError(f"Demo input CSV not found: {demo_input_path}")
+    if os.path.isfile(demo_input_path):
+        demo_results = split_ap_distortion_csv(demo_input_path)
+        for metric, path in demo_results.items():
+            print(f"{metric}: {path}")
 
-    demo_results = split_ap_distortion_csv(demo_input_path)
-    for metric, path in demo_results.items():
-        print(f"{metric}: {path}")
+    # Demo 2: Filter reference by limits
+    print("\n--- Filter Reference by Limits Demo ---")
+    
+    # Example: Filter stereo reference by limits
+    demo_reference = r"c:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\DefaultReferences\GoldenSample\RMS.csv"
+    demo_limits = r"c:\Users\ThiloRode\OneDrive - Focusrite Group\Dokumente\Repos\Audio-Precision\DefaultReferences\GoldenSample\Limits\RMS.csv"
+    
+    if os.path.isfile(demo_reference) and os.path.isfile(demo_limits):
+        try:
+            filtered_path = filter_reference_by_limits(
+                reference_path=demo_reference,
+                limits_path=demo_limits,
+                output_filename="RMS_filtered_demo.csv"
+            )
+            print(f"Filtered reference saved to: {filtered_path}")
+        except Exception as e:
+            print(f"Error filtering reference: {e}")
+    else:
+        print("Demo files not found. Skipping filter demo.")
+
