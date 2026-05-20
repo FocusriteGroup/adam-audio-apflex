@@ -1,0 +1,6 @@
+Upper Limit for Acoustic Response.Phase -> Compare (Difference),
+Ch1,
+X,Y
+Hz,deg
+20,-60
+20000,-60
