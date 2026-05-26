@@ -1121,8 +1121,8 @@ class AdamWorkstation:
     def verify_system(self, args):
         """Verify two modules are a matched pair and link them to a system serial.
 
-        Prints True if successful, False otherwise.
-        All diagnostic output goes to the log file and error popups only.
+        Prints True if successful, or an error message string if not.
+        All diagnostic output also goes to the log file and error popups.
         """
         import sqlite3 as _sqlite3
         try:
@@ -1162,15 +1162,17 @@ class AdamWorkstation:
 
             if row1 is None:
                 con.close()
+                msg = f"Module {sn1} not found in database."
                 WORKSTATION_LOGGER.warning("verify_system FAIL: module %s not found", sn1)
-                self._show_error_popup("System Verification Failed", f"Module {sn1} not found in database.")
-                print(False)
+                self._show_error_popup("System Verification Failed", msg)
+                print(msg)
                 return
             if row2 is None:
                 con.close()
+                msg = f"Module {sn2} not found in database."
                 WORKSTATION_LOGGER.warning("verify_system FAIL: module %s not found", sn2)
-                self._show_error_popup("System Verification Failed", f"Module {sn2} not found in database.")
-                print(False)
+                self._show_error_popup("System Verification Failed", msg)
+                print(msg)
                 return
 
             _, status1, partner1 = row1
@@ -1183,36 +1185,36 @@ class AdamWorkstation:
                 msg = f"Module {sn1} is not matched or paired (status: {status1})."
                 WORKSTATION_LOGGER.warning("verify_system FAIL: %s", msg)
                 self._show_error_popup("System Verification Failed", msg)
-                print(False)
+                print(msg)
                 return
             if status2 not in valid_statuses:
                 con.close()
                 msg = f"Module {sn2} is not matched or paired (status: {status2})."
                 WORKSTATION_LOGGER.warning("verify_system FAIL: %s", msg)
                 self._show_error_popup("System Verification Failed", msg)
-                print(False)
+                print(msg)
                 return
 
             # 3. Check they are matched/paired to each other
             if partner1 != sn2:
                 con.close()
                 msg = (
-                    f"Module {sn1} is not matched to {sn2}.\n"
+                    f"Module {sn1} is not matched to {sn2}. "
                     f"Its current partner is: {partner1 or 'none'}."
                 )
                 WORKSTATION_LOGGER.warning("verify_system FAIL: %s", msg)
                 self._show_error_popup("System Verification Failed", msg)
-                print(False)
+                print(msg)
                 return
             if partner2 != sn1:
                 con.close()
                 msg = (
-                    f"Module {sn2} is not matched to {sn1}.\n"
+                    f"Module {sn2} is not matched to {sn1}. "
                     f"Its current partner is: {partner2 or 'none'}."
                 )
                 WORKSTATION_LOGGER.warning("verify_system FAIL: %s", msg)
                 self._show_error_popup("System Verification Failed", msg)
-                print(False)
+                print(msg)
                 return
 
             # 4. Auto-pair if matched but not yet paired
@@ -1250,7 +1252,7 @@ class AdamWorkstation:
         except Exception as e:
             WORKSTATION_LOGGER.error("verify_system error: %s", str(e))
             self._show_error_popup("System Verification Error", str(e))
-            print(False)
+            print(f"Error: {e}")
 
     def setup_arg_parser(self):
         self.parser = build_workstation_parser()

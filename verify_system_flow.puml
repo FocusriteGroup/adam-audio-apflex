@@ -1,0 +1,62 @@
+@startuml verify_system_flow
+title verify_system Flow
+
+skinparam ActivityBackgroundColor #f5f5f5
+skinparam ActivityBorderColor #888888
+
+start
+
+:Read args:\nsystem_sn, module_sn_1, module_sn_2;
+
+:Look up sn1 and sn2 in DB [drivers table];
+
+if (sn1 found in DB?) then (no)
+  :FAIL\nModule sn1 not found; <<#pink>>
+  :print(False);
+  stop
+endif
+
+if (sn2 found in DB?) then (no)
+  :FAIL\nModule sn2 not found; <<#pink>>
+  :print(False);
+  stop
+endif
+
+if (sn1 status == matched or paired?) then (no)
+  :FAIL\nsn1 wrong status; <<#pink>>
+  :print(False);
+  stop
+endif
+
+if (sn2 status == matched or paired?) then (no)
+  :FAIL\nsn2 wrong status; <<#pink>>
+  :print(False);
+  stop
+endif
+
+if (sn1.partner == sn2?) then (no)
+  :FAIL\nsn1 not partnered with sn2; <<#pink>>
+  :print(False);
+  stop
+endif
+
+if (sn2.partner == sn1?) then (no)
+  :FAIL\nsn2 not partnered with sn1; <<#pink>>
+  :print(False);
+  stop
+endif
+
+if (status == matched?) then (yes)
+  :Auto-upgrade both to status = paired [DB];
+endif
+
+:Remove old system_builds entries\nfor sn1 or sn2 [DB];
+
+:Insert system_builds:\nsystem_sn -> sn1 + sn2 [DB];
+
+:PASS; <<#lightgreen>>
+:print(True);
+
+stop
+
+@enduml
