@@ -37,7 +37,7 @@ import subprocess
 import sys
 import time
 
-from SubProMACAdresses.mac_database import (
+from SubProMACAddresses.mac_database import (
     confirm_mac_verified,
     confirm_mac_written,
     get_assigned_mac,

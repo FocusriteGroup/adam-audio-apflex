@@ -345,6 +345,13 @@ def build_workstation_parser():
     get_model_parser.add_argument("port", type=int, nargs="?", default=None,
         help="OCA device port (optional for device name)")
 
+    firmware_version_parser = subparsers.add_parser("get_firmware_version",
+        help="Get the firmware version from the OCA device")
+    firmware_version_parser.add_argument("target", type=str,
+        help="OCA device name or IP address")
+    firmware_version_parser.add_argument("port", type=int, nargs="?", default=None,
+        help="OCA device port (optional for device name)")
+
     # Add ASubs initialization parser
     init_parser = subparsers.add_parser("init_asub",
         help="Initialize ASubs with default settings (internal-dsp, gain 0, unmuted, phase 0, calibration 0, analogue-xlr input, wide bass management)")
@@ -371,6 +378,15 @@ def build_workstation_parser():
     golden_sample_parser.add_argument("measure_golden_sample", type=lambda x: x.lower() == "true",
         help="True if the Golden Sample should be measured, False if an EOL unit should be measured")
 
+    default_serial_parser = subparsers.add_parser("is_default_serial",
+        help="Check whether the scanned serial number matches the expected default serial number")
+    default_serial_parser.add_argument("scanned_serial", type=str,
+        help="Serial number scanned from the device under test")
+    default_serial_parser.add_argument("default_serial", type=str,
+        help="Default serial number stored in the project parameters")
+    default_serial_parser.add_argument("measure_default", type=lambda x: x.lower() == "true",
+        help="True if the default-serial unit should be measured, False if a production unit should be measured")
+
     # System build verification
     verify_system_parser = subparsers.add_parser("verify_system",
         help="Verify two modules form a matched pair and link them to a system serial number")
@@ -395,5 +411,45 @@ def build_workstation_parser():
         help="Output filename (defaults to <reference_name>_filtered.csv)")
     filter_ref_parser.add_argument("--output-dir", type=str, default=None,
         help="Output directory (defaults to reference file directory)")
+
+    # ---------------------------------------------------------------------------
+    # MAC provisioning
+    # ---------------------------------------------------------------------------
+
+    provision_mac_parser = subparsers.add_parser("provision_mac",
+        help="Assign a unique MAC address to a device that has passed EOL testing")
+    provision_mac_parser.add_argument("target", type=str,
+        help="OCA device name or IP address")
+    provision_mac_parser.add_argument("serial", type=str,
+        help="Device serial number (already validated by the AP sequence)")
+    provision_mac_parser.add_argument("default_mac", type=str,
+        help="Factory default MAC address, e.g. 02:00:00:00:00:00")
+    provision_mac_parser.add_argument("port", type=int, nargs="?", default=None,
+        help="OCA device port (optional)")
+
+    init_mac_db_parser = subparsers.add_parser("init_mac_db",
+        help="Initialise the MAC address provisioning database (run once during setup)")
+
+    set_mac_range_parser = subparsers.add_parser("set_mac_range",
+        help="Configure the MAC address pool range for provisioning")
+    set_mac_range_parser.add_argument("start_mac", type=str,
+        help="First MAC address in the range, e.g. 02:AB:CD:00:00:00")
+    set_mac_range_parser.add_argument("end_mac", type=str,
+        help="Last MAC address in the range (inclusive)")
+    set_mac_range_parser.add_argument("--warn-threshold", dest="warn_threshold", type=int, default=20,
+        help="Warn when remaining MACs drop to this value (default: 20)")
+
+    get_mac_pool_status_parser = subparsers.add_parser("get_mac_pool_status",
+        help="Show current MAC pool status (total / assigned / remaining)")
+
+    export_mac_log_parser = subparsers.add_parser("export_mac_log",
+        help="Export MAC provisioning log (SN <-> MAC assignments) to a CSV file")
+    export_mac_log_parser.add_argument("output_path", type=str,
+        help="Path for the output CSV file")
+    export_mac_log_parser.add_argument("--status", type=str, default=None,
+        choices=["reserved", "written", "verified", "rolled_back"],
+        help="Filter by provisioning status (default: all entries)")
+    export_mac_log_parser.add_argument("--serial", type=str, default=None,
+        help="Filter to a single serial number")
 
     return parser

@@ -53,6 +53,7 @@ from helpers import (
     generate_file_prefix,
 )
 from cli.workstation_parser import build_workstation_parser
+from SubProMACAddresses import mac_database, mac_provisioner
 
 # Set up logging directory and file for workstation events
 log_dir = "logs/adam_audio"
@@ -157,11 +158,19 @@ class AdamWorkstation:
             "get_serial_number": self.get_serial_number,
             "set_serial_number": self.set_serial_number,
             "get_model_description": self.get_model_description,
+            "get_firmware_version": self.get_firmware_version,
             "init_asub": self.init_asub,  # Add new command to map
             "setup_references": self.setup_references,  # Setup References directory
             "is_golden_sample": self.is_golden_sample,
+            "is_default_serial": self.is_default_serial,
             "verify_system": self.verify_system,
             "filter_reference_by_limits": self.filter_reference_by_limits,  # Filter reference by limits
+            # MAC provisioning
+            "provision_mac": self.provision_mac,
+            "init_mac_db": self.init_mac_db,
+            "set_mac_range": self.set_mac_range,
+            "get_mac_pool_status": self.get_mac_pool_status,
+            "export_mac_log": self.export_mac_log,
         }
 
         # Set up argument parser for CLI usage
@@ -846,6 +855,60 @@ class AdamWorkstation:
         result = device.set_mac_address(args.value)
         print(result.get("success", result.get("value", result)))
 
+    def provision_mac(self, args):
+        device = self._get_oca_device(args)
+        result = mac_provisioner.provision_mac(
+            device=device,
+            serial=args.serial,
+            workstation_id=self.workstation_id,
+            default_mac=args.default_mac,
+        )
+        WORKSTATION_LOGGER.info("provision_mac [%s]: %s", args.serial, result)
+        if result.get("low_pool"):
+            WORKSTATION_LOGGER.warning(
+                "MAC pool running low — %s MACs remaining.", result.get("remaining")
+            )
+        print(json.dumps(result))
+
+    def init_mac_db(self, args):
+        mac_database.init_db()
+        WORKSTATION_LOGGER.info("MAC database initialized.")
+        print(json.dumps({"status": "ok", "detail": "MAC database initialized."}))
+
+    def set_mac_range(self, args):
+        mac_database.set_mac_range(
+            start_mac=args.start_mac,
+            end_mac=args.end_mac,
+            warn_threshold=args.warn_threshold,
+        )
+        WORKSTATION_LOGGER.info(
+            "MAC range set: %s – %s (warn_threshold=%d)",
+            args.start_mac, args.end_mac, args.warn_threshold,
+        )
+        print(json.dumps({
+            "status": "ok",
+            "start_mac": args.start_mac,
+            "end_mac": args.end_mac,
+            "warn_threshold": args.warn_threshold,
+        }))
+
+    def get_mac_pool_status(self, args):
+        status = mac_database.get_pool_status()
+        print(json.dumps(status))
+
+    def export_mac_log(self, args):
+        serial_filter = getattr(args, "serial", None) or None
+        rows = mac_database.get_provisioning_log(serial=serial_filter)
+        if args.status:
+            rows = [r for r in rows if r["status"] == args.status]
+        fieldnames = ["serial", "mac", "status", "reserved_at", "written_at", "verified_at", "workstation_id"]
+        with open(args.output_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
+            writer.writeheader()
+            writer.writerows(rows)
+        WORKSTATION_LOGGER.info("export_mac_log: %d entries written to %s", len(rows), args.output_path)
+        print(json.dumps({"status": "ok", "exported": len(rows), "path": args.output_path}))
+
     def get_serial_number(self, args):
         device = self._get_oca_device(args)
         result = device.get_serial_number()
@@ -862,6 +925,12 @@ class AdamWorkstation:
         result = device.get_model_description()
         WORKSTATION_LOGGER.debug("get_model_description result: %s", result)
         print(result.get("model", result.get("raw", "")))
+
+    def get_firmware_version(self, args):
+        device = self._get_oca_device(args)
+        result = device.get_firmware_version()
+        WORKSTATION_LOGGER.debug("get_firmware_version result: %s", result)
+        print(result.get("version", result.get("raw", "")))
 
     def check_measurement_trials(self, args):
         """
@@ -1075,6 +1144,40 @@ class AdamWorkstation:
             print(f"ERROR: {error_msg}")
             return False
 
+    def _check_serial_match(self, scanned: str, reference: str, measure_reference: bool,
+                              reference_label: str, other_label: str) -> bool:
+        """Shared logic for serial-match checks with warning popups.
+
+        Returns True if scanned == reference, False otherwise.
+        Shows a warning popup when the connected unit does not match what is expected.
+        """
+        is_match = scanned == reference
+
+        if measure_reference and not is_match:
+            msg = (
+                f"The {reference_label} is expected to be measured, "
+                f"but a different unit is connected.\n\n"
+                f"Expected: {reference}\n"
+                f"Scanned:  {scanned}"
+            )
+            WORKSTATION_LOGGER.warning(
+                "%s expected but different unit connected: scanned='%s'", reference_label, scanned
+            )
+            self._show_warning_popup("Wrong Unit Connected", msg)
+        elif not measure_reference and is_match:
+            msg = (
+                f"An {other_label} is expected to be measured, "
+                f"but the {reference_label} is connected.\n\n"
+                f"{reference_label}: {reference}\n"
+                f"Scanned:  {scanned}"
+            )
+            WORKSTATION_LOGGER.warning(
+                "%s expected but %s is connected: scanned='%s'", other_label, reference_label, scanned
+            )
+            self._show_warning_popup(f"{reference_label} Connected", msg)
+
+        return is_match
+
     def is_golden_sample(self, args):
         """Checks whether the scanned serial number matches the Golden Sample serial number
         and validates whether the correct unit type is connected.
@@ -1090,33 +1193,46 @@ class AdamWorkstation:
         scanned = args.scanned_serial.strip()
         golden = args.golden_sample_serial.strip()
         measure_golden = args.measure_golden_sample
-        is_golden = scanned == golden
 
         WORKSTATION_LOGGER.info(
-            "is_golden_sample: scanned='%s', golden='%s', measure_golden=%s, is_golden=%s",
-            scanned, golden, measure_golden, is_golden
+            "is_golden_sample: scanned='%s', golden='%s', measure_golden=%s",
+            scanned, golden, measure_golden
         )
 
-        if measure_golden and not is_golden:
-            msg = (
-                f"The Golden Sample is expected to be measured, "
-                f"but a different unit is connected.\n\n"
-                f"Expected: {golden}\n"
-                f"Scanned:  {scanned}"
-            )
-            WORKSTATION_LOGGER.warning("Golden Sample expected but different unit connected: scanned='%s'", scanned)
-            self._show_warning_popup("Wrong Unit Connected", msg)
-        elif not measure_golden and is_golden:
-            msg = (
-                f"An EOL unit is expected to be measured, "
-                f"but the Golden Sample is connected.\n\n"
-                f"Golden Sample: {golden}\n"
-                f"Scanned:       {scanned}"
-            )
-            WORKSTATION_LOGGER.warning("EOL unit expected but Golden Sample is connected: scanned='%s'", scanned)
-            self._show_warning_popup("Golden Sample Connected", msg)
-
+        is_golden = self._check_serial_match(
+            scanned, golden, measure_golden,
+            reference_label="Golden Sample",
+            other_label="EOL unit"
+        )
         print(is_golden)
+
+    def is_default_serial(self, args):
+        """Checks whether the scanned serial number matches the expected default serial number
+        and validates whether the correct unit type is connected.
+
+        Args:
+            args: CLI arguments with 'scanned_serial', 'default_serial', and
+                  'measure_default' (True = default-serial unit expected,
+                  False = production unit expected).
+
+        Prints 'True' if the scanned serial matches the default serial, 'False' otherwise.
+        Shows a warning popup on mismatch between expected and actual unit type.
+        """
+        scanned = args.scanned_serial.strip()
+        default = args.default_serial.strip()
+        measure_default = args.measure_default
+
+        WORKSTATION_LOGGER.info(
+            "is_default_serial: scanned='%s', default='%s', measure_default=%s",
+            scanned, default, measure_default
+        )
+
+        is_default = self._check_serial_match(
+            scanned, default, measure_default,
+            reference_label="default unit",
+            other_label="production unit"
+        )
+        print(is_default)
 
     def verify_system(self, args):
         """Verify two modules are a matched pair and link them to a system serial.

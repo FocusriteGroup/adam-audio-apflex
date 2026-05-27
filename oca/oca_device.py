@@ -283,3 +283,9 @@ class OCADevice:
         self._log_to_service("get_model_description", result)
         return result
 
+    def get_firmware_version(self):
+        """Get the firmware version from the model description."""
+        result = self.get_model_description()
+        version = result.get("version")
+        return {"version": version} if version is not None else result
+

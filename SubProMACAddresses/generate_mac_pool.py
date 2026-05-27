@@ -72,8 +72,8 @@ def main() -> None:
              "Prefix 02:xx:xx denotes locally administered — safe for testing."
     )
     parser.add_argument(
-        "--output", default="SubProMACAdresses/mac_pool.csv",
-        help="Output CSV file path (default: SubProMACAdresses/mac_pool.csv)"
+        "--output", default="SubProMACAddresses/mac_pool.csv",
+        help="Output CSV file path (default: SubProMACAddresses/mac_pool.csv)"
     )
     parser.add_argument(
         "--seed", type=int, default=None,
