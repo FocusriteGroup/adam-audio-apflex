@@ -1,5 +1,6 @@
 import json
 import logging
+import math
 import sqlite3
 import time
 from datetime import datetime
@@ -159,6 +160,36 @@ class MeasurementUpload:
             return {"error": str(e)}
 
     @staticmethod
+    def _resample_log(freqs: list, levels: list, n: int = 300) -> tuple:
+        """Resample linearly-spaced (freqs, levels) to n log-spaced points.
+
+        AP sweeps often use linear frequency spacing with thousands of points.
+        Storing and displaying them on a log scale causes visual clutter at high
+        frequencies.  Resampling to log-spaced points gives uniform density
+        across the audible range and reduces DB storage by ~95%.
+        """
+        if len(freqs) < 2 or len(freqs) <= n:
+            return freqs, levels
+        f_min = max(freqs[0], 1e-6)
+        f_max = freqs[-1]
+        log_min = math.log10(f_min)
+        log_max = math.log10(f_max)
+        step = (log_max - log_min) / (n - 1)
+        targets = [10 ** (log_min + i * step) for i in range(n)]
+        out_f, out_l = [], []
+        j = 0
+        src_len = len(freqs)
+        for tf in targets:
+            while j < src_len - 2 and freqs[j + 1] < tf:
+                j += 1
+            x0, x1 = freqs[j], freqs[j + 1]
+            y0, y1 = levels[j], levels[j + 1]
+            lv = y0 if x1 == x0 else y0 + (y1 - y0) * (tf - x0) / (x1 - x0)
+            out_f.append(tf)
+            out_l.append(lv)
+        return out_f, out_l
+
+    @staticmethod
     def write_measurement_local_db(upload_data: dict, serial_number: str, db_path: str) -> dict:
         """
         Writes a prepared measurement directly into the local matcher SQLite database.
@@ -174,6 +205,7 @@ class MeasurementUpload:
             channels = measurement_data.get("channels", {}) if isinstance(measurement_data, dict) else {}
             ch1 = channels.get("Ch1", {})
             levels = ch1.get("levels")
+            freqs = ch1.get("frequencies")
 
             if not isinstance(levels, list) or not levels:
                 return {"error": "No Ch1 levels found in measurement data"}
