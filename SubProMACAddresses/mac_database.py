@@ -41,10 +41,14 @@ DEFAULT_WARN_THRESHOLD = 20
 # ---------------------------------------------------------------------------
 
 def _mac_to_int(mac: str) -> int:
+    # Strip colons and parse as base-16 integer (range 0 .. 2^48 - 1).
+    # Example: "02:AB:CD:00:00:01" → "02ABCD000001" → 738 135 187 457
     return int(mac.replace(":", ""), 16)
 
 
 def _int_to_mac(val: int) -> str:
+    # Format as zero-padded 12-char uppercase hex, then insert colons every 2 chars.
+    # Example: 738 135 187 457 → "02ABCD000001" → "02:AB:CD:00:00:01"
     hex_str = f"{val:012X}"
     return ":".join(hex_str[i:i + 2] for i in range(0, 12, 2))
 
@@ -73,7 +77,12 @@ def _now() -> str:
 def _get_connection() -> sqlite3.Connection:
     os.makedirs(_DB_DIR, exist_ok=True)
     con = sqlite3.connect(DB_PATH)
+    # DELETE mode: each transaction writes a rollback-journal file, then deletes it on
+    # commit. Avoids the -wal / -shm sidecar files that WAL mode leaves on disk,
+    # which can confuse network drives and backup tools.
     con.execute("PRAGMA journal_mode=DELETE")
+    # If a concurrent connection holds a write lock, SQLite retries internally for up
+    # to 5 000 ms before raising OperationalError("database is locked").
     con.execute("PRAGMA busy_timeout=5000")
     con.row_factory = sqlite3.Row
     return con
@@ -151,15 +160,19 @@ def set_mac_range(start_mac: str, end_mac: str, warn_threshold: int = DEFAULT_WA
 
     con = _get_connection()
     cur = con.cursor()
+    # id=1 is the singleton row — ON CONFLICT turns this into an upsert:
+    # insert on first call, update on all subsequent calls.
     cur.execute(
         """INSERT INTO mac_range (id, start_mac, end_mac, next_mac, warn_threshold)
            VALUES (1, ?, ?, ?, ?)
            ON CONFLICT(id) DO UPDATE SET
-               start_mac      = excluded.start_mac,
-               end_mac        = excluded.end_mac,
-               next_mac       = excluded.next_mac,
-               warn_threshold = excluded.warn_threshold""",
+               start_mac      = excluded.start_mac,      -- new lower boundary
+               end_mac        = excluded.end_mac,         -- new upper boundary
+               next_mac       = excluded.next_mac,        -- always reset to start_mac
+               warn_threshold = excluded.warn_threshold""",  -- low-pool alert level
         (start_mac, end_mac, start_mac, warn_threshold)
+        # next_mac is always reset to start_mac — not preserved from the previous range.
+        # Calling set_mac_range() after provisioning has started reuses addresses from the top.
     )
     con.commit()
     con.close()
@@ -233,7 +246,10 @@ def get_assigned_mac(serial: str):
     con = _get_connection()
     cur = con.cursor()
     cur.execute(
-        "SELECT mac FROM provisioning_log WHERE serial = ? AND status = 'verified' ORDER BY id DESC LIMIT 1",
+        # Only 'verified' entries are canonical. 'reserved'/'written' entries that never
+        # reached 'verified' are treated as incomplete provisioning attempts and ignored.
+        "SELECT mac FROM provisioning_log WHERE serial = ? AND status = 'verified'"
+        " ORDER BY id DESC LIMIT 1",  # newest record wins — handles rare manual DB repairs
         (serial,)
     )
     row = cur.fetchone()
@@ -245,8 +261,9 @@ def is_golden_sample(serial: str) -> bool:
     """Return True if the serial is registered as a golden sample."""
     con = _get_connection()
     cur = con.cursor()
+    # SELECT 1 is the conventional existence check — fetches no column data.
     cur.execute("SELECT 1 FROM golden_samples WHERE serial = ?", (serial,))
-    result = cur.fetchone() is not None
+    result = cur.fetchone() is not None  # None → not a golden sample
     con.close()
     return result
 
@@ -273,13 +290,17 @@ def reserve_mac(serial: str, workstation_id: str = None):
         con.close()
         return None, False
 
-    mac = row["next_mac"]
-    ts = _now()
+    mac = row["next_mac"]     # the MAC address handed out in this call
+    ts = _now()               # UTC timestamp written to reserved_at
 
-    # Advance pointer (one past end_mac when the last MAC is taken)
-    new_next = _int_to_mac(next_int + 1)
+    # Advance the pool pointer before inserting the log entry. Both updates run
+    # inside the same DB transaction, so a crash between them cannot leave the
+    # pool in an inconsistent state (SQLite atomicity guarantee).
+    new_next = _int_to_mac(next_int + 1)  # one past end_mac when the last MAC is taken
     cur.execute("UPDATE mac_range SET next_mac = ? WHERE id = 1", (new_next,))
 
+    # Insert with status='reserved'. The address is now committed to this serial —
+    # it will not be issued to another device even if provisioning later fails.
     cur.execute(
         """INSERT INTO provisioning_log (serial, mac, workstation_id, reserved_at, status)
            VALUES (?, ?, ?, ?, 'reserved')""",
@@ -301,11 +322,13 @@ def confirm_mac_written(serial: str, mac: str, workstation_id: str = None) -> bo
     cur.execute(
         """UPDATE provisioning_log
            SET written_at = ?, status = 'written',
+               -- COALESCE keeps the workstation_id from reserve_mac if already set.
                workstation_id = COALESCE(?, workstation_id)
+           -- Guard: only advance from 'reserved'. Prevents double-confirm on retry.
            WHERE serial = ? AND mac = ? AND status = 'reserved'""",
         (_now(), workstation_id, serial, mac)
     )
-    updated = cur.rowcount > 0
+    updated = cur.rowcount > 0  # False → entry was already advanced or rolled back
     con.commit()
     con.close()
     return updated
@@ -319,10 +342,11 @@ def confirm_mac_verified(serial: str, mac: str, workstation_id: str = None) -> b
         """UPDATE provisioning_log
            SET verified_at = ?, status = 'verified',
                workstation_id = COALESCE(?, workstation_id)
+           -- Guard: only advance from 'written'. Prevents double-verify on retry.
            WHERE serial = ? AND mac = ? AND status = 'written'""",
         (_now(), workstation_id, serial, mac)
     )
-    success = cur.rowcount > 0
+    success = cur.rowcount > 0  # False → entry was already verified or rolled back
     con.commit()
     con.close()
     return success
@@ -342,10 +366,11 @@ def rollback_mac(serial: str, mac: str, reason: str = None) -> bool:
     cur.execute(
         """UPDATE provisioning_log
            SET status = 'rolled_back'
+           -- Guard: never overwrite a 'verified' entry — it is the canonical record.
            WHERE serial = ? AND mac = ? AND status IN ('reserved', 'written')""",
         (serial, mac)
     )
-    updated = cur.rowcount > 0
+    updated = cur.rowcount > 0  # False → entry not found or already verified/rolled_back
     con.commit()
     con.close()
     return updated
@@ -382,11 +407,13 @@ def get_provisioning_log(serial: str = None) -> list:
     con = _get_connection()
     cur = con.cursor()
     if serial:
+        # Filtered — used by export_mac_log --serial and test helpers.
         cur.execute(
             "SELECT * FROM provisioning_log WHERE serial = ? ORDER BY id",
             (serial,)
         )
     else:
+        # Full table dump — default export and pool diagnostics.
         cur.execute("SELECT * FROM provisioning_log ORDER BY id")
     rows = [dict(r) for r in cur.fetchall()]
     con.close()

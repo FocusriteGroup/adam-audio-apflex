@@ -31,6 +31,8 @@ pycparser==2.22
 Pygments==2.20.0
 pyparsing==3.3.2
 pypiwin32==223
+pytest
+pytest-html
 pyproject_hooks==1.2.0
 pyserial==3.5
 python-dateutil==2.9.0.post0

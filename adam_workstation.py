@@ -171,6 +171,7 @@ class AdamWorkstation:
             "set_mac_range": self.set_mac_range,
             "get_mac_pool_status": self.get_mac_pool_status,
             "export_mac_log": self.export_mac_log,
+            "register_golden_sample": self.register_golden_sample,
         }
 
         # Set up argument parser for CLI usage
@@ -856,19 +857,55 @@ class AdamWorkstation:
         print(result.get("success", result.get("value", result)))
 
     def provision_mac(self, args):
+        # Opens a TCP/OCA connection to the device. Fails fast (timeout) if unreachable.
         device = self._get_oca_device(args)
         result = mac_provisioner.provision_mac(
             device=device,
             serial=args.serial,
-            workstation_id=self.workstation_id,
+            workstation_id=self.workstation_id,  # written to DB as audit trail
             default_mac=args.default_mac,
+            arp_delay=args.arp_delay,             # None uses ARP_FLUSH_DELAY constant (3.0 s)
         )
         WORKSTATION_LOGGER.info("provision_mac [%s]: %s", args.serial, result)
         if result.get("low_pool"):
+            # Logged as WARNING so it surfaces in AP's test report without failing the step.
             WORKSTATION_LOGGER.warning(
                 "MAC pool running low — %s MACs remaining.", result.get("remaining")
             )
-        print(json.dumps(result))
+        status = result.get("status")
+        if status in ("success", "retest_ok"):
+            # AP reads the literal string "successful" as PASS for this step.
+            print("successful")
+        else:
+            reason = result.get("reason", "error")
+            # "Error:" prefix is the AP convention — any other prefix is treated as PASS.
+            if reason == "duplicate_sn":
+                msg = (
+                    f"Error: duplicate serial number — "
+                    f"SN {args.serial!r} is already assigned to MAC {result.get('db_mac', '?')}"
+                )
+            elif reason == "pool_exhausted":
+                msg = "Error: MAC pool exhausted — no addresses available"
+            elif reason == "verify_failed":
+                msg = (
+                    f"Error: MAC write verification failed — "
+                    f"wrote {result.get('written', '?')}, read back {result.get('read_back', '?')}"
+                )
+            elif reason == "unknown_device":
+                msg = (
+                    f"Error: unknown device — "
+                    f"SN {args.serial!r} has no DB record but device reports MAC {result.get('current_mac', '?')}"
+                )
+            elif reason == "mac_mismatch":
+                msg = (
+                    f"Error: MAC mismatch — "
+                    f"DB has {result.get('db_mac', '?')}, device reports {result.get('device_mac', '?')}"
+                )
+            elif reason == "oca_error":
+                msg = f"Error: OCA communication failure — {result.get('detail', 'no detail')}"
+            else:
+                msg = f"Error: {reason}"
+            print(msg)
 
     def init_mac_db(self, args):
         mac_database.init_db()
@@ -876,6 +913,7 @@ class AdamWorkstation:
         print(json.dumps({"status": "ok", "detail": "MAC database initialized."}))
 
     def set_mac_range(self, args):
+        # No OCA or provisioner involvement — pure DB operation, safe to call off-line.
         mac_database.set_mac_range(
             start_mac=args.start_mac,
             end_mac=args.end_mac,
@@ -885,6 +923,7 @@ class AdamWorkstation:
             "MAC range set: %s – %s (warn_threshold=%d)",
             args.start_mac, args.end_mac, args.warn_threshold,
         )
+        # JSON output allows post-setup verification scripts to confirm the range.
         print(json.dumps({
             "status": "ok",
             "start_mac": args.start_mac,
@@ -897,17 +936,32 @@ class AdamWorkstation:
         print(json.dumps(status))
 
     def export_mac_log(self, args):
+        # getattr guards against callers that omit the --serial flag entirely;
+        # `or None` converts an empty string to None so the DB query returns all rows.
         serial_filter = getattr(args, "serial", None) or None
         rows = mac_database.get_provisioning_log(serial=serial_filter)
         if args.status:
             rows = [r for r in rows if r["status"] == args.status]
         fieldnames = ["serial", "mac", "status", "reserved_at", "written_at", "verified_at", "workstation_id"]
         with open(args.output_path, "w", newline="", encoding="utf-8") as f:
+            # extrasaction="ignore" silently drops any future DB columns not in fieldnames,
+            # keeping the CSV contract stable when the schema is extended.
             writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
             writer.writeheader()
             writer.writerows(rows)
         WORKSTATION_LOGGER.info("export_mac_log: %d entries written to %s", len(rows), args.output_path)
         print(json.dumps({"status": "ok", "exported": len(rows), "path": args.output_path}))
+
+    def register_golden_sample(self, args):
+        # Idempotent — safe to call repeatedly (e.g. on every AP startup) without
+        # creating duplicate entries or raising errors.
+        already_registered = mac_database.is_golden_sample(args.serial)
+        if already_registered:
+            print(f"already registered: {args.serial}")
+            return
+        mac_database.add_golden_sample(serial=args.serial, note=args.note)
+        WORKSTATION_LOGGER.info("register_golden_sample: serial='%s' note='%s'", args.serial, args.note)
+        print(f"registered: {args.serial}")
 
     def get_serial_number(self, args):
         device = self._get_oca_device(args)

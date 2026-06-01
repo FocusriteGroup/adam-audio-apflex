@@ -426,6 +426,8 @@ def build_workstation_parser():
         help="Factory default MAC address, e.g. 02:00:00:00:00:00")
     provision_mac_parser.add_argument("port", type=int, nargs="?", default=None,
         help="OCA device port (optional)")
+    provision_mac_parser.add_argument("--arp-delay", dest="arp_delay", type=float, default=None,
+        help="Override ARP flush delay in seconds (default: 3.0). Use 0 to stress-test OCA read-back.")
 
     init_mac_db_parser = subparsers.add_parser("init_mac_db",
         help="Initialise the MAC address provisioning database (run once during setup)")
@@ -451,5 +453,12 @@ def build_workstation_parser():
         help="Filter by provisioning status (default: all entries)")
     export_mac_log_parser.add_argument("--serial", type=str, default=None,
         help="Filter to a single serial number")
+
+    register_gs_parser = subparsers.add_parser("register_golden_sample",
+        help="Register a serial number as a golden sample (prevents re-provisioning)")
+    register_gs_parser.add_argument("serial", type=str,
+        help="Serial number to register as golden sample")
+    register_gs_parser.add_argument("--note", type=str, default=None,
+        help="Optional note describing the unit (e.g. its purpose)")
 
     return parser

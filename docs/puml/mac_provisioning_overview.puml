@@ -1,0 +1,23 @@
+@startuml mac_provisioning_overview
+title MAC Provisioning – Entry Point
+
+start
+
+:provision_mac called\n(target, serial, default_mac, arp_delay);
+
+:Read MAC from device\nvia OCA get_mac_address();
+
+if (OCA read successful?) then (no)
+  :OCA Error\nprint: "Error: OCA communication failure"; <<#pink>>
+  stop
+endif
+
+if (current_mac == default_mac?) then (yes)
+  :[[mac_provisioning_first_test.puml First-Test Path]];
+else (no)
+  :[[mac_provisioning_retest.puml Re-Test Path]];
+endif
+
+stop
+
+@enduml

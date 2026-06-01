@@ -61,10 +61,11 @@ def _flush_arp_cache() -> None:
     """Delete all ARP table entries so the OS forgets the device's old MAC."""
     try:
         if sys.platform == "win32":
-            # Requires elevated privileges on Windows
+            # Requires elevated privileges on Windows. check=False: a permission error
+            # does not abort provisioning — the sleep(arp_delay) is the real safeguard.
             subprocess.run(["arp", "-d", "*"], check=False, capture_output=True)
         else:
-            # Linux / macOS
+            # Linux / macOS — requires CAP_NET_ADMIN (root or sudo). Same rationale.
             subprocess.run(["ip", "neigh", "flush", "all"], check=False, capture_output=True)
         logger.debug("ARP cache flushed.")
     except Exception as exc:  # noqa: BLE001
@@ -111,6 +112,7 @@ def provision_mac(
     serial: str,
     workstation_id: str,
     default_mac: str,
+    arp_delay: float = None,
 ) -> dict:
     """Assign a unique MAC address to a device that has passed EOL testing.
 
@@ -145,7 +147,7 @@ def provision_mac(
     # Step 2a: Device still has Default MAC → First-test path
     # ------------------------------------------------------------------
     if current_mac == default_mac:
-        return _provision_first_test(device, serial, workstation_id)
+        return _provision_first_test(device, serial, workstation_id, arp_delay=arp_delay)
 
     # ------------------------------------------------------------------
     # Step 2b: Device has a unique MAC → Re-test path
@@ -157,7 +159,7 @@ def provision_mac(
 # Internal provisioning paths
 # ---------------------------------------------------------------------------
 
-def _provision_first_test(device, serial: str, workstation_id: str) -> dict:
+def _provision_first_test(device, serial: str, workstation_id: str, arp_delay: float = None) -> dict:
     """Handle a device arriving with the Default MAC (first test or clean re-test)."""
 
     # Guard: SN already in DB means a second physical device with the same SN
@@ -197,9 +199,10 @@ def _provision_first_test(device, serial: str, workstation_id: str) -> dict:
     logger.info("[%s] MAC written: %s", serial, mac)
 
     # Flush ARP cache and wait for device to re-announce via mDNS
+    delay = arp_delay if arp_delay is not None else ARP_FLUSH_DELAY
     _flush_arp_cache()
-    logger.debug("[%s] Waiting %.1f s after ARP flush…", serial, ARP_FLUSH_DELAY)
-    time.sleep(ARP_FLUSH_DELAY)
+    logger.debug("[%s] Waiting %.1f s after ARP flush…", serial, delay)
+    time.sleep(delay)
 
     # Read back MAC from device to verify
     read_back = _read_mac(device)

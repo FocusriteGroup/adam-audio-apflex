@@ -1,0 +1,111 @@
+@startuml mac_provisioning_design_flow
+title MAC Provisioning — Complete Design Flow
+
+skinparam ActivityBorderColor #333333
+skinparam ActivityBackgroundColor #F8F8F8
+skinparam NoteBackgroundColor #FFFDE7
+skinparam NoteBorderColor #CCAA00
+skinparam ArrowColor #333333
+
+start
+
+:provision_mac(device, serial, workstation_id,\ndefault_mac, arp_delay);
+
+:_read_mac(device)\n**OCA: get_mac_address()**;
+
+if (read failed?) then (yes)
+  :Error: oca_error; <<#pink>>
+  note right: "get_mac_address returned nothing"
+  detach
+endif
+
+if (current_mac == default_mac?) then (yes — First-Test Path)
+
+  if (get_assigned_mac(serial) != None?) then (yes)
+    :Error: duplicate_sn; <<#pink>>
+    note right
+      SN already verified in DB
+      but device still has Default MAC
+      → two devices, same serial
+    end note
+    detach
+  endif
+
+  :reserve_mac(serial, workstation_id)\n→ advance next_mac pointer in DB;
+
+  if (mac is None?) then (yes)
+    :Error: pool_exhausted; <<#pink>>
+    note right: No MACs left in range
+    detach
+  endif
+
+  :_write_mac(device, mac)\n**OCA: set_mac_address(mac)**;
+
+  if (OCA write failed?) then (yes)
+    :rollback_mac() → status: rolled_back;
+    :Error: oca_error; <<#pink>>
+    note right: "set_mac_address call failed"
+    detach
+  endif
+
+  :confirm_mac_written()\nDB status: reserved → **written**;
+
+  :_flush_arp_cache() + sleep(arp_delay)\ndefault delay: 3.0 s;
+
+  :_read_mac(device)\n**OCA: get_mac_address()** — read-back;
+
+  if (read_back is None?) then (yes)
+    :rollback_mac() → status: rolled_back;
+    :Error: oca_error; <<#pink>>
+    note right: "get_mac_address returned nothing after write"
+    detach
+  endif
+
+  if (read_back != mac?) then (yes)
+    :rollback_mac() → status: rolled_back;
+    :Error: verify_failed; <<#pink>>
+    note right
+      wrote: mac
+      read back: read_back
+      MAC pointer permanently advanced
+    end note
+    detach
+  endif
+
+  :confirm_mac_verified()\nDB status: written → **verified**;
+
+  :return {status: "success", mac, low_pool, remaining};
+
+else (no — Re-Test Path)
+
+  :get_assigned_mac(serial);
+
+  if (db_mac is None?) then (yes)
+    :Error: unknown_device; <<#pink>>
+    note right
+      Unique MAC on device
+      but SN not in DB
+      → manual investigation
+    end note
+    detach
+  endif
+
+  if (current_mac != db_mac?) then (yes)
+    :Error: mac_mismatch; <<#pink>>
+    note right
+      DB: db_mac
+      Device: current_mac
+      → manual investigation
+    end note
+    detach
+  endif
+
+  :return {status: "retest_ok", mac: db_mac};
+
+endif
+
+:stdout: **"successful"**;
+
+stop
+
+@enduml

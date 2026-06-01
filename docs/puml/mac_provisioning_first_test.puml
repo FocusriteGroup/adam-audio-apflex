@@ -1,0 +1,72 @@
+@startuml mac_provisioning_first_test
+title MAC Provisioning – First-Test Path\n(device has factory default MAC)
+
+start
+
+if (SN already in DB\n'verified'?) then (yes)
+  :Duplicate SN Error; <<#pink>>
+  note right
+    print: "Error: duplicate serial number —
+    SN '...' is already assigned to MAC ..."
+  end note
+  detach
+endif
+
+if (MAC pool\nempty?) then (yes)
+  :Pool Exhausted Error; <<#pink>>
+  note right
+    print: "Error: MAC pool exhausted —
+    no addresses available"
+  end note
+  detach
+endif
+
+:reserve_mac()
+DB: status = 'reserved'
+next_mac advances by 1;
+
+if (OCA write\nsuccessful?) then (no)
+  :rollback_mac() → DB: 'rolled_back'
+  OCA Error; <<#pink>>
+  note right
+    print: "Error: OCA communication failure"
+  end note
+  detach
+endif
+
+:confirm_mac_written() — DB: 'written'
+Flush ARP cache
+Sleep(arp_delay, default 3.0 s)
+Read back MAC via OCA;
+
+if (OCA read-back\nsuccessful?) then (no)
+  :rollback_mac() → DB: 'rolled_back'
+  OCA Error; <<#pink>>
+  note right
+    print: "Error: OCA communication failure"
+  end note
+  detach
+endif
+
+if (read_back ==\nreserved_mac?) then (no)
+  :rollback_mac() → DB: 'rolled_back'
+  Verify Failed; <<#pink>>
+  note right
+    print: "Error: MAC write verification failed —
+    wrote ..., read back ..."
+  end note
+  detach
+endif
+
+:confirm_mac_verified()
+DB: status = 'verified';
+
+if (remaining <=\nwarn_threshold?) then (yes)
+  note right: Log WARNING: "MAC pool running low"
+endif
+
+:print: "successful"; <<#lightgreen>>
+
+stop
+
+@enduml

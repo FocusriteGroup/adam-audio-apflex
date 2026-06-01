@@ -1,0 +1,31 @@
+@startuml mac_provisioning_retest
+title MAC Provisioning – Re-Test Path\n(device already has a unique MAC)
+
+start
+
+if (SN found in DB\nwith status 'verified'?) then (no)
+  :Unknown Device Error; <<#pink>>
+  note right
+    print: "Error: unknown device —
+    SN '...' has no DB record but
+    device reports MAC ..."
+  end note
+  detach
+endif
+
+if (db_mac ==\ncurrent_mac?) then (no)
+  :MAC Mismatch Error; <<#pink>>
+  note right
+    print: "Error: MAC mismatch —
+    DB has ..., device reports ..."
+  end note
+  detach
+endif
+
+:MAC already verified — no DB changes;
+
+:print: "successful"; <<#lightgreen>>
+
+stop
+
+@enduml
