@@ -187,7 +187,7 @@ def test_readback_stress(stress_state, arp_delay, cycles, record_property):
         cycle_stats.append(stat)
         print(
             f"  [{delay_label}] cycle {i:02d}: {status}"
-            + (f" → retest={stat['retest_status']}" if status == "success" else f" ({reason})")
+            + (f" -> retest={stat['retest_status']}" if status == "success" else f" ({reason})")
             + f"  ({elapsed:.2f}s)"
         )
 
@@ -298,7 +298,7 @@ def test_exhaustion_and_beyond(stress_state, mac_count, record_property):
 
     print(
         f"\n  Exhaustion test: pool = {mac_count} MACs "
-        f"({EXHAUST_START} \u2192 {exhaust_end})"
+        f"({EXHAUST_START} -> {exhaust_end})"
     )
 
     # --- Provision all mac_count MACs ---

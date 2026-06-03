@@ -400,6 +400,42 @@ def build_workstation_parser():
         default="Matching_App/Data/db/matcher.db",
         help="Local matcher DB path (default: Matching_App/Data/db/matcher.db)")
 
+    # Compensate L/R imbalance using a diff CSV
+    compensate_parser = subparsers.add_parser("compensate_lr_diff",
+        help="Apply L/R compensation: L+=0.5*diff, R-=0.5*diff (stereo RMS CSV + mono diff CSV)")
+    compensate_parser.add_argument("input_path", type=str,
+        help="Path to the stereo RMS measurement CSV (AP format, 4 header rows, X,Y,X,Y)")
+    compensate_parser.add_argument("diff_path", type=str,
+        help="Path to the mono L-R diff CSV (AP format, 4 header rows, X,Y in dB)")
+    compensate_parser.add_argument("output_path", type=str,
+        help="Path where the compensated CSV is written")
+
+    # Per-measurement compensated L-R difference (two inputs, two outputs)
+    comp_pair_parser = subparsers.add_parser("extract_compensated_lr_diff_pair",
+        help="Write a compensated L-R diff CSV for each of two stereo RMS measurements")
+    comp_pair_parser.add_argument("diff_path", type=str,
+        help="Path to the mono mic L-R diff CSV (AP format)")
+    comp_pair_parser.add_argument("input1_path", type=str,
+        help="Path to the first stereo RMS measurement CSV")
+    comp_pair_parser.add_argument("output1_path", type=str,
+        help="Output CSV path for the first measurement's compensated L-R diff")
+    comp_pair_parser.add_argument("input2_path", type=str,
+        help="Path to the second stereo RMS measurement CSV")
+    comp_pair_parser.add_argument("output2_path", type=str,
+        help="Output CSV path for the second measurement's compensated L-R diff")
+
+    # Same as above but combined into a single stereo CSV
+    comp_combined_parser = subparsers.add_parser("extract_compensated_lr_diff_combined",
+        help="Write compensated L-R diff of two stereo RMS measurements into one stereo CSV")
+    comp_combined_parser.add_argument("diff_path", type=str,
+        help="Path to the mono mic L-R diff CSV (AP format)")
+    comp_combined_parser.add_argument("input1_path", type=str,
+        help="Path to the first stereo RMS measurement CSV")
+    comp_combined_parser.add_argument("input2_path", type=str,
+        help="Path to the second stereo RMS measurement CSV")
+    comp_combined_parser.add_argument("output_path", type=str,
+        help="Output CSV path (single stereo X,Y,X,Y file)")
+
     # Filter reference by limits
     filter_ref_parser = subparsers.add_parser("filter_reference_by_limits",
         help="Filter a reference measurement CSV to include only frequencies within limits ranges")

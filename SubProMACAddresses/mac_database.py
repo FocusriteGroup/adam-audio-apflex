@@ -169,7 +169,7 @@ def set_mac_range(start_mac: str, end_mac: str, warn_threshold: int = DEFAULT_WA
                start_mac      = excluded.start_mac,      -- new lower boundary
                end_mac        = excluded.end_mac,         -- new upper boundary
                next_mac       = excluded.next_mac,        -- always reset to start_mac
-               warn_threshold = excluded.warn_threshold""",  -- low-pool alert level
+               warn_threshold = excluded.warn_threshold""",  # low-pool alert level
         (start_mac, end_mac, start_mac, warn_threshold)
         # next_mac is always reset to start_mac — not preserved from the previous range.
         # Calling set_mac_range() after provisioning has started reuses addresses from the top.

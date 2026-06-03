@@ -46,6 +46,9 @@ from analysis.csv_processing import split_ap_distortion_csv as split_ap_distorti
 from analysis.csv_processing import octave_smooth_ap_csv as octave_smooth_ap_csv_local
 from analysis.csv_processing import merge_ap_distortion_csvs as merge_ap_distortion_csvs_local
 from analysis.csv_processing import filter_reference_by_limits as filter_reference_by_limits_local
+from analysis.csv_processing import compensate_lr_diff as compensate_lr_diff_local
+from analysis.csv_processing import extract_compensated_lr_diff_pair as extract_compensated_lr_diff_pair_local
+from analysis.csv_processing import extract_compensated_lr_diff_combined as extract_compensated_lr_diff_combined_local
 from helpers import (
     generate_timestamp_extension,
     construct_path,
@@ -56,7 +59,9 @@ from cli.workstation_parser import build_workstation_parser
 from SubProMACAddresses import mac_database, mac_provisioner
 
 # Set up logging directory and file for workstation events
-log_dir = "logs/adam_audio"
+# Use script directory so the log goes to the right place regardless of AP's working directory
+_script_dir = os.path.dirname(os.path.abspath(__file__))
+log_dir = os.path.join(_script_dir, "logs", "adam_audio")
 os.makedirs(log_dir, exist_ok=True)  # Ensure log directory exists
 
 today = datetime.now().strftime("%Y-%m-%d")
@@ -165,6 +170,9 @@ class AdamWorkstation:
             "is_default_serial": self.is_default_serial,
             "verify_system": self.verify_system,
             "filter_reference_by_limits": self.filter_reference_by_limits,  # Filter reference by limits
+            "compensate_lr_diff": self.compensate_lr_diff,  # Compensate L/R imbalance using diff CSV
+            "extract_compensated_lr_diff_pair": self.extract_compensated_lr_diff_pair,  # Per-measurement compensated L-R diff
+            "extract_compensated_lr_diff_combined": self.extract_compensated_lr_diff_combined,  # Both inputs into one stereo CSV
             # MAC provisioning
             "provision_mac": self.provision_mac,
             "init_mac_db": self.init_mac_db,
@@ -604,6 +612,84 @@ class AdamWorkstation:
             output_dir=args.output_dir,
         )
         print(output_path)
+
+    def compensate_lr_diff(self, args):
+        """
+        Compensate L/R imbalance of a stereo RMS measurement CSV using a mono diff CSV.
+
+        ``L_new = L + 0.5 * diff``, ``R_new = R - 0.5 * diff``. Runs locally.
+        """
+        WORKSTATION_LOGGER.info(
+            "Executing 'compensate_lr_diff': input=%s, diff=%s, output=%s",
+            args.input_path, args.diff_path, args.output_path,
+        )
+        try:
+            output_path = compensate_lr_diff_local(
+                input_path=args.input_path,
+                diff_path=args.diff_path,
+                output_path=args.output_path,
+            )
+            WORKSTATION_LOGGER.info("compensate_lr_diff completed. Output: %s", output_path)
+            print(output_path)
+        except Exception as e:
+            WORKSTATION_LOGGER.error("Error in compensate_lr_diff: %s", e)
+            print(str(e))
+            raise
+
+    def extract_compensated_lr_diff_pair(self, args):
+        """
+        For two stereo RMS measurement CSVs, write a mono CSV per input containing
+        the L-R difference after compensating the mic L/R offset described by ``diff_path``.
+        Runs locally.
+        """
+        WORKSTATION_LOGGER.info(
+            "Executing 'extract_compensated_lr_diff_pair': diff=%s, in1=%s -> %s, in2=%s -> %s",
+            args.diff_path,
+            args.input1_path, args.output1_path,
+            args.input2_path, args.output2_path,
+        )
+        try:
+            out1, out2 = extract_compensated_lr_diff_pair_local(
+                diff_path=args.diff_path,
+                input1_path=args.input1_path,
+                output1_path=args.output1_path,
+                input2_path=args.input2_path,
+                output2_path=args.output2_path,
+            )
+            WORKSTATION_LOGGER.info(
+                "extract_compensated_lr_diff_pair completed. Outputs: %s, %s", out1, out2,
+            )
+            print(out1)
+            print(out2)
+        except Exception as e:
+            WORKSTATION_LOGGER.error("Error in extract_compensated_lr_diff_pair: %s", e)
+            print(str(e))
+            raise
+
+    def extract_compensated_lr_diff_combined(self, args):
+        """
+        Write a single stereo CSV containing the compensated L-R diff for both inputs.
+        Runs locally.
+        """
+        WORKSTATION_LOGGER.info(
+            "Executing 'extract_compensated_lr_diff_combined': diff=%s, in1=%s, in2=%s, output=%s",
+            args.diff_path, args.input1_path, args.input2_path, args.output_path,
+        )
+        try:
+            output_path = extract_compensated_lr_diff_combined_local(
+                diff_path=args.diff_path,
+                input1_path=args.input1_path,
+                input2_path=args.input2_path,
+                output_path=args.output_path,
+            )
+            WORKSTATION_LOGGER.info(
+                "extract_compensated_lr_diff_combined completed. Output: %s", output_path,
+            )
+            print(output_path)
+        except Exception as e:
+            WORKSTATION_LOGGER.error("Error in extract_compensated_lr_diff_combined: %s", e)
+            print(str(e))
+            raise
 
     def filter_reference_by_limits(self, args):
         """
@@ -1135,29 +1221,27 @@ class AdamWorkstation:
             return False
 
     def setup_references(self, args):
-        """Setup References directory by copying DefaultReferences if needed."""
+        """Setup References directory by copying DefaultReferences if needed.
+
+        If the References directory already exists, any files or folders present
+        in DefaultReferences but missing from References are copied in. Existing
+        files are never overwritten.
+        """
         try:
             target_path = os.path.abspath(args.path)
             references_dir = os.path.join(target_path, "References")
 
             WORKSTATION_LOGGER.info("Checking References directory at: %s", references_dir)
 
-            # Check if References directory exists
-            if os.path.exists(references_dir):
-                WORKSTATION_LOGGER.info("References directory already exists")
-                print("References directory already exists")
-                return True
-
-            # References doesn't exist, need to create and copy
-            WORKSTATION_LOGGER.info("References directory not found, creating...")
-
             # Determine source directory (stereo or mono)
+            # Use the script's own directory so AP can call from any working directory
+            script_dir = os.path.dirname(os.path.abspath(__file__))
             use_mono = getattr(args, "mono", False)
             if use_mono:
-                default_refs = os.path.join(os.getcwd(), "DefaultReferences", "Mono")
+                default_refs = os.path.join(script_dir, "DefaultReferences", "Mono")
                 WORKSTATION_LOGGER.info("Using mono references from: %s", default_refs)
             else:
-                default_refs = os.path.join(os.getcwd(), "DefaultReferences")
+                default_refs = os.path.join(script_dir, "DefaultReferences")
                 WORKSTATION_LOGGER.info("Using stereo references from: %s", default_refs)
 
             if not os.path.exists(default_refs):
@@ -1167,11 +1251,14 @@ class AdamWorkstation:
                 print(f"ERROR: {error_msg}")
                 return False
 
-            # Create References directory and copy contents
+            # Create References directory if it doesn't exist yet
+            already_existed = os.path.exists(references_dir)
             os.makedirs(references_dir, exist_ok=True)
-            WORKSTATION_LOGGER.info("Created References directory")
+            if not already_existed:
+                WORKSTATION_LOGGER.info("Created References directory")
 
-            # Copy all contents from source to References
+            # Copy items from source that are missing in References; never overwrite
+            copied = []
             for item in os.listdir(default_refs):
                 # Skip the Mono subdirectory when copying stereo references
                 if not use_mono and item == "Mono":
@@ -1180,16 +1267,27 @@ class AdamWorkstation:
                 src_path = os.path.join(default_refs, item)
                 dst_path = os.path.join(references_dir, item)
 
+                if os.path.exists(dst_path):
+                    continue  # Already present, do not overwrite
+
                 if os.path.isdir(src_path):
                     shutil.copytree(src_path, dst_path)
                     WORKSTATION_LOGGER.info("Copied directory: %s", item)
                 else:
                     shutil.copy2(src_path, dst_path)
                     WORKSTATION_LOGGER.info("Copied file: %s", item)
+                copied.append(item)
 
             mode = "mono" if use_mono else "stereo"
-            WORKSTATION_LOGGER.info("Successfully copied %s DefaultReferences to References", mode)
-            print(f"References directory created and populated successfully ({mode})")
+            if not already_existed:
+                WORKSTATION_LOGGER.info("Successfully copied %s DefaultReferences to References", mode)
+                print(f"References directory created and populated successfully ({mode})")
+            elif copied:
+                WORKSTATION_LOGGER.info("Synced missing items to References: %s", copied)
+                print(f"References directory updated with missing items: {copied}")
+            else:
+                WORKSTATION_LOGGER.info("References directory already up to date")
+                print("References directory already up to date")
             return True
 
         except Exception as e:

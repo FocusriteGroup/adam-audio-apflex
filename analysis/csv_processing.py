@@ -887,6 +887,420 @@ def filter_reference_by_limits(
     return written_path
 
 
+def compensate_lr_diff(
+    input_path: str,
+    diff_path: str,
+    output_path: str,
+    freq_tolerance: float = 1e-3,
+) -> str:
+    """
+    Compensate left/right channel imbalance in a stereo AP RMS measurement CSV.
+
+    For each frequency point::
+
+        L_new = L + 0.5 * diff
+        R_new = R - 0.5 * diff
+
+    where ``diff`` comes from a mono AP CSV (e.g. an L-R difference reference
+    captured with a known good driver pair).
+
+    Args:
+        input_path:     Stereo AP measurement CSV (4 header rows, then ``X,Y,X,Y``).
+        diff_path:      Mono AP CSV with the L-R difference (4 header rows, then ``X,Y``).
+        output_path:    Destination CSV path. Parent directories are created if needed.
+        freq_tolerance: Allowed absolute mismatch (Hz) between input and diff frequency grids.
+
+    Returns:
+        The actual written path (may differ from ``output_path`` if the target is locked).
+
+    Raises:
+        FileNotFoundError: If either input file is missing.
+        ValueError:        If the input is not stereo, the diff is not mono, the row counts
+                           differ, or any frequency pair exceeds ``freq_tolerance``.
+    """
+    if not input_path or not os.path.isfile(input_path):
+        raise FileNotFoundError(f"Input CSV not found: {input_path}")
+    if not diff_path or not os.path.isfile(diff_path):
+        raise FileNotFoundError(f"Diff CSV not found: {diff_path}")
+    if not output_path:
+        raise ValueError("output_path must be provided")
+
+    with open(input_path, "r", newline="", encoding="utf-8-sig") as f:
+        in_rows = list(csv.reader(f))
+    with open(diff_path, "r", newline="", encoding="utf-8-sig") as f:
+        diff_rows = list(csv.reader(f))
+
+    if len(in_rows) <= _AP_NUM_HEADER_ROWS:
+        raise ValueError("Input CSV has no data rows after the header.")
+    if len(diff_rows) <= _AP_NUM_HEADER_ROWS:
+        raise ValueError("Diff CSV has no data rows after the header.")
+
+    in_header = in_rows[:_AP_NUM_HEADER_ROWS]
+    in_data = in_rows[_AP_NUM_HEADER_ROWS:]
+    diff_data = diff_rows[_AP_NUM_HEADER_ROWS:]
+
+    # Sanity-check stereo layout on the input (X,Y,X,Y).
+    if not in_data or len(in_data[0]) < 4:
+        raise ValueError("Input CSV is not stereo (expected at least 4 columns: X,Y,X,Y).")
+
+    # Build a lookup of diff values keyed by frequency rounded to mHz to tolerate
+    # the formatting precision difference between AP exports (e.g. 17.36111111
+    # vs 17.3611111111111).
+    diff_lookup: dict[float, float] = {}
+    for row in diff_data:
+        if not row or not row[0].strip():
+            continue
+        try:
+            f = float(row[0])
+            y = float(row[1]) if len(row) > 1 and row[1].strip() else float("nan")
+        except ValueError:
+            continue
+        diff_lookup[round(f, 3)] = y
+
+    out_data: list[list[str]] = []
+    missing = 0
+    for row in in_data:
+        if not row or not row[0].strip():
+            continue
+        try:
+            x_l = float(row[0])
+            y_l = float(row[1])
+            x_r = float(row[2])
+            y_r = float(row[3])
+        except (ValueError, IndexError):
+            continue
+
+        if abs(x_l - x_r) > freq_tolerance:
+            raise ValueError(
+                f"Left/right frequency mismatch in input at {x_l} Hz vs {x_r} Hz."
+            )
+
+        diff_val = diff_lookup.get(round(x_l, 3))
+        if diff_val is None or math.isnan(diff_val):
+            missing += 1
+            new_row = [f"{x_l:.10g}", f"{y_l:.10g}", f"{x_r:.10g}", f"{y_r:.10g}"]
+        else:
+            new_row = [
+                f"{x_l:.10g}",
+                f"{y_l + 0.5 * diff_val:.10g}",
+                f"{x_r:.10g}",
+                f"{y_r - 0.5 * diff_val:.10g}",
+            ]
+        out_data.append(new_row)
+
+    if missing:
+        logger.warning(
+            "compensate_lr_diff: %d/%d frequency points had no diff entry and were left unchanged.",
+            missing,
+            len(out_data),
+        )
+
+    parent = os.path.dirname(os.path.abspath(output_path))
+    if parent:
+        os.makedirs(parent, exist_ok=True)
+
+    written_path = _write_rows_with_fallback(output_path, in_header + out_data)
+    logger.info(
+        "compensate_lr_diff: wrote %d compensated rows to %s", len(out_data), written_path
+    )
+    return written_path
+
+
+def _load_diff_lookup(diff_path: str) -> dict[float, float]:
+    """Load a mono AP diff CSV into a {round(freq, 3) -> y} lookup."""
+    with open(diff_path, "r", newline="", encoding="utf-8-sig") as f:
+        rows = list(csv.reader(f))
+    if len(rows) <= _AP_NUM_HEADER_ROWS:
+        raise ValueError(f"Diff CSV has no data rows after the header: {diff_path}")
+
+    lookup: dict[float, float] = {}
+    for row in rows[_AP_NUM_HEADER_ROWS:]:
+        if not row or not row[0].strip():
+            continue
+        try:
+            f_hz = float(row[0])
+            y = float(row[1]) if len(row) > 1 and row[1].strip() else float("nan")
+        except ValueError:
+            continue
+        lookup[round(f_hz, 3)] = y
+    return lookup
+
+
+def extract_compensated_lr_diff(
+    input_path: str,
+    diff_path: str,
+    output_path: str,
+    freq_tolerance: float = 1e-3,
+    diff_lookup: Optional[dict[float, float]] = None,
+) -> str:
+    """
+    Compute the L-R difference of a stereo RMS measurement after compensating the
+    mic L/R imbalance described by ``diff_path``.
+
+    For each frequency::
+
+        L_comp = L + 0.5 * mic_diff
+        R_comp = R - 0.5 * mic_diff
+        out    = L_comp - R_comp = (L - R) + mic_diff
+
+    The result is written as a mono AP-style CSV (4 header rows, then ``X,Y`` in dB).
+
+    Args:
+        input_path:     Stereo AP measurement CSV (``X,Y,X,Y``).
+        diff_path:      Mono AP CSV with the mic L-R difference (dB).
+        output_path:    Destination CSV path.
+        freq_tolerance: Allowed Hz mismatch between the input L and R frequency columns.
+        diff_lookup:    Optional pre-loaded diff lookup (use to avoid re-reading the
+                        diff CSV when processing multiple inputs).
+
+    Returns:
+        The actual written path.
+    """
+    if not input_path or not os.path.isfile(input_path):
+        raise FileNotFoundError(f"Input CSV not found: {input_path}")
+    if not output_path:
+        raise ValueError("output_path must be provided")
+
+    if diff_lookup is None:
+        if not diff_path or not os.path.isfile(diff_path):
+            raise FileNotFoundError(f"Diff CSV not found: {diff_path}")
+        diff_lookup = _load_diff_lookup(diff_path)
+
+    with open(input_path, "r", newline="", encoding="utf-8-sig") as f:
+        in_rows = list(csv.reader(f))
+    if len(in_rows) <= _AP_NUM_HEADER_ROWS:
+        raise ValueError(f"Input CSV has no data rows after the header: {input_path}")
+
+    in_data = in_rows[_AP_NUM_HEADER_ROWS:]
+    if not in_data or len(in_data[0]) < 4:
+        raise ValueError(
+            f"Input CSV is not stereo (expected at least 4 columns: X,Y,X,Y): {input_path}"
+        )
+
+    # Derive the measurement name and X-unit from the source header where possible.
+    src_header = in_rows[:_AP_NUM_HEADER_ROWS]
+    measurement = src_header[0][0] if src_header and src_header[0] else "Measurement"
+    x_unit = "Hz"
+    if len(src_header) > 3 and len(src_header[3]) > 0 and src_header[3][0].strip():
+        x_unit = src_header[3][0].strip()
+
+    out_header = [
+        [measurement, ""],
+        ["L-R Compensated", ""],
+        ["X", "Y"],
+        [x_unit, "dB"],
+    ]
+
+    out_data: list[list[str]] = []
+    missing = 0
+    for row in in_data:
+        if not row or not row[0].strip():
+            continue
+        try:
+            x_l = float(row[0])
+            y_l = float(row[1])
+            x_r = float(row[2])
+            y_r = float(row[3])
+        except (ValueError, IndexError):
+            continue
+        if abs(x_l - x_r) > freq_tolerance:
+            raise ValueError(
+                f"Left/right frequency mismatch in input at {x_l} Hz vs {x_r} Hz."
+            )
+        mic_diff = diff_lookup.get(round(x_l, 3))
+        if mic_diff is None or math.isnan(mic_diff):
+            missing += 1
+            comp_diff = y_l - y_r
+        else:
+            comp_diff = (y_l - y_r) + mic_diff
+        out_data.append([f"{x_l:.10g}", f"{comp_diff:.10g}"])
+
+    if missing:
+        logger.warning(
+            "extract_compensated_lr_diff: %d/%d frequency points had no diff entry "
+            "and were treated as raw L-R.",
+            missing,
+            len(out_data),
+        )
+
+    parent = os.path.dirname(os.path.abspath(output_path))
+    if parent:
+        os.makedirs(parent, exist_ok=True)
+
+    written_path = _write_rows_with_fallback(output_path, out_header + out_data)
+    logger.info(
+        "extract_compensated_lr_diff: wrote %d rows from %s to %s",
+        len(out_data), input_path, written_path,
+    )
+    return written_path
+
+
+def _compute_compensated_lr_diff_rows(
+    input_path: str,
+    diff_lookup: dict[float, float],
+    freq_tolerance: float = 1e-3,
+) -> tuple[list[list[str]], list[str], int]:
+    """Return ``(rows, src_header, missing)`` where ``rows`` is a list of ``[X, Y]``
+    strings holding the compensated L-R difference for one stereo input CSV.
+    """
+    if not input_path or not os.path.isfile(input_path):
+        raise FileNotFoundError(f"Input CSV not found: {input_path}")
+
+    with open(input_path, "r", newline="", encoding="utf-8-sig") as f:
+        in_rows = list(csv.reader(f))
+    if len(in_rows) <= _AP_NUM_HEADER_ROWS:
+        raise ValueError(f"Input CSV has no data rows after the header: {input_path}")
+
+    src_header = in_rows[:_AP_NUM_HEADER_ROWS]
+    in_data = in_rows[_AP_NUM_HEADER_ROWS:]
+    if not in_data or len(in_data[0]) < 4:
+        raise ValueError(
+            f"Input CSV is not stereo (expected at least 4 columns: X,Y,X,Y): {input_path}"
+        )
+
+    out_rows: list[list[str]] = []
+    missing = 0
+    for row in in_data:
+        if not row or not row[0].strip():
+            continue
+        try:
+            x_l = float(row[0])
+            y_l = float(row[1])
+            x_r = float(row[2])
+            y_r = float(row[3])
+        except (ValueError, IndexError):
+            continue
+        if abs(x_l - x_r) > freq_tolerance:
+            raise ValueError(
+                f"Left/right frequency mismatch in {input_path} at {x_l} Hz vs {x_r} Hz."
+            )
+        mic_diff = diff_lookup.get(round(x_l, 3))
+        if mic_diff is None or math.isnan(mic_diff):
+            missing += 1
+            comp_diff = y_l - y_r
+        else:
+            comp_diff = (y_l - y_r) + mic_diff
+        out_rows.append([f"{x_l:.10g}", f"{comp_diff:.10g}"])
+
+    return out_rows, src_header, missing
+
+
+def extract_compensated_lr_diff_combined(
+    diff_path: str,
+    input1_path: str,
+    input2_path: str,
+    output_path: str,
+    freq_tolerance: float = 1e-3,
+) -> str:
+    """
+    Like :func:`extract_compensated_lr_diff_pair` but writes the compensated L-R
+    diff of both inputs into a single stereo AP-style CSV (``X,Y,X,Y`` in dB).
+
+    The two inputs must share the same frequency grid (within ``freq_tolerance``).
+    """
+    if not diff_path or not os.path.isfile(diff_path):
+        raise FileNotFoundError(f"Diff CSV not found: {diff_path}")
+    if not output_path:
+        raise ValueError("output_path must be provided")
+
+    lookup = _load_diff_lookup(diff_path)
+    rows1, src_header, missing1 = _compute_compensated_lr_diff_rows(
+        input1_path, lookup, freq_tolerance
+    )
+    rows2, _, missing2 = _compute_compensated_lr_diff_rows(
+        input2_path, lookup, freq_tolerance
+    )
+
+    if len(rows1) != len(rows2):
+        raise ValueError(
+            f"Input row counts differ ({len(rows1)} vs {len(rows2)}); cannot combine."
+        )
+    for i, (r1, r2) in enumerate(zip(rows1, rows2)):
+        if abs(float(r1[0]) - float(r2[0])) > freq_tolerance:
+            raise ValueError(
+                f"Frequency mismatch between inputs at row {i}: {r1[0]} vs {r2[0]}."
+            )
+
+    x_unit = "Hz"
+    if len(src_header) > 3 and len(src_header[3]) > 0 and src_header[3][0].strip():
+        x_unit = src_header[3][0].strip()
+
+    out_header = [
+        ["L-R-Diff", "", "", ""],
+        ["L-R-Diff-Left", "", "L-R-Diff-Right", ""],
+        ["X", "Y", "X", "Y"],
+        [x_unit, "dB", x_unit, "dB"],
+    ]
+
+    combined: list[list[str]] = [r1 + r2 for r1, r2 in zip(rows1, rows2)]
+
+    if missing1 or missing2:
+        logger.warning(
+            "extract_compensated_lr_diff_combined: missing diff entries -> %d (input1), %d (input2).",
+            missing1, missing2,
+        )
+
+    parent = os.path.dirname(os.path.abspath(output_path))
+    if parent:
+        os.makedirs(parent, exist_ok=True)
+
+    written_path = _write_rows_with_fallback(output_path, out_header + combined)
+    logger.info(
+        "extract_compensated_lr_diff_combined: wrote %d rows to %s",
+        len(combined), written_path,
+    )
+    return written_path
+
+
+def _resolve_lr_diff_output(output_path: str, input_path: str) -> str:
+    """If ``output_path`` is a directory (existing or trailing-slash) or has no
+    file extension, append a default filename derived from ``input_path``.
+    """
+    default_name = f"{os.path.splitext(os.path.basename(input_path))[0]}_LRdiff_comp.csv"
+    if not output_path:
+        return default_name
+    normalized = output_path.rstrip("/\\")
+    is_dir = (
+        os.path.isdir(output_path)
+        or output_path.endswith(("/", "\\"))
+        or (not os.path.splitext(normalized)[1])
+    )
+    if is_dir:
+        return os.path.join(normalized, default_name)
+    return output_path
+
+
+def extract_compensated_lr_diff_pair(
+    diff_path: str,
+    input1_path: str,
+    output1_path: str,
+    input2_path: str,
+    output2_path: str,
+    freq_tolerance: float = 1e-3,
+) -> tuple[str, str]:
+    """
+    Convenience wrapper: load the mic diff CSV once and produce a compensated L-R
+    difference CSV for each of two stereo RMS measurements.
+
+    ``output1_path`` / ``output2_path`` may be a directory; in that case the
+    filename is auto-generated as ``<input_stem>_LRdiff_comp.csv``.
+    """
+    if not diff_path or not os.path.isfile(diff_path):
+        raise FileNotFoundError(f"Diff CSV not found: {diff_path}")
+    lookup = _load_diff_lookup(diff_path)
+    out1 = extract_compensated_lr_diff(
+        input_path=input1_path, diff_path=diff_path,
+        output_path=_resolve_lr_diff_output(output1_path, input1_path),
+        freq_tolerance=freq_tolerance, diff_lookup=lookup,
+    )
+    out2 = extract_compensated_lr_diff(
+        input_path=input2_path, diff_path=diff_path,
+        output_path=_resolve_lr_diff_output(output2_path, input2_path),
+        freq_tolerance=freq_tolerance, diff_lookup=lookup,
+    )
+    return out1, out2
+
+
 if __name__ == "__main__":
     # Demo 1: Split distortion CSV
     demo_input_path = (

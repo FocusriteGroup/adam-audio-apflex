@@ -1,0 +1,11 @@
+cycle,serial,delay_s,elapsed_s,status,reason,mac,retest_status
+0,SN-STRESS-D10-0000,1.0,2.266,success,,,retest_ok
+1,SN-STRESS-D10-0001,1.0,2.266,success,,,retest_ok
+2,SN-STRESS-D10-0002,1.0,2.172,success,,,retest_ok
+3,SN-STRESS-D10-0003,1.0,2.032,success,,,retest_ok
+4,SN-STRESS-D10-0004,1.0,2.171,success,,,retest_ok
+5,SN-STRESS-D10-0005,1.0,2.125,success,,,retest_ok
+6,SN-STRESS-D10-0006,1.0,2.14,success,,,retest_ok
+7,SN-STRESS-D10-0007,1.0,2.094,success,,,retest_ok
+8,SN-STRESS-D10-0008,1.0,2.235,success,,,retest_ok
+9,SN-STRESS-D10-0009,1.0,2.156,success,,,retest_ok
