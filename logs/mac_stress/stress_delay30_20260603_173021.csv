@@ -1,0 +1,6 @@
+cycle,serial,delay_s,elapsed_s,status,reason,mac,retest_status
+0,SN-STRESS-D30-0000,3.0,4.188,success,,,retest_ok
+1,SN-STRESS-D30-0001,3.0,4.14,success,,,retest_ok
+2,SN-STRESS-D30-0002,3.0,4.11,success,,,retest_ok
+3,SN-STRESS-D30-0003,3.0,4.234,success,,,retest_ok
+4,SN-STRESS-D30-0004,3.0,4.187,success,,,retest_ok

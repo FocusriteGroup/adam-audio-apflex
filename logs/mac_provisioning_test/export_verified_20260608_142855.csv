@@ -1,0 +1,3 @@
+serial,mac,status,reserved_at,written_at,verified_at,workstation_id
+123456,02:FE:ED:00:00:00,verified,2026-06-08T12:28:50.360204+00:00,2026-06-08T12:28:50.487568+00:00,2026-06-08T12:28:53.701994+00:00,Dell-Thilo
+TEST-EXPORT-V,02:FE:ED:00:FF:01,verified,,,,test-station

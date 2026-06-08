@@ -337,6 +337,35 @@ Error: MAC pool exhausted — no addresses available
 > Running without the device yields `Error: OCA communication failure — get_mac_address returned nothing` for every test.  
 > The stress test CSV logs in `logs/mac_stress/` were captured with the device present.
 
+---
+
+## Test Runs
+
+| Date | Firmware | Device | Result | Notes |
+|---|---|---|---|---|
+| 2026-06-08 | `1.0.0rc6` | `169.254.27.208:50001` | ✅ 7/7 PASSED (22.06s) | mDNS unavailable after reboot — addressed via IP |
+| 2026-05-28 | — | `ASubsDV1` | ✅ 7/7 PASSED (20.45s) | Initial test run |
+
+---
+
+### Integration tests — `pytest -v` output (2026-06-08, device connected)
+
+```
+SubProMACAddresses/test_mac_provisioning.py::test_1_success        PASSED  [ 14%]
+SubProMACAddresses/test_mac_provisioning.py::test_2_retest_ok      PASSED  [ 28%]
+SubProMACAddresses/test_mac_provisioning.py::test_3_export_log     PASSED  [ 42%]
+SubProMACAddresses/test_mac_provisioning.py::test_4_duplicate_sn   PASSED  [ 57%]
+SubProMACAddresses/test_mac_provisioning.py::test_5_mac_mismatch   PASSED  [ 71%]
+SubProMACAddresses/test_mac_provisioning.py::test_6_unknown_device PASSED  [ 85%]
+SubProMACAddresses/test_mac_provisioning.py::test_7_pool_exhausted PASSED  [100%]
+
+7 passed in 22.06s
+```
+
+> **Note (2026-06-08):** Device was addressed via IP (`169.254.27.208:50001`) rather than mDNS name
+> (`ASubsDV1`) because the mDNS registration was lost after a device reboot. All 7 tests passed
+> identically — the OCA protocol behaviour is independent of the addressing method.
+
 ### Integration tests — `pytest -v` output (2026-05-28, device connected)
 
 ```
