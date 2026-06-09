@@ -352,6 +352,17 @@ def build_workstation_parser():
     firmware_version_parser.add_argument("port", type=int, nargs="?", default=None,
         help="OCA device port (optional for device name)")
 
+    update_firmware_parser = subparsers.add_parser("update_firmware",
+        help="Flash a firmware image to the OCA device")
+    update_firmware_parser.add_argument("target", type=str,
+        help="OCA device name or IP address")
+    update_firmware_parser.add_argument("firmware_image_path", type=str,
+        help="Path to the firmware image file")
+    update_firmware_parser.add_argument("port", type=int, nargs="?", default=None,
+        help="OCA device port (optional for device name)")
+    update_firmware_parser.add_argument("--timeout", type=int, default=60,
+        help="Firmware update timeout in seconds (default: 60)")
+
     # Add ASubs initialization parser
     init_parser = subparsers.add_parser("init_sub",
         help="Initialize ASubs with default settings (internal-dsp, gain 0, unmuted, phase 0, calibration 0, analogue-xlr input, wide bass management)")

@@ -289,3 +289,21 @@ class OCADevice:
         version = result.get("version")
         return {"version": version} if version is not None else result
 
+    def update_firmware(self, firmware_image_path, timeout=60):
+        """Flash a firmware image to the device.
+
+        Args:
+            firmware_image_path (str): Path to the firmware image file.
+            timeout (int): Command timeout in seconds (default 60).
+        """
+        wrapper = self._get_wrapper()
+        options = self._cli_options()
+        options["--firmware-image-path"] = firmware_image_path
+        options["--timeout"] = timeout
+        result = wrapper.run_cli_command(
+            command_path=["firmware", "update"],
+            options=options
+        )
+        self._log_to_service("update_firmware", result)
+        return result
+

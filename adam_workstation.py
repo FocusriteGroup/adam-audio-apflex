@@ -164,6 +164,7 @@ class AdamWorkstation:
             "set_serial_number": self.set_serial_number,
             "get_model_description": self.get_model_description,
             "get_firmware_version": self.get_firmware_version,
+            "update_firmware": self.update_firmware,
             "init_sub": self.init_sub,  # Add new command to map
             "setup_references": self.setup_references,  # Setup References directory
             "is_golden_sample": self.is_golden_sample,
@@ -1072,6 +1073,20 @@ class AdamWorkstation:
         result = device.get_firmware_version()
         WORKSTATION_LOGGER.debug("get_firmware_version result: %s", result)
         print(result.get("version", result.get("raw", "")))
+
+    def update_firmware(self, args):
+        device = self._get_oca_device(args)
+        WORKSTATION_LOGGER.info("update_firmware [%s]: flashing %s", args.target, args.firmware_image_path)
+        result = device.update_firmware(
+            firmware_image_path=args.firmware_image_path,
+            timeout=args.timeout,
+        )
+        WORKSTATION_LOGGER.info("update_firmware [%s]: %s", args.target, result)
+        raw = result.get("raw", "") if isinstance(result, dict) else str(result)
+        if raw:
+            print(raw)
+        else:
+            print("successful")
 
     def check_measurement_trials(self, args):
         """
