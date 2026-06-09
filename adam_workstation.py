@@ -164,7 +164,7 @@ class AdamWorkstation:
             "set_serial_number": self.set_serial_number,
             "get_model_description": self.get_model_description,
             "get_firmware_version": self.get_firmware_version,
-            "init_asub": self.init_asub,  # Add new command to map
+            "init_sub": self.init_sub,  # Add new command to map
             "setup_references": self.setup_references,  # Setup References directory
             "is_golden_sample": self.is_golden_sample,
             "is_default_serial": self.is_default_serial,
@@ -991,6 +991,7 @@ class AdamWorkstation:
                 msg = f"Error: OCA communication failure — {result.get('detail', 'no detail')}"
             else:
                 msg = f"Error: {reason}"
+            self._show_error_popup("MAC Provisioning Failed", msg)
             print(msg)
 
     def init_mac_db(self, args):
@@ -1171,7 +1172,7 @@ class AdamWorkstation:
             WORKSTATION_LOGGER.error("Gain calibration failed: %s", str(e))
             print(f"ERROR: {str(e)}")
 
-    def init_asub(self, args):
+    def init_sub(self, args):
         """Initialize ASubs subwoofer with default settings."""
         try:
             

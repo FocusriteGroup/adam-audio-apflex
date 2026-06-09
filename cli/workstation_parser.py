@@ -353,7 +353,7 @@ def build_workstation_parser():
         help="OCA device port (optional for device name)")
 
     # Add ASubs initialization parser
-    init_parser = subparsers.add_parser("init_asub",
+    init_parser = subparsers.add_parser("init_sub",
         help="Initialize ASubs with default settings (internal-dsp, gain 0, unmuted, phase 0, calibration 0, analogue-xlr input, wide bass management)")
     init_parser.add_argument("target", type=str,
         help="OCA device name or IP address")
