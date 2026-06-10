@@ -1075,18 +1075,20 @@ class AdamWorkstation:
         print(result.get("version", result.get("raw", "")))
 
     def update_firmware(self, args):
-        device = self._get_oca_device(args)
-        WORKSTATION_LOGGER.info("update_firmware [%s]: flashing %s", args.target, args.firmware_image_path)
-        result = device.update_firmware(
-            firmware_image_path=args.firmware_image_path,
-            timeout=args.timeout,
-        )
-        WORKSTATION_LOGGER.info("update_firmware [%s]: %s", args.target, result)
-        raw = result.get("raw", "") if isinstance(result, dict) else str(result)
-        if raw:
-            print(raw)
-        else:
+        try:
+            device = self._get_oca_device(args)
+            WORKSTATION_LOGGER.info("update_firmware [%s]: flashing %s", args.target, args.firmware_image_path)
+            result = device.update_firmware(
+                firmware_image_path=args.firmware_image_path,
+                timeout=args.timeout,
+            )
+            WORKSTATION_LOGGER.info("update_firmware [%s]: %s", args.target, result)
             print("successful")
+        except Exception as e:
+            msg = f"Error: firmware update failed — {e}"
+            WORKSTATION_LOGGER.error("update_firmware [%s]: %s", args.target, e)
+            self._show_error_popup("Firmware Update Failed", msg)
+            print(msg)
 
     def check_measurement_trials(self, args):
         """
