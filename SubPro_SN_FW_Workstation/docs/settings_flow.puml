@@ -1,0 +1,149 @@
+@startuml Settings Screen Flow
+
+skinparam ActivityBackgroundColor #f5f5f5
+skinparam ActivityBorderColor #555555
+skinparam ActivityFontColor #111111
+skinparam ArrowColor #555555
+skinparam ActivityDiamondBackgroundColor #e8e8e8
+skinparam ActivityDiamondBorderColor #555555
+skinparam ActivityDiamondFontColor #111111
+skinparam NoteBackgroundColor #ddeeff
+skinparam NoteBorderColor #5588bb
+skinparam NoteFontColor #111111
+skinparam BackgroundColor #ffffff
+skinparam swimlaneBorderColor #aaaaaa
+skinparam swimlaneBackgroundColor #fafafa
+
+title Settings Screen — Three-Tab Layout
+
+|Navigation|
+
+start
+:Navigate to Settings;
+note right
+  Requires password
+  (PasswordPopup opens first)
+end note
+
+:Settings screen loads\nDB values populated into fields;
+
+fork
+  |Tab 1: Device & Firmware|
+
+  :View/edit Device Name field;
+  :View/edit Target FW Version field;
+  :View/edit FW .bin path field;
+
+  :View A8S Golden Sample list;
+  :View A10S Golden Sample list;
+
+  fork
+    :|A8S GS section|
+    :Enter SN + optional note;
+    :Press Add;
+    :validate_sn() — full format check;
+    if (Valid?) then (No)
+      :Show red hint in SN field;
+    else (Yes)
+      if (Prefix is CI?) then (No)
+        :Show red hint\n"not an A8S serial";
+      else (Yes)
+        :db.add_golden_sample('A8S', sn, note);
+        if (Duplicate?) then (Yes)
+          :Show error "already registered";
+        else (No)
+          :List refreshed\nStatus: "Golden sample <sn> added."; <<#00aa44>>
+        endif
+      endif
+    endif
+
+    :Press Remove on any row;
+    :db.remove_golden_sample(id);
+    :List refreshed\nStatus: "Golden sample removed."; <<#00aa44>>
+
+  fork again
+    :|A10S GS section|
+    :Same flow as A8S\nPrefix must be CJ;
+
+  end fork
+
+  :Press Save (Device & Firmware);
+  :db.set_config(device_name);
+  :db.set_config(target_fw_version);
+  :db.set_config(fw_bin_path);
+  :device_service.update_device_name();
+  note right
+    DeviceService resets
+    cached OCADevice immediately
+  end note
+  :Status: "Saved."; <<#00aa44>>
+
+fork again
+  |Tab 2: Parts|
+
+  :View current parts list\n(name, A8S prefix, A10S prefix, Required checkbox);
+  note right
+    Default 5 parts seeded:
+    DSP Board / UI Board / AMP+PSU
+    Amp Module / Woofer Driver
+  end note
+
+  :Edit any row inline\n(name, prefixes, required flag);
+
+  :Press Save Parts;
+  :db.update_part_config() for each row;
+  :Status: "Parts configuration saved."; <<#00aa44>>
+
+  :Enter new part details\n(Name, A8S prefix, A10S prefix, Required);
+  :Press Add Part;
+  if (All fields filled?) then (No)
+    :Status: "Fill in all fields before adding."; <<#cc2200>>
+  else (Yes)
+    :db.add_part_config(name, pa8s, pa10s, required);
+    if (Duplicate name?) then (Yes)
+      :Status: "Error: UNIQUE constraint failed"; <<#cc2200>>
+    else (No)
+      :List refreshed\nStatus: "Part <name> added."; <<#00aa44>>
+    endif
+  endif
+
+  :Press Remove on any row;
+  :db.remove_part_config(id);
+  :List refreshed\nStatus: "Part removed."; <<#00aa44>>
+
+fork again
+  |Tab 3: Change Password|
+
+  :Enter current password;
+  :Enter new password;
+  :Enter confirm new password;
+
+  :Press Change Password;
+
+  if (New == Confirm?) then (No)
+    :Status: "New passwords do not match."; <<#cc2200>>
+  else (Yes)
+    if (db.check_password(current)?) then (No)
+      :Status: "Current password is incorrect."; <<#cc2200>>
+    else (Yes)
+      if (New password non-empty?) then (No)
+        :Status: "New password cannot be empty."; <<#cc2200>>
+      else (Yes)
+        :db.set_password(new_password);
+        note right
+          Fresh 32-byte salt generated
+          SHA-256(salt + plaintext) stored
+        end note
+        :Fields cleared\nStatus: "Password changed."; <<#00aa44>>
+      endif
+    endif
+  endif
+
+end fork
+
+|Navigation|
+
+:Navigate away (Home / History);
+stop
+
+@enduml

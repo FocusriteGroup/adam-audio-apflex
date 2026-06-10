@@ -197,7 +197,7 @@ CREATE TABLE parts_scanned (
 
 ### Part re-assignment
 
-If a component SN is scanned but was already recorded for a different unit (e.g. a spare part reused after a rework), the scan is still accepted. The `previous_unit_id` column is set to the prior unit's id, creating a full audit trail of the re-assignment.
+If a component SN is scanned but was already recorded for a different unit (e.g. a spare part reused after a rework), the scan is still accepted. The `previous_unit_id` column is set to the prior unit's id, creating a full audit trail of the re-assignment. The workflow screen and CSV export display the prior unit's **product SN** (resolved via `get_product_sn_for_unit`) rather than the raw integer id, so operators see a meaningful reference. The workflow screen and CSV export display the prior unit's **product SN** (resolved via `get_product_sn_for_unit`) rather than the raw integer id, so operators see a meaningful reference.
 
 ---
 

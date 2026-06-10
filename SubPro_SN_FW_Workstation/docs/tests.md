@@ -178,7 +178,7 @@ Verifies the query filter logic used by the History screen.
 | `test_filter_by_sn_partial` | Partial SN match returns only matching units |
 | `test_filter_by_sn_no_match` | Non-matching filter returns empty list |
 | `test_no_filter_returns_all` | Unfiltered query returns all units |
-| `test_results_ordered_newest_first` | Results are ordered by `timestamp DESC, id DESC` (newest first, ties broken by insertion order) |
+| `test_results_ordered_newest_first` | Results are ordered by `timestamp DESC, id DESC`; the most recently inserted unit appears first, with `id` as a tiebreaker within the same second |
 
 ---
 

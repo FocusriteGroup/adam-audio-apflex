@@ -1,0 +1,167 @@
+@startuml Sub-Pro SN/FW Workstation Flow
+
+skinparam ActivityBackgroundColor #f5f5f5
+skinparam ActivityBorderColor #555555
+skinparam ActivityFontColor #111111
+skinparam ArrowColor #555555
+skinparam ActivityDiamondBackgroundColor #e8e8e8
+skinparam ActivityDiamondBorderColor #555555
+skinparam ActivityDiamondFontColor #111111
+skinparam NoteBackgroundColor #ddeeff
+skinparam NoteBorderColor #5588bb
+skinparam NoteFontColor #111111
+skinparam BackgroundColor #ffffff
+skinparam swimlaneBorderColor #aaaaaa
+skinparam swimlaneBackgroundColor #fafafa
+
+title Sub-Pro SN/FW Workstation — Operator Workflow
+
+|App|
+start
+
+:Launch application;
+note right
+  run.py adds parent repo
+  to sys.path, starts Kivy
+end note
+
+if (Password configured?) then (No)
+  :First Run Screen\n<b>Create password</b>;
+  :Password saved\n(salted SHA-256 hash);
+endif
+
+|Workflow Screen|
+
+:STATE: IDLE\n<b>Press Start</b>;
+
+repeat
+  :STATE: SCAN_PRODUCT\n<b>Scan product barcode</b>;
+
+  :Validate SN format\n(length, prefix, year/month codes, number);
+
+  if (Valid format?) then (No)
+    :Show error in status bar;
+    note right: Stays in SCAN_PRODUCT
+  elseif (Golden Sample detected?) then (Yes)
+    :STATE: FAIL\n"This unit must NOT be programmed"; <<#red>>
+    note right: GS lookup is case-insensitive DB check
+  else (production unit)
+
+    :Resolve variant from prefix\nCI -> A8S  |  CJ -> A10S;
+    :Create INCOMPLETE unit record in DB\n(product_sn, variant, timestamp);
+
+    |Backend (Thread)|
+
+    :STATE: PROCESSING;
+
+    :Read firmware version from device\n<i>device_service.get_firmware_version()</i>;
+
+    if (Device reachable?) then (No)
+      |Workflow Screen|
+      :STATE: FAIL\n"Could not read firmware version"; <<#red>>
+      stop
+    endif
+
+    if (fw_found == target_fw?) then (Yes — already correct)
+    else (No — needs flash)
+      if (fw_bin_path configured?) then (No)
+        |Workflow Screen|
+        :STATE: FAIL\n"No firmware .bin path configured"; <<#red>>
+        stop
+      endif
+
+      if (Binary file exists?) then (No)
+        |Workflow Screen|
+        :STATE: FAIL\n"Firmware file not found"; <<#red>>
+        stop
+      endif
+
+      :Flash firmware\n<i>device_service.flash_firmware(bin_path)</i>\ntimeout = 120 s;
+
+      if (Flash succeeded?) then (No)
+        |Workflow Screen|
+        :STATE: FAIL\n"Firmware flash failed"; <<#red>>
+        stop
+      endif
+
+      :Verify firmware version after flash\n<i>device_service.get_firmware_version()</i>;
+
+      if (fw_after == target_fw?) then (No)
+        |Workflow Screen|
+        :STATE: FAIL\n"FW version mismatch after flash"; <<#red>>
+        stop
+      endif
+    endif
+
+    :Write serial number to device\n<i>device_service.set_serial_number(sn)</i>;
+
+    if (Write succeeded?) then (No)
+      |Workflow Screen|
+      :STATE: FAIL\n"Failed to write serial number"; <<#red>>
+      stop
+    endif
+
+    :Read back serial number\n<i>device_service.get_serial_number()</i>;
+
+    if (Readback matches written SN?) then (No)
+      |Workflow Screen|
+      :STATE: FAIL\n"SN readback mismatch"; <<#red>>
+      stop
+    endif
+
+    :Update unit record in DB\n(fw_version_found, fw_flashed, fw_version_final);
+
+    |Workflow Screen|
+
+    :STATE: SCAN_PARTS\nChecklist shown — all required parts unchecked;
+
+    repeat
+      :Scan part barcode;
+
+      :Validate SN format;
+
+      if (Valid format?) then (No)
+        :Show error — stay in SCAN_PARTS;
+      else (valid)
+        :Match prefix against variant parts config\n(A8S or A10S prefix);
+
+        if (Prefix recognised?) then (No)
+          :Show error — stay in SCAN_PARTS;
+        else (matched)
+          :Check if part SN was previously on another unit\n<i>db.get_latest_unit_for_part_sn()</i>;
+
+          if (Re-assignment detected?) then (Yes)
+            :Resolve prior unit product SN\n<i>db.get_product_sn_for_unit()</i>;
+            :Record part with previous_unit_id set\nStatus: "OK  <part>: <sn>  [re-assigned from <prior_sn>]";
+            note right
+              Old row untouched — full
+              audit trail preserved
+            end note
+          else (new part)
+            :Record part scan in DB\nprevious_unit_id = NULL;
+            :Status: "OK  <part>: <sn>";
+          endif
+
+          :Mark part on checklist\n(bold green, asterisk indicator);
+        endif
+      endif
+
+    repeat while (All required parts scanned?) is (No)
+    -> Yes;
+
+    :complete_unit('PASS') in DB;
+
+    :STATE: DONE\n"All parts recorded — PASS"; <<#green>>
+
+  endif
+
+  :Operator presses Start Next Unit / Restart;
+
+repeat while (Continue?) is (Yes)
+
+|App|
+
+:Close application;
+stop
+
+@enduml

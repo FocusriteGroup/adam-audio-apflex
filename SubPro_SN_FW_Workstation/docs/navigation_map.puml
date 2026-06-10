@@ -1,0 +1,61 @@
+@startuml Screen Navigation
+
+skinparam BackgroundColor #ffffff
+skinparam ArrowColor #555555
+skinparam ArrowFontColor #333333
+skinparam StateBorderColor #555555
+skinparam StateBackgroundColor #f5f5f5
+skinparam StateFontColor #111111
+skinparam NoteBackgroundColor #ddeeff
+skinparam NoteBorderColor #5588bb
+skinparam NoteFontColor #111111
+
+title Sub-Pro Workstation — Screen Navigation Map
+
+[*] --> FirstRun : first launch\n(no password set)
+FirstRun --> Workflow : password created
+
+[*] --> Workflow : subsequent launches\n(password exists)
+
+state Workflow {
+}
+
+state History {
+}
+
+state Settings {
+}
+
+state Unlock {
+}
+
+state FirstRun {
+}
+
+Workflow --> History   : NavBar > History
+Workflow --> Settings  : NavBar > Settings [password]
+Workflow --> Unlock    : NavBar > Unlock [password]
+
+History  --> Workflow  : NavBar > Home
+History  --> Settings  : NavBar > Settings [password]
+History  --> Unlock    : NavBar > Unlock [password]
+
+Settings --> Workflow  : NavBar > Home
+Settings --> History   : NavBar > History
+Settings --> Unlock    : NavBar > Unlock [password]
+
+Unlock   --> Workflow  : NavBar > Home
+Unlock   --> History   : NavBar > History
+Unlock   --> Settings  : NavBar > Settings [password]
+
+note right of Workflow
+  During an active scan, Settings and Unlock
+  are disabled (session_active = True).
+end note
+
+note right of Settings
+  Settings has three tabs: Device & Firmware; Parts;
+  and Change Password.
+end note
+
+@enduml

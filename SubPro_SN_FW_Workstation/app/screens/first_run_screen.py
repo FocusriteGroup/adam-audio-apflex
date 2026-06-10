@@ -38,7 +38,9 @@ class FirstRunScreen(Screen):
         root.add_widget(Widget())   # bottom spacer
 
         # Card contents
-        card.add_widget(lbl('Welcome - Sub-Pro Workstation', bold=True, size='22sp'))
+        # Title: slightly smaller and constrained height to avoid clipping
+        card.add_widget(lbl('Welcome - Sub-Pro Workstation', bold=True,
+                   size='20sp', halign='center', size_hint_y=None, height=44))
         card.add_widget(lbl(
             'No password is set yet.\nCreate a password to continue.',
             size='16sp', color=C['dim'],

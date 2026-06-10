@@ -48,8 +48,8 @@ LOG_DIR         = os.path.join(WORKSPACE_ROOT, "logs", "mac_provisioning_test")
 # Configuration
 # ---------------------------------------------------------------------------
 
-TARGET          = "169.254.27.208"
-TARGET_PORT     = 50001
+TARGET          = "SubPro"
+TARGET_PORT     = None  # not needed for mDNS target names
 MAC_RANGE_START = "02:FE:ED:00:00:00"
 MAC_RANGE_END   = "02:FE:ED:00:00:09"   # 10 MACs total
 WARN_THRESHOLD  = 3
@@ -61,7 +61,7 @@ ALTERNATE_MAC   = "02:FE:ED:FF:FF:01"   # Used for MAC_MISMATCH / UNKNOWN_DEVICE
 
 def run(*args):
     """Call adam_workstation.py from workspace root. Returns parsed JSON or raw string."""
-    cmd = [sys.executable, WORKSTATION] + [str(a) for a in args]
+    cmd = [sys.executable, WORKSTATION] + [str(a) for a in args if a is not None]
     result = subprocess.run(cmd, capture_output=True, text=True, cwd=WORKSPACE_ROOT)
     out = result.stdout.strip()
     try:

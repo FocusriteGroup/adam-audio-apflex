@@ -158,7 +158,7 @@ class HistoryScreen(Screen):
         )
         req_count = len([p for p in self.db.get_parts_config() if p['required']])
         for unit in units:
-            parts_count = len(self.db.get_parts_for_unit(unit['id']))
+            parts_count = min(len(self.db.get_parts_for_unit(unit['id'])), req_count)
             self._data_box.add_widget(
                 self._make_data_row(unit, parts_count, req_count))
         self._status_lbl.text = f'{len(units)} record(s) found.'

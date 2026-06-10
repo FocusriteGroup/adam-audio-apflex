@@ -559,13 +559,15 @@ class WorkflowScreen(Screen):
         )
 
         if reassignment:
+            prev_sn = self.db.get_product_sn_for_unit(prev_unit_id) or f'unit #{prev_unit_id}'
             logger.warning(
                 'Part re-assignment: %s SN=%s prev_unit=%s cur_unit=%s',
                 part_name, sn, prev_unit_id, cur_unit_id,
             )
         else:
+            prev_sn = None
             logger.info('Part scanned: %s SN=%s unit=%s', part_name, sn, cur_unit_id)
-        note = f'  [re-assigned from unit #{prev_unit_id}]' if reassignment else ''
+        note = f'  [re-assigned from {prev_sn}]' if reassignment else ''
         self._status_lbl.text = f'OK  {part_name}: {sn}{note}'
 
         self._rebuild_parts_list(variant)

@@ -89,9 +89,10 @@ A unit row is created as soon as a valid, non-golden product SN is scanned. This
 ```python
 db.add_part_scan(unit_id, part_name, part_sn, previous_unit_id=None)
 db.get_latest_unit_for_part_sn(part_sn: str) -> int | None
+db.get_product_sn_for_unit(unit_id: int) -> str | None
 ```
 
-`get_latest_unit_for_part_sn` is called before every part is recorded. If it returns a `unit_id` different from the current session's `unit_id`, the part is flagged as a re-assignment and `previous_unit_id` is set.
+`get_latest_unit_for_part_sn` is called before every part is recorded. If it returns a `unit_id` different from the current session's `unit_id`, the part is flagged as a re-assignment and `previous_unit_id` is set. `get_product_sn_for_unit` resolves the human-readable product SN for display in the workflow status bar and CSV export.
 
 ### Query and Export
 
@@ -101,7 +102,7 @@ db.get_parts_for_unit(unit_id: int) -> list[dict]
 db.export_csv(path: Path, product_sn_filter='', date_from='', date_to='')
 ```
 
-`get_units` applies optional filters. `export_csv` writes a CSV with one row per unit; the `parts` column contains a semicolon-separated list of `name=SN` pairs, with `[reassigned from #N]` appended for re-assigned parts.
+`get_units` applies optional filters and orders results by `timestamp DESC, id DESC` (newest first; `id` breaks ties within the same second). `export_csv` writes a CSV with one row per unit; the `parts` column contains a semicolon-separated list of `name=SN` pairs, with `[reassigned from <product_sn>]` appended for re-assigned parts.
 
 ---
 
@@ -113,12 +114,12 @@ All validation is pure-functional (no side effects, no DB access).
 
 ```
 Position  0-1   Part ID prefix      (two uppercase letters, A-Z)
-Position  2     Year code           (0-9 = 2020-2029, A-Z = 2030-2055, G = golden sample)
-Position  3     Month hex           (1-9 = Jan-Sep, A = Oct, B = Nov, C = Dec, S = golden sample)
+Position  2     Year code           (0-9 = 2020-2029, A-Z = 2030-2055; G is reserved for golden-sample encoding)
+Position  3     Month hex           (1-9 = Jan-Sep, A = Oct, B = Nov, C = Dec; S is reserved for golden-sample encoding)
 Position  4-8   Sequential number   (5 decimal digits, 00001 onwards)
 ```
 
-Golden-sample encoding: positions 2-3 == `GS`. The sequential number is unrestricted for golden samples.
+Golden-sample encoding: positions 2-3 must both be `GS`. `G` in position 2 paired with any character other than `S` in position 3 is rejected. The sequential number is unrestricted for golden samples.
 
 ### Key functions
 
@@ -214,7 +215,8 @@ Executed automatically after `SCAN_PRODUCT` succeeds:
 
 - Full `validate_sn()` check on every barcode.
 - Prefix matched against the variant-correct prefix from `parts_config`.
-- Re-assignment detection via `get_latest_unit_for_part_sn()`.
+- Re-assignment detection via `get_latest_unit_for_part_sn()`. If re-assigned, `get_product_sn_for_unit()` resolves the prior unit's product SN for display.
+- Status bar shows `[re-assigned from <product_sn>]` (e.g. `[re-assigned from CI9485949]`).
 - Checklist refreshed after every successful scan.
 - When all required parts are scanned: `complete_unit('PASS')` → `DONE`.
 

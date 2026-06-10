@@ -250,6 +250,12 @@ class Database:
             (part_sn.strip().upper(),)).fetchone()
         return row['unit_id'] if row else None
 
+    def get_product_sn_for_unit(self, unit_id: int) -> Optional[str]:
+        """Return the product SN for the given unit_id, or None."""
+        row = self._conn.execute(
+            "SELECT product_sn FROM units WHERE id=?", (unit_id,)).fetchone()
+        return row['product_sn'] if row else None
+
     def get_units(self, product_sn_filter: str = '',
                   date_from: str = '', date_to: str = '') -> List[dict]:
         query = "SELECT * FROM units WHERE 1=1"
@@ -289,7 +295,7 @@ class Database:
                 parts = self.get_parts_for_unit(unit['id'])
                 parts_str = '; '.join(
                     f"{p['part_name']}={p['part_sn']}"
-                    + (f"[reassigned from #{p['previous_unit_id']}]"
+                    + (f"[reassigned from {self.get_product_sn_for_unit(p['previous_unit_id']) or p['previous_unit_id']}]"
                        if p['previous_unit_id'] else '')
                     for p in parts
                 )
