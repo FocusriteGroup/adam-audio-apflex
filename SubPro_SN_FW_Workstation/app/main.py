@@ -11,6 +11,7 @@ Responsibilities
   (with optional password-gate for protected screens).
 """
 import logging
+import logging.handlers
 from pathlib import Path
 
 from kivy.app import App
@@ -25,13 +26,25 @@ from app.screens.settings_screen import SettingsScreen
 from app.screens.unlock_screen import UnlockScreen
 from app.screens.workflow_screen import WorkflowScreen
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s  %(levelname)-8s  %(name)s — %(message)s',
-)
-
 _PROJECT_ROOT = Path(__file__).parent.parent
 _DB_PATH      = _PROJECT_ROOT / 'Data' / 'subpro_workstation.db'
+_LOG_DIR      = _PROJECT_ROOT / 'logs'
+_LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+_fmt = logging.Formatter('%(asctime)s  %(levelname)-8s  %(name)s — %(message)s')
+
+_file_handler = logging.handlers.TimedRotatingFileHandler(
+    filename=_LOG_DIR / 'subpro_workstation.log',
+    when='midnight',
+    backupCount=30,
+    encoding='utf-8',
+)
+_file_handler.setFormatter(_fmt)
+
+_console_handler = logging.StreamHandler()
+_console_handler.setFormatter(_fmt)
+
+logging.basicConfig(level=logging.INFO, handlers=[_file_handler, _console_handler])
 
 
 class SubProApp(App):

@@ -1574,7 +1574,12 @@ class AdamWorkstation:
         WORKSTATION_LOGGER.info("Executing command: %s on ADAM service", command)
 
         if command in self.command_map:
-            self.command_map[command](args)
+            try:
+                self.command_map[command](args)
+            except RuntimeError as exc:
+                WORKSTATION_LOGGER.error("Command '%s' failed: %s", command, exc)
+                print(f"Error: {exc}", file=sys.stderr)
+                sys.exit(1)
         else:
             WORKSTATION_LOGGER.error("Unknown command: %s", command)
             sys.exit(1)

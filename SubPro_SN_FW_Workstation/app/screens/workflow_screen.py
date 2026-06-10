@@ -298,6 +298,10 @@ class WorkflowScreen(Screen):
         unit_id = self._session.get('unit_id')
         if unit_id:
             self.db.complete_unit(unit_id, 'FAIL')
+        logger.error(
+            'Unit FAIL: unit_id=%s SN=%s reason=%r',
+            unit_id, self._session.get('product_sn'), reason,
+        )
         self._step_lbl.text    = 'FAIL'
         self._result_lbl.text  = 'FAIL'
         self._result_lbl.color = C['red']
@@ -325,6 +329,7 @@ class WorkflowScreen(Screen):
         unit_id = self._session.get('unit_id')
         if unit_id:
             self.db.complete_unit(unit_id, 'FAIL')
+            logger.warning('Unit cancelled by operator: unit_id=%s SN=%s', unit_id, self._session.get('product_sn'))
         self._go_idle()
 
     def _on_scan(self, instance):
@@ -355,6 +360,7 @@ class WorkflowScreen(Screen):
             return
 
         if self.db.is_golden_sample(sn):
+            logger.warning('GS detected and rejected: %s', sn)
             self._go_fail(
                 f'Golden Sample detected: {sn}\n'
                 f'This unit must NOT be programmed.'
@@ -368,6 +374,7 @@ class WorkflowScreen(Screen):
         # Create a preliminary DB record so the unit is tracked even on crash
         unit_id = self.db.create_unit(sn, variant)
         self._session['unit_id'] = unit_id
+        logger.info('Unit started: SN=%s variant=%s unit_id=%s', sn, variant, unit_id)
 
         self._rebuild_parts_list(variant)
         self._go_processing()
@@ -394,8 +401,10 @@ class WorkflowScreen(Screen):
         self._set_status('Reading firmware version...')
         ok, fw_found, err = self.device_service.get_firmware_version()
         if not ok:
+            logger.error('get_firmware_version failed for unit %s: %s', unit_id, err)
             self._go_fail(f'Could not read firmware version.\n{err}')
             return
+        logger.info('FW version on device: %s (target: %s)', fw_found, target_fw or 'any')
 
         fw_flashed = False
 
@@ -422,12 +431,15 @@ class WorkflowScreen(Screen):
                 return
 
             self._set_status(f'Flashing firmware {target_fw}...')
+            logger.info('Flashing FW %s from %s (unit %s)', target_fw, bin_path, unit_id)
             ok, _, err = self.device_service.flash_firmware(bin_path)
             if not ok:
+                logger.error('Flash failed for unit %s: %s', unit_id, err)
                 self._go_fail(f'Firmware flash failed.\n{err}')
                 return
 
             fw_flashed = True
+            logger.info('Flash succeeded for unit %s', unit_id)
 
             # ── Step 3: Verify FW version after flash ─────────────────────────
             self._set_status('Verifying firmware version after flash...')
@@ -436,6 +448,10 @@ class WorkflowScreen(Screen):
                 self._go_fail(f'Could not read FW version after flash.\n{err}')
                 return
             if target_fw and fw_after != target_fw:
+                logger.error(
+                    'FW mismatch after flash for unit %s: expected %s got %s',
+                    unit_id, target_fw, fw_after,
+                )
                 self._go_fail(
                     f'FW version mismatch after flash.\n'
                     f'Expected {target_fw}, got {fw_after}.'
@@ -451,8 +467,10 @@ class WorkflowScreen(Screen):
         self._set_status(f'Writing SN {sn} to device...')
         ok, _, err = self.device_service.set_serial_number(sn)
         if not ok:
+            logger.error('set_serial_number failed for unit %s: %s', unit_id, err)
             self._go_fail(f'Failed to write serial number to device.\n{err}')
             return
+        logger.info('SN %s written to device (unit %s)', sn, unit_id)
 
         # ── Step 5: Read back and verify serial number ─────────────────────────
         self._set_status('Verifying SN readback...')
@@ -461,11 +479,16 @@ class WorkflowScreen(Screen):
             self._go_fail(f'Failed to read back serial number.\n{err}')
             return
         if sn_readback.strip().upper() != sn.strip().upper():
+            logger.error(
+                'SN readback mismatch for unit %s: written=%s readback=%s',
+                unit_id, sn, sn_readback,
+            )
             self._go_fail(
                 f'SN readback mismatch.\n'
                 f'Written: {sn}  |  Read back: {sn_readback}'
             )
             return
+        logger.info('SN readback verified: %s (unit %s)', sn, unit_id)
 
         # ── All steps passed — update DB and move to parts scan ───────────────
         self._session['fw_found']   = fw_found
@@ -475,6 +498,10 @@ class WorkflowScreen(Screen):
         self.db.update_unit_fw(unit_id, fw_found, fw_flashed, fw_final)
 
         flash_note = f' (flashed from {fw_found})' if fw_flashed else ''
+        logger.info(
+            'Backend complete: SN=%s fw=%s%s unit_id=%s',
+            sn, fw_final, flash_note, unit_id,
+        )
         self._status_lbl.text = (
             f'FW {fw_final}{flash_note}  -  SN {sn} written and verified.'
         )
@@ -531,6 +558,13 @@ class WorkflowScreen(Screen):
             previous_unit_id=prev_unit_id if reassignment else None,
         )
 
+        if reassignment:
+            logger.warning(
+                'Part re-assignment: %s SN=%s prev_unit=%s cur_unit=%s',
+                part_name, sn, prev_unit_id, cur_unit_id,
+            )
+        else:
+            logger.info('Part scanned: %s SN=%s unit=%s', part_name, sn, cur_unit_id)
         note = f'  [re-assigned from unit #{prev_unit_id}]' if reassignment else ''
         self._status_lbl.text = f'OK  {part_name}: {sn}{note}'
 
@@ -541,6 +575,7 @@ class WorkflowScreen(Screen):
         req_names  = {p['name'] for p in required}
         if req_names.issubset(done_names):
             self.db.complete_unit(cur_unit_id, 'PASS')
+            logger.info('Unit PASS: unit_id=%s SN=%s', cur_unit_id, self._session.get('product_sn'))
             self._go_done()
         else:
             remaining = req_names - done_names

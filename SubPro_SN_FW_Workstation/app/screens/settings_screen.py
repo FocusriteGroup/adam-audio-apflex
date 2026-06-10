@@ -359,6 +359,7 @@ class SettingsScreen(Screen):
 
         try:
             self.db.add_golden_sample(variant, sn, note)
+            logger.info('Golden sample added: variant=%s SN=%s note=%r', variant, sn, note)
             sn_inp.text   = ''
             sn_inp.hint_text = 'CI... serial number' if variant == 'A8S' else 'CJ... serial number'
             note_inp.text = ''
@@ -367,11 +368,13 @@ class SettingsScreen(Screen):
             self._dev_save_lbl.text = f'Golden sample {sn} added.'
             self._dev_save_lbl.color = C['green']
         except Exception as e:
+            logger.error('Failed to add golden sample %s: %s', sn, e)
             self._dev_save_lbl.text = f'Error: {e}'
             self._dev_save_lbl.color = C['red']
 
     def _remove_gs(self, gs_id: int, variant: str):
         self.db.remove_golden_sample(gs_id)
+        logger.info('Golden sample removed: id=%s variant=%s', gs_id, variant)
         layout = self._gs_a8s_layout if variant == 'A8S' else self._gs_a10s_layout
         self._refresh_gs_list(variant, layout)
         self._dev_save_lbl.text = 'Golden sample removed.'
@@ -383,6 +386,12 @@ class SettingsScreen(Screen):
         # Update device service immediately
         App.get_running_app().device_service.update_device_name(
             self._device_name_inp.text.strip())
+        logger.info(
+            'Device config saved: name=%r target_fw=%r fw_bin=%r',
+            self._device_name_inp.text.strip(),
+            self._target_fw_inp.text.strip(),
+            self._fw_bin_inp.text.strip(),
+        )
         self._dev_save_lbl.text  = 'Saved.'
         self._dev_save_lbl.color = C['green']
 
@@ -397,6 +406,7 @@ class SettingsScreen(Screen):
             return
         try:
             self.db.add_part_config(name, pa8s, pa10s, req)
+            logger.info('Part added: name=%r prefix_a8s=%s prefix_a10s=%s required=%s', name, pa8s, pa10s, req)
             self._new_part_name.text  = ''
             self._new_part_pa8s.text  = ''
             self._new_part_pa10s.text = ''
@@ -405,11 +415,13 @@ class SettingsScreen(Screen):
             self._parts_save_lbl.text  = f'Part "{name}" added.'
             self._parts_save_lbl.color = C['green']
         except Exception as e:
+            logger.error('Failed to add part %r: %s', name, e)
             self._parts_save_lbl.text  = f'Error: {e}'
             self._parts_save_lbl.color = C['red']
 
     def _remove_part(self, part_id: int):
         self.db.remove_part_config(part_id)
+        logger.info('Part removed: id=%s', part_id)
         self._refresh_parts_tab()
         self._parts_save_lbl.text  = 'Part removed.'
         self._parts_save_lbl.color = C['green']
@@ -425,6 +437,7 @@ class SettingsScreen(Screen):
             )
         self._parts_save_lbl.text  = 'Parts configuration saved.'
         self._parts_save_lbl.color = C['green']
+        logger.info('Parts configuration saved (%d rows)', len(self._part_refs))
 
     def _change_password(self, *_):
         cur  = self._cur_pw.text
