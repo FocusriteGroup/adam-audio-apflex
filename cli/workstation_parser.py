@@ -363,6 +363,23 @@ def build_workstation_parser():
     update_firmware_parser.add_argument("--timeout", type=int, default=60,
         help="Firmware update timeout in seconds (default: 60)")
 
+    # Factory settings lock/unlock
+    lock_parser = subparsers.add_parser("lock_factory_settings",
+        help="Lock factory settings on the OCA device")
+    lock_parser.add_argument("target", type=str,
+        help="OCA device name or IP address")
+    lock_parser.add_argument("port", type=int, nargs="?", default=None,
+        help="OCA device port (optional for device name)")
+
+    unlock_parser = subparsers.add_parser("unlock_factory_settings",
+        help="Unlock factory settings on the OCA device")
+    unlock_parser.add_argument("signature", type=str,
+        help="Unlock signature")
+    unlock_parser.add_argument("target", type=str,
+        help="OCA device name or IP address")
+    unlock_parser.add_argument("port", type=int, nargs="?", default=None,
+        help="OCA device port (optional for device name)")
+
     # Add ASubs initialization parser
     init_parser = subparsers.add_parser("init_sub",
         help="Initialize ASubs with default settings (internal-dsp, gain 0, unmuted, phase 0, calibration 0, analogue-xlr input, wide bass management)")
@@ -370,6 +387,26 @@ def build_workstation_parser():
         help="OCA device name or IP address")
     init_parser.add_argument("port", type=int, nargs="?", default=None,
         help="OCA device port (optional for device name)")
+
+    # EOL combined: serial checks + optional firmware update + init_sub
+    eol_init_parser = subparsers.add_parser("eol_init_sub",
+        help="EOL pre-flight: reject default/golden-sample serials, update firmware if needed, then init_sub")
+    eol_init_parser.add_argument("target", type=str,
+        help="OCA device name or IP address")
+    eol_init_parser.add_argument("scanned_serial", type=str,
+        help="Serial number scanned from the device under test")
+    eol_init_parser.add_argument("default_serial", type=str,
+        help="Default serial number (unit must NOT have this)")
+    eol_init_parser.add_argument("golden_sample_serial", type=str,
+        help="Golden Sample serial number (unit must NOT have this)")
+    eol_init_parser.add_argument("target_fw_version", type=str,
+        help="Required firmware version string (e.g. 1.0.0rc6)")
+    eol_init_parser.add_argument("firmware_image_path", type=str,
+        help="Path to firmware binary used if an update is needed")
+    eol_init_parser.add_argument("port", type=int, nargs="?", default=None,
+        help="OCA device port (optional for device name)")
+    eol_init_parser.add_argument("--timeout", type=int, default=60,
+        help="Firmware update timeout in seconds (default: 60)")
 
     # Add References setup parser
     setup_refs_parser = subparsers.add_parser("setup_references",

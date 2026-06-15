@@ -289,6 +289,27 @@ class OCADevice:
         version = result.get("version")
         return {"version": version} if version is not None else result
 
+    def lock_factory_settings(self):
+        """Lock factory settings on the device."""
+        wrapper = self._get_wrapper()
+        options = self._cli_options()
+        result = wrapper.run_cli_command(command_path=["factory-settings", "lock"], options=options)
+        self._log_to_service("lock_factory_settings", result)
+        return result
+
+    def unlock_factory_settings(self, signature):
+        """Unlock factory settings on the device.
+
+        Args:
+            signature (str): The unlock signature.
+        """
+        wrapper = self._get_wrapper()
+        options = self._cli_options()
+        options["--value"] = signature
+        result = wrapper.run_cli_command(command_path=["factory-settings", "unlock"], options=options)
+        self._log_to_service("unlock_factory_settings", result)
+        return result
+
     def update_firmware(self, firmware_image_path, timeout=60):
         """Flash a firmware image to the device.
 
@@ -296,10 +317,23 @@ class OCADevice:
             firmware_image_path (str): Path to the firmware image file.
             timeout (int): Command timeout in seconds (default 60).
         """
+        import os
+
+        # Validate firmware file before attempting CLI call to avoid
+        # passing incorrect values to the external tool.
+        if not firmware_image_path or not os.path.isfile(firmware_image_path):
+            raise FileNotFoundError(f"Firmware image not found: {firmware_image_path}")
+
         wrapper = self._get_wrapper()
-        options = self._cli_options()
-        options["--firmware-image-path"] = firmware_image_path
-        options["--timeout"] = timeout
+        # Build options deterministically to avoid accidental key/value
+        # reversals from merging dicts.
+        options = {}
+        # include target only for named targets
+        if not self._is_ip(self.target) and self.target is not None:
+            options["--target"] = self.target
+        options["--firmware-image-path"] = os.path.abspath(firmware_image_path)
+        options["--timeout"] = int(timeout)
+
         result = wrapper.run_cli_command(
             command_path=["firmware", "update"],
             options=options

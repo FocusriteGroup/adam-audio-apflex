@@ -165,7 +165,10 @@ class AdamWorkstation:
             "get_model_description": self.get_model_description,
             "get_firmware_version": self.get_firmware_version,
             "update_firmware": self.update_firmware,
+            "lock_factory_settings": self.lock_factory_settings,
+            "unlock_factory_settings": self.unlock_factory_settings,
             "init_sub": self.init_sub,  # Add new command to map
+            "eol_init_sub": self.eol_init_sub,  # EOL: serial checks + optional FW update + init
             "setup_references": self.setup_references,  # Setup References directory
             "is_golden_sample": self.is_golden_sample,
             "is_default_serial": self.is_default_serial,
@@ -193,6 +196,7 @@ class AdamWorkstation:
             from tkinter import messagebox
             root = tk.Tk()
             root.withdraw()
+            root.attributes('-topmost', True)
             messagebox.showerror(title, message)
             root.destroy()
         except Exception:
@@ -205,6 +209,7 @@ class AdamWorkstation:
             from tkinter import messagebox
             root = tk.Tk()
             root.withdraw()
+            root.attributes('-topmost', True)
             messagebox.showwarning(title, message)
             root.destroy()
         except Exception:
@@ -1090,6 +1095,28 @@ class AdamWorkstation:
             self._show_error_popup("Firmware Update Failed", msg)
             print(msg)
 
+    def lock_factory_settings(self, args):
+        try:
+            device = self._get_oca_device(args)
+            result = device.lock_factory_settings()
+            WORKSTATION_LOGGER.info("lock_factory_settings [%s]: %s", args.target, result)
+            print("successful")
+        except Exception as e:
+            msg = f"Error: lock factory settings failed — {e}"
+            WORKSTATION_LOGGER.error("lock_factory_settings [%s]: %s", args.target, e)
+            print(msg)
+
+    def unlock_factory_settings(self, args):
+        try:
+            device = self._get_oca_device(args)
+            result = device.unlock_factory_settings(args.signature)
+            WORKSTATION_LOGGER.info("unlock_factory_settings [%s]: %s", args.target, result)
+            print("successful")
+        except Exception as e:
+            msg = f"Error: unlock factory settings failed — {e}"
+            WORKSTATION_LOGGER.error("unlock_factory_settings [%s]: %s", args.target, e)
+            print(msg)
+
     def check_measurement_trials(self, args):
         """
         Checks the allowed measurement trials for a given serial number using a CSV file.
@@ -1238,6 +1265,156 @@ class AdamWorkstation:
             print(f"Initialization failed: {str(e)}")
             return False
 
+    def eol_init_sub(self, args):
+        """EOL pre-flight: serial checks, optional firmware update, then init_sub.
+
+        Steps (stops on first failure):
+        1. Reject if scanned serial matches the default serial.
+        2. Reject if scanned serial matches the golden sample serial.
+        3. Read firmware version from device; update if it does not match target.
+        4. Run the full init_sub sequence.
+
+        Prints 'successful' on success, or an error message string on failure.
+        An error popup is shown for every failure.
+        """
+        scanned = args.scanned_serial.strip()
+        default_serial = args.default_serial.strip()
+        golden_sample_serial = args.golden_sample_serial.strip()
+
+        WORKSTATION_LOGGER.info(
+            "eol_init_sub [%s]: scanned='%s', default='%s', golden='%s', target_fw='%s'",
+            args.target, scanned, default_serial, golden_sample_serial, args.target_fw_version
+        )
+
+        # 1. Default serial check
+        if scanned == default_serial:
+            msg = (
+                f"Default serial number detected — production unit required.\n\n"
+                f"Scanned: {scanned}\n"
+                f"Default: {default_serial}"
+            )
+            WORKSTATION_LOGGER.error("eol_init_sub [%s]: %s", args.target, msg)
+            self._show_error_popup("Wrong Unit — Default Serial", msg)
+            print(f"Error: default serial number connected — {scanned}")
+            return
+
+        # 2. Golden sample serial check
+        if scanned == golden_sample_serial:
+            msg = (
+                f"Golden Sample serial number detected — production unit required.\n\n"
+                f"Scanned:       {scanned}\n"
+                f"Golden Sample: {golden_sample_serial}"
+            )
+            WORKSTATION_LOGGER.error("eol_init_sub [%s]: %s", args.target, msg)
+            self._show_error_popup("Wrong Unit — Golden Sample", msg)
+            print(f"Error: golden sample connected — {scanned}")
+            return
+
+        # 3. Firmware version check and conditional update
+        import time as _time
+
+        target_fw = args.target_fw_version.strip()
+        try:
+            device = self._get_oca_device(args)
+            fw_result = device.get_firmware_version()
+            current_fw = fw_result.get("version", "").strip()
+            WORKSTATION_LOGGER.info(
+                "eol_init_sub [%s]: current FW='%s', target FW='%s'",
+                args.target, current_fw, target_fw
+            )
+
+            if current_fw != target_fw:
+                WORKSTATION_LOGGER.info(
+                    "eol_init_sub [%s]: FW mismatch — updating firmware from %s",
+                    args.target, args.firmware_image_path
+                )
+                update_result = device.update_firmware(
+                    firmware_image_path=args.firmware_image_path,
+                    timeout=args.timeout,
+                )
+                WORKSTATION_LOGGER.info("eol_init_sub [%s]: firmware update result: %s", args.target, update_result)
+
+                # Device reboots after flashing — poll until it responds again
+                WORKSTATION_LOGGER.info("eol_init_sub [%s]: waiting for device to reboot after firmware flash...", args.target)
+                poll_interval = 3   # seconds between attempts
+                poll_timeout = 90   # maximum seconds to wait
+                elapsed = 0
+                confirmed_fw = None
+                while elapsed < poll_timeout:
+                    _time.sleep(poll_interval)
+                    elapsed += poll_interval
+                    try:
+                        device = self._get_oca_device(args)
+                        poll_result = device.get_firmware_version()
+                        confirmed_fw = poll_result.get("version", "").strip()
+                        WORKSTATION_LOGGER.info(
+                            "eol_init_sub [%s]: device responded after %ds — FW='%s'",
+                            args.target, elapsed, confirmed_fw
+                        )
+                        break
+                    except Exception:
+                        WORKSTATION_LOGGER.debug(
+                            "eol_init_sub [%s]: device not yet reachable (%ds elapsed)", args.target, elapsed
+                        )
+
+                if confirmed_fw is None:
+                    msg = f"Device did not come back online within {poll_timeout}s after firmware update."
+                    WORKSTATION_LOGGER.error("eol_init_sub [%s]: %s", args.target, msg)
+                    self._show_error_popup("Firmware Update Failed", msg)
+                    print(f"Error: {msg}")
+                    return
+
+                # Confirm the flashed version matches the target
+                if confirmed_fw != target_fw:
+                    msg = (
+                        f"Firmware update completed but version mismatch after reboot.\n\n"
+                        f"Expected: {target_fw}\n"
+                        f"Actual:   {confirmed_fw}"
+                    )
+                    WORKSTATION_LOGGER.error("eol_init_sub [%s]: %s", args.target, msg)
+                    self._show_error_popup("Firmware Version Mismatch", msg)
+                    print(f"Error: firmware version mismatch after update — expected '{target_fw}', got '{confirmed_fw}'")
+                    return
+
+                WORKSTATION_LOGGER.info("eol_init_sub [%s]: firmware version confirmed: %s", args.target, confirmed_fw)
+            else:
+                WORKSTATION_LOGGER.info("eol_init_sub [%s]: FW already at target version — skipping update", args.target)
+
+        except Exception as e:
+            msg = f"Firmware check/update failed: {e}"
+            WORKSTATION_LOGGER.error("eol_init_sub [%s]: %s", args.target, e)
+            self._show_error_popup("Firmware Update Failed", msg)
+            print(f"Error: {msg}")
+            return
+
+        # 4. Init sub sequence
+        try:
+            result = device.set_mode("internal-dsp")
+            WORKSTATION_LOGGER.debug("eol_init_sub set_mode result: %s", result)
+            result = device.set_gain(0)
+            WORKSTATION_LOGGER.debug("eol_init_sub set_gain result: %s", result)
+            result = device.set_mute("normal")
+            WORKSTATION_LOGGER.debug("eol_init_sub set_mute result: %s", result)
+            result = device.set_phase_delay("deg0")
+            WORKSTATION_LOGGER.debug("eol_init_sub set_phase_delay result: %s", result)
+            result = device.set_gain_calibration(0)
+            WORKSTATION_LOGGER.debug("eol_init_sub set_gain_calibration result: %s", result)
+            result = device.set_audio_input("analogue-xlr")
+            WORKSTATION_LOGGER.debug("eol_init_sub set_audio_input result: %s", result)
+            result = device.set_bass_management("wide")
+            WORKSTATION_LOGGER.debug("eol_init_sub set_bass_management result: %s", result)
+            result = device.set_bass_management_bypass("disabled")
+            WORKSTATION_LOGGER.debug("eol_init_sub set_bass_management_bypass result: %s", result)
+
+            WORKSTATION_LOGGER.info("eol_init_sub [%s]: initialization completed successfully", args.target)
+            print("successful")
+
+        except Exception as e:
+            msg = f"Initialization failed: {e}"
+            WORKSTATION_LOGGER.error("eol_init_sub [%s]: %s", args.target, e)
+            self._show_error_popup("Initialization Failed", msg)
+            print(f"Error: {msg}")
+
     def setup_references(self, args):
         """Setup References directory by copying DefaultReferences if needed.
 
@@ -1289,10 +1466,10 @@ class AdamWorkstation:
                     continue  # Already present, do not overwrite
 
                 if os.path.isdir(src_path):
-                    shutil.copytree(src_path, dst_path)
+                    shutil.copytree(src_path, dst_path, copy_function=shutil.copy)
                     WORKSTATION_LOGGER.info("Copied directory: %s", item)
                 else:
-                    shutil.copy2(src_path, dst_path)
+                    shutil.copy(src_path, dst_path)
                     WORKSTATION_LOGGER.info("Copied file: %s", item)
                 copied.append(item)
 
