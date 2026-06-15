@@ -1,9 +1,5 @@
 """
-Unlock screen — placeholder for future firmware-side unlock support.
-
-Provides a UI panel for sending an unlock signature to a locked device.
-The actual CLI/OCA command is not yet implemented in the firmware; the
-button is visible but disabled with a clear explanation.
+Unlock screen — send an unlock signature to a locked device via OCA.
 """
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
@@ -63,19 +59,33 @@ class UnlockScreen(Screen):
         card.add_widget(self._result_lbl)
 
         self._unlock_btn = btn(
-            'Unlock Device  [not yet implemented in firmware]',
-            bg=C['disabled'],
-            disabled=True,
+            'Unlock Device',
+            bg=C['accent'],
             size_hint_y=None, height=56,
+            on_press=self._on_unlock,
         )
         card.add_widget(self._unlock_btn)
 
-        card.add_widget(lbl(
-            'The firmware-side unlock command is pending implementation.\n'
-            'This screen will become functional in a future firmware release.',
-            size='13sp', color=C['dim'],
-        ))
+    _DEFAULT_SIGNATURE = 'DEADBEEF'
 
     def on_enter(self, *_):
         self._result_lbl.text = ''
-        self._sig_inp.text    = ''
+        self._sig_inp.text    = self._DEFAULT_SIGNATURE
+
+    def _on_unlock(self, *_):
+        sig = self._sig_inp.text.strip()
+        if not sig:
+            self._result_lbl.text  = 'Enter the unlock signature first.'
+            self._result_lbl.color = C['red']
+            return
+        self._unlock_btn.disabled  = True
+        self._result_lbl.text      = 'Unlocking…'
+        self._result_lbl.color     = C['dim']
+        ok, _, err = self.device_service.unlock_factory_settings(sig)
+        self._unlock_btn.disabled = False
+        if ok:
+            self._result_lbl.text  = 'Device unlocked successfully.'
+            self._result_lbl.color = C['green']
+        else:
+            self._result_lbl.text  = f'Error: {err}'
+            self._result_lbl.color = C['red']

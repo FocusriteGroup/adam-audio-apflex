@@ -85,3 +85,9 @@ class DeviceService:
         if not ok:
             return False, None, err
         return True, str(raw), None
+
+    def unlock_factory_settings(self, signature: str) -> Result:
+        ok, raw, err = self._call('unlock_factory_settings', signature)
+        if not ok:
+            return False, None, err
+        return True, str(raw), None
