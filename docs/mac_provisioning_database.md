@@ -182,6 +182,46 @@ SubProMACAddresses/
 | Encoding | UTF-8 | SQLite default. |
 | Timestamps | ISO 8601 / UTC | `datetime.now(timezone.utc).isoformat()` – unambiguous and sortable. |
 
+### Optional automatic backups
+
+- Backup in production is designed as a two-layer model:
+    1. Cloud sync (when the DB path is in a synced folder such as OneDrive and internet is available).
+    2. External-drive snapshots (local offline copies on removable USB media).
+
+Cloud-sync behavior:
+
+- If `mac_addresses.db` lives inside a synchronized directory, changes are mirrored to cloud storage automatically.
+- If internet is temporarily unavailable, provisioning continues locally and synchronization resumes later.
+- Cloud sync should be treated as asynchronous replication, not as a transactional lock-step database mechanism.
+
+External-drive behavior:
+
+- After each **verified** MAC assignment, the workstation tries to detect connected external storage automatically on Windows.
+- It backs up to every detected removable or USB-backed drive inside an `ADAM_MAC_DB_Backups` folder at the drive root.
+- Two files are written per target drive:
+    - `mac_addresses_latest.db` (rolling latest snapshot)
+    - `mac_addresses_YYYYMMDD_HHMMSS.db` (timestamped archive per verified event)
+- `MAC_DB_BACKUP_DIR` still works as an override if one fixed backup location is preferred.
+- Backup is best-effort only: if no external drive is connected, or a drive is disconnected/not writable, provisioning still succeeds and a warning is logged.
+
+Recommended operating practice:
+
+1. Keep workstation cloud sync enabled whenever network policy allows it.
+2. Connect an approved external drive during production shifts for offline snapshots.
+3. Verify periodically that new timestamped DB snapshots are being created.
+4. Rotate external drives according to your site retention policy.
+
+### Restore procedure (external backup)
+
+If the local DB is corrupted or lost:
+
+1. Stop active provisioning on the workstation.
+2. Locate latest good backup in `ADAM_MAC_DB_Backups` on the external drive.
+3. Prefer the newest verified `mac_addresses_YYYYMMDD_HHMMSS.db`; if uncertain, use `mac_addresses_latest.db`.
+4. Replace local DB file at `SubProMACAddresses/db/mac_addresses.db`.
+5. Run `init_mac_db` (safe/idempotent) to ensure schema compatibility.
+6. Run `get_mac_pool_status` and a filtered `export_mac_log` check before resuming production.
+
 ---
 
 ## CLI Commands for Database Management

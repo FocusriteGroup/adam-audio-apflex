@@ -103,6 +103,111 @@ def _write_mac(device, mac: str) -> bool:
         return False
 
 
+def _extract_discovered_names(result) -> list:
+    """Extract discovered device names from OCA discover() result payloads."""
+    names = []
+
+    if isinstance(result, str):
+        if "Discovered device:" in result:
+            tail = result.split("Discovered device:", 1)[1].strip()
+            name = tail.split("(", 1)[0].strip()
+            if name:
+                names.append(name)
+        elif result.strip():
+            names.append(result.strip())
+
+    elif isinstance(result, dict):
+        direct = str(
+            result.get("name")
+            or result.get("device_name")
+            or result.get("target")
+            or ""
+        ).strip()
+        if direct:
+            names.append(direct)
+
+        devices = result.get("devices")
+        if isinstance(devices, list):
+            for dev in devices:
+                if isinstance(dev, dict):
+                    name = str(
+                        dev.get("name")
+                        or dev.get("device_name")
+                        or dev.get("target")
+                        or ""
+                    ).strip()
+                    if name:
+                        names.append(name)
+
+        raw = result.get("raw")
+        if isinstance(raw, str) and "Discovered device:" in raw:
+            tail = raw.split("Discovered device:", 1)[1].strip()
+            name = tail.split("(", 1)[0].strip()
+            if name:
+                names.append(name)
+
+    elif isinstance(result, list):
+        for entry in result:
+            names.extend(_extract_discovered_names(entry))
+
+    # Preserve order while de-duplicating
+    deduped = []
+    seen = set()
+    for name in names:
+        if name not in seen:
+            deduped.append(name)
+            seen.add(name)
+    return deduped
+
+
+def _retarget_device_after_mac_change(device, expected_mac: str, timeout: int = 3) -> bool:
+    """Rediscover and retarget device name after MAC-dependent hostname changes.
+
+    Newer firmware updates the mDNS name suffix to the last 6 MAC hex digits,
+    e.g. SubPro-EF0000 -> SubPro-4923DA.
+    """
+    try:
+        result = device.discover(timeout=timeout)
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Rediscovery failed after MAC write: %s", exc)
+        return False
+
+    names = _extract_discovered_names(result)
+    if not names:
+        logger.warning("Rediscovery returned no device names after MAC write.")
+        return False
+
+    expected_suffix = expected_mac.replace(":", "")[-6:].upper()
+    selected = None
+
+    # Prefer exact MAC-suffix match in discovered target name.
+    for name in names:
+        if name.upper().endswith(expected_suffix):
+            selected = name
+            break
+
+    # Fallback when only one device is present.
+    if selected is None and len(names) == 1:
+        selected = names[0]
+
+    if selected is None:
+        logger.warning(
+            "Could not uniquely retarget after MAC write. Discovered=%s, expected suffix=%s",
+            names,
+            expected_suffix,
+        )
+        return False
+
+    old_target = getattr(device, "target", None)
+    device.target = selected
+    logger.info(
+        "Retargeted device after MAC write: old_target=%s, new_target=%s",
+        old_target,
+        selected,
+    )
+    return True
+
+
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
@@ -206,6 +311,18 @@ def _provision_first_test(device, serial: str, workstation_id: str, arp_delay: f
 
     # Read back MAC from device to verify
     read_back = _read_mac(device)
+    if read_back is None:
+        # Device name may have changed with new MAC on newer firmware.
+        if _retarget_device_after_mac_change(device, expected_mac=mac, timeout=3):
+            read_back = _read_mac(device)
+
+    if read_back != mac:
+        # One more recovery attempt for name-change race conditions.
+        if _retarget_device_after_mac_change(device, expected_mac=mac, timeout=3):
+            retried = _read_mac(device)
+            if retried is not None:
+                read_back = retried
+
     if read_back is None:
         rollback_mac(serial, mac, reason="OCA read-back failed after write")
         return {

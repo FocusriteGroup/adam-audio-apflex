@@ -167,6 +167,7 @@ class AdamWorkstation:
             "update_firmware": self.update_firmware,
             "lock_factory_settings": self.lock_factory_settings,
             "unlock_factory_settings": self.unlock_factory_settings,
+            "discover_and_unlock_factory_settings": self.discover_and_unlock_factory_settings,
             "init_sub": self.init_sub,  # Add new command to map
             "eol_init_sub": self.eol_init_sub,  # EOL: serial checks + optional FW update + init
             "setup_references": self.setup_references,  # Setup References directory
@@ -842,14 +843,68 @@ class AdamWorkstation:
 
     # OCA-spezifische Methoden (nur die, die in OCADevice existieren)
     def discover(self, args):
-        device = OCADevice(
+        timeout = getattr(args, "timeout", 1)
+        try:
+            discovered_name = self._discover_device_name(timeout=timeout)
+            print(discovered_name)
+        except Exception as e:
+            WORKSTATION_LOGGER.exception("discover failed (timeout=%s): %s", timeout, e)
+            print(f"Error: discover failed - {e}")
+
+    def _extract_discovered_device_name(self, result):
+        discovered_name = ""
+        if isinstance(result, str):
+            discovered_name = result.strip()
+        elif isinstance(result, dict):
+            discovered_name = str(
+                result.get("name")
+                or result.get("device_name")
+                or result.get("target")
+                or ""
+            ).strip()
+            if not discovered_name:
+                devices = result.get("devices")
+                if isinstance(devices, list) and devices:
+                    first = devices[0]
+                    if isinstance(first, dict):
+                        discovered_name = str(
+                            first.get("name")
+                            or first.get("device_name")
+                            or first.get("target")
+                            or ""
+                        ).strip()
+            if not discovered_name:
+                raw = result.get("raw")
+                if isinstance(raw, str) and "Discovered device:" in raw:
+                    tail = raw.split("Discovered device:", 1)[1].strip()
+                    discovered_name = tail.split("(", 1)[0].strip()
+        elif isinstance(result, list) and result:
+            first = result[0]
+            if isinstance(first, str):
+                discovered_name = first.strip()
+            elif isinstance(first, dict):
+                discovered_name = str(
+                    first.get("name")
+                    or first.get("device_name")
+                    or first.get("target")
+                    or ""
+                ).strip()
+        return discovered_name
+
+    def _discover_device_name(self, timeout):
+        discover_device = OCADevice(
             target=None,
             port=None,
             workstation_id=self.workstation_id,
-            service_host=self.host
+            service_host=self.host,
         )
-        result = device.discover(timeout=2)
-        print(result)
+        result = discover_device.discover(timeout=timeout)
+        WORKSTATION_LOGGER.info("discover result (timeout=%s): %s", timeout, result)
+        discovered_name = self._extract_discovered_device_name(result)
+        if not discovered_name:
+            WORKSTATION_LOGGER.error("discover returned no device name. Raw result: %s", result)
+            raise RuntimeError("discover returned no device name")
+        return discovered_name
 
     def get_gain_calibration(self, args):
         device = self._get_oca_device(args)
@@ -1071,7 +1126,7 @@ class AdamWorkstation:
         device = self._get_oca_device(args)
         result = device.get_model_description()
         WORKSTATION_LOGGER.debug("get_model_description result: %s", result)
-        print(result.get("model", result.get("raw", "")))
+        print(result.get("name", result.get("model", result.get("raw", ""))))
 
     def get_firmware_version(self, args):
         device = self._get_oca_device(args)
@@ -1115,6 +1170,28 @@ class AdamWorkstation:
         except Exception as e:
             msg = f"Error: unlock factory settings failed — {e}"
             WORKSTATION_LOGGER.error("unlock_factory_settings [%s]: %s", args.target, e)
+            print(msg)
+
+    def discover_and_unlock_factory_settings(self, args):
+        timeout = getattr(args, "timeout", 1)
+        try:
+            discovered_name = self._discover_device_name(timeout=timeout)
+            device = OCADevice(
+                target=discovered_name,
+                port=None,
+                workstation_id=self.workstation_id,
+                service_host=self.host,
+            )
+            result = device.unlock_factory_settings(args.signature)
+            WORKSTATION_LOGGER.info(
+                "discover_and_unlock_factory_settings [%s]: %s",
+                discovered_name,
+                result,
+            )
+            print(discovered_name)
+        except Exception as e:
+            msg = f"Error: discover and unlock failed - {e}"
+            WORKSTATION_LOGGER.exception("discover_and_unlock_factory_settings failed: %s", e)
             print(msg)
 
     def check_measurement_trials(self, args):

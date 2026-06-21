@@ -40,6 +40,9 @@ class SubProApp(App):
         self.db             = Database(_DB_PATH)
         self.device_service = DeviceService(
             self.db.get_config('device_name', 'SubPro'))
+        ok, discovered_name, _ = self.device_service.discover(timeout=2)
+        if ok and discovered_name:
+            self.db.set_config('device_name', discovered_name)
 
         # Screen manager
         self.sm = ScreenManager(transition=NoTransition())

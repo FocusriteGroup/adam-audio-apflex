@@ -6,6 +6,9 @@ Device communication is via OCADevice imported from the parent repo (oca/).
 """
 import logging
 from pathlib import Path
+import subprocess
+import sys
+import time
 from typing import Optional, Tuple
 
 logger = logging.getLogger(__name__)
@@ -43,20 +46,119 @@ class DeviceService:
             logger.error('%s failed: %s', fn_name, exc)
             return False, None, str(exc)
 
+    @staticmethod
+    def _extract_discovered_name(result) -> Optional[str]:
+        if isinstance(result, str):
+            value = result.strip()
+            return value or None
+        if isinstance(result, dict):
+            devices = result.get('devices')
+            if isinstance(devices, list) and devices:
+                first = devices[0]
+                if isinstance(first, dict):
+                    for key in ('name', 'device_name', 'hostname'):
+                        value = first.get(key)
+                        if value:
+                            return str(value).strip()
+            for key in ('name', 'device_name', 'hostname'):
+                value = result.get(key)
+                if value:
+                    return str(value).strip()
+        if isinstance(result, list) and result:
+            first = result[0]
+            if isinstance(first, dict):
+                for key in ('name', 'device_name', 'hostname'):
+                    value = first.get(key)
+                    if value:
+                        return str(value).strip()
+            if isinstance(first, str):
+                value = first.strip()
+                return value or None
+        return None
+
+    def _discover_via_workstation_cli(self, timeout: int) -> Optional[str]:
+        script_path = Path(__file__).resolve().parents[3] / 'adam_workstation.py'
+        if not script_path.exists():
+            return None
+
+        command = [
+            sys.executable,
+            str(script_path),
+            'discover',
+            '--timeout',
+            str(int(timeout)),
+        ]
+
+        try:
+            completed = subprocess.run(
+                command,
+                capture_output=True,
+                text=True,
+                timeout=max(15, int(timeout) + 5),
+            )
+        except Exception as exc:
+            logger.warning('discover via adam_workstation failed to execute: %s', exc)
+            return None
+
+        if completed.returncode != 0:
+            logger.warning(
+                'discover via adam_workstation non-zero exit=%s stderr=%r',
+                completed.returncode,
+                (completed.stderr or '').strip(),
+            )
+            return None
+
+        lines = [line.strip() for line in (completed.stdout or '').splitlines() if line.strip()]
+        if not lines:
+            return None
+        candidate = lines[-1]
+        if candidate.lower().startswith('error:'):
+            return None
+        return candidate
+
     # ── Public API ─────────────────────────────────────────────────────────────
 
     def update_device_name(self, name: str):
         """Change the target device name and reset the cached device."""
-        self.device_name = name.strip()
+        name = name.strip()
+        if not name:
+            return
+        self.device_name = name
         self._device = None
 
     def discover(self, timeout: int = 2) -> Result:
+        cli_name = self._discover_via_workstation_cli(timeout=timeout)
+        if cli_name:
+            self.update_device_name(cli_name)
+            logger.info('discover via adam_workstation: %s', cli_name)
+            return True, cli_name, None
+
         try:
             result = self._dev().discover(timeout=timeout)
             logger.info('discover: %s', result)
-            return True, str(result), None
+            device_name = self._extract_discovered_name(result)
+            if not device_name:
+                return False, None, 'No device discovered.'
+            self.update_device_name(device_name)
+            return True, device_name, None
         except Exception as exc:
             return False, None, str(exc)
+
+    def discover_with_retries(self, attempts: int = 3, timeout: int = 2,
+                              retry_delay_s: float = 0.5) -> Result:
+        attempts = max(1, int(attempts))
+        timeout = max(1, int(timeout))
+        last_err = 'No device discovered.'
+
+        for try_idx in range(attempts):
+            ok, device_name, err = self.discover(timeout=timeout + try_idx)
+            if ok and device_name:
+                return True, device_name, None
+            last_err = err or last_err
+            if try_idx < attempts - 1:
+                time.sleep(max(0.0, retry_delay_s))
+
+        return False, None, last_err
 
     def get_firmware_version(self) -> Result:
         ok, raw, err = self._call('get_firmware_version')

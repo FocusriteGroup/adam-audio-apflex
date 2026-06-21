@@ -280,6 +280,9 @@ class OCADevice:
             command_path=["model-description", "get"],
             options=options
         )
+        if isinstance(result, dict) and "name" not in result and "model" in result:
+            # Keep backward compatibility while exposing an explicit device name key.
+            result["name"] = result["model"]
         self._log_to_service("get_model_description", result)
         return result
 

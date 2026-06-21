@@ -26,14 +26,23 @@ golden_samples:
     note TEXT
 """
 
+import logging
 import os
+import shutil
 import sqlite3
+import string
+import subprocess
+import sys
 from datetime import datetime, timezone
 
 _DB_DIR = os.path.join(os.path.dirname(__file__), "db")
 DB_PATH = os.path.join(_DB_DIR, "mac_addresses.db")
 
 DEFAULT_WARN_THRESHOLD = 20
+BACKUP_DIR_ENV_VAR = "MAC_DB_BACKUP_DIR"
+AUTO_BACKUP_SUBDIR = "ADAM_MAC_DB_Backups"
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -86,6 +95,138 @@ def _get_connection() -> sqlite3.Connection:
     con.execute("PRAGMA busy_timeout=5000")
     con.row_factory = sqlite3.Row
     return con
+
+
+def _safe_filename_part(value: str) -> str:
+    return "".join(ch if ch.isalnum() else "_" for ch in value)
+
+
+def _iter_windows_removable_drives() -> list:
+    """Return drive roots like 'E:\\' for removable volumes on Windows."""
+    if sys.platform != "win32":
+        return []
+
+    try:
+        import ctypes
+
+        drive_mask = ctypes.windll.kernel32.GetLogicalDrives()
+        get_drive_type = ctypes.windll.kernel32.GetDriveTypeW
+        removable_roots = []
+        for letter in string.ascii_uppercase:
+            bit = 1 << (ord(letter) - ord("A"))
+            if not drive_mask & bit:
+                continue
+            root = f"{letter}:\\"
+            if get_drive_type(root) == 2:
+                removable_roots.append(root)
+        return removable_roots
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Removable drive detection failed: %s", exc)
+        return []
+
+
+def _iter_windows_usb_drives() -> list:
+    """Return drive roots for USB-backed disks on Windows.
+
+    This catches external USB hard drives that report as fixed disks.
+    """
+    if sys.platform != "win32":
+        return []
+
+    powershell_script = (
+        "$drives = Get-CimInstance Win32_DiskDrive | "
+        "Where-Object { $_.InterfaceType -eq 'USB' } | "
+        "ForEach-Object { "
+        "Get-CimAssociatedInstance -InputObject $_ -ResultClassName Win32_DiskPartition | "
+        "ForEach-Object { "
+        "Get-CimAssociatedInstance -InputObject $_ -ResultClassName Win32_LogicalDisk | "
+        "Select-Object -ExpandProperty DeviceID } }; "
+        "$drives | Sort-Object -Unique"
+    )
+
+    try:
+        completed = subprocess.run(
+            ["powershell", "-NoProfile", "-Command", powershell_script],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        if completed.returncode != 0:
+            stderr = completed.stderr.strip()
+            if stderr:
+                logger.warning("USB drive detection failed: %s", stderr)
+            return []
+
+        roots = []
+        for line in completed.stdout.splitlines():
+            drive = line.strip()
+            if len(drive) == 2 and drive[1] == ":":
+                roots.append(f"{drive}\\")
+        return sorted(set(roots))
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("USB drive detection failed: %s", exc)
+        return []
+
+
+def _discover_backup_dirs() -> list:
+    """Return one or more backup directories.
+
+    Priority:
+    1. Explicit MAC_DB_BACKUP_DIR env var.
+    2. Auto-detected external drives on Windows, using AUTO_BACKUP_SUBDIR.
+    """
+    configured_dir = os.getenv(BACKUP_DIR_ENV_VAR)
+    if configured_dir:
+        return [configured_dir]
+
+    if sys.platform != "win32":
+        return []
+
+    drive_roots = set(_iter_windows_removable_drives())
+    drive_roots.update(_iter_windows_usb_drives())
+    return [os.path.join(root, AUTO_BACKUP_SUBDIR) for root in sorted(drive_roots)]
+
+
+def _maybe_backup_db(serial: str, mac: str, verified_at: str) -> bool:
+    """Copy the SQLite DB to configured or auto-detected external backup targets.
+
+    Backup is best-effort: failures are logged but never abort provisioning.
+    """
+    backup_dirs = _discover_backup_dirs()
+    if not backup_dirs:
+        return False
+
+    timestamp_part = _safe_filename_part(verified_at)
+    serial_part = _safe_filename_part(serial)
+    mac_part = _safe_filename_part(mac)
+    backup_created = False
+
+    for backup_dir in backup_dirs:
+        try:
+            os.makedirs(backup_dir, exist_ok=True)
+            latest_path = os.path.join(backup_dir, "mac_addresses_latest.db")
+            archive_path = os.path.join(
+                backup_dir,
+                f"mac_addresses_{timestamp_part}_{serial_part}_{mac_part}.db",
+            )
+
+            shutil.copy2(DB_PATH, latest_path)
+            shutil.copy2(DB_PATH, archive_path)
+            logger.info(
+                "MAC DB backup created: latest='%s', archive='%s'",
+                latest_path,
+                archive_path,
+            )
+            backup_created = True
+        except Exception as exc:  # noqa: BLE001
+            logger.warning(
+                "MAC DB backup skipped; could not copy '%s' to '%s': %s",
+                DB_PATH,
+                backup_dir,
+                exc,
+            )
+
+    return backup_created
 
 
 # ---------------------------------------------------------------------------
@@ -336,6 +477,7 @@ def confirm_mac_written(serial: str, mac: str, workstation_id: str = None) -> bo
 
 def confirm_mac_verified(serial: str, mac: str, workstation_id: str = None) -> bool:
     """Finalise provisioning after successful read-back verification."""
+    verified_at = _now()
     con = _get_connection()
     cur = con.cursor()
     cur.execute(
@@ -344,11 +486,13 @@ def confirm_mac_verified(serial: str, mac: str, workstation_id: str = None) -> b
                workstation_id = COALESCE(?, workstation_id)
            -- Guard: only advance from 'written'. Prevents double-verify on retry.
            WHERE serial = ? AND mac = ? AND status = 'written'""",
-        (_now(), workstation_id, serial, mac)
+        (verified_at, workstation_id, serial, mac)
     )
     success = cur.rowcount > 0  # False → entry was already verified or rolled back
     con.commit()
     con.close()
+    if success:
+        _maybe_backup_db(serial=serial, mac=mac, verified_at=verified_at)
     return success
 
 

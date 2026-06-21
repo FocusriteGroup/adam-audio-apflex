@@ -152,7 +152,7 @@ Returns `{'prefix', 'year', 'month', 'number', 'is_golden_sample'}`. Assumes the
 
 ## `app/services/device_service.py` — `DeviceService`
 
-Wraps `OCADevice` from `oca/oca_device.py` (parent repo). The device name is the mDNS hostname used in every CLI call.
+Wraps `OCADevice` from `oca/oca_device.py` (parent repo). The device name is the discovered mDNS hostname cached for later CLI calls.
 
 ```python
 DeviceService(device_name: str, port: int = 50001, timeout: int = 10)
@@ -166,7 +166,7 @@ All methods return `(success: bool, value: str | None, error: str | None)`.
 
 ```python
 device_service.update_device_name(name: str)          # hot-reload without restart
-device_service.discover(timeout=2)                    # mDNS discovery
+device_service.discover(timeout=2)                    # mDNS discovery; updates cached hostname
 device_service.get_firmware_version()                 # reads via model-description get
 device_service.flash_firmware(fw_path: Path)          # firmware update (up to 120 s)
 device_service.get_serial_number()                    # factory-settings get-serial-number

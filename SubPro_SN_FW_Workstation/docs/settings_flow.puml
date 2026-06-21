@@ -30,7 +30,8 @@ end note
 fork
   |Tab 1: Device & Firmware|
 
-  :View/edit Device Name field;
+  :Click Discover to refresh Device Name from mDNS;
+  :View cached Device Name field;
   :View/edit Target FW Version field;
   :View/edit FW .bin path field;
 
@@ -68,7 +69,7 @@ fork
   end fork
 
   :Press Save (Device & Firmware);
-  :db.set_config(device_name);
+  :db.set_config(device_name) if present;
   :db.set_config(target_fw_version);
   :db.set_config(fw_bin_path);
   :device_service.update_device_name();

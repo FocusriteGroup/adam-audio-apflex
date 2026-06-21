@@ -11,12 +11,16 @@ DONE          → all required parts scanned, unit written to DB
 FAIL          → something went wrong; shows reason; user presses Restart
 """
 import logging
+from pathlib import Path
+import time
 from typing import Optional
 
 from kivy.app import App
+from kivy.base import EventLoop
 from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
+from kivy.uix.popup import Popup
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.screenmanager import Screen
 from kivy.uix.widget import Widget
@@ -36,6 +40,74 @@ _SCAN_PARTS   = 'scan_parts'
 _DONE         = 'done'
 _FAIL         = 'fail'
 
+_REPO_ROOT = Path(__file__).resolve().parents[3]
+
+
+def resolve_firmware_bin_path(fw_bin: str) -> Path:
+    bin_path = Path(fw_bin)
+    if bin_path.is_absolute():
+        return bin_path
+    return _REPO_ROOT / fw_bin
+
+
+def wait_for_firmware_ready(read_version, target_fw: str,
+                            max_wait_s: float = 30.0,
+                            retry_interval_s: float = 2.0,
+                            now_fn=None,
+                            sleep_fn=None):
+    if now_fn is None:
+        now_fn = time.monotonic
+    if sleep_fn is None:
+        sleep_fn = time.sleep
+
+    deadline = now_fn() + max_wait_s
+    last_err = 'Device did not report target firmware version in time.'
+
+    while True:
+        ok, fw_after, err = read_version()
+        if ok and (fw_after or '').strip() == target_fw:
+            return True, fw_after, None
+
+        if ok:
+            last_err = f'Expected {target_fw}, got {fw_after}.'
+        else:
+            last_err = err or 'Could not read firmware version.'
+
+        if now_fn() >= deadline:
+            return False, None, last_err
+
+        sleep_fn(retry_interval_s)
+
+
+def is_transient_flash_disconnect(error_text: str) -> bool:
+    text = (error_text or '').lower()
+    return 'keepalivefailed' in text or 'exit code 110' in text
+
+
+def is_device_not_found_error(error_text: str) -> bool:
+    text = (error_text or '').lower()
+    return 'device not found' in text or 'exit code 100' in text
+
+
+def get_firmware_version_with_rediscovery(device_service,
+                                          on_rediscovered=None,
+                                          max_rediscover_attempts: int = 2):
+    ok, version, err = device_service.get_firmware_version()
+    attempts = 0
+
+    while (not ok) and is_device_not_found_error(err) and attempts < max_rediscover_attempts:
+        attempts += 1
+        d_ok, discovered_name, d_err = device_service.discover(timeout=2)
+        if not d_ok or not discovered_name:
+            return False, None, (
+                f'{err} (rediscovery failed: {d_err or "No device discovered."})'
+            )
+        if on_rediscovered:
+            on_rediscovered(discovered_name)
+        ok, version, err = device_service.get_firmware_version()
+
+    return ok, version, err
+
 
 class WorkflowScreen(Screen):
 
@@ -47,6 +119,9 @@ class WorkflowScreen(Screen):
         self._state  = _IDLE
         self._session: dict = {}
         self._nav_bar: Optional[NavBar] = None
+        self._scan_buffer = ''
+        self._scan_submit_scheduled = False
+        self._busy_popup: Optional[Popup] = None
 
         self._build()
 
@@ -83,8 +158,9 @@ class WorkflowScreen(Screen):
 
         # Scan input (hidden initially)
         self._scan_inp = inp(hint='Scan barcode...', size_hint_y=None, height=60,
-                             font_size='22sp')
+                     font_size='22sp', write_tab=False)
         self._scan_inp.bind(on_text_validate=self._on_scan)
+        self._scan_inp.bind(text=self._on_scan_text)
         self._scan_inp.bind(focus=self._on_scan_focus)
         self._scan_inp.opacity = 0
         self._scan_inp.disabled = True
@@ -215,12 +291,16 @@ class WorkflowScreen(Screen):
     def _show_scan_input(self):
         self._scan_inp.opacity  = 1
         self._scan_inp.disabled = False
-        Clock.schedule_once(lambda _: setattr(self._scan_inp, 'focus', True), 0.15)
+        # Grab focus immediately and re-assert shortly after; this prevents
+        # losing the first barcode characters when operators scan very quickly.
+        self._scan_inp.focus = True
+        Clock.schedule_once(lambda _: setattr(self._scan_inp, 'focus', True), 0.05)
 
     def _hide_scan_input(self):
         self._scan_inp.opacity  = 0
         self._scan_inp.disabled = True
         self._scan_inp.text     = ''
+        self._scan_buffer       = ''
 
     def _show_cancel(self):
         self._cancel_btn.opacity  = 1
@@ -332,14 +412,32 @@ class WorkflowScreen(Screen):
             logger.warning('Unit cancelled by operator: unit_id=%s SN=%s', unit_id, self._session.get('product_sn'))
         self._go_idle()
 
-    def _on_scan(self, instance):
-        raw = instance.text.strip().upper()
+    def _on_scan_text(self, _instance, value: str):
+        # Keep a side buffer so fast scanner bursts are not lost between
+        # validate/focus events and TextInput render updates.
+        self._scan_buffer = value
+
+    def _consume_scan_buffer(self, instance):
+        self._scan_submit_scheduled = False
+        raw = (self._scan_buffer or instance.text).strip().upper()
+        if not raw:
+            self._show_scan_input()
+            return
+
         instance.text = ''
+        self._scan_buffer = ''
 
         if self._state == _SCAN_PRODUCT:
             self._handle_product_scan(raw)
         elif self._state == _SCAN_PARTS:
             self._handle_part_scan(raw)
+
+    def _on_scan(self, instance):
+        # Defer slightly so the last scanner keystrokes are present.
+        if self._scan_submit_scheduled:
+            return
+        self._scan_submit_scheduled = True
+        Clock.schedule_once(lambda _: self._consume_scan_buffer(instance), 0.02)
 
     # ── Product SN handling ───────────────────────────────────────────────────
 
@@ -376,6 +474,17 @@ class WorkflowScreen(Screen):
         self._session['unit_id'] = unit_id
         logger.info('Unit started: SN=%s variant=%s unit_id=%s', sn, variant, unit_id)
 
+        # Refresh the target device now that a new unit is starting.
+        self._set_status('Discovering device...')
+        ok, discovered_name, err = self.device_service.discover_with_retries(
+            attempts=2, timeout=10, retry_delay_s=0.5)
+        if not ok or not discovered_name:
+            logger.error('discover failed for unit %s: %s', unit_id, err)
+            self._go_fail(f'Could not discover device.\n{err}')
+            return
+        self.db.set_config('device_name', discovered_name)
+        logger.info('Discovered device for unit %s: %s', unit_id, discovered_name)
+
         self._rebuild_parts_list(variant)
         self._go_processing()
 
@@ -399,6 +508,8 @@ class WorkflowScreen(Screen):
 
         # ── Step 1: Read current firmware version ─────────────────────────────
         self._set_status('Reading firmware version...')
+        # The device was already discovered when the product SN was scanned,
+        # so use that target directly here to avoid an extra discover round.
         ok, fw_found, err = self.device_service.get_firmware_version()
         if not ok:
             logger.error('get_firmware_version failed for unit %s: %s', unit_id, err)
@@ -417,13 +528,7 @@ class WorkflowScreen(Screen):
                 )
                 return
 
-            from pathlib import Path
-            bin_path = Path(fw_bin)
-            if not bin_path.is_absolute():
-                # Resolve relative to the repo root (parent of this project folder)
-                bin_path = (
-                    Path(__file__).resolve().parent.parent.parent / fw_bin
-                )
+            bin_path = resolve_firmware_bin_path(fw_bin)
             if not bin_path.exists():
                 self._go_fail(
                     f'Firmware file not found:\n{bin_path}'
@@ -433,30 +538,39 @@ class WorkflowScreen(Screen):
             self._set_status(f'Flashing firmware {target_fw}...')
             logger.info('Flashing FW %s from %s (unit %s)', target_fw, bin_path, unit_id)
             ok, _, err = self.device_service.flash_firmware(bin_path)
-            if not ok:
+            if not ok and not is_transient_flash_disconnect(err):
                 logger.error('Flash failed for unit %s: %s', unit_id, err)
                 self._go_fail(f'Firmware flash failed.\n{err}')
                 return
+            if not ok:
+                logger.warning(
+                    'Flash reported transient disconnect for unit %s; '
+                    'continuing with readiness verification: %s',
+                    unit_id, err,
+                )
 
-            fw_flashed = True
-            logger.info('Flash succeeded for unit %s', unit_id)
+            logger.info('Flash command completed for unit %s', unit_id)
 
             # ── Step 3: Verify FW version after flash ─────────────────────────
-            self._set_status('Verifying firmware version after flash...')
-            ok, fw_after, err = self.device_service.get_firmware_version()
+            self._set_status('Waiting for device reboot after flash...')
+            self._show_busy_popup(
+                'Firmware update complete.\nWaiting for device to reboot and become ready...'
+            )
+            try:
+                ok, fw_after, err = wait_for_firmware_ready(
+                    read_version=self.device_service.get_firmware_version,
+                    target_fw=target_fw,
+                    max_wait_s=30.0,
+                    retry_interval_s=2.0,
+                )
+            finally:
+                self._hide_busy_popup()
             if not ok:
-                self._go_fail(f'Could not read FW version after flash.\n{err}')
+                logger.error('FW readiness check failed for unit %s: %s', unit_id, err)
+                self._go_fail(f'FW did not become ready after flash.\n{err}')
                 return
-            if target_fw and fw_after != target_fw:
-                logger.error(
-                    'FW mismatch after flash for unit %s: expected %s got %s',
-                    unit_id, target_fw, fw_after,
-                )
-                self._go_fail(
-                    f'FW version mismatch after flash.\n'
-                    f'Expected {target_fw}, got {fw_after}.'
-                )
-                return
+            fw_flashed = True
+            logger.info('Flash readiness verified for unit %s', unit_id)
             fw_found_after = fw_after
         else:
             fw_found_after = fw_found
@@ -510,6 +624,31 @@ class WorkflowScreen(Screen):
     def _set_status(self, msg: str):
         """Update the status label mid-step (visible during processing)."""
         self._status_lbl.text = msg
+
+    def _show_busy_popup(self, message: str):
+        self._hide_busy_popup()
+
+        content = BgBox(color=C['panel'], orientation='vertical', padding=18, spacing=10)
+        content.add_widget(lbl('Please wait', size='20sp', bold=True, size_hint_y=None, height=34))
+        content.add_widget(lbl(message, size='16sp', color=C['dim']))
+
+        self._busy_popup = Popup(
+            title='Processing',
+            content=content,
+            size_hint=(None, None),
+            size=(520, 230),
+            auto_dismiss=False,
+            separator_color=C['accent'],
+            background_color=C['panel'],
+        )
+        self._busy_popup.open()
+        # Force one UI cycle so the modal is visible before a blocking wait.
+        EventLoop.idle()
+
+    def _hide_busy_popup(self):
+        if self._busy_popup is not None:
+            self._busy_popup.dismiss()
+            self._busy_popup = None
 
     # ── Part SN handling ──────────────────────────────────────────────────────
 
@@ -607,5 +746,9 @@ class WorkflowScreen(Screen):
         operator never has to click into the field.
         """
         if not focused and not self._scan_inp.disabled:
+            # Some scanners are configured with TAB suffix; if focus leaves
+            # while we have buffered text, consume it as a completed scan.
+            if (self._scan_buffer or self._scan_inp.text).strip():
+                self._on_scan(self._scan_inp)
             Clock.schedule_once(
                 lambda _: setattr(self._scan_inp, 'focus', True), 0.1)

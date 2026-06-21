@@ -1,5 +1,7 @@
 # ADAM Audio Production System
 
+Complete project documentation starts at [docs/index.md](docs/index.md). The most important production detail is that APx500 often calls this repository through external program steps and reads `stdout`; for those calls, the printed output is the API contract.
+
 A comprehensive client-server architecture for automating hardware control and device testing in ADAM Audio's production environment. This system provides seamless integration between Audio Precision test equipment, OCA-enabled audio devices, serial hardware, and production workflows.
 
 ---

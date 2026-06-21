@@ -72,9 +72,13 @@ class SettingsScreen(Screen):
         layout.add_widget(section_hdr('Device'))
         layout.add_widget(spacer(4))
         row, self._device_name_inp = self._field_row('Device Name:', '')
+        row.add_widget(btn(
+            'Discover', bg=C['accent'], size_hint_x=None, width=110,
+            on_press=self._discover_device_name,
+        ))
         layout.add_widget(row)
         layout.add_widget(lbl(
-            'Used for all OCA/mDNS calls (e.g. "SubPro")',
+            'Filled from discovery and cached for later startup.',
             size='13sp', color=C['dim'], halign='left', size_hint_y=None, height=22,
         ))
 
@@ -306,6 +310,20 @@ class SettingsScreen(Screen):
         self._refresh_gs_list('A8S',  self._gs_a8s_layout)
         self._refresh_gs_list('A10S', self._gs_a10s_layout)
 
+    def _discover_device_name(self, *_):
+        ok, device_name, err = self.device_service.discover_with_retries(
+            attempts=2, timeout=10, retry_delay_s=0.5)
+        if not ok or not device_name:
+            self._dev_save_lbl.text = f'Error: {err or "No device discovered."}'
+            self._dev_save_lbl.color = C['red']
+            return
+
+        self._device_name_inp.text = device_name
+        self.db.set_config('device_name', device_name)
+        App.get_running_app().device_service.update_device_name(device_name)
+        self._dev_save_lbl.text = f'Discovered {device_name}.'
+        self._dev_save_lbl.color = C['green']
+
     def _refresh_gs_list(self, variant: str, container):
         container.clear_widgets()
         for gs in self.db.get_golden_samples(variant):
@@ -380,15 +398,15 @@ class SettingsScreen(Screen):
         self._dev_save_lbl.text = 'Golden sample removed.'
 
     def _save_device_tab(self, *_):
-        self.db.set_config('device_name',       self._device_name_inp.text.strip())
+        device_name = self._device_name_inp.text.strip()
+        if device_name:
+            self.db.set_config('device_name', device_name)
+            App.get_running_app().device_service.update_device_name(device_name)
         self.db.set_config('target_fw_version', self._target_fw_inp.text.strip())
         self.db.set_config('fw_bin_path',       self._fw_bin_inp.text.strip())
-        # Update device service immediately
-        App.get_running_app().device_service.update_device_name(
-            self._device_name_inp.text.strip())
         logger.info(
             'Device config saved: name=%r target_fw=%r fw_bin=%r',
-            self._device_name_inp.text.strip(),
+            device_name,
             self._target_fw_inp.text.strip(),
             self._fw_bin_inp.text.strip(),
         )

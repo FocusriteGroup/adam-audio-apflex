@@ -380,6 +380,22 @@ def build_workstation_parser():
     unlock_parser.add_argument("port", type=int, nargs="?", default=None,
         help="OCA device port (optional for device name)")
 
+    discover_unlock_parser = subparsers.add_parser(
+        "discover_and_unlock_factory_settings",
+        help="Discover OCA device name and unlock factory settings using the given signature",
+    )
+    discover_unlock_parser.add_argument(
+        "signature",
+        type=str,
+        help="Unlock signature",
+    )
+    discover_unlock_parser.add_argument(
+        "--timeout",
+        type=int,
+        default=1,
+        help="Discovery timeout in seconds (default: 1)",
+    )
+
     # Add ASubs initialization parser
     init_parser = subparsers.add_parser("init_sub",
         help="Initialize ASubs with default settings (internal-dsp, gain 0, unmuted, phase 0, calibration 0, analogue-xlr input, wide bass management)")

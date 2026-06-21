@@ -1,0 +1,110 @@
+@startuml
+' --- Styling and Layout Enhancements ---
+skinparam linetype ortho
+skinparam roundcorner 12
+skinparam maxMessageSize 100
+' Increased spacing for better overall layout
+skinparam nodesep 90
+skinparam ranksep 100
+
+' --- Modern CSS Styling (Fixes the padding warning & improves spacing) ---
+<style>
+root {
+  Padding 10
+  Margin 10
+}
+package {
+  Padding 15
+  Margin 15
+}
+</style>
+
+' --- Color Scheme ---
+skinparam package {
+    BackgroundColor White
+    BorderColor #888888
+}
+skinparam component {
+    BackgroundColor #E8F4F8
+    BorderColor #2B7A78
+}
+skinparam database {
+    BackgroundColor #FFF3E0
+    BorderColor #E65100
+}
+skinparam node {
+    BackgroundColor #F1F8E9
+    BorderColor #33691E
+}
+skinparam actor {
+    BackgroundColor #FCE4EC
+    BorderColor #880E4F
+}
+
+' --- Definitions ---
+package "Users / Invokers" {
+    actor "APx500" as APx
+    actor "Custom GUI\nor Script" as GUI
+    actor "Core Operator" as Operator
+    actor "Sub-System\nOperator" as SubOp
+}
+
+package "Core System" {
+    component "AdamWorkstation\nCLI backend" as WS
+    component "CSV & Measurement\nProcessing" as CSV
+    component "ADAM Service" as Service
+    component "AdamConnector" as Connector
+}
+
+package "Independent Sub-Systems" {
+    component "Matching App GUI" as MatchingApp
+    component "Sub-Pro SN/FW GUI" as SubProGUI
+}
+
+package "Local Peripherals & Tools" {
+    component "OCADevice / OCP1\ntool wrapper" as OCA
+    node "SwitchBox and Scanner\n(Hardware)" as HW
+}
+
+package "Databases (SQLite)" {
+    database "Matching Database" as MatchDB
+    database "MAC Provisioning\nDatabase" as MacDB
+    database "Sub-Pro workstation\ndatabase" as SubProDB
+}
+
+' --- Structural Layout Hints (Invisible Lines) ---
+' These force the packages into specific vertical layers
+"Users / Invokers" -[hidden]down-> "Core System"
+"Users / Invokers" -[hidden]down-> "Independent Sub-Systems"
+"Core System" -[hidden]down-> "Local Peripherals & Tools"
+"Independent Sub-Systems" -[hidden]down-> "Databases (SQLite)"
+"Local Peripherals & Tools" -[hidden]down-> "Databases (SQLite)"
+
+' --- Relationships ---
+
+' Sub-System Operations
+SubOp --> MatchingApp : uses
+SubOp --> SubProGUI : uses
+
+' Core Operations
+APx <--> WS : pythonw.exe\nstdout
+GUI <--> WS : subprocess\nstdout
+Operator <--> WS : python\nstdout
+
+' Independent App interconnections
+MatchingApp --> MatchDB : read/write
+SubProGUI --> OCA : local calls
+SubProGUI --> SubProDB : read/write
+
+' Core Backend interconnections
+WS --> CSV : local files
+WS --> OCA : local calls
+WS --> HW : local serial
+WS --> MatchDB : read/write
+WS --> MacDB : read/write
+WS --> Service : TCP JSON\n(--server)
+
+' Service interconnections
+Connector --> Service : UDP discovery\nservice check
+
+@enduml
