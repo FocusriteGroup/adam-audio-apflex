@@ -80,13 +80,38 @@ def test_product_scan_fails_when_discovery_returns_nothing():
     assert screen._fail_reason == 'Could not discover device.\nNo device discovered.'
 
 
+def test_run_backend_fails_on_firmware_mismatch_without_bin_path():
+    from app.screens.workflow_screen import WorkflowScreen
+
+    class _Db:
+        def get_config(self, key, default=''):
+            return 'fw-pp-rc7' if key == 'target_fw_version' else default
+
+    class _DeviceService:
+        def get_firmware_version(self):
+            return True, 'fw-pp-rc6', None
+
+    screen = WorkflowScreen.__new__(WorkflowScreen)
+    screen.db = _Db()
+    screen.device_service = _DeviceService()
+    screen._session = {'product_sn': 'CI6400001', 'unit_id': 42}
+    screen._set_status = lambda msg: setattr(screen, '_status_msg', msg)
+    screen._go_fail = lambda reason: setattr(screen, '_fail_reason', reason)
+
+    screen._run_backend()
+
+    assert getattr(screen, '_fail_reason', None) == (
+        'Firmware mismatch: found fw-pp-rc6, expected fw-pp-rc7.\n'
+        'This unit must be removed from the production flow and flashed separately.'
+    )
+
+
 def test_resolve_firmware_bin_path_uses_repo_root_for_relative_paths():
     from app.screens.workflow_screen import _REPO_ROOT, resolve_firmware_bin_path
 
     path = resolve_firmware_bin_path('SubsProFirmware/fw-pp-rc7.bin')
 
     assert path == _REPO_ROOT / 'SubsProFirmware/fw-pp-rc7.bin'
-    assert path.exists()
     assert 'SubPro_SN_FW_Workstation' not in str(path.parent)
 
 

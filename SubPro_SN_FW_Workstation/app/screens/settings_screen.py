@@ -133,12 +133,13 @@ class SettingsScreen(Screen):
         layout.add_widget(spacer(4))
         row_fw, self._target_fw_inp = self._field_row('Target Version:', '')
         layout.add_widget(row_fw)
-        row_bin, self._fw_bin_inp = self._field_row('Firmware .bin path:', '')
+        row_bin, self._fw_bin_inp = self._field_row('Firmware .bin path (optional):', '')
         layout.add_widget(row_bin)
         layout.add_widget(lbl(
-            'Relative to the Audio-Precision repo root, e.g. '
-            '"SubsProFirmware/subpro-firmware-for-updating.bin"',
-            size='13sp', color=C['dim'], halign='left', size_hint_y=None, height=22,
+            'Optional. Relative to the Audio-Precision repo root, e.g. '
+            '"SubsProFirmware/subpro-firmware-for-updating.bin".\n'
+            'A firmware mismatch now stops production and requires separate flashing.',
+            size='13sp', color=C['dim'], halign='left', size_hint_y=None, height=36,
         ))
 
         # Save

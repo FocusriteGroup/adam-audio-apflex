@@ -129,7 +129,7 @@ Settings is password-protected. Entering the correct password opens the screen w
 | Golden Samples – A8S | List of A8S golden-sample serial numbers. Multiple entries supported. |
 | Golden Samples – A10S | List of A10S golden-sample serial numbers. Multiple entries supported. |
 | Target Version | The firmware version string that must be active before writing the SN (e.g. `1.0.0rc2`). Leave blank to skip the version check. |
-| Firmware .bin path | Path to the firmware binary file used for flashing. Can be relative to the repository root or absolute. |
+| Firmware .bin path | Optional path to the firmware binary file used for flashing. Can be relative to the repository root or absolute. |
 
 **Adding a golden sample:**
 

@@ -42,7 +42,7 @@ CREATE TABLE config (
 |---|---|---|
 | `device_name` | Cached mDNS hostname from discovery, used for OCA/CLI device calls | `SubPro` |
 | `target_fw_version` | The firmware version that must be active before writing SN | `1.0.0rc2` |
-| `fw_bin_path` | Path to the firmware `.bin` file (relative to repo root or absolute) | `SubsProFirmware/subpro-firmware-for-updating.bin` |
+| `fw_bin_path` | Optional path to the firmware `.bin` file (relative to repo root or absolute) | `SubsProFirmware/subpro-firmware-for-updating.bin` |
 
 New keys can be added at any time via `set_config()`. Unknown keys are never deleted automatically.
 

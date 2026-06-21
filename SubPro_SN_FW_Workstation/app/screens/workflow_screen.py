@@ -504,7 +504,6 @@ class WorkflowScreen(Screen):
         unit_id = self._session['unit_id']
 
         target_fw = self.db.get_config('target_fw_version', '').strip()
-        fw_bin    = self.db.get_config('fw_bin_path', '').strip()
 
         # ── Step 1: Read current firmware version ─────────────────────────────
         self._set_status('Reading firmware version...')
@@ -519,61 +518,15 @@ class WorkflowScreen(Screen):
 
         fw_flashed = False
 
-        # ── Step 2: Flash if outdated ─────────────────────────────────────────
+        # ── Step 2: Require correct firmware before production ────────────────
         if target_fw and fw_found != target_fw:
-            if not fw_bin:
-                self._go_fail(
-                    f'Device has FW {fw_found}, target is {target_fw}.\n'
-                    f'No firmware .bin path configured in Settings.'
-                )
-                return
-
-            bin_path = resolve_firmware_bin_path(fw_bin)
-            if not bin_path.exists():
-                self._go_fail(
-                    f'Firmware file not found:\n{bin_path}'
-                )
-                return
-
-            self._set_status(f'Flashing firmware {target_fw}...')
-            logger.info('Flashing FW %s from %s (unit %s)', target_fw, bin_path, unit_id)
-            ok, _, err = self.device_service.flash_firmware(bin_path)
-            if not ok and not is_transient_flash_disconnect(err):
-                logger.error('Flash failed for unit %s: %s', unit_id, err)
-                self._go_fail(f'Firmware flash failed.\n{err}')
-                return
-            if not ok:
-                logger.warning(
-                    'Flash reported transient disconnect for unit %s; '
-                    'continuing with readiness verification: %s',
-                    unit_id, err,
-                )
-
-            logger.info('Flash command completed for unit %s', unit_id)
-
-            # ── Step 3: Verify FW version after flash ─────────────────────────
-            self._set_status('Waiting for device reboot after flash...')
-            self._show_busy_popup(
-                'Firmware update complete.\nWaiting for device to reboot and become ready...'
+            self._go_fail(
+                f'Firmware mismatch: found {fw_found}, expected {target_fw}.\n'
+                f'This unit must be removed from the production flow and flashed separately.'
             )
-            try:
-                ok, fw_after, err = wait_for_firmware_ready(
-                    read_version=self.device_service.get_firmware_version,
-                    target_fw=target_fw,
-                    max_wait_s=30.0,
-                    retry_interval_s=2.0,
-                )
-            finally:
-                self._hide_busy_popup()
-            if not ok:
-                logger.error('FW readiness check failed for unit %s: %s', unit_id, err)
-                self._go_fail(f'FW did not become ready after flash.\n{err}')
-                return
-            fw_flashed = True
-            logger.info('Flash readiness verified for unit %s', unit_id)
-            fw_found_after = fw_after
-        else:
-            fw_found_after = fw_found
+            return
+
+        fw_found_after = fw_found
 
         fw_final = fw_found_after
 

@@ -203,10 +203,7 @@ IDLE  →  SCAN_PRODUCT  →  PROCESSING  →  SCAN_PARTS  →  DONE
 Executed automatically after `SCAN_PRODUCT` succeeds:
 
 1. `device_service.get_firmware_version()` — if this fails → FAIL
-2. If `fw_found != target_fw`:
-   a. Resolve `fw_bin_path` (relative to repo root if not absolute)
-   b. `device_service.flash_firmware(bin_path)` — if this fails → FAIL
-   c. `device_service.get_firmware_version()` again — verify after flash
+2. If `fw_found != target_fw`: FAIL and remove the unit from the production flow; firmware must be flashed separately.
 3. `device_service.set_serial_number(product_sn)` — if this fails → FAIL
 4. `device_service.get_serial_number()` — readback verification — if mismatch → FAIL
 5. Update DB (`update_unit_fw`) → advance to `SCAN_PARTS`
