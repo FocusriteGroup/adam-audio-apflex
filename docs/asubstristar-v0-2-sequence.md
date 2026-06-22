@@ -54,7 +54,7 @@ This document describes what happens in `ASubsTristar_v_0_2.approjx`, based on t
 | 8 | `adam_workstation.py get_serial_number $(ProductName)` | `WaitForExitStoreOutputInVariable` | Stores to `SerialNumber` | Read DUT serial number for identification and file naming. |
 | 9 | `adam_workstation.py is_default_serial $(SerialNumber) $(DefaultSerial) False` | `WaitForExitValidateResponse` | Expects `False` | Guard: fail path if DUT still has default serial. |
 | 10 | `adam_workstation.py is_golden_sample $(SerialNumber) $(GoldenSampleSerial) False` | `WaitForExitValidateResponse` | Expects `False` | Guard: ensure this path is not golden-sample mode. |
-| 11 | `adam_workstation.py eol_init_sub $(ProductName) $(SerialNumber) $(DefaultSerial) $(GoldenSampleSerial) $(TargetFirmware) "$(ProjectDir)\SubsProFirmware\subpro-firmware-for-updating.bin"` | `WaitForExitValidateResponse` | Expects `successful` | Initialize Sub EOL state and firmware prerequisites. |
+| 11 | `adam_workstation.py eol_init_sub $(ProductName) $(SerialNumber) $(DefaultSerial) $(GoldenSampleSerial) $(TargetFirmware)` | `WaitForExitValidateResponse` | Expects `successful` | Initialize Sub EOL state and firmware prerequisites. |
 | 12 | `adam_workstation.py provision_mac $(ProductName) $(SerialNumber) $(DefaultMACAddress)` | `WaitForExitValidateResponse` | Expects `successful` | Assign/provision MAC address at end of successful EOL run. |
 
 ## Measurement Steps Observed In Sequence

@@ -41,6 +41,7 @@ _DONE         = 'done'
 _FAIL         = 'fail'
 
 _REPO_ROOT = Path(__file__).resolve().parents[3]
+_NEXT_UNIT_ADVANCE_DELAY_S = 1.5
 
 
 def resolve_firmware_bin_path(fw_bin: str) -> Path:
@@ -356,18 +357,45 @@ class WorkflowScreen(Screen):
         self._instr_lbl.text = 'Scan each part barcode in any order.'
         self._show_scan_input()
 
+    def _advance_to_next_unit_scan(self, completed_product_sn: str = ''):
+        """Reset session state and jump straight into the next product scan."""
+        self._session = {'parts_scanned': {}}
+        self._variant_lbl.text = ''
+        self._result_lbl.text = ''
+        self._result_lbl.color = C['text']
+        self._rebuild_parts_list()
+        self._go_scan_product()
+        if completed_product_sn:
+            self._status_lbl.text = (
+                f'PASS  {completed_product_sn} completed. '
+                f'READY  Scan the next unit now.'
+            )
+
+    def _schedule_next_unit_scan(self, completed_product_sn: str = ''):
+        self._go_done()
+        Clock.schedule_once(
+            lambda _: self._advance_to_next_unit_scan(completed_product_sn),
+            _NEXT_UNIT_ADVANCE_DELAY_S,
+        )
+
     def _go_done(self):
         self._state = _DONE
         variant = self._session.get('variant', '')
         self._step_lbl.text   = f'DONE  -  Sub-Pro {variant}'
-        self._instr_lbl.text  = 'Unit complete. Press Start Next Unit to continue.'
+        self._instr_lbl.text  = (
+            'Unit complete. Hold for operator confirmation...\n'
+            'Preparing next unit scan automatically.'
+        )
         self._result_lbl.text  = 'PASS'
         self._result_lbl.color = C['green']
-        self._status_lbl.text  = f"FW {self._session.get('fw_final', '?')}  -  all parts recorded"
+        self._status_lbl.text  = (
+            f"FW {self._session.get('fw_final', '?')}  -  all parts recorded. "
+            f'Next scan starts in {_NEXT_UNIT_ADVANCE_DELAY_S:.1f} s.'
+        )
         self._hide_scan_input()
-        self._action_btn.text    = 'Start Next Unit'
-        self._action_btn.opacity  = 1
-        self._action_btn.disabled = False
+        self._action_btn.text    = 'Starting Next Unit...'
+        self._action_btn.opacity  = 0
+        self._action_btn.disabled = True
         self._action_btn.background_color = C['green']
         self._hide_cancel()
         self._set_nav_session(False)
@@ -399,9 +427,7 @@ class WorkflowScreen(Screen):
 
     def _on_action(self, *_):
         if self._state == _IDLE:
-            self._session = {'parts_scanned': {}}
-            self._rebuild_parts_list()
-            self._go_scan_product()
+            self._advance_to_next_unit_scan()
         elif self._state in (_DONE, _FAIL):
             self._go_idle()
 
@@ -670,7 +696,8 @@ class WorkflowScreen(Screen):
         if req_names.issubset(done_names):
             self.db.complete_unit(cur_unit_id, 'PASS')
             logger.info('Unit PASS: unit_id=%s SN=%s', cur_unit_id, self._session.get('product_sn'))
-            self._go_done()
+            completed_product_sn = self._session.get('product_sn', '')
+            self._schedule_next_unit_scan(completed_product_sn)
         else:
             remaining = req_names - done_names
             self._instr_lbl.text = (

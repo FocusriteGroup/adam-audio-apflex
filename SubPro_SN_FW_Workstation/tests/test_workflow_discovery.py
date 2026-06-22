@@ -80,6 +80,82 @@ def test_product_scan_fails_when_discovery_returns_nothing():
     assert screen._fail_reason == 'Could not discover device.\nNo device discovered.'
 
 
+def test_part_scan_completion_shows_done_then_auto_advances_to_next_unit_scan():
+    import app.screens.workflow_screen as workflow_screen
+
+    WorkflowScreen = workflow_screen.WorkflowScreen
+
+    class _Db:
+        def __init__(self):
+            self.completed = []
+
+        def get_parts_config(self):
+            return [
+                {
+                    'name': 'DSP Board',
+                    'required': True,
+                    'prefix_a8s': 'BH',
+                    'prefix_a10s': 'BI',
+                }
+            ]
+
+        def get_latest_unit_for_part_sn(self, sn):
+            return None
+
+        def add_part_scan(self, unit_id, part_name, sn, previous_unit_id=None):
+            return None
+
+        def complete_unit(self, unit_id, status):
+            self.completed.append((unit_id, status))
+
+    screen = WorkflowScreen.__new__(WorkflowScreen)
+    screen.db = _Db()
+    screen._session = {
+        'unit_id': 42,
+        'variant': 'A8S',
+        'product_sn': 'CI6400001',
+        'parts_scanned': {},
+    }
+    screen._status_lbl = _Label()
+    screen._instr_lbl = _Label()
+    screen._step_lbl = _Label()
+    screen._result_lbl = _Label()
+    screen._variant_lbl = _Label()
+    screen._action_btn = type('B', (), {
+        'text': '',
+        'opacity': 1,
+        'disabled': False,
+        'background_color': None,
+    })()
+    screen._rebuild_parts_list = lambda variant=None: None
+    screen._show_scan_input = lambda: None
+    screen._hide_scan_input = lambda: None
+    screen._hide_cancel = lambda: None
+    screen._set_nav_session = lambda active: setattr(screen, '_nav_active', active)
+    screen._advance_to_next_unit_scan = lambda sn='': setattr(screen, '_advanced_from_sn', sn)
+
+    scheduled = {}
+    original_schedule_once = workflow_screen.Clock.schedule_once
+    workflow_screen.Clock.schedule_once = (
+        lambda callback, delay: scheduled.update({'callback': callback, 'delay': delay})
+    )
+
+    try:
+        screen._handle_part_scan('BH0100001')
+    finally:
+        workflow_screen.Clock.schedule_once = original_schedule_once
+
+    assert screen._state == workflow_screen._DONE
+    assert screen._result_lbl.text == 'PASS'
+    assert 'Next scan starts in' in screen._status_lbl.text
+    assert screen.db.completed == [(42, 'PASS')]
+    assert scheduled['delay'] == workflow_screen._NEXT_UNIT_ADVANCE_DELAY_S
+    assert not hasattr(screen, '_advanced_from_sn')
+
+    scheduled['callback'](None)
+    assert screen._advanced_from_sn == 'CI6400001'
+
+
 def test_run_backend_fails_on_firmware_mismatch_without_bin_path():
     from app.screens.workflow_screen import WorkflowScreen
 

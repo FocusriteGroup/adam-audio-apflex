@@ -60,6 +60,9 @@ def build_workstation_parser():
     set_audio_parser.add_argument("port", type=int, nargs="?", default=None,
         help="OCA device port (optional for device name)")
 
+    parser_product_type = subparsers.add_parser("get_product_type", help="Return product type string for a serial number")
+    parser_product_type.add_argument("serial", type=str, help="Serial number of the device")
+
     # Produktions-/Hardware-/Service-Kommandos (NICHT entfernen!)
     parser_timestamp_ext = subparsers.add_parser("generate_timestamp_extension", help="Generate a timestamp extension.")
     parser_timestamp_ext.add_argument("--server", action="store_true", help="Use service for timestamp generation")
@@ -404,9 +407,9 @@ def build_workstation_parser():
     init_parser.add_argument("port", type=int, nargs="?", default=None,
         help="OCA device port (optional for device name)")
 
-    # EOL combined: serial checks + optional firmware update + init_sub
+    # EOL combined: serial checks + firmware gate + init_sub
     eol_init_parser = subparsers.add_parser("eol_init_sub",
-        help="EOL pre-flight: reject default/golden-sample serials, update firmware if needed, then init_sub")
+        help="EOL pre-flight: reject default/golden-sample serials, warn if firmware is outdated, then init_sub")
     eol_init_parser.add_argument("target", type=str,
         help="OCA device name or IP address")
     eol_init_parser.add_argument("scanned_serial", type=str,
@@ -417,8 +420,6 @@ def build_workstation_parser():
         help="Golden Sample serial number (unit must NOT have this)")
     eol_init_parser.add_argument("target_fw_version", type=str,
         help="Required firmware version string (e.g. 1.0.0rc6)")
-    eol_init_parser.add_argument("firmware_image_path", type=str,
-        help="Path to firmware binary used if an update is needed")
     eol_init_parser.add_argument("port", type=int, nargs="?", default=None,
         help="OCA device port (optional for device name)")
     eol_init_parser.add_argument("--timeout", type=int, default=60,

@@ -132,6 +132,7 @@ class AdamWorkstation:
             "set_mode": self.set_mode,
             "get_audio_input": self.get_audio_input,
             "set_audio_input": self.set_audio_input,
+            "get_product_type": self.get_product_type,
             # Produktions-/Hardware-/Service-Funktionen (NICHT entfernen!)
             "generate_timestamp_extension": self.generate_timestamp_extension,
             "construct_path": self.construct_path,
@@ -938,6 +939,17 @@ class AdamWorkstation:
         device = self._get_oca_device(args)
         print(device.set_audio_input(args.mode))
 
+    def get_product_type(self, args):
+        serial = args.serial.upper()
+        WORKSTATION_LOGGER.debug("get_product_type called with serial: %s", serial)
+        if serial.startswith("CJ"):
+            print("A10S")
+        elif serial.startswith("CI"):
+            print("A8S")
+        else:
+            WORKSTATION_LOGGER.warning("Unknown product type for serial: %s", serial)
+            print("")
+
     def get_bass_management(self, args):
         device = self._get_oca_device(args)
         result = device.get_bass_management()
@@ -1343,12 +1355,12 @@ class AdamWorkstation:
             return False
 
     def eol_init_sub(self, args):
-        """EOL pre-flight: serial checks, optional firmware update, then init_sub.
+        """EOL pre-flight: serial checks, firmware gate, then init_sub.
 
         Steps (stops on first failure):
         1. Reject if scanned serial matches the default serial.
         2. Reject if scanned serial matches the golden sample serial.
-        3. Read firmware version from device; update if it does not match target.
+        3. Read firmware version from device; stop with warning if it does not match target.
         4. Run the full init_sub sequence.
 
         Prints 'successful' on success, or an error message string on failure.
@@ -1387,9 +1399,7 @@ class AdamWorkstation:
             print(f"Error: golden sample connected — {scanned}")
             return
 
-        # 3. Firmware version check and conditional update
-        import time as _time
-
+        # 3. Firmware version check (no automatic update)
         target_fw = args.target_fw_version.strip()
         try:
             device = self._get_oca_device(args)
@@ -1401,66 +1411,25 @@ class AdamWorkstation:
             )
 
             if current_fw != target_fw:
-                WORKSTATION_LOGGER.info(
-                    "eol_init_sub [%s]: FW mismatch — updating firmware from %s",
-                    args.target, args.firmware_image_path
+                msg = (
+                    f"Firmware is not up to date for production.\n\n"
+                    f"Expected: {target_fw}\n"
+                    f"Actual:   {current_fw or 'unknown'}\n\n"
+                    f"Please update firmware separately and restart the sequence."
                 )
-                update_result = device.update_firmware(
-                    firmware_image_path=args.firmware_image_path,
-                    timeout=args.timeout,
+                WORKSTATION_LOGGER.warning("eol_init_sub [%s]: %s", args.target, msg)
+                self._show_warning_popup("Firmware Not Up To Date", msg)
+                print(
+                    f"Error: firmware not up to date — expected '{target_fw}', got '{current_fw or 'unknown'}'"
                 )
-                WORKSTATION_LOGGER.info("eol_init_sub [%s]: firmware update result: %s", args.target, update_result)
-
-                # Device reboots after flashing — poll until it responds again
-                WORKSTATION_LOGGER.info("eol_init_sub [%s]: waiting for device to reboot after firmware flash...", args.target)
-                poll_interval = 3   # seconds between attempts
-                poll_timeout = 90   # maximum seconds to wait
-                elapsed = 0
-                confirmed_fw = None
-                while elapsed < poll_timeout:
-                    _time.sleep(poll_interval)
-                    elapsed += poll_interval
-                    try:
-                        device = self._get_oca_device(args)
-                        poll_result = device.get_firmware_version()
-                        confirmed_fw = poll_result.get("version", "").strip()
-                        WORKSTATION_LOGGER.info(
-                            "eol_init_sub [%s]: device responded after %ds — FW='%s'",
-                            args.target, elapsed, confirmed_fw
-                        )
-                        break
-                    except Exception:
-                        WORKSTATION_LOGGER.debug(
-                            "eol_init_sub [%s]: device not yet reachable (%ds elapsed)", args.target, elapsed
-                        )
-
-                if confirmed_fw is None:
-                    msg = f"Device did not come back online within {poll_timeout}s after firmware update."
-                    WORKSTATION_LOGGER.error("eol_init_sub [%s]: %s", args.target, msg)
-                    self._show_error_popup("Firmware Update Failed", msg)
-                    print(f"Error: {msg}")
-                    return
-
-                # Confirm the flashed version matches the target
-                if confirmed_fw != target_fw:
-                    msg = (
-                        f"Firmware update completed but version mismatch after reboot.\n\n"
-                        f"Expected: {target_fw}\n"
-                        f"Actual:   {confirmed_fw}"
-                    )
-                    WORKSTATION_LOGGER.error("eol_init_sub [%s]: %s", args.target, msg)
-                    self._show_error_popup("Firmware Version Mismatch", msg)
-                    print(f"Error: firmware version mismatch after update — expected '{target_fw}', got '{confirmed_fw}'")
-                    return
-
-                WORKSTATION_LOGGER.info("eol_init_sub [%s]: firmware version confirmed: %s", args.target, confirmed_fw)
+                return
             else:
                 WORKSTATION_LOGGER.info("eol_init_sub [%s]: FW already at target version — skipping update", args.target)
 
         except Exception as e:
-            msg = f"Firmware check/update failed: {e}"
+            msg = f"Firmware check failed: {e}"
             WORKSTATION_LOGGER.error("eol_init_sub [%s]: %s", args.target, e)
-            self._show_error_popup("Firmware Update Failed", msg)
+            self._show_error_popup("Firmware Check Failed", msg)
             print(f"Error: {msg}")
             return
 

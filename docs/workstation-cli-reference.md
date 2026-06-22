@@ -135,7 +135,7 @@ Parser-only commands: `set_device_biquad` and `get_device_biquad` are present in
 | Command | Arguments | Stdout |
 |---|---|---|
 | `init_sub` | `target [port]` | `Initialization successful` or `Initialization failed: ...`. |
-| `eol_init_sub` | `target scanned_serial default_serial golden_sample_serial target_fw_version firmware_image_path [port] [--timeout seconds]` | `successful` or `Error: ...`. |
+| `eol_init_sub` | `target scanned_serial default_serial golden_sample_serial target_fw_version [port] [--timeout seconds]` | `successful` or `Error: ...`. |
 | `provision_mac` | `target serial default_mac [port] [--arp-delay seconds]` | `successful` or `Error: ...`. |
 | `init_mac_db` | none | JSON status object. |
 | `set_mac_range` | `start_mac end_mac [--warn-threshold n]` | JSON status object. |

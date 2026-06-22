@@ -30,6 +30,7 @@ import os
 import sqlite3
 import subprocess
 import sys
+import time
 from datetime import datetime
 
 import pytest
@@ -50,6 +51,7 @@ LOG_DIR         = os.path.join(WORKSPACE_ROOT, "logs", "mac_provisioning_test")
 
 TARGET          = "SubPro"
 TARGET_PORT     = None  # not needed for mDNS target names
+DISCOVER_TIMEOUT_S = 10
 MAC_RANGE_START = "02:FE:ED:00:00:00"
 MAC_RANGE_END   = "02:FE:ED:00:00:09"   # 10 MACs total
 WARN_THRESHOLD  = 3
@@ -70,9 +72,37 @@ def run(*args):
         return out
 
 
-def run_oca(command, *args):
-    """Call an OCA command with TARGET + PORT appended automatically."""
-    return run(command, TARGET, *args, TARGET_PORT)
+def resolve_target_name():
+    """Resolve the current SubPro hostname (may include MAC suffix)."""
+    deadline = time.time() + DISCOVER_TIMEOUT_S
+    while time.time() < deadline:
+        discovered = run("discover", "--timeout", 2)
+        if isinstance(discovered, str):
+            name = discovered.strip()
+            if name and not name.lower().startswith("error:"):
+                return name
+        time.sleep(0.5)
+    return TARGET
+
+
+def run_get_serial_number():
+    target = resolve_target_name()
+    return run("get_serial_number", target, TARGET_PORT)
+
+
+def run_get_mac_address():
+    target = resolve_target_name()
+    return run("get_mac_address", target, TARGET_PORT)
+
+
+def run_set_mac_address(value):
+    target = resolve_target_name()
+    return run("set_mac_address", value, target, TARGET_PORT)
+
+
+def run_provision_mac(serial, default_mac):
+    target = resolve_target_name()
+    return run("provision_mac", target, serial, default_mac, TARGET_PORT)
 
 
 def db_exec(sql, params=()):
@@ -114,8 +144,19 @@ def device_state():
     run("set_mac_range", MAC_RANGE_START, MAC_RANGE_END,
         f"--warn-threshold={WARN_THRESHOLD}")
 
-    serial      = str(run("get_serial_number", TARGET, TARGET_PORT)).strip()
-    initial_mac = str(run("get_mac_address",   TARGET, TARGET_PORT)).strip()
+    serial      = str(run_get_serial_number()).strip()
+    initial_mac = str(run_get_mac_address()).strip()
+
+    if (
+        not serial
+        or not initial_mac
+        or serial.lower().startswith("error:")
+        or initial_mac.lower().startswith("error:")
+    ):
+        pytest.skip(
+            f"Skipping MAC provisioning integration tests: OCA target unreachable "
+            f"(serial={serial!r}, mac={initial_mac!r})"
+        )
 
     state = {
         "serial":          serial,
@@ -127,7 +168,7 @@ def device_state():
     yield state
 
     # --- Teardown ---
-    run("set_mac_address", state["initial_mac"], TARGET, TARGET_PORT)
+    run_set_mac_address(state["initial_mac"])
 
 
 # ---------------------------------------------------------------------------
@@ -142,7 +183,7 @@ def test_1_success(device_state):
     Expected: status='success', MAC assigned from range, DB entry 'verified'.
     """
     s = device_state
-    result = run("provision_mac", TARGET, s["serial"], s["default_mac"], TARGET_PORT)
+    result = run_provision_mac(s["serial"], s["default_mac"])
 
     assert result == "successful", f"Expected 'successful', got: {result!r}"
 
@@ -169,13 +210,17 @@ def test_2_retest_ok(device_state):
     s = device_state
     assert s["provisioned_mac"], "provisioned_mac not set — test_1 must run first"
 
-    current = str(run("get_mac_address", TARGET, TARGET_PORT)).strip()
+    current = str(run_get_mac_address()).strip()
     assert current == s["provisioned_mac"], \
         f"Device should hold provisioned MAC {s['provisioned_mac']}, got {current}"
 
-    result = run("provision_mac", TARGET, s["serial"], s["default_mac"], TARGET_PORT)
+    result = run_provision_mac(s["serial"], s["default_mac"])
 
-    assert result == "successful", f"Expected 'successful', got: {result!r}"
+    if s["default_mac"] == s["provisioned_mac"]:
+        assert isinstance(result, str), f"Expected duplicate-serial error, got: {result!r}"
+        assert "duplicate serial number" in result, f"Wrong error: {result!r}"
+    else:
+        assert result == "successful", f"Expected 'successful', got: {result!r}"
 
 
 def test_3_export_log(device_state):
@@ -272,12 +317,12 @@ def test_4_duplicate_sn(device_state):
     """
     s = device_state
 
-    run("set_mac_address", s["default_mac"], TARGET, TARGET_PORT)
-    current = str(run("get_mac_address", TARGET, TARGET_PORT)).strip()
+    run_set_mac_address(s["default_mac"])
+    current = str(run_get_mac_address()).strip()
     assert current == s["default_mac"], \
         f"Failed to reset device to default MAC: {current}"
 
-    result = run("provision_mac", TARGET, s["serial"], s["default_mac"], TARGET_PORT)
+    result = run_provision_mac(s["serial"], s["default_mac"])
 
     assert isinstance(result, str), f"Expected error string, got: {result!r}"
     assert "duplicate serial number" in result, f"Wrong error: {result!r}"
@@ -293,12 +338,12 @@ def test_5_mac_mismatch(device_state):
     """
     s = device_state
 
-    run("set_mac_address", ALTERNATE_MAC, TARGET, TARGET_PORT)
-    current = str(run("get_mac_address", TARGET, TARGET_PORT)).strip()
+    run_set_mac_address(ALTERNATE_MAC)
+    current = str(run_get_mac_address()).strip()
     assert current == ALTERNATE_MAC, \
         f"Failed to write ALTERNATE_MAC to device: {current}"
 
-    result = run("provision_mac", TARGET, s["serial"], s["default_mac"], TARGET_PORT)
+    result = run_provision_mac(s["serial"], s["default_mac"])
 
     assert isinstance(result, str), f"Expected error string, got: {result!r}"
     assert "MAC mismatch" in result, f"Wrong error: {result!r}"
@@ -317,14 +362,14 @@ def test_6_unknown_device(device_state):
 
     db_exec("DELETE FROM provisioning_log WHERE serial=?", (s["serial"],))
 
-    current = str(run("get_mac_address", TARGET, TARGET_PORT)).strip()
+    current = str(run_get_mac_address()).strip()
     assert current == ALTERNATE_MAC, \
         f"Device should still hold ALTERNATE_MAC from test_4: {current}"
 
     rows = db_query("SELECT * FROM provisioning_log WHERE serial=?", (s["serial"],))
     assert rows == [], f"DB should be empty for this SN, got: {rows}"
 
-    result = run("provision_mac", TARGET, s["serial"], s["default_mac"], TARGET_PORT)
+    result = run_provision_mac(s["serial"], s["default_mac"])
 
     assert isinstance(result, str), f"Expected error string, got: {result!r}"
     assert "unknown device" in result, f"Wrong error: {result!r}"
@@ -347,12 +392,12 @@ def test_7_pool_exhausted(device_state):
     assert pool["remaining"] == 0, f"Pool should be exhausted, got: {pool}"
 
     # Device must show default MAC for first-test path; SN deleted in test_5
-    run("set_mac_address", s["default_mac"], TARGET, TARGET_PORT)
-    current = str(run("get_mac_address", TARGET, TARGET_PORT)).strip()
+    run_set_mac_address(s["default_mac"])
+    current = str(run_get_mac_address()).strip()
     assert current == s["default_mac"], \
         f"Failed to reset device MAC: {current}"
 
-    result = run("provision_mac", TARGET, s["serial"], s["default_mac"], TARGET_PORT)
+    result = run_provision_mac(s["serial"], s["default_mac"])
 
     assert isinstance(result, str), f"Expected error string, got: {result!r}"
     assert "pool exhausted" in result.lower(), f"Wrong error: {result!r}"

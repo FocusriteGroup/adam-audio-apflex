@@ -133,13 +133,9 @@ class SettingsScreen(Screen):
         layout.add_widget(spacer(4))
         row_fw, self._target_fw_inp = self._field_row('Target Version:', '')
         layout.add_widget(row_fw)
-        row_bin, self._fw_bin_inp = self._field_row('Firmware .bin path (optional):', '')
-        layout.add_widget(row_bin)
         layout.add_widget(lbl(
-            'Optional. Relative to the Audio-Precision repo root, e.g. '
-            '"SubsProFirmware/subpro-firmware-for-updating.bin".\n'
-            'A firmware mismatch now stops production and requires separate flashing.',
-            size='13sp', color=C['dim'], halign='left', size_hint_y=None, height=36,
+            'If set, units with a different firmware version will be rejected from production.',
+            size='13sp', color=C['dim'], halign='left', size_hint_y=None, height=22,
         ))
 
         # Save
@@ -307,7 +303,6 @@ class SettingsScreen(Screen):
     def _refresh_device_tab(self):
         self._device_name_inp.text = self.db.get_config('device_name', '')
         self._target_fw_inp.text   = self.db.get_config('target_fw_version', '')
-        self._fw_bin_inp.text      = self.db.get_config('fw_bin_path', '')
         self._refresh_gs_list('A8S',  self._gs_a8s_layout)
         self._refresh_gs_list('A10S', self._gs_a10s_layout)
 
@@ -404,12 +399,10 @@ class SettingsScreen(Screen):
             self.db.set_config('device_name', device_name)
             App.get_running_app().device_service.update_device_name(device_name)
         self.db.set_config('target_fw_version', self._target_fw_inp.text.strip())
-        self.db.set_config('fw_bin_path',       self._fw_bin_inp.text.strip())
         logger.info(
-            'Device config saved: name=%r target_fw=%r fw_bin=%r',
+            'Device config saved: name=%r target_fw=%r',
             device_name,
             self._target_fw_inp.text.strip(),
-            self._fw_bin_inp.text.strip(),
         )
         self._dev_save_lbl.text  = 'Saved.'
         self._dev_save_lbl.color = C['green']
