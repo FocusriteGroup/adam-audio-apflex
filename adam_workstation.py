@@ -28,6 +28,7 @@ It is designed for extensibility and automation in manufacturing environments.
 import socket  # For network communication
 import json    # For encoding/decoding messages
 import sys     # For system exit and argument handling
+import ctypes  # For Windows API calls (e.g. MessageBox)
 import logging # For event and error logging
 import argparse # For command-line argument parsing
 import os      # For file and directory operations
@@ -943,9 +944,9 @@ class AdamWorkstation:
         serial = args.serial.upper()
         WORKSTATION_LOGGER.debug("get_product_type called with serial: %s", serial)
         if serial.startswith("CJ"):
-            print("A10S")
+            print("Sub10PRO")
         elif serial.startswith("CI"):
-            print("A8S")
+            print("Sub8PRO")
         else:
             WORKSTATION_LOGGER.warning("Unknown product type for serial: %s", serial)
             print("")
@@ -1188,6 +1189,16 @@ class AdamWorkstation:
         timeout = getattr(args, "timeout", 1)
         try:
             discovered_name = self._discover_device_name(timeout=timeout)
+        except RuntimeError:
+            WORKSTATION_LOGGER.error("discover_and_unlock_factory_settings: no device discovered")
+            ctypes.windll.user32.MessageBoxW(
+                0,
+                "No device was detected on the network.\nPlease check the connection and try again.",
+                "Device Not Found",
+                0x10,  # MB_ICONERROR
+            )
+            sys.exit(1)
+        try:
             device = OCADevice(
                 target=discovered_name,
                 port=None,
