@@ -90,6 +90,7 @@ class DataToolsSettingsStore:
             "backplate_default_serial": "123456",
             "backplate_default_mac": "DE:AD:BE:EF:00:00",
             "backplate_workstation_id": "DataTools",
+            "measurements_root_path": "",
         }
 
     def _ensure_default_settings(self) -> None:

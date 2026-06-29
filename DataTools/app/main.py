@@ -32,6 +32,7 @@ Current scope
 """
 
 from pathlib import Path
+from typing import Optional
 
 from kivy.app import App
 from kivy.clock import Clock
@@ -45,6 +46,7 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.textinput import TextInput
 
 from app.matching_viewer import MatchingViewerRoot
+from app.measurements_viewer import MeasurementsViewerRoot
 from app.tristar_databases_viewer import TristarDatabasesViewerRoot
 from app.settings_store import DataToolsSettingsStore
 
@@ -306,7 +308,7 @@ class SettingsPopup(Popup):
         # This allows targeted refresh after dialog-driven edits.
         self.value_labels = {}
         self.path_keys = {
-            "last_input_folder",
+            "measurements_root_path",
             "default_export_folder",
             "matching_db_path",
             "sn_fw_db_path",
@@ -349,13 +351,13 @@ class SettingsPopup(Popup):
             # Refresh after first layout pass so dynamic truncation uses real widget width.
             Clock.schedule_once(lambda _dt: self._update_value_label(key), 0.05)
 
-        # Last input folder is always remembered and read-only here.
+        # Measurements root folder is browsable and persists across restarts.
         create_row(
-            "Last used input folder",
-            "last_input_folder",
-            values.get("last_input_folder", ""),
-            "View",
-            lambda *_: None,
+            "Measurements Root Folder",
+            "measurements_root_path",
+            values.get("measurements_root_path", ""),
+            "Browse",
+            lambda *_: self._browse_folder("measurements_root_path"),
         )
 
         # Text values are edited via dedicated large-input edit masks.
@@ -551,7 +553,7 @@ class SettingsPopup(Popup):
     def _refresh_values(self):
         """Refresh value previews in the settings grid after updates."""
         keys = [
-            "last_input_folder",
+            "measurements_root_path",
             "csv_delimiter",
             "decimal_separator",
             "default_export_folder",
@@ -623,11 +625,12 @@ class HomeScreen(BoxLayout):
     Displays a short header and a grid of feature tiles.
     """
 
-    def __init__(self, settings_store: DataToolsSettingsStore, on_open_matching=None, on_open_tristar_databases=None, **kwargs):
+    def __init__(self, settings_store: DataToolsSettingsStore, on_open_matching=None, on_open_tristar_databases=None, on_open_measurements=None, **kwargs):
         super().__init__(orientation="vertical", spacing=12, padding=16, **kwargs)
         self.settings_store = settings_store
         self.on_open_matching = on_open_matching
         self.on_open_tristar_databases = on_open_tristar_databases
+        self.on_open_measurements = on_open_measurements
 
         # Header: app name and short purpose statement.
         title = Label(
@@ -655,16 +658,14 @@ class HomeScreen(BoxLayout):
         self.add_widget(title)
         self.add_widget(subtitle)
 
-        # Grid with six feature tiles.
-        # Settings opens a password-protected popup, other tiles are placeholders.
-        tiles = GridLayout(cols=3, spacing=12, size_hint_y=1)
+        # Grid with four feature tiles.
+        # Settings opens a password-protected popup, other tiles open full viewers.
+        tiles = GridLayout(cols=2, spacing=12, size_hint_y=1)
 
         feature_names = [
-            "CSV Analysis",
             "Matching",
             "Tristar Databases",
-            "Measurement Import",
-            "Reports",
+            "Measurements",
             "Settings",
         ]
 
@@ -695,7 +696,7 @@ class HomeScreen(BoxLayout):
 
         # Footer hint for the current app phase.
         footer = Label(
-            text="Note: Feature content is not implemented yet.",
+            text="",
             font_size="14sp",
             size_hint_y=None,
             height=28,
@@ -735,6 +736,13 @@ class HomeScreen(BoxLayout):
                 self.status_line.text = "Tristar Databases: view is unavailable"
             return
 
+        if button_instance.text == "Measurements":
+            if self.on_open_measurements is not None:
+                self.on_open_measurements()
+            else:
+                self.status_line.text = "Measurements: view is unavailable"
+            return
+
         self.status_line.text = f"{button_instance.text}: coming soon"
 
 
@@ -745,6 +753,7 @@ class DataToolsRoot(BoxLayout):
         super().__init__(orientation="vertical", **kwargs)
         self.settings_store = settings_store
         self.current_view = None
+        self._measurements_view: Optional[MeasurementsViewerRoot] = None
         self.show_home()
 
     def _set_view(self, widget: BoxLayout) -> None:
@@ -760,6 +769,7 @@ class DataToolsRoot(BoxLayout):
                 settings_store=self.settings_store,
                 on_open_matching=self.show_matching,
                 on_open_tristar_databases=self.show_tristar_databases,
+                on_open_measurements=self.show_measurements,
             )
         )
 
@@ -780,6 +790,17 @@ class DataToolsRoot(BoxLayout):
                 on_back=self.show_home,
             )
         )
+
+    def show_measurements(self) -> None:
+        """Show the Measurements viewer mask, reusing the existing instance if available."""
+        if self._measurements_view is None:
+            self._measurements_view = MeasurementsViewerRoot(
+                settings_store=self.settings_store,
+                on_back=self.show_home,
+            )
+        else:
+            self._measurements_view.on_enter()
+        self._set_view(self._measurements_view)
 
 
 class DataToolsApp(App):

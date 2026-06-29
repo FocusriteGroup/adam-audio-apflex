@@ -47,6 +47,127 @@ from kivy.uix.widget import Widget
 from app.settings_store import DataToolsSettingsStore
 
 
+# ---------------------------------------------------------------------------
+# Tooltip Support
+# ---------------------------------------------------------------------------
+
+
+class TooltipWidget(BoxLayout):
+    """
+    Lightweight tooltip widget added directly to the Window (no Popup overhead).
+    This avoids Kivy Popup title/separator padding that clips short tooltips.
+    """
+
+    def __init__(self, text: str, pos, **kwargs):
+        super().__init__(padding=(10, 5, 10, 5), **kwargs)
+        self.size_hint = (None, None)
+
+        # Dark semi-transparent background drawn via canvas.
+        with self.canvas.before:
+            from kivy.graphics import Color, RoundedRectangle
+            Color(0.14, 0.14, 0.16, 0.93)
+            self._bg_rect = RoundedRectangle(pos=self.pos, size=self.size, radius=[4])
+
+        self.bind(
+            pos=lambda *_: setattr(self._bg_rect, "pos", self.pos),
+            size=lambda *_: setattr(self._bg_rect, "size", self.size),
+        )
+
+        label = Label(
+            text=text,
+            font_size="12sp",
+            halign="left",
+            valign="middle",
+            color=(0.95, 0.95, 0.95, 1),
+            size_hint=(1, 1),
+        )
+        label.bind(size=lambda instance, _v: setattr(instance, "text_size", (instance.width, None)))
+        self.add_widget(label)
+
+        # Size the widget after label is added.
+        width = max(200, min(560, int(len(text) * 7.2) + 24))
+        self.size = (width, 32)
+        self.pos = pos
+
+
+class DelayedTooltipManager:
+    """Show tooltips when the mouse stays over a widget for a short time."""
+
+    def __init__(self, delay_seconds: float = 1.2):
+        self.delay_seconds = delay_seconds
+        self._entries: List[Tuple[Widget, str]] = []
+        self._hover_widget: Optional[Widget] = None
+        self._scheduled_event = None
+        self._tooltip_widget = None
+        self._mouse_pos = (0, 0)
+
+        Window.bind(mouse_pos=self._on_mouse_pos)
+
+    def register(self, widget: Widget, text: str) -> None:
+        """Register one widget tooltip entry."""
+        if not widget or not text:
+            return
+        self._entries.append((widget, text))
+
+    def _find_hover_widget(self, x: float, y: float) -> Optional[Tuple[Widget, str]]:
+        """Return the top-most registered widget currently under mouse."""
+        for widget, text in reversed(self._entries):
+            if widget.get_root_window() is None:
+                continue
+            local_x, local_y = widget.to_widget(x, y, relative=False)
+            if widget.collide_point(local_x, local_y):
+                return widget, text
+        return None
+
+    def _on_mouse_pos(self, _window, pos) -> None:
+        """Track hover state and schedule or hide tooltip popups."""
+        x, y = pos
+        self._mouse_pos = pos
+        hit = self._find_hover_widget(x, y)
+
+        if not hit:
+            self._cancel_schedule()
+            self._hover_widget = None
+            self._hide_popup()
+            return
+
+        widget, text = hit
+        if widget is self._hover_widget:
+            return
+
+        self._cancel_schedule()
+        self._hide_popup()
+        self._hover_widget = widget
+        self._scheduled_event = Clock.schedule_once(lambda _dt: self._show_popup(text), self.delay_seconds)
+
+    def _show_popup(self, text: str) -> None:
+        """Create and attach tooltip widget near mouse cursor."""
+        self._scheduled_event = None
+        if not self._hover_widget:
+            return
+
+        mouse_x, mouse_y = self._mouse_pos
+        tip = TooltipWidget(text=text, pos=(0, 0))
+        x = min(mouse_x + 12, Window.width - tip.width - 8)
+        y = min(mouse_y + 16, Window.height - tip.height - 8)
+        tip.pos = (max(8, x), max(8, y))
+
+        Window.add_widget(tip)
+        self._tooltip_widget = tip
+
+    def _cancel_schedule(self) -> None:
+        """Cancel pending tooltip show event if any."""
+        if self._scheduled_event is not None:
+            self._scheduled_event.cancel()
+            self._scheduled_event = None
+
+    def _hide_popup(self) -> None:
+        """Remove active tooltip widget from window if visible."""
+        if self._tooltip_widget is not None:
+            Window.remove_widget(self._tooltip_widget)
+            self._tooltip_widget = None
+
+
 class TristarRepository:
     """
     Read-only data access for unified Tristar system views.
@@ -870,6 +991,9 @@ class TristarDatabasesViewerRoot(BoxLayout):
         self.settings_store = settings_store
         self.on_back = on_back
         
+        # Initialize tooltip manager
+        self.tooltip_manager = DelayedTooltipManager(delay_seconds=1.2)
+        
         sn_fw_path = settings_store.get("sn_fw_db_path", "")
         mac_path = settings_store.get("mac_db_path", "")
         self.repository = TristarRepository(sn_fw_path, mac_path)
@@ -926,6 +1050,13 @@ class TristarDatabasesViewerRoot(BoxLayout):
         toolbar.add_widget(filter_button)
         toolbar.add_widget(export_button)
         toolbar.add_widget(backplate_button)
+        
+        # Register tooltips for toolbar buttons
+        self.tooltip_manager.register(refresh_button, "Reload data from databases")
+        self.tooltip_manager.register(filter_button, "Filter units by date range")
+        self.tooltip_manager.register(export_button, "Export current units and parts to CSV file")
+        self.tooltip_manager.register(backplate_button, "Automatically provision MAC addresses for spare units")
+        
         self.add_widget(toolbar)
 
         # Summary row
