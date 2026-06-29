@@ -54,6 +54,9 @@ Enter your password and click Unlock to proceed.
 | SN FW Workstation DB path | Path to SN/FW Workstation database | Browse |
 | MAC addresses DB path | Path to MAC addresses database | Browse |
 | DataTools DB path | Internal application configuration database | Read-only |
+| Backplate Default Serial | Device serial number before MAC provisioning | Edit |
+| Backplate Default MAC | Device MAC address before provisioning | Edit |
+| Backplate Workstation ID | Identifier for audit trail in provisioning logs | View |
 | Settings password | Password for Settings menu access | Change |
 
 ## The Settings Panel
@@ -132,6 +135,43 @@ To update your Settings password:
 
 - Click Apply in the Settings panel to ensure changes are persisted.
 - Note: The Decimal separator field is internally normalized to a period.
+
+## Backplate Provisioning Settings
+
+The Backplate Provisioning feature allows automatic MAC address assignment to spare units.
+Three settings control this workflow:
+
+### Backplate Default Serial
+
+- **Purpose**: Reference serial number of a spare backplate unit before MAC provisioning
+- **Default**: `123456`
+- **Edit Method**: Click Edit to change the value
+- **Used By**: Backplate Provisioning popup for device state comparison
+
+### Backplate Default MAC
+
+- **Purpose**: Reference MAC address of a spare backplate unit before provisioning
+- **Default**: `DE:AD:BE:EF:00:00` (placeholder/reserved range)
+- **Edit Method**: Click Edit to change the value
+- **Format**: Standard MAC address notation: `XX:XX:XX:XX:XX:XX` (colon-separated hexadecimal)
+- **Used By**: Backplate Provisioning popup for device state validation
+
+### Backplate Workstation ID
+
+- **Purpose**: Identifier used in provisioning audit logs to track which workstation performed provisioning
+- **Default**: `DataTools`
+- **Edit Method**: View only (read-only field)
+- **Used By**: MAC provisioning database for audit trail
+
+### Configuration Workflow
+
+To adjust Backplate Provisioning defaults:
+
+1. In the Settings panel, scroll to find the three Backplate settings
+2. For **Backplate Default Serial**: Click Edit and enter the device serial number
+3. For **Backplate Default MAC**: Click Edit and enter the MAC address (format: `XX:XX:XX:XX:XX:XX`)
+4. **Backplate Workstation ID** cannot be edited (read-only)
+5. Click Apply in the Settings panel to save changes
 
 ## Version Information
 

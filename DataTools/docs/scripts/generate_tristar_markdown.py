@@ -19,11 +19,16 @@ Usage examples:
 from __future__ import annotations
 
 import argparse
+import io
 import os
 import sys
 from pathlib import Path
 
 os.environ.setdefault("KIVY_NO_ARGS", "1")
+
+# Force UTF-8 output for Unicode support across platforms
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 from kivy.app import App
 from kivy.clock import Clock
@@ -106,13 +111,26 @@ class TristarDocCaptureApp(App):
             str((DATATOOLS_ROOT / "Exports").resolve()),
         )
 
+        from kivy.uix.boxlayout import BoxLayout
         self.home_screen = self.HomeScreen(settings_store=self.store)
-        return self.home_screen
+        self.scene_root = BoxLayout()
+        self.scene_root.add_widget(self.home_screen)
+        return self.scene_root
 
     def on_start(self):
         """Start the timed screenshot sequence when UI is ready."""
         Window.size = (1280, 800)
-        Clock.schedule_once(self._capture_home, 1.0)
+        Clock.schedule_once(self._prepare_home_capture, 1.0)
+
+    def _prepare_home_capture(self, _dt):
+        """Ensure home view has final geometry before taking the first screenshot."""
+        self.scene_root.size = Window.size
+        self.scene_root.pos = (0, 0)
+        self.home_screen.size = Window.size
+        self.home_screen.pos = (0, 0)
+        self.scene_root.do_layout()
+        self.home_screen.do_layout()
+        Clock.schedule_once(self._capture_home, 0.35)
 
     def _take(self, filename: str):
         """Take one screenshot of the current window state."""
@@ -125,30 +143,41 @@ class TristarDocCaptureApp(App):
             target.unlink(missing_ok=True)
             saved.replace(target)
 
+    def _take_widget(self, widget, filename: str):
+        """Capture one widget tree to PNG with deterministic naming."""
+        self.screenshot_dir.mkdir(parents=True, exist_ok=True)
+        target = self.screenshot_dir / filename
+        target.unlink(missing_ok=True)
+        widget.export_to_png(str(target))
+
     def _capture_home(self, _dt):
         """Capture home screen and proceed to Tristar viewer."""
+        # Use Window.screenshot for consistent home screen capture
         home_target = self.screenshot_dir / "01_tristar_home.png"
-        home_target.unlink(missing_ok=True)
-        self.home_screen.export_to_png(str(home_target))
+        saved = Path(Window.screenshot(name=str(home_target)))
+        if saved.exists() and saved != home_target:
+            home_target.unlink(missing_ok=True)
+            saved.replace(home_target)
 
-        # Open Tristar viewer
+        # Open Tristar viewer and replace home screen in scene
         self.viewer = self.TristarDatabasesViewerRoot(
             settings_store=self.store,
             on_back=lambda: None
         )
-        self.home_screen.add_widget(self.viewer)
+        self.scene_root.clear_widgets()
+        self.scene_root.add_widget(self.viewer)
         Clock.schedule_once(self._capture_viewer, 0.8)
 
     def _capture_viewer(self, _dt):
         """Capture main viewer and proceed to filter popup."""
-        self._take("02_tristar_viewer_main.png")
+        self._take_widget(self.viewer, "02_tristar_viewer_main.png")
         Clock.schedule_once(self._capture_filter_popup, 0.3)
 
     def _capture_filter_popup(self, _dt):
         """Capture filter date range popup."""
         self.filter_popup = self.ListTimeframeFilterPopup(
-            title="Filter by Date Range",
-            current_items=[],
+            items=[],
+            settings_store=self.store,
             on_apply=lambda items: None,
         )
         self.filter_popup.open()
@@ -156,7 +185,7 @@ class TristarDocCaptureApp(App):
 
     def _after_filter_popup(self, _dt):
         """Capture filter and proceed to provisioning."""
-        self._take("03_tristar_filter_popup.png")
+        self._take_widget(self.filter_popup, "03_tristar_filter_popup.png")
         if self.filter_popup:
             self.filter_popup.dismiss()
         Clock.schedule_once(self._capture_provisioning_popup, 0.3)
@@ -171,7 +200,7 @@ class TristarDocCaptureApp(App):
 
     def _finish_capture(self, _dt):
         """Take final screenshot and stop app."""
-        self._take("05_backplate_provisioning_popup.png")
+        self._take_widget(self.provisioning_popup, "05_backplate_provisioning_popup.png")
         if self.provisioning_popup:
             self.provisioning_popup.dismiss()
         Clock.schedule_once(lambda _: self.stop(), 0.3)
@@ -344,10 +373,11 @@ def _build_markdown(title: str, image_paths: list[Path]) -> str:
     lines.append("2. **Auto-Discovery**: Popup searches for device (every 2 seconds)")
     lines.append("3. **Auto-Read**: Serial number and current MAC read from device")
     lines.append("4. **Auto-Validate**:")
-    lines.append("   - If MAC = Default → Ready to provision")
+    lines.append("   - If Serial = Default Serial (123456) → ERROR: Device not registered")
+    lines.append("   - If MAC = Default MAC (DE:AD:BE:EF:00:00) → Ready to provision")
     lines.append("   - If MAC ≠ Default & in DB → Already provisioned (no action)")
     lines.append("   - If MAC ≠ Default & unknown → Error (manual investigation)")
-    lines.append("5. **Auto-Unlock**: Device factory settings unlocked")
+    lines.append("5. **Auto-Unlock**: Device factory settings unlocked (if ready)")
     lines.append("6. **Auto-Provision**: MAC address assigned from pool and written to device")
     lines.append("7. **Verify**: MAC read back and confirmed")
     lines.append("8. **Database Update**: Provisioning logged to database")
@@ -371,6 +401,8 @@ def _build_markdown(title: str, image_paths: list[Path]) -> str:
     lines.append("")
     lines.append("### Workflow Example")
     lines.append("")
+    lines.append("**Successful provisioning:**")
+    lines.append("")
     lines.append("```")
     lines.append("1. [Searching...]  → No device connected yet")
     lines.append("2. [Connected] SubPro-123ABC  → Device found")
@@ -384,10 +416,23 @@ def _build_markdown(title: str, image_paths: list[Path]) -> str:
     lines.append("7. [Searching...]  → Ready for next device")
     lines.append("```")
     lines.append("")
+    lines.append("**Device with invalid/default serial (NOT provisioned):**")
+    lines.append("")
+    lines.append("```")
+    lines.append("1. [Searching...]  → No device connected yet")
+    lines.append("2. [Connected] SubPro-ABCDEF  → Device found")
+    lines.append("   Serial: 123456  MAC: DE:AD:BE:EF:00:00")
+    lines.append("3. [ERROR] Device has default serial '123456' - not registered. Cannot provision.")
+    lines.append("   (NO provisioning occurs - device not registered)")
+    lines.append("4. (User disconnects device)")
+    lines.append("5. [Searching...]  → Ready for next device")
+    lines.append("```")
+    lines.append("")
     lines.append("### Troubleshooting")
     lines.append("")
     lines.append("| Error | Cause | Solution |")
     lines.append("| --- | --- | --- |")
+    lines.append("| [ERROR] Device has default serial | Device not registered in database | Register device SN in database first |")
     lines.append("| [ERROR] Unknown device | MAC on device but SN not in DB | Manual investigation required |")
     lines.append("| [ERROR] MAC mismatch | DB MAC differs from device MAC | Check device and database |")
     lines.append("| [ERROR] duplicate_sn | SN already in DB with different MAC | Remove duplicate SN entry |")

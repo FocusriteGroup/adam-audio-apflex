@@ -763,6 +763,12 @@ class BackplateProvisioningPopup(Popup):
             self.status_label.color = (1.0, 0.7, 0.45, 1)
             return
         
+        # CRITICAL: Check if device has default/invalid serial
+        if self.current_serial.upper() == self.default_serial.upper():
+            self.status_label.text = f"[ERROR] Device has default serial '{self.default_serial}' - not registered. Cannot provision."
+            self.status_label.color = (1.0, 0.45, 0.45, 1)
+            return
+        
         # Normalize MACs for comparison
         current_mac_norm = self.current_mac.upper()
         default_mac_norm = self.default_mac.upper()

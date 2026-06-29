@@ -162,13 +162,17 @@ After rendering an overlay, you can export the current plot to a PNG file withou
 2. Click the **Export PNG** button in the popup controls.
 3. A native save dialog opens.
 4. Choose a destination and confirm.
-5. The plot is saved as PNG with the same styling and colors as shown in the viewer.
+5. The plot is saved as PNG in light mode with a legend showing left/right curve labels.
 
 **Features:**
 
 - Matplotlib renders in the background (no additional window appears).
-- PNG preserves log-scale frequency axis and all curve colors and transparency.
-- Feedback message shows how many curves were exported.
+- PNG uses light-mode styling (white background, black text) for better printing and sharing.
+- Title shows the timeframe of the exported overlay (Start to End dates).
+- Individual curves shown as thin semi-transparent lines.
+- Median curves calculated and shown as thick dotted lines for each side (blue for left, red for right) to ignore outliers.
+- Legend shows: individual modules, left median, right median.
+- Log-scale frequency axis and all curve colors and transparency are preserved.
 - Default filename is `overlay_plot.png`, can be changed in save dialog.
 
 ## Read-Only Guarantee
