@@ -337,6 +337,18 @@
   ('_pydecimal',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\_pydecimal.py',
    'PYMODULE'),
+  ('_pyi_rth_utils',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\PyInstaller\\fake-modules\\_pyi_rth_utils\\__init__.py',
+   'PYMODULE'),
+  ('_pyi_rth_utils._win32',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\PyInstaller\\fake-modules\\_pyi_rth_utils\\_win32.py',
+   'PYMODULE'),
+  ('_pyi_rth_utils.tempfile',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\PyInstaller\\fake-modules\\_pyi_rth_utils\\tempfile.py',
+   'PYMODULE'),
   ('_sitebuiltins',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\_sitebuiltins.py',
    'PYMODULE'),
@@ -353,6 +365,14 @@
   ('app.main',
    'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
    'Group\\Dokumente\\Repos\\Audio-Precision\\DataTools\\app\\main.py',
+   'PYMODULE'),
+  ('app.matching_viewer',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\DataTools\\app\\matching_viewer.py',
+   'PYMODULE'),
+  ('app.settings_store',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\DataTools\\app\\settings_store.py',
    'PYMODULE'),
   ('argparse',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\argparse.py',
@@ -534,6 +554,42 @@
   ('contextvars',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\contextvars.py',
    'PYMODULE'),
+  ('contourpy',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\contourpy\\__init__.py',
+   'PYMODULE'),
+  ('contourpy._version',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\contourpy\\_version.py',
+   'PYMODULE'),
+  ('contourpy.array',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\contourpy\\array.py',
+   'PYMODULE'),
+  ('contourpy.chunk',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\contourpy\\chunk.py',
+   'PYMODULE'),
+  ('contourpy.convert',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\contourpy\\convert.py',
+   'PYMODULE'),
+  ('contourpy.dechunk',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\contourpy\\dechunk.py',
+   'PYMODULE'),
+  ('contourpy.enum_util',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\contourpy\\enum_util.py',
+   'PYMODULE'),
+  ('contourpy.typecheck',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\contourpy\\typecheck.py',
+   'PYMODULE'),
+  ('contourpy.types',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\contourpy\\types.py',
+   'PYMODULE'),
   ('copy',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\copy.py',
    'PYMODULE'),
@@ -567,8 +623,75 @@
   ('ctypes.wintypes',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\ctypes\\wintypes.py',
    'PYMODULE'),
+  ('cycler',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\cycler\\__init__.py',
+   'PYMODULE'),
+  ('dataclasses',
+   'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\dataclasses.py',
+   'PYMODULE'),
   ('datetime',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\datetime.py',
+   'PYMODULE'),
+  ('dateutil',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\__init__.py',
+   'PYMODULE'),
+  ('dateutil._common',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\_common.py',
+   'PYMODULE'),
+  ('dateutil._version',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\_version.py',
+   'PYMODULE'),
+  ('dateutil.easter',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\easter.py',
+   'PYMODULE'),
+  ('dateutil.parser',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\parser\\__init__.py',
+   'PYMODULE'),
+  ('dateutil.parser._parser',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\parser\\_parser.py',
+   'PYMODULE'),
+  ('dateutil.parser.isoparser',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\parser\\isoparser.py',
+   'PYMODULE'),
+  ('dateutil.relativedelta',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\relativedelta.py',
+   'PYMODULE'),
+  ('dateutil.rrule',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\rrule.py',
+   'PYMODULE'),
+  ('dateutil.tz',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\tz\\__init__.py',
+   'PYMODULE'),
+  ('dateutil.tz._common',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\tz\\_common.py',
+   'PYMODULE'),
+  ('dateutil.tz._factories',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\tz\\_factories.py',
+   'PYMODULE'),
+  ('dateutil.tz.tz',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\tz\\tz.py',
+   'PYMODULE'),
+  ('dateutil.tz.win',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\tz\\win.py',
+   'PYMODULE'),
+  ('dateutil.zoneinfo',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\dateutil\\zoneinfo\\__init__.py',
    'PYMODULE'),
   ('decimal',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\decimal.py',
@@ -1252,8 +1375,144 @@
   ('importlib.util',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\importlib\\util.py',
    'PYMODULE'),
+  ('importlib_resources',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\importlib_resources\\__init__.py',
+   'PYMODULE'),
+  ('importlib_resources._adapters',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\importlib_resources\\_adapters.py',
+   'PYMODULE'),
+  ('importlib_resources._common',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\importlib_resources\\_common.py',
+   'PYMODULE'),
+  ('importlib_resources._functional',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\importlib_resources\\_functional.py',
+   'PYMODULE'),
+  ('importlib_resources._itertools',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\importlib_resources\\_itertools.py',
+   'PYMODULE'),
+  ('importlib_resources.abc',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\importlib_resources\\abc.py',
+   'PYMODULE'),
+  ('importlib_resources.compat',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\importlib_resources\\compat\\__init__.py',
+   'PYMODULE'),
+  ('importlib_resources.compat.py39',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\importlib_resources\\compat\\py39.py',
+   'PYMODULE'),
+  ('importlib_resources.future',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\importlib_resources\\future\\__init__.py',
+   'PYMODULE'),
+  ('importlib_resources.future.adapters',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\importlib_resources\\future\\adapters.py',
+   'PYMODULE'),
+  ('importlib_resources.readers',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\importlib_resources\\readers.py',
+   'PYMODULE'),
   ('inspect',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\inspect.py',
+   'PYMODULE'),
+  ('jinja2',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\__init__.py',
+   'PYMODULE'),
+  ('jinja2._identifier',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\_identifier.py',
+   'PYMODULE'),
+  ('jinja2.async_utils',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\async_utils.py',
+   'PYMODULE'),
+  ('jinja2.bccache',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\bccache.py',
+   'PYMODULE'),
+  ('jinja2.compiler',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\compiler.py',
+   'PYMODULE'),
+  ('jinja2.constants',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\constants.py',
+   'PYMODULE'),
+  ('jinja2.debug',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\debug.py',
+   'PYMODULE'),
+  ('jinja2.defaults',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\defaults.py',
+   'PYMODULE'),
+  ('jinja2.environment',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\environment.py',
+   'PYMODULE'),
+  ('jinja2.exceptions',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\exceptions.py',
+   'PYMODULE'),
+  ('jinja2.ext',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\ext.py',
+   'PYMODULE'),
+  ('jinja2.filters',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\filters.py',
+   'PYMODULE'),
+  ('jinja2.idtracking',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\idtracking.py',
+   'PYMODULE'),
+  ('jinja2.lexer',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\lexer.py',
+   'PYMODULE'),
+  ('jinja2.loaders',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\loaders.py',
+   'PYMODULE'),
+  ('jinja2.nodes',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\nodes.py',
+   'PYMODULE'),
+  ('jinja2.optimizer',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\optimizer.py',
+   'PYMODULE'),
+  ('jinja2.parser',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\parser.py',
+   'PYMODULE'),
+  ('jinja2.runtime',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\runtime.py',
+   'PYMODULE'),
+  ('jinja2.sandbox',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\sandbox.py',
+   'PYMODULE'),
+  ('jinja2.tests',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\tests.py',
+   'PYMODULE'),
+  ('jinja2.utils',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\utils.py',
+   'PYMODULE'),
+  ('jinja2.visitor',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\jinja2\\visitor.py',
    'PYMODULE'),
   ('json',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\json\\__init__.py',
@@ -2019,14 +2278,424 @@
    'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
    'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\kivy_deps\\__init__.py',
    'PYMODULE'),
+  ('kivy_garden', '-', 'PYMODULE'),
+  ('kivy_garden.graph',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\kivy_garden\\graph\\__init__.py',
+   'PYMODULE'),
+  ('kivy_garden.graph._version',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\kivy_garden\\graph\\_version.py',
+   'PYMODULE'),
+  ('kiwisolver',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\kiwisolver\\__init__.py',
+   'PYMODULE'),
+  ('kiwisolver.exceptions',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\kiwisolver\\exceptions.py',
+   'PYMODULE'),
   ('logging',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\logging\\__init__.py',
    'PYMODULE'),
   ('lzma',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\lzma.py',
    'PYMODULE'),
+  ('markupsafe',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\markupsafe\\__init__.py',
+   'PYMODULE'),
+  ('markupsafe._native',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\markupsafe\\_native.py',
+   'PYMODULE'),
+  ('matplotlib',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib._afm',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_afm.py',
+   'PYMODULE'),
+  ('matplotlib._api',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_api\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib._api.deprecation',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_api\\deprecation.py',
+   'PYMODULE'),
+  ('matplotlib._blocking_input',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_blocking_input.py',
+   'PYMODULE'),
+  ('matplotlib._cm',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_cm.py',
+   'PYMODULE'),
+  ('matplotlib._cm_listed',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_cm_listed.py',
+   'PYMODULE'),
+  ('matplotlib._color_data',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_color_data.py',
+   'PYMODULE'),
+  ('matplotlib._constrained_layout',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_constrained_layout.py',
+   'PYMODULE'),
+  ('matplotlib._docstring',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_docstring.py',
+   'PYMODULE'),
+  ('matplotlib._enums',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_enums.py',
+   'PYMODULE'),
+  ('matplotlib._fontconfig_pattern',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_fontconfig_pattern.py',
+   'PYMODULE'),
+  ('matplotlib._layoutgrid',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_layoutgrid.py',
+   'PYMODULE'),
+  ('matplotlib._mathtext',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_mathtext.py',
+   'PYMODULE'),
+  ('matplotlib._mathtext_data',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_mathtext_data.py',
+   'PYMODULE'),
+  ('matplotlib._pylab_helpers',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_pylab_helpers.py',
+   'PYMODULE'),
+  ('matplotlib._text_helpers',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_text_helpers.py',
+   'PYMODULE'),
+  ('matplotlib._tight_bbox',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_tight_bbox.py',
+   'PYMODULE'),
+  ('matplotlib._tight_layout',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_tight_layout.py',
+   'PYMODULE'),
+  ('matplotlib._version',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\_version.py',
+   'PYMODULE'),
+  ('matplotlib.artist',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\artist.py',
+   'PYMODULE'),
+  ('matplotlib.axes',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\axes\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib.axes._axes',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\axes\\_axes.py',
+   'PYMODULE'),
+  ('matplotlib.axes._base',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\axes\\_base.py',
+   'PYMODULE'),
+  ('matplotlib.axes._secondary_axes',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\axes\\_secondary_axes.py',
+   'PYMODULE'),
+  ('matplotlib.axis',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\axis.py',
+   'PYMODULE'),
+  ('matplotlib.backend_bases',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\backend_bases.py',
+   'PYMODULE'),
+  ('matplotlib.backend_managers',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\backend_managers.py',
+   'PYMODULE'),
+  ('matplotlib.backend_tools',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\backend_tools.py',
+   'PYMODULE'),
+  ('matplotlib.backends',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\backends\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib.backends.backend_agg',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\backends\\backend_agg.py',
+   'PYMODULE'),
+  ('matplotlib.backends.backend_webagg',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\backends\\backend_webagg.py',
+   'PYMODULE'),
+  ('matplotlib.backends.backend_webagg_core',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\backends\\backend_webagg_core.py',
+   'PYMODULE'),
+  ('matplotlib.backends.registry',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\backends\\registry.py',
+   'PYMODULE'),
+  ('matplotlib.bezier',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\bezier.py',
+   'PYMODULE'),
+  ('matplotlib.category',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\category.py',
+   'PYMODULE'),
+  ('matplotlib.cbook',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\cbook.py',
+   'PYMODULE'),
+  ('matplotlib.cm',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\cm.py',
+   'PYMODULE'),
+  ('matplotlib.collections',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\collections.py',
+   'PYMODULE'),
+  ('matplotlib.colorbar',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\colorbar.py',
+   'PYMODULE'),
+  ('matplotlib.colors',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\colors.py',
+   'PYMODULE'),
+  ('matplotlib.container',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\container.py',
+   'PYMODULE'),
+  ('matplotlib.contour',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\contour.py',
+   'PYMODULE'),
+  ('matplotlib.dates',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\dates.py',
+   'PYMODULE'),
+  ('matplotlib.dviread',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\dviread.py',
+   'PYMODULE'),
+  ('matplotlib.figure',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\figure.py',
+   'PYMODULE'),
+  ('matplotlib.font_manager',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\font_manager.py',
+   'PYMODULE'),
+  ('matplotlib.gridspec',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\gridspec.py',
+   'PYMODULE'),
+  ('matplotlib.hatch',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\hatch.py',
+   'PYMODULE'),
+  ('matplotlib.image',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\image.py',
+   'PYMODULE'),
+  ('matplotlib.layout_engine',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\layout_engine.py',
+   'PYMODULE'),
+  ('matplotlib.legend',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\legend.py',
+   'PYMODULE'),
+  ('matplotlib.legend_handler',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\legend_handler.py',
+   'PYMODULE'),
+  ('matplotlib.lines',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\lines.py',
+   'PYMODULE'),
+  ('matplotlib.markers',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\markers.py',
+   'PYMODULE'),
+  ('matplotlib.mathtext',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\mathtext.py',
+   'PYMODULE'),
+  ('matplotlib.mlab',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\mlab.py',
+   'PYMODULE'),
+  ('matplotlib.offsetbox',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\offsetbox.py',
+   'PYMODULE'),
+  ('matplotlib.patches',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\patches.py',
+   'PYMODULE'),
+  ('matplotlib.path',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\path.py',
+   'PYMODULE'),
+  ('matplotlib.patheffects',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\patheffects.py',
+   'PYMODULE'),
+  ('matplotlib.projections',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\projections\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib.projections.geo',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\projections\\geo.py',
+   'PYMODULE'),
+  ('matplotlib.projections.polar',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\projections\\polar.py',
+   'PYMODULE'),
+  ('matplotlib.pyplot',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\pyplot.py',
+   'PYMODULE'),
+  ('matplotlib.quiver',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\quiver.py',
+   'PYMODULE'),
+  ('matplotlib.rcsetup',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\rcsetup.py',
+   'PYMODULE'),
+  ('matplotlib.scale',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\scale.py',
+   'PYMODULE'),
+  ('matplotlib.spines',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\spines.py',
+   'PYMODULE'),
+  ('matplotlib.stackplot',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\stackplot.py',
+   'PYMODULE'),
+  ('matplotlib.streamplot',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\streamplot.py',
+   'PYMODULE'),
+  ('matplotlib.style',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\style\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib.style.core',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\style\\core.py',
+   'PYMODULE'),
+  ('matplotlib.table',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\table.py',
+   'PYMODULE'),
+  ('matplotlib.texmanager',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\texmanager.py',
+   'PYMODULE'),
+  ('matplotlib.text',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\text.py',
+   'PYMODULE'),
+  ('matplotlib.textpath',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\textpath.py',
+   'PYMODULE'),
+  ('matplotlib.ticker',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\ticker.py',
+   'PYMODULE'),
+  ('matplotlib.transforms',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\transforms.py',
+   'PYMODULE'),
+  ('matplotlib.tri',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\tri\\__init__.py',
+   'PYMODULE'),
+  ('matplotlib.tri._triangulation',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\tri\\_triangulation.py',
+   'PYMODULE'),
+  ('matplotlib.tri._tricontour',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\tri\\_tricontour.py',
+   'PYMODULE'),
+  ('matplotlib.tri._trifinder',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\tri\\_trifinder.py',
+   'PYMODULE'),
+  ('matplotlib.tri._triinterpolate',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\tri\\_triinterpolate.py',
+   'PYMODULE'),
+  ('matplotlib.tri._tripcolor',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\tri\\_tripcolor.py',
+   'PYMODULE'),
+  ('matplotlib.tri._triplot',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\tri\\_triplot.py',
+   'PYMODULE'),
+  ('matplotlib.tri._trirefine',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\tri\\_trirefine.py',
+   'PYMODULE'),
+  ('matplotlib.tri._tritools',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\tri\\_tritools.py',
+   'PYMODULE'),
+  ('matplotlib.typing',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\typing.py',
+   'PYMODULE'),
+  ('matplotlib.units',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\units.py',
+   'PYMODULE'),
+  ('matplotlib.widgets',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\matplotlib\\widgets.py',
+   'PYMODULE'),
   ('mimetypes',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\mimetypes.py',
+   'PYMODULE'),
+  ('mpl_toolkits', '-', 'PYMODULE'),
+  ('mpl_toolkits.mplot3d',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\mpl_toolkits\\mplot3d\\__init__.py',
+   'PYMODULE'),
+  ('mpl_toolkits.mplot3d.art3d',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\mpl_toolkits\\mplot3d\\art3d.py',
+   'PYMODULE'),
+  ('mpl_toolkits.mplot3d.axes3d',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\mpl_toolkits\\mplot3d\\axes3d.py',
+   'PYMODULE'),
+  ('mpl_toolkits.mplot3d.axis3d',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\mpl_toolkits\\mplot3d\\axis3d.py',
+   'PYMODULE'),
+  ('mpl_toolkits.mplot3d.proj3d',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\mpl_toolkits\\mplot3d\\proj3d.py',
    'PYMODULE'),
   ('multiprocessing',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\multiprocessing\\__init__.py',
@@ -2678,6 +3347,9 @@
    'PYMODULE'),
   ('platform',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\platform.py',
+   'PYMODULE'),
+  ('plistlib',
+   'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\plistlib.py',
    'PYMODULE'),
   ('pprint',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\pprint.py',
@@ -4038,6 +4710,50 @@
    'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
    'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\pygments\\util.py',
    'PYMODULE'),
+  ('pyparsing',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\pyparsing\\__init__.py',
+   'PYMODULE'),
+  ('pyparsing.actions',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\pyparsing\\actions.py',
+   'PYMODULE'),
+  ('pyparsing.common',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\pyparsing\\common.py',
+   'PYMODULE'),
+  ('pyparsing.core',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\pyparsing\\core.py',
+   'PYMODULE'),
+  ('pyparsing.diagram',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\pyparsing\\diagram\\__init__.py',
+   'PYMODULE'),
+  ('pyparsing.exceptions',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\pyparsing\\exceptions.py',
+   'PYMODULE'),
+  ('pyparsing.helpers',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\pyparsing\\helpers.py',
+   'PYMODULE'),
+  ('pyparsing.results',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\pyparsing\\results.py',
+   'PYMODULE'),
+  ('pyparsing.testing',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\pyparsing\\testing.py',
+   'PYMODULE'),
+  ('pyparsing.unicode',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\pyparsing\\unicode.py',
+   'PYMODULE'),
+  ('pyparsing.util',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\pyparsing\\util.py',
+   'PYMODULE'),
   ('queue',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\queue.py',
    'PYMODULE'),
@@ -4071,11 +4787,24 @@
   ('site',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\site.py',
    'PYMODULE'),
+  ('six',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\six.py',
+   'PYMODULE'),
   ('socket',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\socket.py',
    'PYMODULE'),
   ('socketserver',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\socketserver.py',
+   'PYMODULE'),
+  ('sqlite3',
+   'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\sqlite3\\__init__.py',
+   'PYMODULE'),
+  ('sqlite3.dbapi2',
+   'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\sqlite3\\dbapi2.py',
+   'PYMODULE'),
+  ('sqlite3.dump',
+   'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\sqlite3\\dump.py',
    'PYMODULE'),
   ('ssl',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\ssl.py',
@@ -4106,6 +4835,27 @@
    'PYMODULE'),
   ('threading',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\threading.py',
+   'PYMODULE'),
+  ('tkinter',
+   'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\tkinter\\__init__.py',
+   'PYMODULE'),
+  ('tkinter.commondialog',
+   'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\tkinter\\commondialog.py',
+   'PYMODULE'),
+  ('tkinter.constants',
+   'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\tkinter\\constants.py',
+   'PYMODULE'),
+  ('tkinter.dialog',
+   'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\tkinter\\dialog.py',
+   'PYMODULE'),
+  ('tkinter.filedialog',
+   'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\tkinter\\filedialog.py',
+   'PYMODULE'),
+  ('tkinter.messagebox',
+   'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\tkinter\\messagebox.py',
+   'PYMODULE'),
+  ('tkinter.simpledialog',
+   'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\tkinter\\simpledialog.py',
    'PYMODULE'),
   ('token',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\token.py',
@@ -4176,6 +4926,9 @@
    'PYMODULE'),
   ('uu',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\uu.py',
+   'PYMODULE'),
+  ('uuid',
+   'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\uuid.py',
    'PYMODULE'),
   ('webbrowser',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\webbrowser.py',
@@ -4329,4 +5082,24 @@
    'PYMODULE'),
   ('zipimport',
    'C:\\Users\\ThiloRode\\AppData\\Local\\Programs\\Python\\Python39\\lib\\zipimport.py',
+   'PYMODULE'),
+  ('zipp',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\zipp\\__init__.py',
+   'PYMODULE'),
+  ('zipp._functools',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\zipp\\_functools.py',
+   'PYMODULE'),
+  ('zipp.compat',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\zipp\\compat\\__init__.py',
+   'PYMODULE'),
+  ('zipp.compat.py310',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\zipp\\compat\\py310.py',
+   'PYMODULE'),
+  ('zipp.glob',
+   'C:\\Users\\ThiloRode\\OneDrive - Focusrite '
+   'Group\\Dokumente\\Repos\\Audio-Precision\\.venv\\lib\\site-packages\\zipp\\glob.py',
    'PYMODULE')])
