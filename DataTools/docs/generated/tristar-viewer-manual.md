@@ -144,12 +144,12 @@ The Backplate Provisioning feature enables automatic MAC address assignment for 
 
 ```
 1. [Searching...]  → No device connected yet
-2. [Connected] SubPro-123ABC  → Device found
-   Serial: SP12345  MAC: DE:AD:BE:EF:00:00
+2. [Connected] SubPro-ABCDEF  → Device found
+   Serial: CI000042  MAC: DE:AD:BE:EF:00:00
 3. Status: Ready to provision. Unlocking device...
 4. Status: Device unlocked. Provisioning MAC...
 5. [OK] Provisioned
-   Serial: SP12345  MAC: 02:00:00:00:00:01
+   Serial: CI000042  MAC: F0:D7:AF:49:23:DA
    Status: [OK] Provisioned. Disconnect to provision next.
 6. (User disconnects device)
 7. [Searching...]  → Ready for next device
@@ -159,10 +159,22 @@ The Backplate Provisioning feature enables automatic MAC address assignment for 
 
 ```
 1. [Searching...]  → No device connected yet
-2. [Connected] SubPro-ABCDEF  → Device found
+2. [Connected] SubPro-XYZ789  → Device found
    Serial: 123456  MAC: DE:AD:BE:EF:00:00
 3. [ERROR] Device has default serial '123456' - not registered. Cannot provision.
    (NO provisioning occurs - device not registered)
+4. (User disconnects device)
+5. [Searching...]  → Ready for next device
+```
+
+**Device already provisioned (no re-provisioning):**
+
+```
+1. [Searching...]  → No device connected yet
+2. [Connected] SubPro-DEFGH  → Device found
+   Serial: CJ000055  MAC: F0:D7:AF:49:23:DB
+3. [OK] Already provisioned. MAC: F0:D7:AF:49:23:DB. Disconnect to provision next.
+   (Device already in database with matching MAC - no action needed)
 4. (User disconnects device)
 5. [Searching...]  → Ready for next device
 ```
