@@ -3010,6 +3010,65 @@ imported by:
 </div>
 
 <div class="node">
+  <a name="SubProMACAddresses"></a>
+  <a target="code" href="-" type="text/plain"><tt>SubProMACAddresses</tt></a>
+<span class="moduletype">NamespacePackage</span>  <div class="import">
+imported by:
+    <a href="#SubProMACAddresses.mac_database">SubProMACAddresses.mac_database</a>
+ &#8226;   <a href="#SubProMACAddresses.mac_provisioner">SubProMACAddresses.mac_provisioner</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="SubProMACAddresses.mac_database"></a>
+  <a target="code" href="///C:/Users/ThiloRode/OneDrive%20-%20Focusrite%20Group/Dokumente/Repos/Audio-Precision/SubProMACAddresses/mac_database.py" type="text/plain"><tt>SubProMACAddresses.mac_database</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#SubProMACAddresses">SubProMACAddresses</a>
+ &#8226;   <a href="#ctypes">ctypes</a>
+ &#8226;   <a href="#datetime">datetime</a>
+ &#8226;   <a href="#logging">logging</a>
+ &#8226;   <a href="#os">os</a>
+ &#8226;   <a href="#shutil">shutil</a>
+ &#8226;   <a href="#sqlite3">sqlite3</a>
+ &#8226;   <a href="#string">string</a>
+ &#8226;   <a href="#subprocess">subprocess</a>
+ &#8226;   <a href="#sys">sys</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#SubProMACAddresses.mac_provisioner">SubProMACAddresses.mac_provisioner</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="SubProMACAddresses.mac_provisioner"></a>
+  <a target="code" href="///C:/Users/ThiloRode/OneDrive%20-%20Focusrite%20Group/Dokumente/Repos/Audio-Precision/SubProMACAddresses/mac_provisioner.py" type="text/plain"><tt>SubProMACAddresses.mac_provisioner</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#SubProMACAddresses">SubProMACAddresses</a>
+ &#8226;   <a href="#SubProMACAddresses.mac_database">SubProMACAddresses.mac_database</a>
+ &#8226;   <a href="#logging">logging</a>
+ &#8226;   <a href="#subprocess">subprocess</a>
+ &#8226;   <a href="#sys">sys</a>
+ &#8226;   <a href="#time">time</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
+
+  </div>
+
+</div>
+
+<div class="node">
   <a name="__future__"></a>
   <a target="code" href="///C:/Users/ThiloRode/AppData/Local/Programs/Python/Python39/lib/__future__.py" type="text/plain"><tt>__future__</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
@@ -3094,7 +3153,9 @@ imported by:
  &#8226;   <a href="#PIL._version">PIL._version</a>
  &#8226;   <a href="#PIL.features">PIL.features</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
  &#8226;   <a href="#app.settings_store">app.settings_store</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#charset_normalizer">charset_normalizer</a>
  &#8226;   <a href="#charset_normalizer.api">charset_normalizer.api</a>
  &#8226;   <a href="#charset_normalizer.cd">charset_normalizer.cd</a>
@@ -4370,7 +4431,9 @@ imported by:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
  &#8226;   <a href="#app.settings_store">app.settings_store</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
 
   </div>
 
@@ -4383,7 +4446,9 @@ imported by:
 imports:
     <a href="#app">app</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
  &#8226;   <a href="#app.settings_store">app.settings_store</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#kivy.app">kivy.app</a>
  &#8226;   <a href="#kivy.clock">kivy.clock</a>
  &#8226;   <a href="#kivy.core.window">kivy.core.window</a>
@@ -4397,6 +4462,7 @@ imports:
  &#8226;   <a href="#pathlib">pathlib</a>
  &#8226;   <a href="#tkinter">tkinter</a>
  &#8226;   <a href="#tkinter.filedialog">tkinter.filedialog</a>
+ &#8226;   <a href="#typing">typing</a>
 
   </div>
   <div class="import">
@@ -4454,6 +4520,43 @@ imported by:
 </div>
 
 <div class="node">
+  <a name="app.measurements_viewer"></a>
+  <a target="code" href="///C:/Users/ThiloRode/OneDrive%20-%20Focusrite%20Group/Dokumente/Repos/Audio-Precision/DataTools/app/measurements_viewer.py" type="text/plain"><tt>app.measurements_viewer</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#__future__">__future__</a>
+ &#8226;   <a href="#app">app</a>
+ &#8226;   <a href="#app.settings_store">app.settings_store</a>
+ &#8226;   <a href="#csv">csv</a>
+ &#8226;   <a href="#dataclasses">dataclasses</a>
+ &#8226;   <a href="#kivy.clock">kivy.clock</a>
+ &#8226;   <a href="#kivy.core.window">kivy.core.window</a>
+ &#8226;   <a href="#kivy.metrics">kivy.metrics</a>
+ &#8226;   <a href="#kivy.uix.boxlayout">kivy.uix.boxlayout</a>
+ &#8226;   <a href="#kivy.uix.button">kivy.uix.button</a>
+ &#8226;   <a href="#kivy.uix.gridlayout">kivy.uix.gridlayout</a>
+ &#8226;   <a href="#kivy.uix.label">kivy.uix.label</a>
+ &#8226;   <a href="#kivy.uix.popup">kivy.uix.popup</a>
+ &#8226;   <a href="#kivy.uix.scrollview">kivy.uix.scrollview</a>
+ &#8226;   <a href="#kivy.uix.togglebutton">kivy.uix.togglebutton</a>
+ &#8226;   <a href="#kivy.uix.widget">kivy.uix.widget</a>
+ &#8226;   <a href="#kivy_garden.graph">kivy_garden.graph</a>
+ &#8226;   <a href="#math">math</a>
+ &#8226;   <a href="#numpy">numpy</a>
+ &#8226;   <a href="#pathlib">pathlib</a>
+ &#8226;   <a href="#re">re</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#app.main">app.main</a>
+
+  </div>
+
+</div>
+
+<div class="node">
   <a name="app.settings_store"></a>
   <a target="code" href="///C:/Users/ThiloRode/OneDrive%20-%20Focusrite%20Group/Dokumente/Repos/Audio-Precision/DataTools/app/settings_store.py" type="text/plain"><tt>app.settings_store</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
@@ -4469,6 +4572,50 @@ imports:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="app.tristar_databases_viewer"></a>
+  <a target="code" href="///C:/Users/ThiloRode/OneDrive%20-%20Focusrite%20Group/Dokumente/Repos/Audio-Precision/DataTools/app/tristar_databases_viewer.py" type="text/plain"><tt>app.tristar_databases_viewer</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#SubProMACAddresses.mac_database">SubProMACAddresses.mac_database</a>
+ &#8226;   <a href="#SubProMACAddresses.mac_provisioner">SubProMACAddresses.mac_provisioner</a>
+ &#8226;   <a href="#__future__">__future__</a>
+ &#8226;   <a href="#app">app</a>
+ &#8226;   <a href="#app.settings_store">app.settings_store</a>
+ &#8226;   <a href="#csv">csv</a>
+ &#8226;   <a href="#datetime">datetime</a>
+ &#8226;   <a href="#kivy.app">kivy.app</a>
+ &#8226;   <a href="#kivy.clock">kivy.clock</a>
+ &#8226;   <a href="#kivy.core.window">kivy.core.window</a>
+ &#8226;   <a href="#kivy.graphics">kivy.graphics</a>
+ &#8226;   <a href="#kivy.metrics">kivy.metrics</a>
+ &#8226;   <a href="#kivy.uix.boxlayout">kivy.uix.boxlayout</a>
+ &#8226;   <a href="#kivy.uix.button">kivy.uix.button</a>
+ &#8226;   <a href="#kivy.uix.gridlayout">kivy.uix.gridlayout</a>
+ &#8226;   <a href="#kivy.uix.label">kivy.uix.label</a>
+ &#8226;   <a href="#kivy.uix.popup">kivy.uix.popup</a>
+ &#8226;   <a href="#kivy.uix.scrollview">kivy.uix.scrollview</a>
+ &#8226;   <a href="#kivy.uix.textinput">kivy.uix.textinput</a>
+ &#8226;   <a href="#kivy.uix.widget">kivy.uix.widget</a>
+ &#8226;   <a href="#oca.oca_device">oca.oca_device</a>
+ &#8226;   <a href="#pathlib">pathlib</a>
+ &#8226;   <a href="#sqlite3">sqlite3</a>
+ &#8226;   <a href="#sys">sys</a>
+ &#8226;   <a href="#tkinter">tkinter</a>
+ &#8226;   <a href="#tkinter.filedialog">tkinter.filedialog</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#app.main">app.main</a>
 
   </div>
 
@@ -6892,6 +7039,8 @@ imports:
   <div class="import">
 imported by:
     <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#docutils.parsers.rst.directives.tables">docutils.parsers.rst.directives.tables</a>
  &#8226;   <a href="#importlib.metadata">importlib.metadata</a>
 
@@ -6926,7 +7075,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#_pyi_rth_utils._win32">_pyi_rth_utils._win32</a>
+    <a href="#SubProMACAddresses.mac_database">SubProMACAddresses.mac_database</a>
+ &#8226;   <a href="#_pyi_rth_utils._win32">_pyi_rth_utils._win32</a>
  &#8226;   <a href="#ctypes._aix">ctypes._aix</a>
  &#8226;   <a href="#ctypes._endian">ctypes._endian</a>
  &#8226;   <a href="#ctypes.macholib">ctypes.macholib</a>
@@ -7165,7 +7315,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#matplotlib._text_helpers">matplotlib._text_helpers</a>
+    <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#matplotlib._text_helpers">matplotlib._text_helpers</a>
  &#8226;   <a href="#matplotlib.font_manager">matplotlib.font_manager</a>
  &#8226;   <a href="#pyparsing.diagram">pyparsing.diagram</a>
 
@@ -7189,8 +7340,10 @@ imports:
   <div class="import">
 imported by:
     <a href="#PIL._imagingcms">PIL._imagingcms</a>
+ &#8226;   <a href="#SubProMACAddresses.mac_database">SubProMACAddresses.mac_database</a>
  &#8226;   <a href="#_strptime">_strptime</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#calendar">calendar</a>
  &#8226;   <a href="#dateutil.easter">dateutil.easter</a>
  &#8226;   <a href="#dateutil.parser._parser">dateutil.parser._parser</a>
@@ -16135,6 +16288,8 @@ imported by:
  &#8226;   <a href="#matplotlib.backends.backend_webagg_core">matplotlib.backends.backend_webagg_core</a>
  &#8226;   <a href="#matplotlib.font_manager">matplotlib.font_manager</a>
  &#8226;   <a href="#numpy.__config__">numpy.__config__</a>
+ &#8226;   <a href="#oca_tools.oca_utilities">oca_tools.oca_utilities</a>
+ &#8226;   <a href="#services.workstation_logger">services.workstation_logger</a>
 
   </div>
 
@@ -16596,6 +16751,7 @@ imports:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#kivy.core.window.window_sdl2">kivy.core.window.window_sdl2</a>
  &#8226;   <a href="#kivy.lang.parser">kivy.lang.parser</a>
  &#8226;   <a href="#kivy.support">kivy.support</a>
@@ -16755,6 +16911,8 @@ imports:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#kivy">kivy</a>
  &#8226;   <a href="#kivy.animation">kivy.animation</a>
  &#8226;   <a href="#kivy.base">kivy.base</a>
@@ -17530,7 +17688,6 @@ imports:
  &#8226;   <a href="#kivy.clock">kivy.clock</a>
  &#8226;   <a href="#kivy.compat">kivy.compat</a>
  &#8226;   <a href="#kivy.core">kivy.core</a>
- &#8226;   <a href="#kivy.core.image._img_sdl2">kivy.core.image._img_sdl2</a>
  &#8226;   <a href="#kivy.event">kivy.event</a>
  &#8226;   <a href="#kivy.graphics.texture">kivy.graphics.texture</a>
  &#8226;   <a href="#kivy.logger">kivy.logger</a>
@@ -17575,7 +17732,6 @@ imports:
   <div class="import">
 imported by:
     <a href="#kivy">kivy</a>
- &#8226;   <a href="#kivy.core.image">kivy.core.image</a>
  &#8226;   <a href="#kivy.core.image.img_sdl2">kivy.core.image.img_sdl2</a>
 
   </div>
@@ -18093,6 +18249,8 @@ imports:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#kivy">kivy</a>
  &#8226;   <a href="#kivy.app">kivy.app</a>
  &#8226;   <a href="#kivy.base">kivy.base</a>
@@ -18543,6 +18701,7 @@ imports:
   <div class="import">
 imported by:
     <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#kivy">kivy</a>
  &#8226;   <a href="#kivy.core.camera.camera_android">kivy.core.camera.camera_android</a>
  &#8226;   <a href="#kivy.core.gl">kivy.core.gl</a>
@@ -20037,6 +20196,8 @@ imports:
   <div class="import">
 imported by:
     <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#kivy.core.window">kivy.core.window</a>
  &#8226;   <a href="#kivy.effects.dampedscroll">kivy.effects.dampedscroll</a>
  &#8226;   <a href="#kivy.lang.parser">kivy.lang.parser</a>
@@ -20696,6 +20857,8 @@ imports:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#kivy">kivy</a>
  &#8226;   <a href="#kivy.uix.accordion">kivy.uix.accordion</a>
  &#8226;   <a href="#kivy.uix.actionbar">kivy.uix.actionbar</a>
@@ -20750,6 +20913,8 @@ imports:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#kivy">kivy</a>
  &#8226;   <a href="#kivy.uix.accordion">kivy.uix.accordion</a>
  &#8226;   <a href="#kivy.uix.actionbar">kivy.uix.actionbar</a>
@@ -21052,6 +21217,8 @@ imports:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#kivy">kivy</a>
  &#8226;   <a href="#kivy.uix.checkbox">kivy.uix.checkbox</a>
  &#8226;   <a href="#kivy.uix.modalview">kivy.uix.modalview</a>
@@ -21112,6 +21279,8 @@ imports:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#kivy">kivy</a>
  &#8226;   <a href="#kivy.uix.accordion">kivy.uix.accordion</a>
  &#8226;   <a href="#kivy.uix.actionbar">kivy.uix.actionbar</a>
@@ -21221,6 +21390,8 @@ imports:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#kivy">kivy</a>
  &#8226;   <a href="#kivy.uix.settings">kivy.uix.settings</a>
 
@@ -21617,6 +21788,8 @@ imports:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#kivy">kivy</a>
  &#8226;   <a href="#kivy.uix.dropdown">kivy.uix.dropdown</a>
  &#8226;   <a href="#kivy.uix.recycleview">kivy.uix.recycleview</a>
@@ -21865,6 +22038,7 @@ imports:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#kivy">kivy</a>
  &#8226;   <a href="#kivy.uix.codeinput">kivy.uix.codeinput</a>
  &#8226;   <a href="#kivy.uix.settings">kivy.uix.settings</a>
@@ -21885,7 +22059,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#kivy">kivy</a>
+    <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#kivy">kivy</a>
  &#8226;   <a href="#kivy.uix.actionbar">kivy.uix.actionbar</a>
  &#8226;   <a href="#kivy.uix.settings">kivy.uix.settings</a>
  &#8226;   <a href="#kivy.uix.tabbedpanel">kivy.uix.tabbedpanel</a>
@@ -22027,6 +22202,8 @@ imports:
   <div class="import">
 imported by:
     <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#kivy">kivy</a>
  &#8226;   <a href="#kivy.app">kivy.app</a>
  &#8226;   <a href="#kivy.core.window">kivy.core.window</a>
@@ -22233,6 +22410,7 @@ imports:
   <div class="import">
 imported by:
     <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
  &#8226;   <a href="#kivy_garden.graph._version">kivy_garden.graph._version</a>
  &#8226;   <a href="#run.py">run.py</a>
 
@@ -22399,6 +22577,8 @@ imported by:
  &#8226;   <a href="#PIL.PcxImagePlugin">PIL.PcxImagePlugin</a>
  &#8226;   <a href="#PIL.PngImagePlugin">PIL.PngImagePlugin</a>
  &#8226;   <a href="#PIL.TiffImagePlugin">PIL.TiffImagePlugin</a>
+ &#8226;   <a href="#SubProMACAddresses.mac_database">SubProMACAddresses.mac_database</a>
+ &#8226;   <a href="#SubProMACAddresses.mac_provisioner">SubProMACAddresses.mac_provisioner</a>
  &#8226;   <a href="#asyncio.futures">asyncio.futures</a>
  &#8226;   <a href="#asyncio.log">asyncio.log</a>
  &#8226;   <a href="#charset_normalizer">charset_normalizer</a>
@@ -22439,6 +22619,9 @@ imported by:
  &#8226;   <a href="#matplotlib.textpath">matplotlib.textpath</a>
  &#8226;   <a href="#matplotlib.ticker">matplotlib.ticker</a>
  &#8226;   <a href="#multiprocessing.util">multiprocessing.util</a>
+ &#8226;   <a href="#oca.oca_device">oca.oca_device</a>
+ &#8226;   <a href="#oca_tools.oca_utilities">oca_tools.oca_utilities</a>
+ &#8226;   <a href="#services.workstation_logger">services.workstation_logger</a>
  &#8226;   <a href="#unittest._log">unittest._log</a>
 
   </div>
@@ -22562,6 +22745,7 @@ imported by:
  &#8226;   <a href="#PIL.TiffImagePlugin">PIL.TiffImagePlugin</a>
  &#8226;   <a href="#_pydecimal">_pydecimal</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
  &#8226;   <a href="#asyncio.windows_events">asyncio.windows_events</a>
  &#8226;   <a href="#contourpy.chunk">contourpy.chunk</a>
  &#8226;   <a href="#datetime">datetime</a>
@@ -27148,7 +27332,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#contourpy">contourpy</a>
+    <a href="#app.measurements_viewer">app.measurements_viewer</a>
+ &#8226;   <a href="#contourpy">contourpy</a>
  &#8226;   <a href="#contourpy._contourpy">contourpy._contourpy</a>
  &#8226;   <a href="#contourpy.array">contourpy.array</a>
  &#8226;   <a href="#contourpy.convert">contourpy.convert</a>
@@ -33508,6 +33693,78 @@ imported by:
 </div>
 
 <div class="node">
+  <a name="oca"></a>
+  <a target="code" href="///C:/Users/ThiloRode/OneDrive%20-%20Focusrite%20Group/Dokumente/Repos/Audio-Precision/oca/__init__.py" type="text/plain"><tt>oca</tt></a>
+<span class="moduletype">Package</span>  <div class="import">
+imports:
+    <a href="#oca.oca_device">oca.oca_device</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#oca.oca_device">oca.oca_device</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="oca.oca_device"></a>
+  <a target="code" href="///C:/Users/ThiloRode/OneDrive%20-%20Focusrite%20Group/Dokumente/Repos/Audio-Precision/oca/oca_device.py" type="text/plain"><tt>oca.oca_device</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#logging">logging</a>
+ &#8226;   <a href="#oca">oca</a>
+ &#8226;   <a href="#oca_tools.oca_utilities">oca_tools.oca_utilities</a>
+ &#8226;   <a href="#os">os</a>
+ &#8226;   <a href="#re">re</a>
+ &#8226;   <a href="#services.workstation_logger">services.workstation_logger</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
+ &#8226;   <a href="#oca">oca</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="oca_tools"></a>
+  <a target="code" href="-" type="text/plain"><tt>oca_tools</tt></a>
+<span class="moduletype">NamespacePackage</span>  <div class="import">
+imported by:
+    <a href="#oca_tools.oca_utilities">oca_tools.oca_utilities</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="oca_tools.oca_utilities"></a>
+  <a target="code" href="///C:/Users/ThiloRode/OneDrive%20-%20Focusrite%20Group/Dokumente/Repos/adam-audio-test-development/oca_tools/oca_utilities.py" type="text/plain"><tt>oca_tools.oca_utilities</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#json">json</a>
+ &#8226;   <a href="#logging">logging</a>
+ &#8226;   <a href="#oca_tools">oca_tools</a>
+ &#8226;   <a href="#os">os</a>
+ &#8226;   <a href="#platform">platform</a>
+ &#8226;   <a href="#re">re</a>
+ &#8226;   <a href="#stat">stat</a>
+ &#8226;   <a href="#subprocess">subprocess</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#oca.oca_device">oca.oca_device</a>
+
+  </div>
+
+</div>
+
+<div class="node">
   <a name="olefile"></a>
   <a target="code" href="" type="text/plain"><tt>olefile</tt></a>
 <span class="moduletype">MissingModule</span>  <div class="import">
@@ -33678,6 +33935,7 @@ imported by:
  &#8226;   <a href="#PIL._typing">PIL._typing</a>
  &#8226;   <a href="#PIL._util">PIL._util</a>
  &#8226;   <a href="#PIL.features">PIL.features</a>
+ &#8226;   <a href="#SubProMACAddresses.mac_database">SubProMACAddresses.mac_database</a>
  &#8226;   <a href="#_bootsubprocess">_bootsubprocess</a>
  &#8226;   <a href="#_pyi_rth_utils">_pyi_rth_utils</a>
  &#8226;   <a href="#_pyi_rth_utils.tempfile">_pyi_rth_utils.tempfile</a>
@@ -33832,6 +34090,8 @@ imported by:
  &#8226;   <a href="#numpy.polynomial._polybase">numpy.polynomial._polybase</a>
  &#8226;   <a href="#numpy.testing._private.extbuild">numpy.testing._private.extbuild</a>
  &#8226;   <a href="#numpy.testing._private.utils">numpy.testing._private.utils</a>
+ &#8226;   <a href="#oca.oca_device">oca.oca_device</a>
+ &#8226;   <a href="#oca_tools.oca_utilities">oca_tools.oca_utilities</a>
  &#8226;   <a href="#optparse">optparse</a>
  &#8226;   <a href="#os.path">os.path</a>
  &#8226;   <a href="#pathlib">pathlib</a>
@@ -34028,7 +34288,9 @@ imports:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
  &#8226;   <a href="#app.settings_store">app.settings_store</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#docutils.frontend">docutils.frontend</a>
  &#8226;   <a href="#docutils.parsers.rst.directives.misc">docutils.parsers.rst.directives.misc</a>
  &#8226;   <a href="#docutils.utils">docutils.utils</a>
@@ -34229,6 +34491,7 @@ imported by:
  &#8226;   <a href="#numpy.f2py.crackfortran">numpy.f2py.crackfortran</a>
  &#8226;   <a href="#numpy.lib._utils_impl">numpy.lib._utils_impl</a>
  &#8226;   <a href="#numpy.testing._private.utils">numpy.testing._private.utils</a>
+ &#8226;   <a href="#oca_tools.oca_utilities">oca_tools.oca_utilities</a>
  &#8226;   <a href="#pydoc">pydoc</a>
  &#8226;   <a href="#uuid">uuid</a>
 
@@ -42831,6 +43094,7 @@ imported by:
  &#8226;   <a href="#_pydecimal">_pydecimal</a>
  &#8226;   <a href="#_sre">_sre</a>
  &#8226;   <a href="#_strptime">_strptime</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
  &#8226;   <a href="#argparse">argparse</a>
  &#8226;   <a href="#base64">base64</a>
  &#8226;   <a href="#charset_normalizer.constant">charset_normalizer.constant</a>
@@ -42937,6 +43201,8 @@ imported by:
  &#8226;   <a href="#numpy.lib.introspect">numpy.lib.introspect</a>
  &#8226;   <a href="#numpy.ma.core">numpy.ma.core</a>
  &#8226;   <a href="#numpy.testing._private.utils">numpy.testing._private.utils</a>
+ &#8226;   <a href="#oca.oca_device">oca.oca_device</a>
+ &#8226;   <a href="#oca_tools.oca_utilities">oca_tools.oca_utilities</a>
  &#8226;   <a href="#packaging.version">packaging.version</a>
  &#8226;   <a href="#pathlib">pathlib</a>
  &#8226;   <a href="#pdb">pdb</a>
@@ -43248,6 +43514,42 @@ imported by:
 </div>
 
 <div class="node">
+  <a name="services"></a>
+  <a target="code" href="///C:/Users/ThiloRode/OneDrive%20-%20Focusrite%20Group/Dokumente/Repos/Audio-Precision/services/__init__.py" type="text/plain"><tt>services</tt></a>
+<span class="moduletype">Package</span>  <div class="import">
+imports:
+    <a href="#services.workstation_logger">services.workstation_logger</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#services.workstation_logger">services.workstation_logger</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="services.workstation_logger"></a>
+  <a target="code" href="///C:/Users/ThiloRode/OneDrive%20-%20Focusrite%20Group/Dokumente/Repos/Audio-Precision/services/workstation_logger.py" type="text/plain"><tt>services.workstation_logger</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#json">json</a>
+ &#8226;   <a href="#logging">logging</a>
+ &#8226;   <a href="#services">services</a>
+ &#8226;   <a href="#socket">socket</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#oca.oca_device">oca.oca_device</a>
+ &#8226;   <a href="#services">services</a>
+
+  </div>
+
+</div>
+
+<div class="node">
   <a name="setuptools_scm"></a>
   <a target="code" href="" type="text/plain"><tt>setuptools_scm</tt></a>
 <span class="moduletype">MissingModule</span>  <div class="import">
@@ -43309,6 +43611,7 @@ imports:
 imported by:
     <a href="#PIL.EpsImagePlugin">PIL.EpsImagePlugin</a>
  &#8226;   <a href="#PIL.ImageShow">PIL.ImageShow</a>
+ &#8226;   <a href="#SubProMACAddresses.mac_database">SubProMACAddresses.mac_database</a>
  &#8226;   <a href="#argparse">argparse</a>
  &#8226;   <a href="#ctypes.util">ctypes.util</a>
  &#8226;   <a href="#docutils.writers.odf_odt.prepstyles">docutils.writers.odf_odt.prepstyles</a>
@@ -43549,6 +43852,7 @@ imported by:
  &#8226;   <a href="#multiprocessing.reduction">multiprocessing.reduction</a>
  &#8226;   <a href="#multiprocessing.resource_sharer">multiprocessing.resource_sharer</a>
  &#8226;   <a href="#platform">platform</a>
+ &#8226;   <a href="#services.workstation_logger">services.workstation_logger</a>
  &#8226;   <a href="#socketserver">socketserver</a>
  &#8226;   <a href="#ssl">ssl</a>
  &#8226;   <a href="#urllib.request">urllib.request</a>
@@ -43594,8 +43898,10 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#app.matching_viewer">app.matching_viewer</a>
+    <a href="#SubProMACAddresses.mac_database">SubProMACAddresses.mac_database</a>
+ &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
  &#8226;   <a href="#app.settings_store">app.settings_store</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#sqlite3">sqlite3</a>
  &#8226;   <a href="#sqlite3.dbapi2">sqlite3.dbapi2</a>
  &#8226;   <a href="#sqlite3.dump">sqlite3.dump</a>
@@ -43748,6 +44054,7 @@ imported by:
  &#8226;   <a href="#jinja2.bccache">jinja2.bccache</a>
  &#8226;   <a href="#netrc">netrc</a>
  &#8226;   <a href="#ntpath">ntpath</a>
+ &#8226;   <a href="#oca_tools.oca_utilities">oca_tools.oca_utilities</a>
  &#8226;   <a href="#os">os</a>
  &#8226;   <a href="#pathlib">pathlib</a>
  &#8226;   <a href="#posixpath">posixpath</a>
@@ -43799,7 +44106,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#cmd">cmd</a>
+    <a href="#SubProMACAddresses.mac_database">SubProMACAddresses.mac_database</a>
+ &#8226;   <a href="#cmd">cmd</a>
  &#8226;   <a href="#dateutil.parser._parser">dateutil.parser._parser</a>
  &#8226;   <a href="#docutils.writers.latex2e">docutils.writers.latex2e</a>
  &#8226;   <a href="#email._encoded_words">email._encoded_words</a>
@@ -43927,6 +44235,8 @@ imported by:
  &#8226;   <a href="#PIL.GifImagePlugin">PIL.GifImagePlugin</a>
  &#8226;   <a href="#PIL.ImageShow">PIL.ImageShow</a>
  &#8226;   <a href="#PIL.JpegImagePlugin">PIL.JpegImagePlugin</a>
+ &#8226;   <a href="#SubProMACAddresses.mac_database">SubProMACAddresses.mac_database</a>
+ &#8226;   <a href="#SubProMACAddresses.mac_provisioner">SubProMACAddresses.mac_provisioner</a>
  &#8226;   <a href="#_aix_support">_aix_support</a>
  &#8226;   <a href="#asyncio.base_events">asyncio.base_events</a>
  &#8226;   <a href="#asyncio.base_subprocess">asyncio.base_subprocess</a>
@@ -43953,6 +44263,7 @@ imported by:
  &#8226;   <a href="#numpy.f2py._backends._meson">numpy.f2py._backends._meson</a>
  &#8226;   <a href="#numpy.testing._private.extbuild">numpy.testing._private.extbuild</a>
  &#8226;   <a href="#numpy.testing._private.utils">numpy.testing._private.utils</a>
+ &#8226;   <a href="#oca_tools.oca_utilities">oca_tools.oca_utilities</a>
  &#8226;   <a href="#os">os</a>
  &#8226;   <a href="#platform">platform</a>
  &#8226;   <a href="#pydoc">pydoc</a>
@@ -43985,6 +44296,8 @@ imported by:
  &#8226;   <a href="#PIL._imagingcms">PIL._imagingcms</a>
  &#8226;   <a href="#PIL._typing">PIL._typing</a>
  &#8226;   <a href="#PIL.features">PIL.features</a>
+ &#8226;   <a href="#SubProMACAddresses.mac_database">SubProMACAddresses.mac_database</a>
+ &#8226;   <a href="#SubProMACAddresses.mac_provisioner">SubProMACAddresses.mac_provisioner</a>
  &#8226;   <a href="#_aix_support">_aix_support</a>
  &#8226;   <a href="#_bootlocale">_bootlocale</a>
  &#8226;   <a href="#_collections_abc">_collections_abc</a>
@@ -43992,6 +44305,7 @@ imported by:
  &#8226;   <a href="#_pyi_rth_utils">_pyi_rth_utils</a>
  &#8226;   <a href="#_pyi_rth_utils.tempfile">_pyi_rth_utils.tempfile</a>
  &#8226;   <a href="#_sitebuiltins">_sitebuiltins</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#argparse">argparse</a>
  &#8226;   <a href="#ast">ast</a>
  &#8226;   <a href="#asyncio">asyncio</a>
@@ -44481,6 +44795,7 @@ imports:
 imported by:
     <a href="#PIL.PdfImagePlugin">PIL.PdfImagePlugin</a>
  &#8226;   <a href="#PIL.PdfParser">PIL.PdfParser</a>
+ &#8226;   <a href="#SubProMACAddresses.mac_provisioner">SubProMACAddresses.mac_provisioner</a>
  &#8226;   <a href="#_datetime">_datetime</a>
  &#8226;   <a href="#_strptime">_strptime</a>
  &#8226;   <a href="#asyncio.base_events">asyncio.base_events</a>
@@ -44574,6 +44889,7 @@ imports:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#tkinter.commondialog">tkinter.commondialog</a>
  &#8226;   <a href="#tkinter.constants">tkinter.constants</a>
  &#8226;   <a href="#tkinter.dialog">tkinter.dialog</a>
@@ -44654,6 +44970,7 @@ imports:
 imported by:
     <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#tkinter">tkinter</a>
 
   </div>
@@ -45023,8 +45340,11 @@ imported by:
  &#8226;   <a href="#PIL._util">PIL._util</a>
  &#8226;   <a href="#PIL._webp">PIL._webp</a>
  &#8226;   <a href="#PIL.features">PIL.features</a>
+ &#8226;   <a href="#app.main">app.main</a>
  &#8226;   <a href="#app.matching_viewer">app.matching_viewer</a>
+ &#8226;   <a href="#app.measurements_viewer">app.measurements_viewer</a>
  &#8226;   <a href="#app.settings_store">app.settings_store</a>
+ &#8226;   <a href="#app.tristar_databases_viewer">app.tristar_databases_viewer</a>
  &#8226;   <a href="#asyncio.staggered">asyncio.staggered</a>
  &#8226;   <a href="#charset_normalizer.api">charset_normalizer.api</a>
  &#8226;   <a href="#charset_normalizer.cd">charset_normalizer.cd</a>

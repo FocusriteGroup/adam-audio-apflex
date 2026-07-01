@@ -107,16 +107,20 @@ class SettingsDocCaptureApp(App):
             "mac_db_path",
             str(DATATOOLS_ROOT / "SubProMACAddresses" / "db" / "mac_addresses.db"),
         )
-        self.store.set("csv_delimiter", ",")
-        self.store.set("decimal_separator", ".")
-
         self.home_screen = self.HomeScreen(settings_store=self.store)
         return self.home_screen
 
     def on_start(self):
         """Start the timed screenshot sequence when UI is ready."""
-        Window.size = (1280, 800)
-        Clock.schedule_once(self._capture_home, 1.0)
+        Window.size = (1920, 1080)
+        Clock.schedule_once(self._prepare_home, 1.0)
+
+    def _prepare_home(self, _dt):
+        """Force full layout on the home screen before capturing."""
+        self.home_screen.size = Window.size
+        self.home_screen.pos = (0, 0)
+        self.home_screen.do_layout()
+        Clock.schedule_once(self._capture_home, 0.35)
 
     def _take(self, filename: str):
         """Take one screenshot of the current window state."""
@@ -131,11 +135,7 @@ class SettingsDocCaptureApp(App):
 
     def _capture_home(self, _dt):
         """Capture home screen and proceed to password unlock dialog."""
-        # Home screenshot is captured from the root widget to avoid occasional
-        # black frames that can happen with very early window screenshots.
-        home_target = self.screenshot_dir / "01_home.png"
-        home_target.unlink(missing_ok=True)
-        self.home_screen.export_to_png(str(home_target))
+        self._take("01_home.png")
 
         self.unlock_popup = self.PasswordPopup(self.store, on_success=lambda: None)
         self.unlock_popup.open()
@@ -156,8 +156,8 @@ class SettingsDocCaptureApp(App):
         self._take("03_settings_popup.png")
 
         self.edit_popup = self.ValueEditPopup(
-            title="Edit CSV delimiter",
-            initial_value=self.store.get("csv_delimiter", ","),
+            title="Edit Backplate Default Serial",
+            initial_value=self.store.get("backplate_default_serial", "123456"),
             on_confirm=lambda _value: None,
         )
         self.edit_popup.open()
@@ -275,16 +275,12 @@ def _build_markdown(title: str, image_paths: list[Path]) -> str:
     lines.append("")
     lines.append("| Field | Purpose | Edit Method |")
     lines.append("| --- | --- | --- |")
-    lines.append("| Last used input folder | Most recent input folder for file operations | Read-only |")
-    lines.append("| CSV delimiter | Character separating CSV fields | Edit |")
-    lines.append("| Decimal separator | Decimal format (internally enforced to period) | Edit |")
-    lines.append("| Default export folder | Default destination for exports | Browse |")
+    lines.append("| Measurements Root Folder | Root folder with Measurements/, References/ and DefaultReferences/ subfolders | Browse |")
     lines.append("| Matching DB path | Path to Matching database | Browse |")
     lines.append("| SN FW Workstation DB path | Path to SN/FW Workstation database | Browse |")
     lines.append("| MAC addresses DB path | Path to MAC addresses database | Browse |")
-    lines.append("| DataTools DB path | Internal application configuration database | Read-only |")
-    lines.append("| Backplate Default Serial | Device serial number before MAC provisioning | Edit |")
-    lines.append("| Backplate Default MAC | Device MAC address before provisioning | Edit |")
+    lines.append("| Backplate Default Serial | Device serial number placeholder before MAC provisioning | Edit |")
+    lines.append("| Backplate Default MAC | Device MAC address placeholder before provisioning | Edit |")
     lines.append("| Backplate Workstation ID | Identifier for audit trail in provisioning logs | View |")
     lines.append("| Settings password | Password for Settings menu access | Change |")
     lines.append("")
@@ -296,26 +292,12 @@ def _build_markdown(title: str, image_paths: list[Path]) -> str:
         lines.append("")
     lines.append("The Settings panel displays all configuration parameters.")
     lines.append("Each field shows its current value and an action button:")
-    lines.append("- **Edit**: Modify text values via a large-text input dialog")
     lines.append("- **Browse**: Select file or folder paths using native file dialogs")
     lines.append("- **Change**: Modify the Settings password securely")
     lines.append("- **View**: Display read-only field values")
+    lines.append("- **Edit**: Modify text values via a large-text input dialog")
     lines.append("")
     lines.append("## Detailed Workflows")
-    lines.append("")
-    lines.append("### Editing Text Values")
-    lines.append("")
-    if "04_value_edit_dialog" in screenshot_map:
-        rel_path = Path("..") / "screenshots" / "settings-menu" / screenshot_map["04_value_edit_dialog"]
-        lines.append(f"![Value Edit Dialog]({rel_path.as_posix()})")
-        lines.append("")
-    lines.append("To modify text values such as the CSV delimiter:")
-    lines.append("")
-    lines.append("1. Click Edit next to the field you want to change.")
-    lines.append("2. A text input dialog opens with the current value pre-filled.")
-    lines.append("3. Modify the text as needed.")
-    lines.append("4. Click Save to confirm. The new value is immediately stored.")
-    lines.append("5. (Optional) Click Apply in the Settings panel for confirmation.")
     lines.append("")
     lines.append("### Configuring Paths")
     lines.append("")
@@ -325,8 +307,19 @@ def _build_markdown(title: str, image_paths: list[Path]) -> str:
     lines.append("2. A native file or folder selection dialog opens.")
     lines.append("3. Navigate to and select the desired file or folder.")
     lines.append("4. The new path is immediately displayed and stored.")
-    lines.append("5. (Optional) Click Apply in the Settings panel to confirm.")
     lines.append("")
+    lines.append("### Editing Text Values")
+    lines.append("")
+    lines.append("Some fields (e.g. Backplate Default Serial, Backplate Default MAC) are edited via a text input dialog:")
+    lines.append("")
+    lines.append("1. Click **Edit** next to the field.")
+    lines.append("2. Enter the new value in the text box.")
+    lines.append("3. Click **Save** to apply or **Cancel** to discard.")
+    lines.append("")
+    if "04_value_edit_dialog" in screenshot_map:
+        rel_path = Path("..") / "screenshots" / "settings-menu" / screenshot_map["04_value_edit_dialog"]
+        lines.append(f"![Text Edit Dialog]({rel_path.as_posix()})")
+        lines.append("")
     lines.append("### Changing the Settings Password")
     lines.append("")
     if "05_change_password_dialog" in screenshot_map:
@@ -369,7 +362,6 @@ def _build_markdown(title: str, image_paths: list[Path]) -> str:
     lines.append("### Changes are not saved")
     lines.append("")
     lines.append("- Click Apply in the Settings panel to ensure changes are persisted.")
-    lines.append("- Note: The Decimal separator field is internally normalized to a period.")
     lines.append("")
     lines.append("## Backplate Provisioning Settings")
     lines.append("")
@@ -408,21 +400,19 @@ def _build_markdown(title: str, image_paths: list[Path]) -> str:
     lines.append("4. **Backplate Workstation ID** cannot be edited (read-only)")
     lines.append("5. Click Apply in the Settings panel to save changes")
     lines.append("")
-    lines.append("## Version Information")
-    lines.append("")
-    lines.append("This manual is automatically generated by `docs/scripts/generate_settings_markdown.py`.")
-    lines.append("Screenshots and documentation are refreshed together by default.")
-    lines.append("")
 
     return "\n".join(lines)
 
 
-def generate(title: str) -> Path:
+def generate(title: str, embed: bool = False, html: bool = False, docx: bool = False) -> Path:
     """
     Generate the settings markdown document.
 
     Args:
         title: Document title used in the generated markdown.
+        embed: If True, embed screenshots as base64 data URIs.
+        html:  If True, also write a self-contained HTML file.
+        docx:  If True, also write a Word .docx file (for Confluence import).
 
     Returns:
         Path to the generated markdown file.
@@ -432,7 +422,25 @@ def generate(title: str) -> Path:
 
     image_paths = sorted(SCREENSHOT_DIR.glob("*.png"))
     markdown = _build_markdown(title=title, image_paths=image_paths)
-    OUTPUT_FILE.write_text(markdown, encoding="utf-8")
+    if embed or html:
+        from docs_utils import embed_images_in_markdown
+        embedded = embed_images_in_markdown(markdown, DOCS_ROOT)
+    else:
+        embedded = markdown
+    if embed:
+        OUTPUT_FILE.write_text(embedded, encoding="utf-8")
+    else:
+        OUTPUT_FILE.write_text(markdown, encoding="utf-8")
+    if html:
+        from docs_utils import markdown_to_html
+        html_path = OUTPUT_FILE.with_suffix(".html")
+        html_path.write_text(markdown_to_html(embedded, title), encoding="utf-8")
+        print(f"  Written HTML: {html_path}")
+    if docx:
+        from docs_utils import markdown_to_docx
+        docx_path = OUTPUT_FILE.with_suffix(".docx")
+        docx_path.write_bytes(markdown_to_docx(markdown, DOCS_ROOT, title))
+        print(f"  Written DOCX: {docx_path}")
     return OUTPUT_FILE
 
 
@@ -454,6 +462,18 @@ def _parse_args() -> argparse.Namespace:
         action="store_true",
         help="Keep existing screenshots when capturing new ones.",
     )
+    parser.add_argument(
+        "--embed-images", action="store_true",
+        help="Embed screenshots as base64 data URIs (self-contained, for Confluence).",
+    )
+    parser.add_argument(
+        "--html", action="store_true",
+        help="Also generate a self-contained HTML file (open in browser, copy-paste into Confluence).",
+    )
+    parser.add_argument(
+        "--docx", action="store_true",
+        help="Also generate a Word .docx file (import into Confluence via Space Tools → Import).",
+    )
     return parser.parse_args()
 
 
@@ -465,7 +485,7 @@ def main() -> None:
         captured = capture_screenshots(clean=not args.keep_existing)
         print(f"Captured screenshots: {len(captured)}")
 
-    output_path = generate(title=args.title)
+    output_path = generate(title=args.title, embed=args.embed_images, html=args.html, docx=args.docx)
     print(f"Generated: {output_path}")
 
 

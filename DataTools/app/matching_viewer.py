@@ -1149,6 +1149,7 @@ class MatchingViewerRoot(BoxLayout):
             back_button = Button(text="Back to Home", size_hint_x=None, width=150)
             back_button.bind(on_release=lambda *_: self.on_back())
             header.add_widget(back_button)
+            self.tooltip_manager.register(back_button, "Return to the home screen.")
 
         self.add_widget(header)
 

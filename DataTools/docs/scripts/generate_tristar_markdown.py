@@ -119,7 +119,7 @@ class TristarDocCaptureApp(App):
 
     def on_start(self):
         """Start the timed screenshot sequence when UI is ready."""
-        Window.size = (1280, 800)
+        Window.size = (1920, 1080)
         Clock.schedule_once(self._prepare_home_capture, 1.0)
 
     def _prepare_home_capture(self, _dt):
@@ -144,11 +144,8 @@ class TristarDocCaptureApp(App):
             saved.replace(target)
 
     def _take_widget(self, widget, filename: str):
-        """Capture one widget tree to PNG with deterministic naming."""
-        self.screenshot_dir.mkdir(parents=True, exist_ok=True)
-        target = self.screenshot_dir / filename
-        target.unlink(missing_ok=True)
-        widget.export_to_png(str(target))
+        """Capture current window frame (no alpha transparency)."""
+        self._take(filename)
 
     def _capture_home(self, _dt):
         """Capture home screen and proceed to Tristar viewer."""
@@ -522,6 +519,18 @@ def main():
         action="store_true",
         help="Skip screenshot capture (use existing files)",
     )
+    parser.add_argument(
+        "--embed-images", action="store_true",
+        help="Embed screenshots as base64 data URIs (self-contained, for Confluence).",
+    )
+    parser.add_argument(
+        "--html", action="store_true",
+        help="Also generate a self-contained HTML file (open in browser, copy-paste into Confluence).",
+    )
+    parser.add_argument(
+        "--docx", action="store_true",
+        help="Also generate a Word .docx file (import into Confluence via Space Tools → Import).",
+    )
 
     args = parser.parse_args()
 
@@ -537,8 +546,26 @@ def main():
     print(f"✏️ Generating Markdown: {OUTPUT_FILE}")
     markdown_content = _build_markdown(args.title, image_paths)
 
+    if args.embed_images or args.html:
+        from docs_utils import embed_images_in_markdown
+        embedded = embed_images_in_markdown(markdown_content, DOCS_ROOT)
+    else:
+        embedded = markdown_content
+
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_FILE.write_text(markdown_content, encoding="utf-8")
+    OUTPUT_FILE.write_text(embedded if args.embed_images else markdown_content, encoding="utf-8")
+
+    if args.html:
+        from docs_utils import markdown_to_html
+        html_path = OUTPUT_FILE.with_suffix(".html")
+        html_path.write_text(markdown_to_html(embedded, args.title), encoding="utf-8")
+        print(f"  Written HTML: {html_path}")
+
+    if args.docx:
+        from docs_utils import markdown_to_docx
+        docx_path = OUTPUT_FILE.with_suffix(".docx")
+        docx_path.write_bytes(markdown_to_docx(markdown_content if not args.embed_images else embedded, DOCS_ROOT, args.title))
+        print(f"  Written DOCX: {docx_path}")
 
     print(f"✅ Documentation complete: {OUTPUT_FILE}")
     print(f"   Screenshots: {len(image_paths)} images")

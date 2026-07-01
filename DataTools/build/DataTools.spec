@@ -12,7 +12,7 @@ a = Analysis(
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=[],
+    excludes=["win32ctypes", "win32ctypes.core", "win32ctypes.pywin32"],
     noarchive=False,
 )
 pyz = PYZ(a.pure)

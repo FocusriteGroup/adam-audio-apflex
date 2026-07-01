@@ -65,17 +65,24 @@ def _build_command(script_path: Path, args: argparse.Namespace) -> list[str]:
         cmd.append("--skip-screenshots")
     if args.keep_existing:
         cmd.append("--keep-existing")
+    if getattr(args, "embed_images", False):
+        cmd.append("--embed-images")
+    if getattr(args, "html", False):
+        cmd.append("--html")
+    if getattr(args, "docx", False):
+        cmd.append("--docx")
     
     return cmd
 
 
-def run_all_generators(skip_screenshots: bool = False, keep_existing: bool = False) -> int:
+def run_all_generators(skip_screenshots: bool = False, keep_existing: bool = False, embed_images: bool = False, html: bool = False, docx: bool = False) -> int:
     """
     Run all generator scripts and report results.
     
     Args:
         skip_screenshots: If True, skip screenshot capture for all scripts.
         keep_existing: If True, keep existing screenshots when capturing.
+        embed_images: If True, embed screenshots as base64 data URIs.
     
     Returns:
         Exit code (0 for success, 1+ for failures).
@@ -105,6 +112,12 @@ def run_all_generators(skip_screenshots: bool = False, keep_existing: bool = Fal
             cmd.append("--skip-screenshots")
         if keep_existing:
             cmd.append("--keep-existing")
+        if embed_images:
+            cmd.append("--embed-images")
+        if html:
+            cmd.append("--html")
+        if docx:
+            cmd.append("--docx")
         
         try:
             result = subprocess.run(cmd, capture_output=False, text=True, timeout=300)
@@ -158,12 +171,30 @@ def main() -> None:
         action="store_true",
         help="Keep existing screenshots when capturing new ones",
     )
+    parser.add_argument(
+        "--embed-images",
+        action="store_true",
+        help="Embed screenshots as base64 data URIs (self-contained, for Confluence)",
+    )
+    parser.add_argument(
+        "--html",
+        action="store_true",
+        help="Also generate self-contained HTML files (open in browser, copy-paste into Confluence)",
+    )
+    parser.add_argument(
+        "--docx",
+        action="store_true",
+        help="Also generate Word .docx files (import into Confluence via Space Tools → Import)",
+    )
     
     args = parser.parse_args()
     
     exit_code = run_all_generators(
         skip_screenshots=args.skip_screenshots,
         keep_existing=args.keep_existing,
+        embed_images=args.embed_images,
+        html=getattr(args, "html", False),
+        docx=getattr(args, "docx", False),
     )
     
     sys.exit(exit_code)

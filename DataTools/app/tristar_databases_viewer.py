@@ -704,6 +704,7 @@ class BackplateProvisioningPopup(Popup):
         self.default_serial = settings_store.get("backplate_default_serial", "123456")
         self.default_mac = settings_store.get("backplate_default_mac", "DE:AD:BE:EF:00:00")
         self.workstation_id = settings_store.get("backplate_workstation_id", "DataTools")
+        self.mac_db_path = settings_store.get("mac_db_path", "")
 
         self.device = None
         self.discovered_target = None
@@ -769,6 +770,7 @@ class BackplateProvisioningPopup(Popup):
             halign="left",
             valign="top",
             font_size='13sp',
+            markup=True,
             color=(0.85, 0.85, 0.85, 1)
         )
         self.status_label.bind(size=lambda instance, value: setattr(instance, "text_size", value))
@@ -830,13 +832,16 @@ class BackplateProvisioningPopup(Popup):
                     if isinstance(devices, list) and len(devices) > 0:
                         targets = []
                         for dev in devices:
-                            if isinstance(dev, dict) and "target" in dev:
-                                targets.append(dev["target"])
+                            if isinstance(dev, dict):
+                                # Prefer explicit "target", fall back to "name" or "ip"
+                                t = dev.get("target") or dev.get("name") or dev.get("ip")
+                                if t:
+                                    targets.append(t)
                             elif isinstance(dev, str):
                                 targets.append(dev)
                         return targets if targets else []
                 if isinstance(result, list) and len(result) > 0:
-                    return [d if isinstance(d, str) else d.get("target", "") for d in result if d]
+                    return [d if isinstance(d, str) else d.get("target") or d.get("name") or d.get("ip", "") for d in result if d]
             if isinstance(result, str):
                 lines = result.split('\n')
                 targets = [line.strip() for line in lines if line.strip() and not line.startswith('[')]
@@ -877,6 +882,8 @@ class BackplateProvisioningPopup(Popup):
 
     def _validate_and_auto_provision(self):
         """Validate device state and auto-provision MAC if ready."""
+        import SubProMACAddresses.mac_database as _mac_db
+        _mac_db.DB_PATH = self.mac_db_path
         from SubProMACAddresses.mac_database import get_assigned_mac
         
         if not self.device or not self.current_serial or not self.current_mac:
@@ -929,11 +936,18 @@ class BackplateProvisioningPopup(Popup):
             return
         
         # Already provisioned - success state
-        self.status_label.text = f"[OK] Already provisioned. MAC: {current_mac_norm}. Disconnect to provision next."
-        self.status_label.color = (0.6, 0.9, 0.6, 1)
+        self.status_label.text = (
+            f"[b][size=18sp]✓  RE-TEST OK[/size][/b]\n"
+            f"MAC: {current_mac_norm}\n"
+            f"Disconnect to provision next unit."
+        )
+        self.status_label.height = 110
+        self.status_label.color = (0.3, 1.0, 0.45, 1)
 
     def _auto_provision_mac(self):
         """Auto-provision MAC without manual input."""
+        import SubProMACAddresses.mac_database as _mac_db
+        _mac_db.DB_PATH = self.mac_db_path
         from SubProMACAddresses.mac_provisioner import provision_mac
         
         try:
@@ -948,9 +962,15 @@ class BackplateProvisioningPopup(Popup):
             if prov_result.get("status") in ("success", "retest_ok"):
                 assigned_mac = prov_result.get("mac", "?")
                 low_pool = prov_result.get("low_pool", False)
-                warning = " [LOW POOL]" if low_pool else ""
-                self.status_label.text = f"[OK] Provisioned. Serial: {self.current_serial}  MAC: {assigned_mac}{warning}\nDisconnect to provision next unit."
-                self.status_label.color = (0.6, 0.9, 0.6, 1)
+                warning = "  [b][color=ff8800]LOW POOL[/color][/b]" if low_pool else ""
+                self.status_label.text = (
+                    f"[b][size=18sp]✓  PROVISIONED{warning}[/size][/b]\n"
+                    f"Serial: {self.current_serial}\n"
+                    f"MAC: {assigned_mac}\n"
+                    f"Disconnect to provision next unit."
+                )
+                self.status_label.height = 130
+                self.status_label.color = (0.3, 1.0, 0.45, 1)
                 self.current_mac_label.text = f"MAC: {assigned_mac}"
             else:
                 reason = prov_result.get("reason", "unknown")
@@ -1018,6 +1038,7 @@ class TristarDatabasesViewerRoot(BoxLayout):
             back_button = Button(text="Back to Home", size_hint_x=None, width=150)
             back_button.bind(on_release=lambda *_: self._on_back())
             header.add_widget(back_button)
+            self.tooltip_manager.register(back_button, "Return to the home screen.")
 
         self.add_widget(header)
 
