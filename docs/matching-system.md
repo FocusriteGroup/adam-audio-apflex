@@ -50,6 +50,34 @@ Default settings include RMSE threshold `1.0`, frequency range `200` to `8000` H
 
 Remeasurement is allowed for `unmatched` and `matched` rows. `paired` rows are locked and must be unpaired before a new measurement can overwrite them.
 
+```plantuml
+@startuml
+!theme plain
+skinparam stateBackgroundColor #F8F9FA
+skinparam stateBorderColor #555555
+skinparam stateArrowColor #444444
+skinparam defaultTextAlignment center
+
+title Driver Status Transitions
+
+[*] --> unmatched : upload_measurement\n(APx EOL step)
+
+unmatched --> matched : matcher algorithm\nassigns partner
+
+matched --> unmatched : remeasurement\n(new upload overwrites)
+
+matched --> paired : operator confirms\nphysical pair\n(Matching App scan)
+
+paired --> matched : operator unpairs\n(Matching App)
+
+unmatched --> quarantined : manual quarantine\nor age > max_days
+matched --> quarantined : manual quarantine\nor age > max_days
+
+quarantined --> unmatched : operator releases
+
+@enduml
+```
+
 ## Measurement Upload
 
 APx projects call:

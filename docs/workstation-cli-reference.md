@@ -1,32 +1,100 @@
 # Workstation CLI Reference
 
-The workstation CLI is implemented by [../adam_workstation.py](../adam_workstation.py). The authoritative command-line parser is [../cli/workstation_parser.py](../cli/workstation_parser.py), and dispatch is controlled by `AdamWorkstation.command_map`.
+## Design and Role
 
-General form:
+[../adam_workstation.py](../adam_workstation.py) is the **general-purpose production backend**. It is called by APx500 shell steps, custom GUIs, operator scripts, and directly from a terminal — using exactly the same command surface every time. The backend is intentionally decoupled from any single front-end.
+
+The authoritative command-line parser is [../cli/workstation_parser.py](../cli/workstation_parser.py). Command dispatch is controlled by `AdamWorkstation.command_map`. Every registered command maps to one handler method that is responsible for exactly one stable stdout line.
+
+## The Stdout Contract
+
+> **The printed output is the API.** Logging, diagnostics, and debug output must never reach stdout.
+
+All logging goes to `logs/adam_audio/adam_workstation_log_YYYY-MM-DD.log` only. A stray `print()` in a command handler breaks any APx shell step that validates or stores the response.
+
+APx500 can:
+- validate stdout against `ExpectedResponse` (e.g. `successful`, `True`)
+- store stdout in a `ProgramOutputVariable` for later use
+- ignore stdout entirely
+
+The rule is the same regardless of front-end: **one stable response per command, no diagnostic noise in stdout**.
+
+## Command Dispatch Flow
+
+```plantuml
+@startuml
+!theme plain
+skinparam activityBackgroundColor #F8F9FA
+skinparam activityBorderColor #555555
+skinparam activityDiamondBackgroundColor #E3F0FF
+skinparam arrowColor #444444
+skinparam defaultTextAlignment left
+
+title AdamWorkstation — Command Dispatch
+
+start
+
+:parse_args()\nresolve command in command_map;
+
+if (--host provided?) then (yes)
+  :self.host = args.host
+args.server = True;
+else if (--server flag set?) then (yes)
+  :AdamConnector.find_service_ip();
+  if (service found?) then (yes)
+    :self.host = service_ip;
+  else (no)
+    :print "Error: No ADAM service available";
+    stop
+  endif
+endif
+
+:command_map[command](args);
+
+if (args.server == True?) then (yes)
+  :build JSON {"action": command, ...}\nsend_command() via TCP;
+  :receive UTF-8 response string;
+else (local)
+  :call local implementation\n(helpers / CSV / biquad / OCA / ...);
+  :compute result;
+endif
+
+:print(result)  ← stdout;
+stop
+
+@enduml
+```
+
+## General Form
 
 ```powershell
 python adam_workstation.py [--host SERVICE_IP] [--service-port 65432] [--service-name ADAMService] <command> [args...]
 ```
 
-APx500 commonly uses:
+APx500 shell steps use `pythonw.exe` to suppress the console window:
 
 ```powershell
 pythonw.exe adam_workstation.py <command> [args...]
 ```
 
-Service integration is optional. Current production use is typically local execution, while service mode is available for supported commands when centralized processing is needed.
-
-Local execution example:
+Local execution (no service required):
 
 ```powershell
 python adam_workstation.py scan_serial
+python adam_workstation.py extract_csv_columns input.csv 0 1 out.csv
 ```
 
-Service-backed execution example (for commands that support `--server`):
+Service-backed execution (for commands that support `--server`):
 
 ```powershell
+# Explicit IP — discovery skipped
 python adam_workstation.py --host 192.168.1.166 extract_csv_columns input.csv 0 1 out.csv
+
+# Auto-discovery
+python adam_workstation.py extract_csv_columns input.csv 0 1 out.csv --server
 ```
+
+See [service-protocol.md](service-protocol.md) for the full service communication architecture.
 
 ## Global Options
 
@@ -155,16 +223,82 @@ The command checks the matcher database to ensure the two module serials are an 
 
 ## Validation Commands
 
-List all parser commands:
+List all registered subcommands:
 
 ```powershell
 python adam_workstation.py --help
 ```
 
-Check one command:
+Inspect one command's arguments:
+
+```powershell
+python adam_workstation.py extract_csv_columns --help
+```
+
+Quick smoke test (local execution, no service):
 
 ```powershell
 python adam_workstation.py set_channel 1
+python adam_workstation.py generate_timestamp_extension
 ```
 
-For parser/dispatcher drift, compare parser names in [../cli/workstation_parser.py](../cli/workstation_parser.py) with `AdamWorkstation.command_map` in [../adam_workstation.py](../adam_workstation.py).
+To detect parser/dispatcher drift, compare subcommand names in [../cli/workstation_parser.py](../cli/workstation_parser.py) against the keys of `AdamWorkstation.command_map` in [../adam_workstation.py](../adam_workstation.py). A command present in the parser but missing from `command_map` will fail silently at runtime.
+
+---
+
+## Adding New Commands
+
+Adding a new command requires changes in three places and must preserve the stdout contract.
+
+### Step 1 — Add the argparse subcommand
+
+In [../cli/workstation_parser.py](../cli/workstation_parser.py), add a `subparsers.add_parser(...)` block. Include `--server` if the command supports service-backed execution.
+
+```python
+# In build_workstation_parser() (cli/workstation_parser.py)
+my_cmd_parser = subparsers.add_parser(
+    "my_command",
+    help="One-line description shown in --help"
+)
+my_cmd_parser.add_argument("input_path", type=str, help="Path to input file")
+my_cmd_parser.add_argument("--server", action="store_true",
+    help="Run via ADAM service instead of locally")
+```
+
+### Step 2 — Add the handler method
+
+In [../adam_workstation.py](../adam_workstation.py), add a method to `AdamWorkstation`. The method receives the parsed `args` object and must `print()` exactly one stable response.
+
+```python
+# In AdamWorkstation (adam_workstation.py)
+def my_command(self, args):
+    if args.server:
+        command = {"action": "my_command", "input_path": args.input_path}
+        response = self.send_command(command)
+        print(response)
+        return
+    # Local fallback — identical behavior, no service required
+    result = local_my_command(args.input_path)
+    print(result)
+```
+
+Rules:
+- **Never** write to stdout except the single response line.
+- **Never** raise an unhandled exception — catch and print `f"Error: {e}"`.
+- Logging goes to `WORKSTATION_LOGGER` only.
+
+### Step 3 — Register in `command_map`
+
+In `AdamWorkstation.__init__`, add one entry to `self.command_map`:
+
+```python
+"my_command": self.my_command,
+```
+
+### Step 4 — Register the service action (if applicable)
+
+If the command delegates to the service, add the corresponding handler to `AdamService.process_command` in [../adam_service.py](../adam_service.py). See [service-protocol.md](service-protocol.md) for the full service-side steps.
+
+### Step 5 — Update documentation
+
+Update this file and [apx500-integration.md](apx500-integration.md) with the new command's arguments, stdout value, and any APx500 integration notes.

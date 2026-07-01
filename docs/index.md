@@ -20,8 +20,12 @@ The printed output is the API contract for external callers. Return values insid
 | [ADAM Service Protocol](service-protocol.md) | TCP command protocol, UDP discovery broadcast, and service-backed operations. |
 | [CSV and Measurement Processing](csv-and-measurements.md) | AP CSV formats, smoothing, distortion splitting, reference filtering, L/R compensation, uploads. |
 | [OCA Device Control](oca-device-control.md) | OCA wrapper responsibilities and supported device operations. |
+| [OCP1ToolWrapper](ocp1-tool-wrapper.md) | Architecture, execution pipeline, response parsing, and extension guide for the AES70 CLI wrapper. |
 | [Hardware Integration](hardware-integration.md) | SwitchBox, scanner, serial manager responsibilities, and production stdout behavior. |
 | [Matching System](matching-system.md) | Matching app database, upload path, pairing algorithm, and system verification. |
+| [ASubsTristar v0.2 Sequence](asubstristar-v0-2-sequence.md) | APx shell-step walkthrough for the ASubsTristar EOL project. |
+| [H715 System Test Sequence](h715-system-test-sequence.md) | APx shell-step walkthrough for the H715 module matching and system test projects. |
+| [SubPRO v1.0 Sequence](subpro-v1-sequence.md) | APx shell-step walkthrough for the SubPRO EOL project. |
 | [Sub-Pro SN/FW Workstation](subpro-sn-fw-workstation.md) | Desktop workflow for firmware checks, serial-number programming, part capture, and history. |
 | [Troubleshooting](troubleshooting.md) | Common production failures, stale APx project expectations, logs, and validation commands. |
 | [MAC Provisioning Workflow](mac_provisioning_workflow.md) | First-test and retest MAC provisioning behavior. |

@@ -71,9 +71,6 @@ class DataToolsSettingsStore:
             Dictionary with all default settings as strings.
         """
         default_export_folder = str((self.datatools_root / "Exports").resolve())
-        matching_db_path = str((self.repo_root / "Matching_App" / "Data" / "db" / "matcher.db").resolve())
-        sn_fw_db_path = str((self.repo_root / "SubPro_SN_FW_Workstation" / "Data" / "subpro_workstation.db").resolve())
-        mac_db_path = str((self.repo_root / "SubProMACAddresses" / "db" / "mac_addresses.db").resolve())
 
         return {
             "app_password": "admin",
@@ -81,11 +78,11 @@ class DataToolsSettingsStore:
             "default_export_folder": default_export_folder,
             "csv_delimiter": ",",
             "decimal_separator": ".",
-            "matching_db_path": matching_db_path,
+            "matching_db_path": "",
             "matching_overlay_start": "",
             "matching_overlay_end": "",
-            "sn_fw_db_path": sn_fw_db_path,
-            "mac_db_path": mac_db_path,
+            "sn_fw_db_path": "",
+            "mac_db_path": "",
             "datatools_db_path": str(self.db_path),
             "backplate_default_serial": "123456",
             "backplate_default_mac": "DE:AD:BE:EF:00:00",
