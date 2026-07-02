@@ -167,7 +167,9 @@ Combines APx-native and shell steps in their actual execution order:
 
 ### `$(PythonRunner)`
 
-The variable `$(PythonRunner)` replaces `pythonw.exe`. This lets the APx project adapt to different Python installations or virtual environments by changing one project variable instead of editing every shell step.
+The variable `$(PythonRunner)` holds the full path to `pythonw.exe` inside the tool's virtual environment. It is set once in **Project → Project Properties → Variables** and referenced in every shell step's `Command` field. This ensures APx always calls the venv Python, not the system Python.
+
+→ See [apx500-integration.md](apx500-integration.md#python-executable-and-virtual-environment) for configuration details.
 
 ### `get_product_type` — Dynamic `DataDirectory`
 

@@ -6,13 +6,50 @@ Because the backend is designed to be called by any front-end that can start a p
 
 This is the most important production contract in the repository: for any external caller, stdout is the API.
 
+## Python Executable and Virtual Environment
+
+APx500 shell steps must call the Python executable from the tool's **virtual environment**, not the system Python. The venv isolates the production tool's dependencies so that system-level Python updates or package changes cannot break the tool.
+
+The path to `pythonw.exe` inside the venv is stored as an APx project variable named **`PythonRunner`** and referenced as `$(PythonRunner)` in every shell step's `Command` field.
+
+### Setting `PythonRunner`
+
+In APx500: **Project → Project Properties → Variables tab → add or edit `PythonRunner`**.
+
+Set the value to the full absolute path of `pythonw.exe` inside the venv:
+
+```
+C:\Users\<User>\OneDrive - Focusrite Group\<Site>\Production\.venv\Scripts\pythonw.exe
+```
+
+Example from a production machine:
+```
+C:\Users\TristarProduction\OneDrive - Focusrite Group\TristarProduction\.venv\Scripts\pythonw.exe
+```
+
+Use `pythonw.exe` (not `python.exe`) to suppress the console window during APx sequences.
+
+> **Per-site configuration:** The venv path is machine- and user-specific. Each production workstation must have its own `PythonRunner` value set in the APx project properties. Do not hard-code `pythonw.exe` in the `Command` field — it will resolve to the system Python and ignore the venv.
+
+### Shell Step Command Field
+
+All shell steps use `$(PythonRunner)` as the `Command`, with `adam_workstation.py` as the first argument:
+
+| Field | Value |
+|---|---|
+| Command | `$(PythonRunner)` |
+| Arguments | `adam_workstation.py <command> [args...]` |
+| Working Folder | `$(ProjectDir)` |
+
+---
+
 ## Shell Step Model
 
 Typical APx project settings:
 
 | APx field | Typical value | Meaning |
 |---|---|---|
-| `Command` | `pythonw.exe` | Runs Python without a console window. |
+| `Command` | `$(PythonRunner)` | Path to `pythonw.exe` inside the venv — set via project variable. |
 | `Arguments` | `adam_workstation.py ...` | Script and command arguments. |
 | `WorkingDirectory` | `$(ProjectDir)` | Usually the repository root or APx project directory. |
 | `WaitForExit` | `WaitForExitValidateResponse` | Wait and compare stdout to `ExpectedResponse`. |

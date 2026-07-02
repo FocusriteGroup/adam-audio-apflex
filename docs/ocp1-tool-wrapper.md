@@ -338,6 +338,127 @@ Follow the steps in [workstation-cli-reference.md](workstation-cli-reference.md#
 
 ---
 
+## Build and Install
+
+The package lives in `.venv/src/adam-audio-tools/` as a local editable source tree. It must be rebuilt and reinstalled whenever `oca_utilities.py`, `biquad_tools/`, or the CLI binary changes.
+
+### Package Structure
+
+```
+adam-audio-tools/
+├── pyproject.toml               ← package metadata, build config
+├── MANIFEST.in                  ← sdist includes: biquad_tools/, oca_tools/
+├── rebuild_and_reinstall.py     ← automated build + install script
+├── oca_tools/
+│   ├── oca_utilities.py         ← OCP1ToolWrapper source
+│   ├── adam-audio-asubs-cli.exe ← bundled CLI binary (Windows)
+│   └── adam-audio-subpro-cli-eol.exe
+└── biquad_tools/
+    └── biquad_designer.py
+```
+
+`pyproject.toml` declares that `adam-audio-asubs-cli.exe` is package data, so the binary is included in the wheel and installed alongside the Python files:
+
+```toml
+[tool.setuptools.package-data]
+oca_tools = ["adam-audio-asubs-cli.exe"]
+```
+
+### Option A — Automated rebuild (recommended)
+
+The `rebuild_and_reinstall.py` script handles the full cycle: clean artifacts → uninstall old version → build wheel → show wheel contents → force-reinstall.
+
+```powershell
+# Activate the venv first
+.\.venv\Scripts\Activate.ps1
+
+# Run from the package root
+cd .venv\src\adam-audio-tools
+python rebuild_and_reinstall.py
+```
+
+The script prints each step, shows the packaged files from the built wheel, and exits with a non-zero code on any failure. On success it prints:
+
+```
+🎉 Done. Changes in `biquad_tools` and `oca_tools` are now installed.
+```
+
+### Option B — Manual steps
+
+If you need more control, the same steps can be run individually:
+
+```powershell
+# 1. Activate venv
+.\.venv\Scripts\Activate.ps1
+
+# 2. Navigate to the package source
+cd .venv\src\adam-audio-tools
+
+# 3. Clean previous build artifacts
+Remove-Item -Recurse -Force build, dist, *.egg-info -ErrorAction SilentlyContinue
+
+# 4. Build wheel and sdist
+python -m build
+
+# 5. Install the freshly built wheel (no network, no dependency resolution)
+pip install --force-reinstall --no-deps dist\adam_audio_tools-*.whl
+```
+
+The resulting wheel is named `adam_audio_tools-<version>-py3-none-any.whl` (e.g. `adam_audio_tools-0.2.18-py3-none-any.whl`). The `py3-none-any` tag means it is pure Python with no platform-specific compiled extensions — the CLI binary is bundled as data, not compiled code.
+
+### Option C — Editable install (development mode)
+
+For rapid iteration during development, install the package in editable mode. Changes to `.py` files take effect immediately without rebuilding; changes to the CLI binary still require a reinstall.
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+cd .venv\src\adam-audio-tools
+pip install -e .
+```
+
+> **Note:** Editable installs do not copy the binary into the site-packages directory. The package resolves the binary path relative to the source tree location. This is fine for development on the same machine, but the non-editable wheel install is required for any deployment or shared venv.
+
+### Verify the Installation
+
+```powershell
+# Check version and location
+python -c "import adam_audio_tools; print('ok')"
+pip show adam-audio-tools
+
+# Confirm the binary is accessible
+python -c "
+from oca_tools.oca_utilities import OCP1ToolWrapper
+import os, platform
+base = os.path.dirname(__file__ if '__file__' in dir() else '.')
+# The wrapper resolves the exe next to oca_utilities.py at runtime
+print('wrapper importable')
+"
+```
+
+### Updating the Version
+
+The version number is defined in `pyproject.toml`:
+
+```toml
+[project]
+name = "adam-audio-tools"
+version = "0.2.18"
+```
+
+Increment the version before rebuilding when distributing to other machines or documenting a change. There is no automatic versioning — update the string manually, then run `rebuild_and_reinstall.py`.
+
+### Replacing the CLI Binary
+
+The CLI binary `adam-audio-asubs-cli.exe` is the compiled AES70 tool. To update it:
+
+1. Place the new binary in `.venv/src/adam-audio-tools/oca_tools/`.
+2. Run `rebuild_and_reinstall.py` (or the manual steps above).
+3. Confirm the new binary appears in the wheel contents listing printed by the script.
+
+The binary is referenced by `OCP1ToolWrapper.__init__` via `os.path.dirname(os.path.abspath(__file__))`, so it must be in the same directory as `oca_utilities.py` after installation.
+
+---
+
 ## Related
 
 | File | Role |

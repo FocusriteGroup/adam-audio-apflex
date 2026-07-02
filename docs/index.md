@@ -14,6 +14,7 @@ The printed output is the API contract for external callers. Return values insid
 
 | Document | Purpose |
 |---|---|
+| [System Overview](overview.md) | High-level architecture, component layers, technology stack, and design principles. |
 | [System Architecture](architecture.md) | Repository structure, process boundaries, data flow, logging, and runtime dependencies. |
 | [APx500 Integration](apx500-integration.md) | How APx project files call Python, how stdout is validated, and the important response contracts. |
 | [Workstation CLI Reference](workstation-cli-reference.md) | Live command surface from `cli/workstation_parser.py` and `adam_workstation.py`. |
@@ -32,9 +33,14 @@ The printed output is the API contract for external callers. Return values insid
 | [MAC Provisioning Code](mac_provisioning_code.md) | Code-level walkthrough of MAC provisioning. |
 | [MAC Provisioning Database](mac_provisioning_database.md) | SQLite schema and backup behavior for MAC provisioning. |
 | [MAC Provisioning Tests](mac_provisioning_tests.md) | Functional and stress test coverage. |
-| [Filter Reference By Limits](filter_reference_by_limits.md) | Algorithm details for reference filtering. |
 | [Matching App User Guide](../Matching_App/docs/H600_Matching_User_Guide.md) | Operator manual for the matching GUI. |
 | [Sub-Pro SN/FW User Manual](../SubPro_SN_FW_Workstation/docs/user_manual.md) | Operator manual for the Sub-Pro provisioning GUI. |
+
+## Knowledge Base
+
+| Article | Topic |
+|---|---|
+| [KB: Production Tool](kb.md) | Reference generation, limits, file formats, SubPRO specifics, Python venv / PythonRunner setup, log files. |
 
 ## Main Executables
 
