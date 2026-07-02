@@ -41,6 +41,7 @@ The printed output is the API contract for external callers. Return values insid
 | Article | Topic |
 |---|---|
 | [KB: Production Tool](kb.md) | Reference generation, limits, file formats, SubPRO specifics, Python venv / PythonRunner setup, log files. |
+| [FAQ](faq.md) | Answers to common production, hardware, OCA, MAC provisioning, and DataTools questions. |
 
 ## Main Executables
 
