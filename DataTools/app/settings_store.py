@@ -15,6 +15,7 @@ Design goals:
 from __future__ import annotations
 
 import sqlite3
+import os
 from pathlib import Path
 from typing import Dict
 
@@ -32,11 +33,17 @@ class DataToolsSettingsStore:
         Initialize the settings store.
 
         Args:
-            datatools_root: Absolute path to the DataTools folder.
+            datatools_root: Absolute path to the DataTools installation folder.
         """
         self.datatools_root = Path(datatools_root).resolve()
         self.repo_root = self.datatools_root.parent
-        self.db_path = self.datatools_root / "Data" / "db" / "datatools.db"
+
+        # Store the DB in %LOCALAPPDATA%\DataTools so it is always writable,
+        # even when the app is installed under Program Files.
+        _local_app_data = Path(os.environ.get("LOCALAPPDATA", "")) or (
+            Path.home() / "AppData" / "Local"
+        )
+        self.db_path = _local_app_data / "DataTools" / "datatools.db"
 
         # Ensure parent directories exist before opening SQLite.
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
@@ -70,7 +77,7 @@ class DataToolsSettingsStore:
         Returns:
             Dictionary with all default settings as strings.
         """
-        default_export_folder = str((self.datatools_root / "Exports").resolve())
+        default_export_folder = str((self.db_path.parent.parent / "Exports").resolve())
 
         return {
             "app_password": "admin",
